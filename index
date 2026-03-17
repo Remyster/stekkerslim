@@ -1,7 +1,797 @@
 <!DOCTYPE html>
-<html>
-<head><title>StekkerSlim.nl</title></head>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="StekkerSlim.nl — Energiekosten verlagen, slimme tips voor thuis. Zonnepanelen, dynamische contracten, smarthome en besparen voor gezinnen." />
+  <title>StekkerSlim.nl — Slim besparen op energie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --groen: #00D17A;
+      --groen-dark: #00A85F;
+      --navy: #0B1628;
+      --navy-mid: #132240;
+      --licht: #F4F7F2;
+      --wit: #ffffff;
+      --grijs: #6B7280;
+      --grijs-licht: #E8EDF2;
+      --accent: #FFD23F;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--wit);
+      color: var(--navy);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--grijs-licht);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900; font-size: 1.4rem;
+      color: var(--navy); text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .logo span { color: var(--groen); }
+    .logo-icon {
+      width: 32px; height: 32px;
+      background: var(--groen);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--navy); font-size: 0.9rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--groen); }
+    .nav-cta {
+      background: var(--groen); color: var(--wit) !important;
+      padding: 8px 18px; border-radius: 8px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--groen-dark) !important; color: var(--wit) !important; }
+
+    /* ── HERO ────────────────────────────── */
+    .hero {
+      background: var(--navy);
+      padding: 80px 24px 90px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(0,209,122,0.15) 0%, transparent 70%),
+                  radial-gradient(ellipse at 10% 80%, rgba(255,210,63,0.08) 0%, transparent 60%);
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+      align-items: center; position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,209,122,0.15); border: 1px solid rgba(0,209,122,0.3);
+      color: var(--groen); border-radius: 99px;
+      padding: 6px 14px; font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero-badge::before { content: '⚡'; }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900; font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--wit); line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    h1 em {
+      font-style: normal; color: var(--groen);
+    }
+    .hero p {
+      color: rgba(255,255,255,0.7); font-size: 1.05rem;
+      margin-bottom: 32px; max-width: 480px;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--groen); color: var(--navy);
+      padding: 14px 28px; border-radius: 10px;
+      font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,209,122,0.4);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,209,122,0.5); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1); color: var(--wit);
+      padding: 14px 28px; border-radius: 10px;
+      font-weight: 600; font-size: 0.95rem;
+      text-decoration: none; display: inline-block;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.18); }
+
+    /* HERO CARD */
+    .hero-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px; padding: 28px;
+      backdrop-filter: blur(10px);
+    }
+    .hero-card-title {
+      color: rgba(255,255,255,0.5); font-size: 0.8rem;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .energy-stat {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .energy-stat:last-child { border-bottom: none; }
+    .stat-label { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+    .stat-value {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700; font-size: 1.1rem;
+    }
+    .stat-value.up { color: #FF6B6B; }
+    .stat-value.ok { color: var(--groen); }
+    .stat-value.warn { color: var(--accent); }
+    .trend { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+
+    /* ── STATS BAR ───────────────────────── */
+    .stats-bar {
+      background: var(--licht);
+      border-bottom: 1px solid var(--grijs-licht);
+      padding: 24px;
+    }
+    .stats-bar-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 16px;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem; font-weight: 900; color: var(--navy);
+      display: block;
+    }
+    .stat-desc { font-size: 0.82rem; color: var(--grijs); }
+
+    /* ── SECTION BASE ───────────────────── */
+    section { padding: 72px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--groen); margin-bottom: 8px;
+    }
+    h2 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800; font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--navy); margin-bottom: 12px;
+    }
+    .section-sub { color: var(--grijs); font-size: 1rem; max-width: 560px; margin-bottom: 40px; }
+
+    /* ── CALCULATORS ─────────────────────── */
+    .calc-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .calc-card {
+      background: var(--wit);
+      border: 2px solid var(--grijs-licht);
+      border-radius: var(--radius); padding: 28px;
+      text-decoration: none; color: inherit;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: block;
+    }
+    .calc-card:hover {
+      border-color: var(--groen);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+    .calc-icon {
+      width: 48px; height: 48px;
+      background: var(--licht); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 16px;
+    }
+    .calc-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700; font-size: 1rem; margin-bottom: 6px;
+    }
+    .calc-card p { color: var(--grijs); font-size: 0.85rem; }
+    .calc-card .arrow {
+      display: inline-block; margin-top: 12px;
+      color: var(--groen); font-weight: 600; font-size: 0.85rem;
+    }
+
+    /* ── ARTICLES ──────────────────────── */
+    .articles { background: var(--licht); }
+    .articles-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 20px;
+    }
+    .article-card {
+      background: var(--wit); border-radius: var(--radius);
+      overflow: hidden; text-decoration: none; color: inherit;
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: block;
+    }
+    .article-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+    .article-img {
+      height: 160px; display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+    }
+    .article-card.featured .article-img { height: 220px; }
+    .article-img.solar { background: linear-gradient(135deg, #FFF3CD, #FFE08A); }
+    .article-img.dynamic { background: linear-gradient(135deg, #D1FAE5, #A7F3D0); }
+    .article-img.smarthome { background: linear-gradient(135deg, #DBEAFE, #BFDBFE); }
+    .article-body { padding: 20px; }
+    .article-tag {
+      font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: var(--groen); margin-bottom: 6px;
+    }
+    .article-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700; font-size: 1rem; margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .article-card.featured h3 { font-size: 1.2rem; }
+    .article-card p { color: var(--grijs); font-size: 0.83rem; }
+
+    /* ── AFFILIATE CTA ──────────────────── */
+    .affiliate-section { background: var(--navy); }
+    .affiliate-section h2 { color: var(--wit); }
+    .affiliate-section .section-label { color: var(--accent); }
+    .affiliate-section .section-sub { color: rgba(255,255,255,0.6); }
+    .affiliate-cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .affiliate-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius); padding: 28px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .affiliate-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(0,209,122,0.4);
+    }
+    .affiliate-logo {
+      height: 40px; display: flex; align-items: center;
+      font-family: 'Outfit', sans-serif; font-weight: 800;
+      font-size: 1.1rem; color: var(--wit); margin-bottom: 12px;
+    }
+    .affiliate-desc { color: rgba(255,255,255,0.6); font-size: 0.88rem; margin-bottom: 20px; }
+    .affiliate-reward {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 20px;
+    }
+    .reward-badge {
+      background: rgba(0,209,122,0.2); color: var(--groen);
+      padding: 4px 10px; border-radius: 99px;
+      font-size: 0.8rem; font-weight: 700;
+    }
+    .reward-label { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
+    .btn-affiliate {
+      display: block; text-align: center;
+      background: var(--groen); color: var(--navy);
+      padding: 12px; border-radius: 10px;
+      font-weight: 700; font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-affiliate:hover { background: #00F590; transform: translateY(-1px); }
+
+    /* ── SMARTHOME ──────────────────────── */
+    .smarthome-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: center;
+    }
+    .smarthome-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .smarthome-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 16px; background: var(--licht); border-radius: 12px;
+    }
+    .smarthome-ico {
+      width: 44px; height: 44px; min-width: 44px;
+      background: var(--wit); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; box-shadow: var(--shadow);
+    }
+    .smarthome-item h4 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;
+    }
+    .smarthome-item p { color: var(--grijs); font-size: 0.83rem; }
+    .smarthome-visual {
+      background: var(--navy); border-radius: 20px;
+      padding: 32px; position: relative; overflow: hidden;
+    }
+    .smarthome-visual::before {
+      content: '';
+      position: absolute; top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(0,209,122,0.25), transparent 70%);
+    }
+    .device-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: relative; z-index: 1;
+    }
+    .device-row:last-child { border-bottom: none; }
+    .device-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+    .device-dot.on { background: var(--groen); box-shadow: 0 0 8px var(--groen); }
+    .device-dot.off { background: rgba(255,255,255,0.2); }
+    .device-name { color: rgba(255,255,255,0.8); font-size: 0.88rem; flex: 1; }
+    .device-watt {
+      font-family: 'Outfit', sans-serif;
+      color: rgba(255,255,255,0.4); font-size: 0.8rem;
+    }
+    .device-status {
+      font-size: 0.75rem; font-weight: 600;
+      padding: 2px 8px; border-radius: 99px;
+    }
+    .device-status.on { background: rgba(0,209,122,0.15); color: var(--groen); }
+    .device-status.off { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.3); }
+
+    /* ── NEWSLETTER ─────────────────────── */
+    .newsletter {
+      background: linear-gradient(135deg, var(--groen) 0%, #00A85F 100%);
+      text-align: center; padding: 64px 24px;
+    }
+    .newsletter h2 { color: var(--navy); }
+    .newsletter p { color: rgba(11,22,40,0.7); max-width: 480px; margin: 12px auto 28px; }
+    .email-form {
+      display: flex; gap: 10px; max-width: 440px;
+      margin: 0 auto; flex-wrap: wrap; justify-content: center;
+    }
+    .email-form input {
+      flex: 1; min-width: 220px;
+      padding: 13px 18px; border: none; border-radius: 10px;
+      font-size: 0.95rem; font-family: 'DM Sans', sans-serif;
+      outline: none;
+    }
+    .email-form button {
+      background: var(--navy); color: var(--wit);
+      padding: 13px 24px; border: none; border-radius: 10px;
+      font-size: 0.95rem; font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .email-form button:hover { background: #1a2f55; }
+
+    /* ── FOOTER ─────────────────────────── */
+    footer {
+      background: var(--navy); padding: 48px 24px 24px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px; margin-bottom: 40px;
+    }
+    .footer-brand p {
+      font-size: 0.85rem; margin-top: 12px; line-height: 1.7;
+      max-width: 260px;
+    }
+    .footer-col h4 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--wit); font-size: 0.9rem; font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a {
+      color: rgba(255,255,255,0.5); text-decoration: none;
+      font-size: 0.85rem; transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--groen); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 20px; display: flex; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px; font-size: 0.8rem;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--groen); }
+    .disclaimer {
+      font-size: 0.78rem; color: rgba(255,255,255,0.3);
+      margin-top: 16px; line-height: 1.6;
+    }
+
+    /* ── RESPONSIVE ─────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-card { display: none; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .smarthome-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .stats-bar-inner { justify-content: center; gap: 24px; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
 <body>
-<h1>StekkerSlim.nl - komt eraan!</h1>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">⚡</div>
+      Stekker<span>Slim</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#besparen">Besparen</a></li>
+      <li><a href="#calculators">Calculators</a></li>
+      <li><a href="#smarthome">Smarthome</a></li>
+      <li><a href="#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Energieprijzen 2026 bijgewerkt</div>
+      <h1>Stop met te veel betalen voor <em>energie</em></h1>
+      <p>Praktische tips, eerlijke uitleg en slimme calculators voor gezinnen. Geen gedoe, gewoon besparen.</p>
+      <div class="hero-btns">
+        <a href="#calculators" class="btn-primary">Bereken jouw besparing →</a>
+        <a href="#vergelijken" class="btn-secondary">Contracten vergelijken</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">Energieprijzen vandaag</div>
+      <div class="energy-stat">
+        <span class="stat-label">Gas (€/m³)</span>
+        <div>
+          <span class="stat-value up">€1,42</span>
+          <span class="trend">↑ +49% dit jaar</span>
+        </div>
+      </div>
+      <div class="energy-stat">
+        <span class="stat-label">Stroom (€/kWh)</span>
+        <div>
+          <span class="stat-value warn">€0,34</span>
+          <span class="trend">variabel</span>
+        </div>
+      </div>
+      <div class="energy-stat">
+        <span class="stat-label">Gem. jaarrekening</span>
+        <div>
+          <span class="stat-value up">€2.065</span>
+          <span class="trend">per huishouden</span>
+        </div>
+      </div>
+      <div class="energy-stat">
+        <span class="stat-label">Salderingsregeling</span>
+        <div>
+          <span class="stat-value warn">Stopt 2027</span>
+          <span class="trend">→ actie nodig</span>
+        </div>
+      </div>
+      <div class="energy-stat">
+        <span class="stat-label">Stap jaarlijks over</span>
+        <div>
+          <span class="stat-value ok">~1 miljoen</span>
+          <span class="trend">huishoudens</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="stat-item">
+      <span class="stat-num">€2.065</span>
+      <span class="stat-desc">Gemiddelde jaarrekening</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">~1M</span>
+      <span class="stat-desc">Overstappers per jaar</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">59%</span>
+      <span class="stat-desc">Consumenten zien door bomen bos niet</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">2027</span>
+      <span class="stat-desc">Salderingsregeling stopt</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">€400+</span>
+      <span class="stat-desc">Besparing mogelijk met slim overstappen</span>
+    </div>
+  </div>
+</div>
+
+<!-- CALCULATORS -->
+<section id="calculators">
+  <div class="section-inner">
+    <div class="section-label">Tools & Calculators</div>
+    <h2>Bereken in 2 minuten wat jij kunt besparen</h2>
+    <p class="section-sub">Gratis calculators voor zonnepanelen, energiecontracten, laadpalen en meer.</p>
+    <div class="calc-grid">
+      <a href="#" class="calc-card">
+        <div class="calc-icon">☀️</div>
+        <h3>Zonnepanelen terugverdientijd</h3>
+        <p>Hoeveel panelen heb jij nodig en wanneer verdien je ze terug?</p>
+        <span class="arrow">Bereken nu →</span>
+      </a>
+      <a href="#" class="calc-card">
+        <div class="calc-icon">📊</div>
+        <h3>Energiekosten vergelijker</h3>
+        <p>Vul je verbruik in en zie direct welk contract het goedkoopst is.</p>
+        <span class="arrow">Bereken nu →</span>
+      </a>
+      <a href="#" class="calc-card">
+        <div class="calc-icon">🔌</div>
+        <h3>Laadpaal thuis berekenen</h3>
+        <p>Wat kost laden thuis vs aan de snellader? En welk tarief past het best?</p>
+        <span class="arrow">Bereken nu →</span>
+      </a>
+      <a href="#" class="calc-card">
+        <div class="calc-icon">🏠</div>
+        <h3>Warmtepomp besparing</h3>
+        <p>Is een warmtepomp voor jou rendabel? Bereken je gas vs stroom besparing.</p>
+        <span class="arrow">Bereken nu →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section class="articles" id="besparen">
+  <div class="section-inner">
+    <div class="section-label">Laatste artikelen</div>
+    <h2>Lees je slim in 5 minuten</h2>
+    <p class="section-sub">Geen marketing, geen verborgen agenda. Gewoon eerlijke uitleg.</p>
+    <div class="articles-grid">
+      <a href="#" class="article-card featured">
+        <div class="article-img solar">☀️</div>
+        <div class="article-body">
+          <div class="article-tag">Zonnepanelen</div>
+          <h3>Salderingsregeling stopt in 2027 — wat betekent dit voor jou?</h3>
+          <p>Heb je al zonnepanelen of ben je er nog over aan het nadenken? Dan is dit cruciaal. We leggen uit wat er verandert en wat je nú al kunt doen.</p>
+        </div>
+      </a>
+      <a href="#" class="article-card">
+        <div class="article-img dynamic">⚡</div>
+        <div class="article-body">
+          <div class="article-tag">Contracten</div>
+          <h3>Dynamisch energiecontract: is het iets voor jou?</h3>
+          <p>Bespaar tot €400/jaar — maar alleen als je het slim speelt. Wij leggen het eerlijk uit.</p>
+        </div>
+      </a>
+      <a href="#" class="article-card">
+        <div class="article-img smarthome">🏠</div>
+        <div class="article-body">
+          <div class="article-tag">Smarthome</div>
+          <h3>P1 meter uitlezen met Home Assistant</h3>
+          <p>Zie live wat je verbruikt en automatiseer je energieverbruik volledig.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- AFFILIATE / VERGELIJKEN -->
+<section class="affiliate-section" id="vergelijken">
+  <div class="section-inner">
+    <div class="section-label">Contracten vergelijken</div>
+    <h2>Zet elke euro op de goede plek</h2>
+    <p class="section-sub">StekkerSlim werkt samen met betrouwbare partners zodat jij makkelijk en snel kunt overstappen.</p>
+    <div class="affiliate-cards">
+      <div class="affiliate-card">
+        <div class="affiliate-logo">⚡ Energiecontract</div>
+        <div class="affiliate-desc">Vergelijk alle grote energieleveranciers in Nederland. Overstappen in 10 minuten, besparing vaak €200–€400 per jaar.</div>
+        <div class="affiliate-reward">
+          <span class="reward-badge">€0 kosten</span>
+          <span class="reward-label">Gratis vergelijken</span>
+        </div>
+        <a href="#" class="btn-affiliate">Vergelijk energiecontracten →</a>
+      </div>
+      <div class="affiliate-card">
+        <div class="affiliate-logo">☀️ Zonnepanelen</div>
+        <div class="affiliate-desc">Offertes opvragen bij gecertificeerde installateurs. Vergelijk prijzen en kwaliteit voor jouw woning.</div>
+        <div class="affiliate-reward">
+          <span class="reward-badge">Gratis</span>
+          <span class="reward-label">Vrijblijvende offerte</span>
+        </div>
+        <a href="#" class="btn-affiliate">Vraag offerte aan →</a>
+      </div>
+      <div class="affiliate-card">
+        <div class="affiliate-logo">🔌 Laadpaal thuis</div>
+        <div class="affiliate-desc">De beste thuislaadpalen van Coolblue en anderen. Inclusief installatie en subsidie-advies.</div>
+        <div class="affiliate-reward">
+          <span class="reward-badge">ISDE subsidie</span>
+          <span class="reward-label">Tot €1.500 terug</span>
+        </div>
+        <a href="#" class="btn-affiliate">Bekijk laadpalen →</a>
+      </div>
+    </div>
+    <p style="color:rgba(255,255,255,0.3); font-size:0.78rem; margin-top:20px;">
+      * StekkerSlim ontvangt mogelijk een vergoeding bij afsluiten via bovenstaande links. Dit heeft geen invloed op onze onafhankelijke adviezen.
+    </p>
+  </div>
+</section>
+
+<!-- SMARTHOME -->
+<section id="smarthome">
+  <div class="section-inner">
+    <div class="smarthome-grid">
+      <div>
+        <div class="section-label">Smarthome & DIY</div>
+        <h2>Weet precies wat jouw huis verbruikt</h2>
+        <p class="section-sub">Met een P1 meter en Home Assistant zie je live wat elk apparaat kost. Gewoon zelf installeren.</p>
+        <ul class="smarthome-list">
+          <li class="smarthome-item">
+            <div class="smarthome-ico">📡</div>
+            <div>
+              <h4>P1 meter uitlezen</h4>
+              <p>Koppel je slimme meter aan Home Assistant en zie alles live op je dashboard.</p>
+            </div>
+          </li>
+          <li class="smarthome-item">
+            <div class="smarthome-ico">🌡️</div>
+            <div>
+              <h4>Slimme thermostaat instellen</h4>
+              <p>Tado, Nest of Google Home — wij leggen uit wat echt werkt voor gezinnen.</p>
+            </div>
+          </li>
+          <li class="smarthome-item">
+            <div class="smarthome-ico">⚡</div>
+            <div>
+              <h4>Automatisch laden op goedkoop tarief</h4>
+              <p>Laad je auto automatisch wanneer de stroomprijs het laagst is.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="smarthome-visual">
+        <div style="color:rgba(255,255,255,0.4); font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px;">Live verbruik</div>
+        <div class="device-row">
+          <div class="device-dot on"></div>
+          <span class="device-name">Warmtepomp</span>
+          <span class="device-watt">1.200W</span>
+          <span class="device-status on">AAN</span>
+        </div>
+        <div class="device-row">
+          <div class="device-dot on"></div>
+          <span class="device-name">Wasmachine</span>
+          <span class="device-watt">850W</span>
+          <span class="device-status on">AAN</span>
+        </div>
+        <div class="device-row">
+          <div class="device-dot off"></div>
+          <span class="device-name">Droger</span>
+          <span class="device-watt">2.200W</span>
+          <span class="device-status off">UIT</span>
+        </div>
+        <div class="device-row">
+          <div class="device-dot on"></div>
+          <span class="device-name">Laadpaal</span>
+          <span class="device-watt">7.400W</span>
+          <span class="device-status on">LAADT</span>
+        </div>
+        <div class="device-row">
+          <div class="device-dot off"></div>
+          <span class="device-name">Vaatwasser</span>
+          <span class="device-watt">1.800W</span>
+          <span class="device-status off">UIT</span>
+        </div>
+        <div style="margin-top:20px; padding:14px; background:rgba(0,209,122,0.1); border:1px solid rgba(0,209,122,0.2); border-radius:10px;">
+          <div style="color:rgba(255,255,255,0.5); font-size:0.75rem;">Totaal nu</div>
+          <div style="font-family:'Outfit',sans-serif; font-size:1.6rem; font-weight:900; color:var(--groen);">9.450W</div>
+          <div style="color:rgba(255,255,255,0.3); font-size:0.78rem;">≈ €0,032 per minuut</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div>
+    <div class="section-label" style="color:var(--navy-mid);">Nieuwsbrief</div>
+    <h2>Elke maand: 3 tips die écht werken</h2>
+    <p>Geen spam. Geen reclame. Gewoon de beste energietips van de maand in je inbox.</p>
+    <div class="email-form">
+      <input type="email" placeholder="jouw@email.nl" />
+      <button type="button">Aanmelden →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="logo" style="color:var(--wit);">
+          <div class="logo-icon">⚡</div>
+          Stekker<span>Slim</span>
+        </a>
+        <p>Eerlijke energietips voor Nederlandse gezinnen. Geen verborgen agenda, gewoon helder advies.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Besparen</h4>
+        <ul>
+          <li><a href="#">Energiecontract vergelijken</a></li>
+          <li><a href="#">Zonnepanelen</a></li>
+          <li><a href="#">Warmtepomp</a></li>
+          <li><a href="#">Laadpaal thuis</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Uitleg</h4>
+        <ul>
+          <li><a href="#">Dynamisch contract</a></li>
+          <li><a href="#">Salderingsregeling</a></li>
+          <li><a href="#">ISDE subsidie</a></li>
+          <li><a href="#">Energielabel woning</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>StekkerSlim</h4>
+        <ul>
+          <li><a href="#">Over ons</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 StekkerSlim.nl</span>
+      <div style="display:flex; gap:20px;">
+        <a href="#">Privacy</a>
+        <a href="#">Disclaimer</a>
+        <a href="#">Cookiebeleid</a>
+      </div>
+    </div>
+    <p class="disclaimer">
+      StekkerSlim.nl is een onafhankelijk informatieplatform. Wij kunnen vergoedingen ontvangen via affiliate links. Dit heeft geen invloed op onze adviezen. Energieprijzen zijn indicatief en kunnen afwijken. Raadpleeg altijd de leverancier voor actuele tarieven.
+    </p>
+  </div>
+</footer>
+
 </body>
 </html>
