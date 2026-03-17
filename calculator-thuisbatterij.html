@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Thuisbatterij calculator: bereken of een thuisbatterij rendabel is voor jouw situatie. Inclusief effect salderingsafbouw 2027. Eerlijke terugverdientijd.">
+  <title>Thuisbatterij Calculator 2026 — Is het Rendabel? | StekkerSlim.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--groen:#00D17A;--groen-dark:#00A85F;--navy:#0B1628;--navy-mid:#132240;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+
+    .page-hero{background:var(--navy);padding:56px 24px}
+    .page-hero-inner{max-width:1100px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--wit);margin-bottom:12px}
+    .page-hero p{color:rgba(255,255,255,0.65);max-width:580px}
+
+    .calc-section{padding:56px 24px;background:var(--licht)}
+    .calc-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+    .calc-form{background:var(--wit);border-radius:20px;padding:32px;box-shadow:var(--shadow)}
+    .calc-form h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:24px}
+    .section-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.85rem;color:var(--groen);text-transform:uppercase;letter-spacing:1px;margin:20px 0 12px}
+    .form-group{margin-bottom:18px}
+    .form-group label{display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;font-weight:600;margin-bottom:8px}
+    .form-group label span{font-weight:400;color:var(--grijs)}
+    input[type="range"]{width:100%;height:6px;appearance:none;background:var(--grijs-licht);border-radius:3px;outline:none;cursor:pointer}
+    input[type="range"]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;border-radius:50%;background:var(--groen);cursor:pointer;box-shadow:0 2px 8px rgba(0,209,122,.4)}
+    .range-labels{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--grijs);margin-top:4px}
+    .divider{border:none;border-top:1px solid var(--grijs-licht);margin:20px 0}
+
+    .toggle-group{display:flex;gap:8px;margin-top:8px}
+    .toggle-btn{flex:1;padding:9px;border:2px solid var(--grijs-licht);border-radius:9px;background:var(--wit);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
+    .toggle-btn.active{border-color:var(--groen);background:rgba(0,209,122,0.08);color:var(--groen)}
+
+    .calc-results{display:flex;flex-direction:column;gap:16px}
+    .result-card{background:var(--wit);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+    .result-card.primary{background:var(--navy)}
+    .result-label{font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--grijs);margin-bottom:8px}
+    .result-card.primary .result-label{color:rgba(255,255,255,.5)}
+    .result-value{font-family:'Outfit',sans-serif;font-weight:900;font-size:2.4rem;color:var(--groen);line-height:1}
+    .result-sub{font-size:0.82rem;color:var(--grijs);margin-top:6px}
+    .result-card.primary .result-sub{color:rgba(255,255,255,.4)}
+    .result-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--grijs-licht)}
+    .result-row:last-child{border-bottom:none}
+    .result-row-label{font-size:0.88rem;color:var(--grijs)}
+    .result-row-value{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem}
+    .groen{color:var(--groen)}.rood{color:#EF4444}.oranje{color:#F59E0B}
+
+    .verdict-box{border-radius:14px;padding:20px}
+    .verdict-box.goed{background:rgba(0,209,122,0.1);border:2px solid var(--groen)}
+    .verdict-box.matig{background:rgba(255,210,63,0.1);border:2px solid var(--accent)}
+    .verdict-box.slecht{background:rgba(239,68,68,0.08);border:2px solid #EF4444}
+    .verdict-title{font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;margin-bottom:6px}
+    .verdict-text{font-size:0.83rem;line-height:1.5;color:#374151}
+
+    .teruglever-warning{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:14px 16px;font-size:0.83rem;color:var(--navy);margin-top:4px}
+    .teruglever-warning strong{color:#DC2626}
+
+    .uitleg-section{padding:56px 24px}.uitleg-inner{max-width:800px;margin:0 auto}
+    .uitleg-inner h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:20px}
+    .uitleg-inner h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;margin:24px 0 8px}
+    .uitleg-inner p{color:#374151;font-size:0.93rem;line-height:1.75;margin-bottom:12px}
+    .uitleg-inner ul{padding-left:20px;color:#374151;font-size:0.93rem;line-height:1.8;margin-bottom:12px}
+    .highlight-box{background:var(--licht);border-left:4px solid var(--groen);border-radius:0 12px 12px 0;padding:16px 20px;margin:20px 0;font-size:0.92rem}
+    .disclaimer-box{background:var(--licht);border-radius:12px;padding:16px 20px;font-size:0.82rem;color:var(--grijs);margin-top:32px;line-height:1.6}
+
+    .merken-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+    .merk-card{background:var(--licht);border-radius:12px;padding:16px}
+    .merk-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:6px}
+    .merk-card p{font-size:0.82rem;color:var(--grijs);margin:0;line-height:1.5}
+    .merk-card .prijs{font-family:'Outfit',sans-serif;font-weight:800;color:var(--groen);font-size:0.95rem;margin-top:8px}
+
+    .cta-section{background:var(--navy);padding:56px 24px;text-align:center}
+    .cta-section h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:var(--wit);margin-bottom:12px}
+    .cta-section p{color:rgba(255,255,255,.6);margin-bottom:24px}
+    .btn-primary{background:var(--groen);color:var(--navy);padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;display:inline-block;transition:transform .2s}
+    .btn-primary:hover{transform:translateY(-2px)}
+
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
+    @media(max-width:900px){.calc-inner,.merken-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#besparen">Besparen</a></li>
+      <li><a href="index.html#calculators">Calculators</a></li>
+      <li><a href="index.html#smarthome">Smarthome</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="index.html#calculators">Calculators</a> › Thuisbatterij</div>
+    <h1>🔋 Thuisbatterij calculator 2026</h1>
+    <p>Is een thuisbatterij rendabel voor jouw situatie? Bereken je terugverdientijd, jaarlijkse besparing en het effect van de terugleverkosten en salderingsafbouw 2027.</p>
+  </div>
+</div>
+
+<div class="calc-section">
+  <div class="calc-inner">
+    <div class="calc-form">
+      <h2>Jouw situatie</h2>
+
+      <div class="section-title">Zonnepanelen</div>
+      <div class="form-group">
+        <label>Jaarlijkse zonnepaneelopbrengst <span id="zon-val">3.000 kWh</span></label>
+        <input type="range" id="zonopbrengst" min="500" max="10000" value="3000" step="100" oninput="calc()">
+        <div class="range-labels"><span>500 kWh</span><span>10.000 kWh</span></div>
+      </div>
+      <div class="form-group">
+        <label>Jaarlijks stroomverbruik <span id="verbruik-val">3.500 kWh</span></label>
+        <input type="range" id="verbruik" min="1000" max="10000" value="3500" step="100" oninput="calc()">
+        <div class="range-labels"><span>1.000 kWh</span><span>10.000 kWh</span></div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="section-title">Tarieven</div>
+      <div class="form-group">
+        <label>Stroomtarief inkoop <span id="inkoop-val">€0,34/kWh</span></label>
+        <input type="range" id="inkoop" min="0.15" max="0.60" value="0.34" step="0.01" oninput="calc()">
+        <div class="range-labels"><span>€0,15</span><span>€0,60</span></div>
+      </div>
+      <div class="form-group">
+        <label>Teruglevertarief <span id="teruglever-val">€0,06/kWh</span></label>
+        <input type="range" id="teruglever" min="0.01" max="0.34" value="0.06" step="0.01" oninput="calc()">
+        <div class="range-labels"><span>€0,01</span><span>€0,34 (saldering)</span></div>
+      </div>
+
+      <div class="form-group">
+        <label style="margin-bottom:10px">Situatie terugleverkosten</label>
+        <div class="toggle-group">
+          <button class="toggle-btn active" onclick="setKosten('geen',this)">Geen kosten</button>
+          <button class="toggle-btn" onclick="setKosten('midden',this)">€50/jr</button>
+          <button class="toggle-btn" onclick="setKosten('hoog',this)">€150/jr</button>
+        </div>
+        <div id="teruglever-kosten-info" style="font-size:0.78rem;color:var(--grijs);margin-top:8px;">Sommige leveranciers rekenen terugleverkosten. Dit verschilt per contract.</div>
+      </div>
+
+      <div class="divider"></div>
+      <div class="section-title">Thuisbatterij</div>
+      <div class="form-group">
+        <label>Batterijcapaciteit <span id="cap-val">10 kWh</span></label>
+        <input type="range" id="capaciteit" min="2" max="30" value="10" step="0.5" oninput="calc()">
+        <div class="range-labels"><span>2 kWh</span><span>30 kWh</span></div>
+      </div>
+      <div class="form-group">
+        <label>Aanschafprijs batterij <span id="prijs-val">€5.000</span></label>
+        <input type="range" id="prijsbatterij" min="1000" max="20000" value="5000" step="250" oninput="calc()">
+        <div class="range-labels"><span>€1.000</span><span>€20.000</span></div>
+      </div>
+      <div class="form-group">
+        <label>Rendement batterij (round-trip) <span id="rend-val">90%</span></label>
+        <input type="range" id="rendement" min="70" max="98" value="90" step="1" oninput="calc()">
+        <div class="range-labels"><span>70%</span><span>98%</span></div>
+      </div>
+    </div>
+
+    <div class="calc-results">
+      <div class="result-card primary">
+        <div class="result-label">Terugverdientijd thuisbatterij</div>
+        <div class="result-value" id="res-tv">—</div>
+        <div class="result-sub" id="res-tv-sub">Vul je gegevens in</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-label">Jaarlijkse besparing batterij</div>
+        <div class="result-row">
+          <span class="result-row-label">Meer eigen gebruik (was teruglevering)</span>
+          <span class="result-row-value groen" id="res-extra-eigen">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Minder terugleverkosten</span>
+          <span class="result-row-value groen" id="res-minder-kosten">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Totale jaarlijkse besparing</span>
+          <span class="result-row-value groen" id="res-totaal-besparing">—</span>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-label">Zonder vs. met batterij (per jaar)</div>
+        <div class="result-row">
+          <span class="result-row-label">Teruglevering zonder batterij</span>
+          <span class="result-row-value" id="res-teruglever-kwh">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Opgeslagen in batterij</span>
+          <span class="result-row-value groen" id="res-opgeslagen">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Eigenverbruik zonder batterij</span>
+          <span class="result-row-value" id="res-eigen-zonder">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Eigenverbruik met batterij</span>
+          <span class="result-row-value groen" id="res-eigen-met">—</span>
+        </div>
+      </div>
+
+      <div class="verdict-box" id="verdict-box">
+        <div class="verdict-title" id="verdict-title">—</div>
+        <div class="verdict-text" id="verdict-text">—</div>
+      </div>
+
+      <div class="teruglever-warning" id="teruglever-warning" style="display:none">
+        <strong>⚠️ Terugleverkosten actief:</strong> Jouw leverancier rekent kosten voor het terugleveren van stroom aan het net. Dit maakt een thuisbatterij extra interessant — je vermijdt deze kosten door meer zelf te verbruiken.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="uitleg-section">
+  <div class="uitleg-inner">
+    <h2>Thuisbatterij in 2026: waarom nu het moment is</h2>
+    <p>Twee ontwikkelingen maken een thuisbatterij in 2026 veel interessanter dan twee jaar geleden:</p>
+
+    <h3>1. Terugleverkosten — het probleem dat niemand je vertelt</h3>
+    <p>Steeds meer energieleveranciers rekenen terugleverkosten. Dit zijn kosten die je betaalt voor elke kWh die je teruglevert aan het net. Onlogisch klinkt het, maar het heeft te maken met netbeheerkosten. In 2024-2025 zijn meerdere grote leveranciers hiermee begonnen.</p>
+    <p>Wat dit in de praktijk betekent: je hebt zonnepanelen, je levert stroom terug, en je <em>betaalt daarvoor</em>. Tegelijkertijd ontvang je maar een fractie van het stroomtarief als terugleververgoeding. Dubbele klap.</p>
+    <p>Een thuisbatterij lost dit direct op: je slaat overdag op wat je 's avonds verbruikt. Minder teruglevering = minder kosten.</p>
+
+    <div class="highlight-box">
+      <strong>Check je contract:</strong> Staat er "terugleverkosten" of "netteruglevering" in jouw energiecontract? Zoek in je contract op "teruglevering" of bel je leverancier. Dit verschilt sterk per leverancier en contractvorm.
+    </div>
+
+    <h3>2. Salderingsafbouw 2027 — terugleverwaarde daalt fors</h3>
+    <p>Tot eind 2026 kun je teruggeleverde stroom volledig salderen — het is net zo waardevol als ingekochte stroom. Vanaf 1 januari 2027 ontvang je nog maar het teruglevertarief: gemiddeld €0,03–€0,09 per kWh, tegenover €0,34 inkooprijs. Een batterij maakt teruglevering minder noodzakelijk en beschermt je tegen deze waardedaling.</p>
+
+    <h3>Hoe werkt een thuisbatterij precies?</h3>
+    <p>Overdag produceren je zonnepanelen stroom. Wat je niet direct verbruikt, gaat normaal het net op (teruglevering). Met een thuisbatterij sla je dat op en gebruik je het 's avonds wanneer de zon niet meer schijnt. Je inkoopt minder stroom van het net, levert minder terug, en betaalt minder terugleverkosten.</p>
+
+    <h3>Welke batterijen zijn er in Nederland?</h3>
+    <div class="merken-grid">
+      <div class="merk-card">
+        <h4>Zendure SolarFlow</h4>
+        <p>Plug-and-play, ook voor balkonsystemen. Populair vanwege eenvoudige installatie.</p>
+        <div class="prijs">€599 – €1.499</div>
+      </div>
+      <div class="merk-card">
+        <h4>EcoFlow DELTA</h4>
+        <p>Draagbaar, ook als noodstroom. Goed voor kleinere systemen of huurders.</p>
+        <div class="prijs">€699 – €2.999</div>
+      </div>
+      <div class="merk-card">
+        <h4>SolarEdge / Huawei</h4>
+        <p>Vaste installatie, hoge capaciteit. Professionele montage vereist. Meest rendabel voor grote systemen.</p>
+        <div class="prijs">€4.000 – €12.000</div>
+      </div>
+    </div>
+
+    <h3>Voor wie is een thuisbatterij het meest rendabel?</h3>
+    <ul>
+      <li>Je hebt zonnepanelen met een grote overproductie overdag</li>
+      <li>Je leverancier rekent terugleverkosten</li>
+      <li>Je verbruikt veel stroom in de avond (gezin, EV laden)</li>
+      <li>Je wil je eigenverbruik maximaliseren voor 2027</li>
+      <li>Je hebt een dynamisch contract en wil goedkope uren opslaan</li>
+    </ul>
+
+    <div class="disclaimer-box">
+      <strong>Disclaimer:</strong> Berekeningen zijn indicatief. Werkelijke besparing hangt af van verbruikspatroon, aantal laadcycli per dag, degradatie van de batterij en energieprijsontwikkeling. Terugleverkosten variëren per leverancier. Controleer altijd je eigen contract. StekkerSlim.nl ontvangt mogelijk commissie via affiliate links maar dit heeft geen invloed op onze adviezen.
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Thuisbatterij prijzen vergelijken</h2>
+  <p>Bekijk de actuele prijzen bij Amazon en Coolblue</p>
+  <a href="https://amzn.to/3NyGTPg" class="btn-primary" target="_blank" rel="noopener sponsored">Bekijk thuisbatterijen →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a><p>Eerlijke energietips voor Nederlandse gezinnen.</p></div>
+      <div class="footer-col"><h4>Calculators</h4><ul>
+        <li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li>
+        <li><a href="calculator-energiekosten.html">Energiekosten</a></li>
+        <li><a href="calculator-thuisbatterij.html">Thuisbatterij</a></li>
+        <li><a href="calculator-laadpaal.html">Laadpaal</a></li>
+        <li><a href="calculator-warmtepomp.html">Warmtepomp</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Artikelen</h4><ul>
+        <li><a href="terugleverkosten.html">Terugleverkosten</a></li>
+        <li><a href="saldering-2027.html">Saldering 2027</a></li>
+        <li><a href="dynamisch-contract.html">Dynamisch contract</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl</span><a href="privacy.html">Privacy & Disclaimer</a></div>
+  </div>
+</footer>
+
+<script>
+  let terugleverKosten = 0;
+
+  function setKosten(niveau, btn) {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    terugleverKosten = niveau === 'geen' ? 0 : niveau === 'midden' ? 50 : 150;
+    const info = document.getElementById('teruglever-kosten-info');
+    const warning = document.getElementById('teruglever-warning');
+    if (niveau === 'geen') {
+      info.textContent = 'Sommige leveranciers rekenen terugleverkosten. Check je eigen contract.';
+      warning.style.display = 'none';
+    } else {
+      info.textContent = `Jouw leverancier rekent €${terugleverKosten}/jaar terugleverkosten.`;
+      warning.style.display = 'block';
+    }
+    calc();
+  }
+
+  function fmt(n) { return '€' + Math.round(n).toLocaleString('nl-NL'); }
+  function fmtKwh(n) { return Math.round(n).toLocaleString('nl-NL') + ' kWh'; }
+
+  function calc() {
+    const zon = parseInt(document.getElementById('zonopbrengst').value);
+    const verbruik = parseInt(document.getElementById('verbruik').value);
+    const inkoop = parseFloat(document.getElementById('inkoop').value);
+    const teruglever = parseFloat(document.getElementById('teruglever').value);
+    const cap = parseFloat(document.getElementById('capaciteit').value);
+    const prijs = parseInt(document.getElementById('prijsbatterij').value);
+    const rend = parseInt(document.getElementById('rendement').value) / 100;
+
+    document.getElementById('zon-val').textContent = fmtKwh(zon);
+    document.getElementById('verbruik-val').textContent = fmtKwh(verbruik);
+    document.getElementById('inkoop-val').textContent = '€' + inkoop.toFixed(2).replace('.', ',') + '/kWh';
+    document.getElementById('teruglever-val').textContent = '€' + teruglever.toFixed(2).replace('.', ',') + '/kWh';
+    document.getElementById('cap-val').textContent = cap.toFixed(1).replace('.', ',') + ' kWh';
+    document.getElementById('prijs-val').textContent = fmt(prijs);
+    document.getElementById('rend-val').textContent = Math.round(rend * 100) + '%';
+
+    // Eigenverbruik zonder batterij
+    const eigenZonder = Math.min(zon, verbruik);
+    const terugZonder = Math.max(0, zon - verbruik);
+
+    // Hoeveel kan batterij opslaan per dag (aanname: 1 cyclus per dag, 365 dagen)
+    // Overproductie overdag = teruglevering zonder batterij
+    // Batterij slaat op: min(teruglevering, capaciteit), 's avonds verbruikt
+    const opslaanPerJaar = Math.min(terugZonder, cap * 365) * rend;
+    // Maar je kunt ook niet meer opslaan dan je 's avonds nodig hebt
+    const avondVerbruik = Math.max(0, verbruik - eigenZonder); // verbruik dat niet door zon gedekt wordt
+    const effectiefOpgeslagen = Math.min(opslaanPerJaar, avondVerbruik);
+    const eigenMet = eigenZonder + effectiefOpgeslagen;
+    const terugMet = Math.max(0, zon - eigenMet / rend); // ruw
+
+    // Besparing
+    const extraEigenWaarde = effectiefOpgeslagen * (inkoop - teruglever);
+    const minderTerugleverKosten = terugleverKosten;
+    const totaalBesparing = extraEigenWaarde + minderTerugleverKosten;
+
+    const tv = totaalBesparing > 0 ? prijs / totaalBesparing : 999;
+
+    // Results
+    document.getElementById('res-extra-eigen').textContent = fmt(extraEigenWaarde) + '/jaar';
+    document.getElementById('res-minder-kosten').textContent = fmt(minderTerugleverKosten) + '/jaar';
+    document.getElementById('res-totaal-besparing').textContent = fmt(totaalBesparing) + '/jaar';
+    document.getElementById('res-teruglever-kwh').textContent = fmtKwh(terugZonder) + ' (' + fmt(terugZonder * teruglever) + ')';
+    document.getElementById('res-opgeslagen').textContent = fmtKwh(effectiefOpgeslagen) + '/jaar';
+    document.getElementById('res-eigen-zonder').textContent = Math.round(eigenZonder / verbruik * 100) + '% eigenverbruik';
+    document.getElementById('res-eigen-met').textContent = Math.round(eigenMet / verbruik * 100) + '% eigenverbruik';
+
+    const tvEl = document.getElementById('res-tv');
+    const tvSub = document.getElementById('res-tv-sub');
+    if (tv < 50) {
+      tvEl.textContent = tv.toFixed(1).replace('.', ',') + ' jaar';
+      tvSub.textContent = 'Op basis van ' + fmt(totaalBesparing) + ' besparing per jaar';
+    } else {
+      tvEl.textContent = 'Niet rendabel';
+      tvSub.textContent = 'Bij huidige invoer verdient de batterij zichzelf niet terug';
+    }
+
+    const vb = document.getElementById('verdict-box');
+    const vt = document.getElementById('verdict-title');
+    const vtxt = document.getElementById('verdict-text');
+    if (tv <= 8) {
+      vb.className = 'verdict-box goed';
+      vt.textContent = '✅ Sterk rendabel';
+      vtxt.textContent = 'Terugverdientijd van ' + tv.toFixed(1).replace('.', ',') + ' jaar is uitstekend. Zeker doen, zeker met de salderingsafbouw in 2027 in het vooruitzicht.';
+    } else if (tv <= 15) {
+      vb.className = 'verdict-box matig';
+      vt.textContent = '⚠️ Matig rendabel';
+      vtxt.textContent = 'Terugverdientijd van ' + tv.toFixed(1).replace('.', ',') + ' jaar is acceptabel maar hoog. Overweeg een kleinere batterij of wacht op verdere prijsdaling.';
+    } else {
+      vb.className = 'verdict-box slecht';
+      vt.textContent = '❌ Moeilijk rendabel';
+      vtxt.textContent = 'In jouw situatie is de terugverdientijd te lang. Mogelijk heb je te weinig overproductie of te kleine teruglevering om een batterij te rechtvaardigen.';
+    }
+  }
+
+  calc();
+</script>
+</body>
+</html>
