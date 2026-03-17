@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bereken de besparing van thuis laden vs snelladen. Zie hoeveel jij per jaar bespaart met een thuislaadpaal voor je elektrische auto.">
+  <title>Laadpaal Thuis Calculator — Besparing Berekenen 2026 | StekkerSlim.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--groen:#00D17A;--groen-dark:#00A85F;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+    .page-hero{background:var(--navy);padding:56px 24px}
+    .page-hero-inner{max-width:1100px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--wit);margin-bottom:12px}
+    .page-hero p{color:rgba(255,255,255,0.65);max-width:560px}
+    .calc-section{padding:56px 24px;background:var(--licht)}
+    .calc-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+    .calc-form{background:var(--wit);border-radius:20px;padding:32px;box-shadow:var(--shadow)}
+    .calc-form h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:24px}
+    .form-group{margin-bottom:20px}
+    .form-group label{display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;font-weight:600;margin-bottom:8px}
+    .form-group label span{font-weight:400;color:var(--grijs)}
+    .form-group input[type="range"]{width:100%;height:6px;appearance:none;background:var(--grijs-licht);border-radius:3px;outline:none;cursor:pointer}
+    .form-group input[type="range"]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;border-radius:50%;background:var(--groen);cursor:pointer;box-shadow:0 2px 8px rgba(0,209,122,.4)}
+    .range-labels{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--grijs);margin-top:4px}
+    .divider{border:none;border-top:1px solid var(--grijs-licht);margin:20px 0}
+    .calc-results{display:flex;flex-direction:column;gap:16px}
+    .result-card{background:var(--wit);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+    .result-card.primary{background:var(--navy)}
+    .result-label{font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--grijs);margin-bottom:8px}
+    .result-card.primary .result-label{color:rgba(255,255,255,.5)}
+    .result-value{font-family:'Outfit',sans-serif;font-weight:900;font-size:2.4rem;color:var(--groen);line-height:1}
+    .result-sub{font-size:0.82rem;color:var(--grijs);margin-top:6px}
+    .result-card.primary .result-sub{color:rgba(255,255,255,.4)}
+    .result-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--grijs-licht)}
+    .result-row:last-child{border-bottom:none}
+    .result-row-label{font-size:0.88rem;color:var(--grijs)}
+    .result-row-value{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem}
+    .result-row-value.groen{color:var(--groen)}
+    .compare-visual{display:flex;gap:12px;margin-top:16px}
+    .compare-col{flex:1;background:var(--licht);border-radius:12px;padding:16px;text-align:center}
+    .compare-col.winner{background:rgba(0,209,122,0.1);border:2px solid var(--groen)}
+    .compare-col h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:8px}
+    .compare-col .price{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy)}
+    .compare-col.winner .price{color:var(--groen)}
+    .compare-col .per-km{font-size:0.75rem;color:var(--grijs)}
+    .winner-badge{background:var(--groen);color:var(--navy);font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:99px;display:inline-block;margin-bottom:8px}
+    .uitleg-section{padding:56px 24px}.uitleg-inner{max-width:800px;margin:0 auto}
+    .uitleg-inner h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:20px}
+    .uitleg-inner h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;margin:24px 0 8px}
+    .uitleg-inner p{color:#374151;font-size:0.93rem;line-height:1.7;margin-bottom:12px}
+    .uitleg-inner ul{padding-left:20px;color:#374151;font-size:0.93rem;line-height:1.8}
+    .disclaimer-box{background:var(--licht);border-radius:12px;padding:16px 20px;font-size:0.82rem;color:var(--grijs);margin-top:32px;line-height:1.6}
+    .cta-section{background:var(--navy);padding:56px 24px;text-align:center}
+    .cta-section h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:var(--wit);margin-bottom:12px}
+    .cta-section p{color:rgba(255,255,255,.6);margin-bottom:24px}
+    .btn-primary{background:var(--groen);color:var(--navy);padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;display:inline-block;transition:transform .2s}
+    .btn-primary:hover{transform:translateY(-2px)}
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
+    @media(max-width:900px){.calc-inner{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#besparen">Besparen</a></li>
+      <li><a href="index.html#calculators">Calculators</a></li>
+      <li><a href="index.html#smarthome">Smarthome</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="index.html#calculators">Calculators</a> › Laadpaal</div>
+    <h1>🔌 Laadpaal thuis: hoeveel bespaar jij?</h1>
+    <p>Bereken het verschil tussen thuis laden en snelladen. En zie in hoeveel jaar een thuislaadpaal zichzelf terugverdient.</p>
+  </div>
+</div>
+
+<div class="calc-section">
+  <div class="calc-inner">
+    <div class="calc-form">
+      <h2>Jouw rijgedrag</h2>
+      <div class="form-group">
+        <label>Kilometers per jaar <span id="km-val">20.000 km</span></label>
+        <input type="range" id="km" min="5000" max="60000" value="20000" step="1000" oninput="updateCalc()">
+        <div class="range-labels"><span>5.000</span><span>60.000 km</span></div>
+      </div>
+      <div class="form-group">
+        <label>Verbruik EV (kWh/100km) <span id="ev-val">18 kWh</span></label>
+        <input type="range" id="evverbruik" min="12" max="30" value="18" step="0.5" oninput="updateCalc()">
+        <div class="range-labels"><span>12 kWh</span><span>30 kWh</span></div>
+      </div>
+      <hr class="divider">
+      <div class="form-group">
+        <label>Thuistarief (€/kWh) <span id="thuis-val">€0,34</span></label>
+        <input type="range" id="thuistarief" min="0.15" max="0.55" value="0.34" step="0.01" oninput="updateCalc()">
+        <div class="range-labels"><span>€0,15</span><span>€0,55</span></div>
+      </div>
+      <div class="form-group">
+        <label>Snellaadtarief (€/kWh) <span id="snel-val">€0,69</span></label>
+        <input type="range" id="sneltarief" min="0.30" max="1.20" value="0.69" step="0.01" oninput="updateCalc()">
+        <div class="range-labels"><span>€0,30</span><span>€1,20</span></div>
+      </div>
+      <hr class="divider">
+      <div class="form-group">
+        <label>Kosten thuislaadpaal (incl. installatie) <span id="laadpaal-val">€1.200</span></label>
+        <input type="range" id="laadpaalkosten" min="500" max="3000" value="1200" step="100" oninput="updateCalc()">
+        <div class="range-labels"><span>€500</span><span>€3.000</span></div>
+      </div>
+      <div class="form-group">
+        <label>% thuis te laden <span id="thuis-pct-val">70%</span></label>
+        <input type="range" id="thuispct" min="20" max="100" value="70" step="5" oninput="updateCalc()">
+        <div class="range-labels"><span>20%</span><span>100%</span></div>
+      </div>
+    </div>
+
+    <div class="calc-results">
+      <div class="result-card primary">
+        <div class="result-label">Jaarlijkse besparing</div>
+        <div class="result-value" id="res-besparing">—</div>
+        <div class="result-sub" id="res-terugverdien">Terugverdientijd: —</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-label">Laadkosten per jaar</div>
+        <div class="compare-visual">
+          <div class="compare-col winner">
+            <div class="winner-badge">Goedkoopst</div>
+            <h4>🏠 Thuis laden</h4>
+            <div class="price" id="res-thuis-prijs">—</div>
+            <div class="per-km" id="res-thuis-perkm">—</div>
+          </div>
+          <div class="compare-col">
+            <div style="height:22px;"></div>
+            <h4>⚡ Snelladen</h4>
+            <div class="price" id="res-snel-prijs">—</div>
+            <div class="per-km" id="res-snel-perkm">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-label">Details</div>
+        <div class="result-row">
+          <span class="result-row-label">Totaal kWh per jaar</span>
+          <span class="result-row-value" id="res-kwh">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">kWh thuis geladen</span>
+          <span class="result-row-value" id="res-kwh-thuis">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">kWh snelgeladen</span>
+          <span class="result-row-value" id="res-kwh-snel">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Laadpaal terugverdiend in</span>
+          <span class="result-row-value groen" id="res-tv">—</span>
+        </div>
+      </div>
+
+      <div style="background:rgba(255,210,63,0.1);border:1px solid rgba(255,210,63,0.4);border-radius:12px;padding:14px;font-size:0.82rem;">
+        <strong>ISDE subsidie:</strong> Bij aanschaf van een gecertificeerde laadpaal kun je mogelijk subsidie aanvragen via de ISDE-regeling. Vraag dit na bij RVO.nl. Bedragen en voorwaarden veranderen jaarlijks.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="uitleg-section">
+  <div class="uitleg-inner">
+    <h2>Thuis laden vs. snelladen: wat is slim?</h2>
+    <p>Thuis laden is bijna altijd goedkoper dan snelladen — het tarief verschil is groot. Maar een laadpaal kost geld. Deze calculator laat zien wanneer die investering loont.</p>
+
+    <h3>Waarom is snelladen zo duur?</h3>
+    <p>Snellaadpalen van Fastned, Allego of Shell Recharge hanteren tarieven tussen de €0,55 en €0,89 per kWh (2026). Dit is 2–3× het thuistarief. De hoge prijs dekt de kosten van de netaansluiting, de apparatuur en de snelle laadbehoefte.</p>
+
+    <h3>Welke laadpaal is goed thuis?</h3>
+    <p>Een 11 kW driefasige laadpaal is voor de meeste gezinnen ideaal. Bekende merken zijn Easee, Alfen en Wallbox. Kosten inclusief installatie liggen tussen de €900 en €1.800, afhankelijk van je thuissituatie en het merk.</p>
+
+    <h3>Slim laden: laad op het goedkoopste moment</h3>
+    <p>Met een dynamisch energiecontract kunnen laadkosten thuis nog lager. In de nacht of bij veel zonnestroom op het net kan stroom soms €0,05–€0,12 per kWh kosten. Een slimme laadpaal in combinatie met een dynamisch contract is de meest kostenefficiënte combinatie.</p>
+
+    <ul>
+      <li>Laad 's nachts (00:00–07:00) voor de laagste tarieven</li>
+      <li>Koppel je laadpaal aan je Home Assistant voor automatisch slim laden</li>
+      <li>Overweeg V2H (vehicle-to-home) voor extra flexibiliteit in de toekomst</li>
+    </ul>
+
+    <div class="disclaimer-box">
+      <strong>Disclaimer:</strong> Tarieven zijn indicatief. Snellaadtarieven variëren per aanbieder, locatie en abonnement. Thuistarief hangt af van je energiecontract. ISDE-subsidie is afhankelijk van beschikbaar budget en voorwaarden — check altijd rvo.nl voor actuele info. Berekeningen zijn schattingen, geen garanties.
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Laadpaal bestellen bij Coolblue</h2>
+  <p>Ruim assortiment, snelle levering en professionele installatie</p>
+  <a href="index.html#vergelijken" class="btn-primary">Bekijk laadpalen →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a><p>Eerlijke energietips voor Nederlandse gezinnen.</p></div>
+      <div class="footer-col"><h4>Calculators</h4><ul><li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li><li><a href="calculator-energiekosten.html">Energiekosten</a></li><li><a href="calculator-laadpaal.html">Laadpaal thuis</a></li><li><a href="calculator-warmtepomp.html">Warmtepomp</a></li></ul></div>
+      <div class="footer-col"><h4>Artikelen</h4><ul><li><a href="dynamisch-contract.html">Dynamisch contract</a></li><li><a href="saldering-2027.html">Saldering 2027</a></li></ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul><li><a href="over-ons.html">Over ons</a></li><li><a href="privacy.html">Privacy</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl</span><a href="privacy.html">Privacy & Disclaimer</a></div>
+  </div>
+</footer>
+
+<script>
+  function fmt(n){return'€'+Math.round(n).toLocaleString('nl-NL')}
+  function updateCalc(){
+    const km=parseInt(document.getElementById('km').value);
+    const ev=parseFloat(document.getElementById('evverbruik').value);
+    const thuis=parseFloat(document.getElementById('thuistarief').value);
+    const snel=parseFloat(document.getElementById('sneltarief').value);
+    const lp=parseInt(document.getElementById('laadpaalkosten').value);
+    const pct=parseInt(document.getElementById('thuispct').value)/100;
+
+    document.getElementById('km-val').textContent=km.toLocaleString('nl-NL')+' km';
+    document.getElementById('ev-val').textContent=ev+' kWh';
+    document.getElementById('thuis-val').textContent='€'+thuis.toFixed(2).replace('.',',');
+    document.getElementById('snel-val').textContent='€'+snel.toFixed(2).replace('.',',');
+    document.getElementById('laadpaal-val').textContent=fmt(lp);
+    document.getElementById('thuis-pct-val').textContent=Math.round(pct*100)+'%';
+
+    const totaalKwh=km/100*ev;
+    const thuisKwh=totaalKwh*pct;
+    const snelKwh=totaalKwh*(1-pct);
+
+    const thuisKosten=thuisKwh*thuis+snelKwh*snel;
+    const snelKostenAlles=totaalKwh*snel;
+    const besparing=snelKostenAlles-thuisKosten;
+    const tv=besparing>0?lp/besparing:0;
+
+    document.getElementById('res-besparing').textContent=fmt(besparing)+'/jaar';
+    document.getElementById('res-terugverdien').textContent='Laadpaal terugverdiend in '+(tv>0?tv.toFixed(1).replace('.',',')+'jaar':'—');
+    document.getElementById('res-thuis-prijs').textContent=fmt(thuisKosten);
+    document.getElementById('res-snel-prijs').textContent=fmt(snelKostenAlles);
+    document.getElementById('res-thuis-perkm').textContent='€'+(thuisKosten/km).toFixed(3).replace('.',',')+'/km';
+    document.getElementById('res-snel-perkm').textContent='€'+(snelKostenAlles/km).toFixed(3).replace('.',',')+'/km';
+    document.getElementById('res-kwh').textContent=Math.round(totaalKwh).toLocaleString('nl-NL')+' kWh';
+    document.getElementById('res-kwh-thuis').textContent=Math.round(thuisKwh).toLocaleString('nl-NL')+' kWh';
+    document.getElementById('res-kwh-snel').textContent=Math.round(snelKwh).toLocaleString('nl-NL')+' kWh';
+    document.getElementById('res-tv').textContent=tv>0?tv.toFixed(1).replace('.',',')+' jaar':'Kies % thuis laden';
+  }
+  updateCalc();
+</script>
+</body>
+</html>

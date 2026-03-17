@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bereken gratis de terugverdientijd van zonnepanelen voor jouw situatie. Inclusief effect salderingsregeling 2027. Eerlijke, realistische berekening.">
+  <title>Zonnepanelen Terugverdientijd Calculator 2026 | StekkerSlim.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --groen: #00D17A; --groen-dark: #00A85F; --navy: #0B1628;
+      --navy-mid: #132240; --licht: #F4F7F2; --wit: #ffffff;
+      --grijs: #6B7280; --grijs-licht: #E8EDF2; --accent: #FFD23F;
+      --radius: 14px; --shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--wit); color: var(--navy); line-height: 1.6; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--grijs-licht); padding: 0 24px; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 1.4rem; color: var(--navy); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo span { color: var(--groen); }
+    .logo-icon { width: 32px; height: 32px; background: var(--groen); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--navy); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--groen); }
+    .nav-cta { background: var(--groen); color: var(--wit) !important; padding: 8px 18px; border-radius: 8px; font-weight: 600 !important; }
+
+    .page-hero { background: var(--navy); padding: 56px 24px; }
+    .page-hero-inner { max-width: 1100px; margin: 0 auto; }
+    .breadcrumb { color: rgba(255,255,255,0.4); font-size: 0.82rem; margin-bottom: 16px; }
+    .breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--groen); }
+    .page-hero h1 { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--wit); margin-bottom: 12px; }
+    .page-hero p { color: rgba(255,255,255,0.65); font-size: 1rem; max-width: 560px; }
+
+    .calc-section { padding: 56px 24px; background: var(--licht); }
+    .calc-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+    .calc-form { background: var(--wit); border-radius: 20px; padding: 32px; box-shadow: var(--shadow); }
+    .calc-form h2 { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.2rem; margin-bottom: 24px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+    .form-group label span { font-weight: 400; color: var(--grijs); }
+    .form-group input[type="range"] { width: 100%; height: 6px; appearance: none; background: var(--grijs-licht); border-radius: 3px; outline: none; cursor: pointer; }
+    .form-group input[type="range"]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--groen); cursor: pointer; box-shadow: 0 2px 8px rgba(0,209,122,0.4); }
+    .form-group input[type="number"] { width: 100%; padding: 10px 14px; border: 2px solid var(--grijs-licht); border-radius: 10px; font-size: 0.95rem; font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s; }
+    .form-group input[type="number"]:focus { border-color: var(--groen); }
+    .range-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--grijs); margin-top: 4px; }
+    .divider { border: none; border-top: 1px solid var(--grijs-licht); margin: 20px 0; }
+
+    .calc-results { display: flex; flex-direction: column; gap: 16px; }
+    .result-card { background: var(--wit); border-radius: 16px; padding: 24px; box-shadow: var(--shadow); }
+    .result-card.primary { background: var(--navy); }
+    .result-label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--grijs); margin-bottom: 8px; }
+    .result-card.primary .result-label { color: rgba(255,255,255,0.5); }
+    .result-value { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 2.4rem; color: var(--groen); line-height: 1; }
+    .result-sub { font-size: 0.82rem; color: var(--grijs); margin-top: 6px; }
+    .result-card.primary .result-sub { color: rgba(255,255,255,0.4); }
+    .result-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--grijs-licht); }
+    .result-row:last-child { border-bottom: none; }
+    .result-row-label { font-size: 0.88rem; color: var(--grijs); }
+    .result-row-value { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.95rem; }
+    .result-row-value.groen { color: var(--groen); }
+    .result-row-value.rood { color: #EF4444; }
+    .result-row-value.oranje { color: var(--accent); }
+
+    .scenario-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+    .scenario-tab { flex: 1; padding: 8px; border: 2px solid var(--grijs-licht); border-radius: 8px; background: var(--wit); font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 600; cursor: pointer; text-align: center; transition: all 0.2s; }
+    .scenario-tab.active { border-color: var(--groen); background: rgba(0,209,122,0.08); color: var(--groen); }
+
+    .warning-box { background: rgba(255,210,63,0.1); border: 1px solid rgba(255,210,63,0.4); border-radius: 12px; padding: 14px 16px; font-size: 0.83rem; color: var(--navy); margin-top: 16px; }
+    .warning-box strong { color: #B45309; }
+
+    .uitleg-section { padding: 56px 24px; }
+    .uitleg-inner { max-width: 800px; margin: 0 auto; }
+    .uitleg-inner h2 { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.5rem; margin-bottom: 20px; }
+    .uitleg-inner h3 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.05rem; margin: 24px 0 8px; }
+    .uitleg-inner p { color: #374151; font-size: 0.93rem; line-height: 1.7; margin-bottom: 12px; }
+    .uitleg-inner ul { padding-left: 20px; color: #374151; font-size: 0.93rem; line-height: 1.8; }
+    .disclaimer-box { background: var(--licht); border-radius: 12px; padding: 16px 20px; font-size: 0.82rem; color: var(--grijs); margin-top: 32px; line-height: 1.6; }
+
+    .cta-section { background: var(--navy); padding: 56px 24px; text-align: center; }
+    .cta-section h2 { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.6rem; color: var(--wit); margin-bottom: 12px; }
+    .cta-section p { color: rgba(255,255,255,0.6); margin-bottom: 24px; }
+    .btn-primary { background: var(--groen); color: var(--navy); padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-block; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,209,122,0.4); }
+    .btn-primary:hover { transform: translateY(-2px); }
+
+    footer { background: var(--navy); padding: 40px 24px 24px; color: rgba(255,255,255,0.5); }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+    .footer-brand p { font-size: 0.85rem; margin-top: 12px; line-height: 1.7; max-width: 260px; }
+    .footer-col h4 { font-family: 'Outfit', sans-serif; color: var(--wit); font-size: 0.9rem; font-weight: 700; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--groen); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: 0.8rem; }
+
+    @media (max-width: 900px) {
+      .calc-inner { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">⚡</div>
+      Stekker<span>Slim</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#besparen">Besparen</a></li>
+      <li><a href="index.html#calculators">Calculators</a></li>
+      <li><a href="index.html#smarthome">Smarthome</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="index.html#calculators">Calculators</a> › Zonnepanelen</div>
+    <h1>☀️ Zonnepanelen terugverdientijd berekenen</h1>
+    <p>Vul jouw situatie in en zie direct hoe lang het duurt voordat jouw zonnepanelen zichzelf hebben terugverdiend — inclusief het effect van de salderingswijziging in 2027.</p>
+  </div>
+</div>
+
+<div class="calc-section">
+  <div class="calc-inner">
+    <div class="calc-form">
+      <h2>Jouw situatie</h2>
+
+      <div class="form-group">
+        <label>Aantal zonnepanelen <span id="panelen-val">10 panelen</span></label>
+        <input type="range" id="panelen" min="4" max="30" value="10" step="1" oninput="updateCalc()">
+        <div class="range-labels"><span>4</span><span>30 panelen</span></div>
+      </div>
+
+      <div class="form-group">
+        <label>Jaarlijks stroomverbruik <span id="verbruik-val">3.500 kWh</span></label>
+        <input type="range" id="verbruik" min="1500" max="8000" value="3500" step="100" oninput="updateCalc()">
+        <div class="range-labels"><span>1.500</span><span>8.000 kWh</span></div>
+      </div>
+
+      <div class="form-group">
+        <label>Stroomtarief (€/kWh) <span id="tarief-val">€0,34</span></label>
+        <input type="range" id="tarief" min="0.20" max="0.55" value="0.34" step="0.01" oninput="updateCalc()">
+        <div class="range-labels"><span>€0,20</span><span>€0,55</span></div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="form-group">
+        <label>Totale investering (incl. installatie)</label>
+        <input type="number" id="investering" value="3500" step="100" oninput="updateCalc()">
+      </div>
+
+      <div class="form-group">
+        <label>Opbrengst per paneel per jaar (kWh)</label>
+        <input type="number" id="opbrengst-per-paneel" value="300" step="10" oninput="updateCalc()">
+        <div class="range-labels"><span>NL gemiddelde ≈ 280-320 kWh (400Wp paneel)</span></div>
+      </div>
+
+      <div class="scenario-tabs">
+        <button class="scenario-tab active" onclick="setScenario('voor2027', this)">Vóór 2027</button>
+        <button class="scenario-tab" onclick="setScenario('na2027', this)">Na 2027</button>
+      </div>
+
+      <div id="saldering-info" style="font-size:0.82rem; color:var(--grijs); margin-top:8px;">
+        Salderingsregeling actief: terugleverwaarde = stroomtarief
+      </div>
+    </div>
+
+    <div class="calc-results">
+      <div class="result-card primary">
+        <div class="result-label">Terugverdientijd</div>
+        <div class="result-value" id="res-terugverdientijd">—</div>
+        <div class="result-sub" id="res-terugverdientijd-sub">Vul je gegevens in</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-label">Berekening per jaar</div>
+        <div class="result-row">
+          <span class="result-row-label">Totale paneelopbrengst</span>
+          <span class="result-row-value" id="res-opbrengst">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Eigen gebruik (besparing)</span>
+          <span class="result-row-value groen" id="res-eigengebruik">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Teruglevering aan net</span>
+          <span class="result-row-value" id="res-teruglevering">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Waarde teruglevering</span>
+          <span class="result-row-value" id="res-terugleverwaarde">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Totale jaarlijkse besparing</span>
+          <span class="result-row-value groen" id="res-jaarbesparing">—</span>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-label">Over 20 jaar</div>
+        <div class="result-row">
+          <span class="result-row-label">Totale opbrengst</span>
+          <span class="result-row-value groen" id="res-20jaar">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Netto winst na investering</span>
+          <span class="result-row-value" id="res-nettowinst">—</span>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <strong>⚠️ Let op saldering 2027:</strong> Vanaf 1 januari 2027 vervalt de salderingsregeling. Stroom die je teruglevert aan het net wordt dan vergoed tegen het lage teruglevertarief (~€0,06/kWh) in plaats van het volle stroomtarief. Switch naar "Na 2027" om dit effect te zien.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="uitleg-section">
+  <div class="uitleg-inner">
+    <h2>Hoe werkt deze berekening?</h2>
+    <p>Deze calculator gebruikt realistische aannames voor de Nederlandse situatie. We leggen hieronder uit wat we berekenen en waar je rekening mee moet houden.</p>
+
+    <h3>Opbrengst per paneel</h3>
+    <p>Een modern zonnepaneel van 400 Wp produceert in Nederland gemiddeld 280–320 kWh per jaar. Dit verschilt afhankelijk van dakoriëntatie (zuiden = optimaal), hellingshoek (30-35° = optimaal) en eventuele schaduw. We gebruiken 300 kWh als standaard — een realistische middenwaarde voor een zuiden-gericht dak.</p>
+
+    <h3>Eigen gebruik vs. teruglevering</h3>
+    <p>Energie die je zelf verbruikt op het moment dat je panelen produceren, is het meest waardevol: je betaalt daarvoor geen inkooprijs. Energie die je niet zelf gebruikt, lever je terug aan het net.</p>
+
+    <h3>Salderingsregeling 2027</h3>
+    <p>Tot en met 31 december 2026 wordt teruggeleverde stroom gesaldeerd: je mag die aftrekken van je verbruik, alsof het evenveel waard is als stroom die je inkoopt. Vanaf 1 januari 2027 vervalt dit. Je ontvangt dan het "teruglevertarief" van je leverancier — momenteel gemiddeld €0,03–€0,09 per kWh. Dit is significant lager dan het inkooptarief (~€0,34).</p>
+
+    <h3>Wat betekent dit voor jou?</h3>
+    <ul>
+      <li>Heb je al panelen? Maximaliseer eigen gebruik vóór 2027</li>
+      <li>Overweeg je panelen? Hoe meer je zelf verbruikt, hoe beter je bestand bent tegen de salderingswijziging</li>
+      <li>Batterijopslag wordt interessanter naarmate de teruglevering minder oplevert</li>
+    </ul>
+
+    <div class="disclaimer-box">
+      <strong>Disclaimer:</strong> Alle berekeningen zijn indicatief. Werkelijke opbrengst hangt af van dakoriëntatie, hellingshoek, schaduw, systeemkwaliteit en toekomstige energieprijzen. Energieprijzen kunnen stijgen of dalen. Raadpleeg altijd een erkend installateur voor een persoonlijk advies. StekkerSlim.nl is niet aansprakelijk voor beslissingen op basis van deze berekening.
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Offerte aanvragen bij gecertificeerde installateurs</h2>
+  <p>Vergelijk offertes en bespaar gemiddeld €500–€1.000 op de aanschaf</p>
+  <a href="index.html#vergelijken" class="btn-primary">Gratis offerte aanvragen →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:var(--wit);">
+          <div class="logo-icon">⚡</div>
+          Stekker<span>Slim</span>
+        </a>
+        <p>Eerlijke energietips voor Nederlandse gezinnen. Geen verborgen agenda, gewoon helder advies.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <ul>
+          <li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li>
+          <li><a href="calculator-energiekosten.html">Energiekosten</a></li>
+          <li><a href="calculator-laadpaal.html">Laadpaal thuis</a></li>
+          <li><a href="calculator-warmtepomp.html">Warmtepomp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Artikelen</h4>
+        <ul>
+          <li><a href="dynamisch-contract.html">Dynamisch contract</a></li>
+          <li><a href="saldering-2027.html">Saldering 2027</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>StekkerSlim</h4>
+        <ul>
+          <li><a href="over-ons.html">Over ons</a></li>
+          <li><a href="privacy.html">Privacy & Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 StekkerSlim.nl</span>
+      <a href="privacy.html">Privacy & Disclaimer</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  let scenario = 'voor2027';
+
+  function setScenario(s, btn) {
+    scenario = s;
+    document.querySelectorAll('.scenario-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    const info = document.getElementById('saldering-info');
+    if (s === 'voor2027') {
+      info.textContent = 'Salderingsregeling actief: terugleverwaarde = stroomtarief';
+    } else {
+      info.textContent = 'Na 2027: terugleverwaarde ≈ €0,06/kWh (marktgemiddelde)';
+    }
+    updateCalc();
+  }
+
+  function fmt(n) { return n.toLocaleString('nl-NL', {minimumFractionDigits:0, maximumFractionDigits:0}); }
+  function fmtE(n) { return '€' + n.toLocaleString('nl-NL', {minimumFractionDigits:0, maximumFractionDigits:0}); }
+
+  function updateCalc() {
+    const panelen = parseInt(document.getElementById('panelen').value);
+    const verbruik = parseInt(document.getElementById('verbruik').value);
+    const tarief = parseFloat(document.getElementById('tarief').value);
+    const investering = parseFloat(document.getElementById('investering').value) || 0;
+    const opbrengstPerPaneel = parseFloat(document.getElementById('opbrengst-per-paneel').value) || 300;
+
+    document.getElementById('panelen-val').textContent = panelen + ' panelen';
+    document.getElementById('verbruik-val').textContent = fmt(verbruik) + ' kWh';
+    document.getElementById('tarief-val').textContent = '€' + tarief.toFixed(2).replace('.', ',');
+
+    const totaalOpbrengst = panelen * opbrengstPerPaneel;
+    const eigenGebruik = Math.min(totaalOpbrengst, verbruik);
+    const teruglevering = Math.max(0, totaalOpbrengst - verbruik);
+
+    const teruglevertarief = scenario === 'voor2027' ? tarief : 0.06;
+    const besparingEigen = eigenGebruik * tarief;
+    const besparingTeruglevering = teruglevering * teruglevertarief;
+    const totaalBesparing = besparingEigen + besparingTeruglevering;
+
+    const terugverdien = investering > 0 && totaalBesparing > 0 ? investering / totaalBesparing : 0;
+    const opbrengst20jaar = totaalBesparing * 20;
+    const nettowinst = opbrengst20jaar - investering;
+
+    document.getElementById('res-opbrengst').textContent = fmt(totaalOpbrengst) + ' kWh';
+    document.getElementById('res-eigengebruik').textContent = fmt(eigenGebruik) + ' kWh → ' + fmtE(besparingEigen);
+    document.getElementById('res-teruglevering').textContent = fmt(teruglevering) + ' kWh';
+    document.getElementById('res-terugleverwaarde').textContent = fmtE(besparingTeruglevering) + ' (€' + teruglevertarief.toFixed(2).replace('.', ',') + '/kWh)';
+    document.getElementById('res-jaarbesparing').textContent = fmtE(totaalBesparing) + '/jaar';
+    document.getElementById('res-20jaar').textContent = fmtE(opbrengst20jaar);
+
+    const nettoel = document.getElementById('res-nettowinst');
+    nettoel.textContent = fmtE(nettowinst);
+    nettoel.className = 'result-row-value ' + (nettowinst >= 0 ? 'groen' : 'rood');
+
+    const tvEl = document.getElementById('res-terugverdientijd');
+    const tvSub = document.getElementById('res-terugverdientijd-sub');
+    if (terugverdien > 0 && terugverdien <= 40) {
+      tvEl.textContent = terugverdien.toFixed(1).replace('.', ',') + ' jaar';
+      tvSub.textContent = 'Bij €' + tarief.toFixed(2).replace('.', ',') + '/kWh en ' + scenario === 'voor2027' ? 'volledige saldering' : 'teruglevertarief €0,06';
+      tvSub.textContent = 'Bij huidig tarief en gekozen scenario';
+    } else if (investering === 0) {
+      tvEl.textContent = '—';
+      tvSub.textContent = 'Vul investering in';
+    } else {
+      tvEl.textContent = '>30 jaar';
+      tvSub.textContent = 'Controleer je invoer';
+    }
+  }
+
+  updateCalc();
+</script>
+</body>
+</html>

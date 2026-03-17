@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bereken jouw jaarlijkse energiekosten en vergelijk met het Nederlandse gemiddelde. Zie direct hoeveel je kunt besparen door over te stappen.">
+  <title>Energiekosten Calculator 2026 — Bereken & Vergelijk | StekkerSlim.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --groen:#00D17A;--groen-dark:#00A85F;--navy:#0B1628;--navy-mid:#132240;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08); }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+    .page-hero{background:var(--navy);padding:56px 24px}
+    .page-hero-inner{max-width:1100px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--wit);margin-bottom:12px}
+    .page-hero p{color:rgba(255,255,255,0.65);font-size:1rem;max-width:560px}
+    .calc-section{padding:56px 24px;background:var(--licht)}
+    .calc-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+    .calc-form{background:var(--wit);border-radius:20px;padding:32px;box-shadow:var(--shadow)}
+    .calc-form h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:24px}
+    .section-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;color:var(--groen);text-transform:uppercase;letter-spacing:1px;margin:20px 0 12px}
+    .form-group{margin-bottom:18px}
+    .form-group label{display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;font-weight:600;color:var(--navy);margin-bottom:8px}
+    .form-group label span{font-weight:400;color:var(--grijs)}
+    .form-group input[type="range"]{width:100%;height:6px;appearance:none;background:var(--grijs-licht);border-radius:3px;outline:none;cursor:pointer}
+    .form-group input[type="range"]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;border-radius:50%;background:var(--groen);cursor:pointer;box-shadow:0 2px 8px rgba(0,209,122,.4)}
+    .range-labels{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--grijs);margin-top:4px}
+    .divider{border:none;border-top:1px solid var(--grijs-licht);margin:20px 0}
+    .calc-results{display:flex;flex-direction:column;gap:16px}
+    .result-card{background:var(--wit);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+    .result-card.primary{background:var(--navy)}
+    .result-label{font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--grijs);margin-bottom:8px}
+    .result-card.primary .result-label{color:rgba(255,255,255,.5)}
+    .result-value{font-family:'Outfit',sans-serif;font-weight:900;font-size:2.4rem;color:var(--groen);line-height:1}
+    .result-sub{font-size:0.82rem;color:var(--grijs);margin-top:6px}
+    .result-card.primary .result-sub{color:rgba(255,255,255,.4)}
+    .result-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--grijs-licht)}
+    .result-row:last-child{border-bottom:none}
+    .result-row-label{font-size:0.88rem;color:var(--grijs)}
+    .result-row-value{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem}
+    .result-row-value.groen{color:var(--groen)}.result-row-value.rood{color:#EF4444}
+    .compare-bar{display:flex;gap:8px;margin-top:12px}
+    .bar-item{flex:1;text-align:center}
+    .bar-fill{height:8px;border-radius:4px;margin-bottom:4px;transition:width .5s}
+    .bar-label{font-size:0.72rem;color:var(--grijs)}
+    .bar-value{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.82rem}
+    .uitleg-section{padding:56px 24px}.uitleg-inner{max-width:800px;margin:0 auto}
+    .uitleg-inner h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:20px}
+    .uitleg-inner h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;margin:24px 0 8px}
+    .uitleg-inner p{color:#374151;font-size:0.93rem;line-height:1.7;margin-bottom:12px}
+    .disclaimer-box{background:var(--licht);border-radius:12px;padding:16px 20px;font-size:0.82rem;color:var(--grijs);margin-top:32px;line-height:1.6}
+    .cta-section{background:var(--navy);padding:56px 24px;text-align:center}
+    .cta-section h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:var(--wit);margin-bottom:12px}
+    .cta-section p{color:rgba(255,255,255,.6);margin-bottom:24px}
+    .btn-primary{background:var(--groen);color:var(--navy);padding:14px 28px;border-radius:10px;font-weight:700;font-size:0.95rem;text-decoration:none;display:inline-block;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,209,122,.4)}
+    .btn-primary:hover{transform:translateY(-2px)}
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;transition:color .2s}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.8rem}
+    @media(max-width:900px){.calc-inner{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#besparen">Besparen</a></li>
+      <li><a href="index.html#calculators">Calculators</a></li>
+      <li><a href="index.html#smarthome">Smarthome</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="index.html#calculators">Calculators</a> › Energiekosten</div>
+    <h1>📊 Energiekosten berekenen en vergelijken</h1>
+    <p>Vul jouw gas- en stroomverbruik in en zie direct wat je betaalt, hoe dat verhoudt tot het Nederlandse gemiddelde, en hoeveel je kunt besparen.</p>
+  </div>
+</div>
+
+<div class="calc-section">
+  <div class="calc-inner">
+    <div class="calc-form">
+      <h2>Jouw verbruik en tarieven</h2>
+
+      <div class="section-title">Gas</div>
+      <div class="form-group">
+        <label>Gasverbruik per jaar <span id="gas-val">1.600 m³</span></label>
+        <input type="range" id="gasverbruik" min="200" max="4000" value="1600" step="50" oninput="updateCalc()">
+        <div class="range-labels"><span>200 m³</span><span>4.000 m³</span></div>
+      </div>
+      <div class="form-group">
+        <label>Gastarief <span id="gastarief-val">€1,42/m³</span></label>
+        <input type="range" id="gastarief" min="0.80" max="2.50" value="1.42" step="0.01" oninput="updateCalc()">
+        <div class="range-labels"><span>€0,80</span><span>€2,50</span></div>
+      </div>
+
+      <div class="section-title">Stroom</div>
+      <div class="form-group">
+        <label>Stroomverbruik per jaar <span id="stroom-val">3.500 kWh</span></label>
+        <input type="range" id="stroomverbruik" min="1000" max="10000" value="3500" step="100" oninput="updateCalc()">
+        <div class="range-labels"><span>1.000 kWh</span><span>10.000 kWh</span></div>
+      </div>
+      <div class="form-group">
+        <label>Stroomtarief <span id="stroomtarief-val">€0,34/kWh</span></label>
+        <input type="range" id="stroomtarief" min="0.15" max="0.60" value="0.34" step="0.01" oninput="updateCalc()">
+        <div class="range-labels"><span>€0,15</span><span>€0,60</span></div>
+      </div>
+
+      <div class="section-title">Vastrecht (geschat)</div>
+      <div class="form-group">
+        <label>Vastrecht gas per jaar <span>gem. €60-80</span></label>
+        <input type="range" id="vastrechtgas" min="0" max="200" value="72" step="6" oninput="updateCalc()">
+        <div class="range-labels"><span>€0</span><span>€200/jaar</span></div>
+      </div>
+      <div class="form-group">
+        <label>Vastrecht stroom per jaar <span>gem. €100-140</span></label>
+        <input type="range" id="vastrechtgas2" min="0" max="300" value="120" step="12" oninput="updateCalc()">
+        <div class="range-labels"><span>€0</span><span>€300/jaar</span></div>
+      </div>
+    </div>
+
+    <div class="calc-results">
+      <div class="result-card primary">
+        <div class="result-label">Jouw jaarlijkse energierekening</div>
+        <div class="result-value" id="res-totaal">—</div>
+        <div class="result-sub" id="res-maand">Per maand: —</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-label">Uitsplitsing</div>
+        <div class="result-row">
+          <span class="result-row-label">Gaskosten (verbruik)</span>
+          <span class="result-row-value" id="res-gaskosten">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Stroomkosten (verbruik)</span>
+          <span class="result-row-value" id="res-stroomkosten">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Vastrecht (totaal)</span>
+          <span class="result-row-value" id="res-vastrecht">—</span>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-label">Vergelijking met NL gemiddelde</div>
+        <div class="result-row">
+          <span class="result-row-label">NL gemiddeld (2026)</span>
+          <span class="result-row-value">€2.065/jaar</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Jij betaalt</span>
+          <span class="result-row-value" id="res-jij">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Verschil</span>
+          <span class="result-row-value" id="res-verschil">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Potentiële besparing overstappen*</span>
+          <span class="result-row-value groen" id="res-besparing">—</span>
+        </div>
+      </div>
+
+      <div style="background:rgba(0,209,122,0.08);border:1px solid rgba(0,209,122,0.2);border-radius:12px;padding:14px 16px;font-size:0.82rem;color:var(--navy);">
+        * Besparing bij overstappen naar een scherper tarief. Tarieven variëren sterk per leverancier en contractvorm. Vergelijk altijd meerdere aanbieders.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="uitleg-section">
+  <div class="uitleg-inner">
+    <h2>Wat bepaalt jouw energierekening?</h2>
+    <p>Je energierekening bestaat uit drie delen: leveringskosten (verbruik × tarief), vastrecht (vaste kosten ongeacht verbruik) en energiebelasting (al verwerkt in het tarief bij de meeste leveranciers).</p>
+
+    <h3>Gemiddeld verbruik in Nederland</h3>
+    <p>Een gemiddeld Nederlands huishouden verbruikt circa 1.500–1.700 m³ gas en 3.000–3.600 kWh stroom per jaar. Grotere gezinnen of slecht geïsoleerde woningen zitten vaak hoger. Goed geïsoleerde woningen of huizen met een warmtepomp verbruiken aanzienlijk minder gas.</p>
+
+    <h3>Hoe bespaar je op je energierekening?</h3>
+    <p>Er zijn drie manieren: (1) minder verbruiken, (2) goedkoper inkopen via een ander contract, of (3) zelf energie opwekken. Overstappen van energieleverancier is de snelste manier — dit kost 10 minuten en levert gemiddeld €100–€400 per jaar op.</p>
+
+    <h3>Vastrecht: de verborgen kosten</h3>
+    <p>Vastrecht betaal je ongeacht hoeveel je verbruikt. Het dekt de kosten voor het netbeheer en de meteraansluiting. Je kunt hier niet op besparen door over te stappen — dit is een vaste kostenpost.</p>
+
+    <div class="disclaimer-box">
+      <strong>Disclaimer:</strong> Berekeningen zijn indicatief op basis van ingevoerde gegevens. Energietarieven variëren per leverancier, regio en contractvorm. Energiebelasting, btw en toeslagen zijn verwerkt in de tarieven. Werkelijke rekening kan afwijken. Raadpleeg je leverancier voor exacte tarieven.
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Goedkoper uit met een ander energiecontract?</h2>
+  <p>Vergelijk alle leveranciers in Nederland en stap over in 10 minuten</p>
+  <a href="index.html#vergelijken" class="btn-primary">Vergelijk energiecontracten →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+        <p>Eerlijke energietips voor Nederlandse gezinnen.</p>
+      </div>
+      <div class="footer-col"><h4>Calculators</h4><ul><li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li><li><a href="calculator-energiekosten.html">Energiekosten</a></li><li><a href="calculator-laadpaal.html">Laadpaal thuis</a></li><li><a href="calculator-warmtepomp.html">Warmtepomp</a></li></ul></div>
+      <div class="footer-col"><h4>Artikelen</h4><ul><li><a href="dynamisch-contract.html">Dynamisch contract</a></li><li><a href="saldering-2027.html">Saldering 2027</a></li></ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul><li><a href="over-ons.html">Over ons</a></li><li><a href="privacy.html">Privacy & Disclaimer</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl</span><a href="privacy.html">Privacy & Disclaimer</a></div>
+  </div>
+</footer>
+
+<script>
+  function fmt(n){return'€'+Math.round(n).toLocaleString('nl-NL')}
+  function updateCalc(){
+    const gas=parseInt(document.getElementById('gasverbruik').value);
+    const gastarief=parseFloat(document.getElementById('gastarief').value);
+    const stroom=parseInt(document.getElementById('stroomverbruik').value);
+    const stroomtarief=parseFloat(document.getElementById('stroomtarief').value);
+    const vg=parseInt(document.getElementById('vastrechtgas').value);
+    const vs=parseInt(document.getElementById('vastrechtgas2').value);
+
+    document.getElementById('gas-val').textContent=gas.toLocaleString('nl-NL')+' m³';
+    document.getElementById('gastarief-val').textContent='€'+gastarief.toFixed(2).replace('.',',')+'/m³';
+    document.getElementById('stroom-val').textContent=stroom.toLocaleString('nl-NL')+' kWh';
+    document.getElementById('stroomtarief-val').textContent='€'+stroomtarief.toFixed(2).replace('.',',')+'/kWh';
+
+    const gaskosten=gas*gastarief;
+    const stroomkosten=stroom*stroomtarief;
+    const vastrecht=vg+vs;
+    const totaal=gaskosten+stroomkosten+vastrecht;
+    const gemiddeld=2065;
+    const verschil=totaal-gemiddeld;
+    const besparing=Math.max(0,totaal*0.12);
+
+    document.getElementById('res-totaal').textContent=fmt(totaal)+'/jaar';
+    document.getElementById('res-maand').textContent='Per maand: '+fmt(totaal/12);
+    document.getElementById('res-gaskosten').textContent=fmt(gaskosten);
+    document.getElementById('res-stroomkosten').textContent=fmt(stroomkosten);
+    document.getElementById('res-vastrecht').textContent=fmt(vastrecht);
+    document.getElementById('res-jij').textContent=fmt(totaal)+'/jaar';
+    const verschilEl=document.getElementById('res-verschil');
+    verschilEl.textContent=(verschil>=0?'+':'')+fmt(verschil);
+    verschilEl.className='result-row-value '+(verschil>0?'rood':'groen');
+    document.getElementById('res-besparing').textContent='Tot '+fmt(besparing)+'/jaar';
+  }
+  updateCalc();
+</script>
+</body>
+</html>
