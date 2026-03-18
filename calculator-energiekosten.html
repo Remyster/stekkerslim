@@ -189,12 +189,30 @@
             <label>Terugleververgoeding (€/kWh)</label>
             <input type="number" id="terug-verg" value="0.06" step="0.001" oninput="calc()">
           </div>
-          <div class="input-field">
-            <label>Vaste terugleverkosten (€/dag)</label>
-            <input type="number" id="terug-kosten" value="0" step="0.001" oninput="calc()">
+        </div>
+
+        <div style="margin-top:12px">
+          <label style="font-size:0.86rem;font-weight:600;display:block;margin-bottom:8px">Type terugleverkosten</label>
+          <div style="display:flex;gap:6px;margin-bottom:10px">
+            <button class="tarief-btn active" onclick="setTerugleverType('geen',this)" style="flex:1;font-size:0.78rem">Geen kosten</button>
+            <button class="tarief-btn" onclick="setTerugleverType('vast',this)" style="flex:1;font-size:0.78rem">Vast €/dag</button>
+            <button class="tarief-btn" onclick="setTerugleverType('staffel',this)" style="flex:1;font-size:0.78rem">Staffel (Vandebron)</button>
+          </div>
+
+          <div id="terug-vast" style="display:none">
+            <div class="input-field">
+              <label>Vaste terugleverkosten (€/dag)</label>
+              <input type="number" id="terug-kosten-vast" value="0.45175" step="0.001" oninput="calc()">
+            </div>
+            <div style="font-size:0.77rem;color:var(--grijs);margin-top:4px">Staat als "vaste terugleveringskosten" in je contract.</div>
+          </div>
+
+          <div id="terug-staffel" style="display:none;background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.2);border-radius:10px;padding:12px">
+            <div style="font-size:0.82rem;font-weight:600;color:#DC2626;margin-bottom:6px">⚠️ Vandebron gestaffelde terugleverkosten</div>
+            <div style="font-size:0.8rem;color:var(--grijs);margin-bottom:8px">De kosten worden automatisch berekend op basis van jouw teruglevering:</div>
+            <div id="staffel-uitleg" style="font-size:0.82rem;font-weight:600;color:var(--navy)">Vul teruglevering in om kosten te zien</div>
           </div>
         </div>
-        <div style="font-size:0.77rem;color:var(--grijs);margin-top:4px">Terugleverkosten staan als "vaste terugleveringskosten" in je contract. Staat er niets? Dan is het 0.</div>
       </div>
     </div>
 
@@ -236,8 +254,31 @@
           <span class="result-row-value groen" id="res-verg">—</span>
         </div>
         <div class="result-row" id="row-tkost" style="display:none">
-          <span class="result-row-label">Vaste terugleverkosten/jaar</span>
+          <span class="result-row-label">Terugleverkosten/jaar</span>
           <span class="result-row-value rood" id="res-tkost">—</span>
+        </div>
+      </div>
+
+      <div class="result-card" id="staffel-card" style="display:none">
+        <div class="result-label">Vandebron terugleverkosten staffel</div>
+        <div class="result-row">
+          <span class="result-row-label">Jouw teruglevering</span>
+          <span class="result-row-value" id="res-staffel-kwh">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Schaal</span>
+          <span class="result-row-value" id="res-staffel-schaal">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Kosten per dag</span>
+          <span class="result-row-value rood" id="res-staffel-dag">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Kosten per jaar</span>
+          <span class="result-row-value rood" id="res-staffel-jaar">—</span>
+        </div>
+        <div style="margin-top:10px;font-size:0.78rem;color:var(--grijs);background:rgba(239,68,68,0.05);border-radius:8px;padding:8px">
+          Hoe minder je teruglevert, hoe lager de schaal. Een thuisbatterij kan je naar schaal 0 (€0) brengen. <a href="calculator-thuisbatterij.html" style="color:var(--groen)">Bereken of dat loont →</a>
         </div>
       </div>
 
@@ -259,6 +300,16 @@
 
       <div class="teruglever-warning" id="tlw">
         <strong>⚠️ Terugleverkosten actief:</strong> Jouw contract heeft vaste terugleverkosten. Dit betaal je puur voor het terugleveren. Overweeg <a href="terugleverkosten.html">overstappen</a> of een <a href="calculator-thuisbatterij.html">thuisbatterij</a>.
+      </div>
+
+      <!-- DEEL / MAIL KNOPPEN -->
+      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+        <button onclick="mailResultaten()" style="display:flex;align-items:center;gap:8px;background:var(--navy);color:var(--wit);border:none;padding:11px 18px;border-radius:10px;font-weight:600;font-size:0.85rem;cursor:pointer;font-family:'DM Sans',sans-serif">
+          ✉️ Mail mij mijn resultaten
+        </button>
+        <button onclick="deelWhatsApp()" style="display:flex;align-items:center;gap:8px;background:#25D366;color:#fff;border:none;padding:11px 18px;border-radius:10px;font-weight:600;font-size:0.85rem;cursor:pointer;font-family:'DM Sans',sans-serif">
+          💬 Deel via WhatsApp
+        </button>
       </div>
     </div>
   </div>
@@ -299,6 +350,32 @@
 
 <script>
   let meterType = 'enkel';
+  let terugleverType = 'geen';
+
+  // Vandebron staffel (incl. BTW per dag)
+  const staffel = [
+    {max:5,dag:0},{max:250,dag:0.04107},{max:500,dag:0.12320},
+    {max:750,dag:0.20534},{max:1000,dag:0.28747},{max:1250,dag:0.36961},
+    {max:1500,dag:0.45175},{max:1750,dag:0.53388},{max:2000,dag:0.61602},
+    {max:2250,dag:0.69815},{max:2500,dag:0.78029},{max:2750,dag:0.86242},
+    {max:3000,dag:0.94456},{max:3250,dag:1.02669},{max:3500,dag:1.10883},
+    {max:3750,dag:1.19097},{max:4000,dag:1.27310},{max:4250,dag:1.35524},
+    {max:4500,dag:1.43737},{max:4750,dag:1.51951},{max:5000,dag:1.60164},
+    {max:5250,dag:1.68378},{max:5500,dag:1.76591},{max:5750,dag:1.84805},
+    {max:6000,dag:1.93018},{max:6250,dag:2.01232},{max:6500,dag:2.09446},
+    {max:6750,dag:2.17659},{max:7000,dag:2.25873},{max:7250,dag:2.34086},
+    {max:7500,dag:2.42300},{max:Infinity,dag:2.50513}
+  ];
+
+  function getStaffel(kwh) {
+    if(kwh<=5) return {schaal:0,dag:0,min:0,max:5};
+    for(let i=1;i<staffel.length;i++){
+      if(kwh<=staffel[i].max){
+        return {schaal:i,dag:staffel[i].dag,min:staffel[i-1].max,max:staffel[i].max};
+      }
+    }
+    return {schaal:staffel.length-1,dag:staffel[staffel.length-1].dag,min:19000,max:'∞'};
+  }
 
   function setMeter(type, btn) {
     meterType = type;
@@ -308,6 +385,16 @@
     document.getElementById('dubbel-group').style.display = type==='dubbel'?'block':'none';
     document.getElementById('row-dal').style.display = type==='dubbel'?'flex':'none';
     document.getElementById('row-normaal').style.display = type==='dubbel'?'flex':'none';
+    calc();
+  }
+
+  function setTerugleverType(type, btn) {
+    terugleverType = type;
+    document.querySelectorAll('#terug-extra .tarief-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('terug-vast').style.display = type==='vast'?'block':'none';
+    document.getElementById('terug-staffel').style.display = type==='staffel'?'block':'none';
+    document.getElementById('staffel-card').style.display = type==='staffel'?'block':'none';
     calc();
   }
 
@@ -348,16 +435,35 @@
     let terugleverVerg=0, terugleverKost=0;
     if(terugKwh>0){
       const tv=parseFloat(document.getElementById('terug-verg').value)||0;
-      const tk=parseFloat(document.getElementById('terug-kosten').value)||0;
       terugleverVerg=tv*terugKwh;
-      terugleverKost=tk*365;
       document.getElementById('res-verg').textContent='-'+euro(terugleverVerg)+'/jaar';
-      document.getElementById('row-tkost').style.display=tk>0?'flex':'none';
-      document.getElementById('res-tkost').textContent=euro(terugleverKost)+'/jaar';
-      document.getElementById('tlw').className='teruglever-warning'+(tk>0?' zichtbaar':'');
+
+      if(terugleverType==='vast'){
+        const tk=parseFloat(document.getElementById('terug-kosten-vast').value)||0;
+        terugleverKost=tk*365;
+        document.getElementById('row-tkost').style.display='flex';
+        document.getElementById('res-tkost').textContent=euro(terugleverKost)+'/jaar';
+        document.getElementById('tlw').className='teruglever-warning zichtbaar';
+      } else if(terugleverType==='staffel'){
+        const s=getStaffel(terugKwh);
+        terugleverKost=s.dag*365;
+        document.getElementById('row-tkost').style.display='flex';
+        document.getElementById('res-tkost').textContent=euro(terugleverKost)+'/jaar';
+        document.getElementById('tlw').className='teruglever-warning zichtbaar';
+        // Staffel kaart updaten
+        document.getElementById('res-staffel-kwh').textContent=terugKwh.toLocaleString('nl-NL')+' kWh/jaar';
+        document.getElementById('res-staffel-schaal').textContent='Schaal '+s.schaal+' ('+s.min+' – '+s.max+' kWh)';
+        document.getElementById('res-staffel-dag').textContent='€'+s.dag.toFixed(5).replace('.',',').replace(/,?0+$/,'')+'/dag';
+        document.getElementById('res-staffel-jaar').textContent=euro(terugleverKost)+'/jaar';
+        document.getElementById('staffel-uitleg').textContent='Schaal '+s.schaal+': €'+s.dag.toFixed(2).replace('.',',')+'/dag = '+euro(terugleverKost)+'/jaar aan terugleverkosten';
+      } else {
+        document.getElementById('row-tkost').style.display='none';
+        document.getElementById('tlw').className='teruglever-warning';
+      }
     } else {
       document.getElementById('row-tkost').style.display='none';
       document.getElementById('tlw').className='teruglever-warning';
+      document.getElementById('staffel-card').style.display='none';
     }
 
     const totaal=stroomKosten+gasKosten+vrs+vrg-terugleverVerg+terugleverKost;
@@ -373,6 +479,28 @@
     const vel=document.getElementById('res-verschil');
     vel.textContent=(verschil>0?'+':'')+euro(verschil)+(verschil>0?' meer dan gemiddeld':' minder dan gemiddeld');
     vel.className='result-row-value '+(verschil>300?'rood':verschil<-300?'groen':'');
+  }
+
+  function mailResultaten(){
+    const totaal = document.getElementById('res-totaal').textContent;
+    const maand = document.getElementById('res-maand').textContent;
+    const verschil = document.getElementById('res-verschil').textContent;
+    const tkostEl = document.getElementById('res-tkost');
+    const tkost = tkostEl && tkostEl.parentElement.style.display!=='none' ? '\nTerugleverkosten/jaar: '+tkostEl.textContent : '';
+    const body = encodeURIComponent(
+      'Mijn energiekosten berekening via StekkerSlim.nl\n\n' +
+      'Jaarlijkse rekening: ' + totaal + '\n' +
+      maand + '\n' +
+      'Verschil met NL gemiddeld: ' + verschil + tkost + '\n\n' +
+      'Zelf berekenen: https://stekkerslim.nl/calculator-energiekosten.html'
+    );
+    window.location.href = 'mailto:?subject=Mijn%20energiekosten%20berekening&body=' + body;
+  }
+
+  function deelWhatsApp(){
+    const totaal = document.getElementById('res-totaal').textContent;
+    const tekst = encodeURIComponent('Ik heb mijn energiekosten berekend via StekkerSlim.nl — ' + totaal + ' per jaar. Bereken jouw kosten: https://stekkerslim.nl/calculator-energiekosten.html');
+    window.open('https://wa.me/?text=' + tekst, '_blank');
   }
 
   calc();
