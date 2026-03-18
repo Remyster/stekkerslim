@@ -478,16 +478,29 @@
 
     /* ── RESPONSIVE ─────────────────────── */
     @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero-personal { display: none; } /* foto kaartje verbergen op mobiel */
       .hero-card { display: none; }
       .articles-grid { grid-template-columns: 1fr; }
       .smarthome-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
+      .calc-grid { grid-template-columns: 1fr 1fr; }
+      .affiliate-cards { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
-      .stats-bar-inner { justify-content: center; gap: 24px; }
+      .hero { padding: 40px 16px 36px; }
+      .hero-eyebrow { flex-direction: column; align-items: flex-start; gap: 8px; }
+      h1 { font-size: 1.75rem; }
+      .hero-sub { font-size: 0.95rem; }
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; width: 100%; }
+      .hero-trust { flex-direction: column; gap: 8px; }
+      .calc-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; }
+      section { padding: 48px 16px; }
+      .section-inner { padding: 0; }
+      h2 { font-size: 1.4rem; }
     }
   </style>
 </head>
@@ -784,6 +797,19 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CONTACT / FEEDBACK -->
+<section style="background:var(--licht);padding:48px 24px">
+  <div style="max-width:700px;margin:0 auto;text-align:center">
+    <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--groen);margin-bottom:10px">Mis je iets?</div>
+    <h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;margin-bottom:14px">Stuur het door — ik bouw het</h2>
+    <p style="color:var(--grijs);font-size:0.95rem;line-height:1.7;max-width:520px;margin:0 auto 24px">Gebruik je een calculator en denk je "dit klopt niet" of "dit mist iets"? Of heb je een idee voor een nieuwe tool? Mail me. Ik lees alles zelf en bouw wat nuttig is.</p>
+    <a href="mailto:info@stekkerslim.nl" style="display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--wit);padding:14px 28px;border-radius:10px;font-weight:700;font-size:0.95rem;text-decoration:none;transition:transform 0.2s">
+      ✉️ info@stekkerslim.nl
+    </a>
+    <p style="font-size:0.78rem;color:var(--grijs);margin-top:14px">Remy reageert zelf · meestal binnen 1-2 werkdagen</p>
   </div>
 </section>
 
