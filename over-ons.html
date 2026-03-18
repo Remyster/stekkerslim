@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Over StekkerSlim.nl — Eerlijke energietips voor Nederlandse gezinnen. Geen verborgen agenda, gewoon helder advies over besparen op energie.">
-  <title>Over StekkerSlim.nl | Eerlijke Energietips voor Gezinnen</title>
+  <meta name="description" content="Over StekkerSlim.nl — Het verhaal van Remy. Vader van 2, huurder met zonnepanelen, en gefrustreerd door een energierekening die bleef stijgen terwijl hij alles goed deed.">
+  <title>Over StekkerSlim.nl — Het Verhaal Achter de Site</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root{--groen:#00D17A;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    :root{--groen:#00D17A;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
     nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
@@ -18,32 +18,58 @@
     .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
     .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
     .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
-    .page-hero{background:var(--navy);padding:72px 24px}
-    .page-hero-inner{max-width:700px;margin:0 auto;text-align:center}
-    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(2rem,4vw,2.8rem);color:var(--wit);margin-bottom:16px}
-    .page-hero p{color:rgba(255,255,255,0.65);font-size:1.05rem;max-width:560px;margin:0 auto}
-    .content{max-width:800px;margin:0 auto;padding:64px 24px}
-    .content h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;margin:40px 0 12px}
-    .content h2:first-child{margin-top:0}
-    .content p{color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:16px}
-    .content ul{padding-left:24px;color:#374151;font-size:0.95rem;line-height:1.8;margin-bottom:16px}
-    .values-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
-    .value-card{background:var(--licht);border-radius:14px;padding:20px}
-    .value-icon{font-size:1.5rem;margin-bottom:10px}
-    .value-card h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:6px}
-    .value-card p{color:var(--grijs);font-size:0.85rem;margin:0}
-    .affiliate-uitleg{background:rgba(255,210,63,0.1);border:1px solid rgba(255,210,63,0.3);border-radius:14px;padding:24px;margin:32px 0}
-    .affiliate-uitleg h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:10px}
-    .affiliate-uitleg p{font-size:0.88rem;color:#374151;margin:0;line-height:1.7}
-    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .hero{background:var(--navy);padding:72px 24px}
+    .hero-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 320px;gap:60px;align-items:center}
+    .hero-text .tag{display:inline-block;background:rgba(0,209,122,0.15);color:var(--groen);font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:99px;margin-bottom:20px}
+    .hero-text h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.9rem,3.5vw,2.8rem);color:var(--wit);line-height:1.15;margin-bottom:20px}
+    .hero-text h1 em{color:var(--groen);font-style:normal}
+    .hero-text p{color:rgba(255,255,255,0.65);font-size:1rem;line-height:1.75;max-width:480px}
+    .hero-photo{position:relative}
+    .hero-photo img{width:100%;border-radius:20px;display:block;object-fit:cover;object-position:top;aspect-ratio:3/4}
+    .photo-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(11,22,40,0.95));border-radius:0 0 20px 20px;padding:32px 16px 16px}
+    .photo-caption strong{color:var(--wit);font-size:0.92rem;display:block}
+    .photo-caption span{color:rgba(255,255,255,0.5);font-size:0.78rem}
+    .verhaal{max-width:720px;margin:0 auto;padding:64px 24px}
+    .verhaal h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.45rem;margin-bottom:16px;margin-top:40px}
+    .verhaal h2:first-child{margin-top:0}
+    .verhaal p{color:#374151;font-size:0.97rem;line-height:1.82;margin-bottom:16px}
+    .verhaal strong{color:var(--navy)}
+    .quote-block{border-left:4px solid var(--groen);background:var(--licht);border-radius:0 14px 14px 0;padding:22px 26px;margin:32px 0;font-size:1.05rem;color:var(--navy);font-style:italic;line-height:1.7}
+    .quote-block cite{display:block;margin-top:10px;font-style:normal;font-size:0.82rem;color:var(--grijs);font-weight:600}
+    .setup{background:var(--licht);padding:56px 24px}
+    .setup-inner{max-width:720px;margin:0 auto}
+    .setup-inner h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin-bottom:24px}
+    .setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .setup-card{background:var(--wit);border-radius:14px;padding:18px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
+    .setup-icon{font-size:1.4rem;min-width:36px}
+    .setup-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:4px}
+    .setup-card p{font-size:0.82rem;color:var(--grijs);margin:0;line-height:1.5}
+    .visie{max-width:720px;margin:0 auto;padding:56px 24px}
+    .visie h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin-bottom:16px}
+    .visie p{color:#374151;font-size:0.97rem;line-height:1.82;margin-bottom:14px}
+    .visie a{color:var(--groen)}
+    .belofte-box{background:var(--navy);color:var(--wit);border-radius:16px;padding:28px;margin:28px 0}
+    .belofte-box h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.05rem;color:var(--groen);margin-bottom:16px}
+    .belofte-item{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+    .belofte-item:last-child{margin-bottom:0}
+    .belofte-check{color:var(--groen);font-weight:700;min-width:20px;margin-top:1px}
+    .belofte-item p{font-size:0.87rem;color:rgba(255,255,255,0.7);margin:0;line-height:1.55}
+    .affiliate-box{background:rgba(255,210,63,0.08);border:1px solid rgba(255,210,63,0.3);border-radius:14px;padding:22px;margin:24px 0}
+    .affiliate-box h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:10px}
+    .affiliate-box p{font-size:0.86rem;color:#374151;margin:0;line-height:1.7}
+    .contact-section{background:var(--navy);padding:56px 24px;text-align:center}
+    .contact-section h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;color:var(--wit);margin-bottom:12px}
+    .contact-section p{color:rgba(255,255,255,0.6);margin-bottom:6px}
+    .contact-section a{color:var(--groen);font-weight:600;font-size:1.1rem}
+    footer{background:var(--navy);padding:32px 24px 24px;color:rgba(255,255,255,.5);border-top:1px solid rgba(255,255,255,.08)}
     .footer-inner{max-width:1100px;margin:0 auto}
-    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:28px}
     .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
     .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
     .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
     .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
-    @media(max-width:700px){.values-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;display:flex;justify-content:space-between;font-size:.8rem}
+    @media(max-width:800px){.hero-inner{grid-template-columns:1fr}.hero-photo{max-width:260px;margin:32px auto 0}.setup-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
   </style>
 </head>
 <body>
@@ -59,71 +85,129 @@
   </div>
 </nav>
 
-<div class="page-hero">
-  <div class="page-hero-inner">
-    <h1>Over StekkerSlim.nl</h1>
-    <p>Eerlijke energietips voor Nederlandse gezinnen. Geen verborgen agenda, geen hype — gewoon helder advies.</p>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="tag">Het verhaal achter StekkerSlim</div>
+      <h1>Ik deed alles <em>goed</em> — en betaalde toch meer</h1>
+      <p>Zonnepanelen, Home Assistant, slimme stekkers. En toch ging mijn energierekening van €140 naar €200 in zes maanden. Dát is waarom ik StekkerSlim begon.</p>
+    </div>
+    <div class="hero-photo">
+      <img src="remy.png" alt="Remy Egberts — oprichter StekkerSlim.nl">
+      <div class="photo-caption">
+        <strong>Remy Egberts</strong>
+        <span>Oprichter StekkerSlim.nl · Hoorn, Noord-Holland</span>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="content">
-  <h2>Waarom StekkerSlim?</h2>
-  <p>De Nederlandse energiemarkt is ingewikkeld. Vergelijkingssites verdienen alleen geld als jij overstapt. Installateurs willen zoveel mogelijk verkopen. En de grote energiebedrijven communiceren in jargon dat niemand begrijpt.</p>
-  <p>StekkerSlim is er voor iedereen die gewoon wil weten: wat is slim voor mijn situatie? Hoeveel kan ik echt besparen? En wanneer is iets de moeite niet waard?</p>
-  <p>We zijn een onafhankelijk informatieplatform. Wij kiezen altijd voor de eerlijke uitleg, ook als dat betekent dat we zeggen: "In jouw situatie is dit niet rendabel."</p>
+<div class="verhaal">
+  <h2>Hoe het begon</h2>
+  <p>Vier jaar lang betaalde ik netjes hetzelfde aan energie. Ik deed mijn best: zonnepanelen genomen, slimme meter laten plaatsen, Home Assistant opgezet, slimme stekkers op alle grote apparaten, thermostaat ingesteld op schema. Ik was er écht mee bezig.</p>
+  <p>Toen de salderingsregeling begon af te bouwen, merkte ik het meteen in mijn portemonnee. <strong>In zes maanden tijd ging mijn rekening van €140 naar €200 per maand.</strong> Terwijl ik zonnepanelen had. Terwijl ik bewust bezig was. Het voelde als opgelicht worden door een systeem dat je niet helemaal begrijpt — en dat niemand je goed uitlegt.</p>
 
-  <h2>Onze waarden</h2>
-  <div class="values-grid">
-    <div class="value-card">
-      <div class="value-icon">✅</div>
-      <h3>Eerlijk over risico's</h3>
-      <p>We benoemen altijd de nadelen én de voordelen. Geen hype, geen get-rich-quick verhalen.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-icon">🔍</div>
-      <h3>Controleerbaar</h3>
-      <p>Onze berekeningen zijn transparant. Je ziet precies hoe we tot een uitkomst komen.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-icon">📊</div>
-      <h3>Onderbouwd</h3>
-      <p>We gebruiken officiële bronnen: CBS, ACM, RVO, Belastingdienst en actuele marktdata.</p>
-    </div>
-    <div class="value-card">
-      <div class="value-icon">🏠</div>
-      <h3>Gericht op gezinnen</h3>
-      <p>Praktisch advies voor mensen die gewoon hun energierekening willen verlagen, zonder gedoe.</p>
-    </div>
+  <div class="quote-block">
+    "Ik deed alles wat je zou moeten doen om te besparen. Toch betaalde ik meer. Er moest toch ergens een plek zijn die dit gewoon eerlijk uitlegt?"
+    <cite>— Remy, oprichter StekkerSlim.nl</cite>
   </div>
 
-  <h2>Wat we doen</h2>
-  <ul>
-    <li><strong>Calculators:</strong> Eerlijke tools die jou helpen berekenen wat echt rendabel is voor jouw situatie</li>
-    <li><strong>Artikelen:</strong> Uitleg over energiecontracten, subsidieregelingen, smarthome en verduurzaming</li>
-    <li><strong>Vergelijken:</strong> We linken door naar betrouwbare vergelijkingssites en installateurs</li>
-    <li><strong>Smarthome tips:</strong> Hoe je met een P1 meter en Home Assistant je energieverbruik automatiseert</li>
-  </ul>
+  <p>Ik begon te spitten. Wat zijn precies terugleverkosten? Wat betekent de salderingsafbouw voor mijn situatie? Is een thuisbatterij nu slim of te vroeg? En welk energiecontract past eigenlijk bij iemand die zonnepanelen heeft én slim bezig wil zijn?</p>
+  <p>Elke keer als ik iets opzocht, belandde ik op een andere site. Hier een calculator, daar een artikel, ergens anders advies over smarthome. <strong>Nooit alles op één plek. Nooit eerlijk en zonder verborgen agenda.</strong> Veel sites verdienen geld aan je klik, ongeacht of het advies goed voor je is.</p>
 
-  <div class="affiliate-uitleg">
-    <h3>💰 Hoe verdient StekkerSlim geld? — Volledig transparant</h3>
-    <p>StekkerSlim werkt samen met affiliate partners. Als jij via een link op onze site een energiecontract afsluit, een offerte aanvraagt of een product koopt, ontvangen wij daar soms een vergoeding voor. Dit kost jou niets extra.<br><br>
-    <strong>Belangrijk:</strong> deze vergoeding heeft <em>geen invloed</em> op onze inhoudelijke adviezen. Wij schrijven ook over opties waarvoor we geen vergoeding ontvangen, en we benoemen altijd als iets niet de moeite waard is. Onze eerlijkheid is het enige wat we hebben — en dat beschermen we.</p>
+  <h2>Waarom StekkerSlim anders is</h2>
+  <p>Ik wil de site zijn die ik zelf zocht. Eén plek waar je je energierekening kunt narekenen, kunt berekenen wat een thuisbatterij oplevert, kunt lezen wat terugleverkosten precies zijn — en eerlijk te horen krijgt wanneer iets de moeite niet waard is.</p>
+  <p>Ik woon zelf in een huurwoning, heb twee dochters, en ben alleenverdienend. Ik heb geen onbeperkt budget. De calculators die ik bouw zijn de calculators die ik zelf nodig had. De artikelen zijn de uitleg die ik wilde lezen maar nergens vond.</p>
+</div>
+
+<div class="setup">
+  <div class="setup-inner">
+    <h2>Wat er bij mij thuis draait</h2>
+    <div class="setup-grid">
+      <div class="setup-card">
+        <div class="setup-icon">☀️</div>
+        <div><h4>Zonnepanelen</h4><p>Op een huurhuis. En ja, de terugleverkosten bijten ook bij mij.</p></div>
+      </div>
+      <div class="setup-card">
+        <div class="setup-icon">🏠</div>
+        <div><h4>Home Assistant</h4><p>Draait lokaal. Alle automatiseringen zelf gebouwd. P1 meter gekoppeld voor live inzicht.</p></div>
+      </div>
+      <div class="setup-card">
+        <div class="setup-icon">🔌</div>
+        <div><h4>Slimme stekkers</h4><p>Op de grote verbruikers. Inzicht in wat elke kWh kost per apparaat.</p></div>
+      </div>
+      <div class="setup-card">
+        <div class="setup-icon">🌡️</div>
+        <div><h4>Slimme thermostaat</h4><p>Resideo op schema. Geen geld weggooien aan verwarming als we er niet zijn.</p></div>
+      </div>
+      <div class="setup-card">
+        <div class="setup-icon">📡</div>
+        <div><h4>P1 meter uitgelezen</h4><p>Live verbruik en teruglevering zichtbaar. Zo zie je precies wat er gebeurt.</p></div>
+      </div>
+      <div class="setup-card">
+        <div class="setup-icon">🔋</div>
+        <div><h4>Thuisbatterij — gepland</h4><p>Zodra de rekensommen kloppen. Nog niet — maar de calculator vertelt me wanneer.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="visie">
+  <h2>Waar StekkerSlim naartoe gaat</h2>
+  <p>Dit is nog maar het begin. Ik wil StekkerSlim uitbouwen tot meer dan een site met calculators. Een plek waar mensen van elkaar kunnen leren — een community van huiseigenaren en huurders die serieus bezig zijn met hun energieverbruik.</p>
+  <p>Denk aan een forum waar je vragen kunt stellen over Home Assistant, smarthome apparaten kunt bespreken, je eigen besparing kunt delen. Mensen die elkaar helpen slimmer om te gaan met energie, apparaten en contracten. Zonder reclame, zonder verborgen belangen.</p>
+  <p>Heb je een vraag, een fout gevonden in een berekening, of gewoon een tip? Mail me via <a href="mailto:info@stekkerslim.nl">info@stekkerslim.nl</a>. Ik lees alles zelf.</p>
+
+  <div class="belofte-box">
+    <h3>Wat ik jou beloof</h3>
+    <div class="belofte-item"><span class="belofte-check">✓</span><p>Ik vertel je ook wanneer iets <em>niet</em> de moeite waard is voor jouw situatie</p></div>
+    <div class="belofte-item"><span class="belofte-check">✓</span><p>Alle calculators zijn eerlijk — geen mooier resultaat om je door te laten klikken</p></div>
+    <div class="belofte-item"><span class="belofte-check">✓</span><p>Ik gebruik zelf alles wat ik aanraad. Geen links naar producten die ik niet ken</p></div>
+    <div class="belofte-item"><span class="belofte-check">✓</span><p>De site verdient aan affiliate commissies — dat staat altijd duidelijk vermeld</p></div>
   </div>
 
+  <div class="affiliate-box">
+    <h3>💰 Hoe verdient StekkerSlim geld?</h3>
+    <p>Als je via een link op deze site een energiecontract afsluit of een product koopt, ontvang ik soms een commissie. Dit kost jou niets extra. Ik ben hier transparant over omdat ik het zelf irritant vind als sites dit verbergen. Mijn adviezen veranderen hier niet door — ik schrijf ook over opties waar ik niks aan verdien, en ik zeg eerlijk wanneer iets niet rendabel is.</p>
+  </div>
+</div>
+
+<div class="contact-section">
   <h2>Contact</h2>
-  <p>Vragen, feedback of een fout gevonden in een berekening? We horen het graag. Stuur een mail naar: <strong>info@stekkerslim.nl</strong></p>
-  <p>We proberen binnen 2 werkdagen te reageren.</p>
+  <p>Vraag, tip of fout gevonden?</p>
+  <a href="mailto:info@stekkerslim.nl">info@stekkerslim.nl</a>
+  <p style="margin-top:14px;font-size:0.83rem;color:rgba(255,255,255,0.4)">Ik reageer zelf, meestal binnen 1-2 werkdagen.</p>
 </div>
 
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-brand"><a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a><p>Eerlijke energietips voor Nederlandse gezinnen.</p></div>
-      <div class="footer-col"><h4>Calculators</h4><ul><li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li><li><a href="calculator-energiekosten.html">Energiekosten</a></li><li><a href="calculator-laadpaal.html">Laadpaal thuis</a></li><li><a href="calculator-warmtepomp.html">Warmtepomp</a></li></ul></div>
-      <div class="footer-col"><h4>Artikelen</h4><ul><li><a href="dynamisch-contract.html">Dynamisch contract</a></li><li><a href="saldering-2027.html">Saldering 2027</a></li></ul></div>
-      <div class="footer-col"><h4>StekkerSlim</h4><ul><li><a href="over-ons.html">Over ons</a></li><li><a href="privacy.html">Privacy</a></li></ul></div>
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+        <p>Eerlijke energietips voor Nederlandse gezinnen. Geen verborgen agenda, gewoon helder advies.</p>
+      </div>
+      <div class="footer-col"><h4>Calculators</h4><ul>
+        <li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li>
+        <li><a href="calculator-energiekosten.html">Energiekosten</a></li>
+        <li><a href="calculator-thuisbatterij.html">Thuisbatterij</a></li>
+        <li><a href="calculator-laadpaal.html">Laadpaal</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Artikelen</h4><ul>
+        <li><a href="terugleverkosten.html">Terugleverkosten</a></li>
+        <li><a href="saldering-2027.html">Saldering 2027</a></li>
+        <li><a href="dynamisch-contract.html">Dynamisch contract</a></li>
+        <li><a href="smarthome-p1-meter.html">P1 meter & HA</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="mailto:info@stekkerslim.nl">Contact</a></li>
+      </ul></div>
     </div>
-    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl</span><a href="privacy.html">Privacy & Disclaimer</a></div>
+    <div class="footer-bottom">
+      <span>© 2026 StekkerSlim.nl — Remy Egberts</span>
+      <a href="privacy.html">Privacy & Disclaimer</a>
+    </div>
   </div>
 </footer>
 </body>

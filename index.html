@@ -80,20 +80,105 @@
 
     /* ── HERO ────────────────────────────── */
     .hero {
-      background: var(--navy);
-      padding: 80px 24px 90px;
-      position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(0,209,122,0.15) 0%, transparent 70%),
-                  radial-gradient(ellipse at 10% 80%, rgba(255,210,63,0.08) 0%, transparent 60%);
+      background: var(--wit);
+      padding: 64px 24px 56px;
+      border-bottom: 1px solid var(--grijs-licht);
     }
     .hero-inner {
       max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
-      align-items: center; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 380px; gap: 64px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 20px;
+    }
+    .hero-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      object-fit: cover; object-position: top;
+      border: 2px solid var(--groen);
+    }
+    .hero-eyebrow-text {
+      font-size: 0.85rem; color: var(--grijs);
+      line-height: 1.4;
+    }
+    .hero-eyebrow-text strong { color: var(--navy); font-weight: 600; }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    h1 em { color: var(--groen); font-style: normal; }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--grijs);
+      line-height: 1.75; max-width: 480px;
+      margin-bottom: 32px;
+    }
+    .hero-btns {
+      display: flex; gap: 12px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--groen); color: var(--navy);
+      padding: 13px 24px; border-radius: 10px;
+      font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,209,122,0.35); }
+    .btn-secondary {
+      background: var(--licht); color: var(--navy);
+      padding: 13px 24px; border-radius: 10px;
+      font-weight: 600; font-size: 0.95rem;
+      text-decoration: none; display: inline-block;
+      transition: background 0.2s;
+      border: 2px solid var(--grijs-licht);
+    }
+    .btn-secondary:hover { background: var(--grijs-licht); }
+    .hero-trust {
+      display: flex; gap: 20px; margin-top: 24px; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.82rem; color: var(--grijs);
+    }
+    .trust-item span { color: var(--groen); font-size: 1rem; }
+
+    /* Hero right — persoonlijk kaartje */
+    .hero-personal {
+      background: var(--licht);
+      border-radius: 20px;
+      padding: 28px;
+      border: 1px solid var(--grijs-licht);
+    }
+    .hero-personal-photo {
+      width: 100%; border-radius: 14px;
+      object-fit: cover; object-position: top;
+      aspect-ratio: 4/3;
+      display: block; margin-bottom: 20px;
+    }
+    .hero-personal-quote {
+      font-size: 0.92rem; color: var(--navy);
+      line-height: 1.65; font-style: italic;
+      margin-bottom: 16px;
+      border-left: 3px solid var(--groen);
+      padding-left: 14px;
+    }
+    .hero-personal-name {
+      font-size: 0.82rem; font-weight: 700; color: var(--navy);
+    }
+    .hero-personal-title {
+      font-size: 0.78rem; color: var(--grijs);
+    }
+    .hero-setup-pills {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px;
+    }
+    .pill {
+      background: var(--wit); border: 1px solid var(--grijs-licht);
+      border-radius: 99px; padding: 4px 10px;
+      font-size: 0.75rem; color: var(--grijs); font-weight: 500;
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -467,77 +552,60 @@
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-badge">Energieprijzen 2026 bijgewerkt</div>
-      <h1>Stop met te veel betalen voor <em>energie</em></h1>
-      <p>Praktische tips, eerlijke uitleg en slimme calculators voor gezinnen. Geen gedoe, gewoon besparen.</p>
+      <div class="hero-eyebrow">
+        <img src="remy.png" alt="Remy" class="hero-avatar">
+        <div class="hero-eyebrow-text">
+          <strong>Gemaakt door Remy</strong> — vader van 2, huurder met zonnepanelen,<br>en gefrustreerd door een rekening die bleef stijgen
+        </div>
+      </div>
+      <h1>Alles over energie op <em>één plek</em> — eerlijk en zonder gedoe</h1>
+      <p class="hero-sub">Calculators, contractvergelijking, smarthome tips en eerlijke uitleg. Voor mensen die gewoon willen weten wat slim is voor hún situatie.</p>
       <div class="hero-btns">
         <a href="#calculators" class="btn-primary">Bereken jouw besparing →</a>
-        <a href="#vergelijken" class="btn-secondary">Contracten vergelijken</a>
+        <a href="over-ons.html" class="btn-secondary">Waarom deze site?</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span>✓</span> Geen verborgen agenda</div>
+        <div class="trust-item"><span>✓</span> Zegt ook wanneer iets niet loont</div>
+        <div class="trust-item"><span>✓</span> Gratis calculators</div>
       </div>
     </div>
-    <div class="hero-card">
-      <div class="hero-card-title">Energieprijzen vandaag</div>
-      <div class="energy-stat">
-        <span class="stat-label">Gas (€/m³)</span>
-        <div>
-          <span class="stat-value up">€1,42</span>
-          <span class="trend">↑ +49% dit jaar</span>
-        </div>
-      </div>
-      <div class="energy-stat">
-        <span class="stat-label">Stroom (€/kWh)</span>
-        <div>
-          <span class="stat-value warn">€0,34</span>
-          <span class="trend">variabel</span>
-        </div>
-      </div>
-      <div class="energy-stat">
-        <span class="stat-label">Gem. jaarrekening</span>
-        <div>
-          <span class="stat-value up">€2.065</span>
-          <span class="trend">per huishouden</span>
-        </div>
-      </div>
-      <div class="energy-stat">
-        <span class="stat-label">Salderingsregeling</span>
-        <div>
-          <span class="stat-value warn">Stopt 2027</span>
-          <span class="trend">→ actie nodig</span>
-        </div>
-      </div>
-      <div class="energy-stat">
-        <span class="stat-label">Stap jaarlijks over</span>
-        <div>
-          <span class="stat-value ok">~1 miljoen</span>
-          <span class="trend">huishoudens</span>
-        </div>
+    <div class="hero-personal">
+      <img src="remy.png" alt="Remy Egberts — StekkerSlim" class="hero-personal-photo">
+      <p class="hero-personal-quote">"Ik deed alles goed — zonnepanelen, Home Assistant, slimme stekkers — en toch ging mijn rekening van €140 naar €200. Dit is de site die ik zelf zocht."</p>
+      <div class="hero-personal-name">Remy Egberts</div>
+      <div class="hero-personal-title">Oprichter StekkerSlim.nl · Hoorn</div>
+      <div class="hero-setup-pills">
+        <span class="pill">☀️ Zonnepanelen</span>
+        <span class="pill">🏠 Home Assistant</span>
+        <span class="pill">🔌 Slimme stekkers</span>
+        <span class="pill">📡 P1 meter</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-bar-inner">
-    <div class="stat-item">
-      <span class="stat-num">€2.065</span>
-      <span class="stat-desc">Gemiddelde jaarrekening</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">~1M</span>
-      <span class="stat-desc">Overstappers per jaar</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">59%</span>
-      <span class="stat-desc">Consumenten zien door bomen bos niet</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">2027</span>
-      <span class="stat-desc">Salderingsregeling stopt</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">€400+</span>
-      <span class="stat-desc">Besparing mogelijk met slim overstappen</span>
+<!-- WAAROM SECTIE -->
+<div style="background:var(--navy);padding:32px 24px">
+  <div style="max-width:1100px;margin:0 auto;display:flex;gap:40px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+    <div style="color:rgba(255,255,255,0.5);font-size:0.82rem;text-transform:uppercase;letter-spacing:1px;font-weight:600">Waarom mensen StekkerSlim gebruiken</div>
+    <div style="display:flex;gap:40px;flex-wrap:wrap">
+      <div style="text-align:center">
+        <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;color:var(--groen)">€2.065</div>
+        <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:2px">Gem. jaarrekening NL</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;color:var(--groen)">2027</div>
+        <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:2px">Saldering stopt</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;color:var(--groen)">€400+</div>
+        <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:2px">Besparing mogelijk</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;color:var(--groen)">6</div>
+        <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:2px">Gratis calculators</div>
+      </div>
     </div>
   </div>
 </div>
@@ -733,16 +801,6 @@
   </div>
 </section>
 
-<!-- CTA BLOK -->
-<section class="newsletter">
-  <div>
-    <div class="section-label" style="color:var(--navy-mid);">Gratis tools</div>
-    <h2>Bereken wat jij kunt besparen</h2>
-    <p>Alle calculators zijn gratis. Geen account nodig, geen verborgen kosten. Gewoon invullen en zien wat het oplevert.</p>
-    <a href="#calculators" style="display:inline-block;background:var(--navy);color:var(--wit);padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;font-size:0.95rem;margin-top:8px">Naar de calculators →</a>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -783,7 +841,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 StekkerSlim.nl</span>
+      <span>© 2026 StekkerSlim.nl — Remy Egberts</span>
       <div style="display:flex; gap:20px;">
         <a href="privacy.html">Privacy</a>
         <a href="privacy.html">Disclaimer</a>
