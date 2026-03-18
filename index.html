@@ -180,46 +180,7 @@
       border-radius: 99px; padding: 4px 10px;
       font-size: 0.75rem; color: var(--grijs); font-weight: 500;
     }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,209,122,0.15); border: 1px solid rgba(0,209,122,0.3);
-      color: var(--groen); border-radius: 99px;
-      padding: 6px 14px; font-size: 0.8rem; font-weight: 600;
-      margin-bottom: 20px;
-    }
-    .hero-badge::before { content: '⚡'; }
-    h1 {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 900; font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--wit); line-height: 1.1;
-      margin-bottom: 20px;
-    }
-    h1 em {
-      font-style: normal; color: var(--groen);
-    }
-    .hero p {
-      color: rgba(255,255,255,0.7); font-size: 1.05rem;
-      margin-bottom: 32px; max-width: 480px;
-    }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--groen); color: var(--navy);
-      padding: 14px 28px; border-radius: 10px;
-      font-weight: 700; font-size: 0.95rem;
-      text-decoration: none; display: inline-block;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(0,209,122,0.4);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,209,122,0.5); }
-    .btn-secondary {
-      background: rgba(255,255,255,0.1); color: var(--wit);
-      padding: 14px 28px; border-radius: 10px;
-      font-weight: 600; font-size: 0.95rem;
-      text-decoration: none; display: inline-block;
-      border: 1px solid rgba(255,255,255,0.2);
-      transition: background 0.2s;
-    }
-    .btn-secondary:hover { background: rgba(255,255,255,0.18); }
+    /* oude hero stijlen verwijderd — nieuwe staan bovenaan */
 
     /* HERO CARD */
     .hero-card {
@@ -581,6 +542,27 @@
         <span class="pill">🔌 Slimme stekkers</span>
         <span class="pill">📡 P1 meter</span>
       </div>
+      <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--grijs-licht)">
+        <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--grijs);margin-bottom:10px">Actuele tarieven (indicatief)</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem">
+            <span style="color:var(--grijs)">Gas (€/m³)</span>
+            <span style="font-family:'Outfit',sans-serif;font-weight:700;color:#EF4444">€1,42 <span style="font-size:0.72rem;font-weight:400">↑</span></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem">
+            <span style="color:var(--grijs)">Stroom (€/kWh)</span>
+            <span style="font-family:'Outfit',sans-serif;font-weight:700;color:var(--accent)">€0,34</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem">
+            <span style="color:var(--grijs)">Gem. jaarrekening</span>
+            <span style="font-family:'Outfit',sans-serif;font-weight:700;color:var(--navy)">€2.065</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:0.85rem">
+            <span style="color:var(--grijs)">Saldering stopt</span>
+            <span style="font-family:'Outfit',sans-serif;font-weight:700;color:#EF4444">1 jan 2027</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -758,6 +740,10 @@
             </div>
           </li>
         </ul>
+        <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap">
+          <a href="smarthome-producten.html" style="background:var(--groen);color:var(--navy);padding:12px 22px;border-radius:10px;font-weight:700;font-size:0.9rem;text-decoration:none;display:inline-block">🔌 Bekijk alle smarthome producten →</a>
+          <a href="smarthome-p1-meter.html" style="background:rgba(255,255,255,0.1);color:var(--wit);padding:12px 22px;border-radius:10px;font-weight:600;font-size:0.9rem;text-decoration:none;display:inline-block;border:1px solid rgba(255,255,255,0.2)">P1 meter handleiding</a>
+        </div>
       </div>
       <div class="smarthome-visual">
         <div style="color:rgba(255,255,255,0.4); font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:16px;">Live verbruik</div>
