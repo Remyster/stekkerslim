@@ -166,13 +166,14 @@
       </div>
 
       <div class="form-group">
-        <label style="margin-bottom:10px">Situatie terugleverkosten</label>
+        <label style="margin-bottom:10px">Jaarlijkse terugleverkosten contract</label>
         <div class="toggle-group">
-          <button class="toggle-btn active" onclick="setKosten('geen',this)">Geen kosten</button>
-          <button class="toggle-btn" onclick="setKosten('midden',this)">€50/jr</button>
-          <button class="toggle-btn" onclick="setKosten('hoog',this)">€150/jr</button>
+          <button class="toggle-btn active" onclick="setKosten('geen',this)">Geen</button>
+          <button class="toggle-btn" onclick="setKosten('laag',this)">~€75/jr</button>
+          <button class="toggle-btn" onclick="setKosten('midden',this)">~€165/jr</button>
+          <button class="toggle-btn" onclick="setKosten('hoog',this)">~€405/jr</button>
         </div>
-        <div id="teruglever-kosten-info" style="font-size:0.78rem;color:var(--grijs);margin-top:8px;">Sommige leveranciers rekenen terugleverkosten. Dit verschilt per contract.</div>
+        <div id="teruglever-kosten-info" style="font-size:0.78rem;color:var(--grijs);margin-top:8px;">Vandebron staffel: €75/jr bij 500 kWh · €165 bij 1.500 kWh · €405 bij 3.500 kWh teruglevering. <a href="calculator-energiekosten.html" style="color:var(--groen)">Bereken jouw exacte kosten →</a></div>
       </div>
 
       <div class="divider"></div>
@@ -340,7 +341,7 @@
   function setKosten(niveau, btn) {
     document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    terugleverKosten = niveau === 'geen' ? 0 : niveau === 'midden' ? 50 : 150;
+    terugleverKosten = niveau === 'geen' ? 0 : niveau === 'laag' ? 75 : niveau === 'midden' ? 165 : 405;
     const info = document.getElementById('teruglever-kosten-info');
     const warning = document.getElementById('teruglever-warning');
     if (niveau === 'geen') {
