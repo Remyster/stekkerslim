@@ -142,6 +142,22 @@
         <label>Stroomtarief inkoop <span id="inkoop-val">€0,34/kWh</span></label>
         <input type="range" id="inkoop" min="0.15" max="0.60" value="0.34" step="0.01" oninput="calc()">
         <div class="range-labels"><span>€0,15</span><span>€0,60</span></div>
+        <div style="margin-top:8px">
+          <button onclick="toggleGemB()" style="background:none;border:none;color:var(--groen);font-size:0.78rem;font-weight:600;cursor:pointer;padding:0;font-family:'DM Sans',sans-serif;">⚙️ Dal/normaal tarief? Bereken gemiddelde →</button>
+          <div id="gem-calc-b" style="display:none;background:var(--licht);border-radius:10px;padding:12px;margin-top:8px">
+            <div style="font-size:0.8rem;font-weight:600;margin-bottom:8px">Gewogen gemiddeld tarief berekenen</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Normaal (€/kWh)</div><input type="number" id="gb-n" value="0.151" step="0.001" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemB()"></div>
+              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Dal (€/kWh)</div><input type="number" id="gb-d" value="0.119" step="0.001" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemB()"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Normaal kWh/jaar</div><input type="number" id="gb-nk" value="2100" step="100" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemB()"></div>
+              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Dal kWh/jaar</div><input type="number" id="gb-dk" value="1400" step="100" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemB()"></div>
+            </div>
+            <div id="gem-res-b" style="background:var(--groen);color:var(--navy);border-radius:8px;padding:10px;text-align:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem">—</div>
+            <button onclick="gebruikGemB()" style="width:100%;margin-top:8px;background:var(--navy);color:var(--wit);border:none;border-radius:8px;padding:8px;font-size:0.82rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">Gebruik dit tarief →</button>
+          </div>
+        </div>
       </div>
       <div class="form-group">
         <label>Teruglevertarief <span id="teruglever-val">€0,06/kWh</span></label>
@@ -414,6 +430,10 @@
       vtxt.textContent = 'In jouw situatie is de terugverdientijd te lang. Mogelijk heb je te weinig overproductie of te kleine teruglevering om een batterij te rechtvaardigen.';
     }
   }
+
+  function toggleGemB(){const e=document.getElementById('gem-calc-b');e.style.display=e.style.display==='none'?'block':'none';if(e.style.display==='block')berekenGemB();}
+  function berekenGemB(){const nt=parseFloat(document.getElementById('gb-n').value)||0,dt=parseFloat(document.getElementById('gb-d').value)||0,nk=parseInt(document.getElementById('gb-nk').value)||0,dk=parseInt(document.getElementById('gb-dk').value)||0,tot=nk+dk;if(!tot)return;const gem=(nt*nk+dt*dk)/tot;const el=document.getElementById('gem-res-b');el.textContent='Gewogen gemiddeld: €'+gem.toFixed(4).replace('.',',')+'/kWh';el.dataset.waarde=gem.toFixed(4);}
+  function gebruikGemB(){const w=parseFloat(document.getElementById('gem-res-b').dataset.waarde);if(!w)return;document.getElementById('inkoop').value=Math.max(0.15,Math.min(0.60,w)).toFixed(3);calc();document.getElementById('gem-calc-b').style.display='none';}
 
   calc();
 </script>
