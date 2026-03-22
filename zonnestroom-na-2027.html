@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Wat is je zonnestroom nog waard na 2027? Salderen stopt — dit is wat er echt verandert, wat je krijgt en wat je nu kunt doen.">
+  <title>Wat is je Zonnestroom nog Waard na 2027? | StekkerSlim.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--groen:#00D17A;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+    .page-hero{background:var(--navy);padding:56px 24px}
+    .page-hero-inner{max-width:800px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .article-tag{display:inline-block;background:rgba(255,210,63,0.2);color:var(--accent);padding:4px 12px;border-radius:99px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--wit);margin-bottom:16px;line-height:1.15}
+    .article-meta{color:rgba(255,255,255,0.4);font-size:0.82rem}
+    .urgency-banner{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:16px 20px;margin-top:24px;color:var(--wit);font-size:0.88rem}
+    .urgency-banner strong{color:#FCA5A5}
+    .article-body{max-width:800px;margin:0 auto;padding:56px 24px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin:40px 0 12px}
+    .article-body h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin:28px 0 8px}
+    .article-body p{color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:16px}
+    .article-body ul,.article-body ol{padding-left:24px;color:#374151;font-size:0.95rem;line-height:1.8;margin-bottom:16px}
+    .article-body li{margin-bottom:6px}
+    .article-body a{color:var(--groen)}
+    .highlight-box{background:var(--licht);border-left:4px solid var(--groen);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem;color:#374151}
+    .warning-box{background:rgba(239,68,68,0.06);border-left:4px solid #EF4444;border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem;color:#374151}
+    .info-box{background:rgba(255,210,63,0.1);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem;color:#374151}
+
+    .toc{background:var(--licht);border-radius:14px;padding:24px;margin-bottom:40px}
+    .toc h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
+    .toc ol{padding-left:20px;font-size:0.88rem;line-height:2}
+    .toc a{color:var(--navy);text-decoration:none}.toc a:hover{color:var(--groen)}
+
+    /* Vergelijking voor/na */
+    .vergelijk-blok{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}
+    .vergelijk-kaart{border-radius:14px;padding:20px}
+    .vergelijk-kaart.voor{background:rgba(0,209,122,0.08);border:1px solid rgba(0,209,122,0.2)}
+    .vergelijk-kaart.na{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2)}
+    .vergelijk-kaart h4{font-family:'Outfit',sans-serif;font-weight:800;font-size:0.95rem;margin-bottom:10px}
+    .vergelijk-kaart.voor h4{color:#065F46}
+    .vergelijk-kaart.na h4{color:#DC2626}
+    .vergelijk-kaart p{font-size:0.87rem;color:#374151;margin:0;line-height:1.6}
+
+    /* Actiestappen */
+    .action-steps{display:flex;flex-direction:column;gap:14px;margin:24px 0}
+    .action-step{display:flex;gap:16px;align-items:flex-start;padding:16px;background:var(--licht);border-radius:12px}
+    .step-num{min-width:32px;height:32px;background:var(--groen);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:900;font-size:0.9rem;flex-shrink:0}
+    .step-content h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:4px}
+    .step-content p{font-size:0.83rem;color:var(--grijs);margin:0;line-height:1.5}
+    .step-content a{color:var(--groen)}
+
+    .disclaimer-box{background:var(--licht);border-radius:12px;padding:16px 20px;font-size:0.82rem;color:var(--grijs);margin-top:40px;line-height:1.6}
+    .related-articles{background:var(--licht);padding:48px 24px}
+    .related-inner{max-width:800px;margin:0 auto}
+    .related-inner h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:20px}
+    .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .related-card{background:var(--wit);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:box-shadow .2s;display:block}
+    .related-card:hover{box-shadow:var(--shadow)}
+    .related-card .tag{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--groen);margin-bottom:6px}
+    .related-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;line-height:1.3}
+    .cta-section{background:var(--navy);padding:56px 24px;text-align:center}
+    .cta-section h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:var(--wit);margin-bottom:12px}
+    .cta-section p{color:rgba(255,255,255,.6);margin-bottom:24px}
+    .btn-primary{background:var(--groen);color:var(--navy);padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;display:inline-block;transition:transform .2s}
+    .btn-primary:hover{transform:translateY(-2px)}
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;display:flex;justify-content:space-between;font-size:.8rem;margin-top:24px}
+    @media(max-width:700px){.related-grid,.vergelijk-blok{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#calculators">Calculators</a></li>
+      <li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">StekkerSlim</a> › <a href="saldering-2027.html">Saldering 2027</a> › Zonnestroom na 2027</div>
+    <div class="article-tag">Zonnepanelen</div>
+    <h1>Wat is je zonnestroom nog waard na 2027?</h1>
+    <div class="article-meta">Door Remy Egberts · Bijgewerkt maart 2026 · 6 min leestijd</div>
+    <div class="urgency-banner">
+      <strong>⏳ Nog minder dan een jaar:</strong> Per 1 januari 2027 stopt de salderingsregeling definitief. Voor mensen met zonnepanelen verandert er concreet iets op hun rekening.
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="toc">
+    <h4>📋 In dit artikel</h4>
+    <ol>
+      <li><a href="#salderen">Wat is salderen ook alweer?</a></li>
+      <li><a href="#na2027">Wat krijg je na 2027?</a></li>
+      <li><a href="#rekensommetje">Wat betekent dit in euro's?</a></li>
+      <li><a href="#loontzonnepanelen">Lonen zonnepanelen nog?</a></li>
+      <li><a href="#acties">Wat kun je nu doen?</a></li>
+    </ol>
+  </div>
+
+  <p>Veel mensen schrikken als ze horen dat salderen stopt per 1 januari 2027. En terecht — het heeft directe impact op wat je zonnepanelen nog opleveren. Maar er zijn ook veel halve waarheden in omloop. Ik leg het eerlijk uit, inclusief wat ik zelf met mijn situatie doe.</p>
+
+  <h2 id="salderen">Wat is salderen ook alweer?</h2>
+
+  <p>Nu mag je de zonnestroom die je teruglevert aan het net wegstrepen tegen de stroom die je later afneemt. Lever je in de zomer 2.000 kWh terug, dan mag je die in de winter verrekenen met 2.000 kWh die je afneemt. Je betaalt dan pas als je meer verbruikt dan je opwekt.</p>
+
+  <p>Dat voordeel verdwijnt op 1 januari 2027. Volledig. Geen overgangsregeling, geen geleidelijke afbouw meer — die was al eerder afgevoerd.</p>
+
+  <h2 id="na2027">Wat krijg je na 2027?</h2>
+
+  <p>Vanaf 1 januari 2027 krijg je voor elke kWh die je teruglevert een <strong>terugleververgoeding</strong> van je leverancier. Dat klinkt redelijk, tot je ziet hoeveel dat is.</p>
+
+  <div class="vergelijk-blok">
+    <div class="vergelijk-kaart voor">
+      <h4>✅ Tot en met 31 dec 2026</h4>
+      <p>Teruggeleverde stroom is evenveel waard als afgenomen stroom. Bij een stroomtarief van ~€0,27/kWh krijg je ook ~€0,27/kWh terug via saldering.</p>
+    </div>
+    <div class="vergelijk-kaart na">
+      <h4>❌ Vanaf 1 jan 2027</h4>
+      <p>Je krijgt het lage teruglevertarief van je leverancier. Greenchoice publiceerde als eerste: <strong>€0,0025/kWh</strong>. Dat is 0,25 cent. Andere leveranciers volgen met vergelijkbare lage tarieven.</p>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    <strong>Het verschil is enorm:</strong> Nu ontvang je ~€0,27 per kWh via saldering. Na 2027 krijg je mogelijk €0,0025 per kWh terug. Dat is meer dan 100× minder voor dezelfde stroom. ⚠️ Check dit artikel voor publicatie — Greenchoice tarief kan nog wijzigen, andere leveranciers publiceren hun 2027-tarieven later.
+  </div>
+
+  <h2 id="rekensommetje">Wat betekent dit in euro's?</h2>
+
+  <p>Stel je levert gemiddeld 1.500 kWh per jaar terug. Dat is realistisch voor een gemiddeld huishouden met zonnepanelen — want gemiddeld gebruik je zelf 30-35% van wat je panelen opwekken, de rest lever je terug.</p>
+
+  <p><strong>Nu (saldering):</strong> 1.500 kWh × €0,27 = <strong>€405 verrekend</strong> per jaar<br>
+  <strong>Na 2027 (teruglevertarief):</strong> 1.500 kWh × €0,0025 = <strong>€3,75 vergoeding</strong> per jaar</p>
+
+  <p>Dat verschil van ~€400 komt rechtstreeks bovenop je energierekening. Bovenop de terugleverkosten die je leverancier mogelijk al rekent.</p>
+
+  <div class="info-box">
+    <strong>Let op:</strong> Dit geldt alleen voor de stroom die je <em>teruglevert</em>. De stroom die je direct zelf verbruikt als de zon schijnt blijft net zo waardevol — je koopt die stroom niet meer in. Het voordeel van zonnepanelen zit na 2027 dus vooral in <strong>zelf verbruiken</strong>.
+  </div>
+
+  <h2 id="loontzonnepanelen">Lonen zonnepanelen nog na 2027?</h2>
+
+  <p>Ja — maar de berekening verandert. Zonnepanelen gaan gemiddeld 25 jaar mee. De terugverdientijd loopt op, maar ze verdienen zichzelf ook zonder saldering terug. De sleutel is: hoe meer je zelf verbruikt van wat je opwekt, hoe beter.</p>
+
+  <p>Wie vandaag zonnepanelen koopt, moet rekening houden met de nieuwe situatie. Wie ze al heeft, moet nadenken over hoe hij meer zelf kan verbruiken.</p>
+
+  <h2 id="acties">Wat kun je nu doen?</h2>
+
+  <div class="action-steps">
+    <div class="action-step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Meer zelf verbruiken overdag</h4>
+        <p>Wasmachine, vaatwasser en opladen zoveel mogelijk overdag als de zon schijnt. Met een slimme stekker en Home Assistant doe je dit automatisch. <a href="beste-slimme-stekker-2026.html">Welke stekker je daarvoor nodig hebt →</a></p>
+      </div>
+    </div>
+    <div class="action-step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Thuisbatterij overwegen</h4>
+        <p>Sla je eigen zonnestroom op voor 's avonds. Dan lever je minder terug én koop je minder dure avondstroom in. <a href="calculator-thuisbatterij.html">Bereken of een thuisbatterij loont →</a></p>
+      </div>
+    </div>
+    <div class="action-step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Dynamisch contract bekijken</h4>
+        <p>Met een dynamisch contract verkoop je teruggeleverde stroom op het moment dat de prijs het hoogst is — in plaats van altijd een laag vast tarief. <a href="dynamisch-contract.html">Is een dynamisch contract iets voor jou? →</a></p>
+      </div>
+    </div>
+    <div class="action-step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Bereken jouw eigen impact</h4>
+        <p>Hoeveel scheelt het jou precies? Dat hangt af van je verbruik, je opwek en je contract. <a href="calculator-zonnepanelen.html">Gebruik de zonnepanelen calculator →</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <strong>Mijn eigen situatie:</strong> Ik heb zonnepanelen op een huurhuis. Na 2027 wordt terugleveren voor mij bijna waardeloos. Mijn plan: wasmachine en vaatwasser automatisch overdag laten draaien via Home Assistant, en sparen voor een thuisbatterij. De thuisbatterij calculator helpt me zien wanneer dat punt bereikt is.
+  </div>
+
+  <div class="disclaimer-box">
+    <strong>Check voor publicatie:</strong> Het Greenchoice tarief van €0,0025/kWh en de wettelijke 50% minimumregel zijn gepubliceerd maar kunnen nog wijzigen voor andere leveranciers. De 50% minimumregel tot 2030 is wettelijk vastgelegd en klopt. Energieprijzen zijn indicatief op basis van januari 2026. Controleer actuele tarieven op milieucentraal.nl.
+  </div>
+
+</div>
+
+<div class="related-articles">
+  <div class="related-inner">
+    <h3>Lees ook</h3>
+    <div class="related-grid">
+      <a href="saldering-2027.html" class="related-card">
+        <div class="tag">Zonnepanelen</div>
+        <h4>Salderingsregeling stopt 2027 — volledig overzicht</h4>
+      </a>
+      <a href="terugleverkosten.html" class="related-card">
+        <div class="tag">Contracten</div>
+        <h4>Terugleverkosten — wat je leverancier je niet vertelt</h4>
+      </a>
+      <a href="calculator-zonnepanelen.html" class="related-card">
+        <div class="tag">Calculator</div>
+        <h4>Bereken de terugverdientijd van jouw zonnepanelen</h4>
+      </a>
+      <a href="calculator-thuisbatterij.html" class="related-card">
+        <div class="tag">Calculator</div>
+        <h4>Is een thuisbatterij rendabel voor jouw situatie?</h4>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Wat kost het jou precies?</h2>
+  <p>Bereken de impact van de salderingswijziging op jouw situatie</p>
+  <a href="calculator-zonnepanelen.html" class="btn-primary">Bereken jouw situatie →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+        <p>Eerlijke energietips voor Nederlandse gezinnen.</p>
+      </div>
+      <div class="footer-col"><h4>Calculators</h4><ul>
+        <li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li>
+        <li><a href="calculator-energiekosten.html">Energiekosten</a></li>
+        <li><a href="calculator-thuisbatterij.html">Thuisbatterij</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Artikelen</h4><ul>
+        <li><a href="saldering-2027.html">Saldering 2027</a></li>
+        <li><a href="terugleverkosten.html">Terugleverkosten</a></li>
+        <li><a href="dynamisch-contract.html">Dynamisch contract</a></li>
+        <li><a href="beste-slimme-stekker-2026.html">Beste slimme stekker</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="mailto:info@stekkerslim.nl">Contact</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 StekkerSlim.nl — Remy Egberts</span>
+      <a href="privacy.html" style="color:rgba(255,255,255,.4)">Privacy & Disclaimer</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
