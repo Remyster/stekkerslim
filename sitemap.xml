@@ -74,8 +74,14 @@
   </url>
   <url>
     <loc>https://stekkerslim.nl/smarthome-producten.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <lastmod>2026-03-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stekkerslim.nl/beste-slimme-stekker-2026.html</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
 </urlset>
