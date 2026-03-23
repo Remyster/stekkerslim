@@ -2,6 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
+  <link rel="canonical" href="https://stekkerslim.nl/calculator-thuisbatterij.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Thuisbatterij calculator: bereken of een thuisbatterij rendabel is voor jouw situatie. Inclusief effect salderingsafbouw 2027. Eerlijke terugverdientijd.">
   <title>Thuisbatterij Calculator 2026 — Is het Rendabel? | StekkerSlim.nl</title>
@@ -123,6 +124,14 @@
   <div class="calc-inner">
     <div class="calc-form">
       <h2>Jouw situatie</h2>
+
+      <div class="section-title">Jouw situatie</div>
+      <div class="form-group">
+        <label>Jouw leeftijd <span id="leeftijd-val">45 jaar</span></label>
+        <input type="range" id="leeftijd" min="20" max="80" value="45" step="1" oninput="calc()">
+        <div class="range-labels"><span>20 jaar</span><span>80 jaar</span></div>
+        <div id="leeftijd-info" style="font-size:0.78rem;color:var(--grijs);margin-top:6px;background:var(--licht);border-radius:8px;padding:8px 10px"></div>
+      </div>
 
       <div class="section-title">Zonnepanelen</div>
       <div class="form-group">
@@ -358,6 +367,26 @@
   function fmtKwh(n) { return Math.round(n).toLocaleString('nl-NL') + ' kWh'; }
 
   function calc() {
+    const leeftijd = parseInt(document.getElementById('leeftijd').value);
+    document.getElementById('leeftijd-val').textContent = leeftijd + ' jaar';
+
+    // Leeftijdsadvies
+    const leeftijdInfo = document.getElementById('leeftijd-info');
+    const restJaren = Math.max(0, 85 - leeftijd);
+    if (leeftijd < 35) {
+      leeftijdInfo.textContent = '✅ Goed moment — je hebt ~' + restJaren + ' jaar om te profiteren. Batterijen gaan 10-15 jaar mee, dus je haalt er meerdere generaties uit.';
+      leeftijdInfo.style.color = '#065F46';
+    } else if (leeftijd < 55) {
+      leeftijdInfo.textContent = '✅ Prima timing — je hebt nog ruim genoeg tijd om de investering terug te verdienen. Bereken de terugverdientijd hieronder.';
+      leeftijdInfo.style.color = '#065F46';
+    } else if (leeftijd < 65) {
+      leeftijdInfo.textContent = '⚠️ Let op terugverdientijd — op jouw leeftijd is een korte terugverdientijd (<8 jaar) extra belangrijk. Kijk goed naar het bedrag hieronder.';
+      leeftijdInfo.style.color = '#92400E';
+    } else {
+      leeftijdInfo.textContent = '⚠️ Kritisch bekijken — op ' + leeftijd + ' jaar loont een grote investering alleen als de terugverdientijd kort is (<5 jaar). Overweeg een kleinere oplossing.';
+      leeftijdInfo.style.color = '#DC2626';
+    }
+
     const zon = parseInt(document.getElementById('zonopbrengst').value);
     const verbruik = parseInt(document.getElementById('verbruik').value);
     const inkoop = parseFloat(document.getElementById('inkoop').value);

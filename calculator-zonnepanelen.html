@@ -136,6 +136,13 @@
       <h2>Jouw situatie</h2>
 
       <div class="form-group">
+        <label>Jouw leeftijd <span id="leeftijd-val">45 jaar</span></label>
+        <input type="range" id="leeftijd" min="20" max="80" value="45" step="1" oninput="updateCalc()">
+        <div class="range-labels"><span>20 jaar</span><span>80 jaar</span></div>
+        <div id="leeftijd-info" style="font-size:0.78rem;color:var(--grijs);margin-top:6px;background:var(--licht);border-radius:8px;padding:8px 10px"></div>
+      </div>
+
+      <div class="form-group">
         <label>Aantal zonnepanelen <span id="panelen-val">10 panelen</span></label>
         <input type="range" id="panelen" min="4" max="30" value="10" step="1" oninput="updateCalc()">
         <div class="range-labels"><span>4</span><span>30 panelen</span></div>
@@ -341,6 +348,23 @@
   function fmtE(n) { return '€' + n.toLocaleString('nl-NL', {minimumFractionDigits:0, maximumFractionDigits:0}); }
 
   function updateCalc() {
+    const leeftijd = parseInt(document.getElementById('leeftijd').value);
+    document.getElementById('leeftijd-val').textContent = leeftijd + ' jaar';
+    const leeftijdInfo = document.getElementById('leeftijd-info');
+    if (leeftijd < 35) {
+      leeftijdInfo.textContent = '✅ Prima moment — zonnepanelen gaan 25 jaar mee. Op jouw leeftijd pluk je er tientallen jaren de vruchten van.';
+      leeftijdInfo.style.color = '#065F46';
+    } else if (leeftijd < 55) {
+      leeftijdInfo.textContent = '✅ Goed — zonnepanelen verdienen zich terug in 7-12 jaar. Je hebt ruim genoeg tijd om rendement te maken.';
+      leeftijdInfo.style.color = '#065F46';
+    } else if (leeftijd < 68) {
+      leeftijdInfo.textContent = '⚠️ Check de terugverdientijd — op jouw leeftijd is het belangrijk dat die onder de 10 jaar ligt. Kijk naar het resultaat hieronder.';
+      leeftijdInfo.style.color = '#92400E';
+    } else {
+      leeftijdInfo.textContent = '⚠️ Kritisch bekijken — zonnepanelen lonen op latere leeftijd minder vanwege de lange terugverdientijd. Overweeg alleen bij korte terugverdientijd (<7 jaar).';
+      leeftijdInfo.style.color = '#DC2626';
+    }
+
     const panelen = parseInt(document.getElementById('panelen').value);
     const verbruik = parseInt(document.getElementById('verbruik').value);
     const tarief = parseFloat(document.getElementById('tarief').value);
