@@ -80,6 +80,19 @@
 
     @media(max-width:900px){.products-grid{grid-template-columns:1fr 1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
     @media(max-width:600px){.products-grid{grid-template-columns:1fr}}
+  
+    /* Hamburger menu */
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:200}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#ffffff;border-bottom:2px solid #E8EDF2;z-index:150;padding:16px 24px;flex-direction:column;gap:4px;box-shadow:0 8px 24px rgba(0,0,0,0.1)}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{padding:12px 16px;color:#0B1628;text-decoration:none;font-weight:600;font-size:0.95rem;border-radius:10px;transition:background .2s}
+    .mobile-menu a:hover{background:#F4F7F2;color:#00D17A}
+    .mobile-menu .mob-cta{background:#00D17A;color:#0B1628!important;margin-top:8px;text-align:center}
+    @media(max-width:900px){.nav-links{display:none!important}.hamburger{display:flex!important}}
   </style>
 </head>
 <body>
@@ -92,6 +105,10 @@
       <li><a href="index.html#smarthome">Smarthome</a></li>
       <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
     </ul>
+  
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -111,6 +128,7 @@
     <button class="filter-btn" onclick="filterCat('verlichting',this)">💡 Slimme verlichting</button>
     <button class="filter-btn" onclick="filterCat('thermostaat',this)">🌡️ Thermostaat</button>
     <button class="filter-btn" onclick="filterCat('accu',this)">🔋 Accu & opslag</button>
+        <button class="filter-btn" onclick="filterCat('ha',this)">🏠 Home Assistant</button>
   </div>
 </div>
 
@@ -502,8 +520,8 @@
         <div class="product-img">☀️</div>
         <div class="product-body">
           <div class="product-tag">Balkon batterij</div>
-          <div class="product-name">Zendure SolarFlow — balkon systeem</div>
-          <div class="product-desc">Koppelt aan je balkonsysteem via micro-omvormer. Overdag laadt de batterij op met zonnestroom. 's Avonds gebruik je die zelf. Zo vermijd je terugleverkosten én koop je minder dure avondstroom. Geen installateur nodig.</div>
+          <div class="product-name">Zendure SolarFlow — plug-in thuisbatterij</div>
+          <div class="product-desc">Slaat zonnestroom op via je balkonsysteem of micro-omvormer. Overdag laadt de batterij op. 's Avonds gebruik je die zelf. Zo vermijd je terugleverkosten én koop je minder dure avondstroom. Geen installateur nodig.</div>
           <div class="product-price">€599 – €1.200 <span>afhankelijk van capaciteit</span></div>
           <div class="shop-buttons">
             <a href="https://amzn.to/4brGEgY" class="shop-btn amazon" target="_blank" rel="noopener sponsored">
@@ -562,44 +580,51 @@
       </div>
     </div>
 
-      <div class="product-card" data-cat="accu">
-        <div class="product-img">🔌</div>
-        <div class="product-body">
-          <div class="product-tag">Raspberry Pi 4</div>
-          <div class="product-name">Raspberry Pi 4 starter kit (4GB)</div>
-          <div class="product-desc">Bewezen optie voor Home Assistant. Inclusief 32GB SD kaart, voeding en behuizing. Pi 4 is ruim voldoende voor HA + alle add-ons.</div>
-          <div class="product-price">€80 – €130 <span>compleet pakket</span></div>
-          <div class="shop-buttons">
-            <a href="https://amzn.to/4bM6r4R" class="shop-btn amazon" target="_blank" rel="noopener sponsored">
-              <span class="shop-name">🛒 Amazon.nl</span><span class="shop-arrow">→</span>
-            </a>
-            <a href="https://partner.bol.com/click/click?p=2&t=url&s=1510756&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbqeel-raspberry-pi-4-model-b-4gb-ram-32gb-class-10-micro-sd-kaart-5v-3a-voeding-aan-uit-schakelaar-ventilator-koellichaam-zwarte-behuizing-kaartlezer-hdmi-kabel%2F9300000076402903%2F&name=Raspberry%20Pi%204" class="shop-btn bol" target="_blank" rel="noopener sponsored">
-              <span class="shop-name">🔵 Bol.com</span><span class="shop-arrow">→</span>
-            </a>
-          </div>
+  </div>
+
+  <!-- HOME ASSISTANT HARDWARE -->
+  <div class="category-title" data-cat="ha">🏠 Home Assistant hardware</div>
+  <div class="products-grid">
+
+    <div class="product-card" data-cat="ha">
+      <div class="product-img">🔌</div>
+      <div class="product-body">
+        <div class="product-tag">Raspberry Pi 4</div>
+        <div class="product-name">Raspberry Pi 4 starter kit (4GB)</div>
+        <div class="product-desc">Bewezen optie voor Home Assistant. Inclusief 32GB SD kaart, voeding en behuizing. Pi 4 is ruim voldoende voor HA + alle add-ons. Goed beginpakket als je net start.</div>
+        <div class="product-price">€80 – €130 <span>compleet pakket</span></div>
+        <div class="shop-buttons">
+          <a href="https://amzn.to/4bM6r4R" class="shop-btn amazon" target="_blank" rel="noopener sponsored">
+            <span class="shop-name">🛒 Amazon.nl</span><span class="shop-arrow">→</span>
+          </a>
+          <a href="https://partner.bol.com/click/click?p=2&t=url&s=1510756&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fbqeel-raspberry-pi-4-model-b-4gb-ram-32gb-class-10-micro-sd-kaart-5v-3a-voeding-aan-uit-schakelaar-ventilator-koellichaam-zwarte-behuizing-kaartlezer-hdmi-kabel%2F9300000076402903%2F&name=Raspberry%20Pi%204" class="shop-btn bol" target="_blank" rel="noopener sponsored">
+            <span class="shop-name">🔵 Bol.com</span><span class="shop-arrow">→</span>
+          </a>
         </div>
       </div>
+    </div>
 
-      <div class="product-card" data-cat="accu">
-        <div class="product-img">🔌</div>
-        <div class="product-body">
-          <div class="product-tag">Nieuwste</div>
-          <div class="product-name">Raspberry Pi 5 (8GB) — snelste optie 2026</div>
-          <div class="product-desc">Snelste optie voor Home Assistant in 2026. Draait vlekkeloos ook met veel automations en add-ons. Los verkrijgbaar — voeg zelf SD kaart en voeding toe, of koop het complete pakket bij Bol.com.</div>
-          <div class="product-price">€130 – €240 <span>los of compleet pakket</span></div>
-          <div class="shop-buttons">
-            <a href="https://amzn.to/4lDTvBB" class="shop-btn amazon" target="_blank" rel="noopener sponsored">
-              <span class="shop-name">🛒 Amazon.nl</span><span class="shop-arrow">→</span>
-            </a>
-            <a href="https://partner.bol.com/click/click?p=2&t=url&s=1510756&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fraspberry-pi-5-starter-kit-8gb-met-ventilator-64gb-sd-kaart%2F9300000185165304%2F&name=Raspberry%20Pi%205%20starter%20kit" class="shop-btn bol" target="_blank" rel="noopener sponsored">
-              <span class="shop-name">🔵 Bol.com</span><span class="shop-arrow">→</span>
-            </a>
-          </div>
+    <div class="product-card" data-cat="ha">
+      <div class="product-img">🔌</div>
+      <div class="product-body">
+        <div class="product-tag">Nieuwste</div>
+        <div class="product-name">Raspberry Pi 5 (8GB) — snelste optie 2026</div>
+        <div class="product-desc">Snelste optie voor Home Assistant in 2026. Draait vlekkeloos ook met veel automations en add-ons. Los verkrijgbaar — voeg zelf SD kaart en voeding toe, of koop het complete pakket bij Bol.com.</div>
+        <div class="product-price">€130 – €240 <span>los of compleet pakket</span></div>
+        <div class="shop-buttons">
+          <a href="https://amzn.to/4lDTvBB" class="shop-btn amazon" target="_blank" rel="noopener sponsored">
+            <span class="shop-name">🛒 Amazon.nl</span><span class="shop-arrow">→</span>
+          </a>
+          <a href="https://partner.bol.com/click/click?p=2&t=url&s=1510756&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Fraspberry-pi-5-starter-kit-8gb-met-ventilator-64gb-sd-kaart%2F9300000185165304%2F&name=Raspberry%20Pi%205%20starter%20kit" class="shop-btn bol" target="_blank" rel="noopener sponsored">
+            <span class="shop-name">🔵 Bol.com</span><span class="shop-arrow">→</span>
+          </a>
         </div>
       </div>
     </div>
 
   </div>
+
+</div>
 </div>
 
 <div class="disclaimer-bar">
