@@ -111,9 +111,6 @@
     <p>Over energie besparen, slimme apparaten, energiecontracten, Home Assistant of iets anders dat met energie te maken heeft. Als ik het antwoord niet weet, zeg ik dat ook gewoon.</p>
   </div>
 
-  <!-- Brevo hidden iframe trick — bewezen werkend op StekkerSlim -->
-  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none"></iframe>
-
   <form id="vraagForm" onsubmit="submitForm(event)">
     <div class="form-row">
       <div class="form-group">
@@ -216,42 +213,39 @@
 </footer>
 
 <script>
-function submitForm(e) {
+async function submitForm(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
   btn.disabled = true;
   btn.innerHTML = '<span>Versturen...</span>';
 
-  const naam = document.getElementById('naam').value;
-  const email = document.getElementById('email').value;
-  const categorie = document.getElementById('categorie').value;
-  const vraag = document.getElementById('vraag').value;
+  const data = {
+    naam: document.getElementById('naam').value,
+    email: document.getElementById('email').value,
+    categorie: document.getElementById('categorie').value,
+    vraag: document.getElementById('vraag').value
+  };
 
-  // Stuur via mailto fallback + toon succes
-  const subject = encodeURIComponent('StekkerSlim vraag: ' + categorie);
-  const body = encodeURIComponent('Naam: ' + naam + '\nEmail: ' + email + '\nCategorie: ' + categorie + '\n\nVraag:\n' + vraag);
+  try {
+    const res = await fetch('https://formspree.io/f/mnjgejle', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
 
-  // Hidden iframe submit naar Brevo
-  const form = document.createElement('form');
-  form.method = 'POST';
-  form.action = 'https://7c4144c1.sibforms.com/serve/MUIFAJLdyGLfemjIZdH13Z0ny0k1EFQXSdLw9LRsDTHaIohyh9NQ02UCBAaV4Ws166FIfqkn4poRTuUvMtzXs5W9NmX0pGwrMpPSJJy2py0JUWjDAGRA0am1KA5ZbcLZ30Aic29a27A1rPd4yQ4iUaKn9R-tSWB7GD10ciuWIcoemXlXmBtn8zfLcUUxhZ_Ct4QE5w0GyEJDrEAUKw==';
-  form.target = 'hidden_iframe';
-  form.style.display = 'none';
-
-  const fields = {EMAIL: email, NAAM: naam, CATEGORIE: categorie, VRAAG: vraag};
-  Object.entries(fields).forEach(([k,v]) => {
-    const inp = document.createElement('input');
-    inp.name = k; inp.value = v;
-    form.appendChild(inp);
-  });
-
-  document.body.appendChild(form);
-
-  // Toon succes direct (form werkt asynchroon via hidden iframe)
-  setTimeout(() => {
-    document.getElementById('vraagForm').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
-  }, 800);
+    if (res.ok) {
+      document.getElementById('vraagForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = '<span>Verstuur vraag</span> <span>→</span>';
+      alert('Er ging iets mis. Probeer het opnieuw.');
+    }
+  } catch(err) {
+    btn.disabled = false;
+    btn.innerHTML = '<span>Verstuur vraag</span> <span>→</span>';
+    alert('Er ging iets mis. Controleer je internetverbinding.');
+  }
 }
 </script>
 
