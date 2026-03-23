@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://stekkerslim.nl/slimme-stekkers.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Beste slimme stekkers 2026 — eerlijk vergeleken. Tapo, EVE Matter, HomeWizard, Sonoff. Top 3 per budget, kwaliteit en Home Assistant.">
+  <title>Beste Slimme Stekker 2026 — Eerlijk Vergeleken | StekkerSlim.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--groen:#00D17A;--groen-dark:#00A85F;--navy:#0B1628;--navy-mid:#132240;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.88rem;font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+    .page-hero{background:var(--navy);padding:56px 24px 48px}
+    .page-hero-inner{max-width:1100px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--wit);margin-bottom:12px}
+    .page-hero p{color:rgba(255,255,255,0.65);max-width:580px;font-size:1rem}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+    .hero-tag{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.7);padding:5px 14px;border-radius:99px;font-size:0.78rem;font-weight:600}
+    .hero-tag.green{background:rgba(0,209,122,0.2);color:var(--groen)}
+
+    /* TOP 3 */
+    .top3-section{background:var(--licht);padding:48px 24px}
+    .top3-inner{max-width:1100px;margin:0 auto}
+    .section-label{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--groen);margin-bottom:8px}
+    .top3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
+    .top3-card{background:var(--wit);border-radius:16px;padding:24px;border:2px solid var(--grijs-licht);position:relative}
+    .top3-card.winner{border-color:var(--groen)}
+    .top3-badge{position:absolute;top:-12px;left:20px;background:var(--groen);color:var(--navy);font-family:'Outfit',sans-serif;font-weight:900;font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:99px}
+    .top3-badge.gold{background:var(--accent);color:var(--navy)}
+    .top3-badge.silver{background:#94A3B8;color:var(--wit)}
+    .top3-badge.future{background:var(--navy);color:var(--groen)}
+    .top3-card h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;margin-bottom:8px;line-height:1.3}
+    .top3-card .price{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.3rem;color:var(--groen);margin-bottom:8px}
+    .top3-card p{font-size:0.83rem;color:var(--grijs);line-height:1.55;margin-bottom:14px}
+    .top3-btn{display:block;text-align:center;background:var(--navy);color:var(--wit);padding:10px 16px;border-radius:10px;font-weight:700;font-size:0.85rem;text-decoration:none;transition:background .2s}
+    .top3-btn:hover{background:var(--groen);color:var(--navy)}
+    .top3-btn.groen{background:var(--groen);color:var(--navy)}
+    .top3-btn.groen:hover{background:var(--groen-dark);color:var(--wit)}
+
+    /* PRODUCTEN */
+    .products-section{max-width:1100px;margin:0 auto;padding:56px 24px}
+    .cat-header{display:flex;align-items:center;gap:16px;margin:48px 0 24px}
+    .cat-header:first-child{margin-top:0}
+    .cat-header h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.3rem;white-space:nowrap}
+    .cat-header::after{content:'';flex:1;height:2px;background:var(--grijs-licht)}
+    .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+    .product-card{background:var(--wit);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;transition:transform .2s,box-shadow .2s;border:1px solid var(--grijs-licht)}
+    .product-card:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.12)}
+    .product-card.aanbevolen{border-color:var(--groen);border-width:2px}
+    .product-img{height:120px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--licht);position:relative}
+    .aanbevolen-badge{position:absolute;top:10px;right:10px;background:var(--groen);color:var(--navy);font-size:0.68rem;font-weight:800;text-transform:uppercase;padding:3px 10px;border-radius:99px}
+    .future-badge{position:absolute;top:10px;right:10px;background:var(--navy);color:var(--groen);font-size:0.68rem;font-weight:800;text-transform:uppercase;padding:3px 10px;border-radius:99px;border:1px solid var(--groen)}
+    .product-body{padding:18px}
+    .product-tag{display:inline-block;background:rgba(0,209,122,0.1);color:var(--groen);font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 10px;border-radius:99px;margin-bottom:8px}
+    .product-tag.matter{background:rgba(255,210,63,0.15);color:#92400E}
+    .product-tag.budget{background:rgba(59,130,246,0.1);color:#1E40AF}
+    .product-name{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;color:var(--navy);margin-bottom:6px;line-height:1.3}
+    .product-desc{font-size:0.82rem;color:var(--grijs);line-height:1.5;margin-bottom:10px}
+    .product-specs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+    .spec{background:var(--licht);border-radius:6px;padding:3px 8px;font-size:0.72rem;font-weight:600;color:var(--navy)}
+    .product-price{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.05rem;color:var(--navy);margin-bottom:12px}
+    .product-price span{font-size:0.78rem;font-weight:400;color:var(--grijs);margin-left:4px}
+    .shop-buttons{display:flex;flex-direction:column;gap:7px}
+    .shop-btn{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-radius:9px;text-decoration:none;font-size:0.82rem;font-weight:600;transition:all .2s;border:2px solid transparent}
+    .shop-btn.coolblue{background:#003082;color:#fff;border-color:#003082}.shop-btn.coolblue:hover{background:#002266}
+    .shop-btn.amazon{background:#FF9900;color:#111;border-color:#FF9900}.shop-btn.amazon:hover{background:#e88a00}
+    .shop-btn.bol{background:#0000A4;color:#fff;border-color:#0000A4}.shop-btn.bol:hover{background:#000083}
+    .shop-btn.homewizard{background:var(--groen);color:var(--navy);border-color:var(--groen)}.shop-btn.homewizard:hover{background:var(--groen-dark)}
+    .shop-btn.aliexpress{background:#FF4747;color:#fff;border-color:#FF4747}.shop-btn.aliexpress:hover{background:#e03e3e}
+    .shop-btn .budget-label{font-size:0.65rem;background:rgba(255,255,255,0.25);border-radius:99px;padding:1px 6px;margin-left:4px}
+    .shop-btn .shop-arrow{font-size:1rem}
+    .no-affiliate-note{font-size:0.75rem;color:var(--grijs);background:var(--licht);border-radius:8px;padding:8px 10px;margin-top:8px;line-height:1.5}
+    .budget-disclaimer{font-size:0.75rem;color:#92400E;background:rgba(255,210,63,0.1);border-radius:8px;padding:8px 10px;margin-top:8px;line-height:1.5}
+
+    /* UITLEG */
+    .uitleg-section{background:var(--navy);padding:48px 24px}
+    .uitleg-inner{max-width:800px;margin:0 auto}
+    .uitleg-inner h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;color:var(--wit);margin-bottom:8px}
+    .uitleg-inner p{color:rgba(255,255,255,0.6);font-size:0.9rem;margin-bottom:24px}
+    .uitleg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .uitleg-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:20px}
+    .uitleg-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;color:var(--wit);margin-bottom:8px}
+    .uitleg-card p{font-size:0.82rem;color:rgba(255,255,255,0.55);line-height:1.55;margin:0}
+
+    /* DISCLAIMER */
+    .disclaimer-bar{background:var(--licht);padding:16px 24px;text-align:center;font-size:0.78rem;color:var(--grijs);border-top:1px solid var(--grijs-licht)}
+    .disclaimer-bar a{color:var(--groen)}
+
+    /* FOOTER */
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;display:flex;justify-content:space-between;font-size:.8rem;margin-top:24px}
+
+    @media(max-width:900px){.top3-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}.uitleg-grid{grid-template-columns:1fr}}
+    @media(max-width:600px){.products-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#calculators">Calculators</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">StekkerSlim</a> › <a href="smarthome-producten.html">Smarthome</a> › Slimme stekkers</div>
+    <h1>Beste slimme stekker 2026</h1>
+    <p>Eerlijk vergeleken — met affiliate links die ik zelf gebruik of heb getest. Geen gesponsorde top 1, gewoon wat ik jou zou aanraden.</p>
+    <div class="hero-tags">
+      <span class="hero-tag green">✅ Werkt met Home Assistant</span>
+      <span class="hero-tag">WiFi & Matter opties</span>
+      <span class="hero-tag">10A – 16A</span>
+      <span class="hero-tag">Energiemeting ingebouwd</span>
+    </div>
+  </div>
+</div>
+
+<!-- TOP 3 -->
+<div class="top3-section">
+  <div class="top3-inner">
+    <div class="section-label">Mijn eerlijke top 3</div>
+    <h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem">Welke kies ik voor welke situatie?</h2>
+    <div class="top3-grid">
+      <div class="top3-card">
+        <div class="top3-badge gold">💰 Beste deal</div>
+        <h3>Tapo P115 4-pack</h3>
+        <div class="price">€59,-</div>
+        <p>Betrouwbaar merk, goede app, werkt native met Home Assistant. 4 stuks voor €59 is gewoon de beste prijs-kwaliteit die je vindt. Energiemeting per stekker ingebouwd.</p>
+        <a href="https://www.awin1.com/cread.php?awinmid=85161&awinaffid=2816288&ued=https%3A%2F%2Fwww.coolblue.nl%2Fproduct%2F942096%2Ftapo-p115-slimme-stekker-4-pack.html" class="top3-btn groen" target="_blank" rel="noopener sponsored">Bekijk bij Coolblue →</a>
+      </div>
+      <div class="top3-card winner">
+        <div class="top3-badge">🏠 Beste voor HA</div>
+        <h3>HomeWizard Energy Socket</h3>
+        <div class="price">€26+</div>
+        <p>100% Nederlands, volledig lokaal, geen cloud nodig. Ideaal voor grote verbruikers zoals wasmachine of droger. Koppelt direct met Home Assistant via lokale API.</p>
+        <a href="https://partner.homewizard.com/c/?si=18407&li=1795784&wi=419188&ws=&dl=nl%2Fenergy-socket%2F" class="top3-btn groen" target="_blank" rel="noopener sponsored">Bekijk bij HomeWizard →</a>
+      </div>
+      <div class="top3-card">
+        <div class="top3-badge future">🔮 Toekomstproof</div>
+        <h3>EVE Energy Matter 2-pack</h3>
+        <div class="price">€100,-</div>
+        <p>Matter is het nieuwe universele protocol. Werkt met Home Assistant, Google Home, Apple HomeKit én Amazon Alexa tegelijk. Premium keuze voor wie future-proof wil gaan.</p>
+        <a href="https://www.awin1.com/cread.php?awinmid=85161&awinaffid=2816288&ued=https%3A%2F%2Fwww.coolblue.nl%2Fproduct%2F932403%2Feve-energy-matter-duopack.html" class="top3-btn" target="_blank" rel="noopener sponsored">Bekijk bij Coolblue →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ALLE PRODUCTEN -->
+<div class="products-section">
+
+  <div class="cat-header"><h2>🔌 Tapo slimme stekkers</h2></div>
+  <div class="products-grid">
+
+    <div class="product-card aanbevolen">
+      <div class="product-img">🔌<span class="aanbevolen-badge">Aanbevolen</span></div>
+      <div class="product-body">
+        <span class="product-tag">Tapo / TP-Link</span>
+        <div class="product-name">Tapo P115 Slimme Stekker 2-pack</div>
+        <div class="product-desc">Energiemeting per stekker, schakelen op afstand, werkt met Home Assistant en Tapo app. 16A, geschikt voor grote apparaten.</div>
+        <div class="product-specs"><span class="spec">16A</span><span class="spec">WiFi 2.4GHz</span><span class="spec">Home Assistant</span><span class="spec">Energiemeting</span></div>
+        <div class="product-price">€39,99 <span>2 stuks</span></div>
+        <div class="shop-buttons">
+          <a href="https://www.awin1.com/cread.php?awinmid=85161&awinaffid=2816288&ued=https%3A%2F%2Fwww.coolblue.nl%2Fproduct%2F924158%2Ftapo-p115-slimme-stekker-2-pack.html" class="shop-btn coolblue" target="_blank" rel="noopener sponsored"><span class="shop-name">🔵 Coolblue</span><span class="shop-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card aanbevolen">
+      <div class="product-img">🔌🔌<span class="aanbevolen-badge">Beste deal</span></div>
+      <div class="product-body">
+        <span class="product-tag">Tapo / TP-Link</span>
+        <div class="product-name">Tapo P115 Slimme Stekker 4-pack</div>
+        <div class="product-desc">Beste prijs per stekker. Zelfde functies als de 2-pack maar dan voor elk stopcontact in huis. De meest gekochte optie.</div>
+        <div class="product-specs"><span class="spec">16A</span><span class="spec">WiFi 2.4GHz</span><span class="spec">Home Assistant</span><span class="spec">Energiemeting</span></div>
+        <div class="product-price">€59,- <span>4 stuks = €14,75/st</span></div>
+        <div class="shop-buttons">
+          <a href="https://www.awin1.com/cread.php?awinmid=85161&awinaffid=2816288&ued=https%3A%2F%2Fwww.coolblue.nl%2Fproduct%2F942096%2Ftapo-p115-slimme-stekker-4-pack.html" class="shop-btn coolblue" target="_blank" rel="noopener sponsored"><span class="shop-name">🔵 Coolblue</span><span class="shop-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">🔌×6</div>
+      <div class="product-body">
+        <span class="product-tag">Tapo / TP-Link</span>
+        <div class="product-name">Tapo P115 Slimme Stekker 6-pack</div>
+        <div class="product-desc">Bulk optie voor wie het hele huis wil uitrusten. Zelfde functies, iets hogere prijs per stekker dan de 4-pack.</div>
+        <div class="product-specs"><span class="spec">16A</span><span class="spec">WiFi 2.4GHz</span><span class="spec">Energiemeting</span></div>
+        <div class="product-price">€99,- <span>6 stuks = €16,50/st</span></div>
+        <div class="shop-buttons">
+          <a href="https://www.awin1.com/cread.php?awinmid=85161&awinaffid=2816288&ued=https%3A%2F%2Fwww.coolblue.nl%2Fproduct%2F943444%2Ftapo-p115-slimme-stekker-6-pack.html" class="shop-btn coolblue" target="_blank" rel="noopener sponsored"><span class="shop-name">🔵 Coolblue</span><span class="shop-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cat-header"><h2>🇳🇱 HomeWizard stekkers</h2></div>
+  <div class="products-grid">
+
+    <div class="product-card aanbevolen">
+      <div class="product-img">🏠<span class="aanbevolen-badge">NL merk</span></div>
+      <div class="product-body">
+        <span class="product-tag">HomeWizard</span>
+        <div class="product-name">HomeWizard Energy Socket</div>
+        <div class="product-desc">Ideaal voor grote verbruikers zoals wasmachine, droger of vaatwasser. Meet live het verbruik en schakel op afstand. Volledig lokaal, geen cloud verplicht. Wil je historische grafieken? Dan heb je het abonnement nodig van €0,99/maand — maar dat is niet verplicht.</div>
+        <div class="product-specs"><span class="spec">Lokale API</span><span class="spec">Home Assistant</span><span class="spec">Energiemeting</span><span class="spec">NL merk</span></div>
+        <div class="product-price">€26+ <span>alleen via HomeWizard</span></div>
+        <div class="shop-buttons">
+          <a href="https://partner.homewizard.com/c/?si=18407&li=1795784&wi=419188&ws=&dl=nl%2Fenergy-socket%2F" class="shop-btn homewizard" target="_blank" rel="noopener sponsored"><span class="shop-name">🟢 HomeWizard.com</span><span class="shop-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cat-header"><h2>⚡ Matter & toekomstproof</h2></div>
+  <div class="products-grid">
+
+    <div class="product-card">
+      <div class="product-img">🔮<span class="future-badge">Matter</span></div>
+      <div class="product-body">
+        <span class="product-tag matter">Matter — nieuw protocol</span>
+        <div class="product-name">EVE Energy Matter Duopack</div>
+        <div class="product-desc">Matter is het nieuwe universele smarthome protocol. Werkt tegelijk met Home Assistant, Google Home, Apple HomeKit en Amazon Alexa. Geen aparte hub nodig. Dit is de toekomst van smarthome — maar je betaalt er wel voor.</div>
+        <div class="product-specs"><span class="spec">Matter</span><span class="spec">Thread</span><span class="spec">Alle platformen</span><span class="spec">Energiemeting</span></div>
+        <div class="product-price">€100,- <span>2 stuks</span></div>
+        <div class="shop-buttons">
+          <a href="https://www.awin1.com/cread.php?awinmid=85161&awinaffid=2816288&ued=https%3A%2F%2Fwww.coolblue.nl%2Fproduct%2F932403%2Feve-energy-matter-duopack.html" class="shop-btn coolblue" target="_blank" rel="noopener sponsored"><span class="shop-name">🔵 Coolblue</span><span class="shop-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cat-header"><h2>💰 Budget opties</h2></div>
+  <div class="products-grid">
+
+    <div class="product-card">
+      <div class="product-img">⚡</div>
+      <div class="product-body">
+        <span class="product-tag budget">Budget — Amazon</span>
+        <div class="product-name">Sonoff S61 Matter WiFi 4-pack</div>
+        <div class="product-desc">Matter-compatibel, werkt met Alexa, Google en Apple Home. Energiemeting ingebouwd. Beste klantbeoordeling in de budgetcategorie op Amazon. 16A, 3840W.</div>
+        <div class="product-specs"><span class="spec">16A</span><span class="spec">Matter</span><span class="spec">Energiemeting</span><span class="spec">4-pack</span></div>
+        <div class="product-price">€34,23 <span>4 stuks via Amazon</span></div>
+        <div class="shop-buttons">
+          <a href="https://amzn.to/40NY6Yg" class="shop-btn amazon" target="_blank" rel="noopener sponsored"><span class="shop-name">🛒 Amazon.nl</span><span class="shop-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">🔌</div>
+      <div class="product-body">
+        <span class="product-tag budget">Budget — Amazon</span>
+        <div class="product-name">ANTELA Slimme Stekkerdoos 4-voudig</div>
+        <div class="product-desc">4 stopcontacten + 3 USB aansluitingen. Energiemeter ingebouwd, compatibel met Alexa & Google Home. Tuya/Smart Life app. Goede klantbeoordelingen op Amazon.</div>
+        <div class="product-specs"><span class="spec">4 stopcontacten</span><span class="spec">3 USB</span><span class="spec">Energiemeting</span><span class="spec">Tuya</span></div>
+        <div class="product-price">€39,99 <span>stekkerdoos</span></div>
+        <div class="shop-buttons">
+          <a href="https://amzn.to/3Ni0d3u" class="shop-btn amazon" target="_blank" rel="noopener sponsored"><span class="shop-name">🛒 Amazon.nl</span><span class="shop-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">🌍</div>
+      <div class="product-body">
+        <span class="product-tag budget">Goedkoopst — AliExpress</span>
+        <div class="product-name">WiFi Slimme Stekker 16A (generiek)</div>
+        <div class="product-desc">Goedkoopste optie. Kwaliteit verschilt per verkoper. Kies verkopers met 4,5★+ en 100+ reviews. Zoek op "smart plug 16A energy monitor wifi". Werkt via Tuya en is vaak te koppelen aan Home Assistant.</div>
+        <div class="product-specs"><span class="spec">16A</span><span class="spec">WiFi/Tuya</span><span class="spec">Energiemeting</span></div>
+        <div class="product-price">€3 – €10 <span>per stuk</span></div>
+        <div class="shop-buttons">
+          <a href="https://ds1.nl/c/?si=7630&li=1473442&wi=419188&ws=https://www.aliexpress.com/wholesale?SearchText=smart+plug+16a+energy+monitor+wifi" class="shop-btn aliexpress" target="_blank" rel="noopener sponsored"><span class="shop-name">🌍 AliExpress <span class="budget-label">goedkoopst</span></span><span class="shop-arrow">→</span></a>
+        </div>
+        <div class="budget-disclaimer">⚠️ AliExpress: kwaliteit wisselt per verkoper. Altijd kiezen op reviews, niet op prijs alleen.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- UITLEG -->
+<div class="uitleg-section">
+  <div class="uitleg-inner">
+    <h2>Waar moet je op letten?</h2>
+    <p>Even snel de belangrijkste verschillen uitgelegd zodat je weet wat je koopt.</p>
+    <div class="uitleg-grid">
+      <div class="uitleg-card">
+        <h4>10A vs 16A</h4>
+        <p>10A is max 2300W. 16A is max 3680W. Voor wasmachine, droger of vaatwasser heb je altijd 16A nodig. Voor een lamp of telefoonlader maakt het niet uit.</p>
+      </div>
+      <div class="uitleg-card">
+        <h4>WiFi vs Matter</h4>
+        <p>WiFi stekkers werken via de cloud van de fabrikant. Matter is lokaal en werkt met elk platform. Voor Home Assistant is WiFi prima — Matter is de toekomst maar nu nog duurder.</p>
+      </div>
+      <div class="uitleg-card">
+        <h4>Home Assistant koppelen</h4>
+        <p>Tapo werkt native met HA via de Tapo integratie. HomeWizard via lokale API. Generieke Tuya stekkers via de Tuya integratie — soms wat werk maar het werkt. EVE Matter direct.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="disclaimer-bar">
+  StekkerSlim.nl werkt samen met affiliate partners (Coolblue via Awin, Amazon, HomeWizard via Daisycon, AliExpress). Bij aankoop via onze links ontvangen wij mogelijk een kleine vergoeding — dit kost jou niets extra en heeft geen invloed op onze adviezen. Prijzen zijn indicatief. <a href="privacy.html">Meer info</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a><p>Eerlijke energietips voor Nederlandse gezinnen.</p></div>
+      <div class="footer-col"><h4>Smarthome</h4><ul>
+        <li><a href="slimme-stekkers.html">Slimme stekkers</a></li>
+        <li><a href="smart-lampen.html">Smart lampen</a></li>
+        <li><a href="smarthome-producten.html">Alle producten</a></li>
+        <li><a href="smarthome-uitleg.html">Uitleg protocollen</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Calculators</h4><ul>
+        <li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li>
+        <li><a href="calculator-energiekosten.html">Energiekosten</a></li>
+        <li><a href="calculator-thuisbatterij.html">Thuisbatterij</a></li>
+        <li><a href="calculator-laadpaal.html">Laadpaal</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="vragen.html">Stel een vraag</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl — Remy Egberts</span><a href="privacy.html" style="color:rgba(255,255,255,.4)">Privacy & Disclaimer</a></div>
+  </div>
+</footer>
+</body>
+</html>

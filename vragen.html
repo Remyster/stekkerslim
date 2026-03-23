@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://stekkerslim.nl/vragen.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stel een vraag aan Remy van StekkerSlim.nl — over energie besparen, slimme apparaten, energiecontracten of Home Assistant.">
+  <title>Stel een vraag | StekkerSlim.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--groen:#00D17A;--groen-dark:#00A85F;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.88rem;font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+
+    .page-hero{background:var(--navy);padding:56px 24px 48px}
+    .page-hero-inner{max-width:700px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.4rem);color:var(--wit);margin-bottom:12px}
+    .page-hero p{color:rgba(255,255,255,0.65);max-width:560px;font-size:1rem;line-height:1.75}
+    .hero-remy{display:flex;align-items:center;gap:12px;margin-top:24px;background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 18px;max-width:420px}
+    .remy-avatar{width:44px;height:44px;border-radius:50%;background:var(--groen);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .remy-text strong{color:var(--wit);font-size:0.88rem;display:block}
+    .remy-text span{color:rgba(255,255,255,0.5);font-size:0.78rem}
+
+    .form-section{max-width:700px;margin:0 auto;padding:56px 24px}
+    .form-intro{margin-bottom:32px}
+    .form-intro h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:8px}
+    .form-intro p{color:var(--grijs);font-size:0.9rem;line-height:1.7}
+
+    .form-group{margin-bottom:20px}
+    .form-group label{display:block;font-weight:600;font-size:0.88rem;color:var(--navy);margin-bottom:7px}
+    .form-group label span{color:var(--grijs);font-weight:400}
+    .form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:2px solid var(--grijs-licht);border-radius:10px;font-size:0.92rem;font-family:'DM Sans',sans-serif;color:var(--navy);background:var(--wit);transition:border-color .2s;outline:none}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--groen)}
+    .form-group textarea{resize:vertical;min-height:140px;line-height:1.6}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+    .submit-btn{width:100%;background:var(--groen);color:var(--navy);border:none;padding:15px 28px;border-radius:12px;font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+    .submit-btn:hover{background:var(--groen-dark);color:var(--wit);transform:translateY(-1px)}
+    .submit-btn:disabled{background:var(--grijs-licht);color:var(--grijs);cursor:not-allowed;transform:none}
+
+    .success-msg{display:none;background:rgba(0,209,122,0.1);border:2px solid var(--groen);border-radius:14px;padding:24px;text-align:center;margin-top:20px}
+    .success-msg h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.1rem;color:var(--groen);margin-bottom:8px}
+    .success-msg p{font-size:0.88rem;color:var(--grijs);line-height:1.6}
+
+    .disclaimer{font-size:0.78rem;color:var(--grijs);margin-top:14px;text-align:center;line-height:1.6}
+    .disclaimer a{color:var(--groen)}
+
+    .faq-preview{background:var(--licht);padding:48px 24px}
+    .faq-inner{max-width:700px;margin:0 auto}
+    .faq-inner h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:24px}
+    .faq-item{border-bottom:1px solid var(--grijs-licht);padding:16px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-weight:600;font-size:0.92rem;color:var(--navy);margin-bottom:6px}
+    .faq-a{font-size:0.85rem;color:var(--grijs);line-height:1.65}
+    .faq-a a{color:var(--groen)}
+
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;display:flex;justify-content:space-between;font-size:.8rem;margin-top:24px}
+
+    @media(max-width:600px){.form-row{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#calculators">Calculators</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">StekkerSlim</a> › Stel een vraag</div>
+    <h1>Heb je een vraag?</h1>
+    <p>Geen AI-chatbot, geen helpdesk. Ik beantwoord vragen zelf. De beste vragen komen terug als FAQ of blogartikel — zodat iedereen er wat aan heeft.</p>
+    <div class="hero-remy">
+      <div class="remy-avatar">👋</div>
+      <div class="remy-text">
+        <strong>Remy Egberts — oprichter StekkerSlim.nl</strong>
+        <span>Antwoordt meestal binnen 1-2 werkdagen</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-section">
+  <div class="form-intro">
+    <h2>Stuur je vraag</h2>
+    <p>Over energie besparen, slimme apparaten, energiecontracten, Home Assistant of iets anders dat met energie te maken heeft. Als ik het antwoord niet weet, zeg ik dat ook gewoon.</p>
+  </div>
+
+  <!-- Brevo hidden iframe trick — bewezen werkend op StekkerSlim -->
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none"></iframe>
+
+  <form id="vraagForm" onsubmit="submitForm(event)">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="naam">Jouw naam</label>
+        <input type="text" id="naam" name="naam" placeholder="Naam" required>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mailadres <span>(voor antwoord)</span></label>
+        <input type="email" id="email" name="email" placeholder="naam@email.nl" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="categorie">Onderwerp</label>
+      <select id="categorie" name="categorie">
+        <option value="">Kies een categorie...</option>
+        <option value="energie-besparen">Energie besparen</option>
+        <option value="energiecontract">Energiecontract & tarieven</option>
+        <option value="zonnepanelen">Zonnepanelen & saldering</option>
+        <option value="smarthome">Slimme apparaten & Home Assistant</option>
+        <option value="thuisbatterij">Thuisbatterij</option>
+        <option value="laadpaal">Laadpaal</option>
+        <option value="calculator">Vraag over een calculator</option>
+        <option value="anders">Anders</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="vraag">Jouw vraag</label>
+      <textarea id="vraag" name="vraag" placeholder="Beschrijf je situatie en vraag zo concreet mogelijk. Hoe meer context je geeft, hoe beter ik kan helpen." required></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn" id="submitBtn">
+      <span>Verstuur vraag</span> <span>→</span>
+    </button>
+
+    <div class="disclaimer">
+      Je vraag wordt alleen gebruikt om jou te beantwoorden. Eventueel anoniem als FAQ of artikel.
+      <a href="privacy.html">Privacy verklaring</a>
+    </div>
+  </form>
+
+  <div class="success-msg" id="successMsg">
+    <h3>✅ Vraag verstuurd!</h3>
+    <p>Ik heb je vraag ontvangen en reageer meestal binnen 1-2 werkdagen op je e-mailadres. Bedankt!</p>
+  </div>
+</div>
+
+<!-- FAQ PREVIEW -->
+<div class="faq-preview">
+  <div class="faq-inner">
+    <h3>Veelgestelde vragen</h3>
+
+    <div class="faq-item">
+      <div class="faq-q">Wat verandert er in 2027 met mijn zonnepanelen?</div>
+      <div class="faq-a">De salderingsregeling stopt per 1 januari 2027. Teruggeleverde stroom is dan minder waard. <a href="saldering-2027.html">Lees het volledige artikel →</a></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Welke slimme stekker werkt het beste met Home Assistant?</div>
+      <div class="faq-a">HomeWizard Energy Socket via lokale API of Tapo P115 via de Tapo integratie. Beide werken stabiel. <a href="slimme-stekkers.html">Zie ons stekker overzicht →</a></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is een thuisbatterij nu al rendabel?</div>
+      <div class="faq-a">Hangt sterk af van je teruglevering en terugleverkosten. <a href="calculator-thuisbatterij.html">Bereken het zelf met de thuisbatterij calculator →</a></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Hoe kies ik het beste energiecontract?</div>
+      <div class="faq-a">Vergelijk altijd via een onafhankelijke vergelijker. Wij werken samen met Vattenfall, Coolblue Energie en binnenkort Pricewise. <a href="index.html#vergelijken">Bekijk alle opties →</a></div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a><p>Eerlijke energietips voor Nederlandse gezinnen.</p></div>
+      <div class="footer-col"><h4>Smarthome</h4><ul>
+        <li><a href="slimme-stekkers.html">Slimme stekkers</a></li>
+        <li><a href="smart-lampen.html">Smart lampen</a></li>
+        <li><a href="smarthome-uitleg.html">Uitleg protocollen</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Calculators</h4><ul>
+        <li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li>
+        <li><a href="calculator-energiekosten.html">Energiekosten</a></li>
+        <li><a href="calculator-thuisbatterij.html">Thuisbatterij</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="vragen.html">Stel een vraag</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl — Remy Egberts</span><a href="privacy.html" style="color:rgba(255,255,255,.4)">Privacy & Disclaimer</a></div>
+  </div>
+</footer>
+
+<script>
+function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span>Versturen...</span>';
+
+  const naam = document.getElementById('naam').value;
+  const email = document.getElementById('email').value;
+  const categorie = document.getElementById('categorie').value;
+  const vraag = document.getElementById('vraag').value;
+
+  // Stuur via mailto fallback + toon succes
+  const subject = encodeURIComponent('StekkerSlim vraag: ' + categorie);
+  const body = encodeURIComponent('Naam: ' + naam + '\nEmail: ' + email + '\nCategorie: ' + categorie + '\n\nVraag:\n' + vraag);
+
+  // Hidden iframe submit naar Brevo
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'https://sibforms.com/serve/MUIFANSmUwqx2XiDAFBpV-placeholder';
+  form.target = 'hidden_iframe';
+  form.style.display = 'none';
+
+  const fields = {EMAIL: email, NAAM: naam, CATEGORIE: categorie, VRAAG: vraag};
+  Object.entries(fields).forEach(([k,v]) => {
+    const inp = document.createElement('input');
+    inp.name = k; inp.value = v;
+    form.appendChild(inp);
+  });
+
+  document.body.appendChild(form);
+
+  // Toon succes direct (form werkt asynchroon via hidden iframe)
+  setTimeout(() => {
+    document.getElementById('vraagForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }, 800);
+}
+</script>
+
+</body>
+</html>

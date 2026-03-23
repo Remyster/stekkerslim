@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://stekkerslim.nl/smarthome-uitleg.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Smarthome uitleg — WiFi, Zigbee, Matter, Tuya, Home Assistant, Google Home. Welk protocol en platform past bij jou? Simpel uitgelegd.">
+  <title>Smarthome Uitleg — Protocollen & Platformen | StekkerSlim.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--groen:#00D17A;--groen-dark:#00A85F;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:28px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.88rem;font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+
+    .page-hero{background:var(--navy);padding:56px 24px 48px}
+    .page-hero-inner{max-width:900px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--wit);margin-bottom:12px}
+    .page-hero p{color:rgba(255,255,255,0.65);max-width:600px;font-size:1rem;line-height:1.75}
+
+    .content{max-width:900px;margin:0 auto;padding:56px 24px}
+
+    /* SECTIE HEADER */
+    .section-header{margin-bottom:32px}
+    .section-label{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--groen);margin-bottom:8px}
+    .section-header h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;margin-bottom:8px}
+    .section-header p{color:var(--grijs);font-size:0.92rem;line-height:1.7}
+    .section-divider{height:2px;background:var(--grijs-licht);margin:56px 0}
+
+    /* UITKLAP CARDS */
+    .cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:16px}
+    .expand-card{border:2px solid var(--grijs-licht);border-radius:16px;overflow:hidden;transition:border-color .2s}
+    .expand-card.open{border-color:var(--groen)}
+    .expand-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 22px;background:none;border:none;cursor:pointer;text-align:left;gap:16px}
+    .expand-trigger:hover .trigger-label{color:var(--groen)}
+    .trigger-left{display:flex;align-items:center;gap:14px}
+    .trigger-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+    .trigger-icon.wifi{background:rgba(59,130,246,0.12)}
+    .trigger-icon.zigbee{background:rgba(0,209,122,0.12)}
+    .trigger-icon.matter{background:rgba(255,210,63,0.15)}
+    .trigger-icon.tuya{background:rgba(239,68,68,0.1)}
+    .trigger-icon.ha{background:rgba(0,209,122,0.12)}
+    .trigger-icon.google{background:rgba(66,133,244,0.12)}
+    .trigger-icon.amazon{background:rgba(255,153,0,0.15)}
+    .trigger-icon.apple{background:rgba(0,0,0,0.06)}
+    .trigger-text{text-align:left}
+    .trigger-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;color:var(--navy);transition:color .2s;display:block}
+    .trigger-sub{font-size:0.78rem;color:var(--grijs);display:block;margin-top:2px}
+    .trigger-arrow{font-size:1.2rem;color:var(--grijs);transition:transform .3s;flex-shrink:0}
+    .expand-card.open .trigger-arrow{transform:rotate(180deg)}
+    .expand-body{display:none;padding:0 22px 22px}
+    .expand-card.open .expand-body{display:block}
+    .expand-body p{font-size:0.88rem;color:#374151;line-height:1.75;margin-bottom:12px}
+    .expand-body p:last-child{margin-bottom:0}
+    .pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    .pros,.cons{border-radius:10px;padding:12px 14px}
+    .pros{background:rgba(0,209,122,0.08)}
+    .cons{background:rgba(239,68,68,0.06)}
+    .pros h5,.cons h5{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+    .pros h5{color:#065F46}
+    .cons h5{color:#DC2626}
+    .pros ul,.cons ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+    .pros li,.cons li{font-size:0.8rem;line-height:1.45}
+    .pros li::before{content:'✓ ';color:var(--groen);font-weight:700}
+    .cons li::before{content:'✗ ';color:#EF4444;font-weight:700}
+    .expand-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+    .etag{background:var(--licht);border-radius:6px;padding:3px 10px;font-size:0.75rem;font-weight:600;color:var(--navy)}
+    .expand-tip{background:rgba(0,209,122,0.08);border-left:3px solid var(--groen);border-radius:0 10px 10px 0;padding:10px 14px;font-size:0.82rem;color:#065F46;margin-top:12px;line-height:1.5}
+
+    /* KEUZEHULP */
+    .keuzehulp{background:var(--navy);border-radius:20px;padding:36px;margin-top:0}
+    .keuzehulp h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;color:var(--wit);margin-bottom:20px}
+    .keuze-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08)}
+    .keuze-item:last-child{border-bottom:none;padding-bottom:0}
+    .keuze-situation{font-size:0.85rem;color:rgba(255,255,255,0.55);flex:1;line-height:1.5}
+    .keuze-answer{font-size:0.85rem;color:var(--groen);font-weight:700;flex:1;line-height:1.5}
+
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;display:flex;justify-content:space-between;font-size:.8rem;margin-top:24px}
+
+    @media(max-width:700px){.cards-grid{grid-template-columns:1fr}.pros-cons{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#calculators">Calculators</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">StekkerSlim</a> › <a href="smarthome-producten.html">Smarthome</a> › Uitleg</div>
+    <h1>Smarthome uitleg — protocollen & platformen</h1>
+    <p>WiFi, Zigbee, Matter, Tuya, Home Assistant, Google Home — wat betekent dit allemaal? Ik leg het simpel uit. Klik op een onderwerp voor meer uitleg.</p>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- PROTOCOLLEN -->
+  <div class="section-header">
+    <div class="section-label">Deel 1</div>
+    <h2>🔗 Protocollen — hoe praten apparaten met elkaar?</h2>
+    <p>Een protocol is de taal die jouw slimme apparaat gebruikt om te communiceren. Kies je een lamp of stekker? Dan bepaalt het protocol hoe hij verbinding maakt en hoe betrouwbaar dat is.</p>
+  </div>
+
+  <div class="cards-grid">
+
+    <div class="expand-card" id="card-wifi">
+      <button class="expand-trigger" onclick="toggle('wifi')">
+        <div class="trigger-left">
+          <div class="trigger-icon wifi">📶</div>
+          <div class="trigger-text">
+            <span class="trigger-label">WiFi</span>
+            <span class="trigger-sub">Rechtstreeks op je router · meest gebruikt</span>
+          </div>
+        </div>
+        <span class="trigger-arrow">▼</span>
+      </button>
+      <div class="expand-body">
+        <p>WiFi apparaten verbinden rechtstreeks met je thuisrouter. Je hebt geen extra hub nodig — gewoon instellen via de app en klaar. Dit is het makkelijkste protocol om mee te beginnen.</p>
+        <p>Nadeel: elk apparaat verbruikt een WiFi verbinding. Bij 20+ apparaten kan je netwerk traag worden. Veel WiFi apparaten gebruiken ook de cloud van de fabrikant — als die server offline gaat, doet jouw lamp niets.</p>
+        <div class="pros-cons">
+          <div class="pros"><h5>Voordelen</h5><ul><li>Geen hub nodig</li><li>Makkelijk te installeren</li><li>Werkt met elk platform</li></ul></div>
+          <div class="cons"><h5>Nadelen</h5><ul><li>Belast je WiFi netwerk</li><li>Vaak cloud-afhankelijk</li><li>Trager dan Zigbee</li></ul></div>
+        </div>
+        <div class="expand-tags"><span class="etag">Tapo</span><span class="etag">WiZ</span><span class="etag">HomeWizard</span><span class="etag">Calex</span><span class="etag">Shelly</span></div>
+        <div class="expand-tip">💡 Goed voor beginners. Gebruik Shelly of HomeWizard als je lokaal wil zonder cloud.</div>
+      </div>
+    </div>
+
+    <div class="expand-card" id="card-zigbee">
+      <button class="expand-trigger" onclick="toggle('zigbee')">
+        <div class="trigger-left">
+          <div class="trigger-icon zigbee">🔷</div>
+          <div class="trigger-text">
+            <span class="trigger-label">Zigbee</span>
+            <span class="trigger-sub">Mesh netwerk via hub · stabiel & snel</span>
+          </div>
+        </div>
+        <span class="trigger-arrow">▼</span>
+      </button>
+      <div class="expand-body">
+        <p>Zigbee werkt via een eigen draadloos mesh-netwerk. Apparaten praten met elkaar en versterken zo het signaal — je hebt wel een hub nodig (zoals de Philips Hue Bridge of een Zigbee dongle voor Home Assistant).</p>
+        <p>Voordeel: supersnel (reactietijd &lt;100ms), stabiel, laag energieverbruik per apparaat en geen belasting op je WiFi. Dit is het protocol dat de meeste ervaren smarthome gebruikers kiezen.</p>
+        <div class="pros-cons">
+          <div class="pros"><h5>Voordelen</h5><ul><li>Supersnel reagerend</li><li>Stabiel mesh netwerk</li><li>Geen WiFi belasting</li><li>Lokaal — geen cloud</li></ul></div>
+          <div class="cons"><h5>Nadelen</h5><ul><li>Hub/coordinator nodig</li><li>Iets meer instelling</li><li>Apparaten duurder</li></ul></div>
+        </div>
+        <div class="expand-tags"><span class="etag">Philips Hue</span><span class="etag">IKEA Tradfri</span><span class="etag">Aqara</span><span class="etag">Tuya Zigbee</span></div>
+        <div class="expand-tip">💡 Beste keuze voor Home Assistant gebruikers. Koop een Zigbee USB dongle en je hebt alles lokaal.</div>
+      </div>
+    </div>
+
+    <div class="expand-card" id="card-matter">
+      <button class="expand-trigger" onclick="toggle('matter')">
+        <div class="trigger-left">
+          <div class="trigger-icon matter">🌐</div>
+          <div class="trigger-text">
+            <span class="trigger-label">Matter</span>
+            <span class="trigger-sub">Nieuw universeel protocol · de toekomst</span>
+          </div>
+        </div>
+        <span class="trigger-arrow">▼</span>
+      </button>
+      <div class="expand-body">
+        <p>Matter is het nieuwe open standaard protocol dat door Apple, Google, Amazon en Samsung samen is ontwikkeld. Een Matter apparaat werkt met <strong>alle</strong> platformen tegelijk — geen keuze meer tussen ecosystemen.</p>
+        <p>Matter draait lokaal op je netwerk — geen cloud verplicht. Het gebruikt WiFi of Thread (een nieuw mesh protocol). Nog niet alle apparaten ondersteunen Matter maar het aanbod groeit snel.</p>
+        <div class="pros-cons">
+          <div class="pros"><h5>Voordelen</h5><ul><li>Werkt met elk platform</li><li>Lokaal — geen cloud</li><li>Open standaard</li><li>Toekomstbestendig</li></ul></div>
+          <div class="cons"><h5>Nadelen</h5><ul><li>Nog weinig producten</li><li>Duurder dan WiFi</li><li>Thread vereist hub</li></ul></div>
+        </div>
+        <div class="expand-tags"><span class="etag">EVE Energy</span><span class="etag">Sonoff S61</span><span class="etag">Nieuwe Hue</span></div>
+        <div class="expand-tip">💡 Nog vrij nieuw en duurder. Prima keuze als je future-proof wil gaan. EVE Matter stekkers zijn een goed startpunt.</div>
+      </div>
+    </div>
+
+    <div class="expand-card" id="card-tuya">
+      <button class="expand-trigger" onclick="toggle('tuya')">
+        <div class="trigger-left">
+          <div class="trigger-icon tuya">🇨🇳</div>
+          <div class="trigger-text">
+            <span class="trigger-label">Tuya / Smart Life</span>
+            <span class="trigger-sub">Chinese cloud · goedkoop maar let op privacy</span>
+          </div>
+        </div>
+        <span class="trigger-arrow">▼</span>
+      </button>
+      <div class="expand-body">
+        <p>Tuya is een Chinees IoT platform waarop duizenden goedkope smarthome producten draaien. Je koopt een "generiek" WiFi stekker op AliExpress — grote kans dat het een Tuya apparaat is. Ze werken via de Smart Life app.</p>
+        <p>Voordeel: heel goedkoop. Nadeel: je data gaat naar Chinese servers. Home Assistant kan Tuya apparaten lokaal overnemen via de Tuya Local integratie — dan heb je geen cloud meer nodig.</p>
+        <div class="pros-cons">
+          <div class="pros"><h5>Voordelen</h5><ul><li>Erg goedkoop</li><li>Groot productaanbod</li><li>Lokaal te maken met HA</li></ul></div>
+          <div class="cons"><h5>Nadelen</h5><ul><li>Data naar China servers</li><li>Cloud kan wegvallen</li><li>Wisselende kwaliteit</li></ul></div>
+        </div>
+        <div class="expand-tags"><span class="etag">AliExpress generiek</span><span class="etag">Smart Life app</span><span class="etag">Gosund</span><span class="etag">Nous</span></div>
+        <div class="expand-tip">💡 Budget keuze. Koppel altijd lokaal via Home Assistant Tuya Local integratie voor privacy en betrouwbaarheid.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- PLATFORMEN -->
+  <div class="section-header">
+    <div class="section-label">Deel 2</div>
+    <h2>🏠 Platformen — wat stuurt alles aan?</h2>
+    <p>Een platform is de "hersenen" van je smarthome. Hier stel je in wanneer wat gebeurt. Klik op een platform voor uitleg en een eerlijk oordeel.</p>
+  </div>
+
+  <div class="cards-grid">
+
+    <div class="expand-card" id="card-ha">
+      <button class="expand-trigger" onclick="toggle('ha')">
+        <div class="trigger-left">
+          <div class="trigger-icon ha">🏡</div>
+          <div class="trigger-text">
+            <span class="trigger-label">Home Assistant</span>
+            <span class="trigger-sub">Open source · lokaal · meest krachtig</span>
+          </div>
+        </div>
+        <span class="trigger-arrow">▼</span>
+      </button>
+      <div class="expand-body">
+        <p>Home Assistant is gratis open-source software die je zelf installeert op een Raspberry Pi of mini-PC. Alles draait lokaal — geen cloud, geen maandkosten, geen data naar buiten. Je kunt letterlijk alles koppelen: P1 meter, slimme stekkers, thermostat, auto, zonneomvormer, noem maar op.</p>
+        <p>Ik gebruik het zelf. Het is de sterkste optie, maar je moet wel bereid zijn om er even in te duiken. Niet voor iedereen, maar als je het eenmaal hebt ingesteld: nooit meer zonder.</p>
+        <div class="pros-cons">
+          <div class="pros"><h5>Voordelen</h5><ul><li>100% lokaal & privé</li><li>Gratis — geen abonnement</li><li>Koppelt ALLES</li><li>Onbeperkte automatisering</li></ul></div>
+          <div class="cons"><h5>Nadelen</h5><ul><li>Technische opstartdrempel</li><li>Raspberry Pi of server nodig</li><li>Onderhoud vereist</li></ul></div>
+        </div>
+        <div class="expand-tags"><span class="etag">Raspberry Pi</span><span class="etag">P1 meter</span><span class="etag">Zigbee/WiFi/Matter</span><span class="etag">Gratis</span></div>
+        <div class="expand-tip">💡 De beste keuze voor wie echt serieus wil gaan. Alle producten op StekkerSlim werken met Home Assistant.</div>
+      </div>
+    </div>
+
+    <div class="expand-card" id="card-google">
+      <button class="expand-trigger" onclick="toggle('google')">
+        <div class="trigger-left">
+          <div class="trigger-icon google">🔵</div>
+          <div class="trigger-text">
+            <span class="trigger-label">Google Home</span>
+            <span class="trigger-sub">Makkelijk · via Google Nest</span>
+          </div>
+        </div>
+        <span class="trigger-arrow">▼</span>
+      </button>
+      <div class="expand-body">
+        <p>Google Home is de smarthome app van Google. Werkt samen met Google Nest speakers en displays. Makkelijk in gebruik, geen technische kennis nodig. Zeg gewoon "Hey Google, doe de woonkamer aan."</p>
+        <p>Nadeel: beperktere automatiseringsmogelijkheden dan Home Assistant. Alles gaat via Google's servers. Betaald abonnement (Google Nest Aware) nodig voor sommige functies.</p>
+        <div class="pros-cons">
+          <div class="pros"><h5>Voordelen</h5><ul><li>Heel makkelijk te gebruiken</li><li>Werkt met Android goed</li><li>Spraakbesturing top</li></ul></div>
+          <div class="cons"><h5>Nadelen</h5><ul><li>Beperkte automatisering</li><li>Cloud — data bij Google</li><li>Sommige functies betaald</li></ul></div>
+        </div>
+        <div class="expand-tags"><span class="etag">Google Nest Hub</span><span class="etag">Android</span><span class="etag">Matter compatible</span></div>
+        <div class="expand-tip">💡 Goed voor beginners en Android gebruikers. Minder flexibel dan Home Assistant.</div>
+      </div>
+    </div>
+
+    <div class="expand-card" id="card-amazon">
+      <button class="expand-trigger" onclick="toggle('amazon')">
+        <div class="trigger-left">
+          <div class="trigger-icon amazon">🔶</div>
+          <div class="trigger-text">
+            <span class="trigger-label">Amazon Alexa</span>
+            <span class="trigger-sub">Echo speakers · groot ecosysteem</span>
+          </div>
+        </div>
+        <span class="trigger-arrow">▼</span>
+      </button>
+      <div class="expand-body">
+        <p>Amazon Alexa is het smarthome platform van Amazon, aangestuurd via Echo speakers. In Amerika heel populair, in Nederland minder. Groot productaanbod dat compatibel is, maar de Echo speakers zijn minder verkrijgbaar dan Google Nest in NL.</p>
+        <div class="pros-cons">
+          <div class="pros"><h5>Voordelen</h5><ul><li>Groot productaanbod</li><li>Goede spraakbesturing</li><li>Skills systeem</li></ul></div>
+          <div class="cons"><h5>Nadelen</h5><ul><li>Minder populair in NL</li><li>Alles via Amazon cloud</li><li>Echo speakers duurder</li></ul></div>
+        </div>
+        <div class="expand-tags"><span class="etag">Echo</span><span class="etag">Alexa app</span><span class="etag">Matter compatible</span></div>
+        <div class="expand-tip">💡 In Nederland minder relevant. De meeste producten op StekkerSlim werken óók met Alexa maar het is niet onze focus.</div>
+      </div>
+    </div>
+
+    <div class="expand-card" id="card-apple">
+      <button class="expand-trigger" onclick="toggle('apple')">
+        <div class="trigger-left">
+          <div class="trigger-icon apple">🍎</div>
+          <div class="trigger-text">
+            <span class="trigger-label">Apple HomeKit</span>
+            <span class="trigger-sub">iPhone gebruikers · veilig & privé</span>
+          </div>
+        </div>
+        <span class="trigger-arrow">▼</span>
+      </button>
+      <div class="expand-body">
+        <p>Apple HomeKit is het smarthome platform voor iPhone, iPad en Mac gebruikers. Staat bekend om sterke privacy en beveiliging. Apparaten moeten speciaal gecertificeerd zijn voor HomeKit — dus het aanbod is beperkter maar de kwaliteit is consistent hoog.</p>
+        <p>Met de komst van Matter zijn steeds meer producten ook HomeKit compatibel. Als je volledig in het Apple ecosysteem zit is dit een logische keuze.</p>
+        <div class="pros-cons">
+          <div class="pros"><h5>Voordelen</h5><ul><li>Sterke privacy & beveiliging</li><li>Strak design in app</li><li>Siri integratie</li></ul></div>
+          <div class="cons"><h5>Nadelen</h5><ul><li>Alleen Apple apparaten</li><li>Beperkt productaanbod</li><li>Duurder ecosysteem</li></ul></div>
+        </div>
+        <div class="expand-tags"><span class="etag">iPhone</span><span class="etag">Siri</span><span class="etag">Apple TV als hub</span><span class="etag">Matter</span></div>
+        <div class="expand-tip">💡 Prima als je volledig Apple bent. Niet de focus van StekkerSlim maar de meeste producten werken ermee via Matter.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- KEUZEHULP -->
+  <div class="section-header">
+    <div class="section-label">Keuzehulp</div>
+    <h2>🤔 Wat moet ik kiezen?</h2>
+    <p>Afhankelijk van jouw situatie is er een duidelijk beste keuze.</p>
+  </div>
+
+  <div class="keuzehulp">
+    <h3>Mijn situatie is...</h3>
+    <div class="keuze-item">
+      <div class="keuze-situation">Ik wil gewoon beginnen zonder gedoe</div>
+      <div class="keuze-answer">→ WiFi apparaten (Tapo, WiZ) + Google Home of Alexa</div>
+    </div>
+    <div class="keuze-item">
+      <div class="keuze-situation">Ik wil volledige controle en alles lokaal</div>
+      <div class="keuze-answer">→ Home Assistant + Zigbee apparaten</div>
+    </div>
+    <div class="keuze-item">
+      <div class="keuze-situation">Ik heb een iPhone en wil het makkelijk houden</div>
+      <div class="keuze-answer">→ HomeKit of Matter apparaten + Apple Home app</div>
+    </div>
+    <div class="keuze-item">
+      <div class="keuze-situation">Ik wil goedkoop beginnen en later uitbreiden</div>
+      <div class="keuze-answer">→ WiFi/Tuya nu, later migreren naar Home Assistant via Tuya Local</div>
+    </div>
+    <div class="keuze-item">
+      <div class="keuze-situation">Ik wil future-proof gaan</div>
+      <div class="keuze-answer">→ Matter apparaten — werken met alles, nu en later</div>
+    </div>
+    <div class="keuze-item" style="border:none">
+      <div class="keuze-situation">Ik ben al bezig met Home Assistant</div>
+      <div class="keuze-answer">→ Zigbee voor lampen, WiFi (Shelly/HomeWizard) voor stekkers en meting</div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;text-align:center">
+    <p style="color:var(--grijs);font-size:0.9rem;margin-bottom:16px">Nog een vraag? Stel hem dan via de vraagpagina — ik beantwoord hem zelf.</p>
+    <a href="vragen.html" style="display:inline-block;background:var(--groen);color:var(--navy);padding:12px 28px;border-radius:10px;font-weight:700;text-decoration:none;font-size:0.95rem">Stel een vraag →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a><p>Eerlijke energietips voor Nederlandse gezinnen.</p></div>
+      <div class="footer-col"><h4>Smarthome</h4><ul>
+        <li><a href="slimme-stekkers.html">Slimme stekkers</a></li>
+        <li><a href="smart-lampen.html">Smart lampen</a></li>
+        <li><a href="smarthome-producten.html">Alle producten</a></li>
+        <li><a href="smarthome-uitleg.html">Uitleg protocollen</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Calculators</h4><ul>
+        <li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li>
+        <li><a href="calculator-energiekosten.html">Energiekosten</a></li>
+        <li><a href="calculator-thuisbatterij.html">Thuisbatterij</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="vragen.html">Stel een vraag</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl — Remy Egberts</span><a href="privacy.html" style="color:rgba(255,255,255,.4)">Privacy & Disclaimer</a></div>
+  </div>
+</footer>
+
+<script>
+function toggle(id) {
+  const card = document.getElementById('card-' + id);
+  card.classList.toggle('open');
+}
+</script>
+</body>
+</html>
