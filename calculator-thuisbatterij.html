@@ -192,14 +192,9 @@
       </div>
 
       <div class="form-group">
-        <label style="margin-bottom:10px">Jaarlijkse terugleverkosten contract</label>
-        <div class="toggle-group">
-          <button class="toggle-btn active" onclick="setKosten('geen',this)">Geen</button>
-          <button class="toggle-btn" onclick="setKosten('laag',this)">~€75/jr</button>
-          <button class="toggle-btn" onclick="setKosten('midden',this)">~€165/jr</button>
-          <button class="toggle-btn" onclick="setKosten('hoog',this)">~€405/jr</button>
-        </div>
-        <div id="teruglever-kosten-info" style="font-size:0.78rem;color:var(--grijs);margin-top:8px;">Vandebron staffel: €75/jr bij 500 kWh · €165 bij 1.500 kWh · €405 bij 3.500 kWh teruglevering. <a href="calculator-energiekosten.html" style="color:var(--groen)">Bereken jouw exacte kosten →</a></div>
+        <label>Jaarlijkse terugleverkosten contract (€)</label>
+        <input type="number" id="teruglever-kosten-input" value="0" min="0" max="2000" step="5" oninput="updateKosten()" style="width:100%;padding:12px 16px;border:2px solid var(--grijs-licht);border-radius:10px;font-size:1rem;font-family:'DM Sans',sans-serif;color:var(--navy)">
+        <div id="teruglever-kosten-info" style="font-size:0.78rem;color:var(--grijs);margin-top:8px;">Weet je het niet? Check je contract of bereken het. Vandebron: ~€75 bij 500 kWh · ~€165 bij 1.500 kWh · ~€405 bij 3.500 kWh. <a href="calculator-energiekosten.html" style="color:var(--groen)">Bereken jouw exacte kosten →</a></div>
       </div>
 
       <div class="divider"></div>
@@ -380,19 +375,10 @@
 <script>
   let terugleverKosten = 0;
 
-  function setKosten(niveau, btn) {
-    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    terugleverKosten = niveau === 'geen' ? 0 : niveau === 'laag' ? 75 : niveau === 'midden' ? 165 : 405;
-    const info = document.getElementById('teruglever-kosten-info');
+  function updateKosten() {
+    terugleverKosten = parseFloat(document.getElementById('teruglever-kosten-input').value) || 0;
     const warning = document.getElementById('teruglever-warning');
-    if (niveau === 'geen') {
-      info.textContent = 'Sommige leveranciers rekenen terugleverkosten. Check je eigen contract.';
-      warning.style.display = 'none';
-    } else {
-      info.textContent = `Jouw leverancier rekent €${terugleverKosten}/jaar terugleverkosten.`;
-      warning.style.display = 'block';
-    }
+    if (warning) warning.style.display = terugleverKosten > 0 ? 'block' : 'none';
     calc();
   }
 
