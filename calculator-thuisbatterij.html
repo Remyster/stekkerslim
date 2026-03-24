@@ -97,6 +97,13 @@
     .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
     .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
     @media(max-width:900px){.calc-inner,.merken-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+
+    .tooltip-wrap{position:relative;display:inline-block;margin-left:6px;cursor:pointer;vertical-align:middle}
+    .tooltip-wrap .tip-icon{font-size:0.75rem;background:var(--grijs);color:#fff;border-radius:50%;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-family:'Outfit',sans-serif}
+    .tooltip-wrap .tip-box{display:none;position:absolute;bottom:125%;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:0.78rem;padding:10px 14px;border-radius:10px;width:240px;line-height:1.5;z-index:99;box-shadow:0 4px 16px rgba(0,0,0,0.2);font-weight:400}
+    .tooltip-wrap .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--navy)}
+    .tooltip-wrap:hover .tip-box,.tooltip-wrap:focus .tip-box{display:block}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
   </style>
 </head>
 <body>
@@ -104,9 +111,19 @@
   <div class="nav-inner">
     <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
     <ul class="nav-links">
-      <li><a href="index.html#besparen">Besparen</a></li>
-      <li><a href="index.html#calculators">Calculators</a></li>
-      <li><a href="index.html#smarthome">Smarthome</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html#calculators">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
       <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
     </ul>
   </div>
@@ -212,7 +229,23 @@
       </div>
 
       <div class="result-card">
-        <div class="result-label">Jaarlijkse besparing batterij</div>
+        <div class="result-label">Jaarlijkse besparing zonnepanelen (zonder batterij)</div>
+        <div class="result-row">
+          <span class="result-row-label">Direct eigengebruik (~30% van opbrengst)</span>
+          <span class="result-row-value groen" id="res-direct-eigen">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Teruglevering (70% × €0,06/kWh na 2027)</span>
+          <span class="result-row-value" id="res-terug-waarde">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Subtotaal zonder batterij</span>
+          <span class="result-row-value" id="res-subtotaal-zonder">—</span>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-label">Wat de batterij er bovenop doet</div>
         <div class="result-row">
           <span class="result-row-label">Meer eigen gebruik (was teruglevering)</span>
           <span class="result-row-value groen" id="res-extra-eigen">—</span>
@@ -222,7 +255,7 @@
           <span class="result-row-value groen" id="res-minder-kosten">—</span>
         </div>
         <div class="result-row">
-          <span class="result-row-label">Totale jaarlijkse besparing</span>
+          <span class="result-row-label">Totale jaarlijkse besparing batterij <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Meerwaarde van opgeslagen stroom (inkooprijs − teruglevertarief) plus minder terugleverkosten. Gebaseerd op 30% eigenverbruik zonder batterij, ~60% met batterij.</span></span></span>
           <span class="result-row-value groen" id="res-totaal-besparing">—</span>
         </div>
       </div>
@@ -403,9 +436,9 @@
     document.getElementById('prijs-val').textContent = fmt(prijs);
     document.getElementById('rend-val').textContent = Math.round(rend * 100) + '%';
 
-    // Eigenverbruik zonder batterij
-    const eigenZonder = Math.min(zon, verbruik);
-    const terugZonder = Math.max(0, zon - verbruik);
+    // Eigenverbruik zonder batterij: NL gemiddelde 30% van opbrengst
+    const eigenZonder = zon * 0.30;
+    const terugZonder = zon * 0.70;
 
     // Hoeveel kan batterij opslaan per dag (aanname: 1 cyclus per dag, 365 dagen)
     // Overproductie overdag = teruglevering zonder batterij
@@ -424,7 +457,15 @@
 
     const tv = totaalBesparing > 0 ? prijs / totaalBesparing : 999;
 
+    // Besparing direct eigengebruik (zonder batterij)
+    const directEigenBesparing = eigenZonder * inkoop;
+    const terugWaarde = terugZonder * 0.06; // na 2027 tarief
+    const subtotaalZonder = directEigenBesparing + terugWaarde;
+
     // Results
+    document.getElementById('res-direct-eigen').textContent = fmt(directEigenBesparing) + '/jaar';
+    document.getElementById('res-terug-waarde').textContent = fmt(terugWaarde) + '/jaar';
+    document.getElementById('res-subtotaal-zonder').textContent = fmt(subtotaalZonder) + '/jaar';
     document.getElementById('res-extra-eigen').textContent = fmt(extraEigenWaarde) + '/jaar';
     document.getElementById('res-minder-kosten').textContent = fmt(minderTerugleverKosten) + '/jaar';
     document.getElementById('res-totaal-besparing').textContent = fmt(totaalBesparing) + '/jaar';

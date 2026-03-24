@@ -78,6 +78,13 @@
     .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
     .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
     @media(max-width:900px){.calc-inner{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+
+    .tooltip-wrap{position:relative;display:inline-block;margin-left:6px;cursor:pointer;vertical-align:middle}
+    .tooltip-wrap .tip-icon{font-size:0.75rem;background:var(--grijs);color:#fff;border-radius:50%;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-family:'Outfit',sans-serif}
+    .tooltip-wrap .tip-box{display:none;position:absolute;bottom:125%;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:0.78rem;padding:10px 14px;border-radius:10px;width:240px;line-height:1.5;z-index:99;box-shadow:0 4px 16px rgba(0,0,0,0.2);font-weight:400}
+    .tooltip-wrap .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--navy)}
+    .tooltip-wrap:hover .tip-box,.tooltip-wrap:focus .tip-box{display:block}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
   </style>
 </head>
 <body>
@@ -85,9 +92,19 @@
   <div class="nav-inner">
     <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
     <ul class="nav-links">
-      <li><a href="index.html#besparen">Besparen</a></li>
-      <li><a href="index.html#calculators">Calculators</a></li>
-      <li><a href="index.html#smarthome">Smarthome</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html#calculators">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
       <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
     </ul>
   </div>
@@ -119,6 +136,22 @@
         <label>Stroomtarief (€/kWh) <span id="stroom-val">€0,34</span></label>
         <input type="range" id="stroomtarief" min="0.15" max="0.55" value="0.34" step="0.01" oninput="updateCalc()">
         <div class="range-labels"><span>€0,15</span><span>€0,55</span></div>
+        <div style="margin-top:8px">
+          <button onclick="toggleGemWP()" style="background:none;border:none;color:var(--groen);font-size:0.78rem;font-weight:600;cursor:pointer;padding:0;font-family:'DM Sans',sans-serif;">⚙️ Dal/normaal tarief? Bereken gemiddelde →</button>
+          <div id="gem-calc-wp" style="display:none;background:var(--licht);border-radius:10px;padding:12px;margin-top:8px">
+            <div style="font-size:0.8rem;font-weight:600;margin-bottom:8px;color:var(--navy)">Bereken jouw gewogen gemiddeld tarief</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Normaal tarief (€/kWh)</div><input type="number" id="wp-normaal" value="0.151" step="0.001" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemWP()"></div>
+              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Dal tarief (€/kWh)</div><input type="number" id="wp-dal" value="0.119" step="0.001" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemWP()"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Normaal verbruik (kWh)</div><input type="number" id="wp-normaal-kwh" value="2100" step="100" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemWP()"></div>
+              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Dal verbruik (kWh)</div><input type="number" id="wp-dal-kwh" value="1400" step="100" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemWP()"></div>
+            </div>
+            <div id="wp-gem-res" style="background:var(--groen);color:var(--navy);border-radius:8px;padding:10px;text-align:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem">—</div>
+            <button onclick="gebruikGemWP()" style="width:100%;margin-top:8px;background:var(--navy);color:var(--wit);border:none;border-radius:8px;padding:8px;font-size:0.82rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">Gebruik dit tarief in calculator →</button>
+          </div>
+        </div>
       </div>
       <hr class="divider">
       <div class="form-group">
@@ -141,7 +174,7 @@
 
     <div class="calc-results">
       <div class="result-card primary">
-        <div class="result-label">Jaarlijkse besparing op energie</div>
+        <div class="result-label">Jaarlijkse besparing op energie <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Verschil tussen huidige gaskosten voor verwarming en de nieuwe stroomkosten van de warmtepomp, berekend met jouw ingevulde COP-waarde.</span></span></div>
         <div class="result-value" id="res-besparing">—</div>
         <div class="result-sub" id="res-pct">Besparing: —%</div>
       </div>
@@ -302,6 +335,31 @@
     }
   }
   updateCalc();
+
+  function toggleGemWP() {
+    const el = document.getElementById('gem-calc-wp');
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+    if (el.style.display === 'block') berekenGemWP();
+  }
+  function berekenGemWP() {
+    const n = parseFloat(document.getElementById('wp-normaal').value)||0;
+    const d = parseFloat(document.getElementById('wp-dal').value)||0;
+    const nk = parseFloat(document.getElementById('wp-normaal-kwh').value)||0;
+    const dk = parseFloat(document.getElementById('wp-dal-kwh').value)||0;
+    const tot = nk + dk;
+    if (tot === 0) return;
+    const gem = (n * nk + d * dk) / tot;
+    document.getElementById('wp-gem-res').textContent = 'Gewogen gemiddelde: €' + gem.toFixed(3).replace('.', ',') + '/kWh';
+    document.getElementById('wp-gem-res').dataset.val = gem.toFixed(3);
+  }
+  function gebruikGemWP() {
+    const val = parseFloat(document.getElementById('wp-gem-res').dataset.val);
+    if (!val) return;
+    const slider = document.getElementById('stroomtarief');
+    slider.value = Math.min(Math.max(val, 0.15), 0.55);
+    updateCalc();
+    document.getElementById('gem-calc-wp').style.display = 'none';
+  }
 </script>
 </body>
 </html>

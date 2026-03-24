@@ -111,6 +111,7 @@
       .nav-links{display:none}
       .prod-header{flex-direction:column}
     }
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
   </style>
 </head>
 <body>
@@ -119,10 +120,19 @@
   <div class="nav-inner">
     <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
     <ul class="nav-links">
-      <li><a href="index.html#calculators">Calculators</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html#calculators">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
+        </div>
+      </li>
       <li><a href="blog.html">Blog</a></li>
       <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
       <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
     </ul>
   </div>
@@ -167,14 +177,22 @@
 
   <p>Bij mij staat de wasmachine op een schema: hij draait alleen als het dal-tarief actief is. Dat scheelt me per jaar een paar tientjes. Niet veel, maar het kost me ook nul moeite.</p>
 
+  <div style="background:var(--licht);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:0.88rem;line-height:1.7;border-left:3px solid var(--groen)">
+    <strong>💡 Maar hoe werkt dat dan precies?</strong><br>
+    Een slimme stekker zet je apparaat onder spanning — maar een wasmachine die stroom krijgt, start niet vanzelf een wasprogramma. Je moet nog steeds zelf op start drukken.<br><br>
+    <strong>Twee oplossingen:</strong><br>
+    1. <strong>Wasmachines met timer</strong> — veel moderne machines hebben een vertragingstimer. Stel in: "start over 6 uur", dan combineert dat perfect met een dal-tarief schema.<br>
+    2. <strong>Fingerbot of Zigbee bot</strong> — een klein apparaatje dat je op de startknop plakt en die fysiek indrukt via een automatisering in Home Assistant. Klinkt gek, werkt perfect voor oudere machines zonder app of timer.
+  </div>
+
   <h2 id="waar-op-letten">Waar let je op bij een slimme stekker?</h2>
 
   <ul>
     <li><strong>16A of 10A</strong> — 10A is goed voor lampen en kleine apparaten. Voor wasmachine, droger of vaatwasser heb je minimaal 16A nodig. Koop je goedkope 10A stekkers voor zware apparaten, dan is dat een brandrisico.</li>
     <li><strong>Energiemeting</strong> — Essentieel als je wilt weten wat iets verbruikt. Niet alle stekkers hebben dit. Controleer altijd voor aankoop.</li>
     <li><strong>WiFi of Zigbee</strong> — WiFi werkt direct zonder hub. Zigbee is stabieler en verbruikt minder stroom, maar je hebt een hub nodig (Raspberry Pi met Home Assistant, of een Zigbee coordinator). Ben je beginner? Kies WiFi.</li>
-    <li><strong>NL-stekker</strong> — Klinkt logisch, maar op AliExpress kom je Schuko-types tegen die net niet passen in een Nederlandse wandcontactdoos. Check of het een Type F is.</li>
-    <li><strong>Home Assistant compatible</strong> — Als je HA draait, wil je een stekker die lokaal werkt — zonder cloud. Dat betekent Tuya local control of een stekker die ESPHome/Tasmota ondersteunt.</li>
+    <li><strong>NL-stekker</strong> — Klinkt logisch, maar op AliExpress kom je soms stekkers tegen die net niet goed passen in een Nederlands stopcontact. Check altijd of het een "Type F" of "Schuko" stekker is — dat is gewoon de standaard NL/EU ronde pin stekker met aarding.</li>
+    <li><strong>Home Assistant compatible</strong> — Als je HA draait, wil je een stekker die lokaal werkt zonder afhankelijk te zijn van een buitenlandse cloud. WiFi stekkers van Tapo of HomeWizard doen dit prima. Zigbee stekkers werken altijd lokaal. Gevorderde gebruikers flashen soms ESPHome of Tasmota op hun stekker — maar dat is voor de echte doe-het-zelver.</li>
   </ul>
 
   <h2 id="vergelijking">De beste slimme stekkers vergeleken</h2>
@@ -260,8 +278,8 @@
       <div class="prod-desc">Op AliExpress vind je stekkers voor een paar euro. Sommige zijn prima, sommige zijn rotzooi. Ik heb ze allebei gehad. Ze werken — maar controleer altijd of het een Type F stekker is en of de vermelde stroomsterkte klopt. Niet voor zware apparaten.</div>
       <div class="prod-specs">
         <span class="spec goed">✓ Heel goedkoop</span>
+        <span class="spec goed">✓ Sommige modellen hebben energiemeting — check specs</span>
         <span class="spec slecht">✗ Kwaliteit varieert sterk</span>
-        <span class="spec slecht">✗ Max 10A — niet voor wasmachine</span>
         <span class="spec slecht">✗ Levertijd 2-4 weken</span>
       </div>
       <div class="prod-links">

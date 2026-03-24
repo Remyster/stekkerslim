@@ -129,6 +129,7 @@
     .mobile-menu a:hover{background:#F4F7F2;color:#00D17A}
     .mobile-menu .mob-cta{background:#00D17A;color:#0B1628!important;margin-top:8px;text-align:center}
     @media(max-width:900px){.nav-links{display:none!important}.hamburger{display:flex!important}}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
   </style>
 </head>
 <body>
@@ -137,7 +138,16 @@
   <div class="nav-inner">
     <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
     <ul class="nav-links">
-      <li><a href="index.html#calculators">Calculators</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html#calculators">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
+        </div>
+      </li>
       <li><a href="blog.html">Blog</a></li>
       <li><a href="smarthome-producten.html">Smarthome</a></li>
       <li><a href="vragen.html">Stel een vraag</a></li>

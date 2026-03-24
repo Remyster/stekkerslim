@@ -103,6 +103,13 @@
       .footer-top { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
     }
+
+    .tooltip-wrap{position:relative;display:inline-block;margin-left:6px;cursor:pointer;vertical-align:middle}
+    .tooltip-wrap .tip-icon{font-size:0.75rem;background:var(--grijs);color:#fff;border-radius:50%;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-family:'Outfit',sans-serif}
+    .tooltip-wrap .tip-box{display:none;position:absolute;bottom:125%;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:0.78rem;padding:10px 14px;border-radius:10px;width:240px;line-height:1.5;z-index:99;box-shadow:0 4px 16px rgba(0,0,0,0.2);font-weight:400}
+    .tooltip-wrap .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--navy)}
+    .tooltip-wrap:hover .tip-box,.tooltip-wrap:focus .tip-box{display:block}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
   </style>
 </head>
 <body>
@@ -114,9 +121,19 @@
       Stekker<span>Slim</span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html#besparen">Besparen</a></li>
-      <li><a href="index.html#calculators">Calculators</a></li>
-      <li><a href="index.html#smarthome">Smarthome</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html#calculators">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
       <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
     </ul>
   </div>
@@ -197,6 +214,22 @@
       <div id="saldering-info" style="font-size:0.82rem; color:var(--grijs); margin-top:8px;">
         Salderingsregeling actief: terugleverwaarde = stroomtarief
       </div>
+
+      <div id="na2027-extra" style="display:none;margin-top:16px">
+        <div class="form-group">
+          <label>Eigen verbruik van opgewekte stroom <span id="zelfverbruik-val">30%</span></label>
+          <input type="range" id="zelfverbruik" min="15" max="60" value="30" step="5" oninput="updateCalc()">
+          <div class="range-labels"><span>15%</span><span>60%</span></div>
+          <div style="font-size:0.78rem;color:var(--grijs);margin-top:6px;background:var(--licht);border-radius:8px;padding:8px 10px">
+            📊 NL gemiddelde zonder thuisbatterij: <strong>30%</strong>. Met thuisbatterij: ~60%. Bron: Milieucentraal / Vereniging Eigen Huis.
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Terugleverkosten per jaar (€) <span style="font-weight:400;color:var(--grijs)">optioneel</span></label>
+          <input type="number" id="terugleverkosten" value="0" step="10" oninput="updateCalc()" placeholder="0">
+          <div class="range-labels"><span>Vandebron gestaffeld kan €200-400+/jaar zijn. Check je contract.</span></div>
+        </div>
+      </div>
     </div>
 
     <div class="calc-results">
@@ -225,7 +258,7 @@
           <span class="result-row-value" id="res-terugleverwaarde">—</span>
         </div>
         <div class="result-row">
-          <span class="result-row-label">Totale jaarlijkse besparing</span>
+          <span class="result-row-label">Totale jaarlijkse besparing <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Eigen gebruik × stroomtarief + teruglevering × teruglevertarief. Na 2027 gebaseerd op jouw ingestelde zelfverbruik % en €0,06/kWh teruglevertarief.</span></span></span>
           <span class="result-row-value groen" id="res-jaarbesparing">—</span>
         </div>
       </div>
@@ -336,10 +369,13 @@
     document.querySelectorAll('.scenario-tab').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
     const info = document.getElementById('saldering-info');
+    const extra = document.getElementById('na2027-extra');
     if (s === 'voor2027') {
       info.textContent = 'Salderingsregeling actief: terugleverwaarde = stroomtarief';
+      extra.style.display = 'none';
     } else {
-      info.textContent = 'Na 2027: terugleverwaarde ≈ €0,06/kWh (marktgemiddelde)';
+      info.textContent = 'Na 2027: terugleverwaarde ≈ €0,06/kWh — stel in hoeveel % je zelf verbruikt';
+      extra.style.display = 'block';
     }
     updateCalc();
   }
@@ -376,13 +412,23 @@
     document.getElementById('tarief-val').textContent = '€' + tarief.toFixed(2).replace('.', ',');
 
     const totaalOpbrengst = panelen * opbrengstPerPaneel;
-    const eigenGebruik = Math.min(totaalOpbrengst, verbruik);
-    const teruglevering = Math.max(0, totaalOpbrengst - verbruik);
+
+    let eigenGebruik, teruglevering;
+    if (scenario === 'voor2027') {
+      eigenGebruik = Math.min(totaalOpbrengst, verbruik);
+      teruglevering = Math.max(0, totaalOpbrengst - verbruik);
+    } else {
+      const zelfverbruikPct = parseInt(document.getElementById('zelfverbruik').value) / 100;
+      document.getElementById('zelfverbruik-val').textContent = Math.round(zelfverbruikPct * 100) + '%';
+      eigenGebruik = totaalOpbrengst * zelfverbruikPct;
+      teruglevering = totaalOpbrengst * (1 - zelfverbruikPct);
+    }
 
     const teruglevertarief = scenario === 'voor2027' ? tarief : 0.06;
     const besparingEigen = eigenGebruik * tarief;
     const besparingTeruglevering = teruglevering * teruglevertarief;
-    const totaalBesparing = besparingEigen + besparingTeruglevering;
+    const terugleverkosten = scenario === 'na2027' ? (parseFloat(document.getElementById('terugleverkosten').value) || 0) : 0;
+    const totaalBesparing = besparingEigen + besparingTeruglevering - terugleverkosten;
 
     const terugverdien = investering > 0 && totaalBesparing > 0 ? investering / totaalBesparing : 0;
     const opbrengst20jaar = totaalBesparing * 20;
