@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://stekkerslim.nl/homeassistant-energie-besparen.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Home Assistant gebruiken om energie te besparen: peakshaving, boiler op zonnestroom, slimme radiatoren en wasmachine op dal-tarief. Praktische automatiseringen uitgelegd.">
+  <title>Home Assistant voor Energiebesparing: Peakshaving, Boiler & Slimme Apparaten | StekkerSlim.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--groen:#00D17A;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
+
+    .page-hero{background:var(--navy);padding:56px 24px}
+    .page-hero-inner{max-width:800px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .article-tag{display:inline-block;background:rgba(0,209,122,0.2);color:var(--groen);padding:4px 12px;border-radius:99px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--wit);margin-bottom:16px;line-height:1.15}
+    .article-meta{color:rgba(255,255,255,0.4);font-size:0.82rem}
+
+    .article-body{max-width:800px;margin:0 auto;padding:56px 24px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin:40px 0 12px;color:var(--navy)}
+    .article-body h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin:28px 0 8px}
+    .article-body p{color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:16px}
+    .article-body ul,.article-body ol{padding-left:24px;color:#374151;font-size:0.95rem;line-height:1.8;margin-bottom:16px}
+    .article-body li{margin-bottom:6px}
+    .article-body a{color:var(--groen);text-decoration:none;font-weight:600}
+    .article-body a:hover{text-decoration:underline}
+    .article-body code{background:var(--licht);padding:2px 7px;border-radius:5px;font-size:0.85rem;font-family:monospace;color:#1a1a2e}
+    .article-body pre{background:var(--navy);color:#e2e8f0;padding:20px;border-radius:12px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:16px 0}
+    .article-body pre code{background:none;padding:0;color:#e2e8f0}
+
+    .highlight-box{background:rgba(0,209,122,0.08);border:1px solid rgba(0,209,122,0.25);border-radius:12px;padding:18px 22px;margin:24px 0}
+    .warning-box{background:#FEF3C7;border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.9rem}
+
+    .toc{background:var(--licht);border-radius:14px;padding:24px;margin-bottom:40px}
+    .toc h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
+    .toc ol{padding-left:20px;font-size:0.88rem;line-height:2.2}
+    .toc a{color:var(--navy);text-decoration:none}.toc a:hover{color:var(--groen)}
+
+    .automation-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    .automation-card{background:var(--navy);border-radius:14px;padding:20px;color:var(--wit)}
+    .automation-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:8px;color:var(--groen)}
+    .automation-card p{font-size:0.83rem;color:rgba(255,255,255,0.6);margin:0;line-height:1.5}
+    .automation-card .trigger{font-size:0.75rem;background:rgba(0,209,122,0.15);color:var(--groen);padding:4px 10px;border-radius:99px;display:inline-block;margin-top:8px}
+
+    .besparing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:24px 0}
+    .besparing-card{background:var(--licht);border-radius:12px;padding:18px;text-align:center}
+    .besparing-card .bes-getal{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.8rem;color:var(--groen)}
+    .besparing-card .bes-label{font-size:0.8rem;color:var(--grijs);margin-top:4px}
+
+    .product-tip{background:var(--licht);border-radius:14px;padding:20px 24px;margin:24px 0;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    .product-tip .tip-ico{font-size:2rem;flex-shrink:0}
+    .product-tip h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:4px}
+    .product-tip p{font-size:0.83rem;color:var(--grijs);margin:0 0 10px}
+    .btn-affiliate{display:inline-block;padding:8px 16px;border-radius:8px;font-weight:700;font-size:0.82rem;text-decoration:none;transition:opacity .2s}
+    .btn-affiliate:hover{opacity:0.85;text-decoration:none}
+    .btn-hw{background:var(--groen);color:var(--navy)}
+    .btn-amazon{background:#FF9900;color:#111}
+
+    .stap-list{display:flex;flex-direction:column;gap:16px;margin:24px 0}
+    .stap-item{display:flex;gap:16px;align-items:flex-start;background:var(--licht);border-radius:12px;padding:16px}
+    .stap-num{min-width:36px;height:36px;background:var(--groen);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:900;font-size:0.95rem;flex-shrink:0}
+    .stap-content h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:4px}
+    .stap-content p{font-size:0.85rem;color:var(--grijs);margin:0;line-height:1.5}
+
+    .disclaimer-box{background:var(--licht);border-radius:12px;padding:16px 20px;font-size:0.82rem;color:var(--grijs);margin-top:40px;line-height:1.6}
+    .related-articles{background:var(--licht);padding:48px 24px}
+    .related-inner{max-width:800px;margin:0 auto}
+    .related-inner h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:20px}
+    .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .related-card{background:var(--wit);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:box-shadow .2s;display:block}
+    .related-card:hover{box-shadow:var(--shadow)}.related-card .tag{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--groen);margin-bottom:6px}
+    .related-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;line-height:1.3}
+    .cta-section{background:var(--navy);padding:56px 24px;text-align:center}
+    .cta-section h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:var(--wit);margin-bottom:12px}
+    .cta-section p{color:rgba(255,255,255,.6);margin-bottom:24px}
+    .btn-primary{background:var(--groen);color:var(--navy);padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;display:inline-block}
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
+    @media(max-width:700px){.automation-cards,.related-grid,.besparing-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;color:var(--navy);font-size:1.5rem}
+    .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--wit);border-bottom:1px solid var(--grijs-licht);padding:16px;z-index:99;flex-direction:column;gap:0}
+    .mobile-menu a{display:block;padding:12px 16px;color:var(--navy);text-decoration:none;font-weight:500;font-size:0.95rem;border-radius:8px}.mobile-menu a:hover{background:var(--licht)}
+    .mobile-menu.open{display:flex}
+    @media(max-width:900px){.hamburger{display:block}.nav-links{display:none}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="index.html#calculators">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="smarthome-producten.html">Smarthome</a>
+        <div class="nav-dropdown-menu">
+          <a href="smarthome-producten.html">🏠 Alle producten</a>
+          <a href="slimme-stekkers.html">🔌 Slimme stekkers</a>
+          <a href="smart-lampen.html">💡 Smart lampen</a>
+          <a href="smarthome-uitleg.html">📖 Uitleg protocollen</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="vragen.html" class="nav-cta">Stel een vraag</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMenu()">🏠 Home</a>
+  <a href="calculator-zonnepanelen.html" onclick="closeMenu()">☀️ Zonnepanelen calculator</a>
+  <a href="calculator-thuisbatterij.html" onclick="closeMenu()">🔋 Thuisbatterij calculator</a>
+  <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome producten</a>
+  <a href="smarthome-uitleg.html" onclick="closeMenu()">📖 Uitleg protocollen</a>
+  <a href="blog.html" onclick="closeMenu()">📝 Blog</a>
+  <a href="vragen.html" onclick="closeMenu()">💬 Stel een vraag</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="blog.html">Blog</a> › Home Assistant energiebesparing</div>
+    <div class="article-tag">Home Assistant</div>
+    <h1>Home Assistant voor energiebesparing: peakshaving, boiler op zonnestroom en slimme automatiseringen</h1>
+    <div class="article-meta">Door Remy Egberts · Maart 2026 · 8 min leestijd</div>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="toc">
+    <h4>📋 Inhoud van dit artikel</h4>
+    <ol>
+      <li><a href="#waarom">Waarom Home Assistant en energie?</a></li>
+      <li><a href="#eerste-stap">Eerste stap: meten is weten</a></li>
+      <li><a href="#peakshaving">Peakshaving: wat is het en hoe stel je het in?</a></li>
+      <li><a href="#boiler">Boiler aansturen op zonnestroom</a></li>
+      <li><a href="#wasmachine">Wasmachine op dal-tarief of zonne-overschot</a></li>
+      <li><a href="#radiatoren">Slimme radiatorknoppen met raamdetectie</a></li>
+      <li><a href="#hardware">Welke hardware heb je nodig?</a></li>
+      <li><a href="#conclusie">Conclusie</a></li>
+    </ol>
+  </div>
+
+  <h2 id="waarom">Waarom Home Assistant en energie?</h2>
+
+  <p>Ik heb Home Assistant draaien op een Raspberry Pi in de meterkast. Daar loopt alles op: P1 meter, slimme stekkers, thermostaat, batterij. Maar het duurde een tijdje voor ik echt begreep hoe ik het systeem voor mij kon laten werken op het gebied van energie.</p>
+
+  <p>Het probleem met de meeste apps die bij smarthome producten meegeleverd worden: ze laten je <em>zien</em> wat je verbruikt, maar automatiseren weinig. Home Assistant doet dat wél — en dat is waar de echte besparing zit.</p>
+
+  <div class="highlight-box">
+    <strong>Wat levert het op?</strong> Gebruikers op Reddit en Facebook groepen als "Home Assistant NL" en "Zonnepanelen NL" melden besparingen van €150–400 per jaar — afhankelijk van situatie, contract en hoeveel je automatiseert. De getallen variëren sterk, maar de richting is duidelijk: automatiseren loont.
+  </div>
+
+  <div class="besparing-grid">
+    <div class="besparing-card">
+      <div class="bes-getal">€80–150</div>
+      <div class="bes-label">per jaar: boiler op zonnestroom</div>
+    </div>
+    <div class="besparing-card">
+      <div class="bes-getal">€50–120</div>
+      <div class="bes-label">per jaar: wasmachine op dal-tarief</div>
+    </div>
+    <div class="besparing-card">
+      <div class="bes-getal">€40–100</div>
+      <div class="bes-label">per jaar: peakshaving met batterij</div>
+    </div>
+    <div class="besparing-card">
+      <div class="bes-getal">€30–60</div>
+      <div class="bes-label">per jaar: slimme thermostaat</div>
+    </div>
+  </div>
+
+  <p style="font-size:0.8rem;color:var(--grijs)">⚠️ Besparingen zijn schattingen op basis van gebruikerservaringen. Jouw situatie kan afwijken.</p>
+
+  <h2 id="eerste-stap">Eerste stap: meten is weten</h2>
+
+  <p>Voor je iets automatiseert, moet je weten wat je verbruikt. De P1 meter is de basis. Die klikt in je slimme meter en stuurt live data naar Home Assistant: hoeveel je verbruikt, hoeveel je teruglevert, en wanneer.</p>
+
+  <div class="product-tip">
+    <div class="tip-ico">📡</div>
+    <div>
+      <h4>HomeWizard P1 Meter — de makkelijkste instap</h4>
+      <p>Werkt direct met Home Assistant via lokale API. Geen cloud, geen abonnement. €24,95 — de beste eerste investering voor elke HA-gebruiker.</p>
+      <a href="https://partner.homewizard.com/c/?si=18407&li=1795784&wi=419188&ws=&dl=nl%2Fp1-meter%2F" class="btn-affiliate btn-hw" target="_blank" rel="noopener sponsored">⚡ Bestel bij HomeWizard →</a>
+    </div>
+  </div>
+
+  <p>Met de P1 meter in Home Assistant zie je op je dashboard live wat er binnenkomt en uitgaat. Dat is stap 1. Stap 2 is automatiseren op basis van die data.</p>
+
+  <h2 id="peakshaving">Peakshaving: wat is het en hoe stel je het in?</h2>
+
+  <p>Peakshaving betekent: pieken in je stroomverbruik afvlakken. In België betaal je al voor netpieken (capaciteitstarief). In Nederland is dat nog niet zo, maar er wordt over gesproken. En als je een thuisbatterij hebt, is peakshaving sowieso slim: de batterij ontlaadt op het moment dat je veel stroom trekt, zodat je minder van het net afneemt.</p>
+
+  <p>De meest voorkomende pieken in een doorsnee huishouden:</p>
+  <ul>
+    <li>Warmtepomp die aanslaat: 800–2.000W</li>
+    <li>Inductiekookplaat: 2.000–7.200W</li>
+    <li>Wasmachine + droger tegelijk: 3.000–5.000W</li>
+    <li>Laadpaal: 3.700–22.000W</li>
+  </ul>
+
+  <div class="automation-cards">
+    <div class="automation-card">
+      <h4>🔋 Peakshaving met HomeWizard batterij</h4>
+      <p>De HomeWizard app heeft een "Nul op de meter" modus. Die ontlaadt de batterij automatisch als je meer verbruikt dan je opwekt. Geen HA-code nodig.</p>
+      <span class="trigger">Trigger: verbruik > opwek</span>
+    </div>
+    <div class="automation-card">
+      <h4>⚙️ Peakshaving via Home Assistant</h4>
+      <p>Met Zendure of Marstek stuur je via de API direct aan. Je kunt een maximale afname van het net instellen — alles daarboven levert de batterij.</p>
+      <span class="trigger">Trigger: netafname > drempelwaarde</span>
+    </div>
+  </div>
+
+  <h2 id="boiler">Boiler aansturen op zonnestroom surplus</h2>
+
+  <p>Dit is waarschijnlijk de meest effectieve automatisering die je kunt bouwen. De gedachte is simpel: je elektrische boiler verwarmt water. Dat water houdt warmte vast. Als je 's middags zonnestroom overschot hebt, gebruik je dat om de boiler extra op te warmen — zodat je 's avonds geen dure stroom nodig hebt voor warm water.</p>
+
+  <p>Het briljante is: een boiler is in feite een thermische accu. Water opslaan kost niets, en warm water gebruik je sowieso. Je verschuift alleen het moment van verwarmen.</p>
+
+  <div class="warning-box">
+    <strong>⚠️ Check voor publicatie:</strong> Niet elke boiler is te koppelen aan HA. Elektrische boilers met een los verwarmingselement zijn makkelijk aan te sturen via een slimme stekker (HomeWizard Energy Socket). CV-ketels werken anders — die warm je water via gas. Controleer je eigen situatie.
+  </div>
+
+  <h3>Hoe je het instelt met een slimme stekker:</h3>
+
+  <div class="stap-list">
+    <div class="stap-item">
+      <div class="stap-num">1</div>
+      <div class="stap-content">
+        <h4>P1 meter uitlezen in Home Assistant</h4>
+        <p>Je hebt real-time data nodig over je netto-afname of -teruglevering. HomeWizard P1 meter via lokale API werkt het makkelijkst.</p>
+      </div>
+    </div>
+    <div class="stap-item">
+      <div class="stap-num">2</div>
+      <div class="stap-content">
+        <h4>Slimme stekker op de boiler</h4>
+        <p>Sluit een slimme stekker aan op de boiler. HomeWizard Energy Socket heeft een ingebouwde energiemeting — handig om ook het verbruik bij te houden.</p>
+      </div>
+    </div>
+    <div class="stap-item">
+      <div class="stap-num">3</div>
+      <div class="stap-content">
+        <h4>Automatisering instellen in HA</h4>
+        <p>Trigger: als <code>sensor.p1_netto_teruglever</code> groter is dan 300W gedurende 5 minuten → schakel boiler AAN. Trigger: als teruglever onder 100W zakt → boiler UIT.</p>
+      </div>
+    </div>
+    <div class="stap-item">
+      <div class="stap-num">4</div>
+      <div class="stap-content">
+        <h4>Veiligheidsgrens instellen</h4>
+        <p>Stel een maximale temperatuur in (60°C) zodat de boiler niet doorschiet. Dit is in de meeste boilers sowieso ingebouwd, maar check het.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-tip">
+    <div class="tip-ico">🔌</div>
+    <div>
+      <h4>HomeWizard Energy Socket — voor boiler aansturing</h4>
+      <p>Meet ook het verbruik van de boiler. Lokale API, werkt direct met Home Assistant. Ideaal voor deze automatisering.</p>
+      <a href="https://partner.homewizard.com/c/?si=18407&li=1795784&wi=419188&ws=&dl=nl%2Fenergy-socket%2F" class="btn-affiliate btn-hw" target="_blank" rel="noopener sponsored">⚡ HomeWizard Energy Socket →</a>
+      <a href="https://amzn.to/40zQLvl" class="btn-affiliate btn-amazon" target="_blank" rel="noopener sponsored" style="margin-left:8px">🛒 Slimme stekker Amazon →</a>
+    </div>
+  </div>
+
+  <h2 id="wasmachine">Wasmachine op dal-tarief of zonne-overschot</h2>
+
+  <p>De wasmachine is een van de makkelijkste apparaten om slim in te plannen — mits je er ook bij kunt. Er zijn twee strategieën:</p>
+
+  <ul>
+    <li><strong>Dal-tarief (dynamisch contract):</strong> plan de wasmachine voor 23:00 als de stroomprijs het laagst is</li>
+    <li><strong>Zonne-overschot:</strong> start de machine als je 's middags meer opwekt dan je verbruikt</li>
+  </ul>
+
+  <p>Voor de tweede strategie heb je weer de P1 meter nodig als trigger. Voor dal-tarief kun je ook de ingebouwde timer van veel wasmachines gebruiken — geen HA nodig.</p>
+
+  <p>Als je het via HA wil doen, werkt het met een slimme stekker op de wasmachine. Maar let op: sommige wasmachines willen handmatig gestart worden na het insteken — ze gaan niet automatisch aan na stroomonderbreking. Test dit eerst met jouw machine voor je een automatisering bouwt.</p>
+
+  <div class="automation-cards">
+    <div class="automation-card">
+      <h4>⏰ Dal-tarief automaat</h4>
+      <p>Trigger: tijd 23:00 → als machine "klaar staat" (detecteer via slimme stekker: weinig stroom, maar niet 0) → stuur melding om te starten.</p>
+      <span class="trigger">Simpel, geen fysieke schakelaar nodig</span>
+    </div>
+    <div class="automation-card">
+      <h4>☀️ Zonne-overschot trigger</h4>
+      <p>Trigger: teruglever > 800W voor 10 minuten → stuur notificatie "Nu goedkoop wassen?" → jij drukt op start.</p>
+      <span class="trigger">Veiliger dan automatisch schakelen</span>
+    </div>
+  </div>
+
+  <h2 id="radiatoren">Slimme radiatorknoppen met raamdetectie</h2>
+
+  <p>Slimme radiatorknoppen (TRV's) zijn relatief goedkoop en leveren direct resultaat: ruimtes worden alleen verwarmd als dat nodig is. De slimste truc: raamdetectie. Als je een raam opent, stopt de TRV automatisch met verwarmen. Als het raam dicht gaat, pakt hij de ingestelde temperatuur weer op.</p>
+
+  <p>Dit werkt het best met Zigbee-apparaten, omdat die stabiel zijn en snel communiceren. Zigbee TRV's van merken als Sonoff (TRVZB) of Aqara zijn populair in de HA-community.</p>
+
+  <div class="highlight-box">
+    <strong>Mijn tip voor huurders:</strong> Radiatorknop vervangen is vrijwel altijd toegestaan in huurwoningen — je vervangt alleen de knop, niet de radiator zelf. Check het even bij je verhuurder, maar dit is normaal gesproken geen probleem.
+  </div>
+
+  <h2 id="hardware">Welke hardware heb je nodig?</h2>
+
+  <p>Je hoeft niet alles tegelijk te doen. Dit is de volgorde die ik aanbeveel:</p>
+
+  <div class="stap-list">
+    <div class="stap-item">
+      <div class="stap-num">1</div>
+      <div class="stap-content">
+        <h4>P1 meter (€24,95)</h4>
+        <p>Basis van alles. Zonder dit geen realtime data. HomeWizard P1 meter is de makkelijkste keuze voor HA.</p>
+      </div>
+    </div>
+    <div class="stap-item">
+      <div class="stap-num">2</div>
+      <div class="stap-content">
+        <h4>Raspberry Pi of Home Assistant hardware (€60–120)</h4>
+        <p>HA draait op een Pi 4 of Pi 5. Of koop een kant-en-klare Home Assistant Green of Yellow. Éénmalige investering.</p>
+      </div>
+    </div>
+    <div class="stap-item">
+      <div class="stap-num">3</div>
+      <div class="stap-content">
+        <h4>Slimme stekkers (€15–30 per stuk)</h4>
+        <p>Voor boiler, wasmachine of andere verbruikers. HomeWizard Energy Socket voor meting + schakelen, of Sonoff S60 voor budgetvriendelijk.</p>
+      </div>
+    </div>
+    <div class="stap-item">
+      <div class="stap-num">4</div>
+      <div class="stap-content">
+        <h4>Zigbee stick (€15–20) + TRV's (€20–35 per stuk)</h4>
+        <p>Optioneel, maar levert veel op als je radiatoren hebt. Zigbee2MQTT + Sonoff TRVZB is een bewezen combinatie.</p>
+      </div>
+    </div>
+    <div class="stap-item">
+      <div class="stap-num">5</div>
+      <div class="stap-content">
+        <h4>Thuisbatterij (€969–€1.195)</h4>
+        <p>Pas als je de basics hebt. Zie ons <a href="thuisbatterij-top5-2026.html">thuisbatterij vergelijkingsartikel</a> voor de beste keuzes van 2026.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-tip">
+    <div class="tip-ico">🍓</div>
+    <div>
+      <h4>Raspberry Pi 4 of 5 — HA hardware</h4>
+      <p>Pi 4 is voldoende voor de meeste HA-installaties. Pi 5 is sneller en toekomstvaster. Beide geschikt voor 24/7 draaien als home server.</p>
+      <a href="https://amzn.to/4bM6r4R" class="btn-affiliate btn-amazon" target="_blank" rel="noopener sponsored">🛒 Raspberry Pi 4 →</a>
+      <a href="https://amzn.to/4lDTvBB" class="btn-affiliate btn-amazon" target="_blank" rel="noopener sponsored" style="margin-left:8px">🛒 Raspberry Pi 5 →</a>
+    </div>
+  </div>
+
+  <h2 id="conclusie">Conclusie</h2>
+
+  <p>Home Assistant is geen weekendproject dat je één keer bouwt en nooit meer aanraakt. Het groeit mee met je huis en je situatie. Maar de kern is simpel: meten, begrijpen, automatiseren.</p>
+
+  <p>Begin met de P1 meter. Kijk een week wat je verbruikt. Dan zie je vanzelf waar de kansen zitten. Bij de meeste mensen is dat de boiler, de wasmachine, of de verwarming in kamers die ze weinig gebruiken.</p>
+
+  <p>Heb je zonnepanelen? Dan is de boiler-op-zonnestroom automaat waarschijnlijk de snelste terugverdientijd die je kunt bouwen. Heb je een dynamisch contract? Dan is de wasmachine-timer een gratis besparing.</p>
+
+  <div class="highlight-box">
+    <strong>Eerste actie na dit artikel:</strong> Installeer de <a href="smarthome-p1-meter.html">HomeWizard P1 meter</a> en laat hem een week meten. Daarna zie je precies waar jij het meest kunt besparen.
+  </div>
+
+  <div class="disclaimer-box">
+    <strong>Disclaimer:</strong> Besparingen zijn gebaseerd op gebruikerservaringen en zijn indicatief. Jouw situatie kan afwijken afhankelijk van verbruik, contract en hardware. Controleer altijd de veiligheid bij elektrische installaties — schakel apparaten met hoog vermogen niet automatisch zonder de juiste beveiliging. Dit artikel bevat affiliate links — StekkerSlim ontvangt mogelijk commissie bij aankoop, zonder extra kosten voor jou.
+  </div>
+
+</div>
+
+<div class="cta-section">
+  <h2>Wil je weten wat energie jou kost?</h2>
+  <p>Bereken het zelf met onze calculator — inclusief zonnepanelen, terugleverkosten en het effect van een thuisbatterij.</p>
+  <a href="calculator-energiekosten.html" class="btn-primary">🔋 Energiekosten calculator →</a>
+</div>
+
+<div class="related-articles">
+  <div class="related-inner">
+    <h3>Lees ook</h3>
+    <div class="related-grid">
+      <a href="smarthome-p1-meter.html" class="related-card">
+        <div class="tag">Home Assistant</div>
+        <h4>P1 meter koppelen aan Home Assistant — stap voor stap</h4>
+      </a>
+      <a href="thuisbatterij-top5-2026.html" class="related-card">
+        <div class="tag">Thuisbatterij</div>
+        <h4>Top 5 thuisbatterijen 2026 — eerlijk vergeleken</h4>
+      </a>
+      <a href="smarthome-uitleg.html" class="related-card">
+        <div class="tag">Smarthome</div>
+        <h4>WiFi, Zigbee of Matter — welk protocol kies jij?</h4>
+      </a>
+      <a href="dynamisch-contract.html" class="related-card">
+        <div class="tag">Energie</div>
+        <h4>Dynamisch energiecontract — is het iets voor jou?</h4>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a><p>Eerlijke energietips voor Nederlandse gezinnen.</p></div>
+      <div class="footer-col"><h4>Smarthome</h4><ul>
+        <li><a href="slimme-stekkers.html">Slimme stekkers</a></li>
+        <li><a href="smart-lampen.html">Smart lampen</a></li>
+        <li><a href="smarthome-uitleg.html">Uitleg protocollen</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Calculators</h4><ul>
+        <li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li>
+        <li><a href="calculator-energiekosten.html">Energiekosten</a></li>
+        <li><a href="calculator-thuisbatterij.html">Thuisbatterij</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="vragen.html">Stel een vraag</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl — Remy Egberts</span><a href="privacy.html" style="color:rgba(255,255,255,.4)">Privacy & Disclaimer</a></div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+document.addEventListener('click',function(e){const m=document.getElementById('mobileMenu');if(m.classList.contains('open')&&!m.contains(e.target)&&!e.target.closest('.hamburger'))m.classList.remove('open')})
+</script>
+</body>
+</html>
