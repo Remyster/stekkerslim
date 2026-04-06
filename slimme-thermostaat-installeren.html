@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stap voor stap slimme thermostaat installeren. Welke past bij jouw situatie? Honeywell, Tado, Home Assistant koppeling uitgelegd.">
+  <title>Slimme Thermostaat Installeren — van Honeywell tot Tado | StekkerSlim.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--groen:#00D17A;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
+    .page-hero{background:var(--navy);padding:56px 24px}
+    .page-hero-inner{max-width:800px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .article-tag{display:inline-block;background:rgba(0,209,122,0.2);color:var(--groen);padding:4px 12px;border-radius:99px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--wit);margin-bottom:16px;line-height:1.15}
+    .article-meta{color:rgba(255,255,255,0.4);font-size:0.82rem}
+    .article-body{max-width:800px;margin:0 auto;padding:56px 24px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin:40px 0 12px;color:var(--navy)}
+    .article-body h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin:28px 0 8px}
+    .article-body p{color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:16px}
+    .article-body ul,.article-body ol{padding-left:24px;color:#374151;font-size:0.95rem;line-height:1.8;margin-bottom:16px}
+    .article-body li{margin-bottom:6px}
+    .highlight-box{background:var(--licht);border-left:4px solid var(--groen);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem;color:var(--navy)}
+    .warning-box{background:rgba(255,210,63,0.1);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem;color:#374151}
+    .danger-box{background:rgba(239,68,68,0.08);border-left:4px solid #EF4444;border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem;color:#374151}
+    .pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    .pros{background:rgba(0,209,122,0.08);border:1px solid rgba(0,209,122,0.25);border-radius:12px;padding:20px}
+    .cons{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:12px;padding:20px}
+    .pros h4,.cons h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
+    .pros h4{color:var(--groen)}.cons h4{color:#EF4444}
+    .pros ul,.cons ul{padding-left:16px;font-size:0.85rem;line-height:1.8}
+    .product-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:24px 0}
+    .product-card{border-radius:14px;border:1px solid var(--grijs-licht);padding:20px;background:var(--wit)}
+    .product-card .product-icon{font-size:2rem;margin-bottom:10px}
+    .product-card h4{font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;margin-bottom:4px}
+    .product-card .price{font-size:0.82rem;color:var(--grijs);margin-bottom:10px}
+    .product-card ul{padding-left:16px;font-size:0.82rem;line-height:1.8;color:#374151;margin:0}
+    .product-card .badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:0.72rem;font-weight:700;margin-top:10px}
+    .badge-groen{background:rgba(0,209,122,0.15);color:#00a862}
+    .badge-geel{background:rgba(255,210,63,0.2);color:#b8860b}
+    .badge-grijs{background:rgba(107,114,128,0.12);color:#4b5563}
+    .badge-blauw{background:rgba(59,130,246,0.12);color:#1d4ed8}
+    .product-card .btn-product{display:block;margin-top:14px;background:var(--groen);color:var(--navy);text-align:center;padding:9px 16px;border-radius:8px;font-weight:700;font-size:0.85rem;text-decoration:none;transition:opacity .2s}
+    .product-card .btn-product:hover{opacity:0.85}
+    .product-card .btn-product.disabled{background:var(--grijs-licht);color:var(--grijs);cursor:default;pointer-events:none}
+    .vergelijk-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:0.88rem}
+    .vergelijk-table th{background:var(--navy);color:var(--wit);padding:12px 14px;text-align:left;font-family:'Outfit',sans-serif;font-weight:700}
+    .vergelijk-table td{padding:11px 14px;border-bottom:1px solid var(--grijs-licht);vertical-align:middle}
+    .vergelijk-table tr:last-child td{border-bottom:none}
+    .vergelijk-table tr:hover td{background:var(--licht)}
+    .step-list{list-style:none;padding:0;margin:24px 0}
+    .step-list li{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--grijs-licht)}
+    .step-list li:last-child{border-bottom:none}
+    .step-nr{flex-shrink:0;width:36px;height:36px;background:var(--groen);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:900;font-size:0.95rem;color:var(--navy)}
+    .step-content h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:4px}
+    .step-content p{font-size:0.88rem;color:#374151;margin:0;line-height:1.6}
+    .niet-lonen-box{background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.2);border-radius:14px;padding:24px;margin:24px 0}
+    .niet-lonen-box h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;color:#EF4444;margin-bottom:12px}
+    .niet-lonen-box ul{padding-left:20px;font-size:0.9rem;color:#374151;line-height:1.9;margin:0}
+    .opentherm-box{background:var(--navy);border-radius:14px;padding:24px;margin:24px 0;color:var(--wit)}
+    .opentherm-box h4{font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;margin-bottom:12px;color:var(--groen)}
+    .opentherm-box p{font-size:0.88rem;line-height:1.7;color:rgba(255,255,255,0.75);margin-bottom:10px}
+    .opentherm-box p:last-child{margin-bottom:0}
+    .toc{background:var(--licht);border-radius:14px;padding:24px;margin-bottom:40px}
+    .toc h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
+    .toc ol{padding-left:20px;font-size:0.88rem;line-height:2}
+    .toc a{color:var(--navy);text-decoration:none}.toc a:hover{color:var(--groen)}
+    .disclaimer-box{background:var(--licht);border-radius:12px;padding:16px 20px;font-size:0.82rem;color:var(--grijs);margin-top:40px;line-height:1.6}
+    .related-articles{background:var(--licht);padding:48px 24px}
+    .related-inner{max-width:800px;margin:0 auto}
+    .related-inner h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:20px}
+    .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .related-card{background:var(--wit);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:box-shadow .2s;display:block}
+    .related-card:hover{box-shadow:var(--shadow)}
+    .related-card .tag{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--groen);margin-bottom:6px}
+    .related-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;line-height:1.3}
+    .cta-section{background:var(--navy);padding:56px 24px;text-align:center}
+    .cta-section h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:var(--wit);margin-bottom:12px}
+    .cta-section p{color:rgba(255,255,255,.6);margin-bottom:24px}
+    .btn-primary{background:var(--groen);color:var(--navy);padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;display:inline-block;transition:transform .2s}
+    .btn-primary:hover{transform:translateY(-2px)}
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
+    @media(max-width:700px){.pros-cons,.product-cards,.related-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}.vergelijk-table{font-size:0.8rem}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="index.html#calculators">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="blog.html">Blog</a></div>
+    <div class="article-tag">Smarthome</div>
+    <h1>Slimme thermostaat installeren — van Honeywell tot Tado</h1>
+    <div class="article-meta">Bijgewerkt: april 2026 · Leestijd: 10 minuten</div>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="toc">
+    <h4>📋 Inhoud van dit artikel</h4>
+    <ol>
+      <li><a href="#waarom">Waarom een slimme thermostaat?</a></li>
+      <li><a href="#types">Welke types zijn er?</a></li>
+      <li><a href="#vergelijking">Honeywell T6R vs Tado vs Netatmo</a></li>
+      <li><a href="#opentherm">Past het bij jouw cv-ketel?</a></li>
+      <li><a href="#installatie">Installatie stap voor stap</a></li>
+      <li><a href="#homeassistant">Home Assistant koppeling</a></li>
+      <li><a href="#loont-niet">Wanneer loont het NIET</a></li>
+      <li><a href="#conclusie">Conclusie</a></li>
+    </ol>
+  </div>
+
+  <p>Mijn oude thermostaat deed precies wat hij moest doen: temperatuur instellen, klaar. Maar hij stookte vrolijk door als ik op mijn werk zat. Een slimme thermostaat pakt dat aan — en het is makkelijker te installeren dan de meeste mensen denken. Dit artikel legt uit wat je kunt verwachten, wat het oplevert, en eerlijk ook: wanneer het de moeite niet waard is.</p>
+
+  <h2 id="waarom">Waarom een slimme thermostaat?</h2>
+  <p>Een gemiddeld Nederlands huishouden geeft zo'n €1.200–€1.500 per jaar uit aan gas. Een groot deel daarvan gaat naar verwarming. Een slimme thermostaat helpt op drie manieren:</p>
+  <ul>
+    <li><strong>Aanwezigheidsdetectie</strong> — thermostaat gaat automatisch lager als niemand thuis is</li>
+    <li><strong>Weekschema</strong> — 's nachts en overdag automatisch lager, zonder dat je er zelf aan denkt</li>
+    <li><strong>Modulerende regeling</strong> — bij OpenTherm-compatibele ketels: ketel draait op lager vermogen in plaats van aan/uit, wat gasverbruik verlaagt</li>
+  </ul>
+
+  <div class="highlight-box">
+    <strong>Indicatieve besparing: €100–200 per jaar</strong> — afhankelijk van je huidige stookgedrag, woninggrootte en isolatie. Wie al een goed weekschema heeft, bespaart minder. Wie nu altijd op 20°C staat, bespaart meer.
+  </div>
+
+  <h2 id="types">Welke types zijn er?</h2>
+
+  <h3>1. Programmeerbare thermostaat met app</h3>
+  <p>Dit is de instapper. Je stelt een weekschema in via de app, maar de thermostaat reageert niet op of je thuis bent of niet. Simpel, goedkoop, en voor veel mensen voldoende. De Honeywell T6R valt in deze categorie.</p>
+
+  <h3>2. Slimme thermostaat met aanwezigheidsdetectie</h3>
+  <p>Via GPS op je telefoon weet de thermostaat wanneer je onderweg naar huis bent en begint alvast te stoken. Of zet 'm lager als iedereen weg is. Tado en Netatmo doen dit. Het scheelt extra gas — maar het vereist dat elke bewoner de app installeert.</p>
+
+  <h3>3. Learning thermostaat</h3>
+  <p>Google Nest leert je gedrag en stelt zich vanzelf in. Klinkt mooi, maar let op: Google heeft de ondersteuning voor oudere Nest Learning Thermostat generaties (1e en 2e gen) in Europa beëindigd per oktober 2025. App en cloudfuncties vervallen voor die modellen. Koop je tweedehands? Check het modelnummer eerst.</p>
+
+  <div class="warning-box">
+    <strong>⚠️ Google Nest in Europa:</strong> De oudere Nest Learning Thermostat generaties (1e en 2e gen) worden vanaf oktober 2025 niet meer ondersteund via de app. Lokaal bedienen blijft mogelijk, maar afstandsbediening en Google Home integratie vervallen. Voor nieuwe aankopen: check altijd of het model nog actief wordt ondersteund.
+  </div>
+
+  <h2 id="vergelijking">Honeywell T6R vs Tado vs Netatmo</h2>
+  <p>De drie meest gekochte slimme thermostaten voor Nederlandse cv-ketels op een rij:</p>
+
+  <div class="product-cards">
+    <div class="product-card">
+      <div class="product-icon">🌡️</div>
+      <h4>Honeywell T6R</h4>
+      <div class="price">± €130–180</div>
+      <ul>
+        <li>Weekschema via app</li>
+        <li>Geofencing via Honeywell Home app</li>
+        <li>OpenTherm-compatible</li>
+        <li>Draadloos (batterij)</li>
+        <li>Geen abonnement</li>
+        <li>Makkelijkste installatie</li>
+      </ul>
+      <span class="badge badge-groen">Beste prijs/kwaliteit</span>
+      <a href="https://amzn.to/4uAP26t" class="btn-product" target="_blank" rel="noopener sponsored">Bekijk op Amazon →</a>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🏠</div>
+      <h4>Tado Slimme Thermostaat</h4>
+      <div class="price">± €100–130 starter</div>
+      <ul>
+        <li>GPS-aanwezigheidsdetectie</li>
+        <li>OpenTherm-compatible</li>
+        <li>Uitbreidbaar met TRV's</li>
+        <li>AI Assist: €3,99/maand</li>
+        <li>Werkt ook zonder abonnement</li>
+        <li>Goede HA-integratie</li>
+      </ul>
+      <span class="badge badge-blauw">Beste allrounder</span>
+      <span class="btn-product disabled">Geen affiliate link</span>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🌿</div>
+      <h4>Netatmo Slimme Thermostaat</h4>
+      <div class="price">± €120–150</div>
+      <ul>
+        <li>Geen abonnement ooit</li>
+        <li>OpenTherm-compatible</li>
+        <li>Lokale werking mogelijk</li>
+        <li>Mooie vormgeving</li>
+        <li>HA-integratie aanwezig</li>
+        <li>Minder features dan Tado</li>
+      </ul>
+      <span class="badge badge-geel">Geen abonnement</span>
+      <span class="btn-product disabled">Geen affiliate link</span>
+    </div>
+  </div>
+
+  <table class="vergelijk-table">
+    <tr>
+      <th>Kenmerk</th>
+      <th>Honeywell T6R</th>
+      <th>Tado</th>
+      <th>Netatmo</th>
+    </tr>
+    <tr><td><strong>Prijs</strong></td><td>€130–180</td><td>€100–130</td><td>€120–150</td></tr>
+    <tr><td><strong>Aanwezigheidsdetectie</strong></td><td>✅ (geofencing via app)</td><td>✅ (AI Assist abonnement)</td><td>✅ (gratis)</td></tr>
+    <tr><td><strong>OpenTherm</strong></td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td><strong>Abonnement nodig</strong></td><td>Nee</td><td>Optioneel (€3–4/mnd)</td><td>Nee</td></tr>
+    <tr><td><strong>Uitbreiden met TRV's</strong></td><td>❌</td><td>✅ Eigen TRV's</td><td>✅ Eigen TRV's</td></tr>
+    <tr><td><strong>Home Assistant</strong></td><td>Beperkt</td><td>✅ Officiële integratie</td><td>✅ Via integratie</td></tr>
+    <tr><td><strong>Zelf installeren</strong></td><td>Ja, makkelijk</td><td>Ja, iets complexer</td><td>Ja</td></tr>
+    <tr><td><strong>Ideaal voor</strong></td><td>Simpele vervanger</td><td>Slim + per kamer</td><td>Geen abonnement</td></tr>
+  </table>
+
+  <h2 id="opentherm">Past het bij jouw cv-ketel? (OpenTherm uitgelegd)</h2>
+
+  <div class="opentherm-box">
+    <h4>🔥 Wat is OpenTherm?</h4>
+    <p>Een gewone thermostaat stuurt je ketel aan via een simpel aan/uit-signaal: "stook" of "stop". De ketel draait dan altijd op vol vermogen.</p>
+    <p>OpenTherm is een communicatieprotocol waarbij de thermostaat en ketel echt met elkaar praten. De thermostaat zegt dan niet "aan" maar "draai op 40% vermogen". De ketel moduleert — hij draait rustig en zuinig in plaats van altijd vol gas.</p>
+    <p><strong>Resultaat: 10–15% extra gasbesparing</strong> ten opzichte van een gewone aan/uit-koppeling. Maar alleen als je ketel OpenTherm ondersteunt én je thermostaat ook.</p>
+  </div>
+
+  <h3>Heeft jouw ketel OpenTherm?</h3>
+  <p>Kijk op de behuizing van je ketel naar de aansluitklemmen. Staat er "OT" of "OpenTherm"? Dan kan het. Weet je het niet zeker? Zoek het modelnummer op van je ketel en Google "{modelnummer} OpenTherm compatible" — dan kom je er snel achter. Je kunt ook controleren via de website van de thermostaatfabrikant.</p>
+
+  <p>Bekende ketels met OpenTherm-ondersteuning: Nefit, Remeha, Intergas, Vaillant, Bosch, Viessmann. De meeste ketels van na 2010 ondersteunen het wel — maar niet allemaal.</p>
+
+  <div class="warning-box">
+    <strong>⚠️ Twijfel je over compatibiliteit?</strong> Controleer altijd je ketelhandleiding of bel een installateur voordat je koopt. Een niet-compatibele thermostaat werkt nog wel (via aan/uit), maar je mist dan de modulerende werking en het extra besparingspotentieel.
+  </div>
+
+  <h2 id="installatie">Installatie stap voor stap</h2>
+  <p>De meeste slimme thermostaten vervang je gewoon zelf. Je hebt geen installateur nodig als je comfortabel bent met twee draden aan- en afsluiten. Gemiddelde installatietijd: 30–45 minuten.</p>
+
+  <ul class="step-list">
+    <li>
+      <div class="step-nr">1</div>
+      <div class="step-content">
+        <h4>Zet de ketel uit (stroom eraf)</h4>
+        <p>Schakel je cv-installatie uit via de groepenkast of de ketelschakelaar. Niet alleen de thermostaat uitzetten — ook de spanning naar de ketel.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-nr">2</div>
+      <div class="step-content">
+        <h4>Foto's maken van de bestaande bedrading</h4>
+        <p>Voordat je iets loskoppelt: maak twee foto's van de bestaande draden en aansluitingen. Zo kun je altijd terug als er iets misgaat.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-nr">3</div>
+      <div class="step-content">
+        <h4>Oude thermostaat demonteren</h4>
+        <p>Schroeven los, wandplaat eraf, draden loskoppelen. Let op de kleurcodering en labels op de aansluitklemmen.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-nr">4</div>
+      <div class="step-content">
+        <h4>Nieuwe ontvanger/wandplaat monteren (bij draadloze modellen)</h4>
+        <p>De Honeywell T6R heeft een aparte ontvanger die bij de ketel hangt. Die verbindt je via dezelfde draden als de oude thermostaat. De thermostaat zelf hangt daarna los op de muur of op een standaard.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-nr">5</div>
+      <div class="step-content">
+        <h4>Draden aansluiten op nieuwe ontvanger</h4>
+        <p>Volg de handleiding van je nieuwe thermostaat. Bij OpenTherm: twee draden op de OT-klemmen (polariteitsonafhankelijk, het maakt niet uit welke draad op welke klem). Bij aan/uit: gewoon op de twee klemmen.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-nr">6</div>
+      <div class="step-content">
+        <h4>Spanning terug, app installeren, koppelen</h4>
+        <p>Ketel aan, app downloaden, thermostaat koppelen via wifi. Stel je keteltype in de app in. De app vraagt hier meestal naar bij de eerste keer instellen.</p>
+      </div>
+    </li>
+    <li>
+      <div class="step-nr">7</div>
+      <div class="step-content">
+        <h4>Weekschema instellen</h4>
+        <p>Dit is waar de besparing vandaan komt. Stel in: 's nachts 16–17°C, overdag als je weg bent 16°C, thuis 20°C. Een goed schema levert direct resultaat.</p>
+      </div>
+    </li>
+  </ul>
+
+  <div class="highlight-box">
+    <strong>Wil je het toch uitbesteden?</strong> De meeste installateurs rekenen €60–120 voor een thermostaatwissel. Als je geen zin hebt in gedoe of je ketel is oud en onbekend, is dat een verstandige keuze.
+  </div>
+
+  <h2 id="homeassistant">Home Assistant koppeling</h2>
+  <p>Heb je al Home Assistant draaien? Dan kun je je slimme thermostaat direct integreren en er automatiseringen op loslaten. Dit is waar het echt interessant wordt.</p>
+
+  <h3>Tado + Home Assistant</h3>
+  <p>Tado heeft een officiële Home Assistant integratie. Na koppeling zie je de temperatuur, het setpoint en de verwarmingsstatus als entiteiten in HA. Je kunt dan automaten bouwen zoals: "Als iedereen weg is én het is buiten warmer dan 15°C → thermostaat naar 15°C."</p>
+
+  <h3>Honeywell T6R + Home Assistant</h3>
+  <p>De T6R heeft een officiële Home Assistant integratie via de Honeywell Home API. Log in met je Honeywell-account in HA en de thermostaat verschijnt direct als climate-entiteit. Geen knutselwerk — gewoon werkt het. Voor gevorderde gebruikers is er ook een HomeKit-route.</p>
+
+  <h3>Radiatorknop (TRV) erbij</h3>
+  <p>Wil je per kamer de temperatuur regelen? Dan heb je naast de thermostaat ook slimme radiatorknoppen nodig. Let op: een gewone TRV kan de ketel niet zelf aansturen. De ketel blijft warm water leveren zolang de thermostaat dat vraagt. TRV's regelen alleen hoeveel warm water er door de radiator stroomt.</p>
+
+  <p>Voor Home Assistant zijn Zigbee TRV's zoals de Sonoff TRVZB of Aqara E1 populair. Die combineer je dan met automaten in HA voor slimme zone-verwarming.</p>
+
+  <a href="smarthome-producten.html" style="display:inline-block;margin-bottom:8px;color:var(--navy);font-weight:600;font-size:0.9rem;">→ Alle smarthome producten inclusief radiatorknoppen</a>
+
+  <div class="highlight-box">
+    <strong>Meer over automatiseren via Home Assistant?</strong> Ik heb een apart artikel over peakshaving, boilerbesturing en slimme automaten: <a href="homeassistant-energie-besparen.html" style="color:var(--navy);font-weight:600;">Home Assistant voor energie besparen →</a>
+  </div>
+
+  <h2 id="loont-niet">Wanneer loont het NIET</h2>
+  <p>Ik ben eerlijk: een slimme thermostaat is niet voor iedereen zinvol. In deze situaties zou ik hem niet aanschaffen:</p>
+
+  <div class="niet-lonen-box">
+    <h4>🛑 Sla het over als...</h4>
+    <ul>
+      <li>Je thuis werkt en de hele dag thuis bent — er is geen "weg"-moment om op te besparen</li>
+      <li>Je al een goed geprogrammeerd weekschema hebt op je huidige thermostaat</li>
+      <li>Je woning slecht geïsoleerd is — dan verlies je de besparing via de muren en is isolatie een betere investering</li>
+      <li>Je een warmtepomp hebt — die werkt fundamenteel anders dan een cv-ketel en vereist een eigen aanpak (zie onze <a href="calculator-warmtepomp.html" style="color:#EF4444;">warmtepomp calculator</a>)</li>
+      <li>Je niet bereid bent de app te installeren of een schema in te stellen — zonder dat doe je niets met de mogelijkheden</li>
+      <li>Je budget krap is en je woning eerst nog geïsoleerd moet worden</li>
+    </ul>
+  </div>
+
+  <div class="warning-box">
+    <strong>Rekensom check:</strong> Bespaar je €150/jaar en de thermostaat kost €100? Dan heb je hem in 8 maanden terugverdiend. Maar bespaar je €50/jaar omdat je toch al zuinig stookt? Dan duurt het 2 jaar — misschien toch minder interessant.
+  </div>
+
+  <h2 id="conclusie">Conclusie</h2>
+  <p>Voor de meeste huiseigenaren met een cv-ketel is een slimme thermostaat een zinvolle investering — zeker als je regelmatig van huis bent. De Honeywell T6R is de makkelijkste optie als je een goed weekschema wil met basis geofencing. Tado is de betere keuze als je geavanceerde aanwezigheidsdetectie wil of per kamer wil regelen met radiatorknoppen.</p>
+
+  <div class="pros-cons">
+    <div class="pros">
+      <h4>✅ Doe het als...</h4>
+      <ul>
+        <li>Je regelmatig van huis bent (werk, uitstapjes)</li>
+        <li>Je ketel is OpenTherm-compatibel</li>
+        <li>Je bereid bent een weekschema in te stellen</li>
+        <li>Terugverdientijd van 1–2 jaar is acceptabel</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <h4>🛑 Wacht als...</h4>
+      <ul>
+        <li>Je woning niet of slecht geïsoleerd is</li>
+        <li>Je al thuiswerkt en nooit weg bent</li>
+        <li>Je een warmtepomp overweegt (dan andere afweging)</li>
+        <li>Je geen tijd hebt voor instellen en onderhouden</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>Mijn persoonlijke aanbeveling: begin met de <strong><a href="https://amzn.to/4uAP26t" target="_blank" rel="noopener sponsored" style="color:var(--navy);">Honeywell T6R</a></strong> als je simpel en snel wil. Wil je slimmer met kamers en aanwezigheid? Dan is Tado de investering waard — ook al zit er een optioneel abonnement aan. Kijk altijd eerst of jouw ketel compatibel is voordat je iets koopt.
+
+  <div class="disclaimer-box">
+    <strong>Disclaimer:</strong> Prijzen in dit artikel zijn indicatief (april 2026) en kunnen afwijken. Controleer altijd bij een installateur of erkend monteur of jouw specifieke cv-ketel compatibel is met de gekozen thermostaat, zeker bij oudere of minder gangbare keteltypes. StekkerSlim.nl verdient commissie via affiliate links — dit heeft geen invloed op onze adviezen.
+  </div>
+
+</div>
+
+<div class="related-articles">
+  <div class="related-inner">
+    <h3>Meer lezen</h3>
+    <div class="related-grid">
+      <a href="homeassistant-energie-besparen.html" class="related-card">
+        <div class="tag">Smarthome</div>
+        <h4>Home Assistant voor energie besparen: peakshaving, boiler en slimme automaten</h4>
+      </a>
+      <a href="smarthome-producten.html" class="related-card">
+        <div class="tag">Producten</div>
+        <h4>Alle smarthome producten — stekkers, lampen, thermostaten en meer</h4>
+      </a>
+      <a href="calculator-warmtepomp.html" class="related-card">
+        <div class="tag">Calculator</div>
+        <h4>Bereken of een warmtepomp loont voor jouw situatie</h4>
+      </a>
+      <a href="dynamisch-contract.html" class="related-card">
+        <div class="tag">Energiecontracten</div>
+        <h4>Dynamisch energiecontract 2026: is het iets voor jou?</h4>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Klaar om te beginnen?</h2>
+  <p>De Honeywell T6R is de makkelijkste instapper — draadloos, OpenTherm-compatible, geen abonnement</p>
+  <a href="https://amzn.to/4uAP26t" class="btn-primary" target="_blank" rel="noopener sponsored">Bekijk Honeywell T6R op Amazon →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+        <p>Eerlijke energietips voor Nederlandse gezinnen.</p>
+      </div>
+      <div class="footer-col"><h4>Calculators</h4><ul><li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li><li><a href="calculator-energiekosten.html">Energiekosten</a></li><li><a href="calculator-laadpaal.html">Laadpaal thuis</a></li><li><a href="calculator-warmtepomp.html">Warmtepomp</a></li></ul></div>
+      <div class="footer-col"><h4>Artikelen</h4><ul><li><a href="slimme-thermostaat-installeren.html">Slimme thermostaat</a></li><li><a href="dynamisch-contract.html">Dynamisch contract</a></li><li><a href="saldering-2027.html">Saldering 2027</a></li></ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul><li><a href="over-ons.html">Over ons</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="vragen.html">Stel een vraag</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl</span><a href="privacy.html">Privacy & Disclaimer</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
