@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Laadt een plug-in batterij van zonnestroom of het net? Eerlijk antwoord per merk. HomeWizard, Zendure, Marstek vergeleken. Inclusief 800W regel en wanneer het niet loont.">
+  <title>Plug & play batterij — laadt die van zon of het net? | StekkerSlim.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--groen:#00D17A;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
+    .page-hero{background:var(--navy);padding:56px 24px}
+    .page-hero-inner{max-width:800px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .article-tag{display:inline-block;background:rgba(0,209,122,0.2);color:var(--groen);padding:4px 12px;border-radius:99px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--wit);margin-bottom:16px;line-height:1.15}
+    .article-meta{color:rgba(255,255,255,0.4);font-size:0.82rem}
+    .article-body{max-width:800px;margin:0 auto;padding:56px 24px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin:40px 0 12px;color:var(--navy)}
+    .article-body h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin:28px 0 8px}
+    .article-body p{color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:16px}
+    .article-body ul,.article-body ol{padding-left:24px;color:#374151;font-size:0.95rem;line-height:1.8;margin-bottom:16px}
+    .article-body li{margin-bottom:6px}
+    .highlight-box{background:var(--licht);border-left:4px solid var(--groen);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem;color:var(--navy)}
+    .warning-box{background:rgba(255,210,63,0.1);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem}
+    .danger-box{background:rgba(239,68,68,0.08);border-left:4px solid #EF4444;border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem}
+    .toc{background:var(--licht);border-radius:14px;padding:24px;margin-bottom:40px}
+    .toc h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
+    .toc ol{padding-left:20px;font-size:0.88rem;line-height:2}
+    .toc a{color:var(--navy);text-decoration:none}.toc a:hover{color:var(--groen)}
+    .merk-tabel{width:100%;border-collapse:collapse;margin:24px 0;font-size:0.88rem}
+    .merk-tabel th{background:var(--navy);color:var(--wit);padding:12px 14px;text-align:left;font-family:'Outfit',sans-serif;font-weight:700}
+    .merk-tabel td{padding:11px 14px;border-bottom:1px solid var(--grijs-licht);vertical-align:top}
+    .merk-tabel tr:last-child td{border-bottom:none}
+    .merk-tabel tr:hover td{background:var(--licht)}
+    .badge{display:inline-block;padding:2px 10px;border-radius:99px;font-size:0.75rem;font-weight:700}
+    .badge-groen{background:rgba(0,209,122,0.15);color:#00a862}
+    .badge-geel{background:rgba(255,210,63,0.2);color:#b8860b}
+    .badge-rood{background:rgba(239,68,68,0.1);color:#dc2626}
+    .tv-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:24px 0}
+    .tv-card{border-radius:12px;padding:16px;text-align:center}
+    .tv-card.groen{background:rgba(0,209,122,0.08);border:1px solid rgba(0,209,122,0.25)}
+    .tv-card.geel{background:rgba(255,210,63,0.1);border:1px solid rgba(255,210,63,0.4)}
+    .tv-card.rood{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2)}
+    .tv-card .jaar{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.8rem;margin-bottom:4px}
+    .tv-card.groen .jaar{color:var(--groen)}
+    .tv-card.geel .jaar{color:#b8860b}
+    .tv-card.rood .jaar{color:#dc2626}
+    .tv-card p{font-size:0.78rem;color:var(--grijs);margin:0}
+    .product-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    .product-card{background:var(--licht);border-radius:14px;padding:20px;border:1px solid var(--grijs-licht)}
+    .product-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px}
+    .product-card .prijs{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;color:var(--groen);margin-bottom:8px}
+    .product-card ul{padding-left:16px;font-size:0.82rem;color:var(--grijs);line-height:1.8;margin-bottom:12px}
+    .btn-product{display:inline-block;background:var(--navy);color:var(--wit);padding:9px 18px;border-radius:8px;font-size:0.82rem;font-weight:700;text-decoration:none;transition:transform .2s}
+    .btn-product:hover{transform:translateY(-1px)}
+    .checklist{list-style:none;padding:0}
+    .checklist li{padding:8px 0 8px 28px;position:relative;font-size:0.92rem;color:#374151;border-bottom:1px solid var(--grijs-licht)}
+    .checklist li:last-child{border-bottom:none}
+    .checklist li::before{content:'✓';position:absolute;left:0;color:var(--groen);font-weight:700}
+    .disclaimer-box{background:var(--licht);border-radius:12px;padding:16px 20px;font-size:0.82rem;color:var(--grijs);margin-top:40px;line-height:1.6}
+    .related-articles{background:var(--licht);padding:48px 24px}
+    .related-inner{max-width:800px;margin:0 auto}
+    .related-inner h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:20px}
+    .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .related-card{background:var(--wit);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:box-shadow .2s;display:block}
+    .related-card:hover{box-shadow:var(--shadow)}
+    .related-card .tag{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--groen);margin-bottom:6px}
+    .related-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;line-height:1.3}
+    .cta-section{background:var(--navy);padding:56px 24px;text-align:center}
+    .cta-section h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:var(--wit);margin-bottom:12px}
+    .cta-section p{color:rgba(255,255,255,.6);margin-bottom:24px}
+    .btn-primary{background:var(--groen);color:var(--navy);padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;display:inline-block;transition:transform .2s}
+    .btn-primary:hover{transform:translateY(-2px)}
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
+    @media(max-width:700px){.tv-grid,.product-cards,.related-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}.merk-tabel{font-size:0.8rem}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li class="nav-dropdown"><a href="index.html#calculators">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="blog.html">Blog</a></div>
+    <span class="article-tag">Thuisbatterij</span>
+    <h1>Plug & play batterij — laadt die van zonnestroom of het net?</h1>
+    <p class="article-meta">Bijgewerkt april 2026 · 8 min leestijd · door Remy van StekkerSlim.nl</p>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="toc">
+    <h4>In dit artikel</h4>
+    <ol>
+      <li><a href="#antwoord">Het korte antwoord per merk</a></li>
+      <li><a href="#hoe-werkt-het">Hoe werkt een plug-in batterij precies?</a></li>
+      <li><a href="#800w">De 800W regel — vaak vergeten</a></li>
+      <li><a href="#wanneer-net">Wanneer is laden van het net zinvol?</a></li>
+      <li><a href="#zonder-zonnepanelen">Zonder zonnepanelen: heeft het zin?</a></li>
+      <li><a href="#terugverdientijd">Terugverdientijd — wat kun je verwachten?</a></li>
+      <li><a href="#registratie">Registratieplicht — vergeet dit niet</a></li>
+      <li><a href="#veiligheid">Veiligheid en plaatsing</a></li>
+      <li><a href="#loont-niet">Wanneer loont het NIET</a></li>
+    </ol>
+  </div>
+
+  <p>Eén van de meest gestelde vragen over plug-in thuisbatterijen: laadt die nou alleen op als de zon schijnt, of ook gewoon 's nachts uit het stopcontact? Het antwoord verschilt per merk — en dat maakt nogal uit voor de rekensom.</p>
+
+  <h2 id="antwoord">Het korte antwoord per merk</h2>
+
+  <table class="merk-tabel">
+    <thead>
+      <tr>
+        <th>Merk</th>
+        <th>Laden van zon</th>
+        <th>Laden van net</th>
+        <th>Status (april 2026)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>HomeWizard Plug-In Battery</strong></td>
+        <td><span class="badge badge-groen">✅ Ja</span></td>
+        <td><span class="badge badge-geel">⏳ Beta</span></td>
+        <td>Slim laden nog in testfase. Brede uitrol later in 2026.</td>
+      </tr>
+      <tr>
+        <td><strong>Zendure SolarFlow 2400 AC+</strong></td>
+        <td><span class="badge badge-groen">✅ Ja</span></td>
+        <td><span class="badge badge-groen">✅ Ja</span></td>
+        <td>ZENKI AI / dynamische tarieven al live.</td>
+      </tr>
+      <tr>
+        <td><strong>Marstek Venus E 3.0</strong></td>
+        <td><span class="badge badge-groen">✅ Ja</span></td>
+        <td><span class="badge badge-groen">✅ Ja</span></td>
+        <td>Laden van net én zon. Live.</td>
+      </tr>
+      <tr>
+        <td><strong>Indevolt PowerFlex 2000 ECO</strong></td>
+        <td><span class="badge badge-groen">✅ Ja</span></td>
+        <td><span class="badge badge-groen">✅ Ja</span></td>
+        <td>Laden van net én zon. Live.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="warning-box">
+    <strong>⚠️ HomeWizard-gebruikers:</strong> De "slim laden" functie (bijladen van het net op goedkope uurprijzen) zit in april 2026 nog in een besloten beta voor een selecte groep. Voor de meeste gebruikers kan de batterij nu alleen opladen van zonnepanelen of handmatig. Zendure en Marstek kunnen dit al wel. Check altijd de actuele app/firmware status.
+  </div>
+
+  <h2 id="hoe-werkt-het">Hoe werkt een plug-in batterij precies?</h2>
+
+  <p>Een plug-in batterij heeft een ingebouwde micro-omvormer. Via een P1-meter of energiemeter meet hij continu wat er op je hoofdaansluiting binnenkomt of uitgaat.</p>
+
+  <h3>Opladen (stroom opslaan)</h3>
+  <p>Als je zonnepanelen meer produceren dan je op dat moment verbruikt, slaat de batterij het overschot op in plaats van het terug te leveren aan het net. Dit heet "nul op de meter" — de standaardmodus die bij alle merken live is.</p>
+  <p>Met slim laden kijkt de batterij ook vooruit: hij laadt op als stroom op het net goedkoop is (denk aan 's nachts of bij veel wind). Daarvoor heb je een dynamisch contract nodig.</p>
+
+  <h3>Ontladen (opgeslagen stroom gebruiken)</h3>
+  <p>Zodra je meer verbruikt dan je opwekt — 's avonds, 's nachts — levert de batterij stroom uit de opslag. Zo koop je minder dure netstroom in.</p>
+
+  <div class="highlight-box">
+    <strong>P1-meter altijd nodig:</strong> Elke plug-in batterij heeft een P1-meter of energiemeter nodig. Zonder meting weet de batterij niet wanneer hij moet laden of ontladen. De <a href="smarthome-p1-meter.html" style="color:var(--navy);font-weight:600;">HomeWizard P1-meter</a> kost ~€30 en is de meest gebruikte optie.
+  </div>
+
+  <h2 id="800w">De 800W regel — vaak vergeten</h2>
+
+  <p>Op een gewone gedeelde groep hanteren fabrikanten maximaal 800W als veiligheidsnorm voor ontladen via het stopcontact. Dit is de standaard die de markt breed aanhoudt en sluit aan op Europese normen (EN/IEC 50549, NEN 1010).</p>
+
+  <p>Wil je meer vermogen? Dan heb je een eigen aparte groep in de meterkast nodig — een elektricien moet dat aanleggen. Daarna kun je opschalen:</p>
+
+  <ul>
+    <li>2 HomeWizard batterijen op eigen groep = 1.600W</li>
+    <li>3 batterijen = 2.400W</li>
+    <li>Marstek en Zendure: op eigen groep tot 2.400–2.500W mogelijk</li>
+  </ul>
+
+  <div class="highlight-box">
+    <strong>800W in de praktijk:</strong> 800W klinkt weinig, maar is in de meeste avondsituaties genoeg. Een gemiddeld huishouden verbruikt 's avonds 400–700W. Alleen bij EV laden of elektrisch koken heb je meer vermogen nodig.
+  </div>
+
+  <h2 id="wanneer-net">Wanneer is laden van het net zinvol?</h2>
+
+  <p>Laden van het net is alleen zinvol als aan drie voorwaarden wordt voldaan:</p>
+
+  <ul class="checklist">
+    <li>Je hebt een dynamisch energiecontract (uurprijzen)</li>
+    <li>Er is een groot genoeg prijsverschil tussen goedkope en dure uren</li>
+    <li>Je batterij heeft een slim EMS (energiemanagementsysteem) dat dit automatisch regelt</li>
+  </ul>
+
+  <p>In de winter zijn er indicatief zo'n 18 dagen per jaar met een groot genoeg prijsverschil om echt rendabel bij te laden van het net. In de zomer biedt het meer kansen: door veel zon en wind op het netwerk zijn er regelmatig uren met lage of zelfs negatieve stroomprijzen — dan kun je je batterij gratis of goedkoop bijladen.</p>
+
+  <div class="warning-box">
+    <strong>Zonder dynamisch contract:</strong> Laden van het net op een vast of variabel contract heeft geen zin. Je betaalt dan altijd hetzelfde tarief en er is geen prijsverschil om op in te spelen. Wil je dit optimaal benutten? Lees eerst ons artikel over <a href="dynamisch-contract.html" style="color:var(--navy);font-weight:600;">dynamische energiecontracten</a>.
+  </div>
+
+  <h2 id="zonder-zonnepanelen">Zonder zonnepanelen: heeft het zin?</h2>
+
+  <p>Kan een plug-in batterij ook zonder zonnepanelen? Technisch ja. Financieel bijna nooit.</p>
+
+  <p>Zonder zonnepanelen moet je de batterij volledig vullen met netstroom. Je verdienmodel leunt dan puur op prijsverschillen tussen goedkope en dure uren. Dat werkt alleen met een dynamisch contract én slim EMS — en zelfs dan is de terugverdientijd 10–15 jaar of meer.</p>
+
+  <p>Er zijn drie uitzonderingen waarbij het toch kan kloppen:</p>
+  <ul>
+    <li>Je plant binnenkort zonnepanelen en wilt alvast klaar zijn</li>
+    <li>Je wil netpiek-afvlakking (pieken in verbruik vermijden)</li>
+    <li>Je wil noodstroom — let op: alleen Zendure en Marstek ondersteunen dit, de HomeWizard batterij niet</li>
+  </ul>
+
+  <h2 id="terugverdientijd">Terugverdientijd — wat kun je verwachten?</h2>
+
+  <div class="tv-grid">
+    <div class="tv-card groen">
+      <div class="jaar">5–8 jr</div>
+      <p>Met zonnepanelen + dynamisch contract</p>
+      <p style="font-size:0.75rem;margin-top:4px;color:var(--groen)">€150–300/jaar besparing</p>
+    </div>
+    <div class="tv-card geel">
+      <div class="jaar">8–12 jr</div>
+      <p>Met zonnepanelen, zonder dynamisch</p>
+      <p style="font-size:0.75rem;margin-top:4px;color:#b8860b">€80–150/jaar besparing</p>
+    </div>
+    <div class="tv-card rood">
+      <div class="jaar">10–15+</div>
+      <p>Zonder zonnepanelen</p>
+      <p style="font-size:0.75rem;margin-top:4px;color:#dc2626">€50–100/jaar — vaak niet interessant</p>
+    </div>
+  </div>
+
+  <p>Gebruik onze <a href="calculator-thuisbatterij.html" style="color:var(--navy);font-weight:600;">thuisbatterij calculator</a> om jouw persoonlijke terugverdientijd te berekenen op basis van jouw verbruik en tarief.</p>
+
+  <h2 id="registratie">Registratieplicht — vergeet dit niet</h2>
+
+  <p>In Nederland ben je verplicht je thuisbatterij te registreren op <strong>energieleveren.nl</strong>. Je vult het merk, de capaciteit en het vermogen in. Bij grote installaties doet een installateur dit normaal. Bij een plug-in batterij doe je het zelf — het kost zo'n 5 minuten.</p>
+
+  <div class="danger-box">
+    <strong>⚠️ Diefstalwaarschuwing:</strong> Begin 2026 werden grote aantallen HomeWizard-batterijen gestolen (waarde ~€400.000). Gestolen exemplaren werden aangeboden op Marktplaats en Bol.com. HomeWizard blokkeert serienummers van gestolen batterijen — ze werken dan niet meer. Koop je tweedehands? Eis altijd de originele aankoopfactuur.
+  </div>
+
+  <h2 id="veiligheid">Veiligheid en plaatsing</h2>
+
+  <table class="merk-tabel">
+    <thead>
+      <tr><th>Merk</th><th>Buiten</th><th>Gewicht</th><th>Geluid</th><th>Technologie</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>HomeWizard Plug-In Battery</td><td><span class="badge badge-rood">❌ Nee</span></td><td>~25 kg</td><td>~32 dB</td><td>LiFePO4</td></tr>
+      <tr><td>Zendure SolarFlow 2400 AC+</td><td><span class="badge badge-groen">✅ Ja (IP65)</span></td><td>~35 kg</td><td>~32 dB</td><td>LiFePO4</td></tr>
+      <tr><td>Marstek Venus E 3.0</td><td><span class="badge badge-rood">❌ Nee</span></td><td>~60 kg</td><td>~32 dB</td><td>LiFePO4</td></tr>
+    </tbody>
+  </table>
+
+  <p>Alle modellen gebruiken LiFePO4-cellen — de veiligste batterijtechnologie. Geen kobalt, 6.000+ cycli, en bij dagelijks gebruik een levensduur van ~16 jaar. Ideale bewaartemperatuur: 10–30°C. Meterkast, bijkeuken of garage zijn prima plekken.</p>
+
+  <h2 id="loont-niet">Wanneer loont het NIET</h2>
+
+  <div class="danger-box">
+    <strong>Een plug-in batterij is voor jou waarschijnlijk niet interessant als:</strong>
+    <ul style="margin-top:8px;padding-left:20px;line-height:2">
+      <li>Je geen zonnepanelen hebt én geen dynamisch contract</li>
+      <li>Je terugverdientijd boven de 12 jaar uitkomt</li>
+      <li>Je een huurwoning hebt zonder toestemming van de verhuurder</li>
+      <li>Je al bijna volledig eigenverbruik hebt (weinig overschot)</li>
+      <li>Je jaarlijkse zonneopbrengst lager is dan je verbruik</li>
+    </ul>
+    Eerlijk: voor een groot deel van Nederland is een batterij in 2026 nog niet rendabel genoeg. Dat verandert als saldering stopt in 2027 en prijzen verder dalen.
+  </div>
+
+  <h2>Welke batterij past bij jou?</h2>
+
+  <p>Hieronder een overzicht van de vier populairste plug-in batterijen in Nederland. Uitgebreide vergelijking in onze <a href="thuisbatterij-top5-2026.html" style="color:var(--navy);font-weight:600;">thuisbatterij top 5</a>.</p>
+
+  <div class="product-cards">
+    <div class="product-card">
+      <h4>🏆 HomeWizard Plug-In Battery</h4>
+      <div class="prijs">€1.195</div>
+      <ul>
+        <li>2,688 kWh capaciteit</li>
+        <li>800W vermogen</li>
+        <li>Uitstekende Home Assistant integratie</li>
+        <li>Slim laden nog in beta</li>
+        <li>Niet buiten plaatsen</li>
+      </ul>
+      <a href="https://partner.homewizard.com/c/?si=18407&li=1795784&wi=419188&ws=&dl=nl%2Fshop%2Fplug-in-battery%2F" class="btn-product" target="_blank" rel="noopener sponsored">Bekijk bij HomeWizard →</a>
+    </div>
+    <div class="product-card">
+      <h4>⚡ Zendure SolarFlow 2400 AC+</h4>
+      <div class="prijs">€969</div>
+      <ul>
+        <li>2,4 kWh (uitbreidbaar tot 17 kWh)</li>
+        <li>800W → 2400W op eigen groep</li>
+        <li>Laden van net al live</li>
+        <li>Buiten plaatsen mogelijk (IP65)</li>
+        <li>ZENKI AI energiebeheer</li>
+      </ul>
+      <a href="https://amzn.to/4m1EEB8" class="btn-product" target="_blank" rel="noopener sponsored">Bekijk op Amazon →</a>
+    </div>
+    <div class="product-card">
+      <h4>🔋 Marstek Venus E 3.0</h4>
+      <div class="prijs">~€1.199</div>
+      <ul>
+        <li>5,12 kWh capaciteit</li>
+        <li>800W → 2500W op eigen groep</li>
+        <li>Laden van net al live</li>
+        <li>Open API voor Home Assistant</li>
+        <li>Zwaar: ~60 kg</li>
+      </ul>
+      <a href="https://amzn.to/4uWrCZA" class="btn-product" target="_blank" rel="noopener sponsored">Bekijk op Amazon →</a>
+    </div>
+    <div class="product-card">
+      <h4>💚 Indevolt PowerFlex 2000 ECO</h4>
+      <div class="prijs">€650–€800</div>
+      <ul>
+        <li>2,0 kWh capaciteit</li>
+        <li>10 jaar garantie / 8.000 cycli</li>
+        <li>Laden van net mogelijk</li>
+        <li>Geen affiliate — directe link</li>
+      </ul>
+      <a href="https://thuisbatterij.nl/winkel/indevolt-powerflex-2000/" class="btn-product" target="_blank" rel="noopener">Bekijk bij Indevolt →</a>
+    </div>
+  </div>
+
+  <div class="disclaimer-box">
+    <strong>Disclaimer:</strong> Prijzen en productspecificaties in dit artikel zijn indicatief (april 2026). De status van functies zoals "slim laden" kan wijzigen na firmware-updates. Controleer altijd de actuele productpagina van de fabrikant. StekkerSlim.nl verdient commissie via affiliate links — dit heeft geen invloed op onze adviezen. Terugverdientijden zijn schattingen op basis van gemiddeld gebruik.
+  </div>
+
+</div>
+
+<div class="related-articles">
+  <div class="related-inner">
+    <h3>Meer lezen</h3>
+    <div class="related-grid">
+      <a href="thuisbatterij-top5-2026.html" class="related-card">
+        <div class="tag">Thuisbatterij</div>
+        <h4>De beste plug-in thuisbatterijen van 2026 — volledig vergeleken</h4>
+      </a>
+      <a href="calculator-thuisbatterij.html" class="related-card">
+        <div class="tag">Calculator</div>
+        <h4>Bereken jouw thuisbatterij terugverdientijd</h4>
+      </a>
+      <a href="dynamisch-contract.html" class="related-card">
+        <div class="tag">Energiecontracten</div>
+        <h4>Dynamisch energiecontract — is het iets voor jou?</h4>
+      </a>
+      <a href="homeassistant-energie-besparen.html" class="related-card">
+        <div class="tag">Smarthome</div>
+        <h4>Home Assistant voor energie besparen: peakshaving en meer</h4>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Bereken jouw terugverdientijd</h2>
+  <p>Vul jouw situatie in en zie direct wat een thuisbatterij jou oplevert</p>
+  <a href="calculator-thuisbatterij.html" class="btn-primary">Naar de thuisbatterij calculator →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+        <p>Eerlijke energietips voor Nederlandse gezinnen.</p>
+      </div>
+      <div class="footer-col"><h4>Calculators</h4><ul>
+        <li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li>
+        <li><a href="calculator-energiekosten.html">Energiekosten</a></li>
+        <li><a href="calculator-thuisbatterij.html">Thuisbatterij</a></li>
+        <li><a href="calculator-laadpaal.html">Laadpaal</a></li>
+        <li><a href="calculator-warmtepomp.html">Warmtepomp</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Artikelen</h4><ul>
+        <li><a href="plug-in-batterij-laden.html">Plug-in batterij laden</a></li>
+        <li><a href="thuisbatterij-top5-2026.html">Thuisbatterij top 5</a></li>
+        <li><a href="dynamisch-contract.html">Dynamisch contract</a></li>
+        <li><a href="saldering-2027.html">Saldering 2027</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="vragen.html">Stel een vraag</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl</span><a href="privacy.html">Privacy & Disclaimer</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

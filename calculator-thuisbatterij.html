@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <!-- Google Analytics 4 — vervang G-RKF36BF7DB met jouw eigen Measurement ID via analytics.google.com -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKF36BF7DB"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-RKF36BF7DB');
-  </script>
   <meta charset="UTF-8">
   <link rel="canonical" href="https://stekkerslim.nl/calculator-thuisbatterij.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -173,10 +165,14 @@
       <div class="divider"></div>
       <div class="section-title">Tarieven</div>
       <div class="form-group">
-        <label>Stroomtarief inkoop <span id="inkoop-val">€0,34/kWh</span></label>
-        <input type="range" id="inkoop" min="0.15" max="0.60" value="0.34" step="0.01" oninput="calc()">
+        <label>Stroomtarief inkoop <span id="inkoop-val">€0,26/kWh</span></label>
+        <input type="range" id="inkoop" min="0.15" max="0.60" value="0.26" step="0.01" oninput="syncInkoop('slider')">
         <div class="range-labels"><span>€0,15</span><span>€0,60</span></div>
-        <div style="margin-top:8px">
+        <div style="margin-top:8px;display:flex;align-items:center;gap:8px">
+          <span style="font-size:0.78rem;color:var(--grijs)">Of vul zelf in:</span>
+          <input type="number" id="inkoop-input" value="0.26" min="0.10" max="0.60" step="0.01" style="width:90px;padding:6px 10px;border:2px solid var(--grijs-licht);border-radius:8px;font-size:0.9rem;font-family:'DM Sans',sans-serif;color:var(--navy)" oninput="syncInkoop('text')">
+          <span style="font-size:0.78rem;color:var(--grijs)">€/kWh</span>
+        </div>
           <button onclick="toggleGemB()" style="background:none;border:none;color:var(--groen);font-size:0.78rem;font-weight:600;cursor:pointer;padding:0;font-family:'DM Sans',sans-serif;">⚙️ Dal/normaal tarief? Bereken gemiddelde →</button>
           <div id="gem-calc-b" style="display:none;background:var(--licht);border-radius:10px;padding:12px;margin-top:8px">
             <div style="font-size:0.8rem;font-weight:600;margin-bottom:8px">Gewogen gemiddeld tarief berekenen</div>
@@ -213,9 +209,14 @@
         <div class="range-labels"><span>2 kWh</span><span>30 kWh</span></div>
       </div>
       <div class="form-group">
-        <label>Aanschafprijs batterij <span id="prijs-val">€5.000</span></label>
-        <input type="range" id="prijsbatterij" min="1000" max="20000" value="5000" step="250" oninput="calc()">
-        <div class="range-labels"><span>€1.000</span><span>€20.000</span></div>
+        <label>Aanschafprijs batterij <span id="prijs-val">€1.195</span></label>
+        <input type="range" id="prijsbatterij" min="500" max="20000" value="1195" step="50" oninput="syncPrijs('slider')">
+        <div class="range-labels"><span>€500</span><span>€20.000</span></div>
+        <div style="margin-top:8px;display:flex;align-items:center;gap:8px">
+          <span style="font-size:0.78rem;color:var(--grijs)">Of vul zelf in:</span>
+          <input type="number" id="prijs-input" value="1195" min="500" max="20000" step="50" style="width:100px;padding:6px 10px;border:2px solid var(--grijs-licht);border-radius:8px;font-size:0.9rem;font-family:'DM Sans',sans-serif;color:var(--navy)" oninput="syncPrijs('text')">
+          <span style="font-size:0.78rem;color:var(--grijs)">€</span>
+        </div>
       </div>
       <div class="form-group">
         <label>Rendement batterij (round-trip) <span id="rend-val">90%</span></label>
@@ -229,6 +230,7 @@
         <div class="result-label">Terugverdientijd thuisbatterij</div>
         <div class="result-value" id="res-tv">—</div>
         <div class="result-sub" id="res-tv-sub">Vul je gegevens in</div>
+        <div id="res-tv-uitleg" style="margin-top:12px;font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.5"></div>
       </div>
 
       <div class="result-card">
@@ -315,22 +317,28 @@
     <h3>Hoe werkt een thuisbatterij precies?</h3>
     <p>Overdag produceren je zonnepanelen stroom. Wat je niet direct verbruikt, gaat normaal het net op (teruglevering). Met een thuisbatterij sla je dat op en gebruik je het 's avonds wanneer de zon niet meer schijnt. Je inkoopt minder stroom van het net, levert minder terug, en betaalt minder terugleverkosten.</p>
 
-    <h3>Welke batterijen zijn er in Nederland?</h3>
+    <h3>Welke plug-in batterijen zijn er in Nederland?</h3>
+    <p>Dit zijn 4 voorbeelden van populaire plug-in batterijen in Nederland (april 2026). Volledig vergeleken in onze <a href="thuisbatterij-top5-2026.html" style="color:var(--groen)">thuisbatterij top 5</a>.</p>
     <div class="merken-grid">
       <div class="merk-card">
-        <h4>Zendure SolarFlow</h4>
-        <p>Plug-and-play, ook voor balkonsystemen. Populair vanwege eenvoudige installatie.</p>
-        <div class="prijs">€599 – €1.499</div>
+        <h4>🏆 HomeWizard Plug-In Battery</h4>
+        <p>Populairst in Nederland. Plug-and-play, geweldige Home Assistant integratie. Slim laden (van net) nog in beta.</p>
+        <div class="prijs">€1.195 · 2,688 kWh</div>
       </div>
       <div class="merk-card">
-        <h4>EcoFlow DELTA</h4>
-        <p>Draagbaar, ook als noodstroom. Goed voor kleinere systemen of huurders.</p>
-        <div class="prijs">€699 – €2.999</div>
+        <h4>⚡ Zendure SolarFlow 2400 AC+</h4>
+        <p>Laadt al van net én zon. Uitbreidbaar tot 17 kWh. Buiten plaatsbaar (IP65).</p>
+        <div class="prijs">€969 · 2,4 kWh</div>
       </div>
       <div class="merk-card">
-        <h4>SolarEdge / Huawei</h4>
-        <p>Vaste installatie, hoge capaciteit. Professionele montage vereist. Meest rendabel voor grote systemen.</p>
-        <div class="prijs">€4.000 – €12.000</div>
+        <h4>🔋 Marstek Venus E 3.0</h4>
+        <p>Grote capaciteit, open API voor Home Assistant. Laadt van net én zon. Zwaar: 60 kg.</p>
+        <div class="prijs">~€1.199 · 5,12 kWh</div>
+      </div>
+      <div class="merk-card">
+        <h4>💚 Indevolt PowerFlex 2000 ECO</h4>
+        <p>10 jaar garantie, 8.000 cycli. Plug-and-play, laadt ook van net.</p>
+        <div class="prijs">€650–€800 · 2,0 kWh</div>
       </div>
     </div>
 
@@ -470,12 +478,15 @@
 
     const tvEl = document.getElementById('res-tv');
     const tvSub = document.getElementById('res-tv-sub');
+    const tvUitleg = document.getElementById('res-tv-uitleg');
     if (tv < 50) {
       tvEl.textContent = tv.toFixed(1).replace('.', ',') + ' jaar';
-      tvSub.textContent = 'Op basis van ' + fmt(totaalBesparing) + ' besparing per jaar';
+      tvSub.textContent = 'Jouw batterij van ' + fmt(prijs) + ' verdient zichzelf terug in ' + tv.toFixed(1).replace('.', ',') + ' jaar';
+      if (tvUitleg) tvUitleg.textContent = 'Op basis van ' + fmt(totaalBesparing) + ' besparing per jaar';
     } else {
       tvEl.textContent = 'Niet rendabel';
       tvSub.textContent = 'Bij huidige invoer verdient de batterij zichzelf niet terug';
+      if (tvUitleg) tvUitleg.textContent = 'Pas de aanschafprijs, capaciteit of tarieven aan om een realistischere situatie te berekenen.';
     }
 
     const vb = document.getElementById('verdict-box');
@@ -494,6 +505,32 @@
       vt.textContent = '❌ Moeilijk rendabel';
       vtxt.textContent = 'In jouw situatie is de terugverdientijd te lang. Mogelijk heb je te weinig overproductie of te kleine teruglevering om een batterij te rechtvaardigen.';
     }
+  }
+
+  function syncInkoop(from) {
+    const slider = document.getElementById('inkoop');
+    const input = document.getElementById('inkoop-input');
+    if (from === 'slider') {
+      input.value = parseFloat(slider.value).toFixed(2);
+    } else {
+      const v = Math.max(0.10, Math.min(0.60, parseFloat(input.value) || 0.26));
+      slider.value = v;
+    }
+    document.getElementById('inkoop-val').textContent = '€' + parseFloat(slider.value).toFixed(2).replace('.', ',') + '/kWh';
+    calc();
+  }
+
+  function syncPrijs(from) {
+    const slider = document.getElementById('prijsbatterij');
+    const input = document.getElementById('prijs-input');
+    if (from === 'slider') {
+      input.value = slider.value;
+    } else {
+      const v = Math.max(500, Math.min(20000, parseInt(input.value) || 1195));
+      slider.value = v;
+    }
+    document.getElementById('prijs-val').textContent = '€' + parseInt(slider.value).toLocaleString('nl-NL');
+    calc();
   }
 
   function toggleGemB(){const e=document.getElementById('gem-calc-b');e.style.display=e.style.display==='none'?'block':'none';if(e.style.display==='block')berekenGemB();}
