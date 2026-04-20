@@ -224,6 +224,12 @@
         <div class="range-labels"><span>NL gemiddelde ≈ 280-320 kWh (400Wp paneel)</span></div>
       </div>
 
+      <div class="form-group">
+        <label>Vermogen per paneel (Wp)</label>
+        <input type="number" id="vermogen-per-paneel" value="400" step="10" oninput="updateCalc()">
+        <div class="range-labels"><span>Staat op je panelen of installatierapport — bijv. 375, 400 of 430 Wp</span></div>
+      </div>
+
       <div class="scenario-tabs">
         <button class="scenario-tab active" onclick="setScenario('voor2027', this)">Vóór 2027</button>
         <button class="scenario-tab" onclick="setScenario('na2027', this)">Na 2027</button>
@@ -262,6 +268,10 @@
         <div class="result-row">
           <span class="result-row-label">Totale paneelopbrengst</span>
           <span class="result-row-value" id="res-opbrengst">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Prestatieverhouding (kWh/kWp) <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Hoeveel kWh je per geïnstalleerd kWp opwekt. NL gemiddelde: 850–950 kWh/kWp. Lager = schaduw of slechte oriëntatie. Hoger = zuiddak, optimale hoek.</span></span></span>
+          <span class="result-row-value" id="res-kwpverhouding">—</span>
         </div>
         <div class="result-row">
           <span class="result-row-label">Eigen gebruik (besparing)</span>
@@ -442,6 +452,7 @@
     const tarief = parseFloat(document.getElementById('tarief').value);
     const investering = parseFloat(document.getElementById('investering').value) || 0;
     const opbrengstPerPaneel = parseFloat(document.getElementById('opbrengst-per-paneel').value) || 300;
+    const vermogenPerPaneel = parseFloat(document.getElementById('vermogen-per-paneel').value) || 400;
 
     document.getElementById('panelen-val').textContent = panelen + ' panelen';
     document.getElementById('verbruik-val').textContent = fmt(verbruik) + ' kWh';
@@ -471,6 +482,14 @@
     const nettowinst = opbrengst20jaar - investering;
 
     document.getElementById('res-opbrengst').textContent = fmt(totaalOpbrengst) + ' kWh';
+
+    const totaalKwp = (panelen * vermogenPerPaneel) / 1000;
+    const kwpVerhouding = totaalKwp > 0 ? Math.round(totaalOpbrengst / totaalKwp) : 0;
+    const kwpEl = document.getElementById('res-kwpverhouding');
+    kwpEl.textContent = kwpVerhouding + ' kWh/kWp';
+    if (kwpVerhouding >= 850) { kwpEl.className = 'result-row-value groen'; }
+    else if (kwpVerhouding >= 700) { kwpEl.className = 'result-row-value oranje'; }
+    else { kwpEl.className = 'result-row-value rood'; }
     document.getElementById('res-eigengebruik').textContent = fmt(eigenGebruik) + ' kWh → ' + fmtE(besparingEigen);
     document.getElementById('res-teruglevering').textContent = fmt(teruglevering) + ' kWh';
     document.getElementById('res-terugleverwaarde').textContent = fmtE(besparingTeruglevering) + ' (€' + teruglevertarief.toFixed(2).replace('.', ',') + '/kWh)';
