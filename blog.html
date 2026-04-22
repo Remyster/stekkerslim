@@ -26,31 +26,18 @@
     .page-hero p{color:rgba(255,255,255,0.6);font-size:0.95rem;max-width:520px}
 
     .blog-section{max-width:1100px;margin:0 auto;padding:56px 24px}
-    .cat-label{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--groen);margin-bottom:16px;margin-top:48px;display:block}
+    .cat-label{font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--groen);margin-bottom:12px;margin-top:40px;display:block}
     .cat-label:first-child{margin-top:0}
-    .articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:16px}
-    .article-card{background:var(--wit);border:1px solid var(--grijs-licht);border-radius:16px;padding:24px;text-decoration:none;color:inherit;display:block;transition:transform .2s,box-shadow .2s}
-    .article-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-    .article-card.featured{border-color:var(--groen);border-width:2px}
-    .article-icon{font-size:2rem;margin-bottom:14px;display:block}
-    .article-tag{display:inline-block;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--groen);margin-bottom:8px}
-    .article-card h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;color:var(--navy);line-height:1.35;margin-bottom:8px}
-    .article-card p{font-size:0.83rem;color:var(--grijs);line-height:1.55}
-    .article-card .lees-meer{display:inline-block;margin-top:12px;font-size:0.82rem;font-weight:600;color:var(--groen)}
     .nieuw-badge{display:inline-block;background:rgba(0,209,122,0.12);color:var(--groen);font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:2px 8px;border-radius:99px;margin-left:6px;vertical-align:middle}
-
-    .coming-soon-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .coming-card{background:var(--licht);border:2px dashed var(--grijs-licht);border-radius:16px;padding:24px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
-    .coming-card .icon{font-size:1.8rem}
-    .coming-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.92rem;color:var(--grijs)}
-    .coming-card p{font-size:0.8rem;color:var(--grijs)}
-    .soon-tag{font-size:0.7rem;font-weight:700;text-transform:uppercase;background:var(--grijs-licht);color:var(--grijs);padding:2px 8px;border-radius:99px;display:inline-block}
-    .prio-badge{font-size:0.68rem;font-weight:700;padding:2px 8px;border-radius:99px;display:inline-block;white-space:nowrap}
-    .prio-fire{background:#FAECE7;color:#993C1D}
-    .prio-hot{background:#FAEEDA;color:#854F0B}
-    .prio-mid{background:#EAF3DE;color:#3B6D11}
-    .prio-niche{background:#E6F1FB;color:#185FA5}
-    .coming-card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;width:100%}
+    .article-list{border:1px solid var(--grijs-licht);border-radius:14px;overflow:hidden;margin-bottom:8px}
+    .article-row{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--grijs-licht);text-decoration:none;color:inherit;transition:background .15s}
+    .article-row:last-child{border-bottom:none}
+    .article-row:hover{background:var(--licht)}
+    .article-row.featured{background:rgba(0,209,122,0.04)}
+    .row-icon{font-size:1.1rem;flex-shrink:0;width:24px;text-align:center}
+    .article-row h3{font-family:'Outfit',sans-serif;font-weight:600;font-size:0.92rem;color:var(--navy);flex:1;line-height:1.3;margin:0}
+    .article-row.featured h3{font-weight:700}
+    .row-arrow{color:var(--groen);font-weight:700;font-size:0.9rem;flex-shrink:0}
 
     footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
     .footer-inner{max-width:1100px;margin:0 auto}
@@ -61,8 +48,8 @@
     .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
     .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;display:flex;justify-content:space-between;font-size:.8rem;margin-top:24px}
 
-    @media(max-width:900px){.articles-grid,.coming-soon-grid{grid-template-columns:1fr 1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
-    @media(max-width:600px){.articles-grid,.coming-soon-grid{grid-template-columns:1fr}}
+    @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+    @media(max-width:600px){.article-row{padding:12px 14px}}
     .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
   </style>
   <meta property="og:type" content="website" />
@@ -110,271 +97,89 @@
 <div class="blog-section">
 
   <span class="cat-label">☀️ Zonnepanelen & saldering</span>
-  <div class="articles-grid">
-
-    <a href="saldering-2027.html" class="article-card featured">
-      <span class="article-icon">☀️</span>
-      <span class="article-tag">Zonnepanelen</span>
+  <div class="article-list">
+    <a href="saldering-2027.html" class="article-row featured">
+      <span class="row-icon">☀️</span>
       <h3>Salderingsregeling stopt 2027 — wat betekent dit voor jou?</h3>
-      <p>Heb je zonnepanelen of ben je er over aan het nadenken? Dit is cruciaal. We leggen uit wat er verandert en wat je nú al kunt doen.</p>
-      <span class="lees-meer">Lees artikel →</span>
+      <span class="row-arrow">→</span>
     </a>
-
-    <a href="terugleververgoeding-2027.html" class="article-card">
-      <span class="article-icon">💸</span>
-      <span class="article-tag">Zonnepanelen</span>
+    <a href="terugleververgoeding-2027.html" class="article-row">
+      <span class="row-icon">💸</span>
       <h3>Terugleververgoeding na 2027: wat is je zonnestroom nog waard? <span class="nieuw-badge">Nieuw</span></h3>
-      <p>Concrete bedragen per woningtype. Inclusief tabel met gemiddeld teruglevering op basis van Milieucentraal data.</p>
-      <span class="lees-meer">Lees artikel →</span>
+      <span class="row-arrow">→</span>
     </a>
-
-    <a href="zonnestroom-na-2027.html" class="article-card">
-      <span class="article-icon">🔋</span>
-      <span class="article-tag">Zonnepanelen</span>
+    <a href="zonnestroom-na-2027.html" class="article-row">
+      <span class="row-icon">🔋</span>
       <h3>Wat is je zonnestroom nog waard na 2027?</h3>
-      <p>Lonen zonnepanelen nog? Wat kun je doen met een thuisbatterij of dynamisch contract?</p>
-      <span class="lees-meer">Lees artikel →</span>
+      <span class="row-arrow">→</span>
     </a>
-
-    <a href="terugverdientijd-zonnepanelen-2026.html" class="article-card featured">
-      <span class="article-icon">📊</span>
-      <span class="article-tag">Zonnepanelen</span>
+    <a href="terugverdientijd-zonnepanelen-2026.html" class="article-row featured">
+      <span class="row-icon">📊</span>
       <h3>Terugverdientijd zonnepanelen 2026 berekenen <span class="nieuw-badge">Nieuw</span></h3>
-      <p>Hoe lang duurt het voordat je zonnepanelen zichzelf terugverdienen? Met uitleg per woningsituatie en effect van de salderingswijziging 2027.</p>
-      <span class="lees-meer">Lees artikel →</span>
+      <span class="row-arrow">→</span>
     </a>
-
   </div>
 
   <span class="cat-label">💡 Energiecontracten</span>
-  <div class="articles-grid">
-
-    <a href="terugleverkosten.html" class="article-card">
-      <span class="article-icon">⚠️</span>
-      <span class="article-tag">Contracten</span>
+  <div class="article-list">
+    <a href="terugleverkosten.html" class="article-row">
+      <span class="row-icon">⚠️</span>
       <h3>Terugleverkosten: wat je leverancier je niet vertelt</h3>
-      <p>Gestaffelde kosten die bij 3.500 kWh teruglevering al €400+/jaar kunnen zijn. Welke leveranciers rekenen ze?</p>
-      <span class="lees-meer">Lees artikel →</span>
+      <span class="row-arrow">→</span>
     </a>
-
-    <a href="dynamisch-contract.html" class="article-card">
-      <span class="article-icon">⚡</span>
-      <span class="article-tag">Contracten</span>
+    <a href="dynamisch-contract.html" class="article-row">
+      <span class="row-icon">⚡</span>
       <h3>Dynamisch energiecontract — is het iets voor jou?</h3>
-      <p>Bespaar tot €400/jaar, maar alleen als je het slim speelt. Eerlijke uitleg over wanneer het loont en wanneer niet.</p>
-      <span class="lees-meer">Lees artikel →</span>
+      <span class="row-arrow">→</span>
     </a>
-
-    <a href="energiecontract-vergelijken-2026.html" class="article-card featured">
-      <span class="article-icon">📋</span>
-      <span class="article-tag">Contracten</span>
+    <a href="energiecontract-vergelijken-2026.html" class="article-row featured">
+      <span class="row-icon">📋</span>
       <h3>Energiecontract vergelijken 2026 — vast, variabel of dynamisch <span class="nieuw-badge">Nieuw</span></h3>
-      <p>Wat je moet weten voordat je overstapt. Valkuilen, rekensom en concrete tips voor jouw situatie.</p>
-      <span class="lees-meer">Lees artikel →</span>
+      <span class="row-arrow">→</span>
     </a>
-
-  </div>
-
-  <span class="cat-label">🏠 Smarthome & DIY</span>
-  <div class="articles-grid">
-
-    <a href="beste-slimme-stekker-2026.html" class="article-card">
-      <span class="article-icon">🔌</span>
-      <span class="article-tag">Smarthome</span>
-      <h3>Beste slimme stekker 2026 — welke moet je écht hebben?</h3>
-      <p>WiFi vs Zigbee, 10A vs 16A, HomeWizard vs AliExpress. Eerlijk vergeleken met alle voor- en nadelen.</p>
-      <span class="lees-meer">Lees artikel →</span>
-    </a>
-
-    <a href="smarthome-p1-meter.html" class="article-card">
-      <span class="article-icon">📡</span>
-      <span class="article-tag">Smarthome</span>
-      <h3>P1 meter koppelen aan Home Assistant — stap voor stap</h3>
-      <p>Van hardware tot integratie. Zo zie je live jouw verbruik en teruglevering in Home Assistant.</p>
-      <span class="lees-meer">Lees artikel →</span>
-    </a>
-
-    <a href="homeassistant-energie-besparen.html" class="article-card featured">
-      <span class="article-icon">🏠</span>
-      <span class="article-tag">Home Assistant</span>
-      <h3>Home Assistant energie besparen: peakshaving, boiler & slimme automatiseringen <span class="nieuw-badge">Nieuw</span></h3>
-      <p>Boiler op zonnestroom, wasmachine op dal-tarief, peakshaving met batterij. Praktische automatiseringen uitgelegd.</p>
-      <span class="lees-meer">Lees artikel →</span>
-    </a>
-
   </div>
 
   <span class="cat-label">🔋 Thuisbatterij</span>
-  <div class="articles-grid">
-
-    <a href="thuisbatterij-top5-2026.html" class="article-card">
-      <span class="article-icon">🔋</span>
-      <span class="article-tag">Thuisbatterij</span>
+  <div class="article-list">
+    <a href="thuisbatterij-top5-2026.html" class="article-row">
+      <span class="row-icon">🔋</span>
       <h3>De beste plug-in thuisbatterijen van 2026 <span class="nieuw-badge">Nieuw</span></h3>
-      <p>HomeWizard, Zendure, Marstek of Indevolt? Eerlijke vergelijking met prijzen, specs en advies per situatie.</p>
-      <span class="lees-meer">Lees artikel →</span>
+      <span class="row-arrow">→</span>
     </a>
-
-    <a href="plug-in-batterij-laden.html" class="article-card featured">
-      <span class="article-icon">⚡</span>
-      <span class="article-tag">Thuisbatterij</span>
+    <a href="plug-in-batterij-laden.html" class="article-row featured">
+      <span class="row-icon">⚡</span>
       <h3>Plug & play batterij — laadt die van zonnestroom of het net? <span class="nieuw-badge">Nieuw</span></h3>
-      <p>Eerlijk antwoord per merk. HomeWizard, Zendure en Marstek vergeleken. Inclusief 800W regel en wanneer het niet loont.</p>
-      <span class="lees-meer">Lees artikel →</span>
+      <span class="row-arrow">→</span>
     </a>
-
+    <a href="wanneer-thuisbatterij-niet-slim.html" class="article-row featured">
+      <span class="row-icon">❌</span>
+      <h3>Wanneer is een thuisbatterij níet slim? Eerlijk doorgerekend <span class="nieuw-badge">Nieuw</span></h3>
+      <span class="row-arrow">→</span>
+    </a>
   </div>
 
-  <span class="cat-label">🌡️ Smarthome & Besparen</span>
-  <div class="articles-grid">
-
-    <a href="slimme-thermostaat-installeren.html" class="article-card featured">
-      <span class="article-icon">🌡️</span>
-      <span class="article-tag">Smarthome</span>
+  <span class="cat-label">🏠 Smarthome & DIY</span>
+  <div class="article-list">
+    <a href="beste-slimme-stekker-2026.html" class="article-row">
+      <span class="row-icon">🔌</span>
+      <h3>Beste slimme stekker 2026 — welke moet je écht hebben?</h3>
+      <span class="row-arrow">→</span>
+    </a>
+    <a href="smarthome-p1-meter.html" class="article-row">
+      <span class="row-icon">📡</span>
+      <h3>P1 meter koppelen aan Home Assistant — stap voor stap</h3>
+      <span class="row-arrow">→</span>
+    </a>
+    <a href="homeassistant-energie-besparen.html" class="article-row featured">
+      <span class="row-icon">🏠</span>
+      <h3>Home Assistant energie besparen: peakshaving, boiler & slimme automatiseringen <span class="nieuw-badge">Nieuw</span></h3>
+      <span class="row-arrow">→</span>
+    </a>
+    <a href="slimme-thermostaat-installeren.html" class="article-row">
+      <span class="row-icon">🌡️</span>
       <h3>Slimme thermostaat installeren — van Honeywell tot Tado <span class="nieuw-badge">Nieuw</span></h3>
-      <p>Stap voor stap uitgelegd. Welke past bij jouw cv-ketel? Inclusief Home Assistant koppeling en eerlijk advies over wanneer het niet loont.</p>
-      <span class="lees-meer">Lees artikel →</span>
+      <span class="row-arrow">→</span>
     </a>
-
-  </div>
-
-  <span class="cat-label">🚧 Binnenkort — Thuisbatterij & Zonnepanelen</span>
-  <div class="coming-soon-grid">
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">🔋</span><span class="prio-badge prio-fire">Prioriteit 1</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Wanneer is een thuisbatterij níet slim?</h4>
-      <p>Te weinig verbruik, geen zon, of verkeerd contract — eerlijk artikel voor mensen die twijfelen. Inclusief rekensommen en doorverwijzing naar de calculator.</p>
-    </div>
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">⚡</span><span class="prio-badge prio-fire">Prioriteit 2</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Plug-in batterij vs vaste thuisbatterij</h4>
-      <p>Wat zijn de echte verschillen in prijs, opbrengst en risico? Vergelijking van beide segmenten met concrete productvoorbeelden.</p>
-    </div>
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">☀️</span><span class="prio-badge prio-fire">Prioriteit 3</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Zonnepanelen kopen in 2026 of wachten tot 2027?</h4>
-      <p>Urgentieblog — saldering stopt 1 jan 2027. Wat verandert er financieel als je nu koopt vs. volgend jaar? Met rekensom per scenario.</p>
-    </div>
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">📈</span><span class="prio-badge prio-fire">Prioriteit 4</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Zelfverbruik verhogen van 35% naar 65% zonder dure batterij</h4>
-      <p>7 trucs die écht werken — van slimme stekkers en P1 meter tot gedragsaanpassingen. Laagdrempelig en direct toepasbaar.</p>
-    </div>
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">🔌</span><span class="prio-badge prio-fire">Prioriteit 5</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Dynamisch contract + zonnepanelen + thuisbatterij: loont het in 2026?</h4>
-      <p>De complete combo voor gevorderden. Eerlijke rekensom met arbitrage, peakshaving en zelfverbruik als losse onderdelen.</p>
-    </div>
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">🔋</span><span class="prio-badge prio-hot">Prioriteit 10</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Thuisbatterij zonder zonnepanelen: loont het met een dynamisch contract?</h4>
-      <p>Voor huurders, appartementen en mensen met een verkeerd dak. Laden op goedkope uren en ontladen op de piek — kan dat uit?</p>
-    </div>
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">☀️</span><span class="prio-badge prio-mid">Prioriteit 14</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Zonnepanelen zonder saldering: zelfverbruik hacks 2027</h4>
-      <p>Verdieping op de salderingswijziging — andere invalshoek. Hoe haal je toch rendement als terugleveren weinig oplevert?</p>
-    </div>
-
-  </div>
-
-  <span class="cat-label">🚧 Binnenkort — Hybride wonen</span>
-  <div class="coming-soon-grid">
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">🗺️</span><span class="prio-badge prio-hot">Prioriteit 6</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Hybride wonen: de juiste volgorde</h4>
-      <p>In welke volgorde pak je zonnepanelen, warmtepomp, batterij en laadpaal aan? Een routekaart voor mensen die een plan zoeken, geen losse producten.</p>
-    </div>
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">🌡️</span><span class="prio-badge prio-hot">Prioriteit 7</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Warmtepomp + zonnepanelen: eerlijke rekensommen per woningtype</h4>
-      <p>Concrete scenario's voor een tussenwoning, hoekwoning en vrijstaand huis. Wat bespaar je realistisch gezien in 2026?</p>
-    </div>
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">🏢</span><span class="prio-badge prio-hot">Prioriteit 8</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Warmtepomp in een appartement — kan dat?</h4>
-      <p>Lucht-lucht, split-unit of toch niet? Groot segment — veel huurders en VvE-situaties. Eerlijk overzicht van wat wel en niet mogelijk is.</p>
-    </div>
-
-  </div>
-
-  <span class="cat-label">🚧 Binnenkort — Smarthome & automatisering</span>
-  <div class="coming-soon-grid">
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">🛒</span><span class="prio-badge prio-hot">Prioriteit 9</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>5 smarthome gadgets onder €50 die je energierekening verlagen</h4>
-      <p>Eerlijk getest, goed deelbaar. Van P1 meter tot slimme stekker — wat geeft het meeste rendement voor het minste geld?</p>
-    </div>
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">🤖</span><span class="prio-badge prio-hot">Prioriteit 11</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Home Assistant + thuisbatterij + dynamisch contract: volledig geautomatiseerd</h4>
-      <p>Jouw niche. MQTT, peakshaving, laden op goedkoopste uren — stap voor stap uitgelegd voor mensen die dit écht willen opzetten.</p>
-    </div>
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">⚡</span><span class="prio-badge prio-niche">Niche</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Bidirectioneel laden — je EV als thuisbatterij</h4>
-      <p>V2H en V2G uitgelegd: wanneer kun jij je elektrische auto gebruiken om je huis te voeden? Opkomend onderwerp, snel mainstream.</p>
-    </div>
-
-  </div>
-
-  <span class="cat-label">🚧 Binnenkort — Contracten & beleid</span>
-  <div class="coming-soon-grid">
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">📋</span><span class="prio-badge prio-mid">Prioriteit 12</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Beste energiecontract voor zonnepanelen-bezitters — april 2026</h4>
-      <p>Welke leverancier rekent de laagste terugleverkosten? Maandelijkse update met een eerlijke vergelijking van de actuele aanbiedingen.</p>
-    </div>
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">📊</span><span class="prio-badge prio-mid">Prioriteit 13</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Energie in 2026: belasting, subsidies en regels in normaal Nederlands</h4>
-      <p>ISDE, btw-0% op zonnepanelen, terugleverkosten, Energiewet — alles op één plek. Evergreen artikel met jaarlijkse update.</p>
-    </div>
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">🏘️</span><span class="prio-badge prio-niche">Niche</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Netcongestie uitgelegd voor gewone mensen</h4>
-      <p>Waarom kun je soms geen zonnepanelen of laadpaal aansluiten? Actueel probleem, weinig goede consumentenuitleg. Goed voor autoriteit.</p>
-    </div>
-
-    <div class="coming-card">
-      <div class="coming-card-header"><span class="icon">💡</span><span class="prio-badge prio-niche">Niche</span></div>
-      <span class="soon-tag">Binnenkort</span>
-      <h4>Energierekening omlaag zonder grote investering — 10 maatregelen die werken</h4>
-      <p>Breed publiek, laagdrempelig. Goed startpunt voor nieuwe bezoekers die daarna doorlinken naar calculators en vergelijkers.</p>
-    </div>
-
   </div>
 
 </div>
