@@ -747,6 +747,10 @@
         title.style.display = 'none';
       }
     });
+    document.querySelectorAll('.products-grid').forEach(grid => {
+      const hasVisible = [...grid.querySelectorAll('.product-card')].some(c => c.style.display !== 'none');
+      grid.style.display = hasVisible ? '' : 'none';
+    });
   }
 </script>
 </body>
