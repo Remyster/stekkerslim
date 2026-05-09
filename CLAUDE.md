@@ -84,7 +84,9 @@ Independer, Eneco, Milieucentraal
 | Thuisbatterij top 5 | `thuisbatterij-top5-2026.html` | Live |
 | Terugverdientijd zonnepanelen | `terugverdientijd-zonnepanelen-2026.html` | Live |
 | Wanneer thuisbatterij niet slim | `wanneer-thuisbatterij-niet-slim.html` | Live |
-| HomeWizard Energy Display review | `homewizard-energy-display-review.html` | Live ✅ NIEUW |
+| HomeWizard Energy Display review | `homewizard-energy-display-review.html` | Live |
+| HomeWizard Energy Display deel 2 | `homewizard-energy-display-deel2.html` | Live ✅ NIEUW |
+| Dynamisch contract + zonnepanelen + batterij | `dynamisch-contract-zonnepanelen-thuisbatterij-2026.html` | Live ✅ NIEUW |
 | Plug-in batterij laden | `plug-in-batterij-laden.html` | Live |
 | Over ons | `over-ons.html` | Live |
 | Privacy | `privacy.html` | Live |
@@ -127,3 +129,22 @@ Independer, Eneco, Milieucentraal
 
 ## Eerste commissie
 23 april 2026: €3,97 via HomeWizard (P1 Meter + P1 Splitter) — bezoeker uit België 🎉
+
+---
+
+## Checklist nieuwe pagina — elke keer
+
+### Tijdens bouwen
+- [ ] Canonical tag aanwezig (`<link rel="canonical" href="https://stekkerslim.nl/bestandsnaam.html">`)
+- [ ] OG tags aanwezig: `og:title`, `og:description`, `og:image`
+- [ ] `<title>` bevat het exacte zoekwoord
+- [ ] `<h1>` bevat het exacte zoekwoord
+- [ ] Minimaal 500 woorden content
+- [ ] Minimaal 1 affiliate link of CTA
+
+### Na publicatie
+- [ ] Pagina toegevoegd aan `sitemap.xml`
+- [ ] Pagina toegevoegd aan `blog.html` (blogoverzicht)
+- [ ] Interne link naar nieuwe pagina vanuit een bestaande relevante pagina
+- [ ] GA4 snippet aanwezig (`G-RKF36BF7DB`)
+- [ ] Sitemap resubmitten in Google Search Console
