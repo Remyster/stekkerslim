@@ -12,8 +12,8 @@
   <meta charset="UTF-8">
   <link rel="canonical" href="https://stekkerslim.nl/smarthome-p1-meter.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="P1 meter uitlezen met Home Assistant: stap-voor-stap handleiding. Zie live wat je verbruikt, bespaar automatisch en stuur je slimme apparaten op de goedkoopste momenten.">
-  <title>P1 Meter Uitlezen met Home Assistant 2026 | StekkerSlim.nl</title>
+  <meta name="description" content="HomeWizard P1 meter koppelen aan Home Assistant 2026: in 5 stappen live. Extra slim nu saldering stopt — zie live wat je zonnepanelen opleveren en bespaar €100–€300/jaar.">
+  <title>HomeWizard P1 Meter & Home Assistant 2026 — Slim Besparen vóór Saldering 2027 | StekkerSlim.nl</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -99,7 +99,7 @@
     "author": {"@type": "Person", "name": "Remy Egberts"},
     "publisher": {"@type": "Organization", "name": "StekkerSlim.nl", "url": "https://stekkerslim.nl"},
     "datePublished": "2026-01-01",
-    "dateModified": "2026-03-01",
+    "dateModified": "2026-05-13",
     "url": "https://stekkerslim.nl/smarthome-p1-meter.html",
     "mainEntityOfPage": "https://stekkerslim.nl/smarthome-p1-meter.html"
   }
@@ -113,8 +113,8 @@
   </script>
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="StekkerSlim.nl" />
-  <meta property="og:title" content="P1 Meter & Home Assistant: Complete Gids | StekkerSlim.nl" />
-  <meta property="og:description" content="Koppel je slimme meter aan Home Assistant via een P1 meter. Stap-voor-stap uitleg." />
+  <meta property="og:title" content="HomeWizard P1 Meter & Home Assistant 2026 — Complete Gids | StekkerSlim.nl" />
+  <meta property="og:description" content="In 5 stappen P1 meter aansluiten en Home Assistant koppelen. Extra slim nu saldering stopt per 1 jan 2027." />
   <meta property="og:image" content="https://stekkerslim.nl/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -145,12 +145,19 @@
   </div>
 </nav>
 
+<div style="background:#FEF3C7;border-bottom:1px solid #F59E0B;padding:10px 24px;text-align:center">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap">
+    <span style="font-size:0.88rem;color:#92400E;font-weight:500">🔋 <strong>Nog 7 maanden</strong> tot saldering stopt (1 jan 2027) —</span>
+    <a href="calculator-thuisbatterij.html" style="font-size:0.88rem;color:#92400E;font-weight:700;text-decoration:underline">Bereken of een thuisbatterij nu loont →</a>
+  </div>
+</div>
+
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="index.html">Home</a> › <a href="index.html#smarthome">Smarthome</a></div>
     <div class="article-tag">📡 Smarthome & DIY</div>
-    <h1>P1 meter uitlezen met Home Assistant: alles wat je nodig hebt</h1>
-    <div class="article-meta">Bijgewerkt: maart 2026 · Leestijd: 10 minuten · Moeilijkheid: beginner</div>
+    <h1>HomeWizard P1 meter + Home Assistant 2026: in 5 stappen live</h1>
+    <div class="article-meta">Bijgewerkt: mei 2026 · Leestijd: 8 minuten · Moeilijkheid: beginner</div>
   </div>
 </div>
 
@@ -167,10 +174,10 @@
     </ol>
   </div>
 
-  <p>Een slimme meter bijt je niet. Maar de meeste mensen laten er enorme hoeveelheden informatie onbenut. Met een P1 meter en Home Assistant zie je niet alleen wat je verbruikt — je kunt je apparaten ook automatisch laten draaien op de goedkoopste uren. Dit artikel legt uit hoe.</p>
+  <p>Een slimme meter bijt je niet. Maar de meeste mensen laten er enorme hoeveelheden informatie onbenut. Met een P1 meter en Home Assistant zie je live wat je zonnepanelen opwekken, wanneer je levert en wat je terugkrijgt. <strong>Zeker nu <a href="saldering-2027.html">saldering stopt per 1 jan 2027</a></strong> — je wilt exact weten hoeveel je zelf verbruikt versus teruglevert, zodat je kunt bijsturen voor de deadline.</p>
 
   <div class="highlight-box">
-    <strong>Wat dit je oplevert:</strong> Inzicht in verbruik per apparaat, automatisch laden van EV op goedkoopste uren, wasmachine draaien bij zonnepiek, en alerts bij onverwacht hoog verbruik. Geschatte besparing voor actieve gebruikers: €100–€300/jaar.
+    <strong>Wat dit je oplevert:</strong> Live inzicht in verbruik én teruglevering per apparaat, automatisch laden van EV op goedkoopste uren, wasmachine draaien bij zonnepiek, en alerts bij onverwacht hoog verbruik. Geschatte besparing voor actieve gebruikers: €100–€300/jaar extra bovenop je zonnepanelen.
   </div>
 
   <h2 id="wat-heb-je-nodig">Wat heb je nodig?</h2>
@@ -229,7 +236,7 @@
       <div class="step-num">3</div>
       <div class="step-content">
         <h4>Home Assistant integratie toevoegen</h4>
-        <p>Ga in Home Assistant naar <strong>Instellingen → Apparaten & Diensten → Integratie toevoegen</strong>. Zoek op <strong>"DSMR Smart meter"</strong> (niet "HomeWizard Energy" — die naam is verouderd). Home Assistant detecteert de meter automatisch als deze op hetzelfde netwerk zit.</p>
+        <p>Ga naar <strong>Instellingen → Apparaten & Diensten → Integratie toevoegen</strong>. Zoek op <strong>"HomeWizard Energy"</strong>. Home Assistant detecteert de meter automatisch als die op hetzelfde wifi-netwerk zit. Klaar.</p>
       </div>
     </div>
     <div class="step-item">
@@ -311,13 +318,18 @@ action:
 
   <h2 id="besparing">Wat levert het op?</h2>
   <p>Inzicht alleen levert al besparing op — mensen die hun verbruik live zien, verbruiken gemiddeld 7–12% minder. Actieve automatisering voegt daar nog eens 5–15% aan toe.</p>
-  <p>Voor een gemiddeld huishouden (3.500 kWh/jaar, €0,34/kWh) betekent dit:</p>
+  <p>Voor een gemiddeld huishouden (3.500 kWh/jaar, €0,26/kWh) betekent dit:</p>
   <ul>
     <li>Inzicht alleen: €80–€140 besparing/jaar</li>
     <li>Met automatiseringen: tot €200–€350/jaar</li>
-    <li>Combinatie met dynamisch contract + automations: tot €400/jaar</li>
+    <li>Combinatie met <a href="dynamisch-contract.html">dynamisch contract</a> + automations: tot €400/jaar</li>
+    <li>Combinatie met <a href="calculator-thuisbatterij.html">plug-in thuisbatterij</a>: tot €600–€900/jaar (zeker na <a href="saldering-2027.html">saldering 2027</a>)</li>
   </ul>
   <p>De totale investering (P1 meter ~€40 + Raspberry Pi ~€70 als je nog geen Home Assistant hebt) verdien je in 1–3 maanden terug.</p>
+
+  <div class="highlight-box">
+    <strong>Extra relevant nu saldering stopt:</strong> Met een P1 meter in Home Assistant zie je per kwartier hoeveel je teruglevert. Na 1 jan 2027 is die teruglevering bijna niets meer waard (~€0,06/kWh). Je wilt dan zelfverbruik maximaliseren — door apparaten te verschuiven of een <a href="thuisbatterij-top5-2026.html">plug-in batterij</a> in te zetten. <a href="dynamisch-contract-zonnepanelen-thuisbatterij.html">Lees hoe batterij + dynamisch contract samenwerken →</a>
+  </div>
 
   <div class="disclaimer-box">
     <strong>Disclaimer:</strong> Besparingen zijn indicatief. Werkelijke besparing hangt af van verbruikspatroon, energietarief en hoe actief je de automatiseringen inzet. Home Assistant is third-party software — StekkerSlim.nl biedt geen technische ondersteuning voor installatieproblemen. Zie de Home Assistant documentatie op home-assistant.io.
@@ -328,13 +340,21 @@ action:
   <div class="related-inner">
     <h3>Meer lezen</h3>
     <div class="related-grid">
+      <a href="calculator-thuisbatterij.html" class="related-card">
+        <div class="tag">Calculator</div>
+        <h4>Plug-in thuisbatterij calculator — besparing na saldering 2027</h4>
+      </a>
+      <a href="saldering-2027.html" class="related-card">
+        <div class="tag">Zonnepanelen</div>
+        <h4>Salderingsregeling stopt 2027 — volledig overzicht</h4>
+      </a>
+      <a href="dynamisch-contract-zonnepanelen-thuisbatterij.html" class="related-card">
+        <div class="tag">Thuisbatterij</div>
+        <h4>Batterij + dynamisch contract vóór 2027: loont het nog?</h4>
+      </a>
       <a href="dynamisch-contract.html" class="related-card">
         <div class="tag">Contracten</div>
         <h4>Dynamisch contract: ideaal combineren met Home Assistant</h4>
-      </a>
-      <a href="calculator-zonnepanelen.html" class="related-card">
-        <div class="tag">Calculator</div>
-        <h4>Bereken de terugverdientijd van jouw zonnepanelen</h4>
       </a>
     </div>
   </div>
