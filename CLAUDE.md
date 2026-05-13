@@ -105,12 +105,7 @@ Independer, Eneco, Milieucentraal
 ---
 
 ## Open punten
-1. **DIRECT:** CVtotaal trackinglinks aanvragen in Daisycon → toevoegen aan calculator-warmtepomp.html
-2. **DIRECT:** Frank Energie CTA nog toevoegen aan dynamisch-contract.html (check of dit al gedaan is)
-3. **DEZE WEEK:** Zendure affiliate goedkeuring — al op site zonder tracking
-4. **DEZE WEEK:** HomeWizard testproducten: adres sturen aan Tamara Huber
-5. **BINNENKORT:** Marstek: Furkan Deringoz mailen
-6. **BINNENKORT:** DMARC/SPF fix Hostnet (p=reject → p=none + include:_spf.google.com)
+*(Alle punten afgehandeld — mei 2026)*
 
 ---
 
