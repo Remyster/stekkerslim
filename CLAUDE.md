@@ -42,6 +42,7 @@ GA4: `G-RKF36BF7DB` — staat in alle HTML bestanden.
 | Bol.com | 1510756 | `partner.bol.com/click/...` |
 | AliExpress | Daisycon 7630 | `ds1.nl/c/?si=7630&li=1354896&wi=419188` |
 | CVtotaal | Daisycon 14618 | ✅ APPROVED — links nog aanvragen |
+| Feenstra | Awin 25642 (zonnestroomboiler) + tidd.ly shortlinks | Hybride warmtepomp: `tidd.ly/4nyh7bI` · Zonnepanelen: `tidd.ly/4nF1kYI` · Thuisbatterij: `tidd.ly/4tE0Q6i` · Zonnestroomboiler: `awin1.com/cread.php?awinmid=25642&awinaffid=2816288&campaign=Feenstra+NL` |
 
 ### Affiliate — PENDING
 - Zendure NL (Daisycon 20779) — al op site, urgent
