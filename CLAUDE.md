@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Project Overzicht
-*Laatst bijgewerkt: mei 2026*
+*Laatst bijgewerkt: 15 mei 2026*
 
 ## Wat is dit?
 Statische HTML/CSS website over energie besparen voor Nederlandse gezinnen. Geen framework, geen build-stap — losse `.html` bestanden via GitHub Pages op **stekkerslim.nl**.
@@ -96,6 +96,23 @@ Independer, Eneco, Milieucentraal
 ---
 
 ## Wat er recent gedaan is
+*(mei 2026 — meest recent bovenaan)*
+
+### Feenstra affiliate — toegevoegd aan 5 pagina's (15 mei 2026)
+- **calculator-warmtepomp.html**: 3-koloms grid met Feenstra Hybride Warmtepomp als featured card (navy + groene border), Vattenfall + Energiekiezer als secundair. CVtotaal floating block verwijderd.
+- **saldering-2027.html**: 2×2 grid met Feenstra Zonnepanelen, Feenstra Hybride Warmtepomp, Feenstra Zonnestroomboiler, Energiekiezer (contract vergelijken).
+- **calculator-zonnepanelen.html**: CTA omgezet naar 2 knoppen — Feenstra primair (groen), Vattenfall secundair (outline).
+- **zonnestroom-na-2027.html**: 3-koloms grid uitgebreid naar 2×2 met Feenstra Zonnestroomboiler als 4e kaart (featured, navy).
+- **calculator-thuisbatterij.html**: Nieuw installatieblok toegevoegd boven de bestaande CTA — Feenstra Thuisbatterij featured + plug-in top 5 + dynamisch contract als 3-koloms grid.
+
+### Saldering 2027 urgency-update (mei 2026)
+- **plug-in-batterij-laden.html**: OG tags bijgewerkt, H1 urgency ("nog 7 maanden"), gele urgency banner, terugverdientijd 2027 highlight box, conclusie sectie, gerelateerde artikelen herschikt.
+- **smarthome-producten.html**: Title + H1 met saldering 2027 urgency, schema dateModified → 2026-05-15, gele urgency banner, batterij tip-box, CTA sectie toegevoegd.
+
+### Broken images verwijderd (mei 2026)
+- **thuisbatterij-top5-2026.html**: Drie niet-bestaande afbeeldingen verwijderd (`doosdisplay.jpg`, `appscreenshot.jpg` + bijschrift, `P1inmeter.jpg` uit HomeWizard product card).
+
+### Eerder (april–mei 2026)
 - OG tags toegevoegd aan alle 27+ pagina's (og-image.png 1200x630)
 - Frank Energie CTA toegevoegd aan contractpagina's
 - HomeWizard Energy Display review live (samenwerking Tamara Huber)
@@ -106,7 +123,12 @@ Independer, Eneco, Milieucentraal
 ---
 
 ## Open punten
-*(Alle punten afgehandeld — mei 2026)*
+*(Alle punten afgehandeld — 15 mei 2026)*
+
+### Nog te doen
+- CVtotaal (Daisycon 14618): approved maar links nog aanvragen — toevoegen zodra links binnen zijn
+- Zendure NL (Daisycon 20779): al gebruikt op site maar nog pending approval — opvolgen
+- Gaslicht.com: staat op slechts 2 pagina's — kan nog worden uitgebreid naar energiecontract-vergelijken + dynamisch-contract pagina's
 
 ---
 
