@@ -89,10 +89,10 @@
     .nav-dropdown { position: relative; }
     .nav-dropdown > a { cursor: pointer; display: flex; align-items: center; gap: 4px; }
     .nav-dropdown > a::after { content: '▾'; font-size: 0.75rem; }
-    .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); min-width: 200px; padding: 8px; z-index: 200; border: 1px solid var(--grijs-licht); }
+    .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); min-width: 200px; padding: 8px; padding-top: 12px; z-index: 200; border: 1px solid var(--grijs-licht); }
     .nav-dropdown-menu a { display: block; padding: 8px 14px; border-radius: 8px; font-size: 0.88rem; color: var(--navy); text-decoration: none; font-weight: 500; white-space: nowrap; }
     .nav-dropdown-menu a:hover { background: var(--licht); color: var(--groen); }
-    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-menu.open { display: block; }
 
     /* ── HERO ────────────────────────────── */
     .hero {
@@ -1294,6 +1294,28 @@ document.addEventListener('click',function(e){
   const m=document.getElementById('mobileMenu');
   if(m&&m.classList.contains('open')&&!h.contains(e.target)&&!m.contains(e.target))closeMenu();
 });
+</script>
+
+<script>
+(function(){
+  var dropdowns = document.querySelectorAll('.nav-dropdown');
+  dropdowns.forEach(function(dd){
+    var timer;
+    var menu = dd.querySelector('.nav-dropdown-menu');
+    if(!menu) return;
+    dd.addEventListener('mouseenter', function(){
+      clearTimeout(timer);
+      menu.classList.add('open');
+    });
+    dd.addEventListener('mouseleave', function(){
+      timer = setTimeout(function(){ menu.classList.remove('open'); }, 200);
+    });
+    menu.addEventListener('mouseenter', function(){ clearTimeout(timer); });
+    menu.addEventListener('mouseleave', function(){
+      timer = setTimeout(function(){ menu.classList.remove('open'); }, 200);
+    });
+  });
+})();
 </script>
 </body>
 </html>

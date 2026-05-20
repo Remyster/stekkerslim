@@ -148,12 +148,29 @@
 
       <div id="enkel-group">
         <div class="form-group">
-          <label>Stroomtarief (incl. BTW) <span id="enkel-val">€0,34/kWh</span></label>
+          <label><span class="field-q-wrap">Stroomtarief (incl. BTW) <span id="enkel-val">€0,34/kWh</span><button class="field-q" data-tip="enkeltarief" type="button">?</button><div class="field-tip" id="tip-enkeltarief">
+  <div class="field-tip-head">📄 Jaarafrekening — Pagina 4</div>
+  <div class="field-tip-bill">
+    <div class="field-tip-section">Levering elektriciteit</div>
+    <div class="field-tip-row field-tip-hl"><span>Normaal — Prijs incl. BTW</span><span>€ 0,1511</span></div>
+
+  </div>
+  <div class="field-tip-note">Enkeltarief = normaal leveringstarief</div>
+</div></span></label>
           <input type="range" id="enkeltarief" min="0.10" max="0.60" value="0.34" step="0.01" oninput="calc()">
           <div class="range-labels"><span>€0,10</span><span>€0,60</span></div>
         </div>
         <div class="form-group">
-          <label>Stroomverbruik per jaar <span id="enkel-kwh-val">3.500 kWh</span></label>
+          <label><span class="field-q-wrap">Stroomverbruik per jaar <span id="enkel-kwh-val">3.500 kWh</span><button class="field-q" data-tip="enkel-kwh" type="button">?</button><div class="field-tip" id="tip-enkel-kwh">
+  <div class="field-tip-head">📄 Jaarafrekening — Pagina 1</div>
+  <div class="field-tip-bill">
+    <div class="field-tip-section">Energieverbruik elektriciteit</div>
+    <div class="field-tip-row field-tip-hl"><span>Verbruik Normaal</span><span>860 kWh</span></div>
+<div class="field-tip-row field-tip-hl"><span>Verbruik Dal</span><span>1.185 kWh</span></div>
+<div class="field-tip-row field-tip-sum"><span>↳ Normaal + Dal optellen</span><span>= 2.045 kWh</span></div>
+  </div>
+  <div class="field-tip-note">Gebruik het totaal als jaarverbruik</div>
+</div></span></label>
           <input type="range" id="enkel-kwh" min="500" max="12000" value="3500" step="100" oninput="calc()">
           <div class="range-labels"><span>500 kWh</span><span>12.000 kWh</span></div>
         </div>
@@ -162,17 +179,42 @@
       <div id="dubbel-group" style="display:none">
         <div class="input-row">
           <div class="input-field">
-            <label>Normaal tarief (€/kWh)</label>
+            <label><span class="field-q-wrap">Normaal tarief (€/kWh)<button class="field-q" data-tip="normaal-tarief" type="button">?</button><div class="field-tip" id="tip-normaal-tarief">
+  <div class="field-tip-head">📄 Jaarafrekening — Pagina 4</div>
+  <div class="field-tip-bill">
+    <div class="field-tip-section">Levering elektriciteit</div>
+    <div class="field-tip-row field-tip-hl"><span>Normaal — Prijs incl. BTW</span><span>€ 0,1511</span></div>
+
+  </div>
+  <div class="field-tip-note">Jouw normaal leveringstarief incl. BTW</div>
+</div></span></label>
             <input type="number" id="normaal-tarief" value="0.15110" step="0.001" oninput="calc()">
           </div>
           <div class="input-field">
-            <label>Dal tarief (€/kWh)</label>
+            <label><span class="field-q-wrap">Dal tarief (€/kWh)<button class="field-q" data-tip="dal-tarief" type="button">?</button><div class="field-tip" id="tip-dal-tarief">
+  <div class="field-tip-head">📄 Jaarafrekening — Pagina 4</div>
+  <div class="field-tip-bill">
+    <div class="field-tip-section">Levering elektriciteit</div>
+    <div class="field-tip-row field-tip-hl"><span>Dal — Prijs incl. BTW</span><span>€ 0,1191</span></div>
+
+  </div>
+  <div class="field-tip-note">Jouw dal leveringstarief incl. BTW</div>
+</div></span></label>
             <input type="number" id="dal-tarief" value="0.11912" step="0.001" oninput="calc()">
           </div>
         </div>
         <div class="input-row">
           <div class="input-field">
-            <label>Normaal verbruik (kWh/jaar)</label>
+            <label><span class="field-q-wrap">Normaal verbruik (kWh/jaar)<button class="field-q" data-tip="normaal-kwh" type="button">?</button><div class="field-tip" id="tip-normaal-kwh">
+  <div class="field-tip-head">📄 Jaarafrekening — Pagina 1</div>
+  <div class="field-tip-bill">
+    <div class="field-tip-section">Energieverbruik elektriciteit</div>
+    <div class="field-tip-row field-tip-hl"><span>Verbruik Normaal</span><span>860 kWh</span></div>
+<div class="field-tip-row"><span>Verbruik Dal</span><span>1.185 kWh</span></div>
+
+  </div>
+  <div class="field-tip-note">Alleen Verbruik Normaal hier invullen</div>
+</div></span></label>
             <input type="number" id="normaal-kwh" value="2100" step="100" oninput="calc()">
           </div>
           <div class="input-field">
@@ -555,6 +597,24 @@
   }
 
   calc();
+</script>
+
+<script>
+document.querySelectorAll('.field-q').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var tipId = btn.getAttribute('data-tip');
+    var tip = document.getElementById('tip-' + tipId);
+    var isOpen = tip.classList.contains('open');
+    document.querySelectorAll('.field-tip.open').forEach(function(t){ t.classList.remove('open'); });
+    document.querySelectorAll('.field-q.active').forEach(function(b){ b.classList.remove('active'); });
+    if(!isOpen){ tip.classList.add('open'); btn.classList.add('active'); }
+  });
+});
+document.addEventListener('click', function(){
+  document.querySelectorAll('.field-tip.open').forEach(function(t){ t.classList.remove('open'); });
+  document.querySelectorAll('.field-q.active').forEach(function(b){ b.classList.remove('active'); });
+});
 </script>
 </body>
 </html>

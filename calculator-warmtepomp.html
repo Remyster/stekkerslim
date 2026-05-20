@@ -141,17 +141,41 @@
     <div class="calc-form">
       <h2>Jouw situatie</h2>
       <div class="form-group">
-        <label>Huidig gasverbruik per jaar <span id="gas-val">1.600 m³</span></label>
+        <label><span class="field-q-wrap">Huidig gasverbruik per jaar <span id="gas-val">1.600 m³</span><button class="field-q" data-tip="gasverbruik" type="button">?</button><div class="field-tip" id="tip-gasverbruik">
+  <div class="field-tip-head">📄 Jaarafrekening — Pagina 1</div>
+  <div class="field-tip-bill">
+    <div class="field-tip-section">Energieverbruik gas</div>
+    <div class="field-tip-row field-tip-hl"><span>Verbruik Enkel (gas)</span><span>750 m³</span></div>
+
+  </div>
+  <div class="field-tip-note">Jouw jaarlijks gasverbruik in m³</div>
+</div></span></label>
         <input type="range" id="gasverbruik" min="500" max="4000" value="1600" step="50" oninput="updateCalc()">
         <div class="range-labels"><span>500 m³</span><span>4.000 m³</span></div>
       </div>
       <div class="form-group">
-        <label>Gastarief (€/m³) <span id="gastarief-val">€1,42</span></label>
+        <label><span class="field-q-wrap">Gastarief (€/m³) <span id="gastarief-val">€1,42</span><button class="field-q" data-tip="gastarief" type="button">?</button><div class="field-tip" id="tip-gastarief">
+  <div class="field-tip-head">📄 Jaarafrekening — Pagina 6</div>
+  <div class="field-tip-bill">
+    <div class="field-tip-section">Levering gas</div>
+    <div class="field-tip-row field-tip-hl"><span>Enkel — Prijs incl. BTW</span><span>€ 0,6054</span></div>
+
+  </div>
+  <div class="field-tip-note">Jouw gastarief incl. BTW per m³</div>
+</div></span></label>
         <input type="range" id="gastarief" min="0.80" max="2.50" value="1.42" step="0.01" oninput="updateCalc()">
         <div class="range-labels"><span>€0,80</span><span>€2,50</span></div>
       </div>
       <div class="form-group">
-        <label>Stroomtarief (€/kWh) <span id="stroom-val">€0,34</span></label>
+        <label><span class="field-q-wrap">Stroomtarief (€/kWh) <span id="stroom-val">€0,34</span><button class="field-q" data-tip="stroomtarief" type="button">?</button><div class="field-tip" id="tip-stroomtarief">
+  <div class="field-tip-head">📄 Jaarafrekening — Pagina 4</div>
+  <div class="field-tip-bill">
+    <div class="field-tip-section">Levering elektriciteit</div>
+    <div class="field-tip-row field-tip-hl"><span>Normaal — Prijs incl. BTW</span><span>€ 0,1511</span></div>
+
+  </div>
+  <div class="field-tip-note">Stroomtarief incl. BTW per kWh</div>
+</div></span></label>
         <input type="range" id="stroomtarief" min="0.15" max="0.55" value="0.34" step="0.01" oninput="updateCalc()">
         <div class="range-labels"><span>€0,15</span><span>€0,55</span></div>
         <div style="margin-top:8px">
@@ -404,6 +428,24 @@
     updateCalc();
     document.getElementById('gem-calc-wp').style.display = 'none';
   }
+</script>
+
+<script>
+document.querySelectorAll('.field-q').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var tipId = btn.getAttribute('data-tip');
+    var tip = document.getElementById('tip-' + tipId);
+    var isOpen = tip.classList.contains('open');
+    document.querySelectorAll('.field-tip.open').forEach(function(t){ t.classList.remove('open'); });
+    document.querySelectorAll('.field-q.active').forEach(function(b){ b.classList.remove('active'); });
+    if(!isOpen){ tip.classList.add('open'); btn.classList.add('active'); }
+  });
+});
+document.addEventListener('click', function(){
+  document.querySelectorAll('.field-tip.open').forEach(function(t){ t.classList.remove('open'); });
+  document.querySelectorAll('.field-q.active').forEach(function(b){ b.classList.remove('active'); });
+});
 </script>
 </body>
 </html>

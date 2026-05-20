@@ -150,7 +150,15 @@
       </div>
       <hr class="divider">
       <div class="form-group">
-        <label>Thuistarief (€/kWh) <span id="thuis-val">€0,34</span></label>
+        <label><span class="field-q-wrap">Thuistarief (€/kWh) <span id="thuis-val">€0,34</span><button class="field-q" data-tip="thuistarief" type="button">?</button><div class="field-tip" id="tip-thuistarief">
+  <div class="field-tip-head">📄 Jaarafrekening — Pagina 4</div>
+  <div class="field-tip-bill">
+    <div class="field-tip-section">Levering elektriciteit</div>
+    <div class="field-tip-row field-tip-hl"><span>Dal — Prijs incl. BTW</span><span>€ 0,1191</span></div>
+
+  </div>
+  <div class="field-tip-note">Gebruik dal-tarief voor thuis laden (goedkoopst 's nachts)</div>
+</div></span></label>
         <input type="range" id="thuistarief" min="0.15" max="0.55" value="0.34" step="0.01" oninput="updateCalc()">
         <div class="range-labels"><span>€0,15</span><span>€0,55</span></div>
         <div style="margin-top:8px">
@@ -334,6 +342,24 @@
   function berekenGemL(){const nt=parseFloat(document.getElementById('gl-n').value)||0,dt=parseFloat(document.getElementById('gl-d').value)||0,nk=parseInt(document.getElementById('gl-nk').value)||0,dk=parseInt(document.getElementById('gl-dk').value)||0,tot=nk+dk;if(!tot)return;const gem=(nt*nk+dt*dk)/tot;const el=document.getElementById('gem-res-l');el.textContent='Gewogen gemiddeld: €'+gem.toFixed(4).replace('.',',')+'/kWh';el.dataset.waarde=gem.toFixed(4);}
   function gebruikGemL(){const w=parseFloat(document.getElementById('gem-res-l').dataset.waarde);if(!w)return;document.getElementById('thuistarief').value=Math.max(0.15,Math.min(0.55,w)).toFixed(3);updateCalc();document.getElementById('gem-calc-l').style.display='none';}
   updateCalc();
+</script>
+
+<script>
+document.querySelectorAll('.field-q').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var tipId = btn.getAttribute('data-tip');
+    var tip = document.getElementById('tip-' + tipId);
+    var isOpen = tip.classList.contains('open');
+    document.querySelectorAll('.field-tip.open').forEach(function(t){ t.classList.remove('open'); });
+    document.querySelectorAll('.field-q.active').forEach(function(b){ b.classList.remove('active'); });
+    if(!isOpen){ tip.classList.add('open'); btn.classList.add('active'); }
+  });
+});
+document.addEventListener('click', function(){
+  document.querySelectorAll('.field-tip.open').forEach(function(t){ t.classList.remove('open'); });
+  document.querySelectorAll('.field-q.active').forEach(function(b){ b.classList.remove('active'); });
+});
 </script>
 </body>
 </html>
