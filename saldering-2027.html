@@ -90,23 +90,7 @@
     .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
     @media(max-width:700px){.scenario-cards,.related-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
     .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
-  
-    .nav-search-wrap{position:relative;margin-left:8px}
-    .nav-search-btn{background:none;border:none;cursor:pointer;padding:6px;color:var(--grijs);display:flex;align-items:center;transition:color .2s}
-    .nav-search-btn:hover,.nav-search-btn.active{color:var(--groen)}
-    .nav-search-btn svg{width:18px;height:18px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-    .nav-search-box{display:none;position:absolute;top:calc(100% + 8px);right:0;width:320px;background:#fff;border:1px solid var(--grijs-licht);border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,.12);z-index:300;overflow:hidden}
-    .nav-search-box.open{display:block}
-    .nav-search-input{width:100%;padding:12px 16px;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--navy);background:transparent}
-    .nav-search-input::placeholder{color:var(--grijs)}
-    .nav-search-results{max-height:320px;overflow-y:auto;border-top:1px solid var(--grijs-licht)}
-    .nav-search-result{display:block;padding:10px 16px;text-decoration:none;color:var(--navy);transition:background .15s;border-bottom:1px solid rgba(0,0,0,.04)}
-    .nav-search-result:hover{background:var(--licht)}
-    .nav-search-result:last-child{border-bottom:none}
-    .nav-search-result-title{font-weight:600;font-size:0.85rem;margin-bottom:2px}
-    .nav-search-result-desc{font-size:0.75rem;color:var(--grijs)}
-    .nav-search-empty{padding:16px;text-align:center;color:var(--grijs);font-size:0.85rem}
-    </style>
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -202,15 +186,6 @@
       <li><a href="vragen.html">Stel een vraag</a></li>
       <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
     </ul>
-      <div class="nav-search-wrap" id="navSearchWrap">
-      <button class="nav-search-btn" id="navSearchBtn" onclick="toggleNavSearch()" aria-label="Zoeken">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </button>
-      <div class="nav-search-box" id="navSearchBox">
-        <input class="nav-search-input" id="navSearchInput" type="text" placeholder="Zoek op stekkerslim.nl..." oninput="doNavSearch(this.value)" onkeydown="navSearchKey(event)" autocomplete="off">
-        <div class="nav-search-results" id="navSearchResults"></div>
-      </div>
-    </div>
   </div>
 </nav>
 
@@ -308,7 +283,7 @@
       <div class="action-num">3</div>
       <div>
         <h4>Overweeg een thuisbatterij</h4>
-        <p>Een <a href="thuisbatterij-top5-2026.html" style="color:var(--groen);font-weight:600">thuisbatterij</a> slaat overdag geproduceerde stroom op voor gebruik in de avond. Dit verhoogt je eigenverbruik fors — waardoor de salderingswijziging minder hard aankomt. Wil je weten wat een batterij kost en oplevert? Gebruik de <a href="calculator-thuisbatterij.html" style="color:var(--groen);font-weight:600">thuisbatterij calculator</a>.</p>
+        <p>Een <a href="thuisbatterij-plug-and-play-2026.html" style="color:var(--groen);font-weight:600">plug-and-play thuisbatterij</a> of de volledige <a href="thuisbatterij-top5-2026.html" style="color:var(--groen);font-weight:600">thuisbatterij</a> slaat overdag geproduceerde stroom op voor gebruik in de avond. Dit verhoogt je eigenverbruik fors — waardoor de salderingswijziging minder hard aankomt. Wil je weten wat een batterij kost en oplevert? Gebruik de <a href="calculator-thuisbatterij.html" style="color:var(--groen);font-weight:600">thuisbatterij calculator</a>.</p>
       </div>
     </div>
     <div class="action-item">
@@ -364,7 +339,7 @@
     </details>
     <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
       <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Is een thuisbatterij de oplossing na 2027?</summary>
-      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Voor veel mensen wel. Een <a href="thuisbatterij-top5-2026.html" style="color:var(--groen)">thuisbatterij</a> verhoogt je eigenverbruik van ~30% naar 60-70%. Daardoor lever je minder terug tegen laag tarief. Of een batterij voor jou loont, hangt af van hoeveel je terugelevert en of je terugleverkosten betaalt. Gebruik de <a href="calculator-thuisbatterij.html" style="color:var(--groen)">calculator</a>.</p>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Voor veel mensen wel. Een <a href="thuisbatterij-plug-and-play-2026.html" style="color:var(--groen);font-weight:600">plug-and-play thuisbatterij</a> of de volledige <a href="thuisbatterij-top5-2026.html" style="color:var(--groen)">thuisbatterij</a> verhoogt je eigenverbruik van ~30% naar 60-70%. Daardoor lever je minder terug tegen laag tarief. Of een batterij voor jou loont, hangt af van hoeveel je terugelevert en of je terugleverkosten betaalt. Gebruik de <a href="calculator-thuisbatterij.html" style="color:var(--groen)">calculator</a>.</p>
     </details>
     <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
       <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Loont het nog om zonnepanelen te nemen na 2027?</summary>
@@ -442,36 +417,5 @@
     <div class="footer-bottom"><span>© 2026 StekkerSlim.nl</span><a href="privacy.html">Privacy & Disclaimer</a></div>
   </div>
 </footer>
-
-<script>
-var _navPages = [{"url": "index.html", "title": "Homepage", "desc": "Energie besparen, calculators, smarthome"}, {"url": "calculator-zonnepanelen.html", "title": "Zonnepanelen calculator", "desc": "Bereken terugverdientijd zonnepanelen"}, {"url": "calculator-thuisbatterij.html", "title": "Thuisbatterij calculator", "desc": "Is een thuisbatterij rendabel?"}, {"url": "calculator-energiekosten.html", "title": "Energiekosten calculator", "desc": "Bereken jouw jaarlijkse energierekening"}, {"url": "calculator-laadpaal.html", "title": "Laadpaal calculator", "desc": "Wat kost thuis laden?"}, {"url": "calculator-warmtepomp.html", "title": "Warmtepomp calculator", "desc": "Gas vs warmtepomp vergelijken"}, {"url": "thuisbatterij-top5-2026.html", "title": "Beste thuisbatterij 2026 top 5", "desc": "HomeWizard, Zendure, Marstek vergeleken"}, {"url": "saldering-2027.html", "title": "Saldering stopt 2027", "desc": "Wat verandert er voor zonnepanelen na 2027?"}, {"url": "dynamisch-contract.html", "title": "Dynamisch energiecontract", "desc": "Voordelen en nadelen dynamisch contract"}, {"url": "energiecontract-vergelijken-2026.html", "title": "Energiecontract vergelijken 2026", "desc": "Beste energieleverancier vinden"}, {"url": "terugleverkosten.html", "title": "Terugleverkosten", "desc": "Wat zijn terugleverkosten en wie rekent ze?"}, {"url": "terugleververgoeding-2027.html", "title": "Terugleververgoeding 2027", "desc": "Hoeveel krijg je na saldering?"}, {"url": "zonnestroom-na-2027.html", "title": "Zonnestroom na 2027", "desc": "Opties na de salderingswijziging"}, {"url": "terugverdientijd-zonnepanelen-2026.html", "title": "Terugverdientijd zonnepanelen", "desc": "Wanneer verdienen panelen zichzelf terug?"}, {"url": "smarthome-p1-meter.html", "title": "P1 meter Home Assistant", "desc": "P1 meter koppelen aan Home Assistant"}, {"url": "smarthome-producten.html", "title": "Smarthome producten", "desc": "Alle slimme energie-apparaten"}, {"url": "homewizard-energy-display-review.html", "title": "HomeWizard Energy Display review", "desc": "Eerlijk getest: unboxing en installatie"}, {"url": "homewizard-energy-display-deel2.html", "title": "HomeWizard Energy Display eindoordeel", "desc": "Na 2 weken eerlijk eindoordeel"}, {"url": "plug-in-batterij-laden.html", "title": "Plug-in batterij slim laden", "desc": "Wanneer en hoe laad je een thuisbatterij?"}, {"url": "beste-slimme-stekker-2026.html", "title": "Beste slimme stekker 2026", "desc": "Top 5 slimme stekkers vergeleken"}, {"url": "slimme-stekkers.html", "title": "Slimme stekkers uitgelegd", "desc": "Hoe werken slimme stekkers?"}, {"url": "smart-lampen.html", "title": "Slimme lampen", "desc": "Beste slimme lampen en bollen"}, {"url": "wanneer-thuisbatterij-niet-slim.html", "title": "Wanneer is een thuisbatterij niet slim?", "desc": "Eerlijk advies over wanneer je geen batterij moet kopen"}, {"url": "homeassistant-energie-besparen.html", "title": "Home Assistant energie besparen", "desc": "Automatiseer je energieverbruik"}, {"url": "smarthome-uitleg.html", "title": "Smarthome uitleg", "desc": "Wat is een smarthome en hoe begin je?"}, {"url": "slimme-thermostaat-installeren.html", "title": "Slimme thermostaat installeren", "desc": "Tado, Nest en andere thermostaten"}, {"url": "blog.html", "title": "Blog en artikelen", "desc": "Alle artikelen van StekkerSlim"}, {"url": "vragen.html", "title": "Stel een vraag", "desc": "Stuur je energievraag in"}, {"url": "over-ons.html", "title": "Over ons", "desc": "Wie is StekkerSlim?"}];
-function toggleNavSearch(){
-  var box=document.getElementById('navSearchBox');
-  var btn=document.getElementById('navSearchBtn');
-  var open=box.classList.toggle('open');
-  btn.classList.toggle('active',open);
-  if(open){setTimeout(function(){document.getElementById('navSearchInput').focus();},50);}
-}
-document.addEventListener('click',function(e){
-  var wrap=document.getElementById('navSearchWrap');
-  if(wrap&&!wrap.contains(e.target)){
-    document.getElementById('navSearchBox').classList.remove('open');
-    document.getElementById('navSearchBtn').classList.remove('active');
-  }
-});
-function doNavSearch(q){
-  var res=document.getElementById('navSearchResults');
-  if(!q||q.length<2){res.innerHTML='';return;}
-  q=q.toLowerCase();
-  var hits=_navPages.filter(function(p){
-    return p.title.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q);
-  }).slice(0,8);
-  if(!hits.length){res.innerHTML='<div class="nav-search-empty">Geen resultaten gevonden</div>';return;}
-  res.innerHTML=hits.map(function(p){
-    return '<a href="'+p.url+'" class="nav-search-result"><div class="nav-search-result-title">'+p.title+'</div><div class="nav-search-result-desc">'+p.desc+'</div></a>';
-  }).join('');
-}
-function navSearchKey(e){if(e.key==='Escape'){document.getElementById('navSearchBox').classList.remove('open');}}
-</script>
 </body>
 </html>
