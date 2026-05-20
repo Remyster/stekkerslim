@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Project Overzicht
-*Laatst bijgewerkt: 15 mei 2026*
+*Laatst bijgewerkt: 17 mei 2026*
 
 ## Wat is dit?
 Statische HTML/CSS website over energie besparen voor Nederlandse gezinnen. Geen framework, geen build-stap — losse `.html` bestanden via GitHub Pages op **stekkerslim.nl**.
@@ -43,10 +43,10 @@ GA4: `G-RKF36BF7DB` — staat in alle HTML bestanden.
 | AliExpress | Daisycon 7630 | `ds1.nl/c/?si=7630&li=1354896&wi=419188` |
 | CVtotaal | Daisycon 14618 | ✅ APPROVED — links nog aanvragen |
 | Feenstra | Awin 25642 (zonnestroomboiler) + tidd.ly shortlinks | Hybride warmtepomp: `tidd.ly/4nyh7bI` · Zonnepanelen: `tidd.ly/4nF1kYI` · Thuisbatterij: `tidd.ly/4tE0Q6i` · Zonnestroomboiler: `awin1.com/cread.php?awinmid=25642&awinaffid=2816288&campaign=Feenstra+NL` |
+| Vandebron | Daisycon 12134 | Dynamisch: `lt45.net/c/?si=12134&li=1535052&wi=419188&ws=&dl=energie%2Fenergiecontract%2Fdynamisch` · Variabel: `...variabel` · Vast: `...vast` ✅ NIEUW |
 
 ### Affiliate — PENDING
 - Zendure NL (Daisycon 20779) — al op site, urgent
-- Vandebron (Daisycon 12134)
 - Vaillant (Daisycon 20260)
 - Essent Laadpassen (Daisycon 19834)
 - Innova Energie (Daisycon 15501)
