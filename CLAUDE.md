@@ -99,6 +99,10 @@ Independer, Eneco, Milieucentraal
 ## Wat er recent gedaan is
 *(mei 2026 — meest recent bovenaan)*
 
+### 21 mei 2026 — Calculator-pagina's: foto-blok + voor/na-tabel + urgency
+- **calculator-thuisbatterij.html**: Nieuw blok "Zo ziet het er in het echt uit" toegevoegd direct na de hero (vóór de calculator) — 3-koloms foto-grid (P1-in-meter.jpg, doos-display.jpg, app-screenshot.jpg) + voor/na rekening-tabel (€1.850 → €920/jaar, ≈ €930 besparing). Titel/meta/H1 hadden al urgency.
+- **calculator-energiekosten.html**: Zelfde foto-blok + voor/na-tabel toegevoegd (kolommen: "Nu (saldering actief)" vs "Na jan 2027 + batterij"). Titel bijgewerkt naar "Energiekosten Berekenen 2026/2027 — Wat Betaal Je na Saldering?", canonical tag toegevoegd (ontbrak), gele urgency-banner toegevoegd, H1 met 2027-focus, OG tags bijgewerkt. Gerelateerde artikelen sectie toegevoegd (saldering-2027, calculator-thuisbatterij, thuisbatterij-top5-2026, dynamisch-contract).
+
 ### 20 mei 2026 — Nieuwe pagina + bulk updates via GitHub
 - **thuisbatterij-plug-and-play-2026.html**: Nieuwe pagina live (1922 woorden) — plug-and-play batterij rendabiliteit vóór salderingsstop. Staat in sitemap + gelinkt vanuit saldering-2027.html. **Nog toe te voegen aan blog.html.**
 - **Vandebron live** (Daisycon 12134): verplaatst van pending naar actief in CLAUDE.md. Links toegevoegd aan dynamisch-contract.html + energiecontract-vergelijken-2026.html.
@@ -131,13 +135,18 @@ Independer, Eneco, Milieucentraal
 ---
 
 ## Open punten
-*(Bijgewerkt: 20 mei 2026)*
+*(Bijgewerkt: 21 mei 2026)*
 
 ### Nog te doen
-- **thuisbatterij-plug-and-play-2026.html** toevoegen aan `blog.html` (blogoverzicht) — nog niet gedaan
 - CVtotaal (Daisycon 14618): approved maar links nog aanvragen — toevoegen zodra links binnen zijn
 - Zendure NL (Daisycon 20779): al gebruikt op site maar nog pending approval — opvolgen
 - Gaslicht.com: staat op slechts 2 pagina's — kan uitgebreid naar energiecontract-vergelijken + dynamisch-contract
+- Foto's (P1-in-meter.jpg, doos-display.jpg, app-screenshot.jpg) zijn gelinkt vanuit calculator-thuisbatterij + calculator-energiekosten maar moeten nog geüpload worden naar de repo
+
+### Gedaan (21 mei 2026)
+- ✅ thuisbatterij-plug-and-play-2026.html toegevoegd aan blog.html
+- ✅ calculator-thuisbatterij.html: foto-blok + voor/na-tabel
+- ✅ calculator-energiekosten.html: foto-blok + voor/na-tabel + canonical + urgency banner + title/H1/OG
 
 ---
 
