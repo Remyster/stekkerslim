@@ -88,6 +88,7 @@ Independer, Eneco, Milieucentraal
 | HomeWizard Energy Display review | `homewizard-energy-display-review.html` | Live |
 | HomeWizard Energy Display deel 2 | `homewizard-energy-display-deel2.html` | Live ✅ NIEUW |
 | Dynamisch contract + zonnepanelen + batterij | `dynamisch-contract-zonnepanelen-thuisbatterij-2026.html` | Live ✅ NIEUW |
+| Thuisbatterij plug-and-play 2026 | `thuisbatterij-plug-and-play-2026.html` | Live ✅ NIEUW |
 | Plug-in batterij laden | `plug-in-batterij-laden.html` | Live |
 | Over ons | `over-ons.html` | Live |
 | Privacy | `privacy.html` | Live |
@@ -97,6 +98,13 @@ Independer, Eneco, Milieucentraal
 
 ## Wat er recent gedaan is
 *(mei 2026 — meest recent bovenaan)*
+
+### 20 mei 2026 — Nieuwe pagina + bulk updates via GitHub
+- **thuisbatterij-plug-and-play-2026.html**: Nieuwe pagina live (1922 woorden) — plug-and-play batterij rendabiliteit vóór salderingsstop. Staat in sitemap + gelinkt vanuit saldering-2027.html. **Nog toe te voegen aan blog.html.**
+- **Vandebron live** (Daisycon 12134): verplaatst van pending naar actief in CLAUDE.md. Links toegevoegd aan dynamisch-contract.html + energiecontract-vergelijken-2026.html.
+- **Bulk footer/navigatie update**: beste-slimme-stekker, blog, calculator-energiekosten, calculator-laadpaal, calculator-thuisbatterij, calculator-warmtepomp, en veel meer pagina's bijgewerkt met 58-regels blok (waarschijnlijk footer/nav update).
+- **homewizard-energy-display-review.html + deel2.html**: grote inhoudelijke updates.
+- **Calculators** (energiekosten, laadpaal, thuisbatterij, warmtepomp): inhoudelijke updates.
 
 ### Feenstra affiliate — toegevoegd aan 5 pagina's (15 mei 2026)
 - **calculator-warmtepomp.html**: 3-koloms grid met Feenstra Hybride Warmtepomp als featured card (navy + groene border), Vattenfall + Energiekiezer als secundair. CVtotaal floating block verwijderd.
@@ -123,12 +131,13 @@ Independer, Eneco, Milieucentraal
 ---
 
 ## Open punten
-*(Alle punten afgehandeld — 15 mei 2026)*
+*(Bijgewerkt: 20 mei 2026)*
 
 ### Nog te doen
+- **thuisbatterij-plug-and-play-2026.html** toevoegen aan `blog.html` (blogoverzicht) — nog niet gedaan
 - CVtotaal (Daisycon 14618): approved maar links nog aanvragen — toevoegen zodra links binnen zijn
 - Zendure NL (Daisycon 20779): al gebruikt op site maar nog pending approval — opvolgen
-- Gaslicht.com: staat op slechts 2 pagina's — kan nog worden uitgebreid naar energiecontract-vergelijken + dynamisch-contract pagina's
+- Gaslicht.com: staat op slechts 2 pagina's — kan uitgebreid naar energiecontract-vergelijken + dynamisch-contract
 
 ---
 
