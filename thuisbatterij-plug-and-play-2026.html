@@ -100,6 +100,35 @@
     .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;font-size:0.8rem}
     .footer-bottom a{color:rgba(255,255,255,0.5);text-decoration:none}
     @media(max-width:768px){.nav-links{display:none}.related-grid,.product-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}}
+  
+    /* === ZOEKBALK === */
+    .nav-search-wrap{position:relative}
+    .nav-search-btn{background:none;border:none;cursor:pointer;padding:8px;color:var(--grijs);display:flex;align-items:center;transition:color .2s;border-radius:8px}
+    .nav-search-btn:hover,.nav-search-btn.open{color:var(--groen)}
+    .nav-search-btn svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .nav-search-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.25);z-index:199;backdrop-filter:blur(2px)}
+    .nav-search-overlay.open{display:block}
+    .nav-search-box{display:none;position:fixed;top:68px;left:50%;transform:translateX(-50%);width:min(600px,92vw);background:#fff;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.18);z-index:200;overflow:hidden}
+    .nav-search-box.open{display:block}
+    .nav-search-inner{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--grijs-licht)}
+    .nav-search-inner svg{width:20px;height:20px;stroke:var(--grijs);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    .nav-search-input{flex:1;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--navy);background:transparent}
+    .nav-search-input::placeholder{color:#aaa}
+    .nav-search-clear{background:none;border:none;cursor:pointer;color:var(--grijs);font-size:1.1rem;padding:0 4px;display:none}
+    .nav-search-clear.show{display:block}
+    .nav-search-results{max-height:400px;overflow-y:auto}
+    .nav-search-result{display:flex;align-items:flex-start;gap:12px;padding:12px 18px;text-decoration:none;color:var(--navy);transition:background .15s;border-bottom:1px solid rgba(0,0,0,0.04)}
+    .nav-search-result:last-child{border-bottom:none}
+    .nav-search-result:hover{background:var(--licht)}
+    .nsr-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
+    .nsr-content{}
+    .nsr-title{font-weight:600;font-size:0.88rem;color:var(--navy);margin-bottom:2px}
+    .nsr-title mark{background:rgba(0,209,122,0.2);color:var(--navy);border-radius:3px;padding:0 2px}
+    .nsr-desc{font-size:0.78rem;color:var(--grijs);line-height:1.4}
+    .nav-search-hint{padding:14px 18px;text-align:center;color:#aaa;font-size:0.82rem}
+    .nav-search-footer{padding:10px 18px;border-top:1px solid var(--grijs-licht);text-align:right;font-size:0.72rem;color:#bbb}
+    @media(max-width:600px){.nav-search-box{top:58px}}
+
   </style>
 
   <script type="application/ld+json">
@@ -390,5 +419,61 @@
     <div class="footer-bottom"><span>© 2026 StekkerSlim.nl</span><a href="privacy.html">Privacy & Disclaimer</a></div>
   </div>
 </footer>
+<script>
+var _SP=[{"url": "calculator-zonnepanelen.html", "title": "Zonnepanelen calculator", "desc": "Bereken terugverdientijd en opbrengst zonnepanelen", "tags": "zonnepanelen berekenen terugverdientijd opbrengst panelen"}, {"url": "calculator-thuisbatterij.html", "title": "Thuisbatterij calculator", "desc": "Is een thuisbatterij rendabel voor jou?", "tags": "thuisbatterij batterij berekenen rendabel terugverdientijd"}, {"url": "calculator-energiekosten.html", "title": "Energiekosten calculator", "desc": "Bereken jouw jaarlijkse energierekening", "tags": "energiekosten rekening stroom gas berekenen"}, {"url": "calculator-laadpaal.html", "title": "Laadpaal calculator", "desc": "Wat kost thuis laden van je EV?", "tags": "laadpaal laden elektrisch rijden EV auto stroom"}, {"url": "calculator-warmtepomp.html", "title": "Warmtepomp calculator", "desc": "Gas vs warmtepomp vergelijken", "tags": "warmtepomp gas ketel besparen vergelijken"}, {"url": "thuisbatterij-top5-2026.html", "title": "Beste thuisbatterij 2026 — top 5", "desc": "HomeWizard, Zendure, Marstek vergeleken", "tags": "thuisbatterij plug-in HomeWizard Zendure Marstek Indevolt batterij vergelijken"}, {"url": "thuisbatterij-plug-and-play-2026.html", "title": "Thuisbatterij plug-and-play 2026", "desc": "Rendabel vóór de salderingsstop?", "tags": "thuisbatterij plug-in plug-and-play stopcontact saldering 2027"}, {"url": "wanneer-thuisbatterij-niet-slim.html", "title": "Wanneer is een thuisbatterij niet slim?", "desc": "Eerlijk advies over wanneer je geen batterij moet kopen", "tags": "thuisbatterij nadelen niet slim advies"}, {"url": "saldering-2027.html", "title": "Saldering stopt 2027", "desc": "Wat verandert er voor je zonnepanelen na 2027?", "tags": "saldering 2027 stoppen zonnepanelen terugleverkosten wijziging wet"}, {"url": "terugleverkosten.html", "title": "Terugleverkosten", "desc": "Wat zijn terugleverkosten en wie rekent ze?", "tags": "terugleverkosten saldering terugleveren zonnepanelen kosten leverancier"}, {"url": "terugleververgoeding-2027.html", "title": "Terugleververgoeding na 2027", "desc": "Hoeveel krijg je voor teruggeleverde stroom?", "tags": "terugleververgoeding vergoeding saldering 2027 tarief zonnepanelen"}, {"url": "zonnestroom-na-2027.html", "title": "Zonnestroom na 2027", "desc": "Wat zijn je opties na de salderingswijziging?", "tags": "zonnestroom zonnepanelen na 2027 saldering opties batterij"}, {"url": "terugverdientijd-zonnepanelen-2026.html", "title": "Terugverdientijd zonnepanelen 2026", "desc": "Wanneer verdienen panelen zichzelf terug?", "tags": "zonnepanelen terugverdientijd 2026 berekenen rendabel"}, {"url": "dynamisch-contract.html", "title": "Dynamisch energiecontract", "desc": "Voordelen en nadelen dynamisch contract", "tags": "dynamisch contract energie tarief variabel uurprijs Frank Tibber"}, {"url": "dynamisch-contract-zonnepanelen-thuisbatterij.html", "title": "Dynamisch contract + zonnepanelen + batterij", "desc": "Loont de combinatie?", "tags": "dynamisch contract zonnepanelen thuisbatterij combinatie"}, {"url": "energiecontract-vergelijken-2026.html", "title": "Energiecontract vergelijken 2026", "desc": "Beste energieleverancier vinden", "tags": "energiecontract vergelijken leverancier stroom gas 2026"}, {"url": "smarthome-p1-meter.html", "title": "P1 meter + Home Assistant", "desc": "P1 meter koppelen aan Home Assistant", "tags": "P1 meter Home Assistant slimme meter koppelen energie meten"}, {"url": "homeassistant-energie-besparen.html", "title": "Home Assistant energie besparen", "desc": "Automatiseer je energieverbruik", "tags": "Home Assistant energie besparen automatisering YAML integratie"}, {"url": "smarthome-producten.html", "title": "Smarthome producten", "desc": "Alle slimme energie-apparaten", "tags": "smarthome producten slimme stekker thermostaat P1 meter Zigbee WiFi Matter"}, {"url": "smarthome-uitleg.html", "title": "Smarthome uitleg", "desc": "Wat is een smarthome en hoe begin je?", "tags": "smarthome uitleg beginnen hub Zigbee WiFi Matter protocol"}, {"url": "slimme-stekkers.html", "title": "Slimme stekkers uitgelegd", "desc": "Hoe werken slimme stekkers?", "tags": "slimme stekker Zigbee WiFi Matter energiemeting schakelaar"}, {"url": "beste-slimme-stekker-2026.html", "title": "Beste slimme stekker 2026", "desc": "Top 5 slimme stekkers vergeleken", "tags": "slimme stekker 2026 beste vergelijken Sonoff Tapo HomeWizard Zigbee Matter"}, {"url": "smart-lampen.html", "title": "Slimme lampen", "desc": "Beste slimme lampen en bollen", "tags": "slimme lamp LED Zigbee WiFi Matter Philips Hue WiZ Tapo"}, {"url": "slimme-thermostaat-installeren.html", "title": "Slimme thermostaat installeren", "desc": "Tado, Nest en andere thermostaten", "tags": "thermostaat slimme thermostaat Tado Nest installeren OpenTherm radiatorknop TRV"}, {"url": "homewizard-energy-display-review.html", "title": "HomeWizard Energy Display review", "desc": "Eerlijk getest: unboxing en installatie", "tags": "HomeWizard Energy Display review test unboxing P1 meter display"}, {"url": "homewizard-energy-display-deel2.html", "title": "HomeWizard Energy Display eindoordeel", "desc": "Na 2 weken eerlijk eindoordeel", "tags": "HomeWizard Energy Display eindoordeel review Home Assistant koppeling"}, {"url": "plug-in-batterij-laden.html", "title": "Plug-in batterij slim laden", "desc": "Wanneer en hoe laad je een thuisbatterij?", "tags": "thuisbatterij laden zonnepanelen slim opladen strategie"}, {"url": "blog.html", "title": "Blog — alle artikelen", "desc": "Alle artikelen van StekkerSlim", "tags": "blog artikelen energie smarthome"}, {"url": "vragen.html", "title": "Stel een vraag", "desc": "Stuur je energievraag in", "tags": "vraag contact hulp advies"}, {"url": "over-ons.html", "title": "Over StekkerSlim", "desc": "Wie is StekkerSlim?", "tags": "over ons Remy StekkerSlim"}];
+var _icons={"calculator":"🧮","smarthome":"🏠","home":"🏠","blog":"📝","thuis":"🔋","slimme":"⚡","beste":"⚡","plug":"🔌","warm":"🌡️","dynamisch":"📈","energie":"💡","saldering":"☀️","terug":"☀️","zonn":"☀️","vragen":"❓","over":"👤","privacy":"🔒"};
+function _icon(u){for(var k in _icons){if(u.indexOf(k)>-1)return _icons[k];}return "📄";}
+function _hl(t,q){if(!q)return t;var r=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');return t.replace(r,'<mark>$1</mark>');}
+function navSearchToggle(){
+  var box=document.getElementById('navSearchBox');
+  var ov=document.getElementById('navSearchOverlay');
+  var btn=document.getElementById('navSearchBtn');
+  var open=!box.classList.contains('open');
+  box.classList.toggle('open',open);
+  ov.classList.toggle('open',open);
+  btn.classList.toggle('open',open);
+  if(open)setTimeout(function(){document.getElementById('navSearchInput').focus();},50);
+}
+function navSearchClose(){
+  document.getElementById('navSearchBox').classList.remove('open');
+  document.getElementById('navSearchOverlay').classList.remove('open');
+  document.getElementById('navSearchBtn').classList.remove('open');
+  navSearchReset();
+}
+function navSearchReset(){
+  var inp=document.getElementById('navSearchInput');
+  inp.value='';
+  document.getElementById('navSearchClear').classList.remove('show');
+  document.getElementById('navSearchResults').innerHTML='<div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>';
+}
+function navSearchQuery(q){
+  var clear=document.getElementById('navSearchClear');
+  var res=document.getElementById('navSearchResults');
+  clear.classList.toggle('show',q.length>0);
+  if(q.length<2){res.innerHTML='<div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>';return;}
+  var words=q.toLowerCase().split(/\s+/).filter(Boolean);
+  var hits=_SP.map(function(p){
+    var haystack=(p.title+' '+p.desc+' '+p.tags).toLowerCase();
+    var score=words.reduce(function(s,w){
+      if(p.title.toLowerCase().indexOf(w)>-1)return s+3;
+      if(p.desc.toLowerCase().indexOf(w)>-1)return s+2;
+      if(p.tags.toLowerCase().indexOf(w)>-1)return s+1;
+      return s;
+    },0);
+    return {p:p,score:score};
+  }).filter(function(x){return x.score>0;}).sort(function(a,b){return b.score-a.score;}).slice(0,8);
+  if(!hits.length){res.innerHTML='<div class="nav-search-hint">Geen resultaten voor <em>'+q+'</em> — probeer een ander woord</div>';return;}
+  res.innerHTML=hits.map(function(x){
+    var p=x.p;
+    return '<a href="'+p.url+'" class="nav-search-result" onclick="navSearchClose()"><span class="nsr-icon">'+_icon(p.url)+'</span><span class="nsr-content"><div class="nsr-title">'+_hl(p.title,q)+'</div><div class="nsr-desc">'+p.desc+'</div></span></a>';
+  }).join('');
+}
+function navSearchKey(e){
+  if(e.key==='Escape')navSearchClose();
+  if(e.key==='Enter'){var first=document.querySelector('.nav-search-result');if(first){window.location=first.href;navSearchClose();}}
+}
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();navSearchToggle();}});
+document.addEventListener("click",function(e){var b=document.getElementById("navSearchBox");var w=document.getElementById("navSearchWrap");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
+</script>
 </body>
 </html>

@@ -317,7 +317,7 @@ function navSearchQuery(q){
   res.innerHTML=hits.map(function(x){var p=x.p;return'<a href="'+p.url+'" class="nav-search-result" onclick="navSearchClose()"><span class="nsr-icon">'+_ic(p.url)+'</span><span><div class="nsr-title">'+_hl(p.title,q)+'</div><div class="nsr-desc">'+p.desc+'</div></span></a>';}).join("");
 }
 function navSearchKey(e){if(e.key==="Escape")navSearchClose();if(e.key==="Enter"){var f=document.querySelector(".nav-search-result");if(f){window.location=f.href;navSearchClose();}}}
-document.addEventListener("keydown",function(e){if((e.ctrlKey||e.metaKey)&&e.key==="k"){e.preventDefault();navSearchToggle();}});
+document.addEventListener("keydown",function(e){if((e.ctrlKey||e.metaKey)&&e.key==="k"){e.preventDefault();navSearchToggle();}});document.addEventListener("click",function(e){var w=document.getElementById("navSearchWrap"),b=document.getElementById("navSearchBox");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
 </script>
 </body>
 </html>

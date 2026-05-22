@@ -526,6 +526,7 @@ function navSearchKey(e){
   if(e.key==='Enter'){var first=document.querySelector('.nav-search-result');if(first){window.location=first.href;navSearchClose();}}
 }
 document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();navSearchToggle();}});
+document.addEventListener("click",function(e){var b=document.getElementById("navSearchBox");var w=document.getElementById("navSearchWrap");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
 </script>
 </body>
 </html>
