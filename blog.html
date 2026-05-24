@@ -55,7 +55,7 @@
 
     @media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
     @media(max-width:600px){.article-row{padding:12px 14px}}
-    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:100%;padding-top:8px;left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}/* dropdown via JS */
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:100%;padding-top:8px;left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}
   
     .nav-search-wrap{position:relative}
     .nav-search-btn{background:none;border:none;cursor:pointer;padding:8px;color:var(--grijs);display:flex;align-items:center;transition:color .2s;border-radius:8px}
@@ -318,19 +318,6 @@ function navSearchQuery(q){
 }
 function navSearchKey(e){if(e.key==="Escape")navSearchClose();if(e.key==="Enter"){var f=document.querySelector(".nav-search-result");if(f){window.location=f.href;navSearchClose();}}}
 document.addEventListener("keydown",function(e){if((e.ctrlKey||e.metaKey)&&e.key==="k"){e.preventDefault();navSearchToggle();}});document.addEventListener("click",function(e){var w=document.getElementById("navSearchWrap"),b=document.getElementById("navSearchBox");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
-</script>
-<script>
-(function(){
-  var dds=document.querySelectorAll('.nav-dropdown');
-  dds.forEach(function(dd){
-    var t,menu=dd.querySelector('.nav-dropdown-menu');
-    if(!menu)return;
-    dd.addEventListener('mouseenter',function(){clearTimeout(t);menu.style.display='block';});
-    dd.addEventListener('mouseleave',function(){t=setTimeout(function(){menu.style.display='';},180);});
-    menu.addEventListener('mouseenter',function(){clearTimeout(t);});
-    menu.addEventListener('mouseleave',function(){t=setTimeout(function(){menu.style.display='';},180);});
-  });
-})();
 </script>
 </body>
 </html>

@@ -92,7 +92,7 @@
     .tooltip-wrap .tip-box{display:none;position:absolute;bottom:125%;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:0.78rem;padding:10px 14px;border-radius:10px;width:240px;line-height:1.5;z-index:99;box-shadow:0 4px 16px rgba(0,0,0,0.2);font-weight:400}
     .tooltip-wrap .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--navy)}
     .tooltip-wrap:hover .tip-box,.tooltip-wrap:focus .tip-box{display:block}
-    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:100%;padding-top:8px;left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}/* dropdown via JS */
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:100%;padding-top:8px;left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}
   
     /* === ZOEKBALK === */
     .nav-search-wrap{position:relative}
@@ -170,35 +170,17 @@
     <div class="calc-form">
       <h2>Jouw situatie</h2>
       <div class="form-group">
-        <label>Huidig gasverbruik per jaar <span id="gas-val">1.600 m³</span><div class="field-tip-bill">
-    <div class="field-tip-section">Energieverbruik gas</div>
-    <div class="field-tip-row field-tip-hl"><span>Verbruik Enkel (gas)</span><span>750 m³</span></div>
-
-  </div>
-  <div class="field-tip-note">Jouw jaarlijks gasverbruik in m³</div>
-</div></label>
+        <label>Huidig gasverbruik per jaar <span id="gas-val">1.600 m³</span></label>
         <input type="range" id="gasverbruik" min="500" max="4000" value="1600" step="50" oninput="updateCalc()">
         <div class="range-labels"><span>500 m³</span><span>4.000 m³</span></div>
       </div>
       <div class="form-group">
-        <label>Gastarief (€/m³) <span id="gastarief-val">€1,42</span><div class="field-tip-bill">
-    <div class="field-tip-section">Levering gas</div>
-    <div class="field-tip-row field-tip-hl"><span>Enkel — Prijs incl. BTW</span><span>€ 0,6054</span></div>
-
-  </div>
-  <div class="field-tip-note">Jouw gastarief incl. BTW per m³</div>
-</div></label>
+        <label>Gastarief (€/m³) <span id="gastarief-val">€1,42</span></label>
         <input type="range" id="gastarief" min="0.80" max="2.50" value="1.42" step="0.01" oninput="updateCalc()">
         <div class="range-labels"><span>€0,80</span><span>€2,50</span></div>
       </div>
       <div class="form-group">
-        <label>Stroomtarief (€/kWh) <span id="stroom-val">€0,34</span><div class="field-tip-bill">
-    <div class="field-tip-section">Levering elektriciteit</div>
-    <div class="field-tip-row field-tip-hl"><span>Normaal — Prijs incl. BTW</span><span>€ 0,1511</span></div>
-
-  </div>
-  <div class="field-tip-note">Stroomtarief incl. BTW per kWh</div>
-</div></label>
+        <label>Stroomtarief (€/kWh) <span id="stroom-val">€0,34</span></label>
         <input type="range" id="stroomtarief" min="0.15" max="0.55" value="0.34" step="0.01" oninput="updateCalc()">
         <div class="range-labels"><span>€0,15</span><span>€0,55</span></div>
         <div style="margin-top:8px">
@@ -453,7 +435,6 @@
   }
 </script>
 
-
 <script>
 var _SP=[{"url": "calculator-zonnepanelen.html", "title": "Zonnepanelen calculator", "desc": "Bereken terugverdientijd en opbrengst zonnepanelen", "tags": "zonnepanelen berekenen terugverdientijd opbrengst panelen"}, {"url": "calculator-thuisbatterij.html", "title": "Thuisbatterij calculator", "desc": "Is een thuisbatterij rendabel voor jou?", "tags": "thuisbatterij batterij berekenen rendabel terugverdientijd"}, {"url": "calculator-energiekosten.html", "title": "Energiekosten calculator", "desc": "Bereken jouw jaarlijkse energierekening", "tags": "energiekosten rekening stroom gas berekenen"}, {"url": "calculator-laadpaal.html", "title": "Laadpaal calculator", "desc": "Wat kost thuis laden van je EV?", "tags": "laadpaal laden elektrisch rijden EV auto stroom"}, {"url": "calculator-warmtepomp.html", "title": "Warmtepomp calculator", "desc": "Gas vs warmtepomp vergelijken", "tags": "warmtepomp gas ketel besparen vergelijken"}, {"url": "thuisbatterij-top5-2026.html", "title": "Beste thuisbatterij 2026 — top 5", "desc": "HomeWizard, Zendure, Marstek vergeleken", "tags": "thuisbatterij plug-in HomeWizard Zendure Marstek Indevolt batterij vergelijken"}, {"url": "thuisbatterij-plug-and-play-2026.html", "title": "Thuisbatterij plug-and-play 2026", "desc": "Rendabel vóór de salderingsstop?", "tags": "thuisbatterij plug-in plug-and-play stopcontact saldering 2027"}, {"url": "wanneer-thuisbatterij-niet-slim.html", "title": "Wanneer is een thuisbatterij niet slim?", "desc": "Eerlijk advies over wanneer je geen batterij moet kopen", "tags": "thuisbatterij nadelen niet slim advies"}, {"url": "saldering-2027.html", "title": "Saldering stopt 2027", "desc": "Wat verandert er voor je zonnepanelen na 2027?", "tags": "saldering 2027 stoppen zonnepanelen terugleverkosten wijziging wet"}, {"url": "terugleverkosten.html", "title": "Terugleverkosten", "desc": "Wat zijn terugleverkosten en wie rekent ze?", "tags": "terugleverkosten saldering terugleveren zonnepanelen kosten leverancier"}, {"url": "terugleververgoeding-2027.html", "title": "Terugleververgoeding na 2027", "desc": "Hoeveel krijg je voor teruggeleverde stroom?", "tags": "terugleververgoeding vergoeding saldering 2027 tarief zonnepanelen"}, {"url": "zonnestroom-na-2027.html", "title": "Zonnestroom na 2027", "desc": "Wat zijn je opties na de salderingswijziging?", "tags": "zonnestroom zonnepanelen na 2027 saldering opties batterij"}, {"url": "terugverdientijd-zonnepanelen-2026.html", "title": "Terugverdientijd zonnepanelen 2026", "desc": "Wanneer verdienen panelen zichzelf terug?", "tags": "zonnepanelen terugverdientijd 2026 berekenen rendabel"}, {"url": "dynamisch-contract.html", "title": "Dynamisch energiecontract", "desc": "Voordelen en nadelen dynamisch contract", "tags": "dynamisch contract energie tarief variabel uurprijs Frank Tibber"}, {"url": "dynamisch-contract-zonnepanelen-thuisbatterij.html", "title": "Dynamisch contract + zonnepanelen + batterij", "desc": "Loont de combinatie?", "tags": "dynamisch contract zonnepanelen thuisbatterij combinatie"}, {"url": "energiecontract-vergelijken-2026.html", "title": "Energiecontract vergelijken 2026", "desc": "Beste energieleverancier vinden", "tags": "energiecontract vergelijken leverancier stroom gas 2026"}, {"url": "smarthome-p1-meter.html", "title": "P1 meter + Home Assistant", "desc": "P1 meter koppelen aan Home Assistant", "tags": "P1 meter Home Assistant slimme meter koppelen energie meten"}, {"url": "homeassistant-energie-besparen.html", "title": "Home Assistant energie besparen", "desc": "Automatiseer je energieverbruik", "tags": "Home Assistant energie besparen automatisering YAML integratie"}, {"url": "smarthome-producten.html", "title": "Smarthome producten", "desc": "Alle slimme energie-apparaten", "tags": "smarthome producten slimme stekker thermostaat P1 meter Zigbee WiFi Matter"}, {"url": "smarthome-uitleg.html", "title": "Smarthome uitleg", "desc": "Wat is een smarthome en hoe begin je?", "tags": "smarthome uitleg beginnen hub Zigbee WiFi Matter protocol"}, {"url": "slimme-stekkers.html", "title": "Slimme stekkers uitgelegd", "desc": "Hoe werken slimme stekkers?", "tags": "slimme stekker Zigbee WiFi Matter energiemeting schakelaar"}, {"url": "beste-slimme-stekker-2026.html", "title": "Beste slimme stekker 2026", "desc": "Top 5 slimme stekkers vergeleken", "tags": "slimme stekker 2026 beste vergelijken Sonoff Tapo HomeWizard Zigbee Matter"}, {"url": "smart-lampen.html", "title": "Slimme lampen", "desc": "Beste slimme lampen en bollen", "tags": "slimme lamp LED Zigbee WiFi Matter Philips Hue WiZ Tapo"}, {"url": "slimme-thermostaat-installeren.html", "title": "Slimme thermostaat installeren", "desc": "Tado, Nest en andere thermostaten", "tags": "thermostaat slimme thermostaat Tado Nest installeren OpenTherm radiatorknop TRV"}, {"url": "homewizard-energy-display-review.html", "title": "HomeWizard Energy Display review", "desc": "Eerlijk getest: unboxing en installatie", "tags": "HomeWizard Energy Display review test unboxing P1 meter display"}, {"url": "homewizard-energy-display-deel2.html", "title": "HomeWizard Energy Display eindoordeel", "desc": "Na 2 weken eerlijk eindoordeel", "tags": "HomeWizard Energy Display eindoordeel review Home Assistant koppeling"}, {"url": "plug-in-batterij-laden.html", "title": "Plug-in batterij slim laden", "desc": "Wanneer en hoe laad je een thuisbatterij?", "tags": "thuisbatterij laden zonnepanelen slim opladen strategie"}, {"url": "blog.html", "title": "Blog — alle artikelen", "desc": "Alle artikelen van StekkerSlim", "tags": "blog artikelen energie smarthome"}, {"url": "vragen.html", "title": "Stel een vraag", "desc": "Stuur je energievraag in", "tags": "vraag contact hulp advies"}, {"url": "over-ons.html", "title": "Over StekkerSlim", "desc": "Wie is StekkerSlim?", "tags": "over ons Remy StekkerSlim"}];
 var _icons={"calculator":"🧮","smarthome":"🏠","home":"🏠","blog":"📝","thuis":"🔋","slimme":"⚡","beste":"⚡","plug":"🔌","warm":"🌡️","dynamisch":"📈","energie":"💡","saldering":"☀️","terug":"☀️","zonn":"☀️","vragen":"❓","over":"👤","privacy":"🔒"};
@@ -509,19 +490,6 @@ function navSearchKey(e){
 }
 document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();navSearchToggle();}});
 document.addEventListener("click",function(e){var b=document.getElementById("navSearchBox");var w=document.getElementById("navSearchWrap");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
-</script>
-<script>
-(function(){
-  var dds=document.querySelectorAll('.nav-dropdown');
-  dds.forEach(function(dd){
-    var t,menu=dd.querySelector('.nav-dropdown-menu');
-    if(!menu)return;
-    dd.addEventListener('mouseenter',function(){clearTimeout(t);menu.style.display='block';});
-    dd.addEventListener('mouseleave',function(){t=setTimeout(function(){menu.style.display='';},180);});
-    menu.addEventListener('mouseenter',function(){clearTimeout(t);});
-    menu.addEventListener('mouseleave',function(){t=setTimeout(function(){menu.style.display='';},180);});
-  });
-})();
 </script>
 </body>
 </html>
