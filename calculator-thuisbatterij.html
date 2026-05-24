@@ -105,7 +105,7 @@
     .tooltip-wrap .tip-box{display:none;position:absolute;bottom:125%;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:0.78rem;padding:10px 14px;border-radius:10px;width:240px;line-height:1.5;z-index:99;box-shadow:0 4px 16px rgba(0,0,0,0.2);font-weight:400}
     .tooltip-wrap .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--navy)}
     .tooltip-wrap:hover .tip-box,.tooltip-wrap:focus .tip-box{display:block}
-    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:100%;padding-top:8px;left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}/* dropdown via JS */
   
     /* === ZOEKBALK === */
     .nav-search-wrap{position:relative}
@@ -185,58 +185,6 @@
   </div>
 </div>
 
-<div style="background:#fff;padding:40px 24px 32px">
-  <div style="max-width:1100px;margin:0 auto">
-    <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#00D17A;margin-bottom:8px">Zo ziet het er in het echt uit</p>
-    <h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin-bottom:8px">Van jaarafrekening naar besparing — echte cijfers</h2>
-    <p style="color:#6B7280;font-size:0.9rem;margin-bottom:24px">Hieronder de werkelijke opstelling thuis — P1-meter in de meterkast, plug-in batterij aan, app met live verbruik en besparing.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px">
-      <div style="border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.10)">
-        <img src="P1-in-meter.jpg" alt="P1-meter aangesloten in de meterkast" style="width:100%;height:190px;object-fit:cover;display:block" loading="lazy">
-        <div style="padding:10px 14px;background:#F4F7F2"><span style="font-size:0.82rem;color:#6B7280">P1-meter in de meterkast</span></div>
-      </div>
-      <div style="border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.10)">
-        <img src="doos-display.jpg" alt="Plug-in thuisbatterij met display aan" style="width:100%;height:190px;object-fit:cover;display:block" loading="lazy">
-        <div style="padding:10px 14px;background:#F4F7F2"><span style="font-size:0.82rem;color:#6B7280">Batterij + display aan</span></div>
-      </div>
-      <div style="border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.10)">
-        <img src="app-screenshot.jpg" alt="App met verbruik en besparing" style="width:100%;height:190px;object-fit:cover;display:block" loading="lazy">
-        <div style="padding:10px 14px;background:#F4F7F2"><span style="font-size:0.82rem;color:#6B7280">App — verbruik en besparing</span></div>
-      </div>
-    </div>
-    <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:12px">Zo verschilt jouw rekening voor en na</h3>
-    <div style="overflow-x:auto;margin-bottom:14px">
-      <table style="width:100%;border-collapse:collapse;font-size:0.88rem">
-        <thead>
-          <tr style="background:#0B1628">
-            <th style="padding:12px 16px;text-align:left;color:#fff;font-family:'Outfit',sans-serif;font-weight:700;border-radius:0"></th>
-            <th style="padding:12px 16px;text-align:right;color:#fff;font-family:'Outfit',sans-serif;font-weight:700">Zonder batterij</th>
-            <th style="padding:12px 16px;text-align:right;color:#00D17A;font-family:'Outfit',sans-serif;font-weight:700">Met plug-in + dynamisch</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom:1px solid #E8EDF2">
-            <td style="padding:11px 16px;font-weight:600">Energierekening per jaar</td>
-            <td style="padding:11px 16px;text-align:right;color:#DC2626;font-weight:700">€1.850</td>
-            <td style="padding:11px 16px;text-align:right;color:#059669;font-weight:700">€920</td>
-          </tr>
-          <tr style="border-bottom:1px solid #E8EDF2;background:#F9FAFB">
-            <td style="padding:11px 16px;font-weight:600">Teruglevering per jaar</td>
-            <td style="padding:11px 16px;text-align:right">1.800 kWh</td>
-            <td style="padding:11px 16px;text-align:right;color:#059669">420 kWh</td>
-          </tr>
-          <tr style="background:#F0FDF4">
-            <td style="padding:11px 16px;font-weight:700;color:#059669">Besparing per jaar</td>
-            <td style="padding:11px 16px"></td>
-            <td style="padding:11px 16px;text-align:right;font-weight:800;color:#059669;font-size:1rem">≈ €930/jaar</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="font-size:0.84rem;color:#6B7280;font-style:italic">Leg je eigen jaarrekening ernaast en reken het na – het klopt echt. Gebruik de calculator hieronder voor jouw specifieke situatie.</p>
-  </div>
-</div>
-
 <div class="calc-section">
   <div class="calc-inner">
     <div class="calc-form">
@@ -252,30 +200,26 @@
 
       <div class="section-title">Zonnepanelen</div>
       <div class="form-group">
-        <label><span class="field-q-wrap">Jaarlijkse zonnepaneelopbrengst <span id="zon-val">3.000 kWh</span><button class="field-q" data-tip="zonopbrengst" type="button">?</button><div class="field-tip" id="tip-zonopbrengst">
-  <div class="field-tip-head">📄 Jaarafrekening — Pagina 1</div>
-  <div class="field-tip-bill">
+        <label>Jaarlijkse zonnepaneelopbrengst <span id="zon-val">3.000 kWh</span><div class="field-tip-bill">
     <div class="field-tip-section">Teruglevering elektriciteit</div>
     <div class="field-tip-row field-tip-hl-orange"><span>Teruglevering Normaal</span><span>924 kWh</span></div>
 <div class="field-tip-row field-tip-hl-orange"><span>Teruglevering Dal</span><span>349 kWh</span></div>
 <div class="field-tip-row field-tip-sum"><span>↳ Normaal + Dal optellen</span><span>= 1.273 kWh</span></div>
   </div>
   <div class="field-tip-note">Dit is je jaarlijkse teruglevering</div>
-</div></span></label>
+</div></label>
         <input type="range" id="zonopbrengst" min="500" max="10000" value="3000" step="100" oninput="calc()">
         <div class="range-labels"><span>500 kWh</span><span>10.000 kWh</span></div>
       </div>
       <div class="form-group">
-        <label><span class="field-q-wrap">Jaarlijks stroomverbruik <span id="verbruik-val">3.500 kWh</span><button class="field-q" data-tip="verbruik" type="button">?</button><div class="field-tip" id="tip-verbruik">
-  <div class="field-tip-head">📄 Jaarafrekening — Pagina 1</div>
-  <div class="field-tip-bill">
+        <label>Jaarlijks stroomverbruik <span id="verbruik-val">3.500 kWh</span><div class="field-tip-bill">
     <div class="field-tip-section">Energieverbruik elektriciteit</div>
     <div class="field-tip-row field-tip-hl"><span>Verbruik Normaal</span><span>860 kWh</span></div>
 <div class="field-tip-row field-tip-hl"><span>Verbruik Dal</span><span>1.185 kWh</span></div>
 <div class="field-tip-row field-tip-sum"><span>↳ Normaal + Dal optellen</span><span>= 2.045 kWh</span></div>
   </div>
   <div class="field-tip-note">Gebruik het totaal als jaarverbruik</div>
-</div></span></label>
+</div></label>
         <input type="range" id="verbruik" min="1000" max="10000" value="3500" step="100" oninput="calc()">
         <div class="range-labels"><span>1.000 kWh</span><span>10.000 kWh</span></div>
       </div>
@@ -283,16 +227,14 @@
       <div class="divider"></div>
       <div class="section-title">Tarieven</div>
       <div class="form-group">
-        <label><span class="field-q-wrap">Stroomtarief inkoop <span id="inkoop-val">€0,26/kWh</span><button class="field-q" data-tip="inkoop" type="button">?</button><div class="field-tip" id="tip-inkoop">
-  <div class="field-tip-head">📄 Jaarafrekening — Pagina 4</div>
-  <div class="field-tip-bill">
+        <label>Stroomtarief inkoop <span id="inkoop-val">€0,26/kWh</span><div class="field-tip-bill">
     <div class="field-tip-section">Levering elektriciteit</div>
     <div class="field-tip-row field-tip-hl"><span>Normaal — Prijs incl. BTW</span><span>€ 0,1511</span></div>
 <div class="field-tip-row"><span>Dal — Prijs incl. BTW</span><span>€ 0,1191</span></div>
 
   </div>
   <div class="field-tip-note">Gebruik het Normaal tarief als inkooptarief</div>
-</div></span></label>
+</div></label>
         <input type="range" id="inkoop" min="0.15" max="0.60" value="0.26" step="0.01" oninput="syncInkoop('slider')">
         <div class="range-labels"><span>€0,15</span><span>€0,60</span></div>
         <div style="margin-top:8px;display:flex;align-items:center;gap:8px">
@@ -710,23 +652,7 @@
   calc();
 </script>
 
-<script>
-document.querySelectorAll('.field-q').forEach(function(btn){
-  btn.addEventListener('click', function(e){
-    e.stopPropagation();
-    var tipId = btn.getAttribute('data-tip');
-    var tip = document.getElementById('tip-' + tipId);
-    var isOpen = tip.classList.contains('open');
-    document.querySelectorAll('.field-tip.open').forEach(function(t){ t.classList.remove('open'); });
-    document.querySelectorAll('.field-q.active').forEach(function(b){ b.classList.remove('active'); });
-    if(!isOpen){ tip.classList.add('open'); btn.classList.add('active'); }
-  });
-});
-document.addEventListener('click', function(){
-  document.querySelectorAll('.field-tip.open').forEach(function(t){ t.classList.remove('open'); });
-  document.querySelectorAll('.field-q.active').forEach(function(b){ b.classList.remove('active'); });
-});
-</script>
+
 <script>
 var _SP=[{"url": "calculator-zonnepanelen.html", "title": "Zonnepanelen calculator", "desc": "Bereken terugverdientijd en opbrengst zonnepanelen", "tags": "zonnepanelen berekenen terugverdientijd opbrengst panelen"}, {"url": "calculator-thuisbatterij.html", "title": "Thuisbatterij calculator", "desc": "Is een thuisbatterij rendabel voor jou?", "tags": "thuisbatterij batterij berekenen rendabel terugverdientijd"}, {"url": "calculator-energiekosten.html", "title": "Energiekosten calculator", "desc": "Bereken jouw jaarlijkse energierekening", "tags": "energiekosten rekening stroom gas berekenen"}, {"url": "calculator-laadpaal.html", "title": "Laadpaal calculator", "desc": "Wat kost thuis laden van je EV?", "tags": "laadpaal laden elektrisch rijden EV auto stroom"}, {"url": "calculator-warmtepomp.html", "title": "Warmtepomp calculator", "desc": "Gas vs warmtepomp vergelijken", "tags": "warmtepomp gas ketel besparen vergelijken"}, {"url": "thuisbatterij-top5-2026.html", "title": "Beste thuisbatterij 2026 — top 5", "desc": "HomeWizard, Zendure, Marstek vergeleken", "tags": "thuisbatterij plug-in HomeWizard Zendure Marstek Indevolt batterij vergelijken"}, {"url": "thuisbatterij-plug-and-play-2026.html", "title": "Thuisbatterij plug-and-play 2026", "desc": "Rendabel vóór de salderingsstop?", "tags": "thuisbatterij plug-in plug-and-play stopcontact saldering 2027"}, {"url": "wanneer-thuisbatterij-niet-slim.html", "title": "Wanneer is een thuisbatterij niet slim?", "desc": "Eerlijk advies over wanneer je geen batterij moet kopen", "tags": "thuisbatterij nadelen niet slim advies"}, {"url": "saldering-2027.html", "title": "Saldering stopt 2027", "desc": "Wat verandert er voor je zonnepanelen na 2027?", "tags": "saldering 2027 stoppen zonnepanelen terugleverkosten wijziging wet"}, {"url": "terugleverkosten.html", "title": "Terugleverkosten", "desc": "Wat zijn terugleverkosten en wie rekent ze?", "tags": "terugleverkosten saldering terugleveren zonnepanelen kosten leverancier"}, {"url": "terugleververgoeding-2027.html", "title": "Terugleververgoeding na 2027", "desc": "Hoeveel krijg je voor teruggeleverde stroom?", "tags": "terugleververgoeding vergoeding saldering 2027 tarief zonnepanelen"}, {"url": "zonnestroom-na-2027.html", "title": "Zonnestroom na 2027", "desc": "Wat zijn je opties na de salderingswijziging?", "tags": "zonnestroom zonnepanelen na 2027 saldering opties batterij"}, {"url": "terugverdientijd-zonnepanelen-2026.html", "title": "Terugverdientijd zonnepanelen 2026", "desc": "Wanneer verdienen panelen zichzelf terug?", "tags": "zonnepanelen terugverdientijd 2026 berekenen rendabel"}, {"url": "dynamisch-contract.html", "title": "Dynamisch energiecontract", "desc": "Voordelen en nadelen dynamisch contract", "tags": "dynamisch contract energie tarief variabel uurprijs Frank Tibber"}, {"url": "dynamisch-contract-zonnepanelen-thuisbatterij.html", "title": "Dynamisch contract + zonnepanelen + batterij", "desc": "Loont de combinatie?", "tags": "dynamisch contract zonnepanelen thuisbatterij combinatie"}, {"url": "energiecontract-vergelijken-2026.html", "title": "Energiecontract vergelijken 2026", "desc": "Beste energieleverancier vinden", "tags": "energiecontract vergelijken leverancier stroom gas 2026"}, {"url": "smarthome-p1-meter.html", "title": "P1 meter + Home Assistant", "desc": "P1 meter koppelen aan Home Assistant", "tags": "P1 meter Home Assistant slimme meter koppelen energie meten"}, {"url": "homeassistant-energie-besparen.html", "title": "Home Assistant energie besparen", "desc": "Automatiseer je energieverbruik", "tags": "Home Assistant energie besparen automatisering YAML integratie"}, {"url": "smarthome-producten.html", "title": "Smarthome producten", "desc": "Alle slimme energie-apparaten", "tags": "smarthome producten slimme stekker thermostaat P1 meter Zigbee WiFi Matter"}, {"url": "smarthome-uitleg.html", "title": "Smarthome uitleg", "desc": "Wat is een smarthome en hoe begin je?", "tags": "smarthome uitleg beginnen hub Zigbee WiFi Matter protocol"}, {"url": "slimme-stekkers.html", "title": "Slimme stekkers uitgelegd", "desc": "Hoe werken slimme stekkers?", "tags": "slimme stekker Zigbee WiFi Matter energiemeting schakelaar"}, {"url": "beste-slimme-stekker-2026.html", "title": "Beste slimme stekker 2026", "desc": "Top 5 slimme stekkers vergeleken", "tags": "slimme stekker 2026 beste vergelijken Sonoff Tapo HomeWizard Zigbee Matter"}, {"url": "smart-lampen.html", "title": "Slimme lampen", "desc": "Beste slimme lampen en bollen", "tags": "slimme lamp LED Zigbee WiFi Matter Philips Hue WiZ Tapo"}, {"url": "slimme-thermostaat-installeren.html", "title": "Slimme thermostaat installeren", "desc": "Tado, Nest en andere thermostaten", "tags": "thermostaat slimme thermostaat Tado Nest installeren OpenTherm radiatorknop TRV"}, {"url": "homewizard-energy-display-review.html", "title": "HomeWizard Energy Display review", "desc": "Eerlijk getest: unboxing en installatie", "tags": "HomeWizard Energy Display review test unboxing P1 meter display"}, {"url": "homewizard-energy-display-deel2.html", "title": "HomeWizard Energy Display eindoordeel", "desc": "Na 2 weken eerlijk eindoordeel", "tags": "HomeWizard Energy Display eindoordeel review Home Assistant koppeling"}, {"url": "plug-in-batterij-laden.html", "title": "Plug-in batterij slim laden", "desc": "Wanneer en hoe laad je een thuisbatterij?", "tags": "thuisbatterij laden zonnepanelen slim opladen strategie"}, {"url": "blog.html", "title": "Blog — alle artikelen", "desc": "Alle artikelen van StekkerSlim", "tags": "blog artikelen energie smarthome"}, {"url": "vragen.html", "title": "Stel een vraag", "desc": "Stuur je energievraag in", "tags": "vraag contact hulp advies"}, {"url": "over-ons.html", "title": "Over StekkerSlim", "desc": "Wie is StekkerSlim?", "tags": "over ons Remy StekkerSlim"}];
 var _icons={"calculator":"🧮","smarthome":"🏠","home":"🏠","blog":"📝","thuis":"🔋","slimme":"⚡","beste":"⚡","plug":"🔌","warm":"🌡️","dynamisch":"📈","energie":"💡","saldering":"☀️","terug":"☀️","zonn":"☀️","vragen":"❓","over":"👤","privacy":"🔒"};
@@ -782,6 +708,19 @@ function navSearchKey(e){
 }
 document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();navSearchToggle();}});
 document.addEventListener("click",function(e){var b=document.getElementById("navSearchBox");var w=document.getElementById("navSearchWrap");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
+</script>
+<script>
+(function(){
+  var dds=document.querySelectorAll('.nav-dropdown');
+  dds.forEach(function(dd){
+    var t,menu=dd.querySelector('.nav-dropdown-menu');
+    if(!menu)return;
+    dd.addEventListener('mouseenter',function(){clearTimeout(t);menu.style.display='block';});
+    dd.addEventListener('mouseleave',function(){t=setTimeout(function(){menu.style.display='';},180);});
+    menu.addEventListener('mouseenter',function(){clearTimeout(t);});
+    menu.addEventListener('mouseleave',function(){t=setTimeout(function(){menu.style.display='';},180);});
+  });
+})();
 </script>
 </body>
 </html>
