@@ -679,5 +679,6 @@ function navSearchKey(e){
 document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();navSearchToggle();}});
 document.addEventListener("click",function(e){var b=document.getElementById("navSearchBox");var w=document.getElementById("navSearchWrap");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
 </script>
+<script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block";});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});m.addEventListener("mouseenter",function(){clearTimeout(t);});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});});})();</script>
 </body>
 </html>
