@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Project Overzicht
-*Laatst bijgewerkt: 26 mei 2026*
+*Laatst bijgewerkt: 27 mei 2026*
 
 ## Wat is dit?
 Statische HTML/CSS website over energie besparen voor Nederlandse gezinnen. Geen framework, geen build-stap — losse `.html` bestanden via GitHub Pages op **stekkerslim.nl**.
@@ -100,6 +100,16 @@ Independer, Eneco, Milieucentraal
 ## Wat er recent gedaan is
 *(mei 2026 — meest recent bovenaan)*
 
+### 27 mei 2026 — Product links, nav-dropdown, Feenstra, Coolblue-verwijdering
+- **kwartierprijzen-slimme-stekker.html**: Sonoff/NOUS paragraaf verwijderd (h3 + alinea na de HomeWizard highlight-box).
+- **wanneer-thuisbatterij-niet-slim.html**: Jaarafrekening-tip toegevoegd bij de rekensom (na "Jaarlijkse besparing" in sectie 4). Uitleg: gebruik "Teruglevering elektriciteit" van de jaarafrekening, nooit "Verbruik na salderen".
+- **thuisbatterij-top5-2026.html**: (1) Zendure-knop gecorrigeerd — was "🛒 Amazon.nl" met class `btn-koop amazon`, maar link is Daisycon (glp8.net). Nu class `btn-koop` + groene stijl + label "Zendure →". (2) Indevolt bol.com-knop verwijderd. (3) Voetnoot `*Hoger vermogen vereist aparte groep...` verplaatst van direct na vergelijkingstabel naar boven de disclaimer-box.
+- **terugleververgoeding-2027.html**: Coolblue thuisbatterij-kaart vervangen door interne kaart die linkt naar `smarthome-producten.html`.
+- **terugverdientijd-zonnepanelen-2026.html**: CTA-blok uitgebreid van 2-koloms naar 3-koloms; Feenstra zonnepanelen affiliate card toegevoegd (Awin 25642). Vattenfall-kaarttitel bijgewerkt naar "Vattenfall zonnepanelen".
+- **thuisbatterij-plug-and-play-2026.html**: (1) Nav-dropdown CSS toegevoegd aan `<style>`. (2) Simpele nav vervangen door volledige nav met Calculators dropdown + zoekknop + overlay/box HTML (sluit aan op bestaande JS in de pagina). (3) Product links: Marstek → Amazon (B0FN7SDXMR), Zendure → Amazon (B0GJ5XBJ6S), Indevolt → thuisbatterij.nl.
+- **smarthome-p1-meter.html**: Koop-knop toegevoegd aan HomeWizard P1 meter card in hardware-grid (`partner.homewizard.com`). Coolblue P1-kaart verwijderd uit "Hardware bestellen" sectie; grid 3-koloms → 2-koloms.
+- **plug-in-batterij-laden.html**: Zendure-knop hernoemd "Bekijk bij Zendure →"; Indevolt-knop → "Bekijk bij Thuisbatterij.nl →".
+
 ### 26 mei 2026 — Jaaropgave-leeswijzer + fixes + opschoning
 - **kwartierprijzen-slimme-stekker.html**: Nieuwe pagina (gepubliceerd 22 mei via GitHub upload, maar onbekend hoe — waarschijnlijk per ongeluk). Pagina gefixed: gele urgency-banner verwijderd (stijl niet consistent met rest site), foto-blok (P1inmeter/appscreenshot/doosdisplay) verwijderd, missende `</div>` opgelost, HomeWizard affiliate link gecorrigeerd naar `partner.homewizard.com`. Staat in blog.html, sitemap, index.html en 3 andere pagina's.
 - **blog.html**: "Binnenkort — Meest gevraagd" sectie volledig verwijderd (5 placeholder-rijen).
@@ -150,6 +160,16 @@ Independer, Eneco, Milieucentraal
 - Zendure NL (Daisycon 20779): al gebruikt op site maar nog pending approval — opvolgen
 - Gaslicht.com: staat op slechts 2 pagina's — kan uitgebreid naar energiecontract-vergelijken + dynamisch-contract
 - calculator-zonnepanelen.html en calculator-laadpaal.html: nog geen jaaropgave-leeswijzer — overwegen toe te voegen
+
+### Gedaan (27 mei 2026)
+- ✅ kwartierprijzen: Sonoff/NOUS paragraaf verwijderd
+- ✅ wanneer-thuisbatterij: jaarafrekening-tip bij rekensom
+- ✅ thuisbatterij-top5: Zendure-knop, Indevolt bol verwijderd, voetnoot verplaatst
+- ✅ terugleververgoeding-2027: Coolblue vervangen door smarthome-producten link
+- ✅ terugverdientijd: 3-koloms + Feenstra kaart
+- ✅ thuisbatterij-plug-and-play: nav-dropdown + zoek + product links
+- ✅ smarthome-p1-meter: HomeWizard koop-knop + Coolblue verwijderd
+- ✅ plug-in-batterij-laden: Zendure + Indevolt knopteksten gecorrigeerd
 
 ### Gedaan (26 mei 2026)
 - ✅ kwartierprijzen-slimme-stekker.html: gefixed en live
