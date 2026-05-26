@@ -63,8 +63,8 @@
     .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
     .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
     .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
-    .nav-dropdown{position:relative}.nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;background:var(--wit);border:1px solid var(--grijs-licht);border-radius:12px;padding:8px;min-width:220px;box-shadow:var(--shadow);z-index:200}.nav-dropdown-menu a{padding:8px 12px;border-radius:8px;color:var(--navy);font-size:0.85rem;text-decoration:none}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}
-    .nav-search-wrap{position:relative}.nav-search-btn{background:none;border:1px solid var(--grijs-licht);border-radius:8px;padding:6px 10px;cursor:pointer;display:flex;align-items:center}.nav-search-btn svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2}.nav-search-box{display:none;position:absolute;right:0;top:100%;padding-top:8px;width:320px;background:var(--wit);border:1px solid var(--grijs-licht);border-radius:12px;box-shadow:var(--shadow);padding:8px;z-index:300}.nav-search-box.open{display:block}.nav-search-input{width:100%;border:1px solid var(--grijs-licht);border-radius:8px;padding:8px 12px;font-size:0.9rem;outline:none}.nav-search-result{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--navy)}.nav-search-result:hover{background:var(--licht)}.nav-search-result-title{font-weight:600;font-size:0.88rem}.nav-search-result-desc{font-size:0.78rem;color:var(--grijs)}.nav-search-empty{padding:12px;font-size:0.85rem;color:var(--grijs)}
+    .nav-dropdown{position:relative}.nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;background:var(--wit);border:1px solid var(--grijs-licht);border-radius:12px;padding:8px;min-width:220px;box-shadow:var(--shadow);z-index:200}.nav-dropdown:hover .nav-dropdown-menu{display:flex;flex-direction:column;gap:2px}.nav-dropdown-menu a{padding:8px 12px;border-radius:8px;color:var(--navy);font-size:0.85rem;text-decoration:none}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}
+    .nav-search-wrap{position:relative}.nav-search-btn{background:none;border:1px solid var(--grijs-licht);border-radius:8px;padding:6px 10px;cursor:pointer;display:flex;align-items:center}.nav-search-btn svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2}.nav-search-box{display:none;position:absolute;right:0;top:calc(100% + 8px);width:320px;background:var(--wit);border:1px solid var(--grijs-licht);border-radius:12px;box-shadow:var(--shadow);padding:8px;z-index:300}.nav-search-box.open{display:block}.nav-search-input{width:100%;border:1px solid var(--grijs-licht);border-radius:8px;padding:8px 12px;font-size:0.9rem;outline:none}.nav-search-result{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--navy)}.nav-search-result:hover{background:var(--licht)}.nav-search-result-title{font-weight:600;font-size:0.88rem}.nav-search-result-desc{font-size:0.78rem;color:var(--grijs)}.nav-search-empty{padding:12px;font-size:0.85rem;color:var(--grijs)}
 
     .page-hero{background:var(--navy);padding:56px 24px}
     .page-hero-inner{max-width:800px;margin:0 auto}
@@ -176,35 +176,11 @@
   </div>
 </div>
 
-<div style="background:linear-gradient(135deg,#FFD23F,#FFB800);padding:14px 24px;text-align:center">
-  <div style="max-width:800px;margin:0 auto;font-size:0.88rem;font-weight:600;color:#0B1628">
-    ⚡ Nog 7 maanden tot saldering stopt (1 januari 2027). Combineer kwartierprijzen + slimme stekker met een <a href="thuisbatterij-top5-2026.html" style="color:#0B1628;text-decoration:underline">plug-in thuisbatterij</a> voor maximaal rendement.
-  </div>
-
 <div class="article-body">
 
   <p>Vroeger had een dynamisch contract 24 verschillende stroomtarieven per dag — één per uur. Dat is voorbij. Sinds oktober 2025 verhandelt de Europese energiebeurs per kwartier. <strong>96 tarieven per dag.</strong> Als je nu een dynamisch contract hebt en je stekkers sturen nog op uurprijzen, mis je de helft van de bespaarmogelijkheid.</p>
 
   <p>Dit artikel legt uit wat kwartierprijzen precies zijn, welke slimme stekkers ermee werken en hoe je automatisch je wasmachine of boiler op de goedkoopste kwartieren laat draaien — ook zonder Home Assistant.</p>
-
-  <div style="background:var(--licht);border-radius:14px;padding:20px 24px;margin:24px 0">
-    <p style="font-weight:700;font-size:0.9rem;margin-bottom:14px;color:var(--navy)">Zo ziet het er in de praktijk uit</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px">
-      <div style="border-radius:10px;overflow:hidden;background:var(--grijs-licht)">
-        <img src="P1inmeter.jpg" alt="HomeWizard P1 meter aangesloten op slimme meter" style="width:100%;height:120px;object-fit:cover;display:block">
-        <p style="font-size:0.75rem;color:var(--grijs);padding:8px 10px;margin:0">P1 meter — de basis</p>
-      </div>
-      <div style="border-radius:10px;overflow:hidden;background:var(--grijs-licht)">
-        <img src="appscreenshot.jpg" alt="HomeWizard app met kwartierprijzen weergave" style="width:100%;height:120px;object-fit:cover;display:block">
-        <p style="font-size:0.75rem;color:var(--grijs);padding:8px 10px;margin:0">App met kwartierprijzen</p>
-      </div>
-      <div style="border-radius:10px;overflow:hidden;background:var(--grijs-licht)">
-        <img src="doosdisplay.jpg" alt="HomeWizard Energy Socket in stopcontact" style="width:100%;height:120px;object-fit:cover;display:block">
-        <p style="font-size:0.75rem;color:var(--grijs);padding:8px 10px;margin:0">Energy Socket actief</p>
-      </div>
-    </div>
-    <p style="font-size:0.82rem;color:var(--grijs);margin:0">Leg je eigen app of jaarrekening ernaast en zie hoe simpel het werkt.</p>
-  </div>
 
   <div class="toc">
     <h4>In dit artikel</h4>
@@ -297,7 +273,7 @@
     </div>
     <div>
       <div class="product-card-price">€27,95</div>
-      <a href="https://partner.daisycon.com/go.php?a=419188&c=18407&s1=kwartierprijzen-stekker" rel="noopener sponsored" class="product-card-btn">Bekijk bij HomeWizard →</a>
+      <a href="https://partner.homewizard.com/c/?si=18407&li=1795784&wi=419188" rel="noopener sponsored" class="product-card-btn">Bekijk bij HomeWizard →</a>
     </div>
   </div>
 
@@ -472,6 +448,5 @@ document.addEventListener('click',function(e){var wrap=document.getElementById('
 function doNavSearch(q){var res=document.getElementById('navSearchResults');if(!q||q.length<2){res.innerHTML='';return;}q=q.toLowerCase();var hits=_navPages.filter(function(p){return p.title.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q);}).slice(0,8);if(!hits.length){res.innerHTML='<div class="nav-search-empty">Geen resultaten gevonden</div>';return;}res.innerHTML=hits.map(function(p){return '<a href="'+p.url+'" class="nav-search-result"><div class="nav-search-result-title">'+p.title+'</div><div class="nav-search-result-desc">'+p.desc+'</div></a>';}).join('');}
 function navSearchKey(e){if(e.key==='Escape'){document.getElementById('navSearchBox').classList.remove('open');}}
 </script>
-<script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block";});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});m.addEventListener("mouseenter",function(){clearTimeout(t);});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});});})();</script>
 </body>
 </html>
