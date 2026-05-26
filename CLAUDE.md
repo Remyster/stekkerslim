@@ -153,13 +153,17 @@ Independer, Eneco, Milieucentraal
 ---
 
 ## Open punten
-*(Bijgewerkt: 26 mei 2026)*
+*(Bijgewerkt: 27 mei 2026)*
+
+### URGENT — volgende sessie fixen
+- **calculator-thuisbatterij.html**: Layout wijkt totaal af van calculator-energiekosten.html en calculator-zonnepanelen.html. Moet gelijkgetrokken worden — zelfde structuur, zelfde stijl.
+- **Jaaropgave-leeswijzer "pagina 1" tekst FOUT**: In calculator-energiekosten.html en calculator-thuisbatterij.html staat bij de leeswijzer "Energieverbruik — pagina 1 Jaarafrekening" en "Tarieven — staan niet op pagina 1". Dit klopt NIET — verwijder alle verwijzingen naar "pagina 1", dat staat nergens op een jaarafrekening. Beschrijf gewoon de rijtjesnaam zoals die op de afrekening staat.
+- **calculator-zonnepanelen.html**: Jaaropgave-leeswijzer ontbreekt nog — toevoegen net als bij energiekosten en thuisbatterij calculators.
 
 ### Nog te doen
 - CVtotaal (Daisycon 14618): approved maar links nog aanvragen — toevoegen zodra links binnen zijn
 - Zendure NL (Daisycon 20779): al gebruikt op site maar nog pending approval — opvolgen
 - Gaslicht.com: staat op slechts 2 pagina's — kan uitgebreid naar energiecontract-vergelijken + dynamisch-contract
-- calculator-zonnepanelen.html en calculator-laadpaal.html: nog geen jaaropgave-leeswijzer — overwegen toe te voegen
 
 ### Gedaan (27 mei 2026)
 - ✅ kwartierprijzen: Sonoff/NOUS paragraaf verwijderd
