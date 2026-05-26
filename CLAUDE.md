@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Project Overzicht
-*Laatst bijgewerkt: 17 mei 2026*
+*Laatst bijgewerkt: 26 mei 2026*
 
 ## Wat is dit?
 Statische HTML/CSS website over energie besparen voor Nederlandse gezinnen. Geen framework, geen build-stap — losse `.html` bestanden via GitHub Pages op **stekkerslim.nl**.
@@ -89,6 +89,7 @@ Independer, Eneco, Milieucentraal
 | HomeWizard Energy Display deel 2 | `homewizard-energy-display-deel2.html` | Live ✅ NIEUW |
 | Dynamisch contract + zonnepanelen + batterij | `dynamisch-contract-zonnepanelen-thuisbatterij-2026.html` | Live ✅ NIEUW |
 | Thuisbatterij plug-and-play 2026 | `thuisbatterij-plug-and-play-2026.html` | Live ✅ NIEUW |
+| Kwartierprijzen slimme stekker | `kwartierprijzen-slimme-stekker.html` | Live ✅ NIEUW |
 | Plug-in batterij laden | `plug-in-batterij-laden.html` | Live |
 | Over ons | `over-ons.html` | Live |
 | Privacy | `privacy.html` | Live |
@@ -99,9 +100,16 @@ Independer, Eneco, Milieucentraal
 ## Wat er recent gedaan is
 *(mei 2026 — meest recent bovenaan)*
 
-### 21 mei 2026 — Calculator-pagina's: foto-blok + voor/na-tabel + urgency
-- **calculator-thuisbatterij.html**: Nieuw blok "Zo ziet het er in het echt uit" toegevoegd direct na de hero (vóór de calculator) — 3-koloms foto-grid (P1-in-meter.jpg, doos-display.jpg, app-screenshot.jpg) + voor/na rekening-tabel (€1.850 → €920/jaar, ≈ €930 besparing). Titel/meta/H1 hadden al urgency.
-- **calculator-energiekosten.html**: Zelfde foto-blok + voor/na-tabel toegevoegd (kolommen: "Nu (saldering actief)" vs "Na jan 2027 + batterij"). Titel bijgewerkt naar "Energiekosten Berekenen 2026/2027 — Wat Betaal Je na Saldering?", canonical tag toegevoegd (ontbrak), gele urgency-banner toegevoegd, H1 met 2027-focus, OG tags bijgewerkt. Gerelateerde artikelen sectie toegevoegd (saldering-2027, calculator-thuisbatterij, thuisbatterij-top5-2026, dynamisch-contract).
+### 26 mei 2026 — Jaaropgave-leeswijzer + fixes + opschoning
+- **kwartierprijzen-slimme-stekker.html**: Nieuwe pagina (gepubliceerd 22 mei via GitHub upload, maar onbekend hoe — waarschijnlijk per ongeluk). Pagina gefixed: gele urgency-banner verwijderd (stijl niet consistent met rest site), foto-blok (P1inmeter/appscreenshot/doosdisplay) verwijderd, missende `</div>` opgelost, HomeWizard affiliate link gecorrigeerd naar `partner.homewizard.com`. Staat in blog.html, sitemap, index.html en 3 andere pagina's.
+- **blog.html**: "Binnenkort — Meest gevraagd" sectie volledig verwijderd (5 placeholder-rijen).
+- **terugleverkosten.html regel 274**: Rekenvoorbeeld herschreven op verzoek van Jurgen's mail. Gesplitst in standaard scenario (geen EMS: ~800–1.000 kWh resterend) en actief EMS (Home Assistant / HomeWizard: ~400 kWh resterend). Toegevoegd: bruikbare capaciteit ~8 kWh (10–90% SoC), waarschuwing dat 400 kWh zonder actieve sturing niet realistisch is.
+- **calculator-energiekosten.html, calculator-thuisbatterij.html, calculator-warmtepomp.html**: Jaaropgave-leeswijzer toegevoegd direct onder elke calculator. Toont nagebouwde "Energieverbruik" tabel (op basis van echte Vandebron jaarafrekening) met groene markering op bruikbare rijen en rode doorstreping op "Verbruik na salderen". Genummerde stappen koppelen factuurregels aan calculator-velden. Kernboodschap: gebruik Verbruik Normaal + Dal (optellen), NOOIT "Verbruik na salderen".
+- **Foto-regel vastgelegd**: P1inmeter.jpg, appscreenshot.jpg en doosdisplay.jpg mogen ALLEEN in de HomeWizard review-pagina's (review.html + deel2.html). Nooit elders gebruiken.
+
+### 21 mei 2026 — Calculator-pagina's: voor/na-tabel + urgency
+- **calculator-thuisbatterij.html**: Voor/na rekening-tabel toegevoegd (€1.850 → €920/jaar). Titel/meta/H1 hadden al urgency. Let op: foto-blok dat eerder werd toegevoegd is in sessie 26 mei verwijderd (foto's zijn exclusief voor HomeWizard review).
+- **calculator-energiekosten.html**: Voor/na-tabel toegevoegd. Titel bijgewerkt, canonical tag toegevoegd, H1 met 2027-focus, OG tags bijgewerkt, gerelateerde artikelen sectie toegevoegd. Gele urgency-banner toegevoegd. Let op: foto-blok dat eerder werd toegevoegd is in sessie 26 mei verwijderd.
 
 ### 20 mei 2026 — Nieuwe pagina + bulk updates via GitHub
 - **thuisbatterij-plug-and-play-2026.html**: Nieuwe pagina live (1922 woorden) — plug-and-play batterij rendabiliteit vóór salderingsstop. Staat in sitemap + gelinkt vanuit saldering-2027.html. **Nog toe te voegen aan blog.html.**
@@ -135,18 +143,24 @@ Independer, Eneco, Milieucentraal
 ---
 
 ## Open punten
-*(Bijgewerkt: 21 mei 2026)*
+*(Bijgewerkt: 26 mei 2026)*
 
 ### Nog te doen
 - CVtotaal (Daisycon 14618): approved maar links nog aanvragen — toevoegen zodra links binnen zijn
 - Zendure NL (Daisycon 20779): al gebruikt op site maar nog pending approval — opvolgen
 - Gaslicht.com: staat op slechts 2 pagina's — kan uitgebreid naar energiecontract-vergelijken + dynamisch-contract
-- Foto's (P1-in-meter.jpg, doos-display.jpg, app-screenshot.jpg) zijn gelinkt vanuit calculator-thuisbatterij + calculator-energiekosten maar moeten nog geüpload worden naar de repo
+- calculator-zonnepanelen.html en calculator-laadpaal.html: nog geen jaaropgave-leeswijzer — overwegen toe te voegen
+
+### Gedaan (26 mei 2026)
+- ✅ kwartierprijzen-slimme-stekker.html: gefixed en live
+- ✅ blog.html: binnenkort-sectie verwijderd
+- ✅ terugleverkosten.html: rekenvoorbeeld herschreven (Jurgen's mail)
+- ✅ calculator-energiekosten.html + thuisbatterij + warmtepomp: jaaropgave-leeswijzer toegevoegd
 
 ### Gedaan (21 mei 2026)
 - ✅ thuisbatterij-plug-and-play-2026.html toegevoegd aan blog.html
-- ✅ calculator-thuisbatterij.html: foto-blok + voor/na-tabel
-- ✅ calculator-energiekosten.html: foto-blok + voor/na-tabel + canonical + urgency banner + title/H1/OG
+- ✅ calculator-thuisbatterij.html: voor/na rekening-tabel
+- ✅ calculator-energiekosten.html: voor/na-tabel + canonical + urgency banner + title/H1/OG
 
 ---
 
@@ -156,6 +170,8 @@ Independer, Eneco, Milieucentraal
 - Na elke push: sitemap resubmitten in Search Console als nieuwe pagina's
 - CSS per pagina inline (geen gedeeld stylesheet)
 - Afbeeldingen: max-width + loading="lazy" op alle img tags
+- **Foto's P1inmeter.jpg / appscreenshot.jpg / doosdisplay.jpg**: ALLEEN gebruiken in `homewizard-energy-display-review.html` en `homewizard-energy-display-deel2.html`. Nooit elders — dit zijn review-foto's van de samenwerking met Tamara Huber.
+- **Gele urgency-banner stijl**: gebruik de bestaande stijl `background:#FEF3C7;border-bottom:1px solid #F59E0B` die al in de calculators zit. Geen `linear-gradient(135deg,#FFD23F,#FFB800)` — dat wijkt af.
 
 ## Affiliate link patroon
 ```html
