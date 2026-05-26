@@ -99,8 +99,9 @@
     .footer-col ul{list-style:none}.footer-col li{margin-bottom:8px}.footer-col a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem}.footer-col a:hover{color:var(--groen)}
     .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;font-size:0.8rem}
     .footer-bottom a{color:rgba(255,255,255,0.5);text-decoration:none}
+    .nav-dropdown{position:relative}.nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;background:var(--wit);border:1px solid var(--grijs-licht);border-radius:12px;padding:8px;min-width:220px;box-shadow:var(--shadow);z-index:200}.nav-dropdown:hover .nav-dropdown-menu{display:flex;flex-direction:column;gap:2px}.nav-dropdown-menu a{padding:8px 12px;border-radius:8px;color:var(--navy);font-size:0.85rem;text-decoration:none;font-weight:500}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}
     @media(max-width:768px){.nav-links{display:none}.related-grid,.product-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}}
-  
+
     /* === ZOEKBALK === */
     .nav-search-wrap{position:relative}
     .nav-search-btn{background:none;border:none;cursor:pointer;padding:8px;color:var(--grijs);display:flex;align-items:center;transition:color .2s;border-radius:8px}
@@ -193,13 +194,38 @@
   <div class="nav-inner">
     <a href="/" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
     <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="index.html#calculators">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
+        </div>
+      </li>
       <li><a href="blog.html">Blog</a></li>
-      <li><a href="calculator-zonnepanelen.html">Calculators</a></li>
       <li><a href="smarthome-uitleg.html">Smarthome</a></li>
       <li><a href="thuisbatterij-top5-2026.html" class="nav-cta">Beste batterijen</a></li>
     </ul>
+    <div class="nav-search-wrap" id="navSearchWrap">
+      <button class="nav-search-btn" id="navSearchBtn" onclick="navSearchToggle()" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
+
+<div class="nav-search-overlay" id="navSearchOverlay" onclick="navSearchClose()"></div>
+<div class="nav-search-box" id="navSearchBox">
+  <div class="nav-search-inner">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input class="nav-search-input" id="navSearchInput" type="text" placeholder="Zoek op stekkerslim.nl..." oninput="navSearchQuery(this.value)" onkeydown="navSearchKey(event)" autocomplete="off">
+    <button class="nav-search-clear" id="navSearchClear" onclick="navSearchReset()">✕</button>
+  </div>
+  <div class="nav-search-results" id="navSearchResults"><div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>batterij</em>, <em>dynamisch</em></div></div>
+  <div class="nav-search-footer">stekkerslim.nl</div>
+</div>
 
 <div class="urgency-bar">
   <div class="urgency-bar-inner">
@@ -328,21 +354,21 @@
       <h4>Marstek Venus E 3.0</h4>
       <div class="price">v.a. ~€1.199</div>
       <p style="font-size:0.85rem;color:var(--grijs);margin-bottom:12px">5,12 kWh · netladen + dynamische prijzen · MQTT/HA</p>
-      <a href="thuisbatterij-top5-2026.html">Bekijk volledige review →</a>
+      <a href="https://www.amazon.nl/dp/B0FN7SDXMR?tag=stekkerslim-21" target="_blank" rel="noopener sponsored">Bekijk op Amazon →</a>
     </div>
     <div class="product-card">
       <div class="badge">Beste voor buiten</div>
       <h4>Zendure SolarFlow 2400 AC+</h4>
       <div class="price">v.a. €969</div>
       <p style="font-size:0.85rem;color:var(--grijs);margin-bottom:12px">2,4 kWh (uitbreidbaar) · IP65 · netladen · MQTT/HA</p>
-      <a href="thuisbatterij-top5-2026.html">Bekijk volledige review →</a>
+      <a href="https://www.amazon.nl/dp/B0GJ5XBJ6S?tag=stekkerslim-21" target="_blank" rel="noopener sponsored">Bekijk op Amazon →</a>
     </div>
     <div class="product-card">
       <div class="badge">Goedkoopste instap</div>
       <h4>Indevolt PowerFlex 2000 ECO</h4>
       <div class="price">€650 – €800</div>
       <p style="font-size:0.85rem;color:var(--grijs);margin-bottom:12px">2 kWh · 10 jaar garantie · 8.000 cycli</p>
-      <a href="thuisbatterij-top5-2026.html">Bekijk volledige review →</a>
+      <a href="https://thuisbatterij.nl/winkel/indevolt-powerflex-2000/" target="_blank" rel="noopener">Bekijk bij Thuisbatterij.nl →</a>
     </div>
   </div>
 
