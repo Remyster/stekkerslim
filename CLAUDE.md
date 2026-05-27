@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Project Overzicht
-*Laatst bijgewerkt: 27 mei 2026*
+*Laatst bijgewerkt: 29 mei 2026*
 
 ## Wat is dit?
 Statische HTML/CSS website over energie besparen voor Nederlandse gezinnen. Geen framework, geen build-stap — losse `.html` bestanden via GitHub Pages op **stekkerslim.nl**.
@@ -90,6 +90,7 @@ Independer, Eneco, Milieucentraal
 | Dynamisch contract + zonnepanelen + batterij | `dynamisch-contract-zonnepanelen-thuisbatterij-2026.html` | Live ✅ NIEUW |
 | Thuisbatterij plug-and-play 2026 | `thuisbatterij-plug-and-play-2026.html` | Live ✅ NIEUW |
 | Kwartierprijzen slimme stekker | `kwartierprijzen-slimme-stekker.html` | Live ✅ NIEUW |
+| Thuisbatterij energielabel 2026 | `thuisbatterij-energielabel-2026.html` | Live ✅ NIEUW |
 | Plug-in batterij laden | `plug-in-batterij-laden.html` | Live |
 | Over ons | `over-ons.html` | Live |
 | Privacy | `privacy.html` | Live |
@@ -99,6 +100,14 @@ Independer, Eneco, Milieucentraal
 
 ## Wat er recent gedaan is
 *(mei 2026 — meest recent bovenaan)*
+
+### 29 mei 2026 — Nieuwe blogpagina energielabel + leeswijzer fixes
+- **thuisbatterij-energielabel-2026.html**: Nieuwe pagina gepubliceerd (8 min leestijd). Onderwerp: NTA 8800 update per 29 mei 2026 — vaste thuisbatterij (≥5 kWh, vast aangesloten) telt mee voor energielabel; plug-in modellen niet. Vergelijkingstabel plug-in vs vast, FAQ sectie (FAQPage schema), Article + BreadcrumbList schema. CTA → calculator-thuisbatterij. `og:image` gecorrigeerd van `ogimage.png` naar `og-image.png`.
+- **sitemap.xml**: `thuisbatterij-energielabel-2026.html` toegevoegd (lastmod 2026-05-29, priority 0.85).
+- **blog.html**: Nieuwe featured rij bovenaan Thuisbatterij-sectie toegevoegd (🏷️ icoon, "Nieuw" badge).
+- **Interne links**: Link naar energielabel-pagina toegevoegd in gerelateerde-sectie van `thuisbatterij-top5-2026.html`, `wanneer-thuisbatterij-niet-slim.html`, en `thuisbatterij-plug-and-play-2026.html` (verving telkens de minst relevante kaart).
+- **Jaaropgave-leeswijzer "pagina 1"**: Gecontroleerd — alle calculator-bestanden hadden al GEEN "pagina 1" meer. Urgent issue was al opgelost vóór deze sessie.
+- **calculator-zonnepanelen.html leeswijzer**: Gecontroleerd — leeswijzer was al aanwezig (regels 348–396) met 3 stappen. Urgent issue was al opgelost.
 
 ### 27 mei 2026 — Product links, nav-dropdown, Feenstra, Coolblue-verwijdering
 - **kwartierprijzen-slimme-stekker.html**: Sonoff/NOUS paragraaf verwijderd (h3 + alinea na de HomeWizard highlight-box).
@@ -153,17 +162,25 @@ Independer, Eneco, Milieucentraal
 ---
 
 ## Open punten
-*(Bijgewerkt: 27 mei 2026)*
+*(Bijgewerkt: 29 mei 2026)*
 
 ### URGENT — volgende sessie fixen
-- **calculator-thuisbatterij.html**: Layout wijkt totaal af van calculator-energiekosten.html en calculator-zonnepanelen.html. Moet gelijkgetrokken worden — zelfde structuur, zelfde stijl.
-- **Jaaropgave-leeswijzer "pagina 1" tekst FOUT**: In calculator-energiekosten.html en calculator-thuisbatterij.html staat bij de leeswijzer "Energieverbruik — pagina 1 Jaarafrekening" en "Tarieven — staan niet op pagina 1". Dit klopt NIET — verwijder alle verwijzingen naar "pagina 1", dat staat nergens op een jaarafrekening. Beschrijf gewoon de rijtjesnaam zoals die op de afrekening staat.
-- **calculator-zonnepanelen.html**: Jaaropgave-leeswijzer ontbreekt nog — toevoegen net als bij energiekosten en thuisbatterij calculators.
+*(geen open urgent items op 29 mei 2026)*
 
 ### Nog te doen
 - CVtotaal (Daisycon 14618): approved maar links nog aanvragen — toevoegen zodra links binnen zijn
 - Zendure NL (Daisycon 20779): al gebruikt op site maar nog pending approval — opvolgen
 - Gaslicht.com: staat op slechts 2 pagina's — kan uitgebreid naar energiecontract-vergelijken + dynamisch-contract
+
+### Gedaan (29 mei 2026)
+- ✅ calculator-thuisbatterij.html: GA4 tag toegevoegd, dubbele "Jouw situatie" heading gefixed (section-title verwijderd → subtitle toegevoegd), nav zoekknop-HTML toegevoegd
+- ✅ calculator-energiekosten.html + calculator-zonnepanelen.html: nav zoekknop-HTML toegevoegd (CSS/JS waren al aanwezig, HTML ontbrak)
+- ✅ thuisbatterij-energielabel-2026.html: nieuwe pagina gepubliceerd
+- ✅ sitemap.xml: nieuw item toegevoegd
+- ✅ blog.html: nieuw artikel bovenaan Thuisbatterij-sectie
+- ✅ Interne links: top5 + wanneer-niet-slim + plug-and-play linken naar energielabel-pagina
+- ✅ Jaaropgave "pagina 1" tekst: bevestigd dat dit al was opgelost (niet aanwezig in bestanden)
+- ✅ calculator-zonnepanelen.html leeswijzer: bevestigd dat die al aanwezig was (regels 348–396)
 
 ### Gedaan (27 mei 2026)
 - ✅ kwartierprijzen: Sonoff/NOUS paragraaf verwijderd

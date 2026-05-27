@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKF36BF7DB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RKF36BF7DB');
+  </script>
   <meta charset="UTF-8">
   <link rel="canonical" href="https://stekkerslim.nl/calculator-thuisbatterij.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -167,8 +174,24 @@
       <li><a href="vragen.html">Stel een vraag</a></li>
       <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
     </ul>
+    <div class="nav-search-wrap" id="navSearchWrap">
+      <button class="nav-search-btn" id="navSearchBtn" onclick="navSearchToggle()" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
+
+<div class="nav-search-overlay" id="navSearchOverlay" onclick="navSearchClose()"></div>
+<div class="nav-search-box" id="navSearchBox">
+  <div class="nav-search-inner">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input class="nav-search-input" id="navSearchInput" type="text" placeholder="Zoek op stekkerslim.nl..." oninput="navSearchQuery(this.value)" onkeydown="navSearchKey(event)" autocomplete="off">
+    <button class="nav-search-clear" id="navSearchClear" onclick="navSearchReset()">✕</button>
+  </div>
+  <div class="nav-search-results" id="navSearchResults"><div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>batterij</em>, <em>dynamisch</em></div></div>
+  <div class="nav-search-footer">stekkerslim.nl</div>
+</div>
 
 <div class="page-hero">
   <div class="page-hero-inner">
@@ -189,8 +212,8 @@
   <div class="calc-inner">
     <div class="calc-form">
       <h2>Jouw situatie</h2>
+      <p class="subtitle" style="font-size:0.82rem;color:var(--grijs);margin-bottom:22px">Vul jouw verbruik, tarief en batterijkeuze in — uitkomst binnen 30 seconden.</p>
 
-      <div class="section-title">Jouw situatie</div>
       <div class="form-group">
         <label>Jouw leeftijd <span id="leeftijd-val">45 jaar</span></label>
         <input type="range" id="leeftijd" min="20" max="80" value="45" step="1" oninput="calc()">

@@ -184,8 +184,24 @@
       <li><a href="vragen.html">Stel een vraag</a></li>
       <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
     </ul>
+    <div class="nav-search-wrap" id="navSearchWrap">
+      <button class="nav-search-btn" id="navSearchBtn" onclick="navSearchToggle()" aria-label="Zoeken">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
+
+<div class="nav-search-overlay" id="navSearchOverlay" onclick="navSearchClose()"></div>
+<div class="nav-search-box" id="navSearchBox">
+  <div class="nav-search-inner">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input class="nav-search-input" id="navSearchInput" type="text" placeholder="Zoek op stekkerslim.nl..." oninput="navSearchQuery(this.value)" onkeydown="navSearchKey(event)" autocomplete="off">
+    <button class="nav-search-clear" id="navSearchClear" onclick="navSearchReset()">✕</button>
+  </div>
+  <div class="nav-search-results" id="navSearchResults"><div class="nav-search-hint">Typ een onderwerp — bijv. <em>zonnepanelen</em>, <em>saldering</em>, <em>terugverdientijd</em></div></div>
+  <div class="nav-search-footer">stekkerslim.nl</div>
+</div>
 
 <div class="page-hero">
   <div class="page-hero-inner">
