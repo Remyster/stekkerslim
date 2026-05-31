@@ -146,13 +146,13 @@
       .nav-links{display:none}
       .prod-header{flex-direction:column}
     }
-    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:100%;padding-top:8px;left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
   
     .nav-search-wrap{position:relative;margin-left:8px}
     .nav-search-btn{background:none;border:none;cursor:pointer;padding:6px;color:var(--grijs);display:flex;align-items:center;transition:color .2s}
     .nav-search-btn:hover,.nav-search-btn.active{color:var(--groen)}
     .nav-search-btn svg{width:18px;height:18px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-    .nav-search-box{display:none;position:absolute;top:100%;padding-top:8px;right:0;width:320px;background:#fff;border:1px solid var(--grijs-licht);border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,.12);z-index:300;overflow:hidden}
+    .nav-search-box{display:none;position:absolute;top:calc(100% + 8px);right:0;width:320px;background:#fff;border:1px solid var(--grijs-licht);border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,.12);z-index:300;overflow:hidden}
     .nav-search-box.open{display:block}
     .nav-search-input{width:100%;padding:12px 16px;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--navy);background:transparent}
     .nav-search-input::placeholder{color:var(--grijs)}
@@ -179,7 +179,7 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="/" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
     <ul class="nav-links">
       <li class="nav-dropdown">
         <a href="index.html#calculators">Calculators</a>
@@ -210,7 +210,7 @@
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="/">StekkerSlim</a> › <a href="smarthome-producten.html">Smarthome</a> › Beste slimme stekker</div>
+    <div class="breadcrumb"><a href="index.html">StekkerSlim</a> › <a href="smarthome-producten.html">Smarthome</a> › Beste slimme stekker</div>
     <div class="article-tag">Smarthome & DIY</div>
     <h1>Beste slimme stekker 2026: nu extra nuttig voor zonnepanelen na saldering</h1>
     <div class="article-meta">Door Remy Egberts · Bijgewerkt mei 2026 · 7 min leestijd</div>
@@ -508,6 +508,7 @@
     → <a href="https://amzn.to/4lCAnDY">Slimme stekkerdoos 4-voudig (Amazon)</a>
   </div>
 
+  <p style="margin-top:16px;font-size:0.9rem">📝 Net getest: <a href="tapo-p115-p410m-review.html" style="color:var(--groen);font-weight:600">Tapo P115 vs P410M — eerlijk vergeleken →</a></p>
   <div class="disclaimer-box">
     <strong>Disclaimer:</strong> StekkerSlim.nl ontvangt mogelijk een commissie als je via bovenstaande links koopt. Dit heeft geen invloed op onze adviezen — ik schrijf ook over producten waar ik niks aan verdien. Prijzen zijn indicatief en kunnen afwijken.
   </div>
@@ -546,10 +547,9 @@
 
 <footer>
   <div class="footer-inner">
-    <section style="padding:20px 24px;background:var(--licht)"><div style="max-width:800px;margin:0 auto"><p style="font-size:0.9rem">Lees ook: <a href="kwartierprijzen-slimme-stekker.html" style="color:var(--groen);font-weight:600">Kwartierprijzen + slimme stekker: automatisch besparen op dynamisch contract →</a></p></div></section>
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="/" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+        <a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
         <p>Eerlijke energietips voor Nederlandse gezinnen.</p>
       </div>
       <div class="footer-col"><h4>Calculators</h4><ul>
@@ -610,6 +610,5 @@ function doNavSearch(q){
 }
 function navSearchKey(e){if(e.key==='Escape'){document.getElementById('navSearchBox').classList.remove('open');}}
 </script>
-<script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block";});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});m.addEventListener("mouseenter",function(){clearTimeout(t);});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});});})();</script>
 </body>
 </html>
