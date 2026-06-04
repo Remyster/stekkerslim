@@ -44,12 +44,12 @@ GA4: `G-RKF36BF7DB` — staat in alle HTML bestanden.
 | CVtotaal | Daisycon 14618 | ✅ APPROVED — links nog aanvragen |
 | Feenstra | Awin 25642 (zonnestroomboiler) + tidd.ly shortlinks | Hybride warmtepomp: `tidd.ly/4nyh7bI` · Zonnepanelen: `tidd.ly/4nF1kYI` · Thuisbatterij: `tidd.ly/4tE0Q6i` · Zonnestroomboiler: `awin1.com/cread.php?awinmid=25642&awinaffid=2816288&campaign=Feenstra+NL` |
 | Vandebron | Daisycon 12134 | Dynamisch: `lt45.net/c/?si=12134&li=1535052&wi=419188&ws=&dl=energie%2Fenergiecontract%2Fdynamisch` · Variabel: `...variabel` · Vast: `...vast` ✅ NIEUW |
+| Innova Energie | Daisycon 15501 | `fr135.net/c/?si=15501&li=1670745&wi=419188&ws=` ✅ NIEUW |
 
 ### Affiliate — PENDING
 - Zendure NL (Daisycon 20779) — al op site, urgent
 - Vaillant (Daisycon 20260)
 - Essent Laadpassen (Daisycon 19834)
-- Innova Energie (Daisycon 15501)
 - Pricewise (Daisycon 18646)
 - Tado (Awin)
 
