@@ -236,9 +236,18 @@
       </div>
 
       <div class="form-group">
+        <label style="margin-bottom:6px;display:block">Contracttype (preset tarieven)</label>
+        <div style="display:flex;gap:8px;margin-bottom:6px">
+          <button onclick="setContractZon('vast')" id="zon-preset-vast" style="flex:1;padding:8px;border:2px solid var(--grijs-licht);border-radius:8px;background:var(--wit);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--navy)">Vast</button>
+          <button onclick="setContractZon('variabel')" id="zon-preset-variabel" style="flex:1;padding:8px;border:2px solid var(--grijs-licht);border-radius:8px;background:var(--wit);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--navy)">Variabel</button>
+          <button onclick="setContractZon('dynamisch')" id="zon-preset-dynamisch" style="flex:1;padding:8px;border:2px solid var(--grijs-licht);border-radius:8px;background:var(--wit);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--navy)">Dynamisch</button>
+        </div>
+        <div style="font-size:0.75rem;color:var(--grijs)">Vult typische tarieven in. Pas daarna aan op jouw situatie.</div>
+      </div>
+      <div class="form-group">
         <label>Stroomtarief (€/kWh) <span id="tarief-val">€0,34</span></label>
-        <input type="range" id="tarief" min="0.20" max="0.55" value="0.34" step="0.01" oninput="updateCalc()">
-        <div class="range-labels"><span>€0,20</span><span>€0,55</span></div>
+        <input type="range" id="tarief" min="0.08" max="0.55" value="0.34" step="0.01" oninput="updateCalc()">
+        <div class="range-labels"><span>€0,08</span><span>€0,55</span></div>
         <div style="margin-top:8px">
           <button onclick="toggleGem()" style="background:none;border:none;color:var(--groen);font-size:0.78rem;font-weight:600;cursor:pointer;padding:0;font-family:'DM Sans',sans-serif;">⚙️ Dal/normaal tarief? Bereken gemiddelde →</button>
           <div id="gem-calc" style="display:none;background:var(--licht);border-radius:10px;padding:12px;margin-top:8px">
@@ -643,9 +652,23 @@
   function gebruikGemiddelde() {
     const waarde = parseFloat(document.getElementById('gem-resultaat').dataset.waarde);
     if (!waarde) return;
-    document.getElementById('tarief').value = Math.max(0.20, Math.min(0.55, waarde)).toFixed(3);
+    document.getElementById('tarief').value = Math.max(0.08, Math.min(0.55, waarde)).toFixed(3);
     updateCalc();
     document.getElementById('gem-calc').style.display = 'none';
+  }
+
+  function setContractZon(type) {
+    const t = {vast:0.34, variabel:0.28, dynamisch:0.22}[type];
+    document.getElementById('tarief').value = t;
+    document.getElementById('tarief-val').textContent = '€' + t.toFixed(2).replace('.',',');
+    ['vast','variabel','dynamisch'].forEach(function(k) {
+      var el = document.getElementById('zon-preset-' + k);
+      if (!el) return;
+      el.style.borderColor = k === type ? 'var(--groen)' : 'var(--grijs-licht)';
+      el.style.background = k === type ? 'rgba(0,209,122,0.08)' : 'var(--wit)';
+      el.style.color = k === type ? 'var(--groen)' : 'var(--navy)';
+    });
+    updateCalc();
   }
 
   updateCalc();
