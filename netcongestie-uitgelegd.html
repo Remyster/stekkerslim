@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netcongestie uitgelegd: wat betekent het voor jouw zonnepanelen of laadpaal? | StekkerSlim.nl</title>
+  <meta name="description" content="Netcongestie uitgelegd voor gewone mensen. Wat betekent een vol net voor jouw zonnepanelen, laadpaal of warmtepomp? En wat kun je er zelf aan doen?">
+  <link rel="canonical" href="https://stekkerslim.nl/netcongestie-uitgelegd.html" />
+  <meta property="og:title" content="Netcongestie uitgelegd: wat betekent het voor jou?" />
+  <meta property="og:description" content="Het stroomnet zit vol. Maar wat betekent dat voor jouw zonnepanelen, laadpaal of warmtepomp? Eerlijke uitleg + concrete tips." />
+  <meta property="og:image" content="https://stekkerslim.nl/ogimage.png" />
+  <meta property="og:url" content="https://stekkerslim.nl/netcongestie-uitgelegd.html" />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+    :root{--groen:#00D17A;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+    .page-hero{background:var(--navy);padding:56px 24px}
+    .page-hero-inner{max-width:800px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .article-tag{display:inline-block;background:rgba(255,210,63,0.2);color:var(--accent);padding:4px 12px;border-radius:99px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--wit);margin-bottom:16px;line-height:1.15}
+    .article-meta{color:rgba(255,255,255,0.4);font-size:0.82rem}
+    .urgency-banner{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:16px 20px;margin-top:24px;color:var(--wit);font-size:0.88rem}
+    .urgency-banner strong{color:#FCA5A5}
+    .article-body{max-width:800px;margin:0 auto;padding:56px 24px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin:40px 0 12px}
+    .article-body h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin:28px 0 8px}
+    .article-body p{color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:16px}
+    .article-body ul,.article-body ol{padding-left:24px;color:#374151;font-size:0.95rem;line-height:1.8;margin-bottom:16px}
+    .article-body li{margin-bottom:6px}
+    .highlight-box{background:var(--licht);border-left:4px solid var(--groen);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem}
+    .warning-box{background:rgba(255,210,63,0.1);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem}
+    .comparison-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.88rem}
+    .comparison-table th{background:var(--navy);color:var(--wit);padding:10px 14px;text-align:left}
+    .comparison-table td{padding:10px 14px;border-bottom:1px solid var(--grijs-licht)}
+    .comparison-table tr:last-child td{border-bottom:none}
+    .good{color:var(--groen);font-weight:700}.bad{color:#EF4444;font-weight:700}
+    .scenario-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    .scenario-card{border-radius:14px;padding:20px}
+    .scenario-card.voor{background:rgba(0,209,122,0.08);border:1px solid rgba(0,209,122,0.25)}
+    .scenario-card.na{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2)}
+    .scenario-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
+    .scenario-card.voor h4{color:var(--groen)}.scenario-card.na h4{color:#EF4444}
+    .scenario-card p{font-size:0.85rem;color:var(--grijs);margin:0}
+    .scenario-card .big-num{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;margin-bottom:4px}
+    .scenario-card.voor .big-num{color:var(--groen)}.scenario-card.na .big-num{color:#EF4444}
+    .action-list{display:flex;flex-direction:column;gap:12px;margin:24px 0}
+    .action-item{display:flex;gap:16px;align-items:flex-start;padding:16px;background:var(--licht);border-radius:12px}
+    .action-num{width:32px;height:32px;min-width:32px;background:var(--groen);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:900;font-size:0.9rem}
+    .action-item h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:4px}
+    .action-item p{font-size:0.83rem;color:var(--grijs);margin:0}
+    .toc{background:var(--licht);border-radius:14px;padding:24px;margin-bottom:40px}
+    .toc h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
+    .toc ol{padding-left:20px;font-size:0.88rem;line-height:2}
+    .toc a{color:var(--navy);text-decoration:none}.toc a:hover{color:var(--groen)}
+    .disclaimer-box{background:var(--licht);border-radius:12px;padding:16px 20px;font-size:0.82rem;color:var(--grijs);margin-top:40px;line-height:1.6}
+    .related-articles{background:var(--licht);padding:48px 24px}
+    .related-inner{max-width:800px;margin:0 auto}
+    .related-inner h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:20px}
+    .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .related-card{background:var(--wit);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:box-shadow .2s;display:block}
+    .related-card:hover{box-shadow:var(--shadow)}
+    .related-card .tag{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--groen);margin-bottom:6px}
+    .related-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;line-height:1.3}
+    .cta-section{background:var(--navy);padding:56px 24px;text-align:center}
+    .cta-section h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:var(--wit);margin-bottom:12px}
+    .cta-section p{color:rgba(255,255,255,.6);margin-bottom:24px}
+    .btn-primary{background:var(--groen);color:var(--navy);padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;display:inline-block;transition:transform .2s}
+    .btn-primary:hover{transform:translateY(-2px)}
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
+    @media(max-width:700px){.scenario-cards,.related-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
+  
+    .device-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    .device-card{background:var(--licht);border-radius:var(--radius);padding:20px}
+    .device-card-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .device-icon{font-size:1.4rem}
+    .device-card h3{font-family:\'Outfit\',sans-serif;font-weight:700;font-size:0.95rem;margin:0}
+    .device-card p{font-size:0.88rem;color:var(--grijs);line-height:1.6;margin:0}
+    .action-steps{list-style:none;padding:0;margin:20px 0;display:grid;gap:12px}
+    .action-steps li{display:flex;gap:16px;background:var(--licht);border-radius:var(--radius);padding:16px 20px;align-items:flex-start}
+    .action-num{font-family:\'Outfit\',sans-serif;font-size:1.5rem;font-weight:900;color:var(--groen);min-width:2rem;line-height:1.2}
+    .action-text{font-size:0.92rem;line-height:1.6}
+    .action-text strong{font-family:\'Outfit\',sans-serif;font-weight:700;display:block;margin-bottom:4px}
+    .solution-list{list-style:none;padding:0;margin:16px 0;display:grid;gap:8px}
+    .solution-list li{display:flex;gap:8px;font-size:0.92rem;padding-left:4px}
+    .solution-list li::before{content:"→";color:var(--groen);font-weight:700;flex-shrink:0}
+    .analogy-block{background:var(--navy);border-radius:var(--radius);padding:28px 32px;margin:32px 0;color:var(--wit)}
+    .analogy-block p{color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:8px}
+    .analogy-block p:last-child{margin:0;font-weight:700;font-size:1.05rem;color:var(--groen)}
+    .warning-box{background:rgba(255,210,63,0.1);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;margin:24px 0;font-size:0.9rem}
+    .warning-box strong{display:block;margin-bottom:4px;font-family:\'Outfit\',sans-serif}
+    .affiliate-cta{background:var(--navy);border-radius:var(--radius);padding:28px;margin:32px 0;display:flex;justify-content:space-between;align-items:center;gap:24px}
+    .affiliate-cta-text h3{font-family:\'Outfit\',sans-serif;font-weight:800;color:var(--wit);margin-bottom:6px;font-size:1.05rem}
+    .affiliate-cta-text p{color:rgba(255,255,255,0.6);font-size:0.88rem;margin:0}
+    .affiliate-cta-btn{background:var(--groen);color:var(--navy);padding:12px 22px;border-radius:10px;font-weight:700;font-size:0.9rem;text-decoration:none;white-space:nowrap;flex-shrink:0}
+    .related-links{display:grid;gap:8px;margin-top:16px}
+    .related-link{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--licht);border-radius:10px;text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500;transition:background .15s}
+    .related-link:hover{background:var(--grijs-licht)}
+    .related-link .rl-arrow{margin-left:auto;color:var(--grijs)}
+    @media(max-width:600px){.device-grid{grid-template-columns:1fr}.affiliate-cta{flex-direction:column}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "Netcongestie uitgelegd: wat betekent het voor jouw zonnepanelen of laadpaal?",
+        "description": "Netcongestie uitgelegd voor gewone mensen. Wat betekent een vol net voor jouw zonnepanelen, laadpaal of warmtepomp?",
+        "datePublished": "2026-06-10",
+        "dateModified": "2026-06-10",
+        "author": {"@type": "Person", "name": "Remy Egberts"},
+        "publisher": {"@type": "Organization", "name": "StekkerSlim.nl", "url": "https://stekkerslim.nl"}
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stekkerslim.nl"},
+          {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://stekkerslim.nl/blog.html"},
+          {"@type": "ListItem", "position": 3, "name": "Netcongestie uitgelegd", "item": "https://stekkerslim.nl/netcongestie-uitgelegd.html"}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type": "Question", "name": "Wat is netcongestie in gewone taal?", "acceptedAnswer": {"@type": "Answer", "text": "Netcongestie betekent dat de kabels en transformatoren in het stroomnet niet meer aankunnen wat er gevraagd wordt. Door de komst van zonnepanelen, warmtepompen, laadpalen en windparken gaat er veel meer stroom heen en terug dan het net oorspronkelijk voor gebouwd is."}},
+          {"@type": "Question", "name": "Merk je als particulier al iets van netcongestie?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Het meest zichtbare symptoom: je omvormer valt uit op zonnige dagen omdat de wijktransformator de teruglevering weigert als de spanning te hoog oploopt."}},
+          {"@type": "Question", "name": "Helpt een thuisbatterij tegen netcongestie?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Een thuisbatterij buffert de stroom die je zonnepanelen overdag produceren in plaats van die direct terug te leveren aan een vol net."}},
+          {"@type": "Question", "name": "Wanneer is het volle stroomnet opgelost?", "acceptedAnswer": {"@type": "Answer", "text": "Netbeheerders investeren circa 235 miljard euro tot 2040, maar een nieuwe hoogspanningsverbinding aanleggen duurt gemiddeld 8 tot 12 jaar."}},
+          {"@type": "Question", "name": "Wat kun je doen als je in een congestiegebied woont?", "acceptedAnswer": {"@type": "Answer", "text": "Check je postcode via capaciteitskaart.netbeheernederland.nl. Overweeg slim laden via een dynamisch contract, een thuisbatterij voor lokale opslag."}}
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="index.html#calculators">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="/">Home</a> › <a href="/blog.html">Blog</a> › Netcongestie</div>
+    <h1>⚡ Netcongestie uitgelegd: wat betekent het voor jouw zonnepanelen of laadpaal?</h1>
+    <p style="color:rgba(255,255,255,0.65);max-width:600px;font-size:1rem">Het stroomnet zit vol. Je hoort het steeds vaker. Maar wat betekent dat — en merk jij er thuis al iets van?</p>
+    <div style="display:flex;gap:20px;margin-top:16px;flex-wrap:wrap;font-size:0.82rem;color:rgba(255,255,255,0.4)">
+      <span>📅 Bijgewerkt: juni 2026</span>
+      <span>⏱ ~5 min lezen</span>
+      <span>🏷 Netcongestie, zonnepanelen, laadpaal</span>
+    </div>
+  </div>
+</div>
+
+<div class="uitleg-section">
+  <div class="uitleg-inner article-body">
+
+    <div class="analogy-block">
+      <p>Stel je voor dat je buren allemaal tegelijk om 17:00 uur onder de douche gaan. Het water druppelt. Niet omdat er geen water is, maar omdat de leidingen het niet aankunnen.</p>
+      <p>Dat is netcongestie. Maar dan met stroom.</p>
+    </div>
+
+    <h2>Wat is netcongestie in gewone taal?</h2>
+    <p>Het Nederlandse elektriciteitsnet was decennialang gebouwd voor één richting: centrales wekken op, jij verbruikt. Dat werkte prima. Toen kwamen de zonnepanelen. En de warmtepompen. En de laadpalen. En de windparken op land. Al die dingen sturen stroom heen <em>en</em> terug — of nemen ineens enorme hoeveelheden stroom tegelijkertijd af.</p>
+    <p>Netbeheerders zoals Liander, Enexis en Stedin vervangen wel degelijk kabels en bouwen nieuwe trafohuisjes — maar de vraag groeit harder dan ze kunnen bijbenen. Als zo'n netbeheerder zegt dat een gebied "vol" is, bedoelen ze niet dat er geen stroom meer is. Ze bedoelen dat kabels en transformatoren niet meer aankunnen wat er gevraagd wordt zonder te oververhitten.</p>
+
+    <h2>Merk je als particulier nu al iets van netcongestie?</h2>
+    <p>Meer dan de meeste mensen verwachten. Het meest zichtbare symptoom: je omvormer valt uit op zonnige dagen. Niet omdat er iets mis is met je panelen, maar omdat de wijktransformator de teruglevering weigert als de spanning in de straat te hoog oploopt. Juist op het moment dat je panelen op volle kracht draaien, worden ze afgekoppeld. Dat betekent gemiste opbrengst.</p>
+    <p>Wil je uitbreiden — een zwaardere aansluiting, een laadpaal voor twee auto's, een warmtepomp erbij — dan kan de netbeheerder je terugbellen met slecht nieuws: wacht maar. Maanden. Soms jaren.</p>
+
+    <div class="warning-box">
+      <strong>⚠️ Update per 1 juli 2026</strong>
+      Vanaf 1 juli 2026 gelden nieuwe regels voor kleinverbruikers (tot 3×80A). Nieuwe of zwaardere aansluitingen kunnen op een wachtlijst komen. Er komt een prioriteringskader waarbij mensen die het net ontlasten — via een thuisbatterij of slim laden — eerder aan de beurt komen.
+    </div>
+
+    <h2>Wat betekent netcongestie voor zonnepanelen, laadpalen en warmtepompen?</h2>
+    <div class="device-grid">
+      <div class="device-card">
+        <div class="device-card-head"><span class="device-icon">☀️</span><h3>Zonnepanelen</h3></div>
+        <p>Plaatsen kan nog vaak wel. Maar terugleveren wordt niet vanzelfsprekend aantrekkelijker — zeker niet als je transformator al vol zit. Omvormers die uitvallen op zonnige middagen zijn al realiteit in tientallen wijken.</p>
+      </div>
+      <div class="device-card">
+        <div class="device-card-head"><span class="device-icon">🔌</span><h3>Laadpalen</h3></div>
+        <p>Een gewone thuislader (11 kW) is meestal geen probleem. Een zware snellader of twee laadpalen tegelijk kan wel stuiten op capaciteitsproblemen bij de aansluiting.</p>
+      </div>
+      <div class="device-card">
+        <div class="device-card-head"><span class="device-icon">♨️</span><h3>Warmtepompen</h3></div>
+        <p>Op zichzelf behapbaar. Gecombineerd met zonnepanelen én een laadpaal begint het te tellen — zeker als je ook nog een verzwaring nodig hebt.</p>
+      </div>
+      <div class="device-card">
+        <div class="device-card-head"><span class="device-icon">🏭</span><h3>Bedrijven</h3></div>
+        <p>Hier is het nu al pijnlijk. Nieuwe fabrieken die niet kunnen openen. Datacenters die wachten op een aansluiting. Boeren die willen elektrificeren maar geen verzwaring kunnen krijgen.</p>
+      </div>
+    </div>
+
+    <h2>Helpt een thuisbatterij tegen netcongestie?</h2>
+    <p>Voor jou wel — en voor het net ook. Een thuisbatterij buffert de stroom die je panelen overdag produceren in plaats van het meteen terug te leveren aan een vol net. 's Avonds gebruik je die opgeslagen stroom zelf. Je omvormer valt minder snel uit, je bent minder afhankelijk van pieken op het net, en je helpt het net ontlasten.</p>
+
+    <div class="highlight-box">
+      💡 <strong>Wil je weten of een thuisbatterij bij jou rendabel is?</strong> Bekijk de <a href="thuisbatterij-top5-2026.html" style="color:var(--groen);font-weight:600">top 5 plug-in thuisbatterijen van 2026 →</a>
+    </div>
+
+    <!-- AFFILIATE CTA 1 -->
+    <div class="affiliate-cta">
+      <div class="affiliate-cta-text">
+        <h3>🔋 Plug-in thuisbatterij vergelijken</h3>
+        <p>Verlaag je afhankelijkheid van het net én vang piekmomenten op. Bekijk de beste opties voor thuisgebruik.</p>
+      </div>
+      <a href="thuisbatterij-top5-2026.html" class="affiliate-cta-btn">Bekijk top 5 →</a>
+    </div>
+
+    <h2>Wanneer is het volle stroomnet opgelost?</h2>
+    <p>Niet snel. Maar er wordt aan gewerkt. Netbeheerders investeren in totaal zo'n €235 miljard tot 2040. Een nieuwe hoogspanningsverbinding aanleggen duurt gemiddeld 8 tot 12 jaar — vergunningen, bezwaren, grondaankoop, aanleg.</p>
+    <p>Ondertussen zijn er slimmere tussenoplossingen:</p>
+    <ul class="solution-list">
+      <li>Lokale thuisbatterijen die pieken afvangen</li>
+      <li>Slim laden dat verspreid wordt over de nacht</li>
+      <li>Dynamische contracten gecombineerd met <a href="homeassistant-energie-besparen.html" style="color:var(--groen)">Home Assistant</a> voor automatische peakshaving</li>
+      <li>Flex-contracten waarbij je een vergoeding krijgt als je op drukke momenten minder verbruikt</li>
+    </ul>
+
+    <!-- AFFILIATE CTA 2 -->
+    <div class="affiliate-cta">
+      <div class="affiliate-cta-text">
+        <h3>⚡ Dynamisch energiecontract vergelijken</h3>
+        <p>Laad slim op rustige momenten en profiteer van lage uurprijzen. Vergelijk onafhankelijk via Energiekiezer.</p>
+      </div>
+      <a href="https://www.awin1.com/cread.php?awinmid=68288&awinaffid=2816288&ued=https%3A%2F%2Fwww.energiekiezer.nl%2F" target="_blank" rel="noopener sponsored" class="affiliate-cta-btn">Vergelijk contracten →</a>
+    </div>
+
+    <h2>Wat kun je zelf doen als je in een vol gebied woont?</h2>
+    <ol class="action-steps">
+      <li>
+        <span class="action-num">1</span>
+        <div class="action-text">
+          <strong>Check je postcode</strong>
+          Ga naar de <a href="https://capaciteitskaart.netbeheernederland.nl/" target="_blank" rel="noopener" style="color:var(--groen)">landelijke capaciteitskaart</a> en zie meteen hoe vol jouw wijk zit.
+        </div>
+      </li>
+      <li>
+        <span class="action-num">2</span>
+        <div class="action-text">
+          <strong>Slim laden en schakelen</strong>
+          Een <a href="dynamisch-contract.html" style="color:var(--groen)">dynamisch contract</a> met <a href="beste-slimme-stekker-2026.html" style="color:var(--groen)">slimme stekkers</a> of Home Assistant zorgt dat je automatisch laadt op goedkope, rustige momenten. Helpt pieken afvlakken én bespaart geld.
+        </div>
+      </li>
+      <li>
+        <span class="action-num">3</span>
+        <div class="action-text">
+          <strong>Thuisbatterij</strong>
+          Lokaal opslaan vermindert je afhankelijkheid van het net op piekmomenten en geeft je meer controle over <a href="terugleverkosten.html" style="color:var(--groen)">teruglevering</a>.
+        </div>
+      </li>
+      <li>
+        <span class="action-num">4</span>
+        <div class="action-text">
+          <strong>Flex-contract (voor bedrijven)</strong>
+          Je kunt geld verdienen door flexibel te zijn op het moment dat het net dat nodig heeft.
+        </div>
+      </li>
+    </ol>
+
+    <h2>Veelgestelde vragen over netcongestie</h2>
+
+    <details style="border:1px solid var(--grijs-licht);border-radius:12px 12px 0 0;padding:16px 20px;border-bottom:none;margin-top:16px">
+      <summary style="font-family:\'Outfit\',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Wat is netcongestie in gewone taal?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Netcongestie betekent dat de kabels en transformatoren in het stroomnet niet meer aankunnen wat er gevraagd wordt. Door de komst van zonnepanelen, warmtepompen, laadpalen en windparken gaat er veel meer stroom heen en terug dan het net oorspronkelijk voor gebouwd is.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
+      <summary style="font-family:\'Outfit\',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Merk je als particulier al iets van netcongestie?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Ja. Het meest zichtbare symptoom: je omvormer valt uit op zonnige dagen omdat de wijktransformator de teruglevering weigert als de spanning te hoog oploopt. Ook uitbreidingen zoals een extra laadpaal kunnen op een wachtlijst belanden.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
+      <summary style="font-family:\'Outfit\',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Helpt een thuisbatterij tegen netcongestie?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Ja. Een thuisbatterij buffert de stroom die je zonnepanelen overdag produceren in plaats van die direct terug te leveren aan een vol net. Je omvormer valt minder snel uit en je helpt het net ontlasten — wat in het nieuwe prioriteringskader per 1 juli 2026 een rol speelt.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
+      <summary style="font-family:\'Outfit\',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Wanneer is het volle stroomnet opgelost?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Netbeheerders investeren circa €235 miljard tot 2040, maar een nieuwe hoogspanningsverbinding aanleggen duurt gemiddeld 8 tot 12 jaar. Tussenoplossingen zoals slim laden, thuisbatterijen en dynamische contracten helpen al eerder.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);border-radius:0 0 12px 12px;padding:16px 20px">
+      <summary style="font-family:\'Outfit\',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Wat kun je doen als je in een congestiegebied woont?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Check je postcode via <a href="https://capaciteitskaart.netbeheernederland.nl/" target="_blank" rel="noopener" style="color:var(--groen)">capaciteitskaart.netbeheernederland.nl</a>. Overweeg slim laden via een dynamisch contract, een thuisbatterij voor lokale opslag, of een flex-contract als je een bedrijf hebt.</p>
+    </details>
+
+    <div style="margin-top:32px">
+      <h2>Lees ook</h2>
+      <div class="related-links">
+        <a class="related-link" href="dynamisch-contract.html"><span>⚡</span> Dynamisch energiecontract — is het iets voor jou?<span class="rl-arrow">→</span></a>
+        <a class="related-link" href="thuisbatterij-top5-2026.html"><span>🔋</span> Beste plug-in thuisbatterij 2026 — top 5 vergeleken<span class="rl-arrow">→</span></a>
+        <a class="related-link" href="beste-slimme-stekker-2026.html"><span>🔌</span> Beste slimme stekker 2026<span class="rl-arrow">→</span></a>
+        <a class="related-link" href="homeassistant-energie-besparen.html"><span>🏠</span> Energie besparen met Home Assistant<span class="rl-arrow">→</span></a>
+        <a class="related-link" href="saldering-2027.html"><span>☀️</span> Saldering stopt 2027 — wat betekent dat voor jou?<span class="rl-arrow">→</span></a>
+      </div>
+    </div>
+
+    <p style="margin-top:32px;padding-top:20px;border-top:1px solid var(--grijs-licht);font-size:0.82rem;color:var(--grijs);font-style:italic">Bijgewerkt juni 2026 — inclusief de regelwijziging per 1 juli 2026 voor kleinverbruikers. Netcongestie is vervelend, maar ook een extra reden om slim met je energie om te gaan.</p>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="index.html" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a><p>Eerlijke energietips voor Nederlandse gezinnen.</p></div>
+      <div class="footer-col"><h4>Calculators</h4><ul><li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li><li><a href="calculator-energiekosten.html">Energiekosten</a></li><li><a href="calculator-laadpaal.html">Laadpaal thuis</a></li><li><a href="calculator-warmtepomp.html">Warmtepomp</a></li></ul></div>
+      <div class="footer-col"><h4>Artikelen</h4><ul><li><a href="dynamisch-contract.html">Dynamisch contract</a></li><li><a href="saldering-2027.html">Saldering 2027</a></li></ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul><li><a href="over-ons.html">Over ons</a></li><li><a href="privacy.html">Privacy</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl</span><a href="privacy.html">Privacy & Disclaimer</a></div>
+  </div>
+</footer>
+
+
+</body>
+</html>
