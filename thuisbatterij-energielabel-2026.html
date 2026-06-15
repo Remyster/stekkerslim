@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKF36BF7DB"></script>
@@ -145,46 +145,95 @@
     .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;font-size:0.8rem}
     .footer-bottom a{color:rgba(255,255,255,0.5);text-decoration:none}
     @media(max-width:768px){.nav-links{display:none}.two-col,.related-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.comparison-table{font-size:0.8rem}.comparison-table th,.comparison-table td{padding:9px 10px}}
-  </style>
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+    .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--wit);z-index:99;padding:16px;box-shadow:0 8px 32px rgba(0,0,0,.1);flex-direction:column;gap:4px}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{padding:12px 16px;color:var(--navy);text-decoration:none;font-weight:600;font-size:0.95rem;border-radius:10px;transition:background .2s}
+    .mobile-menu a:hover{background:var(--licht)}
+    .mobile-menu .mob-cta{background:var(--groen);color:var(--navy)!important;margin-top:8px;text-align:center}
+    @media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}    .nav-search-wrap{position:relative}
+    .nav-search-btn{background:none;border:none;cursor:pointer;padding:8px;color:var(--grijs);display:flex;align-items:center;transition:color .2s;border-radius:8px}
+    .nav-search-btn:hover,.nav-search-btn.open{color:var(--groen)}
+    .nav-search-btn svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .nav-search-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.25);z-index:199;backdrop-filter:blur(2px)}
+    .nav-search-overlay.open{display:block}
+    .nav-search-box{display:none;position:fixed;top:68px;left:50%;transform:translateX(-50%);width:min(600px,92vw);background:#fff;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.18);z-index:200;overflow:hidden}
+    .nav-search-box.open{display:block}
+    .nav-search-inner{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--grijs-licht)}
+    .nav-search-inner svg{width:20px;height:20px;stroke:var(--grijs);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    .nav-search-input{flex:1;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--navy);background:transparent}
+    .nav-search-input::placeholder{color:#aaa}
+    .nav-search-clear{background:none;border:none;cursor:pointer;color:var(--grijs);font-size:1.1rem;padding:0 4px;display:none}
+    .nav-search-clear.show{display:block}
+    .nav-search-results{max-height:400px;overflow-y:auto}
+    .nav-search-result{display:flex;align-items:flex-start;gap:12px;padding:12px 18px;text-decoration:none;color:var(--navy);transition:background .15s;border-bottom:1px solid rgba(0,0,0,0.04)}
+    .nav-search-result:last-child{border-bottom:none}
+    .nav-search-result:hover{background:var(--licht)}
+    .nsr-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
+    .nsr-title{font-weight:600;font-size:0.88rem;color:var(--navy);margin-bottom:2px}
+    .nsr-title mark{background:rgba(0,209,122,0.2);color:var(--navy);border-radius:3px;padding:0 2px}
+    .nsr-desc{font-size:0.78rem;color:var(--grijs);line-height:1.4}
+    .nav-search-hint{padding:14px 18px;text-align:center;color:#aaa;font-size:0.82rem}
+    .nav-search-footer{padding:10px 18px;border-top:1px solid var(--grijs-licht);text-align:right;font-size:0.72rem;color:#bbb}
+    @media(max-width:600px){.nav-search-box{top:58px}}  </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="logo">
-      <div class="logo-icon">⚡</div>
-      Stekker<span>Slim</span>
-    </a>
+    <a href="/" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
     <ul class="nav-links">
       <li class="nav-dropdown">
-        <a href="#">Energie</a>
+        <a href="index.html#calculators">Calculators</a>
         <div class="nav-dropdown-menu">
-          <a href="dynamisch-contract.html">Dynamisch contract</a>
-          <a href="saldering-2027.html">Saldering 2027</a>
-          <a href="energiecontract-vergelijken-2026.html">Contract vergelijken</a>
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
         </div>
       </li>
-      <li class="nav-dropdown">
-        <a href="#">Thuisbatterij</a>
-        <div class="nav-dropdown-menu">
-          <a href="thuisbatterij-top5-2026.html">Top 5 plug-in batterijen</a>
-          <a href="thuisbatterij-plug-and-play-2026.html">Plug-and-play uitleg</a>
-          <a href="wanneer-thuisbatterij-niet-slim.html">Wanneer loont het niet?</a>
-          <a href="thuisbatterij-energielabel-2026.html">Batterij en energielabel</a>
-        </div>
-      </li>
-      <li class="nav-dropdown">
-        <a href="#">Calculators</a>
-        <div class="nav-dropdown-menu">
-          <a href="calculator-thuisbatterij.html">Thuisbatterij calculator</a>
-          <a href="calculator-zonnepanelen.html">Zonnepanelen calculator</a>
-          <a href="calculator-energiekosten.html">Energiekosten calculator</a>
-        </div>
-      </li>
-      <li><a href="blog.html" class="nav-cta">Alle artikelen</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
     </ul>
+    <div class="nav-search-wrap" id="navSearchWrap">
+      <button class="nav-search-btn" id="navSearchBtn" onclick="navSearchToggle()" aria-label="Zoeken op StekkerSlim">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+    <div class="nav-search-overlay" id="navSearchOverlay" onclick="navSearchClose()"></div>
+    <div class="nav-search-box" id="navSearchBox">
+      <div class="nav-search-inner">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="nav-search-input" id="navSearchInput" type="text" placeholder="Zoek op stekkerslim.nl… (bijv. saldering, Zigbee, batterij)" oninput="navSearchQuery(this.value)" onkeydown="navSearchKey(event)" autocomplete="off" spellcheck="false">
+        <button class="nav-search-clear" id="navSearchClear" onclick="navSearchReset()" aria-label="Wissen">✕</button>
+      </div>
+      <div class="nav-search-results" id="navSearchResults">
+        <div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>
+      </div>
+      <div class="nav-search-footer">StekkerSlim.nl — eerlijk energieadvies</div>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#calculators" onclick="closeMenu()">🧮 Calculators</a>
+  <a href="calculator-zonnepanelen.html" onclick="closeMenu()">☀️ Zonnepanelen</a>
+  <a href="calculator-thuisbatterij.html" onclick="closeMenu()">🔋 Thuisbatterij</a>
+  <a href="calculator-laadpaal.html" onclick="closeMenu()">🔌 Laadpaal</a>
+  <a href="calculator-warmtepomp.html" onclick="closeMenu()">🌡️ Warmtepomp</a>
+  <a href="blog.html" onclick="closeMenu()">📝 Blog & Artikelen</a>
+  <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome</a>
+  <a href="vragen.html" onclick="closeMenu()">❓ Stel een vraag</a>
+  <a href="over-ons.html" onclick="closeMenu()">👋 Over ons</a>
+  <a href="index.html#vergelijken" class="mob-cta" onclick="closeMenu()">⚡ Vergelijk contracten</a>
+</div>
 
 <div class="urgency-bar">
   <div class="urgency-bar-inner">
@@ -428,5 +477,22 @@
   </div>
 </footer>
 
-</body>
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+document.addEventListener('click',function(e){const m=document.getElementById('mobileMenu');const h=document.getElementById('hamburger');if(m&&h&&m.classList.contains('open')&&!m.contains(e.target)&&!h.contains(e.target))m.classList.remove('open')})
+</script><script>
+var _SP=[{"url":"calculator-zonnepanelen.html","title":"Zonnepanelen calculator","desc":"Bereken terugverdientijd en opbrengst zonnepanelen","tags":"zonnepanelen berekenen terugverdientijd opbrengst panelen"},{"url":"calculator-thuisbatterij.html","title":"Thuisbatterij calculator","desc":"Is een thuisbatterij rendabel voor jou?","tags":"thuisbatterij batterij berekenen rendabel terugverdientijd"},{"url":"calculator-energiekosten.html","title":"Energiekosten calculator","desc":"Bereken jouw jaarlijkse energierekening","tags":"energiekosten rekening stroom gas berekenen"},{"url":"calculator-laadpaal.html","title":"Laadpaal calculator","desc":"Wat kost thuis laden van je EV?","tags":"laadpaal laden elektrisch rijden EV auto stroom"},{"url":"calculator-warmtepomp.html","title":"Warmtepomp calculator","desc":"Gas vs warmtepomp vergelijken","tags":"warmtepomp gas ketel besparen vergelijken"},{"url":"thuisbatterij-top5-2026.html","title":"Beste thuisbatterij 2026 — top 5","desc":"HomeWizard, Zendure, Marstek vergeleken","tags":"thuisbatterij plug-in HomeWizard Zendure Marstek batterij vergelijken"},{"url":"saldering-2027.html","title":"Saldering stopt 2027","desc":"Wat verandert er voor je zonnepanelen na 2027?","tags":"saldering 2027 stoppen zonnepanelen terugleverkosten"},{"url":"terugleverkosten.html","title":"Terugleverkosten","desc":"Wat zijn terugleverkosten?","tags":"terugleverkosten saldering terugleveren zonnepanelen kosten"},{"url":"dynamisch-contract.html","title":"Dynamisch energiecontract","desc":"Voordelen en nadelen dynamisch contract","tags":"dynamisch contract energie tarief variabel uurprijs"},{"url":"energiecontract-vergelijken-2026.html","title":"Energiecontract vergelijken 2026","desc":"Beste energieleverancier vinden","tags":"energiecontract vergelijken leverancier stroom gas"},{"url":"beste-slimme-stekker-2026.html","title":"Beste slimme stekker 2026","desc":"Top 5 slimme stekkers vergeleken","tags":"slimme stekker 2026 beste vergelijken Tapo HomeWizard Matter"},{"url":"smarthome-producten.html","title":"Smarthome producten","desc":"Alle slimme energie-apparaten","tags":"smarthome producten slimme stekker thermostaat P1 meter"},{"url":"homeassistant-energie-besparen.html","title":"Home Assistant energie besparen","desc":"Automatiseer je energieverbruik","tags":"Home Assistant energie besparen automatisering"},{"url":"smarthome-p1-meter.html","title":"P1 meter + Home Assistant","desc":"P1 meter koppelen aan Home Assistant","tags":"P1 meter Home Assistant slimme meter energie"},{"url":"plug-in-batterij-laden.html","title":"Plug-in batterij slim laden","desc":"Wanneer en hoe laad je een thuisbatterij?","tags":"thuisbatterij laden zonnepanelen slim opladen"},{"url":"blog.html","title":"Blog — alle artikelen","desc":"Alle artikelen van StekkerSlim","tags":"blog artikelen energie smarthome"},{"url":"vragen.html","title":"Stel een vraag","desc":"Stuur je energievraag in","tags":"vraag contact hulp advies"},{"url":"over-ons.html","title":"Over StekkerSlim","desc":"Wie is StekkerSlim?","tags":"over ons Remy StekkerSlim"}];
+var _icons={"calculator":"🧮","smarthome":"🏠","home":"🏠","blog":"📝","thuis":"🔋","slimme":"⚡","beste":"⚡","plug":"🔌","warm":"🌡️","dynamisch":"📈","energie":"💡","saldering":"☀️","tapo":"⚡","over":"👤","vragen":"❓"};
+function _icon(u){for(var k in _icons){if(u.indexOf(k)>-1)return _icons[k];}return "📄";}
+function _hl(t,q){if(!q)return t;var r=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');return t.replace(r,'<mark>$1</mark>');}
+function navSearchToggle(){var box=document.getElementById('navSearchBox');var ov=document.getElementById('navSearchOverlay');var btn=document.getElementById('navSearchBtn');var open=!box.classList.contains('open');box.classList.toggle('open',open);ov.classList.toggle('open',open);btn.classList.toggle('open',open);if(open)setTimeout(function(){document.getElementById('navSearchInput').focus();},50);}
+function navSearchClose(){document.getElementById('navSearchBox').classList.remove('open');document.getElementById('navSearchOverlay').classList.remove('open');document.getElementById('navSearchBtn').classList.remove('open');navSearchReset();}
+function navSearchReset(){var inp=document.getElementById('navSearchInput');inp.value='';document.getElementById('navSearchClear').classList.remove('show');document.getElementById('navSearchResults').innerHTML='<div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>';}
+function navSearchQuery(q){var clear=document.getElementById('navSearchClear');var res=document.getElementById('navSearchResults');clear.classList.toggle('show',q.length>0);if(q.length<2){res.innerHTML='<div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>';return;}var words=q.toLowerCase().split(/\s+/).filter(Boolean);var hits=_SP.map(function(p){var score=words.reduce(function(s,w){if(p.title.toLowerCase().indexOf(w)>-1)return s+3;if(p.desc.toLowerCase().indexOf(w)>-1)return s+2;if(p.tags.toLowerCase().indexOf(w)>-1)return s+1;return s;},0);return{p:p,score:score};}).filter(function(x){return x.score>0;}).sort(function(a,b){return b.score-a.score;}).slice(0,8);if(!hits.length){res.innerHTML='<div class="nav-search-hint">Geen resultaten voor <em>'+q+'</em></div>';return;}res.innerHTML=hits.map(function(x){var p=x.p;return '<a href="'+p.url+'" class="nav-search-result" onclick="navSearchClose()"><span class="nsr-icon">'+_icon(p.url)+'</span><span class="nsr-content"><div class="nsr-title">'+_hl(p.title,q)+'</div><div class="nsr-desc">'+p.desc+'</div></span></a>';}).join('');}
+function navSearchKey(e){if(e.key==='Escape')navSearchClose();if(e.key==='Enter'){var first=document.querySelector('.nav-search-result');if(first){window.location=first.href;navSearchClose();}}}
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();navSearchToggle();}});
+document.addEventListener("click",function(e){var b=document.getElementById("navSearchBox");var w=document.getElementById("navSearchWrap");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
+</script>
+<script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block";});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});m.addEventListener("mouseenter",function(){clearTimeout(t);});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});});})();</script></body>
 </html>

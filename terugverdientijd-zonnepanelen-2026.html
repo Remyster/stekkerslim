@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="nl">
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKF36BF7DB"></script>
@@ -125,7 +125,14 @@
     .nav-search-footer{padding:10px 18px;border-top:1px solid var(--grijs-licht);text-align:right;font-size:0.72rem;color:#bbb}
     @media(max-width:600px){.nav-search-box{top:58px}}
 
-  </style>
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+    .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--wit);z-index:99;padding:16px;box-shadow:0 8px 32px rgba(0,0,0,.1);flex-direction:column;gap:4px}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{padding:12px 16px;color:var(--navy);text-decoration:none;font-weight:600;font-size:0.95rem;border-radius:10px;transition:background .2s}
+    .mobile-menu a:hover{background:var(--licht)}
+    .mobile-menu .mob-cta{background:var(--groen);color:var(--navy)!important;margin-top:8px;text-align:center}
+    @media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -183,8 +190,41 @@
       <li><a href="vragen.html">Stel een vraag</a></li>
       <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
     </ul>
+    <div class="nav-search-wrap" id="navSearchWrap">
+      <button class="nav-search-btn" id="navSearchBtn" onclick="navSearchToggle()" aria-label="Zoeken op StekkerSlim">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+    <div class="nav-search-overlay" id="navSearchOverlay" onclick="navSearchClose()"></div>
+    <div class="nav-search-box" id="navSearchBox">
+      <div class="nav-search-inner">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="nav-search-input" id="navSearchInput" type="text" placeholder="Zoek op stekkerslim.nl… (bijv. saldering, Zigbee, batterij)" oninput="navSearchQuery(this.value)" onkeydown="navSearchKey(event)" autocomplete="off" spellcheck="false">
+        <button class="nav-search-clear" id="navSearchClear" onclick="navSearchReset()" aria-label="Wissen">✕</button>
+      </div>
+      <div class="nav-search-results" id="navSearchResults">
+        <div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>
+      </div>
+      <div class="nav-search-footer">StekkerSlim.nl — eerlijk energieadvies</div>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#calculators" onclick="closeMenu()">🧮 Calculators</a>
+  <a href="calculator-zonnepanelen.html" onclick="closeMenu()">☀️ Zonnepanelen</a>
+  <a href="calculator-thuisbatterij.html" onclick="closeMenu()">🔋 Thuisbatterij</a>
+  <a href="calculator-laadpaal.html" onclick="closeMenu()">🔌 Laadpaal</a>
+  <a href="calculator-warmtepomp.html" onclick="closeMenu()">🌡️ Warmtepomp</a>
+  <a href="blog.html" onclick="closeMenu()">📝 Blog & Artikelen</a>
+  <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome</a>
+  <a href="vragen.html" onclick="closeMenu()">❓ Stel een vraag</a>
+  <a href="over-ons.html" onclick="closeMenu()">👋 Over ons</a>
+  <a href="index.html#vergelijken" class="mob-cta" onclick="closeMenu()">⚡ Vergelijk contracten</a>
+</div>
 
 <div class="page-hero">
   <div class="page-hero-inner">
@@ -541,5 +581,9 @@ document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key
 document.addEventListener("click",function(e){var b=document.getElementById("navSearchBox");var w=document.getElementById("navSearchWrap");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
 </script>
 <script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block";});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});m.addEventListener("mouseenter",function(){clearTimeout(t);});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});});})();</script>
-</body>
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+document.addEventListener('click',function(e){const m=document.getElementById('mobileMenu');const h=document.getElementById('hamburger');if(m&&h&&m.classList.contains('open')&&!m.contains(e.target)&&!h.contains(e.target))m.classList.remove('open')})
+</script></body>
 </html>
