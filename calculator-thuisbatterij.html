@@ -319,7 +319,7 @@
           <span class="result-row-value groen" id="res-direct-eigen">—</span>
         </div>
         <div class="result-row">
-          <span class="result-row-label">Teruglevering (70% × €0,06/kWh na 2027)</span>
+          <span class="result-row-label">Teruglevering (70% × €0,06/kWh per 2027)</span>
           <span class="result-row-value" id="res-terug-waarde">—</span>
         </div>
         <div class="result-row">
@@ -594,7 +594,7 @@
 
     // Besparing direct eigengebruik (zonder batterij)
     const directEigenBesparing = eigenZonder * inkoop;
-    const terugWaarde = terugZonder * 0.06; // na 2027 tarief
+    const terugWaarde = terugZonder * 0.06; // per 2027 tarief
     const subtotaalZonder = directEigenBesparing + terugWaarde;
 
     // Results
