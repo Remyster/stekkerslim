@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKF36BF7DB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RKF36BF7DB');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tapo P115 en P410M na twee weken gebruik: hoe goed is de energiemeting, de app, en de koppeling met Home Assistant? Eindoordeel met scores.">
+  <title>Tapo P115 en P410M review na 2 weken: eerlijk eindoordeel 2026 | StekkerSlim.nl</title>
+  <link rel="canonical" href="https://stekkerslim.nl/tapo-p115-p410m-eindoordeel.html">
+  <meta property="og:title" content="Tapo P115 en P410M review na 2 weken: eerlijk eindoordeel 2026">
+  <meta property="og:description" content="Tapo P115 en P410M na twee weken gebruik: hoe goed is de energiemeting, de app en de Home Assistant koppeling? Eindoordeel met scores.">
+  <meta property="og:image" content="https://stekkerslim.nl/og-image.png">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://stekkerslim.nl/tapo-p115-p410m-eindoordeel.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Tapo P115 en P410M review na 2 weken: eerlijk eindoordeel 2026",
+    "description": "Na twee weken dagelijks gebruik: eerlijk eindoordeel over energiemeting, app-ervaring, Home Assistant-koppeling en het verschil tussen de twee stekkers.",
+    "author": {"@type": "Person", "name": "Remy Egberts"},
+    "publisher": {"@type": "Organization", "name": "StekkerSlim.nl", "url": "https://stekkerslim.nl"},
+    "datePublished": "2026-06-15",
+    "dateModified": "2026-06-15",
+    "url": "https://stekkerslim.nl/tapo-p115-p410m-eindoordeel.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "StekkerSlim", "item": "https://stekkerslim.nl"},
+      {"@type": "ListItem", "position": 2, "name": "Slimme stekkers", "item": "https://stekkerslim.nl/beste-slimme-stekker-2026.html"},
+      {"@type": "ListItem", "position": 3, "name": "Tapo P115 en P410M eindoordeel", "item": "https://stekkerslim.nl/tapo-p115-p410m-eindoordeel.html"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Werkt de Tapo P115 met Home Assistant?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Ja. Via de officiële TP-Link integratie in Home Assistant werkt de P115 lokaal, inclusief energiemeting. Je hebt bij de eerste koppeling wel een TP-Link account nodig."}
+      },
+      {
+        "@type": "Question",
+        "name": "Werkt de Tapo P410M met Apple Home?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Ja. De P410M is Matter 1.3-gecertificeerd en werkt volledig met Apple Home, Google Home, Amazon Alexa en Samsung SmartThings. Na koppeling werkt hij lokaal zonder cloud."}
+      },
+      {
+        "@type": "Question",
+        "name": "Kan ik de Tapo P115 gebruiken met een dynamisch energiecontract?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Ja. De Tapo-app heeft een bill calculator waarbij je je eigen stroomtarief instelt, inclusief piek- en daltarieven. Je kunt apparaten via schema's automatisch laten schakelen op de goedkoopste uren."}
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--groen:#00D17A;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'▾';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}.nav-dropdown:hover .nav-dropdown-menu{display:block}
+    .page-hero{background:var(--navy);padding:56px 24px}
+    .page-hero-inner{max-width:800px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .article-tag{display:inline-block;background:rgba(0,209,122,0.2);color:var(--groen);padding:4px 12px;border-radius:99px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.4rem);color:var(--wit);margin-bottom:16px;line-height:1.15}
+    .article-meta{color:rgba(255,255,255,0.4);font-size:0.82rem}
+    .disclosure{background:rgba(255,210,63,0.15);border:1px solid rgba(255,210,63,0.4);border-radius:10px;padding:12px 18px;margin-top:20px;font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.5}
+    .article-body{max-width:800px;margin:0 auto;padding:56px 24px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin:40px 0 14px;color:var(--navy)}
+    .article-body h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;margin:28px 0 10px;color:var(--navy)}
+    .article-body p{color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:16px}
+    .article-body ul{padding-left:24px;color:#374151;font-size:0.95rem;line-height:1.8;margin-bottom:16px}
+    .article-body li{margin-bottom:6px}
+    .article-body a{color:var(--groen);font-weight:600;text-decoration:none}
+    .article-body a:hover{text-decoration:underline}
+    .highlight-box{background:var(--licht);border-left:4px solid var(--groen);border-radius:0 12px 12px 0;padding:18px 22px;margin:24px 0;font-size:0.92rem;color:#374151}
+    .highlight-box strong{color:var(--navy)}
+    .warning-box{background:rgba(255,210,63,0.1);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:18px 22px;margin:24px 0;font-size:0.92rem;color:#374151}
+    .warning-box strong{color:var(--navy)}
+    .toc{background:var(--licht);border-radius:14px;padding:24px;margin-bottom:40px}
+    .toc h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px;color:var(--navy)}
+    .toc ol{padding-left:20px;font-size:0.88rem;line-height:2.1}
+    .toc a{color:var(--navy);text-decoration:none}.toc a:hover{color:var(--groen)}
+    .deel1-banner{background:var(--licht);border-radius:14px;padding:18px 22px;margin-bottom:32px;font-size:0.88rem;color:#374151;display:flex;align-items:center;gap:12px}
+    .deel1-banner a{color:var(--groen);font-weight:700}
+    .article-photo{width:100%;border-radius:14px;margin:20px 0;display:block;object-fit:cover;max-height:500px}
+    .photo-caption{font-size:0.8rem;color:var(--grijs);text-align:center;margin-top:-10px;margin-bottom:20px}
+    .score-card{background:var(--navy);border-radius:16px;padding:28px;margin:28px 0;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .score-item{background:rgba(255,255,255,0.07);border-radius:10px;padding:16px}
+    .score-item .product{font-size:0.75rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+    .score-item .naam{font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;color:var(--wit);margin-bottom:10px}
+    .score-item .score{font-family:'Outfit',sans-serif;font-weight:900;font-size:2rem;color:var(--groen)}
+    .score-item .sub{font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:4px;line-height:1.4}
+    .pro-con{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+    .pro-list,.con-list{background:var(--licht);border-radius:10px;padding:14px 16px}
+    .pro-list h4{color:#059669;font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+    .con-list h4{color:#EF4444;font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+    .pro-list ul,.con-list ul{padding-left:16px;font-size:0.87rem;line-height:1.8;color:#374151;margin:0}
+    .app-feature{background:var(--licht);border-radius:12px;padding:16px 18px;margin:10px 0;display:flex;gap:14px;align-items:flex-start}
+    .app-feature .icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+    .app-feature h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;color:var(--navy);margin-bottom:3px}
+    .app-feature p{font-size:0.85rem;color:#374151;margin:0;line-height:1.5}
+    .btn-affiliate{display:inline-block;background:var(--groen);color:var(--navy)!important;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;padding:10px 20px;border-radius:9px;text-decoration:none!important;margin-top:12px;margin-right:8px}
+    .btn-bol{display:inline-block;background:var(--accent);color:var(--navy)!important;font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;padding:10px 20px;border-radius:9px;text-decoration:none!important;margin-top:12px}
+    .related-articles{background:var(--licht);border-radius:16px;padding:28px;margin-top:48px}
+    .related-articles h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:16px;color:var(--navy)}
+    .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .related-card{background:var(--wit);border-radius:14px;padding:20px;text-decoration:none;color:inherit;display:block}
+    .related-card:hover{box-shadow:var(--shadow)}
+    .related-card .tag{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--groen);margin-bottom:6px}
+    .related-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;line-height:1.3;color:var(--navy)}
+    footer{background:var(--navy);padding:48px 24px 24px;color:rgba(255,255,255,0.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+    .footer-brand p{font-size:0.85rem;margin-top:12px;line-height:1.6}
+    .footer-col h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.85rem;color:var(--wit);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.5px}
+    .footer-col ul{list-style:none}.footer-col li{margin-bottom:8px}.footer-col a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;font-size:0.8rem}
+    .footer-bottom a{color:rgba(255,255,255,0.5);text-decoration:none}
+    @media(max-width:640px){.nav-links{display:none}.pro-con,.score-card,.related-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="#">Smarthome</a>
+        <div class="nav-dropdown-menu">
+          <a href="beste-slimme-stekker-2026.html">Beste slimme stekker 2026</a>
+          <a href="slimme-stekkers.html">Slimme stekkers uitleg</a>
+          <a href="smarthome-uitleg.html">Smarthome uitleg</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#">Energie</a>
+        <div class="nav-dropdown-menu">
+          <a href="dynamisch-contract.html">Dynamisch contract</a>
+          <a href="saldering-2027.html">Saldering 2027</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <a href="#">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-energiekosten.html">Energiekosten</a>
+          <a href="calculator-thuisbatterij.html">Thuisbatterij</a>
+        </div>
+      </li>
+      <li><a href="blog.html" class="nav-cta">Alle artikelen</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">StekkerSlim</a> &rsaquo;
+      <a href="beste-slimme-stekker-2026.html">Slimme stekkers</a> &rsaquo;
+      Tapo P115 en P410M eindoordeel
+    </div>
+    <div class="article-tag">Review &middot; Eindoordeel</div>
+    <h1>Tapo P115 en P410M na 2 weken: eerlijk eindoordeel</h1>
+    <div class="article-meta">Door Remy Egberts &middot; 15 juni 2026 &middot; 8 minuten leestijd</div>
+    <div class="disclosure">
+      &#9888;&#65039; Ik heb de Tapo P115 en P410M gratis ontvangen van Tapo. Ik ben niet betaald. Mijn mening blijft mijn eigen &mdash; dat verandert nooit.
+    </div>
+  </div>
+</section>
+
+<div class="article-body">
+
+  <div class="deel1-banner">
+    &#128196; Dit is deel 2. <a href="tapo-p115-p410m-review.html">Lees eerst de unboxing en eerste indruk (deel 1)</a> als je wil weten wat er in de doos zit.
+  </div>
+
+  <div class="toc">
+    <h4>In dit artikel</h4>
+    <ol>
+      <li><a href="#setup">Setup: hoe snel ben je aan de slag?</a></li>
+      <li><a href="#p115-gebruik">Tapo P115 in dagelijks gebruik</a></li>
+      <li><a href="#app">De Tapo-app: beter dan verwacht</a></li>
+      <li><a href="#p410m-gebruik">Tapo P410M buiten: wat merk je ervan?</a></li>
+      <li><a href="#homeassistant">Home Assistant koppeling</a></li>
+      <li><a href="#eindoordeel">Eindoordeel en scores</a></li>
+    </ol>
+  </div>
+
+  <p>Twee weken. De P115 zit in mijn tv-kast. De P410M hangt buiten. Elke dag gebruik ik ze, kijk ik in de app en trek ik conclusies. Dit is wat ik na twee weken eerlijk kan zeggen &mdash; geen productomschrijving herhalen, maar gewoon: werkt het, en voor wie?</p>
+
+  <h2 id="setup">1. Setup: hoe snel ben je aan de slag?</h2>
+
+  <img src="Firmware_update.png" alt="Tapo app firmware-update scherm tijdens eerste setup" class="article-photo" loading="lazy">
+  <div class="photo-caption">Direct bij de eerste setup vraagt de Tapo-app om een firmware-update. Gewoon doen &mdash; dit lost de meeste verbindingsproblemen op voor ze beginnen.</div>
+
+  <p>De P115 is binnen twee minuten klaar. App downloaden, stekker inpluggen, netwerk selecteren, klaar. Geen hub, geen extra hardware. Enige vereiste: 2,4GHz wifi. Heb je alleen een 5GHz netwerk? Dan werkt het niet direct &mdash; de meeste routers zenden beide tegelijk uit, maar check dit even.</p>
+
+  <p>De P410M setup duurt iets langer omdat je een keuze moet maken: koppelen via de Tapo-app (gewoon WiFi) of via Matter (voor Apple Home, Google Home, of Home Assistant). Voor Matter scan je de QR-code op het kaartje dat in de doos zit. Doe dit direct bij setup &mdash; achteraf is het meer werk. Bewaar het Matter-kaartje goed &mdash; zonder die code is opnieuw koppelen via Matter een stuk lastiger.</p>
+
+  <div class="highlight-box">
+    <strong>Tip bij de P410M:</strong> kies bij setup meteen of je Matter of Tapo-app wil gebruiken. Beide tegelijk kan, maar dat vraagt extra stappen. De meeste mensen kiezen &eacute;&eacute;n ecosysteem en blijven daar bij.
+  </div>
+
+  <h2 id="p115-gebruik">2. Tapo P115 in dagelijks gebruik</h2>
+
+  <img src="Tapo_P115_screenshot_app.png" alt="Tapo P115 app scherm met energiegebruik en schakelaar" class="article-photo" style="max-height:600px;object-fit:contain;background:#111;" loading="lazy">
+  <div class="photo-caption">De P115 in de Tapo-app: live verbruik (2W), looptijd en directe aan/uit knop. Schema, timer en afwezigheidsmodus zitten &eacute;&eacute;n tik verder.</div>
+
+  <p>Ik heb hem op mijn tv-kast gezet. Receiver, versterker, alles op standby. De app liet binnen een dag zien dat de kast 24 uur per dag gemiddeld 18 watt trekt &mdash; ook als ik niets kijk. Op jaarbasis is dat bijna &euro;43 aan sluipverbruik. Een schema ingesteld: alles uit na middernacht, aan om 17:00. Dat was het.</p>
+
+  <p>De stekker valt letterlijk niet op in het stopcontact. Hij blokkeert het stopcontact ernaast niet. Na de eerste dag vergeet je dat hij er zit &mdash; en dat is precies de bedoeling.</p>
+
+  <h3>Wat de P115 niet heeft vergeleken met de P115M</h3>
+
+  <p>De P115 heeft <strong>geen zero-crossing detection</strong>. Dat is een feature die alleen in de M-modellen zit (P115M, P110M, P410M). Voor apparaten die veel stroom trekken &mdash; kachels, tosti-ijzers &mdash; betekent dat op den duur meer slijtage op het relais. Voor een tv-kast of oplader merk je er niets van. Maar wil je een zware belasting vaak schakelen, dan is de P115M of P410M de betere keuze.</p>
+
+  <p>Ook <strong>geen Matter</strong>. De P115 werkt via WiFi en de Tapo-app, plus Alexa en Google. Apple Home? Niet mogelijk zonder omwegen. Als dat belangrijk is: P115M.</p>
+
+  <div class="pro-con">
+    <div class="pro-list"><h4>Werkt prima voor</h4><ul>
+      <li>Sluipverbruik meten en aanpakken</li>
+      <li>Schemabesturing van apparaten</li>
+      <li>Home Assistant (via TP-Link integratie)</li>
+      <li>Beginners zonder smarthome-ecosysteem</li>
+    </ul></div>
+    <div class="con-list"><h4>Minder geschikt voor</h4><ul>
+      <li>Zware apparaten die vaak schakelen</li>
+      <li>Apple Home gebruikers</li>
+      <li>Mensen die buiten iets willen aansturen</li>
+      <li>Volledig Matter-ecosysteem</li>
+    </ul></div>
+  </div>
+
+  <a href="https://amzn.to/4uH3gCD" rel="noopener sponsored" class="btn-affiliate">Bekijk P115 op Amazon &rarr;</a>
+  <a href="https://partner.bol.com/click/click?p=2&t=url&s=1510756&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fp%2Ftp-link-tapo-p115-mini-slimme-stekker-energiebewaking-1-pack%2F9300000073872921%2F&name=TP-Link%20Tapo%20P115%20Slimme%20Stekker%20-%20Wifi%20Stopcontact%20-%20Energiebewaking%20-%20Mini" rel="noopener sponsored" class="btn-bol">Bekijk P115 op Bol.com &rarr;</a>
+
+  <h2 id="app">3. De Tapo-app: beter dan verwacht</h2>
+
+  <img src="Settings_Tapo_p410M_app_2.png" alt="Tapo app Energie Controle scherm met dagverbruiksgrafiek P410M" class="article-photo" style="max-height:600px;object-fit:contain;background:#111;" loading="lazy">
+  <div class="photo-caption">Energie Controle in de Tapo-app: dagverbruik per uur als grafiek, schakelbaar naar maand- en jaaroverzicht. Bovenin de knop voor aangepaste factureringsinstellingen.</div>
+
+  <p>Dit is waar ik positief verrast was. Ik verwachtte een basisapp met een aan/uit-knop en een simpele grafiek. Wat je krijgt is een volwaardig energie-dashboard.</p>
+
+  <div class="app-feature">
+    <div class="icon">&#128200;</div>
+    <div>
+      <h4>Grafieken per uur, dag, maand en jaar</h4>
+      <p>Je ziet verbruik per 5 minuten (laatste 24 uur), per uur (laatste 7 dagen), per dag (laatste 3 maanden) en per maand (laatste jaar). Dat is meer historische data dan de meeste concurrenten bieden.</p>
+    </div>
+  </div>
+
+  <div class="app-feature">
+    <div class="icon">&#128197;</div>
+    <div>
+      <h4>Energiekalender met kleurcodering</h4>
+      <p>Een kalenderweergave over de afgelopen 3 maanden. Blauw = laag verbruik, oranje = gemiddeld, rood = hoog. In &eacute;&eacute;n oogopslag zie je op welke dagen een apparaat meer trok dan normaal.</p>
+    </div>
+  </div>
+
+  <div class="app-feature">
+    <div class="icon">&#9889;</div>
+    <div>
+      <h4>Bill calculator met eigen tarief &mdash; ook piek/dal</h4>
+      <p>Je stelt je eigen stroomtarief in, inclusief piek- en daltarieven. Heb je een dynamisch contract? Dan zie je een <strong>schatting</strong> van wat een apparaat je over de afgelopen maand heeft gekost op basis van jouw tarief. Dat is een feature die ik bij weinig concurrenten zie.</p>
+    </div>
+  </div>
+
+  <div class="app-feature">
+    <div class="icon">&#128276;</div>
+    <div>
+      <h4>Overbelastingsmelding</h4>
+      <p>Stel een wattage-drempel in. Gaat een apparaat daarboven, dan krijg je een notificatie en schakelt de stekker automatisch uit. Handig als veiligheidsmaatregel bij oudere apparatuur.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <strong>Voor dynamisch contract-gebruikers:</strong> stel in de bill calculator je piek- en daltarief in. Combineer dat met een schema dat zware apparaten alleen 's nachts aanzet. Zo zie je in de app direct wat je bespaart. <a href="dynamisch-contract.html">Hoe een dynamisch contract werkt</a> staat uitgebreid uitgelegd.
+  </div>
+
+  <h2 id="p410m-gebruik">4. Tapo P410M buiten: wat merk je ervan?</h2>
+
+  <img src="Settings_Tapo_p410M_app_3.png" alt="Tapo P410M app scherm met energiegebruik tuin locatie 22W" class="article-photo" style="max-height:600px;object-fit:contain;background:#111;" loading="lazy">
+  <div class="photo-caption">De P410M in de app, locatie: tuin. Realtime 22W en 0,003 kWh na 0,2 uur. De knop "Toon Meer" opent het volledige energie-dashboard met grafieken.</div>
+
+  <p>De P410M hangt buiten bij mijn tuinverlichting. Na twee weken &mdash; inclusief een flinke regenbui &mdash; geen enkel probleem. De klep sluit goed af, de verbinding viel geen moment weg. IP54 doet wat het belooft.</p>
+
+  <p>Wat opvalt: de P410M heeft zero-crossing detection, in tegenstelling tot de P115. Praktisch gezien betekent dat: hij schakelt altijd op het nulpunt van de wisselstroom. Geen vonk, geen slijtage. Voor tuinverlichting die elke dag meerdere keren schakelt, is dat op termijn dat op termijn slijtage aan het relais vermindert, zeker bij apparaten die vaak schakelen.</p>
+
+  <p>Dat betekent concreet: minder kans op vastlassen van het relais bij apparaten die dagelijks meerdere keren schakelen. Op termijn merk je dat in de levensduur van de stekker.</p>
+
+  <h3>Bidirectionele meting: handig voor zonnepanelen</h3>
+
+  <p>De P410M heeft goede energiemeting. Sluit je er een balkonzonnepaneel of micro-omvormer op aan, dan zie je in de app duidelijk hoeveel stroom er verbruikt wordt. De app geeft daarnaast inzicht in wanneer je zonnepanelen terugverdiend zijn op basis van de gemeten data. Dat is een handige extra die je bij de meeste gewone slimme stekkers niet vindt.</p>
+
+  <img src="Settings_Tapo_p410M_app_1.png" alt="Tapo app Energie Kalender juni 2026 met dagelijks verbruik P410M" class="article-photo" style="max-height:600px;object-fit:contain;background:#111;" loading="lazy">
+  <div class="photo-caption">De energiekalender van de P410M: per dag zie je het verbruik met kleurcodering. Handig om op een blik te zien of een apparaat onverwacht veel trekt.</div>
+
+  <div class="pro-con">
+    <div class="pro-list"><h4>Werkt prima voor</h4><ul>
+      <li>Tuinverlichting en vijverpomp</li>
+      <li>Balkonzonnepanelen meten</li>
+      <li>Apple Home en Google Home (Matter)</li>
+      <li>Home Assistant lokaal via Matter</li>
+      <li>Alles wat buiten moet blijven hangen</li>
+    </ul></div>
+    <div class="con-list"><h4>Minder geschikt voor</h4><ul>
+      <li>Mensen die alleen binnen iets willen</li>
+      <li>Wie &euro;10 wil besparen (neem dan P115)</li>
+      <li>Volledig offline gebruik zonder setup</li>
+    </ul></div>
+  </div>
+
+  <a href="https://amzn.to/431bMjL" rel="noopener sponsored" class="btn-affiliate">Bekijk P410M op Amazon &rarr;</a>
+
+  <h2 id="homeassistant">5. Home Assistant koppeling</h2>
+
+  <img src="Settings_Tapo_p410M_app.png" alt="Tapo P410M apparaatinstellingen met Matter installatiecode en firmware-update" class="article-photo" style="max-height:600px;object-fit:contain;background:#111;" loading="lazy">
+  <div class="photo-caption">De apparaatinstellingen van de P410M: hier vind je de Matter-installatiecode en de firmware-update knop. Let op de rode stip bij firmware-update &mdash; altijd als eerste doen.</div>
+
+  <p>Tapo heeft twee manieren om in Home Assistant te landen: via de offici&euml;le TP-Link Tapo-integratie (voor de P115 en P410M), of voor de P410M via Matter. Beide werken lokaal na de initiële koppeling.</p>
+
+  <h3>P115 in Home Assistant</h3>
+
+  <p>Via de offici&euml;le TP-Link Tapo-integratie in Home Assistant (te vinden onder Instellingen &rarr; Apparaten &amp; Diensten) koppel je de P115 lokaal. Je hebt bij de eerste setup je TP-Link-accountgegevens nodig. Daarna werkt alles lokaal: aan/uit, energiemeting, wattage &mdash; allemaal als losse entities in HA. De integratie is stabiel en werkt zonder cloud na de eerste koppeling.</p>
+
+  <h3>P410M in Home Assistant via Matter</h3>
+
+  <p>Dit is de schonere optie. De P410M is Matter 1.3-gecertificeerd. In Home Assistant voeg je hem toe via de Matter-integratie (QR-code scannen). Na koppeling werkt hij lokaal &mdash; geen TP-Link account nodig. Schakelen werkt probleemloos. Energiemeting via Matter kan per platform verschillen; via de TP-Link Tapo-integratie krijg je de meest volledige sensor-data. Wil je helemaal offline? Blokkeer het apparaat in je router na de initiële setup.</p>
+
+  <div class="highlight-box">
+    <strong>Automatisering voorbeeld:</strong> koppel de P410M aan je P1-meter data in Home Assistant. Als de netto teruglevering boven 300W komt, zet de P115 de wasmachine aan. Zo gebruik je zonnestroom die je anders terugleverde. <a href="homeassistant-energie-besparen.html">Hoe je dit instelt in Home Assistant</a>.
+  </div>
+
+  <h2 id="eindoordeel">6. Eindoordeel</h2>
+
+  <div class="score-card">
+    <div class="score-item">
+      <div class="product">Eindoordeel</div>
+      <div class="naam">Tapo P115</div>
+      <div class="score">8.5</div>
+      <div class="sub">Beste prijs-kwaliteit voor binnenshuis. Geen Matter, geen zero-crossing &mdash; maar voor &euro;17 doet hij precies wat je wil.</div>
+    </div>
+    <div class="score-item">
+      <div class="product">Eindoordeel</div>
+      <div class="naam">Tapo P410M</div>
+      <div class="score">9.0</div>
+      <div class="sub">Sterk buiten, Matter-klaar, bidirectioneel meten. Verrast positief op bouwkwaliteit en functies. Prijs is gerechtvaardigd.</div>
+    </div>
+  </div>
+
+  <p>De P115 is de stekker die je koopt als je wil beginnen met energiemeten zonder er veel over na te denken. Goedkoop, compact, stabiel. De app is beter dan je verwacht. Het ontbreken van Matter is een bewuste keuze van Tapo &mdash; die versie heet P115M en kost iets meer.</p>
+
+  <p>De P410M verraste me het meest. De bouwkwaliteit is een klasse hoger dan ik verwachtte voor deze prijs. Zero-crossing, bidirectionele meting, Matter 1.3, IP54 &mdash; dat is een stevige lijst voor een buitenstekker van rond de 28 euro. Als je buiten iets slim wil aansturen en niet wil twijfelen over kwaliteit: dit is de stekker.</p>
+
+  <h2>Veelgestelde vragen</h2>
+
+  <h3>Werkt de Tapo P115 met Home Assistant?</h3>
+  <p>Ja. Via de TP-Link Tapo-integratie in Home Assistant werkt de P115 lokaal, inclusief energiemeting. Bij de eerste koppeling heb je een TP-Link-account nodig, daarna draait alles lokaal.</p>
+
+  <h3>Werkt de Tapo P410M met Apple Home?</h3>
+  <p>Ja. De P410M is Matter 1.3-gecertificeerd en werkt volledig met Apple Home, Google Home, Alexa en SmartThings. Na koppeling werkt hij lokaal zonder cloud.</p>
+
+  <h3>Kan ik de Tapo P115 gebruiken met een dynamisch energiecontract?</h3>
+  <p>Ja. De Tapo-app heeft een bill calculator waarbij je piek- en daltarieven instelt. Je kunt schema&rsquo;s maken zodat apparaten automatisch schakelen op de goedkoopste uren. Combineer dat met een <a href="dynamisch-contract.html">dynamisch contract</a> voor maximale besparing.</p>
+
+  <div class="related-articles">
+    <h3>Verder lezen</h3>
+    <div class="related-grid">
+      <a href="tapo-p115-p410m-review.html" class="related-card">
+        <div class="tag">Deel 1</div>
+        <h4>Tapo P115 en P410M unboxing: eerste indruk</h4>
+      </a>
+      <a href="beste-slimme-stekker-2026.html" class="related-card">
+        <div class="tag">Vergelijking</div>
+        <h4>De beste slimme stekkers van 2026 vergeleken</h4>
+      </a>
+      <a href="homeassistant-energie-besparen.html" class="related-card">
+        <div class="tag">Home Assistant</div>
+        <h4>Energie besparen met Home Assistant</h4>
+      </a>
+      <a href="dynamisch-contract.html" class="related-card">
+        <div class="tag">Energie</div>
+        <h4>Dynamisch contract: slim combineren met slimme stekkers</h4>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:var(--wit)"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+        <p>Eerlijke energietips voor Nederlandse gezinnen.</p>
+      </div>
+      <div class="footer-col"><h4>Calculators</h4><ul>
+        <li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li>
+        <li><a href="calculator-energiekosten.html">Energiekosten</a></li>
+        <li><a href="calculator-thuisbatterij.html">Thuisbatterij</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Artikelen</h4><ul>
+        <li><a href="beste-slimme-stekker-2026.html">Beste slimme stekker</a></li>
+        <li><a href="saldering-2027.html">Saldering 2027</a></li>
+        <li><a href="dynamisch-contract.html">Dynamisch contract</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 StekkerSlim.nl</span>
+      <a href="privacy.html">Privacy &amp; Disclaimer</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
