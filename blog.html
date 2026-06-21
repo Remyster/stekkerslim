@@ -7,26 +7,30 @@
     <link rel="canonical" href="https://stekkerslim.nl/blog.html">
     <meta name="description" content="Eerlijke uitleg over energie besparen, zonnepanelen, slimme apparaten en jouw energiecontract. Geen marketing, geen verborgen agenda.">
     <style>
-        :root { --groen: #00a651; --navy: #0a2540; --licht: #f8fafc; }
-        body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin:0; padding:0; background:#f8fafc; color:#1e2937; }
-        .nav { background:white; border-bottom:1px solid #e2e8f0; }
+        :root { --groen: #00a651; --navy: #0a2540; --licht: #f8fafc; --grijs: #64748b; }
+        body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin:0; padding:0; background:#f8fafc; color:#1e2937; line-height:1.6; }
+        .nav { background:white; border-bottom:1px solid #e2e8f0; position:sticky; top:0; z-index:100; }
         .nav-inner { max-width:1200px; margin:0 auto; padding:0 20px; display:flex; align-items:center; justify-content:space-between; height:70px; }
-        .logo { font-weight:800; font-size:22px; color:#0a2540; text-decoration:none; }
+        .logo { font-weight:800; font-size:22px; color:#0a2540; text-decoration:none; display:flex; align-items:center; gap:8px; }
         .logo span { color:#00a651; }
-        .hero { background:linear-gradient(135deg,#0a2540,#1e3a5f); color:white; padding:60px 20px; text-align:center; }
-        .hero h1 { font-size:42px; margin:0 0 16px; }
-        .hero p { font-size:18px; max-width:620px; margin:0 auto; opacity:0.9; }
-        .container { max-width:1100px; margin:0 auto; padding:40px 20px; }
-        .blog-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px; }
-        .blog-card { background:white; border-radius:12px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.08); text-decoration:none; color:inherit; transition:all .2s; }
-        .blog-card:hover { transform:translateY(-4px); box-shadow:0 10px 20px rgba(0,0,0,0.1); }
-        .blog-card img { width:100%; height:180px; object-fit:cover; }
-        .blog-card-content { padding:20px; }
-        .blog-card h3 { margin:0 0 10px; font-size:20px; line-height:1.3; }
-        .blog-card p { color:#64748b; font-size:15px; margin:0 0 16px; }
-        .tag { display:inline-block; background:#f0fdf4; color:#00a651; padding:2px 10px; border-radius:999px; font-size:12px; font-weight:600; }
-        .footer { background:#0f172a; color:#94a3b8; padding:50px 20px 30px; font-size:14px; }
+        .hero { background:linear-gradient(135deg,#0a2540,#1e3a5f); color:white; padding:50px 20px; text-align:center; }
+        .hero h1 { font-size:38px; margin:0 0 12px; }
+        .hero p { font-size:17px; max-width:620px; margin:0 auto; opacity:0.9; }
+        .container { max-width:1200px; margin:0 auto; padding:40px 20px; }
+        .section { margin-bottom:48px; }
+        .section h2 { font-size:24px; margin-bottom:20px; color:#0a2540; border-bottom:3px solid #00a651; padding-bottom:8px; display:inline-block; }
+        .blog-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; }
+        .blog-card { background:white; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.08); text-decoration:none; color:inherit; transition:all .2s; display:flex; flex-direction:column; }
+        .blog-card:hover { transform:translateY(-4px); box-shadow:0 10px 20px rgba(0,0,0,0.12); }
+        .blog-card-content { padding:20px; flex:1; display:flex; flex-direction:column; }
+        .blog-card h3 { margin:0 0 10px; font-size:18px; line-height:1.3; color:#0a2540; }
+        .blog-card p { color:#64748b; font-size:14.5px; margin:0; flex:1; }
+        .tag { display:inline-block; background:#f0fdf4; color:#00a651; padding:3px 10px; border-radius:999px; font-size:12px; font-weight:600; margin-bottom:10px; }
+        .featured { border:3px solid #00a651; }
+        .footer { background:#0f172a; color:#94a3b8; padding:50px 20px 30px; font-size:14px; margin-top:60px; }
         .footer-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; }
+        .footer a { color:#cbd5e1; text-decoration:none; }
+        .footer a:hover { color:white; }
     </style>
 </head>
 <body>
@@ -43,100 +47,217 @@
     </div>
 
     <div class="container">
-        <h2 style="margin-bottom:24px; color:#0a2540;">Nieuw &amp; actueel — juni 2026</h2>
-        
-        <!-- HERO BLOG FEATURED -->
-        <div class="blog-card" style="margin-bottom:40px; border:3px solid #00a651;">
-            <div style="padding:24px; background:linear-gradient(90deg,#f0fdf4,#ffffff);">
-                <div class="tag" style="margin-bottom:12px;">NIEUW — HERO BLOG</div>
-                <h3 style="font-size:26px; line-height:1.25; margin-bottom:12px;"><a href="/loont-plug-in-thuisbatterij-2026.html" style="color:#0a2540; text-decoration:none;">Loont een plug-in thuisbatterij in 2026? Bereken of het voor jouw huis slim is</a></h3>
-                <p style="font-size:16px; color:#334155; margin-bottom:16px;">De salderingsregeling stopt in 2027. Eerlijke beslisgids: voor wie loont een plug-in batterij nog? Wat verandert er precies en wanneer verdien je hem terug? Inclusief scenario's en waarschuwingen wanneer je beter níét koopt.</p>
-                <a href="/loont-plug-in-thuisbatterij-2026.html" style="background:#00a651; color:white; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:600; display:inline-block;">Lees de volledige beslisgids →</a>
+
+        <!-- FEATURED HERO BLOG -->
+        <div class="section">
+            <h2 style="color:#00a651;">Nieuw — Juni 2026</h2>
+            <div class="blog-card featured">
+                <div class="blog-card-content">
+                    <div class="tag">Thuisbatterij · Beslisgids</div>
+                    <h3><a href="/loont-plug-in-thuisbatterij-2026.html" style="color:#0a2540; text-decoration:none;">Loont een plug-in thuisbatterij in 2026? Bereken of het voor jouw huis slim is</a></h3>
+                    <p>De salderingsregeling stopt in 2027. Eerlijke beslisgids: voor wie loont een plug-in batterij nog? Wat verandert er precies en wanneer verdien je hem terug? Inclusief scenario's en waarschuwingen wanneer je beter níét koopt.</p>
+                    <a href="/loont-plug-in-thuisbatterij-2026.html" style="margin-top:16px; background:#00a651; color:white; padding:10px 20px; border-radius:8px; text-decoration:none; font-weight:600; display:inline-block; align-self:flex-start;">Lees de volledige beslisgids →</a>
+                </div>
             </div>
         </div>
 
-        <h2 style="margin:40px 0 20px; color:#0a2540;">Alle artikelen</h2>
-        <div class="blog-grid">
-            <!-- Thuisbatterij -->
-            <a href="/thuisbatterij-plug-and-play-2026.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="tag">Thuisbatterij</div>
-                    <h3>Thuisbatterij plug-and-play 2026: is het rendabel vóór de salderingsstop?</h3>
-                    <p>Praktische uitleg of een plug-in batterij nog loont in 2026.</p>
-                </div>
-            </a>
-            <a href="/thuisbatterij-top5-2026.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="tag">Thuisbatterij</div>
-                    <h3>De beste plug-in thuisbatterijen van 2026</h3>
-                    <p>Eerlijk vergeleken: Zendure, Marstek, EcoFlow en meer.</p>
-                </div>
-            </a>
-            <a href="/loont-plug-in-thuisbatterij-2026.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="tag">Thuisbatterij · Beslisgids</div>
-                    <h3>Loont een plug-in thuisbatterij in 2026?</h3>
-                    <p>Eerlijke berekening + wanneer je hem beter níét koopt.</p>
-                </div>
-            </a>
-            <a href="/thuisbatterij-zonder-zonnepanelen-2026.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="tag">Thuisbatterij</div>
-                    <h3>Thuisbatterij zonder zonnepanelen: loont het met dynamisch contract?</h3>
-                    <p>Doorrekening puur op arbitrage.</p>
-                </div>
-            </a>
-
-            <!-- Saldering & Contracten -->
-            <a href="/saldering-2027.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="tag">Saldering 2027</div>
-                    <h3>Salderingsregeling stopt 2027 — wat betekent dit voor jou?</h3>
-                    <p>De belangrijkste veranderingen op een rij.</p>
-                </div>
-            </a>
-            <a href="/terugleververgoeding-2027.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="tag">Teruglevering</div>
-                    <h3>Terugleververgoeding na 2027: wat is je zonnestroom nog waard?</h3>
-                    <p>Concrete bedragen per woningtype.</p>
-                </div>
-            </a>
-            <a href="/dynamisch-contract.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="tag">Dynamisch contract</div>
-                    <h3>Dynamisch energiecontract 2026: slim combineren met zonnepanelen</h3>
-                    <p>Is het iets voor jou?</p>
-                </div>
-            </a>
-
-            <!-- Smarthome -->
-            <a href="/beste-slimme-stekker-2026.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="tag">Smarthome</div>
-                    <h3>Beste slimme stekker 2026 — welke moet je écht hebben?</h3>
-                    <p>WiFi vs Zigbee, 10A vs 16A, HomeWizard vs Tapo.</p>
-                </div>
-            </a>
-            <a href="/homewizard-energy-display-deel2.html" class="blog-card">
-                <div class="blog-card-content">
-                    <div class="tag">Getest</div>
-                    <h3>HomeWizard Energy Display na 2 weken: eerlijk eindoordeel</h3>
-                    <p>Home Assistant koppeling en gezinservaringen.</p>
-                </div>
-            </a>
+        <!-- ZONNEPANELEN & SALDERING -->
+        <div class="section">
+            <h2>☀️ Zonnepanelen &amp; Saldering 2027</h2>
+            <div class="blog-grid">
+                <a href="/saldering-2027.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Saldering 2027</div>
+                        <h3>Salderingsregeling stopt 2027 — wat betekent dit voor jou?</h3>
+                        <p>De belangrijkste veranderingen op een rij en wat je nú al kunt doen.</p>
+                    </div>
+                </a>
+                <a href="/terugleververgoeding-2027.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Teruglevering</div>
+                        <h3>Terugleververgoeding na 2027: wat is je zonnestroom nog waard?</h3>
+                        <p>Concrete bedragen per woningtype + tabel.</p>
+                    </div>
+                </a>
+                <a href="/terugverdientijd-zonnepanelen-2026.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Zonnepanelen</div>
+                        <h3>Terugverdientijd zonnepanelen 2026 berekenen</h3>
+                        <p>Hoeveel panelen heb je nodig en wanneer verdien je ze terug zonder saldering?</p>
+                    </div>
+                </a>
+            </div>
         </div>
+
+        <!-- THUISBATTERIJ -->
+        <div class="section">
+            <h2>🔋 Thuisbatterij</h2>
+            <div class="blog-grid">
+                <a href="/loont-plug-in-thuisbatterij-2026.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Thuisbatterij · Beslisgids</div>
+                        <h3>Loont een plug-in thuisbatterij in 2026?</h3>
+                        <p>Eerlijke berekening + wanneer je hem beter níét koopt.</p>
+                    </div>
+                </a>
+                <a href="/thuisbatterij-plug-and-play-2026.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Thuisbatterij</div>
+                        <h3>Thuisbatterij plug-and-play 2026: is het rendabel vóór de salderingsstop?</h3>
+                        <p>Praktische uitleg of een plug-in batterij nog loont in 2026.</p>
+                    </div>
+                </a>
+                <a href="/thuisbatterij-top5-2026.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Thuisbatterij</div>
+                        <h3>De beste plug-in thuisbatterijen van 2026</h3>
+                        <p>Eerlijk vergeleken: Zendure, Marstek, EcoFlow en meer.</p>
+                    </div>
+                </a>
+                <a href="/thuisbatterij-zonder-zonnepanelen-2026.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Thuisbatterij</div>
+                        <h3>Thuisbatterij zonder zonnepanelen: loont het met dynamisch contract?</h3>
+                        <p>Doorrekening puur op arbitrage.</p>
+                    </div>
+                </a>
+                <a href="/wanneer-thuisbatterij-niet-slim.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Thuisbatterij</div>
+                        <h3>Wanneer is een thuisbatterij níet slim? Eerlijk doorgerekend</h3>
+                        <p>De situaties waarin je beter niet koopt.</p>
+                    </div>
+                </a>
+                <a href="/plug-in-batterij-laden.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Thuisbatterij</div>
+                        <h3>Plug &amp; play batterij — laadt die van zonnestroom of het net?</h3>
+                        <p>Belangrijke verschillen uitgelegd.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ENERGIECONTRACTEN -->
+        <div class="section">
+            <h2>⚡ Energiecontracten</h2>
+            <div class="blog-grid">
+                <a href="/dynamisch-contract.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Dynamisch contract</div>
+                        <h3>Dynamisch energiecontract 2026: slim combineren met zonnepanelen</h3>
+                        <p>Is het iets voor jou?</p>
+                    </div>
+                </a>
+                <a href="/terugleverkosten.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Contracten</div>
+                        <h3>Terugleverkosten: wat je leverancier je niet vertelt</h3>
+                        <p>Gestaffelde kosten die bij 3.500 kWh teruglevering al €400+/jaar kunnen zijn.</p>
+                    </div>
+                </a>
+                <a href="/energiecontract-vergelijken-2026.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Contracten</div>
+                        <h3>Energiecontract vergelijken 2026 — vast, variabel of dynamisch</h3>
+                        <p>Welke keuze past bij jouw situatie?</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- SMARTHOME & DIY -->
+        <div class="section">
+            <h2>🏠 Smarthome &amp; DIY</h2>
+            <div class="blog-grid">
+                <a href="/beste-slimme-stekker-2026.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Smarthome</div>
+                        <h3>Beste slimme stekker 2026 — welke moet je écht hebben?</h3>
+                        <p>WiFi vs Zigbee, 10A vs 16A, HomeWizard vs Tapo. Eerlijk vergeleken.</p>
+                    </div>
+                </a>
+                <a href="/homewizard-energy-display-deel2.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Getest</div>
+                        <h3>HomeWizard Energy Display na 2 weken: eerlijk eindoordeel</h3>
+                        <p>Home Assistant koppeling, gezinservaringen en mijn eerlijke conclusie.</p>
+                    </div>
+                </a>
+                <a href="/kwartierprijzen-slimme-stekker.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Smarthome</div>
+                        <h3>Kwartierprijzen + slimme stekker: automatisch besparen op dynamisch contract</h3>
+                        <p>96 tarieven per dag — laat apparaten automatisch draaien op de goedkoopste kwartieren.</p>
+                    </div>
+                </a>
+                <a href="/smarthome-p1-meter.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Smarthome</div>
+                        <h3>P1 meter koppelen aan Home Assistant — stap voor stap</h3>
+                        <p>Zo doe je dat.</p>
+                    </div>
+                </a>
+                <a href="/homeassistant-energie-besparen.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Smarthome</div>
+                        <h3>Home Assistant energie besparen: peakshaving, boiler &amp; slimme automatiseringen</h3>
+                        <p>Praktische automatiseringen die écht geld opleveren.</p>
+                    </div>
+                </a>
+                <a href="/slimme-thermostaat-installeren.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Smarthome</div>
+                        <h3>Slimme thermostaat installeren — van Honeywell tot Tado</h3>
+                        <p>Wat werkt écht voor gezinnen.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- OVERIG -->
+        <div class="section">
+            <h2>📖 Overig &amp; Handig</h2>
+            <div class="blog-grid">
+                <a href="/netcongestie-uitgelegd.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Uitleg</div>
+                        <h3>Netcongestie uitgelegd voor gewone mensen</h3>
+                        <p>Wat is het en wat betekent het voor jou?</p>
+                    </div>
+                </a>
+                <a href="/smarthome-uitleg.html" class="blog-card">
+                    <div class="blog-card-content">
+                        <div class="tag">Smarthome</div>
+                        <h3>WiFi, Zigbee of Matter — wat kies jij?</h3>
+                        <p>Volledige uitleg van de protocollen.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
     </div>
 
     <footer class="footer">
-        <div class="footer-inner" style="max-width:1200px; margin:0 auto; padding:0 20px;">
+        <div class="footer-inner">
             <div>
                 <span style="color:white; font-weight:700; font-size:20px;">⚡ StekkerSlim</span><br>
-                <span style="font-size:13px;">Eerlijke energietips voor Nederlandse gezinnen.</span>
+                <span style="font-size:13px;">Eerlijke energietips voor Nederlandse gezinnen. Geen verborgen agenda.</span>
             </div>
             <div>
-                <a href="/blog.html" style="color:#cbd5e1; text-decoration:none;">Blog</a><br>
-                <a href="/calculator-thuisbatterij.html" style="color:#cbd5e1; text-decoration:none;">Thuisbatterij calculator</a>
+                <strong style="color:#cbd5e1;">Calculators</strong><br>
+                <a href="/calculator-thuisbatterij.html">Thuisbatterij</a><br>
+                <a href="/calculator-zonnepanelen.html">Zonnepanelen</a>
+            </div>
+            <div>
+                <strong style="color:#cbd5e1;">Artikelen</strong><br>
+                <a href="/saldering-2027.html">Saldering 2027</a><br>
+                <a href="/dynamisch-contract.html">Dynamisch contract</a>
+            </div>
+            <div>
+                <strong style="color:#cbd5e1;">StekkerSlim</strong><br>
+                <a href="/over-ons.html">Over ons</a><br>
+                <a href="/blog.html">Blog</a>
             </div>
         </div>
         <div style="text-align:center; margin-top:40px; font-size:12px; opacity:0.6;">
