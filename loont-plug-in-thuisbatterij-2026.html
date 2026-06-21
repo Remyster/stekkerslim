@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Loont een plug-in thuisbatterij in 2026 nog, nu de salderingsregeling stopt in 2027? Eerlijke beslisgids met terugverdientijd, voor wie het slim is en wanneer je het beter niet koopt. Inclusief rekenvoorbeelden.">
+    <title>Loont een plug-in thuisbatterij in 2026? Bereken of het voor jouw huis slim is | StekkerSlim.nl</title>
+    <link rel="canonical" href="https://stekkerslim.nl/loont-plug-in-thuisbatterij-2026.html">
+    <meta property="og:title" content="Loont een plug-in thuisbatterij in 2026? Bereken of het voor jouw huis slim is">
+    <meta property="og:description" content="Eerlijke beslisgids: voor wie loont een plug-in thuisbatterij nog in 2026? Wat verandert er in 2027 en wanneer verdien je hem terug? Inclusief scenario's en waarschuwingen.">
+    <meta property="og:image" content="https://stekkerslim.nl/og-image.png">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://stekkerslim.nl/loont-plug-in-thuisbatterij-2026.html">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --groen: #00a651;
+            --navy: #0a2540;
+            --licht: #f8fafc;
+            --grijs: #64748b;
+            --wit: #ffffff;
+            --oranje: #f59e0b;
+            --rood: #ef4444;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', system_ui, sans-serif; line-height: 1.7; color: #1e2937; background: var(--licht); }
+        h1, h2, h3, h4 { font-family: 'Outfit', system_ui, sans-serif; font-weight: 700; line-height: 1.2; color: var(--navy); }
+        .nav { position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0; z-index: 100; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; color: var(--navy); text-decoration: none; }
+        .logo span { color: var(--groen); }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { color: #334155; text-decoration: none; font-weight: 500; }
+        .nav-links a:hover { color: var(--groen); }
+        .btn-primary { background: var(--groen); color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.2s; }
+        .btn-primary:hover { background: #008c44; transform: translateY(-1px); }
+        .page-hero { background: linear-gradient(135deg, #0a2540 0%, #1e3a5f 100%); color: white; padding: 60px 20px 50px; }
+        .page-hero-inner { max-width: 820px; margin: 0 auto; }
+        .breadcrumb { font-size: 14px; opacity: 0.85; margin-bottom: 16px; }
+        .breadcrumb a { color: white; text-decoration: none; }
+        .article-tag { display: inline-block; background: rgba(0,166,81,0.15); color: #00a651; padding: 4px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+        h1 { font-size: 42px; margin-bottom: 16px; line-height: 1.15; }
+        .article-meta { opacity: 0.9; font-size: 15px; }
+        .article-body { max-width: 820px; margin: 0 auto; padding: 50px 20px; }
+        .toc { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 40px; }
+        .toc h4 { margin-bottom: 12px; font-size: 15px; }
+        .toc ol { padding-left: 20px; }
+        .toc li { margin-bottom: 8px; }
+        .toc a { color: #334155; text-decoration: none; }
+        .toc a:hover { color: var(--groen); }
+        h2 { font-size: 28px; margin: 48px 0 16px; }
+        h3 { font-size: 22px; margin: 32px 0 12px; }
+        p { margin-bottom: 18px; }
+        ul, ol { margin-bottom: 20px; padding-left: 24px; }
+        li { margin-bottom: 8px; }
+        .highlight-box { background: #f0fdf4; border-left: 5px solid var(--groen); padding: 20px 24px; border-radius: 8px; margin: 28px 0; }
+        .warning-box { background: #fffbeb; border-left: 5px solid var(--oranje); padding: 20px 24px; border-radius: 8px; margin: 28px 0; }
+        .danger-box { background: #fef2f2; border-left: 5px solid var(--rood); padding: 20px 24px; border-radius: 8px; margin: 28px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 24px 0; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background: #f8fafc; font-weight: 600; }
+        .scenario-table td:first-child { font-weight: 600; }
+        .related-articles { background: white; padding: 50px 20px; border-top: 1px solid #e2e8f0; }
+        .related-inner { max-width: 1200px; margin: 0 auto; }
+        .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 24px; }
+        .related-card { border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; text-decoration: none; color: inherit; transition: all 0.2s; }
+        .related-card:hover { border-color: var(--groen); box-shadow: 0 4px 12px rgba(0,166,81,0.1); }
+        .cta-section { background: var(--navy); color: white; padding: 60px 20px; text-align: center; }
+        .cta-section h2 { color: white; margin-bottom: 12px; }
+        .footer { background: #0f172a; color: #94a3b8; padding: 50px 20px 30px; font-size: 14px; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+        .footer a { color: #cbd5e1; text-decoration: none; }
+        .footer a:hover { color: white; }
+        .disclaimer-box { font-size: 13px; color: #64748b; background: #f8fafc; padding: 16px 20px; border-radius: 8px; margin-top: 40px; }
+        @media (max-width: 768px) { h1 { font-size: 32px; } .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+    <!-- Nav -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="logo">
+                <span>⚡</span> StekkerSlim
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Calculators</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="/smarthome-producten.html">Smarthome</a></li>
+                <li><a href="/vragen.html">Stel een vraag</a></li>
+            </ul>
+            <a href="/calculator-thuisbatterij.html" class="btn-primary">Bereken jouw besparing</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="page-hero">
+        <div class="page-hero-inner">
+            <div class="breadcrumb"><a href="/">Home</a> › <a href="/blog.html">Blog</a> › Thuisbatterij</div>
+            <div class="article-tag">Thuisbatterij · Beslisgids 2026</div>
+            <h1>Loont een plug-in thuisbatterij in 2026?<br>Bereken of het voor jouw huis slim is</h1>
+            <p class="article-meta">Door Remy Egberts · 21 juni 2026 · 13 min lezen · Bijgewerkt vandaag</p>
+        </div>
+    </div>
+
+    <div class="article-body">
+        <div class="toc">
+            <h4>In dit artikel</h4>
+            <ol>
+                <li><a href="#wat-verandert-2027">Wat verandert er precies in 2027?</a></li>
+                <li><a href="#hoe-werkt-plug-in">Hoe werkt een plug-in thuisbatterij?</a></li>
+                <li><a href="#voor-wie-slim">Voor welke huishoudens is het écht slim?</a></li>
+                <li><a href="#terugverdientijd">Wanneer verdien je hem terug?</a></li>
+                <li><a href="#plug-in-vs-vaste">Plug-in vs vaste thuisbatterij</a></li>
+                <li><a href="#dynamisch-contract">Slim combineren met dynamisch contract</a></li>
+                <li><a href="#wanneer-niet">Wanneer moet je het juist NIET kopen?</a></li>
+            </ol>
+        </div>
+
+        <p><strong>De salderingsregeling stopt op 1 januari 2027.</strong> Daarna krijg je nog maar €0,03 tot €0,09 per teruggeleverde kWh in plaats van het volle stroomtarief van ~€0,26. Veel mensen met zonnepanelen vragen zich nu af: moet ik snel een plug-in thuisbatterij kopen om mijn zonnestroom zelf te gebruiken?</p>
+
+        <p>Ik heb zelf zonnepanelen op een huurwoning en reken alles eerlijk door. Hieronder leg ik zonder marketing precies uit voor wie een plug-in batterij in 2026 nog loont, wanneer je hem terugverdient en — belangrijker — wanneer je hem beter níét koopt.</p>
+
+        <h2 id="wat-verandert-2027">Wat verandert er precies per 1 januari 2027?</h2>
+        <p>Vanaf 2027 mag je teruggeleverde stroom niet meer 1-op-1 aftrekken van je verbruik. Je krijgt een lagere terugleververgoeding. Die ligt naar verwachting tussen de <strong>€0,03 en €0,09 per kWh</strong>, afhankelijk van je leverancier en contract.</p>
+        
+        <div class="highlight-box">
+            <strong>Praktisch voorbeeld:</strong> Bij 2.500 kWh teruglevering per jaar verlies je straks €400 tot €575 per jaar aan salderingsvoordeel. Een plug-in batterij kan een groot deel van die stroom opslaan voor eigen gebruik 's avonds — en dat is direct geld waard.
+        </div>
+
+        <p>Lees ook: <a href="/saldering-2027.html">Salderingsregeling stopt 2027 — wat betekent dit voor jou?</a> en <a href="/terugleververgoeding-2027.html">Terugleververgoeding na 2027: wat is je zonnestroom nog waard?</a></p>
+
+        <h2 id="hoe-werkt-plug-in">Hoe werkt een plug-in thuisbatterij eigenlijk?</h2>
+        <p>Een plug-in batterij (zoals Zendure, Marstek of EcoFlow) is letterlijk plug & play. Je steekt hem in het stopcontact, koppelt hem via WiFi of app aan je omvormer of P1 meter, en hij slaat automatisch overtollige zonnestroom op. Geen installateur, geen vergunning, geen grote investering (vanaf ± €700-€1.200 voor 2-5 kWh).</p>
+
+        <p>Het grote voordeel ten opzichte van een vaste thuisbatterij: je kunt hem meenemen als je verhuist en hij is veel goedkoper in aanschaf. Het nadeel: iets lager rendement en vaak iets minder vermogen.</p>
+
+        <h2 id="voor-wie-slim">Voor welke huishoudens is het écht slim in 2026?</h2>
+        <p>Een plug-in batterij loont vooral als je aan deze 3 voorwaarden voldoet:</p>
+        <ul>
+            <li>Je levert nu veel stroom terug (meer dan 1.500-2.000 kWh/jaar)</li>
+            <li>Je hebt 's avonds en 's nachts nog fors verbruik (warmtepomp, EV, droger, vaatwasser, verlichting)</li>
+            <li>Je hebt (of overweegt) een dynamisch energiecontract + slimme sturing (Home Assistant of slimme stekkers)</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>Realistisch scenario:</strong> Bij een gemiddeld gezin met 10 panelen (3.500 kWh opwek) en 4.000 kWh verbruik kun je met een 5 kWh plug-in batterij je zelfverbruik verhogen van ~35% naar 65-75%. Dat scheelt na 2027 honderden euro's per jaar.
+        </div>
+
+        <h2 id="terugverdientijd">Wanneer verdien je een plug-in batterij terug?</h2>
+        <p>Dit is de meest gestelde vraag. Hier een eerlijk overzicht op basis van actuele prijzen (juni 2026):</p>
+
+        <table class="scenario-table">
+            <tr><th>Scenario</th><th>Terugverdientijd</th><th>Opmerking</th></tr>
+            <tr><td>Hoog teruglevering + dynamisch contract + slimme sturing</td><td>3,5 – 5 jaar</td><td>Beste combinatie</td></tr>
+            <tr><td>Gemiddeld gezin, vast contract</td><td>5,5 – 7,5 jaar</td><td>Redelijk, maar minder interessant</td></tr>
+            <tr><td>Laag avondverbruik, weinig teruglevering</td><td>8+ jaar of nooit</td><td>Vaak niet rendabel</td></tr>
+            <tr><td>Alleen arbitrage op dynamisch (geen zonnepanelen)</td><td>6 – 9 jaar</td><td>Alleen interessant bij grote batterij</td></tr>
+        </table>
+
+        <p><strong>Belangrijk:</strong> Deze tijden gelden alleen als je de batterij slim gebruikt. Zonder slimme sturing (P1 meter + Home Assistant of app-automatiseringen) daalt het rendement fors.</p>
+
+        <h2 id="plug-in-vs-vaste">Plug-in batterij vs vaste thuisbatterij — welke kies je?</h2>
+        <p>Een plug-in batterij is ideaal als je:</p>
+        <ul>
+            <li>Huurder bent of binnen 5-7 jaar wilt verhuizen</li>
+            <li>Geen zin hebt in een grote investering en installatie</li>
+            <li>Alleen je eigen zonnestroom wilt opslaan (niet per se peakshaving op het net)</li>
+        </ul>
+        <p>Een vaste (DC) thuisbatterij is interessanter bij nieuwbouw, grote installaties of als je écht maximale zelfvoorziening en peakshaving wilt. Maar reken op €4.000-€8.000 + installatie.</p>
+
+        <p>Lees ook: <a href="/thuisbatterij-zonder-zonnepanelen-2026.html">Thuisbatterij zonder zonnepanelen: loont het met een dynamisch contract?</a></p>
+
+        <h2 id="dynamisch-contract">Slim combineren met een dynamisch contract</h2>
+        <p>Dit is momenteel de sterkste combinatie. Met een dynamisch contract (Frank Energie, Tibber, Vandebron) laad je de batterij op als de prijs laag of negatief is, en gebruik je hem als de prijs hoog is. Combineer dat met een P1 meter + Home Assistant en je kunt volledig automatisch besparen.</p>
+
+        <div class="highlight-box">
+            <strong>Mijn eigen setup:</strong> Ik laad de batterij overdag bij veel zon of 's nachts bij lage prijzen, en gebruik de opgeslagen stroom in de avondpiek. Dat scheelt mij dit jaar al honderden euro's — en dat wordt alleen maar meer na 2027.
+        </div>
+
+        <p>Tip: Lees <a href="/dynamisch-contract.html">Dynamisch energiecontract 2026</a> en <a href="/kwartierprijzen-slimme-stekker.html">Kwartierprijzen + slimme stekker: automatisch besparen</a></p>
+
+        <h2 id="wanneer-niet">Wanneer moet je een plug-in batterij juist NIET kopen?</h2>
+        <div class="danger-box">
+            <p><strong>Wees eerlijk tegen jezelf:</strong></p>
+            <ul>
+                <li>Je levert minder dan 1.200 kWh per jaar terug</li>
+                <li>Je hebt nauwelijks verbruik 's avonds en 's nachts</li>
+                <li>Je wilt geen app of automatisering gebruiken</li>
+                <li>Je hebt al een hele hoge eigenverbruik (boven 70%)</li>
+                <li>Je verwacht binnen 3 jaar te verhuizen en de batterij niet mee te nemen</li>
+            </ul>
+            <p>In deze gevallen is de terugverdientijd vaak te lang of het gedoe niet waard. Dan is een vast contract of simpelweg meer zelfverbruik via slimme stekkers vaak slimmer.</p>
+        </div>
+
+        <h2>Conclusie: loont het in 2026 nog?</h2>
+        <p>Ja, voor veel huishoudens met zonnepanelen die nu nog fors terugleveren en 's avonds stroom gebruiken, is een plug-in thuisbatterij in 2026 een slimme zet — mits je hem goed gebruikt in combinatie met een dynamisch contract en slimme sturing.</p>
+        <p>Maar het is geen no-brainer. Doe eerst de berekening voor jouw situatie. Veel mensen kopen nu impulsief en ontdekken later dat het rendement tegenvalt omdat ze geen slim verbruikspatroon hebben.</p>
+
+        <div class="cta-inline" style="background:#f0fdf4; padding:24px; border-radius:12px; margin:40px 0; text-align:center;">
+            <h3 style="margin-bottom:12px;">Bereken exact wat een plug-in batterij jou oplevert</h3>
+            <p>Onze gratis thuisbatterij calculator houdt rekening met saldering 2027, jouw verbruik en een dynamisch contract.</p>
+            <a href="/calculator-thuisbatterij.html" class="btn-primary" style="margin-top:12px;">Start de thuisbatterij calculator →</a>
+        </div>
+
+        <p>Wil je de beste plug-in modellen van 2026 vergelijken? Bekijk dan <a href="/thuisbatterij-top5-2026.html">de beste plug-in thuisbatterijen van 2026</a>.</p>
+
+        <div class="disclaimer-box">
+            <strong>Disclaimer:</strong> Prijzen, terugverdientijden en besparingen in dit artikel zijn indicatief en gebaseerd op gemiddelde Nederlandse huishoudens (juni 2026). Jouw situatie kan afwijken. StekkerSlim.nl ontvangt mogelijk affiliate commissies bij aankoop via links, maar dit beïnvloedt onze adviezen nooit. We schrijven ook over opties waar we niets aan verdienen en zeggen eerlijk wanneer iets niet loont.
+        </div>
+
+        <!-- FAQ -->
+        <h2 style="margin-top:60px;">Veelgestelde vragen</h2>
+        
+        <details style="margin-bottom:16px; background:white; padding:16px 20px; border-radius:8px; border:1px solid #e2e8f0;">
+            <summary style="font-weight:600; cursor:pointer;">Hoeveel bespaar ik echt na 2027 met een plug-in batterij?</summary>
+            <p style="margin-top:12px;">Bij 2.000-3.000 kWh eigenverbruik extra per jaar scheelt dat na 2027 €300-€600 per jaar, afhankelijk van je teruglevertarief. De batterij verdient zichzelf vaak terug in 4-6 jaar.</p>
+        </details>
+        
+        <details style="margin-bottom:16px; background:white; padding:16px 20px; border-radius:8px; border:1px solid #e2e8f0;">
+            <summary style="font-weight:600; cursor:pointer;">Kan ik een plug-in batterij meenemen als ik verhuis?</summary>
+            <p style="margin-top:12px;">Ja, dat is juist een groot voordeel. Hij is niet vast geïnstalleerd. Zorg wel dat je de app en WiFi opnieuw instelt op het nieuwe adres.</p>
+        </details>
+
+        <details style="margin-bottom:16px; background:white; padding:16px 20px; border-radius:8px; border:1px solid #e2e8f0;">
+            <summary style="font-weight:600; cursor:pointer;">Is een plug-in batterij veilig?</summary>
+            <p style="margin-top:12px;">Ja, mits je een A-merk koopt met goede keurmerken (CE, VDE, etc.). Goedkope no-name batterijen van AliExpress of Temu raden we sterk af vanwege brandveiligheid en garantie.</p>
+        </details>
+    </div>
+
+    <!-- Related -->
+    <div class="related-articles">
+        <div class="related-inner">
+            <h3>Meer lezen over thuisbatterijen & saldering</h3>
+            <div class="related-grid">
+                <a href="/thuisbatterij-plug-and-play-2026.html" class="related-card">
+                    <strong>Thuisbatterij plug-and-play 2026</strong><br>
+                    <span style="font-size:14px; color:#64748b;">Is het rendabel vóór de salderingsstop?</span>
+                </a>
+                <a href="/thuisbatterij-zonder-zonnepanelen-2026.html" class="related-card">
+                    <strong>Thuisbatterij zonder zonnepanelen</strong><br>
+                    <span style="font-size:14px; color:#64748b;">Loont het met een dynamisch contract?</span>
+                </a>
+                <a href="/wanneer-thuisbatterij-niet-slim.html" class="related-card">
+                    <strong>Wanneer is een thuisbatterij níet slim?</strong><br>
+                    <span style="font-size:14px; color:#64748b;">Eerlijk doorgerekend</span>
+                </a>
+                <a href="/saldering-2027.html" class="related-card">
+                    <strong>Salderingsregeling stopt 2027</strong><br>
+                    <span style="font-size:14px; color:#64748b;">Wat betekent dit voor jou?</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+        <div style="max-width:620px; margin:0 auto;">
+            <h2 style="color:white; font-size:28px;">Bereken nu of een plug-in batterij voor jou loont</h2>
+            <p style="opacity:0.9; margin:16px 0 24px;">Onze gratis calculator houdt rekening met jouw verbruik, opwek, saldering 2027 en dynamische tarieven.</p>
+            <a href="/calculator-thuisbatterij.html" class="btn-primary" style="font-size:18px; padding:16px 32px;">Start de thuisbatterij calculator →</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                    <span style="font-size:22px; color:#00a651;">⚡</span>
+                    <span style="color:white; font-weight:700; font-size:20px;">StekkerSlim</span>
+                </div>
+                <p style="font-size:13px; max-width:260px;">Eerlijke energietips voor Nederlandse gezinnen. Geen verborgen agenda.</p>
+            </div>
+            <div>
+                <strong style="color:#cbd5e1; display:block; margin-bottom:12px;">Calculators</strong>
+                <a href="/calculator-thuisbatterij.html" style="display:block; margin-bottom:6px;">Thuisbatterij</a>
+                <a href="/calculator-zonnepanelen.html" style="display:block; margin-bottom:6px;">Zonnepanelen</a>
+                <a href="/calculator-energiekosten.html" style="display:block;">Energiekosten</a>
+            </div>
+            <div>
+                <strong style="color:#cbd5e1; display:block; margin-bottom:12px;">Artikelen</strong>
+                <a href="/saldering-2027.html" style="display:block; margin-bottom:6px;">Saldering 2027</a>
+                <a href="/dynamisch-contract.html" style="display:block; margin-bottom:6px;">Dynamisch contract</a>
+                <a href="/thuisbatterij-top5-2026.html" style="display:block;">Beste plug-in batterijen</a>
+            </div>
+            <div>
+                <strong style="color:#cbd5e1; display:block; margin-bottom:12px;">StekkerSlim</strong>
+                <a href="/over-ons.html" style="display:block; margin-bottom:6px;">Over ons</a>
+                <a href="/privacy.html" style="display:block; margin-bottom:6px;">Privacy</a>
+                <a href="/blog.html" style="display:block;">Blog</a>
+            </div>
+        </div>
+        <div style="max-width:1200px; margin:40px auto 0; padding-top:30px; border-top:1px solid #334155; font-size:12px; text-align:center; opacity:0.7;">
+            © 2026 StekkerSlim.nl — Remy Egberts. Dit artikel bevat affiliate links. Ons advies blijft onafhankelijk.
+        </div>
+    </footer>
+</body>
+</html>
