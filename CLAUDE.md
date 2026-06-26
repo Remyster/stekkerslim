@@ -98,7 +98,8 @@ Independer, Eneco, Milieucentraal
 | Kwartierprijzen slimme stekker | `kwartierprijzen-slimme-stekker.html` | Live |
 | Thuisbatterij energielabel 2026 | `thuisbatterij-energielabel-2026.html` | Live |
 | Plug-in batterij laden | `plug-in-batterij-laden.html` | Live |
-| Thuisbatterij zonder zonnepanelen | `thuisbatterij-zonder-zonnepanelen-2026.html` | Live ✅ NIEUW |
+| Thuisbatterij zonder zonnepanelen | `thuisbatterij-zonder-zonnepanelen-2026.html` | Live |
+| Stroomprijs record juni 2026 | `stroomprijs-record-juni-2026.html` | Live ✅ NIEUW |
 | Over ons | `over-ons.html` | Live |
 | Privacy | `privacy.html` | Live |
 | Vragen | `vragen.html` | Live |
@@ -107,6 +108,12 @@ Independer, Eneco, Milieucentraal
 
 ## Wat er recent gedaan is
 *(juni 2026 — meest recent bovenaan)*
+
+### 26 juni 2026 — Nieuwe pagina stroomprijs record + nieuwe onderkant sitebreed + smarthome hub rebuild
+- **stroomprijs-record-juni-2026.html**: Nieuwe pagina live. Onderwerp: negatieve stroomprijzen op 24 juni 2026 (€1,20/kWh piek). Checklist doorlopen: og:image fix, hamburger nav, sitemap.xml, blog.html (Energiecontracten sectie), interne link vanuit dynamisch-contract.html.
+- **Nieuwe onderkant sitebreed**: Alle 26 artikelpagina's voorzien van nieuw bottom-patroon: compacte pill-links (thema-relevant per pagina, 6 stuks) + 2-koloms CTA-blok (affiliate) + disclaimer-box. Alles op `#F4F7F2` achtergrond, geen harde kleurbreuk. Verving de oude card-grid "Lees ook" secties.
+- **smarthome-producten.html volledig herbouwd als hub-pagina**: Van 843 regels productcatalogus (emoji product-images, 3-koloms raster, 6 categorieën, 20+ cards) naar clean hub-page (~350 regels). Nieuwe structuur: keuzehulp-tiles (6 stuks met anchor-links), 4 categorieën (meten / schakelen / thermostaat / opslaan), per categorie 1 hoofdkeuze + 1 alternatief + gids-link, standaard onderkant. Alle amzn.to shortlinks verwijderd: Marstek gebruikt volledige `amazon.nl/dp/B0FN7SDXMR?tag=stekkerslim-21`, overige Amazon-buttons vervangen door Bol.com/Coolblue/HomeWizard affiliate links. Mobile-menu div toegevoegd (ontbrak in oude versie).
+- **C:\Users\remy\Downloads\ai check\\**: Map aangemaakt met 12 product-pagina's voor externe AI-review (smarthome-producten, beste-slimme-stekker, smart-lampen, slimme-stekkers, slimme-thermostaat, homewizard reviews ×2, thuisbatterij-top5, plug-and-play, zonder-zonnepanelen, plug-in-batterij-laden, smarthome-p1-meter, smarthome-uitleg).
 
 ### 8 juni 2026 — Nieuwe pagina thuisbatterij zonder zonnepanelen + calculator fixes
 - **thuisbatterij-zonder-zonnepanelen-2026.html**: Nieuwe pagina live (8 min leestijd). Eerlijke rekensom arbitrage op dynamisch contract, drie product cards (HomeWizard ❌ niet geschikt, Zendure ✅ met Daisycon koop-knop, Marstek ✅ met Amazon koop-knop), CTA-blok Frank Energie + Vandebron, FAQPage schema, BreadcrumbList, Article schema.
@@ -173,16 +180,24 @@ Independer, Eneco, Milieucentraal
 ---
 
 ## Open punten
-*(Bijgewerkt: 8 juni 2026)*
+*(Bijgewerkt: 26 juni 2026)*
 
 ### URGENT — volgende sessie fixen
-*(geen open urgent items op 8 juni 2026)*
+*(geen open urgent items op 26 juni 2026)*
 
 ### Nog te doen
 - CVtotaal (Daisycon 14618): approved maar links nog aanvragen — toevoegen zodra links binnen zijn
 - Zendure NL (Daisycon 20779): al gebruikt op site (glp8.net) maar nog pending approval — opvolgen
 - Gaslicht.com: staat op slechts 2 pagina's — kan uitgebreid naar energiecontract-vergelijken + dynamisch-contract
-- Sitemap resubmitten in Google Search Console na push van 8 juni (2 nieuwe pagina's in recente sessies)
+- Sitemap resubmitten in Google Search Console (stroomprijs-record-juni-2026.html toegevoegd 26 juni)
+- Blog-artikelen product-prijzen nalopen: smart-lampen, slimme-stekkers, slimme-thermostaat + overige pagina's in ai check map — amzn.to shortlinks vervangen door volledige amazon.nl/dp/... links
+- Homepage: redesign voor meer overzicht en strakker uiterlijk (gepland na smarthome rebuild)
+
+### Gedaan (26 juni 2026)
+- ✅ stroomprijs-record-juni-2026.html: nieuwe pagina live + volledige checklist
+- ✅ Nieuwe onderkant (pills + CTA + disclaimer) uitgerold naar alle 26 artikelpagina's
+- ✅ smarthome-producten.html: volledig herbouwd als hub-pagina (4 categorieën, keuzehulp-tiles, 2 cards per categorie)
+- ✅ ai check map aangemaakt in Downloads met 12 product-pagina's voor review
 
 ### Gedaan (8 juni 2026)
 - ✅ thuisbatterij-zonder-zonnepanelen-2026.html: nieuwe pagina live
