@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Project Overzicht
-*Laatst bijgewerkt: 8 juni 2026*
+*Laatst bijgewerkt: 26 juni 2026*
 
 ## Wat is dit?
 Statische HTML/CSS website over energie besparen voor Nederlandse gezinnen. Geen framework, geen build-stap — losse `.html` bestanden via GitHub Pages op **stekkerslim.nl**.
@@ -47,10 +47,14 @@ GA4: `G-RKF36BF7DB` — staat in alle HTML bestanden.
 | Innova Energie | Daisycon 15501 | `fr135.net/c/?si=15501&li=1670745&wi=419188&ws=` |
 | Zendure NL | Daisycon 20779 | `glp8.net/c/?si=20779&li=1881195&wi=419188&ws=&dl=products%2Fzendure-solarflow-2400-ac-plus%3Fvariant%3D48055928717567` ⚠️ PENDING approval |
 
-### Bekende product Amazon-links
-| Product | Amazon ASIN | Shortlink |
-|---------|------------|-----------|
-| Marstek Venus E 3.0 | B0FN7SDXMR | `amazon.nl/dp/B0FN7SDXMR?tag=stekkerslim-21` |
+### Bekende product links
+| Product | Kanaal | Link | Prijs |
+|---------|--------|------|-------|
+| Marstek Venus E 3.0 | Bol.com (affiliate) | `partner.bol.com/click/...` (zie plug-in-batterij-laden.html) | €1.389 |
+| Marstek Venus E 3.0 | Marstek.nl (direct, geen affiliate) | `marstek.nl/product/marstek-venus-e-3-0-plug-charge-thuisbatterij-5-12-kwh-incl-p1-meter/` | €1.299 |
+| Zendure SolarFlow 2400 AC+ | Daisycon 20779 (pending) | `glp8.net/c/?si=20779&li=1881195&wi=419188&ws=&dl=products%2Fzendure-solarflow-2400-ac-plus%3Fvariant%3D48055928717567` | €1.089 |
+
+⚠️ **Marstek Venus E 3.0 is NIET meer leverbaar via Amazon** (ASIN B0FN7SDXMR). Gebruik Bol.com (€1.389, affiliate) + Marstek.nl direct (€1.299, geen affiliate). Dit is doorgevoerd in plug-in-batterij-laden.html, thuisbatterij-top5-2026.html en thuisbatterij-plug-and-play-2026.html.
 
 ### Affiliate — PENDING
 - Zendure NL (Daisycon 20779) — al op site (glp8.net link), urgent goedkeuring opvolgen
@@ -108,6 +112,21 @@ Independer, Eneco, Milieucentraal
 
 ## Wat er recent gedaan is
 *(juni 2026 — meest recent bovenaan)*
+
+### 26 juni 2026 — Prijsupdates, homepage redesign, product buttons
+
+**Prijsupdates (AI check sessie):**
+- **smart-lampen.html**: WiZ E27 2-pack top3 €29,99 → €17,99; Philips Hue top3 link → tidd.ly/3SpRP45, prijs €142 → €168; WiZ product card "vanaf €17,99 (2 stuks)", Bol.com knop verwijderd; Tapo L535E 4-pack €80 → €56 (Coolblue), Amazon label "losse lamp €9,99", Bol.com knop verwijderd.
+- **homeassistant-energie-besparen.html**: "Slimme stekker Amazon" knop verwijderd uit Energy Socket tip (we praten over HomeWizard, niet generieke stekker).
+- **smarthome-p1-meter.html**: HomeWizard P1 meter prijs ~€40 → €24,95 (2 plekken); "Slimmemeterlezer" → "Slimme meterlezer" (correct Nederlands).
+- **beste-slimme-stekker-2026.html**: 16A set van 4 prijs €25–€40 → €28,25; Bol.com knop in product card verwijderd (dode link); Bol.com link in Directe Links verwijderd; vergelijkingstabel Tuya → €28,25.
+- **plug-in-batterij-laden.html**: Zendure €969 → €1.089; Marstek Amazon niet meer leverbaar → Bol.com (€1.389) + Marstek.nl direct (€1.299).
+- **thuisbatterij-top5-2026.html**: Zendure €969 → €1.089, prijs/kWh €403 → €454; Marstek prijs → €1.299–€1.389, prijs/kWh ~€234 → ~€254, knoppen Amazon verwijderd, Bol.com + Marstek.nl toegevoegd; vergelijkingstabel bijgewerkt.
+- **thuisbatterij-plug-and-play-2026.html**: Zendure €969 → €1.089; Marstek €1.299–€1.389, knoppen Bol.com + Marstek.nl.
+
+**Homepage redesign (index.html):**
+- Verwijderd: Actuele tarieven blok (gas/stroom/jaarrekening/saldering), "Waarom nu thuisbatterij" promo (3 cards), Review spotlight HomeWizard, FAQ (6 vragen), Blog grid (6 artikelen), Partners sectie (6 logo's), Contact sectie, Deel-knoppen (WhatsApp/Facebook/LinkedIn/X), Smarthome protocollen uitleg, Smarthome DIY-panel.
+- Toegevoegd: 3 thema-ingangen (🔋 Plug-in thuisbatterij met groene border / ⚡ Energiecontract / 🏠 Smarthome producten), 3 artikelen grid (saldering + dynamisch + thuisbatterij-top5) + "Bekijk alle artikelen" knop, affiliate sectie ingekort naar 3 cards (Energiekiezer, Frank Energie, Vattenfall).
 
 ### 26 juni 2026 — Nieuwe pagina stroomprijs record + nieuwe onderkant sitebreed + smarthome hub rebuild
 - **stroomprijs-record-juni-2026.html**: Nieuwe pagina live. Onderwerp: negatieve stroomprijzen op 24 juni 2026 (€1,20/kWh piek). Checklist doorlopen: og:image fix, hamburger nav, sitemap.xml, blog.html (Energiecontracten sectie), interne link vanuit dynamisch-contract.html.
@@ -183,17 +202,20 @@ Independer, Eneco, Milieucentraal
 *(Bijgewerkt: 26 juni 2026)*
 
 ### URGENT — volgende sessie fixen
-*(geen open urgent items op 26 juni 2026)*
+*(geen open urgent items)*
 
 ### Nog te doen
 - CVtotaal (Daisycon 14618): approved maar links nog aanvragen — toevoegen zodra links binnen zijn
 - Zendure NL (Daisycon 20779): al gebruikt op site (glp8.net) maar nog pending approval — opvolgen
 - Gaslicht.com: staat op slechts 2 pagina's — kan uitgebreid naar energiecontract-vergelijken + dynamisch-contract
 - Sitemap resubmitten in Google Search Console (stroomprijs-record-juni-2026.html toegevoegd 26 juni)
-- Blog-artikelen product-prijzen nalopen: smart-lampen, slimme-stekkers, slimme-thermostaat + overige pagina's in ai check map — amzn.to shortlinks vervangen door volledige amazon.nl/dp/... links
-- Homepage: redesign voor meer overzicht en strakker uiterlijk (gepland na smarthome rebuild)
+- smarthome-p1-meter.html Zigbee card (DIY Slimme meterlezer): nog geen knop of affiliate — beslissing open (verwijderen, tekst-only laten, of affiliate toevoegen)
+- Overige pagina's in ai check map nog nalopen op amzn.to shortlinks: slimme-stekkers.html, slimme-thermostaat-installeren.html (smart-lampen al gedaan)
 
 ### Gedaan (26 juni 2026)
+- ✅ index.html homepage redesign: 9+ secties verwijderd, 3 thema-ingangen, 3 artikelen, 3 affiliate cards
+- ✅ Prijsupdates: smart-lampen, homeassistant, smarthome-p1-meter, beste-slimme-stekker, plug-in-batterij-laden, thuisbatterij-top5, thuisbatterij-plug-and-play
+- ✅ Marstek Amazon niet meer leverbaar → Bol.com + Marstek.nl direct (3 pagina's bijgewerkt)
 - ✅ stroomprijs-record-juni-2026.html: nieuwe pagina live + volledige checklist
 - ✅ Nieuwe onderkant (pills + CTA + disclaimer) uitgerold naar alle 26 artikelpagina's
 - ✅ smarthome-producten.html: volledig herbouwd als hub-pagina (4 categorieën, keuzehulp-tiles, 2 cards per categorie)
@@ -238,7 +260,9 @@ Independer, Eneco, Milieucentraal
 - **Foto's P1inmeter.jpg / appscreenshot.jpg / doosdisplay.jpg**: ALLEEN gebruiken in `homewizard-energy-display-review.html` en `homewizard-energy-display-deel2.html`. Nooit elders — dit zijn review-foto's van de samenwerking met Tamara Huber.
 - **Gele urgency-banner stijl**: gebruik `background:#FEF3C7;border-bottom:1px solid #F59E0B`. Geen `linear-gradient(135deg,#FFD23F,#FFB800)`.
 - **Amazon links**: gebruik volledige links `amazon.nl/dp/[ASIN]?tag=stekkerslim-21`, geen amzn.to shortlinks (amzn.to/431bMjL is voor Tapo P410M, niet voor Marstek).
+- **Marstek Venus E 3.0**: NIET meer op Amazon. Gebruik Bol.com affiliate (€1.389) + Marstek.nl direct (€1.299, `rel="noopener"` zonder sponsored). Doorgevoerd in plug-in-batterij-laden, thuisbatterij-top5, thuisbatterij-plug-and-play.
 - **Calculator minimum tarief**: alle stroomtarief-sliders staan op min €0,08 (gefixt 8 juni 2026 — was 0,10–0,20, blokkeerde lage dynamische tarieven).
+- **Directe links (niet-affiliate)**: `rel="noopener"` alleen, geen `sponsored`. Geldt voor Marstek.nl, thuisbatterij.nl en andere niet-affiliate verkopers.
 
 ## Affiliate link patroon
 ```html
