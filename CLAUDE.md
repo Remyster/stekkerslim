@@ -97,13 +97,17 @@ Independer, Eneco, Milieucentraal
 | Wanneer thuisbatterij niet slim | `wanneer-thuisbatterij-niet-slim.html` | Live |
 | HomeWizard Energy Display review | `homewizard-energy-display-review.html` | Live |
 | HomeWizard Energy Display deel 2 | `homewizard-energy-display-deel2.html` | Live |
-| Dynamisch contract + zonnepanelen + batterij | `dynamisch-contract-zonnepanelen-thuisbatterij-2026.html` | Live |
+| Dynamisch contract + zonnepanelen + batterij | `dynamisch-contract-zonnepanelen-thuisbatterij.html` | Live |
 | Thuisbatterij plug-and-play 2026 | `thuisbatterij-plug-and-play-2026.html` | Live |
 | Kwartierprijzen slimme stekker | `kwartierprijzen-slimme-stekker.html` | Live |
 | Thuisbatterij energielabel 2026 | `thuisbatterij-energielabel-2026.html` | Live |
 | Plug-in batterij laden | `plug-in-batterij-laden.html` | Live |
 | Thuisbatterij zonder zonnepanelen | `thuisbatterij-zonder-zonnepanelen-2026.html` | Live |
-| Stroomprijs record juni 2026 | `stroomprijs-record-juni-2026.html` | Live ✅ NIEUW |
+| Stroomprijs record juni 2026 | `stroomprijs-record-juni-2026.html` | Live |
+| Loont plug-in thuisbatterij 2026 | `loont-plug-in-thuisbatterij-2026.html` | Live — 13 min, gepubliceerd 21 jun 2026 |
+| Netcongestie uitgelegd | `netcongestie-uitgelegd.html` | Live — 5 min, gepubliceerd jun 2026 |
+| Tapo P115 vs P410M review deel 1 | `tapo-p115-p410m-review.html` | Live — 5 min, gepubliceerd 27 mei 2026 (gratis ontvangen van Tapo) |
+| Tapo P115 vs P410M eindoordeel deel 2 | `tapo-p115-p410m-eindoordeel.html` | Live — 8 min, gepubliceerd 15 jun 2026 (gratis ontvangen van Tapo) |
 | Over ons | `over-ons.html` | Live |
 | Privacy | `privacy.html` | Live |
 | Vragen | `vragen.html` | Live |
