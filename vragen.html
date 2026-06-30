@@ -98,7 +98,15 @@
     .nav-search-result-title{font-weight:600;font-size:0.85rem;margin-bottom:2px}
     .nav-search-result-desc{font-size:0.75rem;color:var(--grijs)}
     .nav-search-empty{padding:16px;text-align:center;color:var(--grijs);font-size:0.85rem}
-    </style>
+        .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:200}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+    .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#ffffff;z-index:150;padding:16px;box-shadow:0 8px 32px rgba(0,0,0,.1);flex-direction:column;gap:4px}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{padding:12px 16px;color:var(--navy);text-decoration:none;font-weight:600;font-size:0.95rem;border-radius:10px;transition:background .2s}
+    .mobile-menu a:hover{background:var(--licht)}
+    .mobile-menu .mob-cta{background:var(--groen);color:var(--navy)!important;margin-top:8px;text-align:center}
+    @media(max-width:900px){.nav-links{display:none!important}.hamburger{display:flex!important}}
+  </style>
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="StekkerSlim.nl" />
   <meta property="og:title" content="Stel Je Energievraag | StekkerSlim.nl" />
@@ -140,8 +148,26 @@
         <div class="nav-search-results" id="navSearchResults"></div>
       </div>
     </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="calculator-zonnepanelen.html" onclick="closeMenu()">☀️ Zonnepanelen</a>
+  <a href="calculator-thuisbatterij.html" onclick="closeMenu()">🔋 Thuisbatterij</a>
+  <a href="calculator-laadpaal.html" onclick="closeMenu()">🔌 Laadpaal</a>
+  <a href="calculator-energiekosten.html" onclick="closeMenu()">💡 Energiekosten</a>
+  <a href="calculator-warmtepomp.html" onclick="closeMenu()">🌡️ Warmtepomp</a>
+  <a href="blog.html" onclick="closeMenu()">📝 Blog & Artikelen</a>
+  <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome</a>
+  <a href="slimme-stekkers.html" onclick="closeMenu()">🔌 Slimme stekkers</a>
+  <a href="smart-lampen.html" onclick="closeMenu()">💡 Smart lampen</a>
+  <a href="smarthome-uitleg.html" onclick="closeMenu()">📖 Uitleg protocollen</a>
+  <a href="vragen.html" onclick="closeMenu()">❓ Stel een vraag</a>
+  <a href="over-ons.html" onclick="closeMenu()">👋 Over ons</a>
+  <a href="index.html#vergelijken" class="mob-cta" onclick="closeMenu()">⚡ Vergelijk contracten</a>
+</div>
 
 <div class="page-hero">
   <div class="page-hero-inner">
@@ -334,5 +360,9 @@ function doNavSearch(q){
 function navSearchKey(e){if(e.key==='Escape'){document.getElementById('navSearchBox').classList.remove('open');}}
 </script>
 <script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block";});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});m.addEventListener("mouseenter",function(){clearTimeout(t);});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});});})();</script>
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+</script>
 </body>
 </html>

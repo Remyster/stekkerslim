@@ -221,6 +221,21 @@
     </button>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="calculator-zonnepanelen.html" onclick="closeMenu()">☀️ Zonnepanelen</a>
+  <a href="calculator-thuisbatterij.html" onclick="closeMenu()">🔋 Thuisbatterij</a>
+  <a href="calculator-laadpaal.html" onclick="closeMenu()">🔌 Laadpaal</a>
+  <a href="calculator-energiekosten.html" onclick="closeMenu()">💡 Energiekosten</a>
+  <a href="calculator-warmtepomp.html" onclick="closeMenu()">🌡️ Warmtepomp</a>
+  <a href="blog.html" onclick="closeMenu()">📝 Blog & Artikelen</a>
+  <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome</a>
+  <a href="slimme-stekkers.html" onclick="closeMenu()">🔌 Slimme stekkers</a>
+  <a href="smart-lampen.html" onclick="closeMenu()">💡 Smart lampen</a>
+  <a href="smarthome-uitleg.html" onclick="closeMenu()">📖 Uitleg protocollen</a>
+  <a href="vragen.html" onclick="closeMenu()">❓ Stel een vraag</a>
+  <a href="over-ons.html" onclick="closeMenu()">👋 Over ons</a>
+  <a href="index.html#vergelijken" class="mob-cta" onclick="closeMenu()">⚡ Vergelijk contracten</a>
+</div>
 
 <div class="page-hero">
   <div class="page-hero-inner">
@@ -548,6 +563,8 @@ var _SP=[{"url": "calculator-zonnepanelen.html", "title": "Zonnepanelen calculat
 var _icons={"calculator":"🧮","smarthome":"🏠","home":"🏠","blog":"📝","thuis":"🔋","slimme":"⚡","beste":"⚡","plug":"🔌","warm":"🌡️","dynamisch":"📈","energie":"💡","saldering":"☀️","terug":"☀️","zonn":"☀️","vragen":"❓","over":"👤","privacy":"🔒"};
 function _icon(u){for(var k in _icons){if(u.indexOf(k)>-1)return _icons[k];}return "📄";}
 function _hl(t,q){if(!q)return t;var r=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');return t.replace(r,'<mark>$1</mark>');}
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
 function navSearchToggle(){
   var box=document.getElementById('navSearchBox');
   var ov=document.getElementById('navSearchOverlay');
