@@ -134,7 +134,7 @@
     "author": {"@type": "Person", "name": "Remy Egberts"},
     "publisher": {"@type": "Organization", "name": "StekkerSlim.nl", "url": "https://stekkerslim.nl"},
     "datePublished": "2026-01-01",
-    "dateModified": "2026-03-01",
+    "dateModified": "2026-07-13",
     "url": "https://stekkerslim.nl/homeassistant-energie-besparen.html",
     "mainEntityOfPage": "https://stekkerslim.nl/homeassistant-energie-besparen.html"
   }
@@ -146,16 +146,48 @@
     "itemListElement": [{"@type":"ListItem","position":1,"name":"StekkerSlim","item":"https://stekkerslim.nl"},{"@type":"ListItem","position":2,"name":"Home Assistant energie besparen","item":"https://stekkerslim.nl/homeassistant-energie-besparen.html"}]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wat is het verschil tussen uur- en kwartierprijzen voor automatisering?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Met uurprijzen stuurt je automatisering op 24 momenten per dag, met kwartierprijzen op 96. Dat maakt automatiseringen preciezer, vooral op dagen met veel zon of wind waarbij prijzen binnen een uur flink kunnen schommelen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Heb ik een betaald abonnement nodig voor kwartierprijsdata in Home Assistant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Voor het uitlezen van P1-data via de lokale API is geen abonnement nodig. Voor automatisch schakelen op dynamische tarieven via de HomeWizard-app zijn wel de extra functies van Energy+ nodig (circa €0,99 per maand). Bouw je de automatisering zelf in Home Assistant, dan ben je daar niet van afhankelijk."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is mijn wasmachine geschikt voor automatische start op kwartierprijzen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Alleen als de stekker en het apparaat geschikt zijn voor het piekverbruik (minimaal 16A) en het programma na een stroomonderbreking veilig kan hervatten. Check dit altijd voordat je automatiseert."
+        }
+      }
+    ]
+  }
+  </script>
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="StekkerSlim.nl" />
   <meta property="og:title" content="Home Assistant voor Energie Besparen | StekkerSlim.nl" />
   <meta property="og:description" content="Hoe je Home Assistant inzet om energie te besparen: P1 meter, automatiseringen en slimme apparaten." />
-  <meta property="og:image" content="https://stekkerslim.nl/og-image.png" />
+  <meta property="og:image" content="https://stekkerslim.nl/ogimage.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://stekkerslim.nl/homeassistant-energie-besparen.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://stekkerslim.nl/og-image.png" />
+  <meta name="twitter:image" content="https://stekkerslim.nl/ogimage.png" />
 </head>
 <body>
 <nav>
@@ -194,25 +226,16 @@
       </div>
     </div>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">☰</button>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="calculator-zonnepanelen.html" onclick="closeMenu()">☀️ Zonnepanelen</a>
-  <a href="calculator-thuisbatterij.html" onclick="closeMenu()">🔋 Thuisbatterij</a>
-  <a href="calculator-laadpaal.html" onclick="closeMenu()">🔌 Laadpaal</a>
-  <a href="calculator-energiekosten.html" onclick="closeMenu()">💡 Energiekosten</a>
-  <a href="calculator-warmtepomp.html" onclick="closeMenu()">🌡️ Warmtepomp</a>
-  <a href="blog.html" onclick="closeMenu()">📝 Blog & Artikelen</a>
-  <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome</a>
-  <a href="slimme-stekkers.html" onclick="closeMenu()">🔌 Slimme stekkers</a>
-  <a href="smart-lampen.html" onclick="closeMenu()">💡 Smart lampen</a>
+  <a href="/" onclick="closeMenu()">🏠 Home</a>
+  <a href="calculator-zonnepanelen.html" onclick="closeMenu()">☀️ Zonnepanelen calculator</a>
+  <a href="calculator-thuisbatterij.html" onclick="closeMenu()">🔋 Thuisbatterij calculator</a>
+  <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome producten</a>
   <a href="smarthome-uitleg.html" onclick="closeMenu()">📖 Uitleg protocollen</a>
-  <a href="vragen.html" onclick="closeMenu()">❓ Stel een vraag</a>
-  <a href="over-ons.html" onclick="closeMenu()">👋 Over ons</a>
-  <a href="index.html#vergelijken" class="mob-cta" onclick="closeMenu()">⚡ Vergelijk contracten</a>
+  <a href="blog.html" onclick="closeMenu()">📝 Blog</a>
+  <a href="vragen.html" onclick="closeMenu()">💬 Stel een vraag</a>
 </div>
 
 <div class="page-hero">
@@ -220,7 +243,7 @@
     <div class="breadcrumb"><a href="/">Home</a> › <a href="blog.html">Blog</a> › Home Assistant energiebesparing</div>
     <div class="article-tag">Home Assistant</div>
     <h1>Home Assistant voor energiebesparing: peakshaving, boiler op zonnestroom en slimme automatiseringen</h1>
-    <div class="article-meta">Door Remy Egberts · Maart 2026 · 8 min leestijd</div>
+    <div class="article-meta">Door Remy Egberts · Bijgewerkt juli 2026 · 10 min leestijd</div>
   </div>
 </div>
 
@@ -236,6 +259,11 @@
       <li><a href="#wasmachine">Wasmachine op dal-tarief of zonne-overschot</a></li>
       <li><a href="#radiatoren">Slimme radiatorknoppen met raamdetectie</a></li>
       <li><a href="#hardware">Welke hardware heb je nodig?</a></li>
+      <li><a href="#kwartierprijzen">Geavanceerd: automatiseren op kwartierprijzen</a></li>
+      <li><a href="#lokaal-vs-cloud">Lokale data of cloud-integratie?</a></li>
+      <li><a href="#veiligheid">Veiligheidscheck: 16A of 10A</a></li>
+      <li><a href="#stappenplan">Stap voor stap: prijs-gestuurde automatisering</a></li>
+      <li><a href="#faq-geavanceerd">Veelgestelde vragen</a></li>
       <li><a href="#conclusie">Conclusie</a></li>
     </ol>
   </div>
@@ -258,7 +286,7 @@
       </div>
       <div style="display:flex;align-items:center;gap:14px">
         <span style="background:rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);font-weight:800;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.85rem">4</span>
-        <span style="font-size:0.9rem;color:rgba(255,255,255,0.6)"><strong style="color:rgba(255,255,255,0.7)">Uitbreiden</strong> — peakshaving, radiatorknoppen, batterij koppelen</span>
+        <span style="font-size:0.9rem;color:rgba(255,255,255,0.6)"><strong style="color:rgba(255,255,255,0.7)">Uitbreiden</strong> — peakshaving, radiatorknoppen, kwartierprijzen, batterij koppelen</span>
       </div>
     </div>
   </div>
@@ -474,11 +502,106 @@
     </div>
   </div>
 
+  <h2 id="kwartierprijzen">Geavanceerd: automatiseren op kwartierprijzen</h2>
+
+  <p>Kwartierprijzen veranderen hoe je Home Assistant-automatiseringen het beste inzet. Tot voor kort werkte alles op uurprijzen: 24 tarieven per dag. Sinds oktober 2025 verhandelt de Europese energiebeurs (EPEX Spot) stroom per kwartier — <strong>96 tarieven per dag</strong>. Stuurt jouw automatisering nog op uurprijzen, dan mis je makkelijk de helft van de bespaarmomenten. Op een zonnige middag kan de prijs binnen één kwartier flink dalen en daarna weer stijgen.</p>
+
+  <!-- FOTO: schermafbeelding van een HA energy-dashboard met kwartierprijzen-grafiek over een dag -->
+
+  <p>De markt voor kwartierprijzen is volop in beweging — welke leveranciers dit precies ondersteunen en hoe je dat instelt, houden we actueel in ons artikel over <a href="kwartierprijzen-slimme-stekker.html">kwartierprijzen en slimme stekkers</a>.</p>
+
+  <h2 id="lokaal-vs-cloud">Lokale data of cloud-integratie: wat kies je?</h2>
+
+  <p>In Home Assistant heb je grofweg twee routes om aan kwartierprijzen te komen:</p>
+
+  <ul>
+    <li><strong>Lokaal</strong> — via je P1 meter en een prijzen-integratie zoals Nord Pool/ENTSO-E, of een leverancier-specifieke prijs-sensor, afhankelijk van je setup. Geen cloud-afhankelijkheid, blijft werken als internet even wegvalt voor je metingen, en je data blijft op je eigen netwerk.</li>
+    <li><strong>Cloud</strong> — via de app of API van je leverancier (zoals de HomeWizard-app of Tibber-cloud). Makkelijker instellen, maar je bent afhankelijk van hun server en soms een betaald abonnement voor extra functies.</li>
+  </ul>
+
+  <p>Heb je al een <a href="smarthome-p1-meter.html">P1 meter aan Home Assistant gekoppeld</a>? Dan is de lokale route met een paar regels YAML binnen handbereik.</p>
+
+  <h2 id="veiligheid">Veiligheidscheck: 16A of 10A voordat je automatiseert</h2>
+
+  <div style="background:rgba(239,68,68,0.08);border-left:4px solid #EF4444;border-radius:0 12px 12px 0;padding:14px 16px;margin:0 0 24px;font-size:0.9rem;">
+    <strong style="color:#DC2626">⚠️ Brandrisico bij 10A stekkers op zware apparaten</strong><br>
+    Een 10A stekker is maximaal geschikt voor apparaten tot ~2.300W. Gebruik je een 10A stekker op een wasmachine, droger of vaatwasser, dan overbelast je het contact structureel — dat kan leiden tot oververhitting en in het ergste geval brand. Voor zware apparaten koop je altijd <strong>16A</strong> (max. 3.680W). Check bij twijfel ook altijd het productblad van je specifieke stekker en apparaat — vermogens kunnen per model verschillen. Twijfel je welke stekker je hebt? Check ons <a href="beste-slimme-stekker-2026.html">overzicht van slimme stekkers</a> voordat je automatiseert.
+  </div>
+
+  <p>Dit is extra belangrijk zodra je gaat automatiseren: een automatisering die 's nachts zelf een apparaat inschakelt op basis van prijs, doet dat zonder dat jij erbij staat. Zorg dat de stekker het vermogen aankan vóórdat je 'm slim laat schakelen.</p>
+
+  <h2 id="stappenplan">Stap voor stap: prijs-gestuurde automatisering bouwen</h2>
+
+  <div class="stap-list">
+    <div class="stap-item">
+      <div class="stap-num">1</div>
+      <div class="stap-content">
+        <h4>Prijssensor beschikbaar maken in HA</h4>
+        <p>Voeg in Home Assistant een prijs-sensor toe — via een Nord Pool-integratie, je leverancier-integratie, of een eigen template sensor — en gebruik die daarna in je automatisering.</p>
+      </div>
+    </div>
+    <div class="stap-item">
+      <div class="stap-num">2</div>
+      <div class="stap-content">
+        <h4>Drempelwaarde bepalen</h4>
+        <p>Bijvoorbeeld: de goedkoopste 25% van de kwartieren die dag. Begin ruim, stel later bij op basis van wat je ziet.</p>
+      </div>
+    </div>
+    <div class="stap-item">
+      <div class="stap-num">3</div>
+      <div class="stap-content">
+        <h4>Automatisering bouwen</h4>
+        <p>De automatisering checkt elke 15 minuten of de prijs onder jouw drempel ligt. Is dat zo, dan zet hij de stekker aan. Wordt de prijs weer duurder, dan zet hij hem uit.</p>
+      </div>
+    </div>
+    <div class="stap-item">
+      <div class="stap-num">4</div>
+      <div class="stap-content">
+        <h4>Eerst testen op iets kleins</h4>
+        <p>Test op een lamp of iets niet-kritisch vóór je 'm op de wasmachine of boiler zet — en doe dat een paar dagen, niet één keer, voor je de automatisering vertrouwt.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>Dit is vooral interessant als je al meerdere apparaten via slimme stekkers of relais aanstuurt. Heb je maar één of twee flexibele apparaten, of geen betrouwbare prijsbron? Dan is de HomeWizard-app-route vaak al voldoende en is dit stuk Home Assistant overkill.</p>
+
+  <div class="highlight-box">
+    <strong>Expert-tip:</strong> Vervang in onderstaand voorbeeld de entity-namen altijd door je eigen sensoren uit Home Assistant. Elke installatie heeft andere entity_id's — kopieer dit nooit letterlijk. De waarde <code>0.15</code> hieronder is een voorbeeld — vervang die door een drempel die past bij de actuele prijzen in jouw regio.
+  </div>
+
+  <pre><code>trigger:
+  - platform: numeric_state
+    entity_id: sensor.jouw_kwartierprijs
+    below: 0.15
+action:
+  - service: switch.turn_on
+    target:
+      entity_id: switch.jouw_slimme_stekker</code></pre>
+
+  <p>Concreet: begin met één lamp of oplader, controleer of de prijssensor goed binnenkomt, en zet pas daarna een wasmachine of boiler op de automatisering.</p>
+
+  <h2 id="faq-geavanceerd">Veelgestelde vragen over geavanceerde automatisering</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Wat is het verschil tussen uur- en kwartierprijzen voor automatisering?</div>
+    <div class="faq-a">Met uurprijzen stuurt je automatisering op 24 momenten per dag, met kwartierprijzen op 96. Dat maakt automatiseringen preciezer, vooral op dagen met veel zon of wind waarbij prijzen binnen een uur flink kunnen schommelen.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Heb ik een betaald abonnement nodig voor kwartierprijsdata in Home Assistant?</div>
+    <div class="faq-a">Voor het uitlezen van P1-data via de lokale API is geen abonnement nodig. Voor automatisch schakelen op dynamische tarieven via de HomeWizard-app zijn wel de extra functies van Energy+ nodig (circa €0,99 per maand). Bouw je de automatisering zelf in Home Assistant, dan ben je daar niet van afhankelijk.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Is mijn wasmachine geschikt voor automatische start op kwartierprijzen?</div>
+    <div class="faq-a">Alleen als de stekker en het apparaat geschikt zijn voor het piekverbruik (minimaal 16A) en het programma na een stroomonderbreking veilig kan hervatten. Check dit altijd voordat je automatiseert.</div>
+  </div>
+
   <h2 id="conclusie">Conclusie</h2>
 
   <p>Home Assistant is geen weekendproject dat je één keer bouwt en nooit meer aanraakt. Het groeit mee met je huis en je situatie. Maar de kern is simpel: meten, begrijpen, automatiseren.</p>
 
-  <p>Begin met de P1 meter. Kijk een week wat je verbruikt. Dan zie je vanzelf waar de kansen zitten. Bij de meeste mensen is dat de boiler, de wasmachine, of de verwarming in kamers die ze weinig gebruiken.</p>
+  <p>Begin met de P1 meter. Kijk een week wat je verbruikt. Dan zie je vanzelf waar de kansen zitten. Bij de meeste mensen is dat de boiler, de wasmachine, of de verwarming in kamers die ze weinig gebruiken. Heb je dat eenmaal draaien, dan is de stap naar kwartierprijzen de logische volgende upgrade.</p>
 
   <p>Heb je zonnepanelen? Dan is de boiler-op-zonnestroom automaat waarschijnlijk de snelste terugverdientijd die je kunt bouwen. Heb je een dynamisch contract? Dan is de wasmachine-timer een gratis besparing.</p>
 
@@ -534,7 +657,7 @@
 </div>
 <div style="background:#F4F7F2;padding:0 24px 40px">
   <div style="max-width:800px;margin:0 auto;background:#fff;border-radius:12px;padding:16px 20px;font-size:0.82rem;color:#6B7280;line-height:1.6">
-    <strong>Disclaimer:</strong> Tarieven, besparingen en productspecificaties in dit artikel zijn indicatief en gebaseerd op gemiddelde Nederlandse situaties (juni 2026). Jouw situatie kan afwijken. StekkerSlim.nl ontvangt mogelijk affiliate commissies bij aankoop via links, maar dit beïnvloedt onze adviezen nooit.
+    <strong>Disclaimer:</strong> Tarieven, besparingen en productspecificaties in dit artikel zijn indicatief en gebaseerd op gemiddelde Nederlandse situaties (juli 2026). Jouw situatie kan afwijken. StekkerSlim.nl ontvangt mogelijk affiliate commissies bij aankoop via links, maar dit beïnvloedt onze adviezen nooit.
   </div>
 </div>
 
