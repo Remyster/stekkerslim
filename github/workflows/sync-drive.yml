@@ -1,0 +1,32 @@
+name: Sync kennisbank naar Google Drive
+
+# Draait bij elke push naar main die iets in /kennisbank wijzigt.
+# Maakt niet uit of de push komt van Claude Code, Claude chat (via Remy)
+# of een handmatige git push — dit triggert op de commit, niet op de bron.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'kennisbank/**'
+  workflow_dispatch: {}   # handmatig te starten via de Actions-tab, handig om te testen
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Installeer dependencies
+        run: npm install googleapis@144
+
+      - name: Sync bestanden naar Drive
+        env:
+          GDRIVE_SA_KEY: ${{ secrets.GDRIVE_SA_KEY }}
+          GDRIVE_FOLDER_ID: '1n0648OBFmfUegMY1zZi-4nD_Ge3O6pRK'
+        run: node scripts/sync-drive.js
