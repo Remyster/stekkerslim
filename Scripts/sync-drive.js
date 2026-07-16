@@ -1,4 +1,4 @@
-// Synct alle .md bestanden in /kennisbank naar een vaste Google Drive map.
+// Synct alle .md bestanden in /Kennisbank naar een vaste Google Drive map.
 // - Bestaat het bestand al in Drive (zelfde naam)? Overschrijven (content update),
 //   zodat de file-ID gelijk blijft en een gekoppelde Gemini Gem geen nieuwe
 //   koppeling nodig heeft.
@@ -29,15 +29,14 @@ async function main() {
 
   const drive = google.drive({ version: 'v3', auth });
 
-  const kennisbankDir = path.join(__dirname, '..', 'kennisbank');
+  const kennisbankDir = path.join(__dirname, '..', 'Kennisbank');
   const localFiles = fs.readdirSync(kennisbankDir).filter((f) => f.endsWith('.md'));
 
   if (localFiles.length === 0) {
-    console.log('Geen .md bestanden gevonden in /kennisbank — niks te doen.');
+    console.log('Geen .md bestanden gevonden in /Kennisbank — niks te doen.');
     return;
   }
 
-  // Haal huidige bestanden in de Drive-map op, zodat we op naam kunnen matchen.
   const existing = await drive.files.list({
     q: `'${folderId}' in parents and trashed = false`,
     fields: 'files(id, name)',
