@@ -156,6 +156,15 @@
     .nav-search-hint{padding:14px 18px;text-align:center;color:#aaa;font-size:0.82rem}
     .nav-search-footer{padding:10px 18px;border-top:1px solid var(--grijs-licht);text-align:right;font-size:0.72rem;color:#bbb}
     @media(max-width:600px){.nav-search-box{top:58px}}
+  
+  .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:rgba(11,22,40,0.97);backdrop-filter:blur(8px);padding:12px 20px;z-index:150;transform:translateY(110%);transition:transform .35s ease;border-top:2px solid var(--groen)}
+  .sticky-cta.show{transform:none}
+  .sticky-cta-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .sticky-cta-txt{color:rgba(255,255,255,0.85);font-size:0.85rem;font-weight:600}
+  .sticky-cta-txt small{display:block;color:rgba(255,255,255,0.4);font-weight:400;font-size:0.75rem}
+  .sticky-cta a.scta-btn{background:var(--groen);color:var(--navy);padding:11px 22px;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.88rem;text-decoration:none;white-space:nowrap}
+  .sticky-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;padding:4px}
+  @media(max-width:600px){.sticky-cta-txt small{display:none}}
   </style>
   <script type="application/ld+json">
   {
@@ -550,6 +559,26 @@ function navSearchKey(e){
 document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();navSearchToggle();}});
 document.addEventListener("click",function(e){var b=document.getElementById("navSearchBox");var w=document.getElementById("navSearchWrap");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
 document.addEventListener('click',function(e){const m=document.getElementById('mobileMenu');const h=document.getElementById('hamburger');if(m&&h&&m.classList.contains('open')&&!m.contains(e.target)&&!h.contains(e.target))m.classList.remove('open')})
+</script>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-inner">
+    <div class="sticky-cta-txt">Meet je stroomverbruik live met HomeWizard<small>P1 meter · Energy Display · v.a. €24,95</small></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="https://partner.homewizard.com/c/?si=18407&li=1795784&wi=419188" target="_blank" rel="noopener sponsored" class="scta-btn">Bekijk HomeWizard →</a>
+      <button class="sticky-close" onclick="document.getElementById('stickyCta').classList.remove('show');window._sctaOff=1" aria-label="Sluiten">✕</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('stickyCta');
+  window.addEventListener('scroll',function(){
+    if(window._sctaOff)return;
+    var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    el.classList.toggle('show',pct>0.35&&pct<0.92);
+  },{passive:true});
+})();
 </script>
 </body>
 </html>

@@ -140,7 +140,16 @@
     .mobile-menu a{padding:12px 16px;color:var(--navy);text-decoration:none;font-weight:600;font-size:0.95rem;border-radius:10px;transition:background .2s}
     .mobile-menu a:hover{background:var(--licht)}
     .mobile-menu .mob-cta{background:var(--groen);color:var(--navy)!important;margin-top:8px;text-align:center}
-    @media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}  </style>
+    @media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}  
+  .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:rgba(11,22,40,0.97);backdrop-filter:blur(8px);padding:12px 20px;z-index:150;transform:translateY(110%);transition:transform .35s ease;border-top:2px solid var(--groen)}
+  .sticky-cta.show{transform:none}
+  .sticky-cta-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .sticky-cta-txt{color:rgba(255,255,255,0.85);font-size:0.85rem;font-weight:600}
+  .sticky-cta-txt small{display:block;color:rgba(255,255,255,0.4);font-weight:400;font-size:0.75rem}
+  .sticky-cta a.scta-btn{background:var(--groen);color:var(--navy);padding:11px 22px;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.88rem;text-decoration:none;white-space:nowrap}
+  .sticky-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;padding:4px}
+  @media(max-width:600px){.sticky-cta-txt small{display:none}}
+  </style>
 </head>
 <body>
 
@@ -503,5 +512,25 @@ function navSearchKey(e){if(e.key==='Escape')navSearchClose();if(e.key==='Enter'
 document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();navSearchToggle();}});
 document.addEventListener("click",function(e){var b=document.getElementById("navSearchBox");var w=document.getElementById("navSearchWrap");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
 </script>
-<script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block";});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});m.addEventListener("mouseenter",function(){clearTimeout(t);});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});});})();</script></body>
+<script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block";});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});m.addEventListener("mouseenter",function(){clearTimeout(t);});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});});})();</script>
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-inner">
+    <div class="sticky-cta-txt">Stap over op Frank Energie — dynamisch contract<small>Transparante tarieven · geen jaarcontract</small></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="https://jf79.net/c/?si=16978&li=1731992&wi=419188" target="_blank" rel="noopener sponsored" class="scta-btn">Bekijk Frank Energie →</a>
+      <button class="sticky-close" onclick="document.getElementById('stickyCta').classList.remove('show');window._sctaOff=1" aria-label="Sluiten">✕</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('stickyCta');
+  window.addEventListener('scroll',function(){
+    if(window._sctaOff)return;
+    var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    el.classList.toggle('show',pct>0.35&&pct<0.92);
+  },{passive:true});
+})();
+</script>
+</body>
 </html>

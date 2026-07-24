@@ -124,7 +124,16 @@
     .nav-search-result-title{font-weight:600;font-size:0.85rem;margin-bottom:2px}
     .nav-search-result-desc{font-size:0.75rem;color:var(--grijs)}
     .nav-search-empty{padding:16px;text-align:center;color:var(--grijs);font-size:0.85rem}
-    </style>
+    
+  .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:rgba(11,22,40,0.97);backdrop-filter:blur(8px);padding:12px 20px;z-index:150;transform:translateY(110%);transition:transform .35s ease;border-top:2px solid var(--groen)}
+  .sticky-cta.show{transform:none}
+  .sticky-cta-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .sticky-cta-txt{color:rgba(255,255,255,0.85);font-size:0.85rem;font-weight:600}
+  .sticky-cta-txt small{display:block;color:rgba(255,255,255,0.4);font-weight:400;font-size:0.75rem}
+  .sticky-cta a.scta-btn{background:var(--groen);color:var(--navy);padding:11px 22px;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.88rem;text-decoration:none;white-space:nowrap}
+  .sticky-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;padding:4px}
+  @media(max-width:600px){.sticky-cta-txt small{display:none}}
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -182,12 +191,12 @@
   <meta property="og:site_name" content="StekkerSlim.nl" />
   <meta property="og:title" content="Home Assistant voor Energie Besparen | StekkerSlim.nl" />
   <meta property="og:description" content="Hoe je Home Assistant inzet om energie te besparen: P1 meter, automatiseringen en slimme apparaten." />
-  <meta property="og:image" content="https://stekkerslim.nl/ogimage.png" />
+  <meta property="og:image" content="https://stekkerslim.nl/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://stekkerslim.nl/homeassistant-energie-besparen.html" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://stekkerslim.nl/ogimage.png" />
+  <meta name="twitter:image" content="https://stekkerslim.nl/og-image.png" />
 </head>
 <body>
 <nav>
@@ -497,8 +506,7 @@
     <div>
       <h4>Raspberry Pi 4 of 5 — HA hardware</h4>
       <p>Pi 4 is voldoende voor de meeste HA-installaties. Pi 5 is sneller en toekomstvaster. Beide geschikt voor 24/7 draaien als home server.</p>
-      <a href="https://amzn.to/4bM6r4R" class="btn-affiliate btn-amazon" target="_blank" rel="noopener sponsored">🛒 Raspberry Pi 4 →</a>
-      <a href="https://amzn.to/4lDTvBB" class="btn-affiliate btn-amazon" target="_blank" rel="noopener sponsored" style="margin-left:8px">🛒 Raspberry Pi 5 →</a>
+      <a href="https://www.bol.com/nl/nl/s/?searchtext=raspberry+pi" class="btn-affiliate" target="_blank" rel="noopener">🛒 Zoek Raspberry Pi op Bol.com →</a>
     </div>
   </div>
 
@@ -723,5 +731,25 @@ function doNavSearch(q){
 function navSearchKey(e){if(e.key==='Escape'){document.getElementById('navSearchBox').classList.remove('open');}}
 </script>
 <script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block";});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});m.addEventListener("mouseenter",function(){clearTimeout(t);});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});});})();</script>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-inner">
+    <div class="sticky-cta-txt">Meet je stroomverbruik live met HomeWizard<small>P1 meter · Energy Display · v.a. €24,95</small></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="https://partner.homewizard.com/c/?si=18407&li=1795784&wi=419188" target="_blank" rel="noopener sponsored" class="scta-btn">Bekijk HomeWizard →</a>
+      <button class="sticky-close" onclick="document.getElementById('stickyCta').classList.remove('show');window._sctaOff=1" aria-label="Sluiten">✕</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('stickyCta');
+  window.addEventListener('scroll',function(){
+    if(window._sctaOff)return;
+    var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    el.classList.toggle('show',pct>0.35&&pct<0.92);
+  },{passive:true});
+})();
+</script>
 </body>
 </html>

@@ -183,6 +183,14 @@
     .footer-col a:hover{color:var(--groen)}
     .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;font-size:0.8rem;flex-wrap:wrap;gap:8px}
     .footer-bottom a{color:rgba(255,255,255,0.4);text-decoration:none}
+  .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:rgba(11,22,40,0.97);backdrop-filter:blur(8px);padding:12px 20px;z-index:150;transform:translateY(110%);transition:transform .35s ease;border-top:2px solid var(--groen)}
+  .sticky-cta.show{transform:none}
+  .sticky-cta-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .sticky-cta-txt{color:rgba(255,255,255,0.85);font-size:0.85rem;font-weight:600}
+  .sticky-cta-txt small{display:block;color:rgba(255,255,255,0.4);font-weight:400;font-size:0.75rem}
+  .sticky-cta a.scta-btn{background:var(--groen);color:var(--navy);padding:11px 22px;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.88rem;text-decoration:none;white-space:nowrap}
+  .sticky-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;padding:4px}
+  @media(max-width:600px){.sticky-cta-txt small{display:none}}
   </style>
 </head>
 <body>
@@ -237,7 +245,7 @@
 </div>
 
 <div class="urgency-banner">
-  ⚠️ Salderingsregeling stopt op 1 januari 2027 — nog ruim 6 maanden om te beslissen
+  ⚠️ Salderingsregeling stopt op 1 januari 2027 — nog ~5 maanden om te beslissen
 </div>
 
 <div class="page-hero">
@@ -487,6 +495,26 @@ function navSearchClose(){document.getElementById('navSearchBox').classList.remo
 function navSearchReset(){const i=document.getElementById('navSearchInput');i.value='';document.getElementById('navSearchClear').classList.remove('show');document.getElementById('navSearchResults').innerHTML='<div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>'}
 function navSearchQuery(q){const c=document.getElementById('navSearchClear');const r=document.getElementById('navSearchResults');c.classList.toggle('show',q.length>0);if(!q.trim()){r.innerHTML='<div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>';return}const matches=PAGES.filter(p=>(p.title+p.desc).toLowerCase().includes(q.toLowerCase()));if(!matches.length){r.innerHTML='<div class="nav-search-hint">Geen resultaten gevonden voor <em>'+q+'</em></div>';return}r.innerHTML=matches.map(p=>`<a href="${p.url}" class="nav-search-result"><span class="nsr-icon">${p.icon}</span><div><div class="nsr-title">${highlight(p.title,q)}</div><div class="nsr-desc">${p.desc}</div></div></a>`).join('')}
 function navSearchKey(e){if(e.key==='Escape')navSearchClose()}
+</script>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-inner">
+    <div class="sticky-cta-txt">Bereken of een thuisbatterij loont<small>Gratis · inclusief saldering 2027</small></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="calculator-thuisbatterij.html" class="scta-btn">Bereken jouw besparing →</a>
+      <button class="sticky-close" onclick="document.getElementById('stickyCta').classList.remove('show');window._sctaOff=1" aria-label="Sluiten">✕</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('stickyCta');
+  window.addEventListener('scroll',function(){
+    if(window._sctaOff)return;
+    var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    el.classList.toggle('show',pct>0.35&&pct<0.92);
+  },{passive:true});
+})();
 </script>
 </body>
 </html>

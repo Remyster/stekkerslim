@@ -12,8 +12,8 @@
   <meta charset="UTF-8" />
   <link rel="canonical" href="https://stekkerslim.nl/" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Bereken in 2 minuten wat jouw energierekening wordt na saldering 2027. Gratis calculators thuisbatterij, energiekosten & zonnepanelen. Nog ruim 6 maanden tot de stop." />
-  <title>Thuisbatterij & Saldering 2027 Berekenen – Gratis Calculators | StekkerSlim.nl</title>
+  <meta name="description" content="Bereken in 2 minuten wat jouw energierekening wordt na saldering 2027. Gratis calculators thuisbatterij, energiekosten & zonnepanelen voor 1 januari 2027." />
+  <title>Energie Besparing Berekenen 2026/2027 – Gratis Calculators Thuisbatterij & Saldering | StekkerSlim.nl</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -571,6 +571,38 @@
     .nav-search-footer{padding:10px 18px;border-top:1px solid var(--grijs-licht);text-align:right;font-size:0.72rem;color:#bbb}
     @media(max-width:600px){.nav-search-box{top:58px}}
 
+    /* ═══ REDESIGN 2026 ═══ */
+    /* Countdown hero widget */
+    .countdown-wrap{display:inline-flex;align-items:center;gap:14px;background:var(--navy);border-radius:14px;padding:14px 20px;margin-bottom:20px;box-shadow:0 8px 32px rgba(11,22,40,0.25)}
+    .countdown-num{font-family:'Outfit',sans-serif;font-weight:900;font-size:2rem;color:var(--accent);line-height:1;min-width:74px;text-align:center;font-variant-numeric:tabular-nums}
+    .countdown-lbl{font-size:0.8rem;color:rgba(255,255,255,0.75);line-height:1.4}
+    .countdown-lbl strong{color:var(--wit);display:block;font-size:0.88rem}
+    .countdown-bar{height:5px;background:rgba(255,255,255,0.12);border-radius:99px;overflow:hidden;margin-top:6px;width:160px}
+    .countdown-fill{height:100%;background:linear-gradient(90deg,var(--groen),var(--accent));border-radius:99px;transition:width 1s ease}
+    /* Hero polish */
+    .hero{position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(11,22,40,0.05) 1px,transparent 0);background-size:28px 28px;pointer-events:none}
+    .hero-inner{position:relative;z-index:1}
+    .hero h1 em{font-style:normal;background:linear-gradient(120deg,var(--groen) 0%,#00A85F 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-personal{border:1px solid var(--grijs-licht);box-shadow:0 12px 40px rgba(11,22,40,0.10)}
+    /* Scroll reveal */
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
+    @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.countdown-fill{transition:none}}
+    /* Calc cards upgrade */
+    .calc-card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;position:relative;overflow:hidden}
+    .calc-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--groen),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+    .calc-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(11,22,40,0.12);border-color:var(--groen)}
+    .calc-card:hover::after{transform:scaleX(1)}
+    /* Contract CTA band */
+    .contract-band{background:var(--navy);border-radius:20px;padding:36px 32px;margin:8px auto 0;max-width:1100px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative;overflow:hidden}
+    .contract-band::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;background:radial-gradient(circle,rgba(0,209,122,0.25),transparent 70%)}
+    .contract-band h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.35rem;color:var(--wit);margin-bottom:6px;position:relative}
+    .contract-band p{color:rgba(255,255,255,0.65);font-size:0.9rem;max-width:520px;position:relative;margin:0}
+    .contract-band .band-cta{background:var(--groen);color:var(--navy);padding:15px 30px;border-radius:11px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.98rem;text-decoration:none;white-space:nowrap;position:relative;transition:transform .2s ease,box-shadow .2s ease;box-shadow:0 6px 20px rgba(0,209,122,0.35)}
+    .contract-band .band-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,209,122,0.45)}
+    .band-sub{font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:8px!important}
+
   </style>
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="StekkerSlim.nl" />
@@ -582,39 +614,6 @@
   <meta property="og:url" content="https://stekkerslim.nl/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://stekkerslim.nl/og-image.png" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://stekkerslim.nl/#website",
-        "name": "StekkerSlim.nl",
-        "url": "https://stekkerslim.nl",
-        "description": "Eerlijk energieadvies voor Nederlandse gezinnen. Calculators, thuisbatterijen, slimme apparaten en energiecontracten.",
-        "inLanguage": "nl-NL"
-      },
-      {
-        "@type": "Person",
-        "@id": "https://stekkerslim.nl/#remy",
-        "name": "Remy Egberts",
-        "url": "https://stekkerslim.nl/over-ons.html",
-        "sameAs": ["https://www.trustpilot.com/review/stekkerslim.nl"],
-        "description": "Oprichter van StekkerSlim.nl. Onafhankelijk energieadviseur, smarthome-enthousiasteling en zonnepaneeleigenaar."
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://stekkerslim.nl/#org",
-        "name": "StekkerSlim.nl",
-        "url": "https://stekkerslim.nl",
-        "logo": "https://stekkerslim.nl/og-image.png",
-        "founder": {"@id": "https://stekkerslim.nl/#remy"},
-        "sameAs": ["https://www.trustpilot.com/review/stekkerslim.nl"],
-        "description": "Eerlijk, onafhankelijk energieadvies voor Nederlandse gezinnen. Geen corporate bullshit, geen verborgen agenda."
-      }
-    ]
-  }
-  </script>
 </head>
 <body>
 
@@ -666,10 +665,10 @@
 
 <!-- MOBIEL MENU -->
 <div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#calculators" onclick="closeMenu()">🧮 Calculators</a>
   <a href="calculator-zonnepanelen.html" onclick="closeMenu()">☀️ Zonnepanelen</a>
   <a href="calculator-thuisbatterij.html" onclick="closeMenu()">🔋 Thuisbatterij</a>
   <a href="calculator-laadpaal.html" onclick="closeMenu()">🔌 Laadpaal</a>
-  <a href="calculator-energiekosten.html" onclick="closeMenu()">💡 Energiekosten</a>
   <a href="calculator-warmtepomp.html" onclick="closeMenu()">🌡️ Warmtepomp</a>
   <a href="blog.html" onclick="closeMenu()">📝 Blog & Artikelen</a>
   <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome</a>
@@ -681,31 +680,22 @@
   <a href="index.html#vergelijken" class="mob-cta" onclick="closeMenu()">⚡ Vergelijk contracten</a>
 </div>
 
-<!-- NIEUWS BANNER -->
-<div style="background:#FEF3C7;border-bottom:1px solid #F59E0B;padding:10px 24px;text-align:center">
-  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap">
-    <span style="font-size:0.88rem;color:#92400E;font-weight:500">🔋 <strong>Juni 2026: nog ruim 6 maanden</strong> tot saldering stopt (1 jan 2027) —</span>
-    <a href="saldering-2027.html" style="font-size:0.88rem;color:#92400E;font-weight:700;text-decoration:underline">Lees wat er verandert →</a>
-    <span style="font-size:0.88rem;color:#B45309;font-weight:400"> · </span>
-    <a href="calculator-thuisbatterij.html" style="font-size:0.88rem;color:#92400E;font-weight:700;text-decoration:underline">Bereken jouw besparing →</a>
-  </div>
-</div>
-
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow">
-        <img src="remy.png" alt="Remy" class="hero-avatar">
-        <div class="hero-eyebrow-text">
-          <strong>Gemaakt door Remy</strong> — vader van 2, huurder met zonnepanelen,<br>en gefrustreerd door een rekening die bleef stijgen
+      <div class="countdown-wrap">
+        <div class="countdown-num" id="cdDays">–</div>
+        <div class="countdown-lbl">
+          <strong>dagen tot saldering stopt</strong>
+          1 januari 2027 · <a href="saldering-2027.html" style="color:var(--groen);font-weight:600;text-decoration:none">wat verandert er? →</a>
+          <div class="countdown-bar"><div class="countdown-fill" id="cdFill" style="width:0%"></div></div>
         </div>
       </div>
       <h1>Alles over energie op <em>één plek</em> — eerlijk en zonder gedoe</h1>
-      <p style="display:inline-flex;align-items:center;gap:8px;background:#FEF3C7;border:1px solid #F59E0B;border-radius:8px;padding:8px 14px;font-size:0.88rem;color:#92400E;font-weight:600;margin-bottom:16px;line-height:1.4">⏰ <span>Nog ruim 6 maanden tot saldering stopt — zie direct <a href="calculator-energiekosten.html" style="color:#92400E;text-decoration:underline;font-weight:700">wat jouw rekening wordt na 2027</a></span></p>
-      <p class="hero-sub">Saldering stopt 1 januari 2027. Bereken of een <a href="calculator-thuisbatterij.html" style="color:var(--groen);font-weight:600;text-decoration:none">plug-in thuisbatterij</a> voor jou loont, vergelijk de <a href="thuisbatterij-top5-2026.html" style="color:var(--groen);font-weight:600;text-decoration:none">beste modellen van 2026</a>, of lees <a href="saldering-2027.html" style="color:var(--groen);font-weight:600;text-decoration:none">wat er precies verandert in 2027</a>. Geen hype, gewoon rekenen.</p>
+      <p class="hero-sub">Bereken in 2 minuten of een <a href="calculator-thuisbatterij.html" style="color:var(--groen);font-weight:600;text-decoration:none">plug-in thuisbatterij</a> voor jou loont, of vergelijk de <a href="thuisbatterij-top5-2026.html" style="color:var(--groen);font-weight:600;text-decoration:none">beste modellen van 2026</a>. Geen hype, gewoon rekenen.</p>
       <div class="hero-btns">
-        <a href="calculator-thuisbatterij.html" class="btn-primary">Bereken thuisbatterij →</a>
+        <a href="calculator-thuisbatterij.html" class="btn-primary">Bereken jouw besparing →</a>
         <a href="thuisbatterij-top5-2026.html" class="btn-secondary">Beste plug-in batterijen</a>
       </div>
       <div class="hero-trust">
@@ -715,7 +705,7 @@
       </div>
     </div>
     <div class="hero-personal">
-      <img src="remy.png" alt="Remy Egberts — StekkerSlim" class="hero-personal-photo">
+      <img src="https://stekkerslim.nl/remy.png" alt="Remy Egberts — StekkerSlim" class="hero-personal-photo">
       <p class="hero-personal-quote">"Ik deed alles goed — zonnepanelen, Home Assistant, slimme stekkers — en toch ging mijn rekening van €140 naar €200. Dit is de site die ik zelf zocht."</p>
       <div class="hero-personal-name">Remy Egberts</div>
       <div class="hero-personal-title">Oprichter StekkerSlim.nl · Hoorn</div>
@@ -735,7 +725,7 @@
     <div style="color:rgba(255,255,255,0.5);font-size:0.82rem;text-transform:uppercase;letter-spacing:1px;font-weight:600">Waarom mensen StekkerSlim gebruiken</div>
     <div style="display:flex;gap:40px;flex-wrap:wrap">
       <div style="text-align:center">
-        <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;color:var(--groen)">€2.100</div>
+        <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;color:var(--groen)"><span class="countup" data-target="2100" data-prefix="€">€0</span></div>
         <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:2px">Gem. jaarrekening NL</div>
       </div>
       <div style="text-align:center">
@@ -743,11 +733,11 @@
         <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:2px">Saldering stopt</div>
       </div>
       <div style="text-align:center">
-        <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;color:var(--groen)">€400+</div>
+        <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;color:var(--groen)"><span class="countup" data-target="400" data-prefix="€" data-suffix="+">€0+</span></div>
         <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:2px">Besparing mogelijk</div>
       </div>
       <div style="text-align:center">
-        <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;color:var(--groen)">6</div>
+        <div style="font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;color:var(--groen)"><span class="countup" data-target="6">0</span></div>
         <div style="font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:2px">Gratis calculators</div>
       </div>
     </div>
@@ -765,7 +755,7 @@
 </div>
 
 <!-- CALCULATORS -->
-<section id="calculators">
+<section id="calculators" class="reveal">
   <div class="section-inner">
     <div class="section-label">Tools & Calculators</div>
     <h2>Bereken in 2 minuten wat jij kunt besparen</h2>
@@ -804,6 +794,18 @@
     </div>
   </div>
 </section>
+
+<!-- CONTRACT CTA BAND -->
+<div style="padding:0 24px 56px;background:var(--wit)">
+  <div class="contract-band reveal">
+    <div>
+      <h3>De snelste besparing? Je energiecontract.</h3>
+      <p>Een batterij verdient zich terug in jaren — een beter contract bespaart vaak <strong style="color:var(--groen)">€200–€400 per jaar</strong> vanaf dag één. Vergelijken kost 10 minuten en is gratis.</p>
+      <p class="band-sub">Onafhankelijke vergelijker · alle grote leveranciers · geen verplichtingen</p>
+    </div>
+    <a href="https://www.awin1.com/cread.php?awinmid=68288&awinaffid=2816288&ued=https%3A%2F%2Fwww.energiekiezer.nl%2F" class="band-cta" target="_blank" rel="noopener sponsored">Vergelijk contracten →</a>
+  </div>
+</div>
 
 <!-- DRIE THEMA-INGANGEN -->
 <section style="background:var(--licht);padding:56px 24px">
@@ -847,7 +849,7 @@
 </section>
 
 <!-- ARTIKELEN -->
-<section class="articles" id="besparen">
+<section class="articles reveal" id="besparen">
   <div class="section-inner">
     <div class="section-label">Populaire artikelen</div>
     <h2>Lees je slim in 5 minuten</h2>
@@ -885,7 +887,7 @@
 </section>
 
 <!-- AFFILIATE / VERGELIJKEN -->
-<section class="affiliate-section" id="vergelijken">
+<section class="affiliate-section reveal" id="vergelijken">
   <div class="section-inner">
     <div class="section-label">Contracten vergelijken</div>
     <h2>Zet elke euro op de goede plek</h2>
@@ -1060,6 +1062,45 @@ function navSearchQuery(q){
 }
 function navSearchKey(e){if(e.key==="Escape")navSearchClose();if(e.key==="Enter"){var f=document.querySelector(".nav-search-result");if(f){window.location=f.href;navSearchClose();}}}
 document.addEventListener("keydown",function(e){if((e.ctrlKey||e.metaKey)&&e.key==="k"){e.preventDefault();navSearchToggle();}});document.addEventListener("click",function(e){var w=document.getElementById("navSearchWrap"),b=document.getElementById("navSearchBox");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
+</script>
+
+<script>
+/* Countdown naar 1 jan 2027 */
+(function(){
+  var el=document.getElementById('cdDays'),fill=document.getElementById('cdFill');
+  if(!el)return;
+  var end=new Date('2027-01-01T00:00:00+01:00'),law=new Date('2024-12-17T00:00:00+01:00');
+  var now=new Date(),days=Math.max(0,Math.ceil((end-now)/86400000));
+  el.textContent=days;
+  var pct=Math.min(100,Math.max(0,100*(now-law)/(end-law)));
+  setTimeout(function(){fill.style.width=pct+'%';},300);
+})();
+/* Scroll reveal + count-up */
+(function(){
+  if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in')});return;}
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting)return;
+      en.target.classList.add('in');
+      en.target.querySelectorAll('.countup').forEach(function(c){
+        if(c.dataset.done)return;c.dataset.done=1;
+        var t=parseInt(c.dataset.target,10),p=c.dataset.prefix||'',sfx=c.dataset.suffix||'';
+        if(reduced){c.textContent=p+t.toLocaleString('nl-NL')+sfx;return;}
+        var s=performance.now();
+        (function tick(n){var e=Math.min(1,(n-s)/1200),v=Math.round(t*(1-Math.pow(1-e,3)));
+          c.textContent=p+v.toLocaleString('nl-NL')+sfx;if(e<1)requestAnimationFrame(tick);})(s);
+      });
+      io.unobserve(en.target);
+    });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(function(e){io.observe(e)});
+  /* stats-bar is geen .reveal maar heeft wel countups: */
+  document.querySelectorAll('.countup').forEach(function(c){
+    var wrap=c.closest('div[style*="background:var(--navy)"]')||c.parentElement;
+    if(!wrap.classList.contains('reveal')){io.observe(wrap);wrap.classList.add('in');}
+  });
+})();
 </script>
 </body>
 </html>
