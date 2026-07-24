@@ -1,0 +1,75 @@
+# StekkerSlim.nl — Project Overzicht
+
+## Wat is dit?
+Statische HTML/CSS website over energie besparen voor Nederlandse gezinnen. Geen framework, geen build-stap — gewoon losse `.html` bestanden gehost via GitHub Pages op **stekkerslim.nl**.
+
+## Eigenaar
+Remy Egberts. Niet technisch op gebied van git/terminal. Uploadt bestanden via de GitHub website (drag & drop). Schrijft blogcontent zelf, checkt die met Grok/Perplexity/Gemini. Gebruikt Claude Code voor technische aanpassingen en SEO.
+
+## Hoe verdient dit geld?
+Affiliate links. Programma's en ID's:
+- **AWIN** — Energiekiezer.nl (`awinmid=68288`, `awinaffid=2816288`) en Coolblue (`awinmid=85161`, `awinaffid=2816288`)
+- **TradeTracker / lt45.net** — Vattenfall Energie en Zonnepanelen (`si=2036&li=119986&wi=419188`)
+- **Amazon** — via `amzn.to` shortlinks (Remy maakt deze zelf aan in Amazon Associates)
+- **Bol.com** — via `partner.bol.com` (`s=1510756`)
+- **HomeWizard** — via `partner.homewizard.com` (`si=18407&li=1795784&wi=419188`)
+
+Grootste commissies: energiecontract-overstap (Energiekiezer) en zonnepanelen offerte (Vattenfall).
+
+## Google Analytics
+**GA4 Measurement ID: `G-RKF36BF7DB`** — staat in alle 25 HTML-bestanden.
+
+## Google Search Console
+Al gekoppeld aan stekkerslim.nl. Sitemap: `https://stekkerslim.nl/sitemap.xml`
+
+## Wat er gedaan is (april 2026)
+- GA4 toegevoegd aan alle 25 pagina's
+- Schema.org JSON-LD (Article, BreadcrumbList, HowTo, Review) op alle content-pagina's
+- Affiliate CTAs toegevoegd op alle pagina's die er geen hadden
+- Tado + Netatmo op thermostaat-pagina hadden placeholder "Geen affiliate link" → gefixed met Bol.com links
+- Indevolt thuisbatterij had geen affiliate link → Bol.com link toegevoegd
+- Coolblue P1 meter link omgezet naar affiliate
+
+## Pagina-structuur
+| Type | Pagina's |
+|------|----------|
+| Calculators | `calculator-zonnepanelen.html`, `calculator-energiekosten.html`, `calculator-laadpaal.html`, `calculator-thuisbatterij.html`, `calculator-warmtepomp.html` |
+| Artikelen energie | `saldering-2027.html`, `terugleverkosten.html`, `terugleververgoeding-2027.html`, `zonnestroom-na-2027.html`, `dynamisch-contract.html`, `energiecontract-vergelijken-2026.html` |
+| Artikelen smarthome | `beste-slimme-stekker-2026.html`, `smarthome-p1-meter.html`, `slimme-thermostaat-installeren.html`, `homeassistant-energie-besparen.html`, `smarthome-uitleg.html` |
+| Productpagina's | `smarthome-producten.html`, `slimme-stekkers.html`, `smart-lampen.html`, `thuisbatterij-top5-2026.html` |
+| Overig | `index.html`, `blog.html`, `over-ons.html`, `privacy.html`, `vragen.html` |
+
+## Design systeem
+CSS variabelen in elke pagina (geen gedeeld stylesheet):
+```css
+--groen: #00D17A
+--navy:  #0B1628
+--licht: #F4F7F2
+--accent: #FFD23F
+```
+Fonts: `Outfit` (headings) + `DM Sans` (body) via Google Fonts.
+Nav heeft dropdown voor Calculators. Alle pagina's hebben sticky nav, footer met 4 kolommen.
+
+## Affiliate links toevoegen — patroon
+```html
+<a href="https://www.awin1.com/cread.php?awinmid=68288&awinaffid=2816288&ued=ENCODED_URL"
+   target="_blank" rel="noopener sponsored">Tekst →</a>
+```
+Altijd `rel="noopener sponsored"` (Google-eis voor affiliate links).
+
+## Deployment
+Remy uploadt gewijzigde bestanden handmatig via github.com/Remyster/stekkerslim (Add file → Upload files → Commit changes).
+
+## Nieuwe blogpagina toevoegen — checklist
+1. Maak nieuwe `.html` aan op basis van bestaande artikelpagina als template
+2. Voeg GA4 snippet toe (zie boven voor ID)
+3. Voeg Schema.org JSON-LD toe
+4. Voeg canonical tag toe
+5. Voeg affiliate CTAs toe die passen bij het onderwerp
+6. Voeg pagina toe aan `sitemap.xml`
+7. Voeg pagina toe aan `blog.html` als artikel-card
+8. Voeg pagina toe aan footer van relevante pagina's
+
+## Todo / nog te doen
+- E-mail capture / nieuwsbrief (Brevo of Mailchimp)
+- Nieuwe blogartikelen blijven toevoegen voor organisch verkeer
