@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Project Overzicht
-*Laatst bijgewerkt: 26 juni 2026*
+*Laatst bijgewerkt: 24 juli 2026*
 
 ## Wat is dit?
 Statische HTML/CSS website over energie besparen voor Nederlandse gezinnen. Geen framework, geen build-stap — losse `.html` bestanden via GitHub Pages op **stekkerslim.nl**.
@@ -60,8 +60,15 @@ GA4: `G-RKF36BF7DB` — staat in alle HTML bestanden.
 - Zendure NL (Daisycon 20779) — al op site (glp8.net link), urgent goedkeuring opvolgen
 - Vaillant (Daisycon 20260)
 - Essent Laadpassen (Daisycon 19834)
-- Pricewise (Daisycon 18646)
-- Tado (Awin)
+- Tado (Awin 86413)
+
+### Affiliate — GOEDGEKEURD (nieuw juli 2026)
+- Pricewise (Daisycon 18646) — goedgekeurd juli 2026, nog toe te voegen aan pagina's
+- Frank Energie (Daisycon 16978) — goedgekeurd juli 2026, al live via jf79.net
+
+### Review partnerships
+- **Indevolt SolidFlex 3000 AC** — product + P1 meter ontvangen, eerste blog geschreven en naar Indevolt (Jasmine, partnership@indevolt.com) voor feitelijke check. Wacht op feedback. Affiliate-regeling nog te formaliseren. Contract getekend als particulier (geen BTW/KvK).
+- **Marstek Venus E Mini** — vroege partnershipgesprekken, contact Vivi. Nog geen content-commitment.
 
 ### Affiliate — AFGEWEZEN
 Independer, Eneco, Milieucentraal
@@ -108,6 +115,8 @@ Independer, Eneco, Milieucentraal
 | Netcongestie uitgelegd | `netcongestie-uitgelegd.html` | Live — 5 min, gepubliceerd jun 2026 |
 | Tapo P115 vs P410M review deel 1 | `tapo-p115-p410m-review.html` | Live — 5 min, gepubliceerd 27 mei 2026 (gratis ontvangen van Tapo) |
 | Tapo P115 vs P410M eindoordeel deel 2 | `tapo-p115-p410m-eindoordeel.html` | Live — 8 min, gepubliceerd 15 jun 2026 (gratis ontvangen van Tapo) |
+| Thuisbatterij kopen juli 2026 | `thuisbatterij-kopen-juli-2026.html` | Live — gepubliceerd juli 2026 |
+| Wasmachine dynamisch tarief | `wasmachine-dynamisch-tarief.html` | Live — gepubliceerd juli 2026, CTA-fix 16 juli |
 | Over ons | `over-ons.html` | Live |
 | Privacy | `privacy.html` | Live |
 | Vragen | `vragen.html` | Live |
@@ -115,7 +124,61 @@ Independer, Eneco, Milieucentraal
 ---
 
 ## Wat er recent gedaan is
-*(juni 2026 — meest recent bovenaan)*
+*(meest recent bovenaan)*
+
+### 24 juli 2026 — Grote sitebreed update + kennisbank sync
+
+**Redesign (3 pagina's, o.b.v. masterplan-2026.md):**
+- **index.html**: nieuw homepage-redesign uitgerold
+- **energiecontract-vergelijken-2026.html**: redesign + canonical + dateModified 2026-07-24
+- **thuisbatterij-top5-2026.html**: redesign + kWh-chart volgorde fix, €454/kWh Zendure, dateModified
+
+**Product schema fix (FASE 0 — Search Console):**
+- `tapo-p115-p410m-eindoordeel.html`, `homewizard-energy-display-review.html`, `homewizard-energy-display-deel2.html`: @type Product → Thing, AggregateRating/Brand verwijderd
+- `beste-slimme-stekker-2026.html`: alle 4 ListItems Product → Thing, Brand verwijderd
+
+**Sticky CTA sitebreed (FASE 2):**
+- Alle 35 artikelpagina's: sticky bottom CTA (toont na 35% scroll, verdwijnt bij 92%)
+- Per categorie: Frank Energie (contract/stroomprijzen), HomeWizard (smarthome), calculator-thuisbatterij (batterij), calculator-zonnepanelen (zon), Energiekiezer (energiekosten), Coolblue Tapo (reviews)
+
+**WebP afbeeldingen + lazy loading:**
+- Alle review-foto's omgezet naar WebP (doos-display: 3760KB → 638KB, etc.)
+- `loading="lazy"` sitebreed op alle img-tags
+
+**Live countdown JS:** TreeWalker script op 16 pagina's — berekent live hoeveel maanden tot 1 jan 2027.
+
+**Scroll-reveal + hover-lift:** IntersectionObserver (`.rv`/`.vi`) + hover-lift op product/calc cards — 40+ pagina's.
+
+**blog.html (FASE 5):** Category filter bar (7 knoppen) + auto emoji card-thumbs per categorie via JS.
+
+**vragen.html (FASE 5):** 5 nieuwe FAQ items + FAQPage JSON-LD schema (9 vragen totaal).
+
+**over-ons.html (FASE 5):** E-E-A-T paragraaf, "Wat ik getest heb" review-cards (HomeWizard + Tapo), milestone box (eerste commissie €3,97, 23 april 2026, bezoeker uit België).
+
+**Gaslicht.com (Awin 8520) toegevoegd:**
+- `energiecontract-vergelijken-2026.html`: derde CTA-card
+- `dynamisch-contract.html`: derde CTA-card
+
+**Keuzehulp widget (dynamisch-contract.html):** 2 vragen → 3 contract-adviezen (vast/variabel/dynamisch) met animated result + affiliate CTA.
+
+**Prijs-chart (beste-slimme-stekker-2026.html):** Animated bar chart, IntersectionObserver triggert CSS width-transitie.
+
+**Contract CTA-band alle 5 calculators:** Dark navy cross-sell blok boven footer, Energiekiezer affiliate link.
+
+**Div fixes:**
+- `calculator-zonnepanelen.html`: stray `</div>` verwijderd (opens=closes=122)
+- `calculator-thuisbatterij.html`: 3 orphaned regels verwijderd (pre-existing mismatch) → 137/137
+
+**Kennisbank bijgewerkt en gepusht:**
+- `blogs-gepubliceerd.md`: thuisbatterij-kopen + wasmachine-dynamisch naar hoofdtabel
+- `site-structuur.md`: bekende gap sectie verwijderd
+- `blogs-in-progress.md`: Indevolt status bijgewerkt
+- GitHub Action (`sync-drive.yml`) synct automatisch naar Google Drive na push
+
+**Overige (29 juni 2026 sessie):**
+- SEO structured data: FAQPage schema op vragen.html, Review schema op review-pagina's, ItemList op beste-slimme-stekker
+- CLAUDE.md.bak toegevoegd aan repo
+- amzn.to shortlinks zijn ACCEPTABEL per Remy's beslissing — alleen Marstek (niet op Amazon) is harde uitzondering
 
 ### 26 juni 2026 — Prijsupdates, homepage redesign, product buttons
 
@@ -203,7 +266,7 @@ Independer, Eneco, Milieucentraal
 ---
 
 ## Open punten
-*(Bijgewerkt: 26 juni 2026)*
+*(Bijgewerkt: 24 juli 2026)*
 
 ### URGENT — volgende sessie fixen
 *(geen open urgent items)*
@@ -211,10 +274,30 @@ Independer, Eneco, Milieucentraal
 ### Nog te doen
 - CVtotaal (Daisycon 14618): approved maar links nog aanvragen — toevoegen zodra links binnen zijn
 - Zendure NL (Daisycon 20779): al gebruikt op site (glp8.net) maar nog pending approval — opvolgen
-- Gaslicht.com: staat op slechts 2 pagina's — kan uitgebreid naar energiecontract-vergelijken + dynamisch-contract
-- Sitemap resubmitten in Google Search Console (stroomprijs-record-juni-2026.html toegevoegd 26 juni)
-- smarthome-p1-meter.html Zigbee card (DIY Slimme meterlezer): nog geen knop of affiliate — beslissing open (verwijderen, tekst-only laten, of affiliate toevoegen)
-- Overige pagina's in ai check map nog nalopen op amzn.to shortlinks: slimme-stekkers.html, slimme-thermostaat-installeren.html (smart-lampen al gedaan)
+- Pricewise (Daisycon 18646): goedgekeurd maar nog niet op site toegevoegd
+- Tado (Awin 86413): nog pending
+- Indevolt blog: wacht op feitelijke check van Indevolt (Jasmine) — daarna publiceren + affiliate formaliseren
+- DMARC/SPF fix nog te doen in Hostnet DNS (p=reject → p=none + SPF include:_spf.google.com)
+- smarthome-p1-meter.html Zigbee card: besloten puur informatief te houden, geen knop nodig
+- Sitemap resubmitten na recente pushes (Remy doet dit zelf via Search Console)
+
+### Gedaan (24 juli 2026)
+- ✅ Redesign: index.html, energiecontract-vergelijken-2026.html, thuisbatterij-top5-2026.html
+- ✅ Product schema fix (editorial pages): 4 bestanden gecleand
+- ✅ Sticky CTA sitebreed: 35 artikelpagina's
+- ✅ WebP afbeeldingen + lazy loading sitebreed
+- ✅ Live countdown JS (16 pagina's)
+- ✅ Scroll-reveal + hover-lift (40+ pagina's)
+- ✅ blog.html: category filter + card-thumbs
+- ✅ vragen.html: 5 FAQ items + FAQPage schema
+- ✅ over-ons.html: E-E-A-T + reviews + milestone
+- ✅ Gaslicht.com CTA: energiecontract-vergelijken + dynamisch-contract
+- ✅ Keuzehulp widget: dynamisch-contract.html
+- ✅ Prijs-chart: beste-slimme-stekker-2026.html
+- ✅ Contract CTA-band: alle 5 calculators
+- ✅ Div fixes: calculator-zonnepanelen + calculator-thuisbatterij
+- ✅ Kennisbank bijgewerkt (3 MD bestanden) + gepusht → Drive sync via GitHub Action
+- ✅ Pagina's toegevoegd aan paginalijst: thuisbatterij-kopen-juli-2026.html + wasmachine-dynamisch-tarief.html
 
 ### Gedaan (26 juni 2026)
 - ✅ index.html homepage redesign: 9+ secties verwijderd, 3 thema-ingangen, 3 artikelen, 3 affiliate cards
@@ -263,7 +346,7 @@ Independer, Eneco, Milieucentraal
 - **OG image**: gebruik altijd `og-image.png` (niet `ogimage.png` — dat is de verkeerde naam)
 - **Foto's P1inmeter.jpg / appscreenshot.jpg / doosdisplay.jpg**: ALLEEN gebruiken in `homewizard-energy-display-review.html` en `homewizard-energy-display-deel2.html`. Nooit elders — dit zijn review-foto's van de samenwerking met Tamara Huber.
 - **Gele urgency-banner stijl**: gebruik `background:#FEF3C7;border-bottom:1px solid #F59E0B`. Geen `linear-gradient(135deg,#FFD23F,#FFB800)`.
-- **Amazon links**: gebruik volledige links `amazon.nl/dp/[ASIN]?tag=stekkerslim-21`, geen amzn.to shortlinks (amzn.to/431bMjL is voor Tapo P410M, niet voor Marstek).
+- **Amazon links**: amzn.to shortlinks zijn ACCEPTABEL — ze werken gewoon. Enige uitzondering: Marstek Venus E 3.0 staat niet meer op Amazon, dus nooit een Amazon/amzn.to link voor Marstek gebruiken.
 - **Marstek Venus E 3.0**: NIET meer op Amazon. Gebruik Bol.com affiliate (€1.389) + Marstek.nl direct (€1.299, `rel="noopener"` zonder sponsored). Doorgevoerd in plug-in-batterij-laden, thuisbatterij-top5, thuisbatterij-plug-and-play.
 - **Calculator minimum tarief**: alle stroomtarief-sliders staan op min €0,08 (gefixt 8 juni 2026 — was 0,10–0,20, blokkeerde lage dynamische tarieven).
 - **Directe links (niet-affiliate)**: `rel="noopener"` alleen, geen `sponsored`. Geldt voor Marstek.nl, thuisbatterij.nl en andere niet-affiliate verkopers.
