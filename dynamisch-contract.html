@@ -145,7 +145,26 @@
   .sticky-cta-txt small{display:block;color:rgba(255,255,255,0.4);font-weight:400;font-size:0.75rem}
   .sticky-cta a.scta-btn{background:var(--groen);color:var(--navy);padding:11px 22px;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.88rem;text-decoration:none;white-space:nowrap}
   .sticky-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;padding:4px}
-  @media(max-width:600px){.sticky-cta-txt small{display:none}}  </style>
+  @media(max-width:600px){.sticky-cta-txt small{display:none}}
+  .keuzehulp{background:var(--navy);border-radius:18px;padding:28px;margin:32px 0;color:var(--wit);position:relative;overflow:hidden}
+  .keuzehulp::before{content:'';position:absolute;top:-70px;right:-70px;width:260px;height:260px;background:radial-gradient(circle,rgba(0,209,122,0.22),transparent 70%)}
+  .keuzehulp h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.25rem;margin-bottom:4px;position:relative;color:var(--wit)}
+  .kh-sub{color:rgba(255,255,255,0.55);font-size:0.85rem;margin-bottom:20px;position:relative}
+  .kh-q{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin:18px 0 12px;position:relative}
+  .kh-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;position:relative}
+  .kh-opt{background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px;cursor:pointer;text-align:center;font-size:0.88rem;font-weight:600;color:rgba(255,255,255,0.85);transition:all .2s;font-family:'DM Sans',sans-serif}
+  .kh-opt:hover{border-color:var(--groen);background:rgba(0,209,122,0.08)}
+  .kh-opt.sel{border-color:var(--groen);background:rgba(0,209,122,0.15);color:var(--wit)}
+  .kh-opt small{display:block;font-weight:400;font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:3px}
+  .kh-result{display:none;position:relative;background:rgba(0,209,122,0.10);border:1px solid rgba(0,209,122,0.35);border-radius:14px;padding:20px;margin-top:20px}
+  .kh-result.show{display:block;animation:khIn .4s ease}
+  @keyframes khIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .kh-result h4{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.05rem;color:var(--groen);margin-bottom:8px}
+  .kh-result p{color:rgba(255,255,255,0.8)!important;font-size:0.88rem!important;margin-bottom:14px!important}
+  .kh-cta{display:inline-block;background:var(--groen);color:var(--navy);padding:12px 24px;border-radius:10px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.9rem;text-decoration:none;transition:transform .2s}
+  .kh-cta:hover{transform:translateY(-2px)}
+  .kh-reset{background:none;border:none;color:rgba(255,255,255,0.4);font-size:0.78rem;cursor:pointer;margin-top:10px;text-decoration:underline;font-family:'DM Sans',sans-serif;position:relative}
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -315,6 +334,29 @@
 
   <div class="highlight-box" style="border-left-color:#F59E0B;background:#FFFBEB">
     <strong>⚡ Waarom dit artikel nu extra relevant is:</strong> Per <strong>1 januari 2027</strong> stopt de salderingsregeling. Heb je zonnepanelen? Dan verandert je teruglevering van €0,26/kWh naar verwachting slechts €0,04–€0,08/kWh. Een dynamisch contract + thuisbatterij kan dat verlies grotendeels opvangen. <a href="saldering-2027.html" style="color:var(--navy);font-weight:600">Meer over saldering →</a>
+  </div>
+
+  <div class="keuzehulp" id="keuzehulp">
+    <h3>⚡ Welk contract past bij jou?</h3>
+    <div class="kh-sub">Beantwoord 2 vragen — direct persoonlijk advies. Geen e-mail nodig.</div>
+    <div class="kh-q">1. Hoe belangrijk is een voorspelbare energierekening voor je?</div>
+    <div class="kh-opts" data-q="1">
+      <button class="kh-opt" data-v="zeker">Heel belangrijk<small>ik wil rust</small></button>
+      <button class="kh-opt" data-v="mix">Beetje flexibel<small>mag iets schommelen</small></button>
+      <button class="kh-opt" data-v="flex">Niet belangrijk<small>ik wil maximaal besparen</small></button>
+    </div>
+    <div class="kh-q">2. Heb je een slimme meter én kun je verbruik verschuiven (wassen, EV laden)?</div>
+    <div class="kh-opts" data-q="2">
+      <button class="kh-opt" data-v="ja">Ja, allebei<small>evt. met smarthome</small></button>
+      <button class="kh-opt" data-v="deels">Slimme meter wel<small>verschuiven lastig</small></button>
+      <button class="kh-opt" data-v="nee">Nee<small>of weet ik niet</small></button>
+    </div>
+    <div class="kh-result" id="khResult">
+      <h4 id="khTitle"></h4>
+      <p id="khText"></p>
+      <a href="#" id="khLink" class="kh-cta" target="_blank" rel="noopener sponsored"></a>
+      <br><button class="kh-reset" onclick="khReset()">Opnieuw beginnen</button>
+    </div>
   </div>
 
   <h2 id="wat-is-het">Wat is een dynamisch energiecontract?</h2>
@@ -579,6 +621,38 @@ document.addEventListener("click",function(e){var b=document.getElementById("nav
   document.head.appendChild(S);
   var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vi');io.unobserve(x.target);}});},{threshold:.1});
   document.querySelectorAll('.highlight-box,.warning-box,.info-box,.cta-box,.product-card,.calc-card,.prod-card,.toc,.stap,.article-cta,.bottom-cta,.affiliate-section,.pill-links,.disclaimer-box').forEach(function(el){el.classList.add('rv');io.observe(el);});
+})();</script>
+<script>(function(){
+  var ans={};
+  var results={
+    'zeker':{t:'✅ Ons advies: een vast contract',x:'Jij wilt zekerheid — dan is vast de logische keuze. Je betaalt iets meer premie, maar weet precies waar je aan toe bent. Vergelijk vaste contracten op looptijd én opzegvoorwaarden.',l:'https://www.awin1.com/cread.php?awinmid=68288&awinaffid=2816288&ued=https%3A%2F%2Fwww.energiekiezer.nl%2F',b:'Vergelijk vaste contracten →'},
+    'dynamisch':{t:'✅ Ons advies: een dynamisch contract',x:'Slimme meter + flexibel verbruik = de ideale dynamische kandidaat. Je betaalt de uurprijs van de markt en bespaart het meest als je slim (of automatisch) laadt en wast.',l:'https://jf79.net/c/?si=16978&li=1731992&wi=419188&ws=',b:'Bekijk Frank Energie →'},
+    'variabel':{t:'✅ Ons advies: start met variabel',x:'Variabel is de veilige middenweg: je beweegt mee met de markt zonder uurprijs-stress, en zit nergens jaren aan vast. Wil je later toch dynamisch? Dan stap je zo over.',l:'https://www.awin1.com/cread.php?awinmid=68288&awinaffid=2816288&ued=https%3A%2F%2Fwww.energiekiezer.nl%2F',b:'Vergelijk variabele contracten →'}
+  };
+  function pick(){
+    if(!ans[1]||!ans[2])return;
+    var key;
+    if(ans[1]==='zeker')key='zeker';
+    else if(ans[2]==='ja')key='dynamisch';
+    else key='variabel';
+    var r=results[key];
+    document.getElementById('khTitle').textContent=r.t;
+    document.getElementById('khText').textContent=r.x;
+    var a=document.getElementById('khLink');a.href=r.l;a.textContent=r.b;
+    if(r.l.indexOf('jf79')>-1)a.setAttribute('rel','noopener sponsored');
+    else a.setAttribute('rel','noopener sponsored');
+    document.getElementById('khResult').classList.add('show');
+    document.getElementById('khResult').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  document.querySelectorAll('.kh-opts').forEach(function(g){
+    g.querySelectorAll('.kh-opt').forEach(function(b){
+      b.addEventListener('click',function(){
+        g.querySelectorAll('.kh-opt').forEach(function(o){o.classList.remove('sel')});
+        b.classList.add('sel');ans[g.dataset.q]=b.dataset.v;pick();
+      });
+    });
+  });
+  window.khReset=function(){ans={};document.querySelectorAll('.kh-opt').forEach(function(o){o.classList.remove('sel')});document.getElementById('khResult').classList.remove('show');};
 })();</script>
 </body>
 </html>

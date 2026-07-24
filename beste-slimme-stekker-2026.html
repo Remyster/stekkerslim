@@ -250,6 +250,19 @@
   .sticky-cta a.scta-btn{background:var(--groen);color:var(--navy);padding:11px 22px;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.88rem;text-decoration:none;white-space:nowrap}
   .sticky-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;padding:4px}
   @media(max-width:600px){.sticky-cta-txt small{display:none}}
+  .prijs-chart{background:var(--navy);border-radius:18px;padding:26px;margin:32px 0;color:var(--wit)}
+  .prijs-chart h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:4px;color:var(--wit)}
+  .prijs-chart .chart-sub{color:rgba(255,255,255,0.5);font-size:0.8rem;margin-bottom:20px}
+  .pc-row{display:grid;grid-template-columns:160px 1fr 80px;gap:12px;align-items:center;margin-bottom:12px}
+  .pc-name{font-size:0.82rem;font-weight:600;color:rgba(255,255,255,0.85);text-align:right}
+  .pc-track{height:22px;background:rgba(255,255,255,0.08);border-radius:99px;overflow:hidden}
+  .pc-bar{height:100%;border-radius:99px;width:0;transition:width 1s cubic-bezier(.2,.8,.2,1);background:linear-gradient(90deg,var(--groen),#00A85F)}
+  .pc-bar.best{background:linear-gradient(90deg,var(--accent),#f5b800)}
+  .pc-bar.warn{background:linear-gradient(90deg,#9CA3AF,#6B7280)}
+  .pc-val{font-family:'Outfit',sans-serif;font-weight:800;font-size:0.88rem;color:var(--groen)}
+  .pc-val.best{color:var(--accent)}
+  .pc-val.warn{color:#9CA3AF}
+  @media(max-width:600px){.pc-row{grid-template-columns:100px 1fr 64px}.pc-name{font-size:0.72rem}}
   </style>
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="StekkerSlim.nl" />
@@ -438,6 +451,16 @@
       <td>Alleen kleine apparaten (&lt;2.000W)</td>
     </tr>
   </table>
+
+  <div class="prijs-chart">
+    <h3>Prijs per slimme stekker — overzicht 2026</h3>
+    <div class="chart-sub">Prijs per stuk (indicatief). Tuya-set = €28,25 voor 4 stuks.</div>
+    <div class="pc-row"><div class="pc-name">Tuya 16A (set/4)</div><div class="pc-track"><div class="pc-bar best" data-w="28"></div></div><div class="pc-val best">~€7 pp</div></div>
+    <div class="pc-row"><div class="pc-name">Tapo P110 (WiFi)</div><div class="pc-track"><div class="pc-bar" data-w="68"></div></div><div class="pc-val">~€17</div></div>
+    <div class="pc-row"><div class="pc-name">Sonoff S61 (Zigbee)</div><div class="pc-track"><div class="pc-bar" data-w="72"></div></div><div class="pc-val">~€18</div></div>
+    <div class="pc-row"><div class="pc-name">HomeWizard Energy</div><div class="pc-track"><div class="pc-bar" data-w="100"></div></div><div class="pc-val">~€25</div></div>
+    <div class="pc-row"><div class="pc-name">AliExpress (10A ⚠️)</div><div class="pc-track"><div class="pc-bar warn" data-w="40"></div></div><div class="pc-val warn">€5–€10</div></div>
+  </div>
 
   <div style="background:rgba(239,68,68,0.08);border-left:4px solid #EF4444;border-radius:0 12px 12px 0;padding:14px 16px;margin:0 0 24px;font-size:0.9rem;">
     <strong style="color:#DC2626">⚠️ Brandrisico bij 10A stekkers op zware apparaten</strong><br>
@@ -777,7 +800,14 @@ document.addEventListener("click",function(e){var b=document.getElementById("nav
     '.product-card:hover,.calc-card:hover,.prod-card:hover,.spec-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.11)}';
   document.head.appendChild(S);
   var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vi');io.unobserve(x.target);}});},{threshold:.1});
-  document.querySelectorAll('.highlight-box,.warning-box,.info-box,.cta-box,.product-card,.calc-card,.prod-card,.toc,.stap,.article-cta,.bottom-cta,.affiliate-section,.pill-links,.disclaimer-box').forEach(function(el){el.classList.add('rv');io.observe(el);});
+  document.querySelectorAll('.highlight-box,.warning-box,.info-box,.cta-box,.product-card,.calc-card,.prod-card,.toc,.stap,.article-cta,.bottom-cta,.affiliate-section,.pill-links,.disclaimer-box,.prijs-chart').forEach(function(el){el.classList.add('rv');io.observe(el);});
+})();</script>
+<script>(function(){
+  var bars=document.querySelectorAll('.pc-bar');if(!bars.length)return;
+  var fired=false;
+  function animate(){if(fired)return;fired=true;bars.forEach(function(b){b.style.width=b.dataset.w+'%';});}
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)animate();});},{threshold:.3});
+  var chart=document.querySelector('.prijs-chart');if(chart)io.observe(chart);
 })();</script>
 </body>
 </html>
