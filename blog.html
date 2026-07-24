@@ -102,6 +102,12 @@
     .footer-col a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.85rem}
     .footer-col a:hover{color:var(--groen)}
     .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;display:flex;justify-content:space-between;font-size:0.8rem;flex-wrap:wrap;gap:8px}
+    .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--grijs-licht)}
+    .filter-btn{background:var(--wit);border:2px solid var(--grijs-licht);color:var(--navy);padding:8px 16px;border-radius:99px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .filter-btn:hover{border-color:var(--groen);color:var(--groen)}
+    .filter-btn.active{background:var(--groen);border-color:var(--groen);color:var(--navy)}
+    .card-thumb{font-size:1.3rem;width:42px;height:42px;background:rgba(0,209,122,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+    .section[style*="none"]{display:none!important}
   </style>
 </head>
 <body>
@@ -166,6 +172,16 @@
 
 <div class="container">
 
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-btn active" onclick="filterCat('all',this)">Alle artikelen</button>
+    <button class="filter-btn" onclick="filterCat('zon',this)">☀️ Zonnepanelen</button>
+    <button class="filter-btn" onclick="filterCat('batterij',this)">🔋 Thuisbatterij</button>
+    <button class="filter-btn" onclick="filterCat('contract',this)">⚡ Contracten</button>
+    <button class="filter-btn" onclick="filterCat('smarthome',this)">🏠 Smarthome</button>
+    <button class="filter-btn" onclick="filterCat('review',this)">🔬 Reviews</button>
+    <button class="filter-btn" onclick="filterCat('uitleg',this)">📖 Uitleg</button>
+  </div>
+
   <!-- FEATURED -->
   <div class="featured-card">
     <span class="badge">Nieuw — Juni 2026</span>
@@ -175,7 +191,7 @@
   </div>
 
   <!-- ZONNEPANELEN & SALDERING -->
-  <div class="section">
+  <div class="section" data-cat="zon">
     <div class="section-title">☀️ Zonnepanelen &amp; Saldering 2027</div>
     <div class="blog-grid">
       <a href="saldering-2027.html" class="blog-card">
@@ -202,7 +218,7 @@
   </div>
 
   <!-- THUISBATTERIJ -->
-  <div class="section">
+  <div class="section" data-cat="batterij">
     <div class="section-title">🔋 Thuisbatterij</div>
     <div class="blog-grid">
       <a href="thuisbatterij-kopen-juli-2026.html" class="blog-card">
@@ -249,7 +265,7 @@
   </div>
 
   <!-- ENERGIECONTRACTEN -->
-  <div class="section">
+  <div class="section" data-cat="contract">
     <div class="section-title">⚡ Energiecontracten</div>
     <div class="blog-grid">
       <a href="stroomprijs-record-juni-2026.html" class="blog-card">
@@ -286,7 +302,7 @@
   </div>
 
   <!-- SMARTHOME & DIY -->
-  <div class="section">
+  <div class="section" data-cat="smarthome">
     <div class="section-title">🏠 Smarthome &amp; DIY</div>
     <div class="blog-grid">
       <a href="beste-slimme-stekker-2026.html" class="blog-card">
@@ -328,7 +344,7 @@
   </div>
 
   <!-- GETEST & REVIEWS -->
-  <div class="section">
+  <div class="section" data-cat="review">
     <div class="section-title">🔬 Getest &amp; Reviews</div>
     <div class="blog-grid">
       <a href="homewizard-energy-display-review.html" class="blog-card">
@@ -355,7 +371,7 @@
   </div>
 
   <!-- OVERIG -->
-  <div class="section">
+  <div class="section" data-cat="uitleg">
     <div class="section-title">📖 Uitleg &amp; Achtergrond</div>
     <div class="blog-grid">
       <a href="netcongestie-uitgelegd.html" class="blog-card">
@@ -443,5 +459,36 @@ function navSearchReset(){const i=document.getElementById('navSearchInput');i.va
 function navSearchQuery(q){const c=document.getElementById('navSearchClear');const r=document.getElementById('navSearchResults');c.classList.toggle('show',q.length>0);if(!q.trim()){r.innerHTML='<div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>';return}const matches=PAGES.filter(p=>(p.title+p.desc).toLowerCase().includes(q.toLowerCase()));if(!matches.length){r.innerHTML='<div class="nav-search-hint">Geen resultaten gevonden voor <em>'+q+'</em></div>';return}r.innerHTML=matches.map(p=>`<a href="${p.url}" class="nav-search-result"><span class="nsr-icon">${p.icon}</span><div><div class="nsr-title">${highlight(p.title,q)}</div><div class="nsr-desc">${p.desc}</div></div></a>`).join('')}
 function navSearchKey(e){if(e.key==='Escape')navSearchClose()}
 </script>
+<script>
+function filterCat(cat,btn){
+  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  document.querySelectorAll('.section[data-cat]').forEach(function(s){
+    s.style.display=(cat==='all'||s.dataset.cat===cat)?'':'none';
+  });
+}
+(function(){
+  var thumbs={zon:'☀️',batterij:'🔋',contract:'⚡',smarthome:'🏠',review:'🔬',uitleg:'📖'};
+  document.querySelectorAll('.section[data-cat]').forEach(function(s){
+    var cat=s.dataset.cat;
+    s.querySelectorAll('.blog-card').forEach(function(card){
+      var t=document.createElement('div');
+      t.className='card-thumb';
+      t.textContent=thumbs[cat]||'📄';
+      card.insertBefore(t,card.firstChild);
+    });
+  });
+})();
+</script>
+<script>(function(){var m=Math.round((new Date('2027-01-01')-new Date())/2.628e9);if(m<1)return;var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null,false);var n;while(n=w.nextNode()){if(/~\d+\s*maanden/.test(n.nodeValue))n.nodeValue=n.nodeValue.replace(/~\d+\s*maanden/g,'~'+m+' maanden');}})();</script>
+<script>(function(){
+  var S=document.createElement('style');
+  S.textContent='.rv{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}.rv.vi{opacity:1;transform:none}'+
+    '.product-card,.calc-card,.prod-card,.spec-card{transition:transform .2s ease,box-shadow .2s ease}'+
+    '.product-card:hover,.calc-card:hover,.prod-card:hover,.spec-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.11)}';
+  document.head.appendChild(S);
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vi');io.unobserve(x.target);}});},{threshold:.1});
+  document.querySelectorAll('.highlight-box,.warning-box,.info-box,.cta-box,.product-card,.calc-card,.prod-card,.toc,.stap,.article-cta,.bottom-cta,.affiliate-section,.pill-links,.disclaimer-box').forEach(function(el){el.classList.add('rv');io.observe(el);});
+})();</script>
 </body>
 </html>

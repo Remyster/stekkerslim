@@ -267,14 +267,14 @@
 
   <h2 id="doos">Wat zit er in de doos?</h2>
 
-  <img src="Beide_stekkers_in_doos.jpeg" alt="Tapo P115 en P410M dozen naast elkaar op houten tafel" class="article-photo">
+  <img src="Beide_stekkers_in_doos.webp" alt="Tapo P115 en P410M dozen naast elkaar op houten tafel" class="article-photo" loading="lazy">
   <div class="photo-caption">Links de P115 (wit, compact), rechts de P410M (antraciet, voor buiten met Matter)</div>
 
   <p>Direct al een duidelijk verschil in formaat. De P115-doos is compact, de P410M-doos is bijna twee keer zo groot. De P410M heeft ook een beschermklep over het stopcontact &mdash; dat zie je al op de verpakking. Tapo vermeldt op de doos: IP54, solar power monitoring, Matter en energy bill estimates. Dat zijn vier redenen om er serieus naar te kijken.</p>
 
   <h2 id="p115-unboxing">Tapo P115: eerste indruk</h2>
 
-  <img src="P115.jpeg" alt="Tapo P115 uitgevouwen met Quick Start Guide op tafel" class="article-photo">
+  <img src="P115.webp" alt="Tapo P115 uitgevouwen met Quick Start Guide op tafel" class="article-photo" loading="lazy">
   <div class="photo-caption">De P115 met de uitgevouwen Quick Start Guide &mdash; simpel gehouden, in meerdere talen</div>
 
   <p>De P115 is door de Consumentenbond uitgeroepen tot beste koop &eacute;n beste getest &mdash; dat is niet voor niks. De P115 is puur wit en klein. Echt mini &mdash; hij steekt nauwelijks uit als hij ingeplugd zit. De Quick Start Guide is een uitvouwblad in een stuk of tien talen. Twee stappen: app downloaden, instructies volgen. Meer staat er niet op. Dat is precies hoe het hoort.</p>
@@ -301,12 +301,12 @@
   <h2 id="p410m-unboxing">Tapo P410M: eerste indruk</h2>
 
   <div class="photo-grid">
-    <img src="P410m.jpeg" alt="Tapo P410M uitgevouwen op tafel met Matter code kaartje en Quick Start Guide">
-    <img src="P410m_1.jpeg" alt="Tapo P410M achterkant close-up met rubberen beschermlaag">
+    <img src="P410m.webp" alt="Tapo P410M uitgevouwen op tafel met Matter code kaartje en Quick Start Guide" loading="lazy">
+    <img src="P410m_1.webp" alt="Tapo P410M achterkant close-up met rubberen beschermlaag" loading="lazy">
   </div>
   <div class="photo-caption">Links: alles wat er in de doos zit, inclusief het Matter-kaartje. Rechts: de achterkant van de P410M &mdash; die rubberen laag valt meteen op</div>
 
-  <img src="P410m_2.jpeg" alt="Tapo P410M met open klep, stopcontact zichtbaar met Nur IP54 markering" class="article-photo">
+  <img src="P410m_2.webp" alt="Tapo P410M met open klep, stopcontact zichtbaar met Nur IP54 markering" class="article-photo" loading="lazy">
   <div class="photo-caption">Met de klep open: "Nur IP54" staat letterlijk op het stopcontact gedrukt. Tapo herinnert je er zelf aan dat dit geen IP67 is</div>
 
   <p>De M in P410M staat voor Matter &mdash; meteen de belangrijkste reden waarom dit model duurder is dan de standaard P115. Maar er is meer. Dit is een ander verhaal dan de P115. De P410M oogt en voelt meteen een stuk steviger. De behuizing heeft een rubberen, matte coating die degelijk aanvoelt &mdash; geen goedkoop plastic. Het gewicht zit goed. Dit is een ding dat je buiten hangt en niet meer aan denkt.</p>
@@ -514,5 +514,14 @@ document.addEventListener("click",function(e){var b=document.getElementById("nav
   },{passive:true});
 })();
 </script>
+<script>(function(){
+  var S=document.createElement('style');
+  S.textContent='.rv{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}.rv.vi{opacity:1;transform:none}'+
+    '.product-card,.calc-card,.prod-card,.spec-card{transition:transform .2s ease,box-shadow .2s ease}'+
+    '.product-card:hover,.calc-card:hover,.prod-card:hover,.spec-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.11)}';
+  document.head.appendChild(S);
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vi');io.unobserve(x.target);}});},{threshold:.1});
+  document.querySelectorAll('.highlight-box,.warning-box,.info-box,.cta-box,.product-card,.calc-card,.prod-card,.toc,.stap,.article-cta,.bottom-cta,.affiliate-section,.pill-links,.disclaimer-box').forEach(function(el){el.classList.add('rv');io.observe(el);});
+})();</script>
 </body>
 </html>

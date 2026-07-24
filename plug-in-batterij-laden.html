@@ -629,5 +629,15 @@ document.addEventListener('click',function(e){const m=document.getElementById('m
   },{passive:true});
 })();
 </script>
+<script>(function(){var m=Math.round((new Date('2027-01-01')-new Date())/2.628e9);if(m<1)return;var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null,false);var n;while(n=w.nextNode()){if(/~\d+\s*maanden/.test(n.nodeValue))n.nodeValue=n.nodeValue.replace(/~\d+\s*maanden/g,'~'+m+' maanden');}})();</script>
+<script>(function(){
+  var S=document.createElement('style');
+  S.textContent='.rv{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}.rv.vi{opacity:1;transform:none}'+
+    '.product-card,.calc-card,.prod-card,.spec-card{transition:transform .2s ease,box-shadow .2s ease}'+
+    '.product-card:hover,.calc-card:hover,.prod-card:hover,.spec-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.11)}';
+  document.head.appendChild(S);
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vi');io.unobserve(x.target);}});},{threshold:.1});
+  document.querySelectorAll('.highlight-box,.warning-box,.info-box,.cta-box,.product-card,.calc-card,.prod-card,.toc,.stap,.article-cta,.bottom-cta,.affiliate-section,.pill-links,.disclaimer-box').forEach(function(el){el.classList.add('rv');io.observe(el);});
+})();</script>
 </body>
 </html>

@@ -117,6 +117,23 @@
   <meta property="og:url" content="https://stekkerslim.nl/vragen.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://stekkerslim.nl/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Wat verandert er in 2027 met mijn zonnepanelen?","acceptedAnswer":{"@type":"Answer","text":"De salderingsregeling stopt per 1 januari 2027. Teruggeleverde stroom is dan minder waard — je krijgt alleen nog de terugleververgoeding van je leverancier, niet meer de volledige saldering."}},
+      {"@type":"Question","name":"Welke slimme stekker werkt het beste met Home Assistant?","acceptedAnswer":{"@type":"Answer","text":"HomeWizard Energy Socket via lokale API of Tapo P115 via de Tapo integratie. Beide werken stabiel en bieden energiemeting."}},
+      {"@type":"Question","name":"Is een thuisbatterij nu al rendabel?","acceptedAnswer":{"@type":"Answer","text":"Hangt sterk af van je teruglevering, terugleverkosten en contract. Gebruik de thuisbatterij calculator op stekkerslim.nl om je eigen situatie door te rekenen."}},
+      {"@type":"Question","name":"Hoe kies ik het beste energiecontract?","acceptedAnswer":{"@type":"Answer","text":"Vergelijk altijd via een onafhankelijke vergelijker. De keuze tussen vast, variabel en dynamisch hangt af van je situatie: heb je zonnepanelen en slimme apparaten, dan is dynamisch interessant."}},
+      {"@type":"Question","name":"Wat is het verschil tussen een vast, variabel en dynamisch contract?","acceptedAnswer":{"@type":"Answer","text":"Vast = zelfde prijs het hele jaar. Variabel = leverancier past maandelijks aan op marktprijzen. Dynamisch = je betaalt per uur de actuele beursprijs — voordelig als je slimme apparaten hebt die je kunt plannen."}},
+      {"@type":"Question","name":"Hoeveel bespaar je echt met een slimme stekker?","acceptedAnswer":{"@type":"Answer","text":"Op standby-apparaten amper €5/jaar. Op vergeten-uit-te-zetten apparaten €20-50/jaar. De echte winst zit in inzicht: je ziet precies wat elk apparaat verbruikt."}},
+      {"@type":"Question","name":"Kan ik een thuisbatterij gebruiken zonder zonnepanelen?","acceptedAnswer":{"@type":"Answer","text":"Ja, maar alleen zinvol met een dynamisch contract. Je laadt de batterij goedkoop op in daluren en gebruikt die stroom overdag. De marges zijn smal: gemiddeld 2-4 cent per kWh."}},
+      {"@type":"Question","name":"Wat zijn terugleverkosten?","acceptedAnswer":{"@type":"Answer","text":"Terugleverkosten zijn kosten die sommige leveranciers rekenen als je stroom teruglevert aan het net. Bij 3.500 kWh teruglevering kun je €400+ per jaar extra kwijt zijn."}},
+      {"@type":"Question","name":"Wat doet een P1 meter precies?","acceptedAnswer":{"@type":"Answer","text":"Een P1 meter leest je slimme energiemeter uit via de P1-poort en stuurt die data naar een app of Home Assistant. Zo zie je live je verbruik en teruglevering per minuut of seconde."}}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -263,6 +280,31 @@
       <div class="faq-a">Vergelijk altijd via een onafhankelijke vergelijker. Wij werken samen met Vattenfall, Coolblue Energie en binnenkort Pricewise. <a href="index.html#vergelijken">Bekijk alle opties →</a></div>
     </div>
 
+    <div class="faq-item">
+      <div class="faq-q">Wat is het verschil tussen een vast, variabel en dynamisch contract?</div>
+      <div class="faq-a">Vast = zelfde prijs het hele jaar, handig als zekerheid belangrijk is. Variabel = leverancier past maandelijks aan op marktprijzen. Dynamisch = je betaalt per uur de actuele beursprijs — voordelig als je slimme apparaten hebt die je kunt plannen. <a href="energiecontract-vergelijken-2026.html">Lees de volledige vergelijking →</a></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Hoeveel bespaar je echt met een slimme stekker?</div>
+      <div class="faq-a">Op een standby-apparaat van 5W bespaar je amper €5/jaar — dat loont niet. Op een koffiezetapparaat of gaming-pc dat je vergeet uit te zetten, kun je €20–€50/jaar besparen. De echte winst zit in inzicht: je ziet precies wat elk apparaat verbruikt. <a href="beste-slimme-stekker-2026.html">Eerlijke vergelijking van slimme stekkers →</a></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Kan ik een thuisbatterij gebruiken zonder zonnepanelen?</div>
+      <div class="faq-a">Ja, maar alleen zinvol als je een dynamisch contract hebt. Je laadt de batterij goedkoop op (nachttarief of daluren) en gebruikt die stroom overdag. De marges zijn smal — gemiddeld 2–4 ct/kWh. <a href="thuisbatterij-zonder-zonnepanelen-2026.html">Doorrekening zonder zonnepanelen →</a></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Wat zijn terugleverkosten en betaal ik die ook?</div>
+      <div class="faq-a">Terugleverkosten zijn kosten die sommige leveranciers rekenen als je stroom teruglevert aan het net. Niet elke leverancier rekent ze, maar bij 3.500 kWh teruglevering kun je €400+/jaar extra kwijt zijn. <a href="terugleverkosten.html">Bekijk wie terugleverkosten rekent →</a></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Wat doet een P1 meter precies?</div>
+      <div class="faq-a">Een P1 meter leest je slimme energiemeter uit via de P1-poort en stuurt die data naar een app of Home Assistant. Zo zie je live je verbruik én teruglevering — per minuut of per seconde. Ideaal om te begrijpen waar je energie naartoe gaat. <a href="smarthome-p1-meter.html">Alles over de P1 meter →</a></div>
+    </div>
+
   </div>
 </div>
 
@@ -364,5 +406,14 @@ function navSearchKey(e){if(e.key==='Escape'){document.getElementById('navSearch
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
 function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
 </script>
+<script>(function(){
+  var S=document.createElement('style');
+  S.textContent='.rv{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}.rv.vi{opacity:1;transform:none}'+
+    '.product-card,.calc-card,.prod-card,.spec-card{transition:transform .2s ease,box-shadow .2s ease}'+
+    '.product-card:hover,.calc-card:hover,.prod-card:hover,.spec-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.11)}';
+  document.head.appendChild(S);
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vi');io.unobserve(x.target);}});},{threshold:.1});
+  document.querySelectorAll('.highlight-box,.warning-box,.info-box,.cta-box,.product-card,.calc-card,.prod-card,.toc,.stap,.article-cta,.bottom-cta,.affiliate-section,.pill-links,.disclaimer-box').forEach(function(el){el.classList.add('rv');io.observe(el);});
+})();</script>
 </body>
 </html>

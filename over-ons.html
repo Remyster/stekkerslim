@@ -104,6 +104,22 @@
     .mobile-menu a:hover{background:var(--licht)}
     .mobile-menu .mob-cta{background:var(--groen);color:var(--navy)!important;margin-top:8px;text-align:center}
     @media(max-width:900px){.nav-links{display:none!important}.hamburger{display:flex!important}}
+    .reviews-section{padding:56px 24px;background:var(--wit)}
+    .reviews-inner{max-width:720px;margin:0 auto}
+    .reviews-inner h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin-bottom:8px}
+    .reviews-intro{color:var(--grijs);font-size:0.87rem;margin-bottom:24px}
+    .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .review-card{background:var(--licht);border-radius:14px;padding:20px;display:flex;gap:14px;align-items:flex-start;text-decoration:none;color:inherit;transition:box-shadow .2s;border:1px solid transparent}
+    .review-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.09);border-color:var(--groen)}
+    .review-icon{font-size:1.6rem;min-width:36px}
+    .review-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:4px;color:var(--navy)}
+    .review-card p{font-size:0.78rem;color:var(--grijs);line-height:1.5;margin-bottom:8px}
+    .review-tag{display:inline-block;background:rgba(0,209,122,0.15);color:#059669;font-size:0.72rem;font-weight:700;padding:2px 8px;border-radius:99px}
+    .milestone-box{background:rgba(255,210,63,0.08);border:1px solid rgba(255,210,63,0.3);border-radius:14px;padding:20px;margin:24px 0;display:flex;gap:16px;align-items:flex-start}
+    .milestone-icon{font-size:1.5rem;flex-shrink:0}
+    .milestone-box p{font-size:0.87rem;color:#374151;margin:0;line-height:1.65}
+    .milestone-box strong{color:var(--navy)}
+    @media(max-width:600px){.review-grid{grid-template-columns:1fr}}
   </style>
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="StekkerSlim.nl" />
@@ -193,7 +209,7 @@
       <p>Zonnepanelen, Home Assistant, slimme stekkers. En toch ging mijn energierekening van €140 naar €200 in zes maanden. Dát is waarom ik StekkerSlim begon.</p>
     </div>
     <div class="hero-photo">
-      <img src="remy.png" alt="Remy Egberts — oprichter StekkerSlim.nl">
+      <img src="remy.png" alt="Remy Egberts — oprichter StekkerSlim.nl" loading="lazy">
       <div class="photo-caption">
         <strong>Remy Egberts</strong>
         <span>Oprichter StekkerSlim.nl · Hoorn, Noord-Holland</span>
@@ -218,6 +234,7 @@
   <h2>Waarom StekkerSlim anders is</h2>
   <p>Ik wil de site zijn die ik zelf zocht. Eén plek waar je je energierekening kunt narekenen, kunt berekenen wat een thuisbatterij oplevert, kunt lezen wat terugleverkosten precies zijn — en eerlijk te horen krijgt wanneer iets de moeite niet waard is.</p>
   <p>Ik woon zelf in een huurwoning, heb twee dochters, en ben alleenverdienend. Ik heb geen onbeperkt budget. De calculators die ik bouw zijn de calculators die ik zelf nodig had. De artikelen zijn de uitleg die ik wilde lezen maar nergens vond.</p>
+  <p>Alles wat op deze site staat, heb ik zelf doorgerekend of doorgeleefd. Ik heb zonnepanelen, een Home Assistant setup, slimme stekkers op de grote verbruikers, een P1 meter voor live inzicht, en een slimme thermostaat op schema. Geen lab-setup — gewoon een normaal huishouden dat probeert slim om te gaan met energie.</p>
 </div>
 
 <div class="setup">
@@ -252,11 +269,41 @@
   </div>
 </div>
 
+<div class="reviews-section">
+  <div class="reviews-inner">
+    <h2>Wat ik getest heb</h2>
+    <p class="reviews-intro">Productreviews die op deze site staan zijn altijd van producten die ik zelf heb gebruikt. Als een product gratis ontvangen is, staat dat erbij.</p>
+    <div class="review-grid">
+      <a href="homewizard-energy-display-review.html" class="review-card">
+        <div class="review-icon">🧪</div>
+        <div>
+          <h4>HomeWizard Energy Display</h4>
+          <p>In samenwerking met redacteur Tamara Huber. Review in 2 delen: onboxing &amp; installatie, daarna 2 weken eerlijk eindoordeel.</p>
+          <span class="review-tag">Review · 2026</span>
+        </div>
+      </a>
+      <a href="tapo-p115-p410m-eindoordeel.html" class="review-card">
+        <div class="review-icon">🔌</div>
+        <div>
+          <h4>Tapo P115 vs P410M</h4>
+          <p>Gratis ontvangen van Tapo voor een eerlijke review. WiFi vs Zigbee in de praktijk — inclusief nauwkeurigheidstest en Home Assistant integratie.</p>
+          <span class="review-tag">Review · 2026</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
 <div class="visie">
   <h2>Waar StekkerSlim naartoe gaat</h2>
   <p>Dit is nog maar het begin. Ik wil StekkerSlim uitbouwen tot meer dan een site met calculators. Een plek waar mensen van elkaar kunnen leren — een community van huiseigenaren en huurders die serieus bezig zijn met hun energieverbruik.</p>
   <p>Denk aan een forum waar je vragen kunt stellen over Home Assistant, smarthome apparaten kunt bespreken, je eigen besparing kunt delen. Mensen die elkaar helpen slimmer om te gaan met energie, apparaten en contracten. Zonder reclame, zonder verborgen belangen.</p>
   <p>Heb je een vraag, een fout gevonden in een berekening, of gewoon een tip? Mail me via <a href="mailto:info@stekkerslim.nl">info@stekkerslim.nl</a>. Ik lees alles zelf.</p>
+
+  <div class="milestone-box">
+    <div class="milestone-icon">🎯</div>
+    <p><strong>Eerste commissie: 23 april 2026 — €3,97 via HomeWizard.</strong> Een bezoeker uit België had een P1 Meter en P1 Splitter gekocht via een link op de site. Klein bedrag, grote bevestiging: de aanpak werkt. Sindsdien zijn er dagelijks bezoekers die via StekkerSlim een product kopen of een energiecontract afsluiten.</p>
+  </div>
 
   <div class="belofte-box">
     <h3>Wat ik jou beloof</h3>
@@ -346,5 +393,15 @@ function navSearchKey(e){if(e.key==='Escape'){document.getElementById('navSearch
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
 function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
 </script>
+<script>(function(){var m=Math.round((new Date('2027-01-01')-new Date())/2.628e9);if(m<1)return;var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null,false);var n;while(n=w.nextNode()){if(/~\d+\s*maanden/.test(n.nodeValue))n.nodeValue=n.nodeValue.replace(/~\d+\s*maanden/g,'~'+m+' maanden');}})();</script>
+<script>(function(){
+  var S=document.createElement('style');
+  S.textContent='.rv{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}.rv.vi{opacity:1;transform:none}'+
+    '.product-card,.calc-card,.prod-card,.spec-card{transition:transform .2s ease,box-shadow .2s ease}'+
+    '.product-card:hover,.calc-card:hover,.prod-card:hover,.spec-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.11)}';
+  document.head.appendChild(S);
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vi');io.unobserve(x.target);}});},{threshold:.1});
+  document.querySelectorAll('.highlight-box,.warning-box,.info-box,.cta-box,.product-card,.calc-card,.prod-card,.toc,.stap,.article-cta,.bottom-cta,.affiliate-section,.pill-links,.disclaimer-box,.review-card,.milestone-box,.setup-card,.belofte-box,.affiliate-box').forEach(function(el){el.classList.add('rv');io.observe(el);});
+})();</script>
 </body>
 </html>
