@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Site-structuur
-*Laatst bijgewerkt: 16 juli 2026 (o.b.v. repo-inhoud + sitemap.xml)*
+*Laatst bijgewerkt: 24 juli 2026 (o.b.v. repo-inhoud + sitemap.xml)*
 
 Alle pagina's zijn statische `.html` bestanden, direct onder de root. URL-patroon: `https://stekkerslim.nl/{bestandsnaam}.html` (non-www, canonical altijd https).
 
@@ -60,9 +60,6 @@ Alle pagina's zijn statische `.html` bestanden, direct onder de root. URL-patroo
 
 ## Actueel / nieuwswaarde
 - `stroomprijs-record-juni-2026.html`
-
-## ⚠️ Bekende gap
-`thuisbatterij-kopen-juli-2026.html` en `wasmachine-dynamisch-tarief.html` staan (nog) niet in `sitemap.xml` (laatst gecontroleerd t/m 26 juni 2026). Check of deze zijn toegevoegd en resubmit de sitemap in Search Console als dat nog niet is gebeurd.
 
 ## Structured data — verplicht op elke pagina
 `Article`, `BreadcrumbList`, optioneel `FAQPage`. **Nooit** `Product`, `Offer`, `price`, `availability`, `shippingDetails`, `hasMerchantReturnPolicy` — zie `affiliate-regels.md`.

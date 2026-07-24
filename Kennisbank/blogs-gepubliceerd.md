@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Gepubliceerde blogs/artikelen
-*Laatst bijgewerkt: 16 juli 2026 — data uit sitemap.xml (laatste check: 26 juni 2026)*
+*Laatst bijgewerkt: 24 juli 2026 — data uit sitemap.xml (laatste check: 24 juli 2026)*
 
 Let op: dit zijn artikel/blog-pagina's, niet de calculators of vaste pagina's (over-ons, privacy, vragen) — die staan in `site-structuur.md`.
 
@@ -34,11 +34,7 @@ Let op: dit zijn artikel/blog-pagina's, niet de calculators of vaste pagina's (o
 | tapo-p115-p410m-review.html | Tapo P115/P410M — review | 2026-06-21 |
 | tapo-p115-p410m-eindoordeel.html | Tapo P115/P410M — eindoordeel | 2026-06-21 |
 | stroomprijs-record-juni-2026.html | Stroomprijs record juni 2026 | 2026-06-26 |
-
-## ⚠️ Nog niet bevestigd in sitemap
-| Pagina | Onderwerp | Status |
-|---|---|---|
-| thuisbatterij-kopen-juli-2026.html | Thuisbatterij kopen — juli 2026 | Live gemeld, datum/sitemap-status checken |
-| wasmachine-dynamisch-tarief.html | Wasmachine op dynamisch tarief draaien | Live gemeld, datum/sitemap-status checken, CTA-fix toegepast 16 juli 2026 |
+| thuisbatterij-kopen-juli-2026.html | Thuisbatterij kopen — juli 2026 | 2026-07-06 |
+| wasmachine-dynamisch-tarief.html | Wasmachine op dynamisch tarief draaien | 2026-07-13 |
 
 Check bij twijfel altijd de actuele `sitemap.xml` in de repo voor de precieze lastmod-datum — dit bestand is een afgeleide, niet de bron van waarheid.
