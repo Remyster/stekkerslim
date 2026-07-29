@@ -203,11 +203,11 @@
   <style>@media(max-width:680px){.start-hier-grid{grid-template-columns:1fr!important}}</style>
 
   <!-- FEATURED -->
-  <div class="featured-card">
-    <span class="badge">Nieuw — Juni 2026</span>
-    <h2><a href="loont-plug-in-thuisbatterij-2026.html">Loont een plug-in thuisbatterij in 2026? Bereken of het voor jouw huis slim is</a></h2>
-    <p>De salderingsregeling stopt in 2027. Eerlijke beslisgids: voor wie loont een plug-in batterij nog? Wat verandert er precies en wanneer verdien je hem terug? Inclusief scenario's en waarschuwingen wanneer je beter níét koopt.</p>
-    <a href="loont-plug-in-thuisbatterij-2026.html" class="btn-primary">Lees de volledige beslisgids →</a>
+  <div class="featured-card" data-cat="review">
+    <span class="badge">Getest — Juli 2026</span>
+    <h2><a href="indevolt-solidflex-3000-review.html">Indevolt SolidFlex 3000 AC getest: eerlijke review van een plug-in thuisbatterij</a></h2>
+    <p>We ontvingen de Indevolt SolidFlex 3000 AC als testproduct. Eerlijk verslag van unboxing, specificaties, app-installatie en eerste metingen. Wat valt direct op — en wat minder? Deel 1 van 3.</p>
+    <a href="indevolt-solidflex-3000-review.html" class="btn-primary">Lees de review →</a>
   </div>
 
   <!-- ZONNEPANELEN & SALDERING -->
@@ -498,7 +498,7 @@ function navSearchKey(e){if(e.key==='Escape')navSearchClose()}
 function filterCat(cat,btn){
   document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
   btn.classList.add('active');
-  document.querySelectorAll('.section[data-cat]').forEach(function(s){
+  document.querySelectorAll('.section[data-cat],.featured-card[data-cat]').forEach(function(s){
     s.style.display=(cat==='all'||s.dataset.cat===cat)?'':'none';
   });
 }

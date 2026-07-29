@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Project Overzicht
-*Laatst bijgewerkt: 24 juli 2026*
+*Laatst bijgewerkt: 29 juli 2026*
 
 ## Wat is dit?
 Statische HTML/CSS website over energie besparen voor Nederlandse gezinnen. Geen framework, geen build-stap — losse `.html` bestanden via GitHub Pages op **stekkerslim.nl**.
@@ -126,6 +126,12 @@ Independer, Eneco, Milieucentraal
 
 ## Wat er recent gedaan is
 *(meest recent bovenaan)*
+
+### 29 juli 2026 — Blog featured card + filter fix + Indevolt op homepage
+
+- **blog.html featured card**: Vervangen van "Loont een plug-in thuisbatterij in 2026?" → Indevolt SolidFlex 3000 AC review als de grote uitgelichte kaart. Badge "Getest — Juli 2026".
+- **blog.html filter buttons**: Bug gefixed — categorie-filter werkte niet (er gebeurde niks bij klikken). Selector uitgebreid van `.section[data-cat]` naar `.section[data-cat],.featured-card[data-cat]`. Tevens `data-cat="review"` toegevoegd aan featured card zodat hij correct verbergt bij andere categorie-filters.
+- **index.html**: Indevolt review spotlight toegevoegd onder de 3 artikelen (groene border, 🔬 emoji, "Nieuwste review · Juli 2026"), linkt naar indevolt-solidflex-3000-review.html.
 
 ### 29 juli 2026 — Nieuwe pagina beslisvolgorde + blog-volgorde fix
 
