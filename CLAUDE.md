@@ -117,6 +117,7 @@ Independer, Eneco, Milieucentraal
 | Tapo P115 vs P410M eindoordeel deel 2 | `tapo-p115-p410m-eindoordeel.html` | Live — 8 min, gepubliceerd 15 jun 2026 (gratis ontvangen van Tapo) |
 | Thuisbatterij kopen juli 2026 | `thuisbatterij-kopen-juli-2026.html` | Live — gepubliceerd juli 2026 |
 | Wasmachine dynamisch tarief | `wasmachine-dynamisch-tarief.html` | Live — gepubliceerd juli 2026, CTA-fix 16 juli |
+| Thuisbatterij kopen beslisvolgorde | `saldering-2027-thuisbatterij-beslisvolgorde.html` | Live — gepubliceerd 28 juli 2026, titel herzien 29 juli 2026 |
 | Over ons | `over-ons.html` | Live |
 | Privacy | `privacy.html` | Live |
 | Vragen | `vragen.html` | Live |
@@ -125,6 +126,11 @@ Independer, Eneco, Milieucentraal
 
 ## Wat er recent gedaan is
 *(meest recent bovenaan)*
+
+### 29 juli 2026 — Nieuwe pagina beslisvolgorde + blog-volgorde fix
+
+- **saldering-2027-thuisbatterij-beslisvolgorde.html**: Gepulld van GitHub (gepubliceerd 28 juli). Titel herzien van "Saldering 2027: deze 4 stappen vóór je een batterij koopt" → "Thuisbatterij kopen? Volg eerst deze 4 stappen" om cannibalisatie op saldering-zoekwoorden te vermijden. H1, meta description en blog-kaartje bijgewerkt. Tag gewijzigd van "Saldering 2027" → "Thuisbatterij".
+- **blog.html**: Nieuw kaartje verplaatst naar bovenkant van de Zonnepanelen & Saldering 2027-sectie (stond onderaan).
 
 ### 24 juli 2026 — Grote sitebreed update + kennisbank sync
 
@@ -266,7 +272,7 @@ Independer, Eneco, Milieucentraal
 ---
 
 ## Open punten
-*(Bijgewerkt: 24 juli 2026)*
+*(Bijgewerkt: 29 juli 2026)*
 
 ### URGENT — volgende sessie fixen
 *(geen open urgent items)*
