@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Blogs in progress / pipeline
-*Laatst bijgewerkt: 24 juli 2026*
+*Laatst bijgewerkt: 3 augustus 2026*
 
 ## De 11-stappen blogpipeline
 1. Grok — trendonderzoek
@@ -15,7 +15,7 @@
 Regel: elke AI werkt met actuele info uit deze kennisbank (zie `INDEX.md`), nooit uit verouderde eigen kennis over prijzen, affiliate-status of regelgeving.
 
 ## Op dit moment open
-- **Indevolt SolidFlex 3000 AC hands-on review** — reviewunit + P1-meter ontvangen. Eerste review-blog geschreven en opgestuurd naar Indevolt (Jasmine, partnership@indevolt.com) voor feitelijke check. Wacht op feedback. Contract getekend als particulier (geen BTW/KvK).
+- **Indevolt SolidFlex 3000 AC hands-on review** — reviewunit + P1-meter ontvangen. Eerste review-blog geschreven en opgestuurd naar Indevolt (Jasmine, partnership@indevolt.com) voor feitelijke check. Wacht op feedback. Contract getekend als particulier (geen BTW/KvK). ⚠️ 3 augustus 2026: er is een affiliate-CTA (Awin 110350) toegevoegd aan de HTML van deze review én aan thuisbatterij-top5-2026.html, vooruitlopend op Jasmine's akkoord — **nog niet gepusht/live**, wacht op bevestiging van Remy dat het akkoord binnen is voordat dit gepubliceerd wordt.
 - **Marstek Venus E Mini** — vroege partnershipgesprekken, contact Vivi. Nog geen content-commitment.
 
 ## Geparkeerd / nog te beslissen
