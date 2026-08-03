@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Kennisbank INDEX
-*Laatst bijgewerkt: 16 juli 2026*
+*Laatst bijgewerkt: 3 augustus 2026*
 
 Dit is de kennisbank van StekkerSlim.nl, gebruikt door alle AI's in de contentpipeline (Grok, Gemini, Perplexity, Claude, ChatGPT/StekkerPen). Elk bestand hieronder is losstaand — raadpleeg alleen het bestand dat relevant is voor je huidige taak, niet alles tegelijk.
 
@@ -13,6 +13,7 @@ Dit is de kennisbank van StekkerSlim.nl, gebruikt door alle AI's in de contentpi
 | `seo-richtlijnen.md` | Keyword-regels, interne linkstructuur, feitelijke correcties die overal moeten gelden |
 | `blogs-gepubliceerd.md` | Alle live blog/artikel-pagina's met onderwerp en datum |
 | `blogs-in-progress.md` | Wat er nu gemaakt wordt, in welke stap van de pipeline |
+| `qa-audit.md` | Het QA-controlesysteem (script + maandelijkse cloud-routine): wat het wel/niet checkt, en geleerde lessen (prijzen scrapen is onbetrouwbaar, nieuwe knop-classes altijd `!important` + browsercheck) |
 
 ## Eigenaar & site
 - Eigenaar: Remy Egberts — info@stekkerslim.nl
