@@ -51,5 +51,5 @@ Amazon: altijd volledige link `amazon.nl/dp/[ASIN]?tag=stekkerslim-21`, geen amz
 ## Belangrijke productkennis
 - **Marstek Venus E 3.0**: niet meer leverbaar via Amazon. Gebruik Bol.com affiliate + Marstek.nl direct.
 - **Indevolt SolidFlex 2000 ECO** (voorheen "PowerFlex 2000 ECO"): ± €730–770, via Awin 110350.
-- **Indevolt SolidFlex 3000 AC**: ± €799, 1,792 kWh basismodule, AC-gekoppeld (geen MPPT nodig), uitbreidbaar tot bijna 20 kWh via BatteryFlex, via Awin 110350.
+- **Indevolt SolidFlex 3000 AC**: €849 (livecheck 3 aug 2026, adviesprijs €1.099 met "bespaar tot €250"-badge — de €50-kortingscode op de site geldt pas vanaf €1.000 bestelwaarde, dus telt niet mee voor losse aankoop), 1,792 kWh basismodule, AC-gekoppeld (geen MPPT nodig), uitbreidbaar tot bijna 20 kWh via BatteryFlex, via Awin 110350.
 - Check bij elke prijsvermelding de datum van de laatste update — prijzen wijzigen regelmatig. Gebruik waar mogelijk een `±`-range i.p.v. een exacte prijs, tenzij het een vaste fabrikantsprijs is (bijv. HomeWizard P1 Meter €24,95 direct via HomeWizard).
