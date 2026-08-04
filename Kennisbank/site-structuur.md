@@ -16,6 +16,7 @@ Alle pagina's zijn statische `.html` bestanden, direct onder de root. URL-patroo
 - `calculator-thuisbatterij.html`
 - `calculator-laadpaal.html`
 - `calculator-warmtepomp.html`
+- `energiebespaar-calculator.html` — besparingspotentieel per slim device (stekker/thermostaat/P1+HA), toegevoegd 4 augustus 2026
 
 ## Saldering & terugleveren (hoogste prioriteit H2 2026)
 - `saldering-2027.html`

@@ -85,6 +85,7 @@ Independer, Eneco, Milieucentraal
 | Calculator thuisbatterij | `calculator-thuisbatterij.html` | Live |
 | Calculator laadpaal | `calculator-laadpaal.html` | Live |
 | Calculator warmtepomp | `calculator-warmtepomp.html` | Live |
+| Energiebespaar calculator | `energiebespaar-calculator.html` | Live — gepubliceerd 4 augustus 2026 |
 | Saldering 2027 | `saldering-2027.html` | Live |
 | Terugleverkosten | `terugleverkosten.html` | Live |
 | Terugleververgoeding 2027 | `terugleververgoeding-2027.html` | Live |
@@ -126,6 +127,13 @@ Independer, Eneco, Milieucentraal
 
 ## Wat er recent gedaan is
 *(meest recent bovenaan)*
+
+### 4 augustus 2026 — Nieuwe pagina energiebespaar-calculator + sitebrede nav-uitrol
+
+- **energiebespaar-calculator.html**: Nieuwe gratis tool live, o.b.v. bouwplan van StekkerSlim Bouwer. Laat bezoekers per slim device zien wat ze kunnen besparen — 3 losse blokken (slimme stekker / slimme thermostaat / P1-meter + Home Assistant), elk met eigen €/maand-indicatie en CTA, i.p.v. één totaalgetal (beter voor affiliate-tracking per device). Input: wat heb je al, aantal bewoners, verwarmingstype, contracttype (vast/dynamisch). Rekenlogica o.b.v. gemiddelde verbruikscijfers per bewonersaantal, consistent met bestaande claims elders op de site (stekker €50–150/jr, thermostaat €100–200/jr, P1+HA €150–400/jr). Geen merchant-schema (alleen Article/BreadcrumbList/FAQPage). Tado bewust niet als directe affiliate-CTA gebruikt (Awin 86413 staat nog op pending) — CTA verwijst naar `slimme-thermostaat-installeren.html`. Canonical, OG-tags (og-image.png), GA4 aanwezig.
+- **Sitebrede navigatie**: nav-dropdown "Calculators", mobiel menu, footer-lijst en interne site-zoekbalk (`_SP`-array) op alle ~44 pagina's bijgewerkt zodat de nieuwe calculator overal vindbaar is.
+- **Interne links**: toegevoegd vanuit `homeassistant-energie-besparen.html`, `beste-slimme-stekker-2026.html` en `smarthome-p1-meter.html` naar de nieuwe calculator.
+- **sitemap.xml**: nieuwe pagina toegevoegd (lastmod 2026-08-04, priority 0.85). Nog te doen: Remy dient de sitemap zelf opnieuw in bij Search Console.
 
 ### 29 juli 2026 — Blog featured card + filter fix + Indevolt op homepage
 

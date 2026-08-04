@@ -10,13 +10,63 @@
     gtag('config', 'G-RKF36BF7DB');
   </script>
   <meta charset="UTF-8">
-  <link rel="canonical" href="https://stekkerslim.nl/calculator-laadpaal.html">
+  <link rel="canonical" href="https://stekkerslim.nl/energiebespaar-calculator.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bereken de besparing van thuis laden vs snelladen. Zie hoeveel jij per jaar bespaart met een thuislaadpaal voor je elektrische auto.">
-  <title>Laadpaal Thuis Calculator — Besparing Berekenen 2026 | StekkerSlim.nl</title>
+  <meta name="description" content="Energiebespaar calculator: bereken gratis wat jij per maand kunt besparen met slimme stekkers, een slimme thermostaat of een P1-meter + Home Assistant.">
+  <title>Energiebespaar Calculator — Wat Kun Je Besparen met Slimme Apparaten? | StekkerSlim.nl</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Energiebespaar calculator: wat kun je besparen met slimme apparaten?",
+    "description": "Bereken gratis wat jij per maand kunt besparen met slimme stekkers, een slimme thermostaat of een P1-meter + Home Assistant.",
+    "author": { "@type": "Person", "name": "Remy Egberts" },
+    "publisher": { "@type": "Organization", "name": "StekkerSlim.nl" },
+    "mainEntityOfPage": "https://stekkerslim.nl/energiebespaar-calculator.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://stekkerslim.nl/" },
+      { "@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://stekkerslim.nl/index.html#calculators" },
+      { "@type": "ListItem", "position": 3, "name": "Energiebespaar calculator", "item": "https://stekkerslim.nl/energiebespaar-calculator.html" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wat levert een slimme stekker echt op?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Een slimme stekker met energiemeting laat zien welke apparaten sluipverbruik hebben — vaak tv's, routers en oude opladers die dag en nacht een beetje stroom trekken. Bij een gemiddeld huishouden gaat het om ongeveer €50 tot €150 per jaar, afhankelijk van hoeveel apparaten je hebt en hoe actief je automatiseert." }
+      },
+      {
+        "@type": "Question",
+        "name": "Bespaart een slimme thermostaat echt geld?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Bij een gasgestookte woning is €100 tot €200 per jaar een realistische indicatie, vooral als je nu nog een vaste dagtemperatuur aanhoudt. Heb je een warmtepomp of stadsverwarming, dan is het effect kleiner omdat die systemen vaak al zuiniger of minder flexibel regelbaar zijn." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is een P1-meter met Home Assistant de moeite waard?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Dat hangt sterk af van je contract. Op een dynamisch contract kun je apparaten laten draaien op de goedkoopste uren, wat volgens ervaringen van gebruikers €150 tot €400 per jaar kan scheler. Op een vast contract is het effect veel kleiner, omdat de prijs per kWh toch niet varieert." }
+      },
+      {
+        "@type": "Question",
+        "name": "Zijn deze bedragen gegarandeerd?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nee. Dit zijn indicatieve schattingen op basis van gemiddelde Nederlandse huishoudens. Jouw werkelijke besparing hangt af van je apparaten, gedrag en woning. Zie het als een richting, niet als een belofte." }
+      }
+    ]
+  }
+  </script>
   <style>
     :root{--groen:#00D17A;--groen-dark:#00A85F;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -39,42 +89,35 @@
     .form-group{margin-bottom:20px}
     .form-group label{display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;font-weight:600;margin-bottom:8px}
     .form-group label span{font-weight:400;color:var(--grijs)}
-    .form-group input[type="range"]{width:100%;height:6px;appearance:none;background:var(--grijs-licht);border-radius:3px;outline:none;cursor:pointer}
-    .form-group input[type="range"]::-webkit-slider-thumb{appearance:none;width:20px;height:20px;border-radius:50%;background:var(--groen);cursor:pointer;box-shadow:0 2px 8px rgba(0,209,122,.4)}
-    .range-labels{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--grijs);margin-top:4px}
+    .form-group select{width:100%;padding:10px 12px;border:2px solid var(--grijs-licht);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.9rem;color:var(--navy);background:var(--wit)}
+    .check-group{display:flex;flex-direction:column;gap:8px}
+    .check-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border:2px solid var(--grijs-licht);border-radius:10px;cursor:pointer;font-size:0.87rem;font-weight:500}
+    .check-item input{width:16px;height:16px;accent-color:var(--groen);cursor:pointer}
+    .check-item:hover{border-color:var(--groen)}
     .divider{border:none;border-top:1px solid var(--grijs-licht);margin:20px 0}
+    .preset-row{display:flex;gap:8px}
+    .preset-btn{flex:1;padding:8px;border:2px solid var(--grijs-licht);border-radius:8px;background:var(--wit);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--navy)}
+    .preset-btn.active{border-color:var(--groen);background:rgba(0,209,122,0.1);color:var(--groen-dark)}
     .calc-results{display:flex;flex-direction:column;gap:16px}
     .result-card{background:var(--wit);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
-    .result-card.primary{background:var(--navy)}
-    .result-label{font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--grijs);margin-bottom:8px}
-    .result-card.primary .result-label{color:rgba(255,255,255,.5)}
-    .result-value{font-family:'Outfit',sans-serif;font-weight:900;font-size:2.4rem;color:var(--groen);line-height:1}
-    .result-sub{font-size:0.82rem;color:var(--grijs);margin-top:6px}
-    .result-card.primary .result-sub{color:rgba(255,255,255,.4)}
-    .result-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--grijs-licht)}
-    .result-row:last-child{border-bottom:none}
-    .result-row-label{font-size:0.88rem;color:var(--grijs)}
-    .result-row-value{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem}
-    .result-row-value.groen{color:var(--groen)}
-    .compare-visual{display:flex;gap:12px;margin-top:16px}
-    .compare-col{flex:1;background:var(--licht);border-radius:12px;padding:16px;text-align:center}
-    .compare-col.winner{background:rgba(0,209,122,0.1);border:2px solid var(--groen)}
-    .compare-col h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:8px}
-    .compare-col .price{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy)}
-    .compare-col.winner .price{color:var(--groen)}
-    .compare-col .per-km{font-size:0.75rem;color:var(--grijs)}
-    .winner-badge{background:var(--groen);color:var(--navy);font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:99px;display:inline-block;margin-bottom:8px}
+    .result-label{font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--grijs);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+    .result-value{font-family:'Outfit',sans-serif;font-weight:900;font-size:2rem;color:var(--groen);line-height:1}
+    .result-sub{font-size:0.82rem;color:var(--grijs);margin-top:6px;line-height:1.5}
+    .result-cta{display:flex;flex-direction:column;gap:6px;margin-top:16px}
+    .result-cta a.btn-int{display:block;background:var(--navy);color:var(--wit);padding:10px 16px;border-radius:9px;font-weight:700;font-size:0.85rem;text-decoration:none;text-align:center}
+    .result-cta a.btn-aff{display:block;color:var(--groen-dark);font-size:0.8rem;font-weight:600;text-decoration:none;text-align:center}
+    .result-cta a.btn-aff:hover{text-decoration:underline}
     .uitleg-section{padding:56px 24px}.uitleg-inner{max-width:800px;margin:0 auto}
     .uitleg-inner h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:20px}
     .uitleg-inner h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.05rem;margin:24px 0 8px}
     .uitleg-inner p{color:#374151;font-size:0.93rem;line-height:1.7;margin-bottom:12px}
     .uitleg-inner ul{padding-left:20px;color:#374151;font-size:0.93rem;line-height:1.8}
+    .warning-box{background:rgba(255,210,63,0.12);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0;font-size:0.88rem}
+    .info-table{width:100%;border-collapse:collapse;margin:16px 0}
+    .info-table th{background:var(--navy);color:var(--wit);padding:10px 14px;text-align:left;font-size:0.85rem}
+    .info-table td{padding:10px 14px;border-bottom:1px solid var(--grijs-licht);font-size:0.88rem}
+    .info-table tr:last-child td{border-bottom:none}
     .disclaimer-box{background:var(--licht);border-radius:12px;padding:16px 20px;font-size:0.82rem;color:var(--grijs);margin-top:32px;line-height:1.6}
-    .cta-section{background:var(--navy);padding:56px 24px;text-align:center}
-    .cta-section h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:var(--wit);margin-bottom:12px}
-    .cta-section p{color:rgba(255,255,255,.6);margin-bottom:24px}
-    .btn-primary{background:var(--groen);color:var(--navy);padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;display:inline-block;transition:transform .2s}
-    .btn-primary:hover{transform:translateY(-2px)}
     footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
     .footer-inner{max-width:1100px;margin:0 auto}
     .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
@@ -91,7 +134,7 @@
     .tooltip-wrap .tip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--navy)}
     .tooltip-wrap:hover .tip-box,.tooltip-wrap:focus .tip-box{display:block}
     .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:100%;padding-top:8px;left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}
-  
+
     /* === ZOEKBALK === */
     .nav-search-wrap{position:relative}
     .nav-search-btn{background:none;border:none;cursor:pointer;padding:8px;color:var(--grijs);display:flex;align-items:center;transition:color .2s;border-radius:8px}
@@ -128,7 +171,7 @@
     .mobile-menu a:hover{background:var(--licht)}
     .mobile-menu .mob-cta{background:var(--groen);color:var(--navy)!important;margin-top:8px;text-align:center}
     @media(max-width:900px){.nav-links{display:none!important}.hamburger{display:flex!important}}
-  
+
   .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:rgba(11,22,40,0.97);backdrop-filter:blur(8px);padding:12px 20px;z-index:150;transform:translateY(110%);transition:transform .35s ease;border-top:2px solid var(--groen)}
   .sticky-cta.show{transform:none}
   .sticky-cta-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
@@ -140,12 +183,12 @@
   </style>
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="StekkerSlim.nl" />
-  <meta property="og:title" content="Laadpaal Besparing Calculator 2026 | StekkerSlim.nl" />
-  <meta property="og:description" content="Bereken hoeveel je bespaart met een thuislaadpaal voor je elektrische auto." />
+  <meta property="og:title" content="Energiebespaar Calculator — Wat Kun Je Besparen met Slimme Apparaten? | StekkerSlim.nl" />
+  <meta property="og:description" content="Bereken gratis wat jij per maand kunt besparen met slimme stekkers, een slimme thermostaat of een P1-meter + Home Assistant." />
   <meta property="og:image" content="https://stekkerslim.nl/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:url" content="https://stekkerslim.nl/calculator-laadpaal.html" />
+  <meta property="og:url" content="https://stekkerslim.nl/energiebespaar-calculator.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://stekkerslim.nl/og-image.png" />
 </head>
@@ -210,118 +253,82 @@
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="/">Home</a> › <a href="index.html#calculators">Calculators</a> › Laadpaal</div>
-    <h1>🔌 Laadpaal thuis: hoeveel bespaar jij?</h1>
-    <p>Bereken het verschil tussen thuis laden en snelladen. En zie in hoeveel jaar een thuislaadpaal zichzelf terugverdient.</p>
+    <div class="breadcrumb"><a href="/">Home</a> › <a href="index.html#calculators">Calculators</a> › Energiebespaar calculator</div>
+    <h1>🔌 Energiebespaar calculator: wat kun je besparen met slimme apparaten?</h1>
+    <p>Vul in wat je al in huis hebt en zie per apparaat een indicatie van de maandelijkse besparing — los van je jaarrekening, puur gericht op wat een slimme stekker, thermostaat of P1-meter + Home Assistant je kan opleveren.</p>
   </div>
 </div>
 
 <div class="calc-section">
   <div class="calc-inner">
     <div class="calc-form">
-      <h2>Jouw rijgedrag</h2>
+      <h2>Jouw situatie</h2>
       <div class="form-group">
-        <label>Kilometers per jaar <span id="km-val">20.000 km</span></label>
-        <input type="range" id="km" min="5000" max="60000" value="20000" step="1000" oninput="updateCalc()">
-        <div class="range-labels"><span>5.000</span><span>60.000 km</span></div>
-      </div>
-      <div class="form-group">
-        <label>Verbruik EV (kWh/100km) <span id="ev-val">18 kWh</span></label>
-        <input type="range" id="evverbruik" min="12" max="30" value="18" step="0.5" oninput="updateCalc()">
-        <div class="range-labels"><span>12 kWh</span><span>30 kWh</span></div>
-      </div>
-      <hr class="divider">
-      <div class="form-group">
-        <label>Thuistarief (€/kWh) <span id="thuis-val">€0,34</span></label>
-        <input type="range" id="thuistarief" min="0.08" max="0.55" value="0.34" step="0.01" oninput="updateCalc()">
-        <div class="range-labels"><span>€0,08</span><span>€0,55</span></div>
-        <div style="margin-top:8px">
-          <button onclick="toggleGemL()" style="background:none;border:none;color:var(--groen);font-size:0.78rem;font-weight:600;cursor:pointer;padding:0;font-family:'DM Sans',sans-serif;">⚙️ Dal/normaal tarief? Bereken gemiddelde →</button>
-          <div id="gem-calc-l" style="display:none;background:var(--licht);border-radius:10px;padding:12px;margin-top:8px">
-            <div style="font-size:0.8rem;font-weight:600;margin-bottom:8px">Gewogen gemiddeld tarief berekenen</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Normaal (€/kWh)</div><input type="number" id="gl-n" value="0.151" step="0.001" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemL()"></div>
-              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Dal (€/kWh)</div><input type="number" id="gl-d" value="0.119" step="0.001" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemL()"></div>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
-              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Normaal kWh/jaar</div><input type="number" id="gl-nk" value="2100" step="100" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemL()"></div>
-              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Dal kWh/jaar</div><input type="number" id="gl-dk" value="1400" step="100" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemL()"></div>
-            </div>
-            <div id="gem-res-l" style="background:var(--groen);color:var(--navy);border-radius:8px;padding:10px;text-align:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem">—</div>
-            <button onclick="gebruikGemL()" style="width:100%;margin-top:8px;background:var(--navy);color:var(--wit);border:none;border-radius:8px;padding:8px;font-size:0.82rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">Gebruik dit tarief →</button>
-          </div>
+        <label>Wat heb je al in huis?</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" id="have-niks" onchange="toggleNiks()"> Niks, ik begin vanaf nul</label>
+          <label class="check-item"><input type="checkbox" id="have-stekker" onchange="toggleHave(this)"> Slimme stekker(s)</label>
+          <label class="check-item"><input type="checkbox" id="have-thermostaat" onchange="toggleHave(this)"> Slimme thermostaat</label>
+          <label class="check-item"><input type="checkbox" id="have-p1" onchange="toggleHave(this)"> P1-meter</label>
+          <label class="check-item"><input type="checkbox" id="have-ha" onchange="toggleHave(this)"> Home Assistant</label>
         </div>
       </div>
-      <div class="form-group">
-        <label>Snellaadtarief (€/kWh) <span id="snel-val">€0,69</span></label>
-        <input type="range" id="sneltarief" min="0.30" max="1.20" value="0.69" step="0.01" oninput="updateCalc()">
-        <div class="range-labels"><span>€0,30</span><span>€1,20</span></div>
-      </div>
       <hr class="divider">
       <div class="form-group">
-        <label>Kosten thuislaadpaal (incl. installatie) <span id="laadpaal-val">€1.200</span></label>
-        <input type="range" id="laadpaalkosten" min="500" max="3000" value="1200" step="100" oninput="updateCalc()">
-        <div class="range-labels"><span>€500</span><span>€3.000</span></div>
+        <label>Aantal bewoners</label>
+        <select id="bewoners" onchange="updateCalc()">
+          <option value="1">1 persoon</option>
+          <option value="2" selected>2 personen</option>
+          <option value="3">3 personen</option>
+          <option value="4">4 personen</option>
+          <option value="5">5 of meer personen</option>
+        </select>
       </div>
       <div class="form-group">
-        <label>% thuis te laden <span id="thuis-pct-val">70%</span></label>
-        <input type="range" id="thuispct" min="20" max="100" value="70" step="5" oninput="updateCalc()">
-        <div class="range-labels"><span>20%</span><span>100%</span></div>
+        <label>Verwarmingstype</label>
+        <select id="verwarming" onchange="updateCalc()">
+          <option value="gas" selected>Gas-CV</option>
+          <option value="warmtepomp">Warmtepomp</option>
+          <option value="stadsverwarming">Stadsverwarming</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Huidig energiecontract</label>
+        <div class="preset-row">
+          <button class="preset-btn active" id="preset-vast" onclick="setContract('vast')">Vast</button>
+          <button class="preset-btn" id="preset-dynamisch" onclick="setContract('dynamisch')">Dynamisch</button>
+        </div>
       </div>
     </div>
 
     <div class="calc-results">
-      <div class="result-card primary">
-        <div class="result-label">Jaarlijkse besparing <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Verschil tussen thuisladen (daaltarief × kWh/jaar) en snelladen of tanken bij dezelfde gereden kilometers.</span></span></div>
-        <div class="result-value" id="res-besparing">—</div>
-        <div class="result-sub" id="res-terugverdien">Terugverdientijd: —</div>
-      </div>
-
       <div class="result-card">
-        <div class="result-label">Laadkosten per jaar</div>
-        <div class="compare-visual">
-          <div class="compare-col winner">
-            <div class="winner-badge">Goedkoopst</div>
-            <h4>🏠 Thuis laden</h4>
-            <div class="price" id="res-thuis-prijs">—</div>
-            <div class="per-km" id="res-thuis-perkm">—</div>
-          </div>
-          <div class="compare-col">
-            <div style="height:22px;"></div>
-            <h4>⚡ Snelladen</h4>
-            <div class="price" id="res-snel-prijs">—</div>
-            <div class="per-km" id="res-snel-perkm">—</div>
-          </div>
+        <div class="result-label">🔌 Slimme stekker(s) <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Sluipverbruik van apparaten die dag en nacht een beetje stroom trekken — tv, router, oude opladers.</span></span></div>
+        <div class="result-value" id="res-stekker">—</div>
+        <div class="result-sub" id="res-stekker-sub">—</div>
+        <div class="result-cta">
+          <a href="beste-slimme-stekker-2026.html" class="btn-int">Bekijk de beste slimme stekkers →</a>
+          <a href="https://amzn.to/40zQLvl" target="_blank" rel="noopener sponsored" class="btn-aff">Direct kopen op Amazon.nl →</a>
         </div>
       </div>
 
       <div class="result-card">
-        <div class="result-label">Details</div>
-        <div class="result-row">
-          <span class="result-row-label">Totaal kWh per jaar</span>
-          <span class="result-row-value" id="res-kwh">—</span>
-        </div>
-        <div class="result-row">
-          <span class="result-row-label">kWh thuis geladen</span>
-          <span class="result-row-value" id="res-kwh-thuis">—</span>
-        </div>
-        <div class="result-row">
-          <span class="result-row-label">kWh snelgeladen</span>
-          <span class="result-row-value" id="res-kwh-snel">—</span>
-        </div>
-        <div class="result-row">
-          <span class="result-row-label">Laadpaal terugverdiend in</span>
-          <span class="result-row-value groen" id="res-tv">—</span>
+        <div class="result-label">🌡️ Slimme thermostaat <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Stooktijden en temperatuur automatisch afstemmen op wanneer je écht thuis bent.</span></span></div>
+        <div class="result-value" id="res-thermostaat">—</div>
+        <div class="result-sub" id="res-thermostaat-sub">—</div>
+        <div class="result-cta">
+          <a href="slimme-thermostaat-installeren.html" class="btn-int">Bekijk welke thermostaat bij je past →</a>
         </div>
       </div>
 
-      <div style="background:rgba(255,210,63,0.1);border:1px solid rgba(255,210,63,0.4);border-radius:12px;padding:14px;font-size:0.82rem;">
-        <strong>ISDE subsidie:</strong> Bij aanschaf van een gecertificeerde laadpaal kun je mogelijk subsidie aanvragen via de ISDE-regeling. Vraag dit na bij RVO.nl. Bedragen en voorwaarden veranderen jaarlijks.
-      </div>
-
-      <div style="background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.2);border-radius:12px;padding:14px;font-size:0.82rem;margin-top:8px">
-        <strong style="color:#DC2626">💡 Tip: laad op dal-uren</strong> Heb je zonnepanelen én terugleverkosten? Dan is slim laden op dal-uren dubbel interessant — je vermijdt terugleverkosten én betaalt minder voor stroom. Koppel je laadpaal aan Home Assistant voor automatisch laden op het goedkoopste moment.<br>
-        <a href="calculator-energiekosten.html" style="color:var(--groen);font-weight:600;display:inline-block;margin-top:6px">Check je terugleverkosten →</a>
+      <div class="result-card">
+        <div class="result-label">🏠 P1-meter + Home Assistant <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Apparaten automatisch laten draaien op de goedkoopste uren — vooral relevant bij een dynamisch contract.</span></span></div>
+        <div class="result-value" id="res-p1ha">—</div>
+        <div class="result-sub" id="res-p1ha-sub">—</div>
+        <div class="result-cta">
+          <a href="smarthome-p1-meter.html" class="btn-int">Zie hoe je dit instelt →</a>
+          <a href="https://partner.homewizard.com/c/?si=18407&li=1795784&wi=419188&ws=&dl=nl%2Fp1-meter%2F" target="_blank" rel="noopener sponsored" class="btn-aff">HomeWizard P1 meter bestellen →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -329,47 +336,39 @@
 
 <div class="uitleg-section">
   <div class="uitleg-inner">
-    <h2>Thuis laden vs. snelladen: wat is slim?</h2>
-    <p>Thuis laden is bijna altijd goedkoper dan snelladen — het tarief verschil is groot. Maar een laadpaal kost geld. Deze calculator laat zien wanneer die investering loont.</p>
+    <h2>Hoe deze calculator rekent</h2>
+    <p>Deze tool berekent geen jaarrekening — daarvoor heb je onze <a href="calculator-energiekosten.html">energiekosten calculator</a>. Hier draait het om besparingspotentieel per apparaat: wat kun je, los van elkaar, besparen met een slimme stekker, een slimme thermostaat, of een P1-meter gekoppeld aan Home Assistant? We gebruiken gemiddelde verbruikscijfers per aantal bewoners als basis, zodat je geen jaaropgave hoeft op te zoeken.</p>
 
-    <h3>Waarom is snelladen zo duur?</h3>
-    <p>Snellaadpalen van Fastned, Allego of Shell Recharge hanteren tarieven tussen de €0,55 en €0,89 per kWh (indicatief, voorjaar 2026). Dit is 2–3× het thuistarief. De hoge prijs dekt de kosten van de netaansluiting, de apparatuur en de snelle laadbehoefte.</p>
+    <h3>Slimme stekker: sluipverbruik zichtbaar maken</h3>
+    <p>De meeste huishoudens hebben een handvol apparaten die continu stroom trekken zonder dat er iemand naar kijkt: een tv op stand-by, een oude modem, een opladerblokje dat in het stopcontact blijft zitten. Een slimme stekker met energiemeting maakt dat verbruik zichtbaar en laat je automatisch uitschakelen wat je niet gebruikt. Bij een gemiddeld huishouden gaat het om ongeveer €50 tot €150 per jaar — niet spectaculair, maar wel bijna zonder moeite binnen te halen.</p>
 
-    <div style="background:rgba(255,210,63,0.1);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:14px 16px;margin:16px 0;font-size:0.88rem;">
-      <strong>⚠️ Let op:</strong> Snellaadtarieven wijzigen regelmatig en verschillen sterk per aanbieder, laadpas en abonnement. De tarieven in deze calculator zijn een momentopname — check altijd de actuele prijzen via de app van Fastned, Allego of je laadpas-aanbieder vóór je vergelijkt.
+    <h3>Slimme thermostaat: stooktijden optimaliseren</h3>
+    <p>Een slimme thermostaat regelt wanneer en hoe warm er gestookt wordt, op basis van een schema of je locatie. Bij een gasgestookte woning is een besparing van €100 tot €200 per jaar realistisch, vooral als je nu nog een vaste temperatuur aanhoudt de hele dag door. Heb je een warmtepomp, dan is het effect kleiner: die systemen draaien vaak al zuiniger en hebben minder ruimte om nog veel te besparen op temperatuurschema's. Bij stadsverwarming is het effect het kleinst — je regelt vooral comfort, niet de brandstofkeuze.</p>
+
+    <div class="warning-box">
+      <strong>Eerlijke waarschuwing:</strong> Woon je in een slecht geïsoleerde woning, dan verlies je een deel van de besparing gewoon weer via de muren. In dat geval levert isolatie op de langere termijn meer op dan een slimme thermostaat alleen.
     </div>
 
-    <h3>Welke laadpaal is goed thuis?</h3>
-    <p>Een 11 kW driefasige laadpaal is voor de meeste gezinnen ideaal. Bekende merken zijn Easee, Alfen en Wallbox. Kosten inclusief installatie liggen tussen de €900 en €1.800, afhankelijk van je thuissituatie en het merk.</p>
+    <h3>P1-meter + Home Assistant: automatiseren op dal-uren</h3>
+    <p>Dit blok heeft het grootste bereik, en dat komt vooral door je energiecontract. Op een dynamisch contract varieert de kWh-prijs per uur — soms bijna gratis, soms duur. Met een P1-meter en Home Assistant kun je apparaten zoals de wasmachine, droger of een thuisbatterij automatisch laten draaien op de goedkoopste momenten. Gebruikers op forums als "Home Assistant NL" melden besparingen van €150 tot €400 per jaar, afhankelijk van hoe actief ze automatiseren. Zit je op een vast contract, dan is dat voordeel er niet — de prijs per kWh blijft toch hetzelfde, wat je ook doet.</p>
 
-    <h3>Slim laden: laad op het goedkoopste moment</h3>
-    <p>Met een dynamisch energiecontract kunnen laadkosten thuis nog lager. In de nacht of bij veel zonnestroom op het net kan stroom soms €0,05–€0,12 per kWh kosten. Een slimme laadpaal in combinatie met een dynamisch contract is de meest kostenefficiënte combinatie.</p>
+    <table class="info-table">
+      <tr><th>Blok</th><th>Indicatieve besparing</th><th>Grootste hefboom</th></tr>
+      <tr><td>Slimme stekker</td><td>€50 – €150 / jaar</td><td>Sluipverbruik elimineren</td></tr>
+      <tr><td>Slimme thermostaat</td><td>€100 – €200 / jaar</td><td>Stooktijden, type verwarming</td></tr>
+      <tr><td>P1-meter + Home Assistant</td><td>€150 – €400 / jaar</td><td>Dynamisch contract</td></tr>
+    </table>
 
+    <h3>Wanneer is dit níet de moeite waard?</h3>
     <ul>
-      <li>Laad 's nachts (00:00–07:00) voor de laagste tarieven</li>
-      <li>Koppel je laadpaal aan je Home Assistant voor automatisch slim laden</li>
-      <li>Overweeg V2H (vehicle-to-home) voor extra flexibiliteit in de toekomst</li>
+      <li>Je hebt al alle drie de blokken volledig ingericht — dan is het meeste laaghangende fruit al geplukt</li>
+      <li>Je zit op een vast contract en overweegt puur voor het P1+HA-blok over te stappen — reken dan eerst uit of overstappen naar dynamisch zelf al loont</li>
+      <li>Je woning heeft een slechte isolatie — investeer dan eerst daarin, een thermostaat lost dat niet op</li>
     </ul>
 
     <div class="disclaimer-box">
-      <strong>Disclaimer:</strong> Tarieven zijn indicatief. Snellaadtarieven variëren per aanbieder, locatie en abonnement. Thuistarief hangt af van je energiecontract. ISDE-subsidie is afhankelijk van beschikbaar budget en voorwaarden — check altijd rvo.nl voor actuele info. Berekeningen zijn schattingen, geen garanties.
+      <strong>Disclaimer:</strong> Dit zijn indicatieve bedragen op basis van gemiddelde Nederlandse huishoudens, gebaseerd op standaard verbruikscijfers per aantal bewoners. Jouw situatie kan afwijken door woninggrootte, isolatie, gedrag en apparatuur. Zie deze calculator als richting, niet als garantie. StekkerSlim.nl ontvangt mogelijk affiliate commissie bij aankoop via links op deze pagina, maar dat verandert nooit ons advies.
     </div>
-  </div>
-</div>
-
-<div class="cta-section">
-  <h2>Laadpaal bestellen bij Coolblue</h2>
-  <p>Ruim assortiment, snelle levering en professionele installatie</p>
-  <a href="https://www.awin1.com/cread.php?awinmid=85161&awinaffid=2816288&ued=https%3A%2F%2Fwww.coolblue.nl%2Flaadpalen" class="btn-primary" target="_blank" rel="noopener sponsored">Bekijk laadpalen bij Coolblue →</a>
-</div>
-<div style="background:#F4F7F2;padding:0 24px 48px">
-  <div style="max-width:1100px;margin:0 auto;background:#0B1628;border-radius:20px;padding:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:relative;overflow:hidden">
-    <div style="position:absolute;top:-60px;right:-60px;width:240px;height:240px;background:radial-gradient(circle,rgba(0,209,122,0.25),transparent 70%);pointer-events:none"></div>
-    <div style="position:relative">
-      <h3 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;color:#fff;margin-bottom:6px">Laadpaal doorgerekend — ook je stroomtarief al vergeleken?</h3>
-      <p style="color:rgba(255,255,255,0.6);font-size:0.88rem;max-width:480px;margin:0">Thuis laden wordt een stuk goedkoper met het juiste energiecontract. Vergelijk nu via Energiekiezer.</p>
-    </div>
-    <a href="https://www.awin1.com/cread.php?awinmid=68288&awinaffid=2816288&ued=https%3A%2F%2Fwww.energiekiezer.nl%2F" target="_blank" rel="noopener sponsored" style="position:relative;background:#00D17A;color:#0B1628;padding:15px 28px;border-radius:11px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.95rem;text-decoration:none;white-space:nowrap;box-shadow:0 6px 20px rgba(0,209,122,0.35)">Vergelijk contracten →</a>
   </div>
 </div>
 
@@ -386,45 +385,89 @@
 </footer>
 
 <script>
-  function fmt(n){return'€'+Math.round(n).toLocaleString('nl-NL')}
-  function updateCalc(){
-    const km=parseInt(document.getElementById('km').value);
-    const ev=parseFloat(document.getElementById('evverbruik').value);
-    const thuis=parseFloat(document.getElementById('thuistarief').value);
-    const snel=parseFloat(document.getElementById('sneltarief').value);
-    const lp=parseInt(document.getElementById('laadpaalkosten').value);
-    const pct=parseInt(document.getElementById('thuispct').value)/100;
+  function fmt(n){return'€'+n.toFixed(2).replace('.',',')}
 
-    document.getElementById('km-val').textContent=km.toLocaleString('nl-NL')+' km';
-    document.getElementById('ev-val').textContent=ev+' kWh';
-    document.getElementById('thuis-val').textContent='€'+thuis.toFixed(2).replace('.',',');
-    document.getElementById('snel-val').textContent='€'+snel.toFixed(2).replace('.',',');
-    document.getElementById('laadpaal-val').textContent=fmt(lp);
-    document.getElementById('thuis-pct-val').textContent=Math.round(pct*100)+'%';
+  var ELEK={1:2100,2:2900,3:3400,4:3900,5:4500};
+  var GAS={1:1000,2:1300,3:1500,4:1700,5:2000};
+  var GASTARIEF=1.42;
+  var contractType='vast';
 
-    const totaalKwh=km/100*ev;
-    const thuisKwh=totaalKwh*pct;
-    const snelKwh=totaalKwh*(1-pct);
-
-    const thuisKosten=thuisKwh*thuis+snelKwh*snel;
-    const snelKostenAlles=totaalKwh*snel;
-    const besparing=snelKostenAlles-thuisKosten;
-    const tv=besparing>0?lp/besparing:0;
-
-    document.getElementById('res-besparing').textContent=fmt(besparing)+'/jaar';
-    document.getElementById('res-terugverdien').textContent='Laadpaal terugverdiend in '+(tv>0?tv.toFixed(1).replace('.',',')+'jaar':'—');
-    document.getElementById('res-thuis-prijs').textContent=fmt(thuisKosten);
-    document.getElementById('res-snel-prijs').textContent=fmt(snelKostenAlles);
-    document.getElementById('res-thuis-perkm').textContent='€'+(thuisKosten/km).toFixed(3).replace('.',',')+'/km';
-    document.getElementById('res-snel-perkm').textContent='€'+(snelKostenAlles/km).toFixed(3).replace('.',',')+'/km';
-    document.getElementById('res-kwh').textContent=Math.round(totaalKwh).toLocaleString('nl-NL')+' kWh';
-    document.getElementById('res-kwh-thuis').textContent=Math.round(thuisKwh).toLocaleString('nl-NL')+' kWh';
-    document.getElementById('res-kwh-snel').textContent=Math.round(snelKwh).toLocaleString('nl-NL')+' kWh';
-    document.getElementById('res-tv').textContent=tv>0?tv.toFixed(1).replace('.',',')+' jaar':'Kies % thuis laden';
+  function setContract(type){
+    contractType=type;
+    document.getElementById('preset-vast').classList.toggle('active',type==='vast');
+    document.getElementById('preset-dynamisch').classList.toggle('active',type==='dynamisch');
+    updateCalc();
   }
-  function toggleGemL(){const e=document.getElementById('gem-calc-l');e.style.display=e.style.display==='none'?'block':'none';if(e.style.display==='block')berekenGemL();}
-  function berekenGemL(){const nt=parseFloat(document.getElementById('gl-n').value)||0,dt=parseFloat(document.getElementById('gl-d').value)||0,nk=parseInt(document.getElementById('gl-nk').value)||0,dk=parseInt(document.getElementById('gl-dk').value)||0,tot=nk+dk;if(!tot)return;const gem=(nt*nk+dt*dk)/tot;const el=document.getElementById('gem-res-l');el.textContent='Gewogen gemiddeld: €'+gem.toFixed(4).replace('.',',')+'/kWh';el.dataset.waarde=gem.toFixed(4);}
-  function gebruikGemL(){const w=parseFloat(document.getElementById('gem-res-l').dataset.waarde);if(!w)return;document.getElementById('thuistarief').value=Math.max(0.15,Math.min(0.55,w)).toFixed(3);updateCalc();document.getElementById('gem-calc-l').style.display='none';}
+
+  function toggleNiks(){
+    var niks=document.getElementById('have-niks');
+    if(niks.checked){
+      ['have-stekker','have-thermostaat','have-p1','have-ha'].forEach(function(id){document.getElementById(id).checked=false;});
+    }
+    updateCalc();
+  }
+  function toggleHave(el){
+    if(el.checked) document.getElementById('have-niks').checked=false;
+    updateCalc();
+  }
+
+  function clamp(v,min,max){return Math.max(min,Math.min(max,v));}
+
+  function updateCalc(){
+    var bewoners=parseInt(document.getElementById('bewoners').value);
+    var verwarming=document.getElementById('verwarming').value;
+    var stroomtarief=contractType==='dynamisch'?0.22:0.34;
+    var elek=ELEK[bewoners];
+    var gas=GAS[bewoners];
+
+    var heeftStekker=document.getElementById('have-stekker').checked;
+    var heeftThermostaat=document.getElementById('have-thermostaat').checked;
+    var heeftP1=document.getElementById('have-p1').checked;
+    var heeftHA=document.getElementById('have-ha').checked;
+
+    // Blok 1: slimme stekker — sluipverbruik
+    var stekkerJaar=clamp(elek*0.06*stroomtarief,40,160);
+    if(heeftStekker) stekkerJaar*=0.3;
+    document.getElementById('res-stekker').textContent=fmt(stekkerJaar/12)+'/maand';
+    document.getElementById('res-stekker-sub').textContent=heeftStekker
+      ? 'Je hebt al slimme stekkers — het grootste deel van dit potentieel is al benut.'
+      : 'Indicatie o.b.v. sluipverbruik bij '+bewoners+(bewoners>=5?'+':'')+' bewoner(s).';
+
+    // Blok 2: slimme thermostaat
+    var thermJaar;
+    if(verwarming==='gas'){
+      thermJaar=clamp(gas*0.80*GASTARIEF*0.10,40,250);
+    } else if(verwarming==='warmtepomp'){
+      thermJaar=clamp(elek*0.35*stroomtarief*0.06,30,180);
+    } else {
+      thermJaar=80;
+    }
+    if(heeftThermostaat) thermJaar*=0.15;
+    document.getElementById('res-thermostaat').textContent=fmt(thermJaar/12)+'/maand';
+    var thermSub={
+      gas:'Indicatie o.b.v. stooktijden optimaliseren op een gasgestookte woning.',
+      warmtepomp:'Warmtepompen zijn al relatief zuinig — het effect van een thermostaat is kleiner.',
+      stadsverwarming:'Bij stadsverwarming regel je vooral comfort, minder de energiekosten zelf.'
+    }[verwarming];
+    document.getElementById('res-thermostaat-sub').textContent=heeftThermostaat
+      ? 'Je hebt al een slimme thermostaat — hier zit weinig extra potentieel meer.'
+      : thermSub;
+
+    // Blok 3: P1-meter + Home Assistant
+    var basis=contractType==='dynamisch'?300:170;
+    var schaal=clamp(0.7+0.15*(bewoners-1),0.7,1.3);
+    var p1haJaar=basis*schaal;
+    if(heeftP1 && heeftHA) p1haJaar*=0.2;
+    else if(heeftP1 || heeftHA) p1haJaar*=0.55;
+    document.getElementById('res-p1ha').textContent=fmt(p1haJaar/12)+'/maand';
+    var p1haSub;
+    if(heeftP1 && heeftHA) p1haSub='Je hebt beide al — dit blok gaat nu vooral om je automatiseringen verfijnen.';
+    else if(heeftP1 || heeftHA) p1haSub='Je hebt er één van de twee — het volledige potentieel vraagt beide.';
+    else p1haSub=contractType==='dynamisch'
+      ? 'Op een dynamisch contract is dit het blok met het meeste potentieel.'
+      : 'Op een vast contract is dit effect beperkt — de kWh-prijs varieert toch niet.';
+    document.getElementById('res-p1ha-sub').textContent=p1haSub;
+  }
   updateCalc();
 </script>
 
@@ -490,9 +533,9 @@ document.addEventListener("click",function(e){var b=document.getElementById("nav
 
 <div class="sticky-cta" id="stickyCta">
   <div class="sticky-cta-inner">
-    <div class="sticky-cta-txt">Stap over op Frank Energie — dynamisch contract<small>Transparante tarieven · geen jaarcontract</small></div>
+    <div class="sticky-cta-txt">Zie live wat je zonnestroom en verbruik doen<small>HomeWizard P1 meter · v.a. €24,95</small></div>
     <div style="display:flex;align-items:center;gap:10px">
-      <a href="https://jf79.net/c/?si=16978&li=1731992&wi=419188" target="_blank" rel="noopener sponsored" class="scta-btn">Bekijk Frank Energie →</a>
+      <a href="https://partner.homewizard.com/c/?si=18407&li=1795784&wi=419188" target="_blank" rel="noopener sponsored" class="scta-btn">Bekijk HomeWizard →</a>
       <button class="sticky-close" onclick="document.getElementById('stickyCta').classList.remove('show');window._sctaOff=1" aria-label="Sluiten">✕</button>
     </div>
   </div>
