@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Project Overzicht
-*Laatst bijgewerkt: 29 juli 2026*
+*Laatst bijgewerkt: 5 augustus 2026*
 
 ## Wat is dit?
 Statische HTML/CSS website over energie besparen voor Nederlandse gezinnen. Geen framework, geen build-stap — losse `.html` bestanden via GitHub Pages op **stekkerslim.nl**.
@@ -86,6 +86,7 @@ Independer, Eneco, Milieucentraal
 | Calculator laadpaal | `calculator-laadpaal.html` | Live |
 | Calculator warmtepomp | `calculator-warmtepomp.html` | Live |
 | Energiebespaar calculator | `energiebespaar-calculator.html` | Live — gepubliceerd 4 augustus 2026 |
+| Thuisbatterij simuleren Home Assistant | `thuisbatterij-simuleren-home-assistant.html` | Live — gepubliceerd 5 augustus 2026 |
 | Saldering 2027 | `saldering-2027.html` | Live |
 | Terugleverkosten | `terugleverkosten.html` | Live |
 | Terugleververgoeding 2027 | `terugleververgoeding-2027.html` | Live |
@@ -127,6 +128,14 @@ Independer, Eneco, Milieucentraal
 
 ## Wat er recent gedaan is
 *(meest recent bovenaan)*
+
+### 5 augustus 2026 — Nieuwe pagina thuisbatterij simuleren in Home Assistant
+
+- **thuisbatterij-simuleren-home-assistant.html**: Nieuwe pagina live. Remy kwam de gratis, open-source HACS-integratie `battery_sim` tegen en wilde die direct delen — simuleert een thuisbatterij op je eigen P1-data in Home Assistant zonder fysieke batterij nodig te hebben. Bevat installatie-stappen, YAML-voorbeeld voor geavanceerde setup (efficiëntie-curves, tariefkoppeling, zonnepanelen), hardware-opties (HA Green aanbevolen, HA Yellow uit productie sinds okt 2025), FAQ-sectie (FAQPage schema) en Article/BreadcrumbList schema. "Mijn eigen resultaten"-sectie is nog een placeholder — Remy heeft `battery_sim` zelf nog niet getest, dat volgt later met eigen screenshots/cijfers.
+- **sitemap.xml**: nieuwe pagina toegevoegd (lastmod 2026-08-05, priority 0.85).
+- **blog.html**: nieuw kaartje bovenaan de Smarthome & DIY-sectie + toegevoegd aan het site-zoek-array.
+- **smarthome-p1-meter.html**: interne link toegevoegd in de "Wat levert het op?"-sectie naar de nieuwe pagina.
+- Alle em-dashes (—) in het artikel vervangen door komma's/dubbele punten/haakjes op Remy's verzoek.
 
 ### 4 augustus 2026 — Nieuwe pagina energiebespaar-calculator + sitebrede nav-uitrol
 
