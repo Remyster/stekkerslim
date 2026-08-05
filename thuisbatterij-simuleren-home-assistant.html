@@ -1,0 +1,516 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <!-- Google Analytics 4: vervang G-RKF36BF7DB met jouw eigen Measurement ID via analytics.google.com -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKF36BF7DB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RKF36BF7DB');
+  </script>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://stekkerslim.nl/thuisbatterij-simuleren-home-assistant.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Loont een thuisbatterij? Simuleer het gratis met je eigen P1-data via battery_sim in Home Assistant. Geen calculator-gemiddeldes, jouw eigen cijfers.">
+  <title>Thuisbatterij Simuleren in Home Assistant: Gratis met Eigen Data | StekkerSlim.nl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--groen:#00D17A;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+    .page-hero{background:var(--navy);padding:56px 24px}
+    .page-hero-inner{max-width:800px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .article-tag{display:inline-block;background:rgba(0,209,122,0.2);color:var(--groen);padding:4px 12px;border-radius:99px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--wit);margin-bottom:16px;line-height:1.15}
+    .article-meta{color:rgba(255,255,255,0.4);font-size:0.82rem}
+    .article-body{max-width:800px;margin:0 auto;padding:56px 24px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin:40px 0 12px}
+    .article-body h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin:28px 0 8px}
+    .article-body p{color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:16px}
+    .article-body ul,.article-body ol{padding-left:24px;color:#374151;font-size:0.95rem;line-height:1.8;margin-bottom:16px}
+    .article-body li{margin-bottom:6px}
+    .article-body a{color:var(--groen)}
+    .article-body code{background:var(--licht);padding:2px 7px;border-radius:5px;font-size:0.85rem;font-family:monospace;color:#1a1a2e}
+    .article-body pre{background:var(--navy);color:#e2e8f0;padding:20px;border-radius:12px;overflow-x:auto;font-size:0.85rem;line-height:1.6;margin:16px 0}
+    .article-body pre code{background:none;padding:0;color:#e2e8f0}
+    .highlight-box{background:var(--licht);border-left:4px solid var(--groen);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem}
+    .warning-box{background:rgba(255,210,63,0.1);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem}
+    .todo-box{background:#FEF2F2;border-left:4px solid #EF4444;border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.88rem;color:#7F1D1D}
+    .step-list{display:flex;flex-direction:column;gap:20px;margin:24px 0}
+    .step-item{display:flex;gap:20px;align-items:flex-start}
+    .step-num{min-width:40px;height:40px;background:var(--groen);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:900;font-size:1rem}
+    .step-content h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;margin-bottom:6px}
+    .step-content p{font-size:0.88rem;color:var(--grijs);margin:0;line-height:1.6}
+    .hardware-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:24px 0}
+    .hardware-card{background:var(--licht);border-radius:14px;padding:20px}
+    .hardware-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:8px}
+    .hardware-card p{font-size:0.83rem;color:var(--grijs);margin:0;line-height:1.5}
+    .hardware-card .prijs{font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem;color:var(--groen);margin-top:10px}
+    .hardware-card .aanbevolen{display:inline-block;background:var(--groen);color:var(--navy);font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-bottom:8px}
+    .hardware-card .uitproductie{display:inline-block;background:#E5E7EB;color:#4B5563;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-bottom:8px}
+    .toc{background:var(--licht);border-radius:14px;padding:24px;margin-bottom:40px}
+    .toc h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
+    .toc ol{padding-left:20px;font-size:0.88rem;line-height:2}
+    .toc a{color:var(--navy);text-decoration:none}.toc a:hover{color:var(--groen)}
+    .disclaimer-box{background:var(--licht);border-radius:12px;padding:16px 20px;font-size:0.82rem;color:var(--grijs);margin-top:40px;line-height:1.6}
+    .faq-lijst{margin:24px 0;display:flex;flex-direction:column}
+    .faq-lijst details{border:1px solid var(--grijs-licht);padding:16px 20px}
+    .faq-lijst details:first-child{border-radius:12px 12px 0 0}
+    .faq-lijst details:last-child{border-radius:0 0 12px 12px}
+    .faq-lijst details+details{border-top:none}
+    .faq-lijst summary{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none}
+    .faq-lijst p{margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7;margin-bottom:0}
+    .related-articles{background:var(--licht);padding:48px 24px}
+    .related-inner{max-width:800px;margin:0 auto}
+    .related-inner h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:20px}
+    .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .related-card{background:var(--wit);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:box-shadow .2s;display:block}
+    .related-card:hover{box-shadow:var(--shadow)}
+    .related-card .tag{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--groen);margin-bottom:6px}
+    .related-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;line-height:1.3}
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
+    @media(max-width:700px){.hardware-grid,.related-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:100%;padding-top:8px;left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}
+    .nav-search-wrap{position:relative}
+    .nav-search-btn{background:none;border:none;cursor:pointer;padding:8px;color:var(--grijs);display:flex;align-items:center;transition:color .2s;border-radius:8px}
+    .nav-search-btn:hover,.nav-search-btn.open{color:var(--groen)}
+    .nav-search-btn svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .nav-search-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.25);z-index:199;backdrop-filter:blur(2px)}
+    .nav-search-overlay.open{display:block}
+    .nav-search-box{display:none;position:fixed;top:68px;left:50%;transform:translateX(-50%);width:min(600px,92vw);background:#fff;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.18);z-index:200;overflow:hidden}
+    .nav-search-box.open{display:block}
+    .nav-search-inner{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--grijs-licht)}
+    .nav-search-inner svg{width:20px;height:20px;stroke:var(--grijs);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    .nav-search-input{flex:1;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--navy);background:transparent}
+    .nav-search-input::placeholder{color:#aaa}
+    .nav-search-clear{background:none;border:none;cursor:pointer;color:var(--grijs);font-size:1.1rem;padding:0 4px;display:none}
+    .nav-search-clear.show{display:block}
+    .nav-search-results{max-height:400px;overflow-y:auto}
+    .nav-search-result{display:flex;align-items:flex-start;gap:12px;padding:12px 18px;text-decoration:none;color:var(--navy);transition:background .15s;border-bottom:1px solid rgba(0,0,0,0.04)}
+    .nav-search-result:last-child{border-bottom:none}
+    .nav-search-result:hover{background:var(--licht)}
+    .nsr-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
+    .nsr-title{font-weight:600;font-size:0.88rem;color:var(--navy);margin-bottom:2px}
+    .nsr-title mark{background:rgba(0,209,122,0.2);color:var(--navy);border-radius:3px;padding:0 2px}
+    .nsr-desc{font-size:0.78rem;color:var(--grijs);line-height:1.4}
+    .nav-search-hint{padding:14px 18px;text-align:center;color:#aaa;font-size:0.82rem}
+    .nav-search-footer{padding:10px 18px;border-top:1px solid var(--grijs-licht);text-align:right;font-size:0.72rem;color:#bbb}
+    @media(max-width:600px){.nav-search-box{top:58px}}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+    .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--wit);z-index:99;padding:16px;box-shadow:0 8px 32px rgba(0,0,0,.1);flex-direction:column;gap:4px}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{padding:12px 16px;color:var(--navy);text-decoration:none;font-weight:600;font-size:0.95rem;border-radius:10px;transition:background .2s}
+    .mobile-menu a:hover{background:var(--licht)}
+    .mobile-menu .mob-cta{background:var(--groen);color:var(--navy)!important;margin-top:8px;text-align:center}
+    @media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}
+    .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:rgba(11,22,40,0.97);backdrop-filter:blur(8px);padding:12px 20px;z-index:150;transform:translateY(110%);transition:transform .35s ease;border-top:2px solid var(--groen)}
+    .sticky-cta.show{transform:none}
+    .sticky-cta-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+    .sticky-cta-txt{color:rgba(255,255,255,0.85);font-size:0.85rem;font-weight:600}
+    .sticky-cta-txt small{display:block;color:rgba(255,255,255,0.4);font-weight:400;font-size:0.75rem}
+    .sticky-cta a.scta-btn{background:var(--groen);color:var(--navy);padding:11px 22px;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.88rem;text-decoration:none;white-space:nowrap}
+    .sticky-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;padding:4px}
+    @media(max-width:600px){.sticky-cta-txt small{display:none}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Thuisbatterij simuleren in Home Assistant: test het gratis met je eigen data",
+    "description": "Loont een thuisbatterij? Simuleer het gratis met je eigen P1-data via battery_sim in Home Assistant. Geen calculator-gemiddeldes, jouw eigen cijfers.",
+    "author": {"@type": "Person", "name": "Remy Egberts"},
+    "publisher": {"@type": "Organization", "name": "StekkerSlim.nl", "url": "https://stekkerslim.nl"},
+    "datePublished": "2026-08-05",
+    "dateModified": "2026-08-05",
+    "url": "https://stekkerslim.nl/thuisbatterij-simuleren-home-assistant.html",
+    "mainEntityOfPage": "https://stekkerslim.nl/thuisbatterij-simuleren-home-assistant.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{"@type":"ListItem","position":1,"name":"StekkerSlim","item":"https://stekkerslim.nl"},{"@type":"ListItem","position":2,"name":"Smarthome","item":"https://stekkerslim.nl/smarthome-producten.html"},{"@type":"ListItem","position":3,"name":"Thuisbatterij simuleren Home Assistant","item":"https://stekkerslim.nl/thuisbatterij-simuleren-home-assistant.html"}]
+  }
+  </script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Kan ik mijn oude P1-data gebruiken om terug te rekenen?","acceptedAnswer":{"@type":"Answer","text":"Nee. battery_sim simuleert alleen vanaf het moment dat je de integratie installeert. Historische import- en exportdata kan de simulatie niet terugrekenen, je begint met meten vanaf dag één."}},{"@type":"Question","name":"Is battery_sim echt helemaal gratis?","acceptedAnswer":{"@type":"Answer","text":"Ja. Het is een gratis, open-source HACS-integratie zonder cloud-account en zonder premium-laag. Je hebt alleen een werkende Home Assistant-installatie en HACS nodig."}},{"@type":"Question","name":"Werkt battery_sim met elke P1 meter of energiemeter?","acceptedAnswer":{"@type":"Answer","text":"Ja, zolang je een cumulatieve import- en exportsensor in kWh hebt. Dat werkt met HomeWizard P1, een generieke DSMR-uitlezer of een Shelly 3EM."}},{"@type":"Question","name":"Is Home Assistant Yellow nog te koop?","acceptedAnswer":{"@type":"Answer","text":"Nee, Yellow is sinds oktober 2025 uit productie. Nabu Casa verkoopt hem niet meer nieuw, je vindt alleen nog restvoorraad of tweedehands. Green is in 2026 de enige nieuwe officiële hub."}},{"@type":"Question","name":"Vervangt deze simulatie de thuisbatterij-calculator?","acceptedAnswer":{"@type":"Answer","text":"Nee, ze vullen elkaar aan. De calculator geeft in een paar seconden een schatting op basis van gemiddeldes. battery_sim geeft na een testperiode een beeld op basis van jouw eigen verbruiks- en teruglever-patroon."}},{"@type":"Question","name":"Maakt een dynamisch energiecontract de simulatie nauwkeuriger?","acceptedAnswer":{"@type":"Answer","text":"Ja. Met energy_import_tariff en energy_export_tariff koppel je een uurprijs-sensor aan de simulatie, zodat je rekent met je werkelijke prijs per kwartier of uur in plaats van een vast gemiddeld tarief."}}]}</script>
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="StekkerSlim.nl" />
+  <meta property="og:title" content="Thuisbatterij Simuleren in Home Assistant: Gratis met Eigen Data | StekkerSlim.nl" />
+  <meta property="og:description" content="Loont een thuisbatterij? Simuleer het gratis met je eigen P1-data via battery_sim in Home Assistant." />
+  <meta property="og:image" content="https://stekkerslim.nl/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://stekkerslim.nl/thuisbatterij-simuleren-home-assistant.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://stekkerslim.nl/og-image.png" />
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="index.html#calculators">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
+          <a href="energiebespaar-calculator.html">🔋 Energiebespaar calculator</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+    <div class="nav-search-wrap" id="navSearchWrap">
+      <button class="nav-search-btn" id="navSearchBtn" onclick="navSearchToggle()" aria-label="Zoeken op StekkerSlim">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+    <div class="nav-search-overlay" id="navSearchOverlay" onclick="navSearchClose()"></div>
+    <div class="nav-search-box" id="navSearchBox">
+      <div class="nav-search-inner">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="nav-search-input" id="navSearchInput" type="text" placeholder="Zoek op stekkerslim.nl… (bijv. saldering, Zigbee, batterij)" oninput="navSearchQuery(this.value)" onkeydown="navSearchKey(event)" autocomplete="off" spellcheck="false">
+        <button class="nav-search-clear" id="navSearchClear" onclick="navSearchReset()" aria-label="Wissen">✕</button>
+      </div>
+      <div class="nav-search-results" id="navSearchResults">
+        <div class="nav-search-hint">Typ een onderwerp, bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>
+      </div>
+      <div class="nav-search-footer">StekkerSlim.nl: eerlijk energieadvies</div>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="calculator-zonnepanelen.html" onclick="closeMenu()">☀️ Zonnepanelen</a>
+  <a href="calculator-thuisbatterij.html" onclick="closeMenu()">🔋 Thuisbatterij</a>
+  <a href="calculator-laadpaal.html" onclick="closeMenu()">🔌 Laadpaal</a>
+  <a href="calculator-energiekosten.html" onclick="closeMenu()">💡 Energiekosten</a>
+  <a href="calculator-warmtepomp.html" onclick="closeMenu()">🌡️ Warmtepomp</a>
+  <a href="energiebespaar-calculator.html" onclick="closeMenu()">🔋 Energiebespaar calculator</a>
+  <a href="blog.html" onclick="closeMenu()">📝 Blog & Artikelen</a>
+  <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome</a>
+  <a href="smarthome-p1-meter.html" onclick="closeMenu()">📡 P1 meter & Home Assistant</a>
+  <a href="vragen.html" onclick="closeMenu()">❓ Stel een vraag</a>
+  <a href="over-ons.html" onclick="closeMenu()">👋 Over ons</a>
+  <a href="index.html#vergelijken" class="mob-cta" onclick="closeMenu()">⚡ Vergelijk contracten</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="/">Home</a> › <a href="smarthome-producten.html">Smarthome</a></div>
+    <div class="article-tag">📡 Smarthome & DIY</div>
+    <h1>Thuisbatterij simuleren in Home Assistant: test het gratis met je eigen data</h1>
+    <div class="article-meta">Bijgewerkt: augustus 2026 · Leestijd: 9 minuten · Moeilijkheid: gevorderd</div>
+  </div>
+</div>
+
+<div class="article-body">
+  <div class="toc">
+    <h4>📋 Inhoud van dit artikel</h4>
+    <ol>
+      <li><a href="#waarom">Waarom een simulatie beter is dan een calculator</a></li>
+      <li><a href="#wat-is-battery-sim">Wat is battery_sim?</a></li>
+      <li><a href="#wat-heb-je-nodig">Wat heb je nodig?</a></li>
+      <li><a href="#installatie">Installatie stap voor stap</a></li>
+      <li><a href="#geavanceerd">Geavanceerd instellen: efficiëntie, cycli, degradatie</a></li>
+      <li><a href="#resultaten">Mijn eigen resultaten</a></li>
+      <li><a href="#waarschuwing">Eerlijke waarschuwing</a></li>
+      <li><a href="#hardware">Nog geen Home Assistant? Dit heb je nodig</a></li>
+      <li><a href="#faq">Veelgestelde vragen</a></li>
+    </ol>
+  </div>
+
+  <p>Een <a href="calculator-thuisbatterij.html">rendementscalculator</a> werkt met gemiddeldes: gemiddeld verbruik, gemiddeld zonneprofiel, gemiddeld tarief. Jouw huis is geen gemiddelde. Met de gratis HACS-integratie <code>battery_sim</code> simuleer je een thuisbatterij op je eigen Home Assistant-data: geen slimme schatting, maar cijfers op basis van wat jij daadwerkelijk verbruikt en teruglevert.</p>
+
+  <div class="highlight-box">
+    <strong>Wat dit je oplevert:</strong> een simulatie die meedraait op je echte import- en exportdata, met geld bespaard, cycli, degradatie en efficiëntie als losse sensoren. Geen garantie, wel een veel eerlijker beeld dan een generieke rekensom.
+  </div>
+
+  <h2 id="waarom">Waarom een simulatie beter is dan een calculator</h2>
+  <p>Onze <a href="calculator-thuisbatterij.html">thuisbatterij-calculator</a> is prima voor een eerste indruk: vul wat kentallen in en je hebt binnen een paar seconden een schatting. Maar die schatting draait op landelijke gemiddeldes. Heb jij overdag niemand thuis en verbruik je vooral 's avonds? Werk je thuis en verbruik je juist rond het middaguur, precies wanneer je panelen pieken? Dat maakt voor een batterij een enorm verschil, en dat verschil zie je niet terug in een calculator.</p>
+  <p><code>battery_sim</code> lost dat op door een virtuele batterij naast je bestaande installatie te laten meedraaien. Geen fysieke batterij nodig: de integratie rekent op basis van je eigen import- en exportsensoren wat er zou zijn gebeurd als je wél een batterij had gehad.</p>
+
+  <h2 id="wat-is-battery-sim">Wat is battery_sim?</h2>
+  <p><code>battery_sim</code> is een gratis, open-source HACS-integratie voor Home Assistant. Geen cloud-account, geen premium-laag, geen abonnement. De laatste release is <strong>v2.6.1</strong> van 11 juli 2026, en het project wordt actief onderhouden, er komen regelmatig nieuwe releases bij (check zelf de <a href="https://github.com/hif2k1/battery_sim/releases" target="_blank" rel="noopener">releases-pagina</a> voor de meest actuele stand).</p>
+
+  <div class="highlight-box">
+    <strong>Wat de integratie native ondersteunt:</strong>
+    <ul style="margin-top:8px">
+      <li>Efficiëntie-curves voor laden en ontladen (<code>discharge_efficiency</code>/<code>charge_efficiency</code>), bijvoorbeeld <code>0:0.90, 2.5:0.94, 5:0.95</code></li>
+      <li><code>rated_battery_cycles</code> en <code>end_of_life_degradation</code>: allebei gewoon als YAML-parameter, geen losse berekening nodig</li>
+      <li>Sensoren voor laad-/ontlaadvermogen, bespaard geld (import én export apart), efficiëntie, cycli, degradatie, modus, percentage en status</li>
+    </ul>
+  </div>
+
+  <h2 id="wat-heb-je-nodig">Wat heb je nodig?</h2>
+  <p>Drie dingen, en je hebt ze mogelijk al:</p>
+  <ol>
+    <li><strong>Een werkende Home Assistant-installatie</strong>: op een Raspberry Pi, HA Green, HA Yellow of je eigen server/NAS</li>
+    <li><strong>HACS</strong> (Home Assistant Community Store): de plek waar je community-integraties zoals <code>battery_sim</code> installeert</li>
+    <li><strong>Een cumulatieve import- en exportsensor in kWh</strong>: dit werkt met een HomeWizard P1 meter, een generieke DSMR-uitlezer of een Shelly 3EM. Zolang de sensor cumulatief in kWh meet, maakt het merk niet uit</li>
+  </ol>
+
+  <div class="warning-box">
+    <strong>Let op:</strong> de simulatie begint pas te tellen vanaf het moment dat je de integratie installeert. Je kunt geen oude P1-historie terugrekenen, hoe eerder je 'm aanzet, hoe meer data je opbouwt.
+  </div>
+
+  <p>Nog geen Home Assistant draaiend? Begin dan bij onze <a href="smarthome-p1-meter.html">gids voor P1 meter + Home Assistant</a>, daar staat de basissetup stap voor stap.</p>
+
+  <h2 id="installatie">Installatie stap voor stap</h2>
+
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>HACS geïnstalleerd?</h4>
+        <p>Heb je HACS nog niet? Installeer die eerst volgens de officiële HACS-documentatie. Zonder HACS kun je <code>battery_sim</code> niet toevoegen.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Battery Simulation zoeken in HACS</h4>
+        <p>Ga naar <strong>HACS → Integraties</strong> en zoek op <strong>"Battery Simulation"</strong>. Installeer de integratie en herstart Home Assistant.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Integratie toevoegen</h4>
+        <p>Ga naar <strong>Instellingen → Apparaten & Diensten → Integratie toevoegen</strong> en zoek op <strong>"Battery Simulation"</strong>.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Sensoren koppelen</h4>
+        <p>Wijs je cumulatieve import- en exportsensor toe, en vul de batterijparameters in die je wilt testen: capaciteit, laad-/ontlaadvermogen. Wil je een specifiek model nabootsen? Kijk dan naar de specificaties op de productpagina en vul die zo dicht mogelijk in.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>Laten meedraaien</h4>
+        <p>Vanaf nu bouwt de integratie data op. Geef het minimaal een paar weken (liefst een volledig seizoen) voor een betrouwbaar beeld, want zonneopbrengst en verbruik verschillen sterk per periode.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="geavanceerd">Geavanceerd instellen: efficiëntie, cycli, degradatie</h2>
+  <p>Wil je meer controle dan de UI-dialoog biedt, dan kun je een batterij ook volledig via YAML definiëren, inclusief efficiëntie-curves, tariefkoppeling en eventueel je zonnepanelen. Dit plaats je in je <code>configuration.yaml</code>, gevolgd door een herstart van Home Assistant. <code>import_sensor</code>, <code>export_sensor</code>, <code>size_kwh</code> en <code>max_discharge_rate_kw</code> zijn verplicht; de rest is optioneel. Elke batterij komt onder een eigen unieke sleutel (in dit voorbeeld <code>mijn_simulatiebatterij</code>). Een voorbeeld:</p>
+
+  <pre><code>battery_sim:
+  mijn_simulatiebatterij:
+    name: "Simulatie batterij"
+    import_sensor: sensor.p1_meter_import_kwh
+    export_sensor: sensor.p1_meter_export_kwh
+    size_kwh: 5.12
+    max_discharge_rate_kw: 3.0
+    max_charge_rate_kw: 3.0
+    charge_efficiency: "0:0.90, 2.5:0.94, 5:0.95"
+    discharge_efficiency: "0:0.90, 2.5:0.94, 5:0.95"
+    rated_battery_cycles: 6000
+    end_of_life_degradation: 0.8
+    energy_import_tariff: sensor.dynamische_import_prijs
+    energy_export_tariff: sensor.dynamische_export_prijs
+    solar_energy_sensor: sensor.zonnepanelen_opbrengst
+    nominal_inverter_power_kw: 4.0</code></pre>
+
+  <p>Een paar dingen om te weten:</p>
+  <ul>
+    <li><code>energy_import_tariff</code> en <code>energy_export_tariff</code> werken met elke entity ID, dus ook een EnergyZero- of Nordpool-templatesensor als je op dynamisch tarief zit. Er is ook een oudere, gecombineerde <code>energy_tariff</code>-optie, maar de losse import/export-variant geeft een preciezer beeld.</li>
+    <li><code>solar_energy_sensor</code> en <code>nominal_inverter_power_kw</code> zijn optioneel en capt het laadvermogen op je zonneproductie, relevant als je panelen in het spel zijn.</li>
+    <li><strong>Geen ingebouwde arbitrage-optimalisatie.</strong> <code>battery_sim</code> rekent, maar het beslist niet zelf wanneer laden of ontladen slim is. Wil je dat simuleren, dan stuur je dat zelf via automations met de modi <code>charge_only</code>, <code>discharge_only</code> en dergelijke.</li>
+  </ul>
+
+  <h2 id="resultaten">Mijn eigen resultaten</h2>
+  <!-- TODO REMY: vul deze sectie met eigen screenshots/cijfers zodra je battery_sim zelf hebt getest op je eigen P1-data. -->
+  <p>Ik kwam <code>battery_sim</code> tegen en vond het meteen te gaaf om voor mezelf te houden, dus wilde ik dit gewoon met jullie delen. Ik ga er zelf ook mee spelen op mijn eigen P1-data, en zodra ik een testperiode heb gedraaid vul ik deze sectie aan met concrete screenshots en cijfers uit mijn eigen Home Assistant-omgeving. Vervolg volgt.</p>
+
+  <h2 id="waarschuwing">Eerlijke waarschuwing</h2>
+  <p>Dit is en blijft een simulatie, geen garantie. Het resultaat hangt af van je eigen tarief-instellingen, de kwaliteit van je sensoren en de batterijparameters die je invult. Een echte batterij gedraagt zich in de praktijk anders: fase-beperkingen, firmware-limieten en niet elke laad-/ontlaadmodus is in de praktijk altijd beschikbaar. Zie dit als een eerlijke indicatie op basis van jouw eigen verbruik, niet als een harde belofte.</p>
+
+  <h2 id="hardware">Nog geen Home Assistant? Dit heb je nodig</h2>
+  <p>Wil je hiermee aan de slag maar heb je nog geen Home Assistant draaien? Er is in 2026 nog maar één nieuwe officiële hub leverbaar.</p>
+
+  <div class="hardware-grid">
+    <div class="hardware-card">
+      <div class="aanbevolen">⭐ Aanbevolen (nog leverbaar)</div>
+      <h4>Home Assistant Green</h4>
+      <p>Kant-en-klaar met HAOS voorgeïnstalleerd. Rockchip RK3566, 4GB RAM, 32GB eMMC, minder dan 2W verbruik. Geen Zigbee/Thread ingebouwd, daarvoor heb je een losse Connect ZBT-2 dongle nodig (±€45). Beginnersvriendelijk, plug-and-play.</p>
+      <div class="prijs">±€179</div>
+      <a href="https://www.amazon.nl/dp/B0CXVKSG19?tag=stekkerslim-21" target="_blank" rel="noopener sponsored" style="display:inline-block;margin-top:10px;background:var(--groen);color:var(--navy);padding:7px 14px;border-radius:8px;font-size:0.78rem;font-weight:700;text-decoration:none">Bekijk op Amazon.nl →</a>
+    </div>
+    <div class="hardware-card">
+      <h4>Raspberry Pi 5 + zelf HAOS installeren</h4>
+      <p>Goedkoopste route als je al wat DIY-ervaring hebt: koop een Raspberry Pi 5, flash Home Assistant OS er zelf op via de Raspberry Pi Imager, en je hebt dezelfde basis als HA Green voor minder geld.</p>
+      <a href="https://partner.bol.com/click/click?p=2&t=url&s=1510756&f=TXL&url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fs%2F%3Fsearchtext%3Draspberry%20pi%205&name=Bol" target="_blank" rel="noopener sponsored" style="display:inline-block;margin-top:10px;background:var(--groen);color:var(--navy);padding:7px 14px;border-radius:8px;font-size:0.78rem;font-weight:700;text-decoration:none">Bekijk Raspberry Pi 5 op Bol.com →</a>
+    </div>
+    <div class="hardware-card">
+      <div class="uitproductie">Uit productie sinds okt 2025</div>
+      <h4>Home Assistant Yellow</h4>
+      <p>Raspberry Pi Compute Module 4, ingebouwde Zigbee/Thread-radio, M.2 NVMe-slot. Blijft software-updates krijgen, maar wordt niet meer nieuw verkocht, alleen nog restvoorraad of tweedehands. Alleen relevant als je 'm al hebt of gericht zoekt.</p>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    <strong>Let op bij de Raspberry Pi 5-route:</strong> je hebt zelf ook een SD-kaart of SSD nodig en moet HAOS handmatig flashen, geen plug-and-play zoals Green. Prima als je al met Home Assistant hebt gewerkt, minder aan te raden voor complete beginners.
+  </div>
+
+  <p>Heb je al Home Assistant draaien en wil je meer uit je energiedata halen? Kijk dan ook naar onze <a href="smarthome-p1-meter.html">P1 meter + Home Assistant-gids</a> voor de basissetup, of check met de <a href="calculator-thuisbatterij.html">thuisbatterij-calculator</a> hoe een gemiddeld huishouden ervoor staat.</p>
+
+  <h2 id="faq">Veelgestelde vragen</h2>
+  <div class="faq-lijst">
+    <details>
+      <summary>Kan ik mijn oude P1-data gebruiken om terug te rekenen?</summary>
+      <p>Nee. <code>battery_sim</code> simuleert alleen vanaf het moment dat je de integratie installeert. Historische import- en exportdata kan de simulatie niet terugrekenen, je begint met meten vanaf dag één.</p>
+    </details>
+    <details>
+      <summary>Is battery_sim echt helemaal gratis?</summary>
+      <p>Ja. Het is een gratis, open-source HACS-integratie zonder cloud-account en zonder premium-laag. Je hebt alleen een werkende Home Assistant-installatie en HACS nodig.</p>
+    </details>
+    <details>
+      <summary>Werkt battery_sim met elke P1 meter of energiemeter?</summary>
+      <p>Ja, zolang je een cumulatieve import- en exportsensor in kWh hebt. Dat werkt met HomeWizard P1, een generieke DSMR-uitlezer of een Shelly 3EM.</p>
+    </details>
+    <details>
+      <summary>Is Home Assistant Yellow nog te koop?</summary>
+      <p>Nee, Yellow is sinds oktober 2025 uit productie. Nabu Casa verkoopt hem niet meer nieuw, je vindt alleen nog restvoorraad of tweedehands. Green is in 2026 de enige nieuwe officiële hub.</p>
+    </details>
+    <details>
+      <summary>Vervangt deze simulatie de thuisbatterij-calculator?</summary>
+      <p>Nee, ze vullen elkaar aan. De calculator geeft in een paar seconden een schatting op basis van gemiddeldes. <code>battery_sim</code> geeft na een testperiode een beeld op basis van jouw eigen verbruiks- en teruglever-patroon.</p>
+    </details>
+    <details>
+      <summary>Maakt een dynamisch energiecontract de simulatie nauwkeuriger?</summary>
+      <p>Ja. Met <code>energy_import_tariff</code> en <code>energy_export_tariff</code> koppel je een uurprijs-sensor (bijvoorbeeld van je <a href="dynamisch-contract.html">dynamische contract</a>) aan de simulatie. Dan reken je met je werkelijke prijs per kwartier of uur in plaats van een vast gemiddeld tarief, dat maakt het bespaarbedrag een stuk realistischer.</p>
+    </details>
+  </div>
+
+  <div class="disclaimer-box">
+    <strong>Disclaimer:</strong> Dit artikel is bijgewerkt op basis van informatie gecontroleerd op 5 augustus 2026. Productbeschikbaarheid, prijzen en projectstatus van open-sourceprojecten kunnen wijzigen. StekkerSlim.nl ontvangt mogelijk affiliate commissies bij aankoop via links, maar dit beïnvloedt onze adviezen nooit.
+  </div>
+</div>
+
+<div class="related-articles">
+  <div class="related-inner">
+    <h3>Meer lezen over thuisbatterijen & Home Assistant</h3>
+    <div class="related-grid">
+      <a href="smarthome-p1-meter.html" class="related-card"><div class="tag">Smarthome</div><h4>P1 meter + Home Assistant in 5 stappen</h4></a>
+      <a href="calculator-thuisbatterij.html" class="related-card"><div class="tag">Calculator</div><h4>Loont een thuisbatterij voor jou?</h4></a>
+      <a href="thuisbatterij-top5-2026.html" class="related-card"><div class="tag">Thuisbatterijen</div><h4>Beste thuisbatterij 2026: top 5</h4></a>
+      <a href="wanneer-thuisbatterij-niet-slim.html" class="related-card"><div class="tag">Thuisbatterijen</div><h4>Wanneer is een thuisbatterij niet slim?</h4></a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="/" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a><p>Eerlijke energietips voor Nederlandse gezinnen.</p></div>
+      <div class="footer-col"><h4>Calculators</h4><ul><li><a href="blog.html">Blog</a></li>
+      <li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li><li><a href="calculator-energiekosten.html">Energiekosten</a></li><li><a href="calculator-laadpaal.html">Laadpaal thuis</a></li><li><a href="calculator-warmtepomp.html">Warmtepomp</a></li><li><a href="energiebespaar-calculator.html">Energiebespaar calculator</a></li></ul></div>
+      <div class="footer-col"><h4>Artikelen</h4><ul><li><a href="dynamisch-contract.html">Dynamisch contract</a></li><li><a href="blog.html">Blog</a></li>
+      <li><a href="saldering-2027.html">Saldering 2027</a></li><li><a href="smarthome-p1-meter.html">P1 meter & HA</a></li></ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul><li><a href="over-ons.html">Over ons</a></li><li><a href="privacy.html">Privacy</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl</span><a href="privacy.html">Privacy & Disclaimer</a></div>
+  </div>
+</footer>
+
+<script>
+var _navPages = [{"url": "index.html", "title": "Homepage", "desc": "Energie besparen, calculators, smarthome"}, {"url": "calculator-zonnepanelen.html", "title": "Zonnepanelen calculator", "desc": "Bereken terugverdientijd zonnepanelen"}, {"url": "calculator-thuisbatterij.html", "title": "Thuisbatterij calculator", "desc": "Is een thuisbatterij rendabel?"}, {"url": "calculator-energiekosten.html", "title": "Energiekosten calculator", "desc": "Bereken jouw jaarlijkse energierekening"}, {"url": "calculator-laadpaal.html", "title": "Laadpaal calculator", "desc": "Wat kost thuis laden?"}, {"url": "calculator-warmtepomp.html", "title": "Warmtepomp calculator", "desc": "Gas vs warmtepomp vergelijken"}, {"url": "thuisbatterij-top5-2026.html", "title": "Beste thuisbatterij 2026 top 5", "desc": "HomeWizard, Zendure, Marstek vergeleken"}, {"url": "saldering-2027.html", "title": "Saldering stopt 2027", "desc": "Wat verandert er voor zonnepanelen na 2027?"}, {"url": "dynamisch-contract.html", "title": "Dynamisch energiecontract", "desc": "Voordelen en nadelen dynamisch contract"}, {"url": "energiecontract-vergelijken-2026.html", "title": "Energiecontract vergelijken 2026", "desc": "Beste energieleverancier vinden"}, {"url": "terugleverkosten.html", "title": "Terugleverkosten", "desc": "Wat zijn terugleverkosten en wie rekent ze?"}, {"url": "terugleververgoeding-2027.html", "title": "Terugleververgoeding 2027", "desc": "Hoeveel krijg je na saldering?"}, {"url": "zonnestroom-na-2027.html", "title": "Zonnestroom na 2027", "desc": "Opties na de salderingswijziging"}, {"url": "terugverdientijd-zonnepanelen-2026.html", "title": "Terugverdientijd zonnepanelen", "desc": "Wanneer verdienen panelen zichzelf terug?"}, {"url": "smarthome-p1-meter.html", "title": "P1 meter Home Assistant", "desc": "P1 meter koppelen aan Home Assistant"}, {"url": "thuisbatterij-simuleren-home-assistant.html", "title": "Thuisbatterij simuleren in Home Assistant", "desc": "Test gratis met battery_sim en je eigen P1-data"}, {"url": "smarthome-producten.html", "title": "Smarthome producten", "desc": "Alle slimme energie-apparaten"}, {"url": "homewizard-energy-display-review.html", "title": "HomeWizard Energy Display review", "desc": "Eerlijk getest: unboxing en installatie"}, {"url": "homewizard-energy-display-deel2.html", "title": "HomeWizard Energy Display eindoordeel", "desc": "Na 2 weken eerlijk eindoordeel"}, {"url": "plug-in-batterij-laden.html", "title": "Plug-in batterij slim laden", "desc": "Wanneer en hoe laad je een thuisbatterij?"}, {"url": "beste-slimme-stekker-2026.html", "title": "Beste slimme stekker 2026", "desc": "Top 5 slimme stekkers vergeleken"}, {"url": "slimme-stekkers.html", "title": "Slimme stekkers uitgelegd", "desc": "Hoe werken slimme stekkers?"}, {"url": "smart-lampen.html", "title": "Slimme lampen", "desc": "Beste slimme lampen en bollen"}, {"url": "wanneer-thuisbatterij-niet-slim.html", "title": "Wanneer is een thuisbatterij niet slim?", "desc": "Eerlijk advies over wanneer je geen batterij moet kopen"}, {"url": "homeassistant-energie-besparen.html", "title": "Home Assistant energie besparen", "desc": "Automatiseer je energieverbruik"}, {"url": "smarthome-uitleg.html", "title": "Smarthome uitleg", "desc": "Wat is een smarthome en hoe begin je?"}, {"url": "slimme-thermostaat-installeren.html", "title": "Slimme thermostaat installeren", "desc": "Tado, Nest en andere thermostaten"}, {"url": "blog.html", "title": "Blog en artikelen", "desc": "Alle artikelen van StekkerSlim"}, {"url": "vragen.html", "title": "Stel een vraag", "desc": "Stuur je energievraag in"}, {"url": "over-ons.html", "title": "Over ons", "desc": "Wie is StekkerSlim?"}];
+function toggleNavSearch(){
+  var box=document.getElementById('navSearchBox');
+  var btn=document.getElementById('navSearchBtn');
+  var open=box.classList.toggle('open');
+  btn.classList.toggle('active',open);
+  if(open){setTimeout(function(){document.getElementById('navSearchInput').focus();},50);}
+}
+document.addEventListener('click',function(e){
+  var wrap=document.getElementById('navSearchWrap');
+  if(wrap&&!wrap.contains(e.target)){
+    document.getElementById('navSearchBox').classList.remove('open');
+    document.getElementById('navSearchBtn').classList.remove('active');
+  }
+});
+function navSearchKey(e){if(e.key==='Escape'){document.getElementById('navSearchBox').classList.remove('open');}}
+</script>
+<script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block";});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});m.addEventListener("mouseenter",function(){clearTimeout(t);});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});});})();</script>
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+document.addEventListener('click',function(e){const m=document.getElementById('mobileMenu');const h=document.getElementById('hamburger');if(m&&h&&m.classList.contains('open')&&!m.contains(e.target)&&!h.contains(e.target))m.classList.remove('open')})
+</script>
+<script>
+var _SP=[{"url":"calculator-zonnepanelen.html","title":"Zonnepanelen calculator","desc":"Bereken terugverdientijd en opbrengst zonnepanelen","tags":"zonnepanelen berekenen terugverdientijd opbrengst panelen"},{"url":"calculator-thuisbatterij.html","title":"Thuisbatterij calculator","desc":"Is een thuisbatterij rendabel voor jou?","tags":"thuisbatterij batterij berekenen rendabel terugverdientijd"},{"url":"calculator-energiekosten.html","title":"Energiekosten calculator","desc":"Bereken jouw jaarlijkse energierekening","tags":"energiekosten rekening stroom gas berekenen"},{"url":"calculator-laadpaal.html","title":"Laadpaal calculator","desc":"Wat kost thuis laden van je EV?","tags":"laadpaal laden elektrisch rijden EV auto stroom"},{"url":"calculator-warmtepomp.html","title":"Warmtepomp calculator","desc":"Gas vs warmtepomp vergelijken","tags":"warmtepomp gas ketel besparen vergelijken"},{"url":"energiebespaar-calculator.html","title":"Energiebespaar calculator","desc":"Wat kun je besparen met slimme apparaten?","tags":"energiebespaar besparen slimme stekker thermostaat P1 meter Home Assistant"},{"url":"thuisbatterij-top5-2026.html","title":"Beste thuisbatterij 2026: top 5","desc":"HomeWizard, Zendure, Marstek vergeleken","tags":"thuisbatterij plug-in HomeWizard Zendure Marstek batterij vergelijken"},{"url":"saldering-2027.html","title":"Saldering stopt 2027","desc":"Wat verandert er voor je zonnepanelen na 2027?","tags":"saldering 2027 stoppen zonnepanelen terugleverkosten"},{"url":"terugleverkosten.html","title":"Terugleverkosten","desc":"Wat zijn terugleverkosten?","tags":"terugleverkosten saldering terugleveren zonnepanelen kosten"},{"url":"dynamisch-contract.html","title":"Dynamisch energiecontract","desc":"Voordelen en nadelen dynamisch contract","tags":"dynamisch contract energie tarief variabel uurprijs"},{"url":"energiecontract-vergelijken-2026.html","title":"Energiecontract vergelijken 2026","desc":"Beste energieleverancier vinden","tags":"energiecontract vergelijken leverancier stroom gas"},{"url":"beste-slimme-stekker-2026.html","title":"Beste slimme stekker 2026","desc":"Top 5 slimme stekkers vergeleken","tags":"slimme stekker 2026 beste vergelijken Tapo HomeWizard Matter"},{"url":"smarthome-producten.html","title":"Smarthome producten","desc":"Alle slimme energie-apparaten","tags":"smarthome producten slimme stekker thermostaat P1 meter"},{"url":"homeassistant-energie-besparen.html","title":"Home Assistant energie besparen","desc":"Automatiseer je energieverbruik","tags":"Home Assistant energie besparen automatisering"},{"url":"smarthome-p1-meter.html","title":"P1 meter + Home Assistant","desc":"P1 meter koppelen aan Home Assistant","tags":"P1 meter Home Assistant slimme meter energie"},{"url":"thuisbatterij-simuleren-home-assistant.html","title":"Thuisbatterij simuleren in Home Assistant","desc":"Test gratis met battery_sim en je eigen P1-data","tags":"battery_sim Home Assistant thuisbatterij simuleren HACS simulatie"},{"url":"plug-in-batterij-laden.html","title":"Plug-in batterij slim laden","desc":"Wanneer en hoe laad je een thuisbatterij?","tags":"thuisbatterij laden zonnepanelen slim opladen"},{"url":"blog.html","title":"Blog: alle artikelen","desc":"Alle artikelen van StekkerSlim","tags":"blog artikelen energie smarthome"},{"url":"vragen.html","title":"Stel een vraag","desc":"Stuur je energievraag in","tags":"vraag contact hulp advies"},{"url":"over-ons.html","title":"Over StekkerSlim","desc":"Wie is StekkerSlim?","tags":"over ons Remy StekkerSlim"}];
+var _icons={"calculator":"🧮","smarthome":"🏠","home":"🏠","blog":"📝","thuis":"🔋","slimme":"⚡","beste":"⚡","plug":"🔌","warm":"🌡️","dynamisch":"📈","energie":"💡","saldering":"☀️","tapo":"⚡","over":"👤","vragen":"❓"};
+function _icon(u){for(var k in _icons){if(u.indexOf(k)>-1)return _icons[k];}return "📄";}
+function _hl(t,q){if(!q)return t;var r=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');return t.replace(r,'<mark>$1</mark>');}
+function navSearchToggle(){var box=document.getElementById('navSearchBox');var ov=document.getElementById('navSearchOverlay');var btn=document.getElementById('navSearchBtn');var open=!box.classList.contains('open');box.classList.toggle('open',open);ov.classList.toggle('open',open);btn.classList.toggle('open',open);if(open)setTimeout(function(){document.getElementById('navSearchInput').focus();},50);}
+function navSearchClose(){document.getElementById('navSearchBox').classList.remove('open');document.getElementById('navSearchOverlay').classList.remove('open');document.getElementById('navSearchBtn').classList.remove('open');navSearchReset();}
+function navSearchReset(){var inp=document.getElementById('navSearchInput');inp.value='';document.getElementById('navSearchClear').classList.remove('show');document.getElementById('navSearchResults').innerHTML='<div class="nav-search-hint">Typ een onderwerp, bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>';}
+function navSearchQuery(q){var clear=document.getElementById('navSearchClear');var res=document.getElementById('navSearchResults');clear.classList.toggle('show',q.length>0);if(q.length<2){res.innerHTML='<div class="nav-search-hint">Typ een onderwerp, bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>';return;}var words=q.toLowerCase().split(/\s+/).filter(Boolean);var hits=_SP.map(function(p){var score=words.reduce(function(s,w){if(p.title.toLowerCase().indexOf(w)>-1)return s+3;if(p.desc.toLowerCase().indexOf(w)>-1)return s+2;if(p.tags.toLowerCase().indexOf(w)>-1)return s+1;return s;},0);return{p:p,score:score};}).filter(function(x){return x.score>0;}).sort(function(a,b){return b.score-a.score;}).slice(0,8);if(!hits.length){res.innerHTML='<div class="nav-search-hint">Geen resultaten voor <em>'+q+'</em></div>';return;}res.innerHTML=hits.map(function(x){var p=x.p;return '<a href="'+p.url+'" class="nav-search-result" onclick="navSearchClose()"><span class="nsr-icon">'+_icon(p.url)+'</span><span class="nsr-content"><div class="nsr-title">'+_hl(p.title,q)+'</div><div class="nsr-desc">'+p.desc+'</div></span></a>';}).join('');}
+function navSearchKey(e){if(e.key==='Escape')navSearchClose();if(e.key==='Enter'){var first=document.querySelector('.nav-search-result');if(first){window.location=first.href;navSearchClose();}}}
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();navSearchToggle();}});
+document.addEventListener("click",function(e){var b=document.getElementById("navSearchBox");var w=document.getElementById("navSearchWrap");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
+</script>
+<script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block";});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});m.addEventListener("mouseenter",function(){clearTimeout(t);});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});});})();</script>
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-inner">
+    <div class="sticky-cta-txt">Simuleer je eigen thuisbatterij gratis<small>battery_sim · Home Assistant · geen cloud, geen kosten</small></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="calculator-thuisbatterij.html" class="scta-btn">Naar de calculator →</a>
+      <button class="sticky-close" onclick="document.getElementById('stickyCta').classList.remove('show');window._sctaOff=1" aria-label="Sluiten">✕</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('stickyCta');
+  window.addEventListener('scroll',function(){
+    if(window._sctaOff)return;
+    var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    el.classList.toggle('show',pct>0.35&&pct<0.92);
+  },{passive:true});
+})();
+</script>
+<script>(function(){var m=Math.round((new Date('2027-01-01')-new Date())/2.628e9);if(m<1)return;var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null,false);var n;while(n=w.nextNode()){if(/~\d+\s*maanden/.test(n.nodeValue))n.nodeValue=n.nodeValue.replace(/~\d+\s*maanden/g,'~'+m+' maanden');}})();</script>
+<script>(function(){
+  var S=document.createElement('style');
+  S.textContent='.rv{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}.rv.vi{opacity:1;transform:none}'+
+    '.product-card,.calc-card,.prod-card,.spec-card{transition:transform .2s ease,box-shadow .2s ease}'+
+    '.product-card:hover,.calc-card:hover,.prod-card:hover,.spec-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.11)}';
+  document.head.appendChild(S);
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vi');io.unobserve(x.target);}});},{threshold:.1});
+  document.querySelectorAll('.highlight-box,.warning-box,.info-box,.cta-box,.product-card,.calc-card,.prod-card,.toc,.stap,.article-cta,.bottom-cta,.affiliate-section,.pill-links,.disclaimer-box').forEach(function(el){el.classList.add('rv');io.observe(el);});
+})();</script>
+</body>
+</html>
