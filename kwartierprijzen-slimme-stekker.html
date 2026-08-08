@@ -64,7 +64,31 @@
     .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
     .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
     .nav-dropdown{position:relative}.nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;background:var(--wit);border:1px solid var(--grijs-licht);border-radius:12px;padding:8px;min-width:220px;box-shadow:var(--shadow);z-index:200}.nav-dropdown:hover .nav-dropdown-menu{display:flex;flex-direction:column;gap:2px}.nav-dropdown-menu a{padding:8px 12px;border-radius:8px;color:var(--navy);font-size:0.85rem;text-decoration:none}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}
-    .nav-search-wrap{position:relative}.nav-search-btn{background:none;border:1px solid var(--grijs-licht);border-radius:8px;padding:6px 10px;cursor:pointer;display:flex;align-items:center}.nav-search-btn svg{width:16px;height:16px;stroke:var(--navy);fill:none;stroke-width:2}.nav-search-box{display:none;position:absolute;right:0;top:calc(100% + 8px);width:320px;background:var(--wit);border:1px solid var(--grijs-licht);border-radius:12px;box-shadow:var(--shadow);padding:8px;z-index:300}.nav-search-box.open{display:block}.nav-search-input{width:100%;border:1px solid var(--grijs-licht);border-radius:8px;padding:8px 12px;font-size:0.9rem;outline:none}.nav-search-result{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--navy)}.nav-search-result:hover{background:var(--licht)}.nav-search-result-title{font-weight:600;font-size:0.88rem}.nav-search-result-desc{font-size:0.78rem;color:var(--grijs)}.nav-search-empty{padding:12px;font-size:0.85rem;color:var(--grijs)}
+    .nav-search-wrap{position:relative;margin-left:8px}
+    .nav-search-btn{background:none;border:none;cursor:pointer;padding:6px;color:var(--grijs);display:flex;align-items:center;transition:color .2s}
+    .nav-search-btn:hover,.nav-search-btn.open{color:var(--groen)}
+    .nav-search-btn svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .nav-search-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.25);z-index:199;backdrop-filter:blur(2px)}
+    .nav-search-overlay.open{display:block}
+    .nav-search-box{display:none;position:fixed;top:68px;left:50%;transform:translateX(-50%);width:min(600px,92vw);background:#fff;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.18);z-index:200;overflow:hidden}
+    .nav-search-box.open{display:block}
+    .nav-search-inner{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--grijs-licht)}
+    .nav-search-inner svg{width:20px;height:20px;stroke:var(--grijs);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    .nav-search-input{flex:1;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--navy);background:transparent}
+    .nav-search-input::placeholder{color:#aaa}
+    .nav-search-clear{background:none;border:none;cursor:pointer;color:var(--grijs);font-size:1.1rem;padding:0 4px;display:none}
+    .nav-search-clear.show{display:block}
+    .nav-search-results{max-height:400px;overflow-y:auto}
+    .nav-search-result{display:flex;align-items:flex-start;gap:12px;padding:12px 18px;text-decoration:none;color:var(--navy);transition:background .15s;border-bottom:1px solid rgba(0,0,0,0.04)}
+    .nav-search-result:last-child{border-bottom:none}
+    .nav-search-result:hover{background:var(--licht)}
+    .nsr-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
+    .nsr-title{font-weight:600;font-size:0.88rem;color:var(--navy);margin-bottom:2px}
+    .nsr-title mark{background:rgba(0,209,122,0.2);color:var(--navy);border-radius:3px;padding:0 2px}
+    .nsr-desc{font-size:0.78rem;color:var(--grijs);line-height:1.4}
+    .nav-search-hint{padding:14px 18px;text-align:center;color:#aaa;font-size:0.82rem}
+    .nav-search-footer{padding:10px 18px;border-top:1px solid var(--grijs-licht);text-align:right;font-size:0.72rem;color:#bbb}
+    @media(max-width:600px){.nav-search-box{top:58px}}
 
     .page-hero{background:var(--navy);padding:56px 24px}
     .page-hero-inner{max-width:800px;margin:0 auto}
@@ -492,13 +516,6 @@
   </div>
 </footer>
 
-<script>
-var _navPages = [{"url":"index.html","title":"Homepage","desc":"Energie besparen, calculators, smarthome"},{"url":"calculator-zonnepanelen.html","title":"Zonnepanelen calculator","desc":"Bereken terugverdientijd zonnepanelen"},{"url":"calculator-thuisbatterij.html","title":"Thuisbatterij calculator","desc":"Is een thuisbatterij rendabel?"},{"url":"calculator-energiekosten.html","title":"Energiekosten calculator","desc":"Bereken jouw jaarlijkse energierekening"},{"url":"calculator-laadpaal.html","title":"Laadpaal calculator","desc":"Wat kost thuis laden?"},{"url":"calculator-warmtepomp.html","title":"Warmtepomp calculator","desc":"Gas vs warmtepomp vergelijken"},{"url":"thuisbatterij-top5-2026.html","title":"Beste thuisbatterij 2026 top 5","desc":"HomeWizard, Zendure, Marstek vergeleken"},{"url":"saldering-2027.html","title":"Saldering stopt 2027","desc":"Wat verandert er voor zonnepanelen na 2027?"},{"url":"dynamisch-contract.html","title":"Dynamisch energiecontract","desc":"Voordelen en nadelen dynamisch contract"},{"url":"energiecontract-vergelijken-2026.html","title":"Energiecontract vergelijken 2026","desc":"Beste energieleverancier vinden"},{"url":"terugleverkosten.html","title":"Terugleverkosten","desc":"Wat zijn terugleverkosten en wie rekent ze?"},{"url":"smarthome-p1-meter.html","title":"P1 meter Home Assistant","desc":"P1 meter koppelen aan Home Assistant"},{"url":"beste-slimme-stekker-2026.html","title":"Beste slimme stekker 2026","desc":"Top 5 slimme stekkers vergeleken"},{"url":"kwartierprijzen-slimme-stekker.html","title":"Kwartierprijzen & slimme stekker","desc":"Automatisch besparen op dynamisch contract"},{"url":"homeassistant-energie-besparen.html","title":"Home Assistant energie besparen","desc":"Automatiseer je energieverbruik"},{"url":"blog.html","title":"Blog en artikelen","desc":"Alle artikelen van StekkerSlim"},{"url":"vragen.html","title":"Stel een vraag","desc":"Stuur je energievraag in"},{"url":"over-ons.html","title":"Over ons","desc":"Wie is StekkerSlim?"}];
-function toggleNavSearch(){var box=document.getElementById('navSearchBox');var btn=document.getElementById('navSearchBtn');var open=box.classList.toggle('open');btn.classList.toggle('active',open);if(open){setTimeout(function(){document.getElementById('navSearchInput').focus();},50);}}
-document.addEventListener('click',function(e){var wrap=document.getElementById('navSearchWrap');if(wrap&&!wrap.contains(e.target)){document.getElementById('navSearchBox').classList.remove('open');document.getElementById('navSearchBtn').classList.remove('active');}});
-function doNavSearch(q){var res=document.getElementById('navSearchResults');if(!q||q.length<2){res.innerHTML='';return;}q=q.toLowerCase();var hits=_navPages.filter(function(p){return p.title.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q);}).slice(0,8);if(!hits.length){res.innerHTML='<div class="nav-search-empty">Geen resultaten gevonden</div>';return;}res.innerHTML=hits.map(function(p){return '<a href="'+p.url+'" class="nav-search-result"><div class="nav-search-result-title">'+p.title+'</div><div class="nav-search-result-desc">'+p.desc+'</div></a>';}).join('');}
-function navSearchKey(e){if(e.key==='Escape'){document.getElementById('navSearchBox').classList.remove('open');}}
-</script>
 <script>
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
 function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
