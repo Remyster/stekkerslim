@@ -48,7 +48,7 @@
     .comparison-table td{padding:10px 14px;border-bottom:1px solid var(--grijs-licht)}
     .comparison-table tr:last-child td{border-bottom:none}
     .good{color:var(--groen);font-weight:700}.bad{color:#EF4444;font-weight:700}
-    .scenario-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    .scenario-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:24px 0}
     .scenario-card{border-radius:14px;padding:20px}
     .scenario-card.voor{background:rgba(0,209,122,0.08);border:1px solid rgba(0,209,122,0.25)}
     .scenario-card.na{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2)}
@@ -179,12 +179,12 @@
       {
         "@type": "Question",
         "name": "Wat is de terugleververgoeding na 2027?",
-        "acceptedAnswer": {"@type": "Answer", "text": "De wettelijke minimumvergoeding is 50% van het kale leveringstarief (vastgelegd in de Wet beëindiging salderingsregeling, geldig t/m 2030, toezicht door de ACM). In de praktijk bieden leveranciers indicatief €0,03 tot €0,09 per kWh — aanzienlijk minder dan het stroomtarief van ~€0,27/kWh."}
+        "acceptedAnswer": {"@type": "Answer", "text": "De wettelijke minimumvergoeding is 50% van het kale leveringstarief (vastgelegd in de Wet beëindiging salderingsregeling, geldig t/m 2030, toezicht door de ACM). In de praktijk bieden leveranciers een bruto vergoeding van indicatief €0,05 tot €0,075 per kWh — netto vaak lager door terugleverkosten. Dat is aanzienlijk minder dan het stroomtarief van ~€0,26/kWh."}
       },
       {
         "@type": "Question",
         "name": "Is een thuisbatterij de oplossing na 2027?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Voor veel mensen wel. Een thuisbatterij verhoogt eigenverbruik van ~30% naar 60-70%, waardoor je minder terugelevert tegen laag tarief. Of het loont hangt af van je teruglevering en terugleverkosten."}
+        "acceptedAnswer": {"@type": "Answer", "text": "Voor veel mensen wel. Een thuisbatterij verhoogt eigenverbruik van ~30% naar 60-70%, waardoor je minder terug levert tegen laag tarief. Of het loont hangt af van je teruglevering en terugleverkosten."}
       },
       {
         "@type": "Question",
@@ -199,7 +199,7 @@
       {
         "@type": "Question",
         "name": "Helpt een dynamisch energiecontract na 2027?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Ja, kan slim zijn. Met een dynamisch contract lever je terug op momenten dat de marktprijs hoog is, wat soms een beter teruglevertarief oplevert dan een vast contract."}
+        "acceptedAnswer": {"@type": "Answer", "text": "Kan helpen, maar is geen garantie op meer opbrengst. Met een dynamisch contract volgt je terugleververgoeding de actuele marktprijs — en die is juist op zonnige uren vaak laag of negatief, omdat dan alle zonnepanelen in Nederland tegelijk produceren. De echte winst zit vooral in slim verbruiken op goedkope momenten, niet automatisch in beter terugleveren."}
       },
       {
         "@type": "Question",
@@ -276,7 +276,7 @@
     <div class="breadcrumb"><a href="/">Home</a> › <a href="index.html#besparen">Besparen</a></div>
     <div class="article-tag">⚠️ Belangrijk voor zonnepaneelhouders</div>
     <h1>Saldering 2027: dit verandert er écht voor jou</h1>
-    <div class="article-meta">Bijgewerkt: juni 2026 · Leestijd: 7 minuten</div>
+    <div class="article-meta">Bijgewerkt: 8 augustus 2026 · Leestijd: 7 minuten</div>
     <div class="urgency-banner">
       <strong>⏰ Nog ~5 maanden:</strong> De salderingsregeling stopt op 1 januari 2027. Heb je al zonnepanelen, of overweeg je ze nog? Dan is dit het moment om je voor te bereiden.
     </div>
@@ -317,39 +317,48 @@
   <p>In de praktijk betekent dit: als je zonnepanelen overdag 5 kWh produceren en je 's avonds 5 kWh verbruikt, betaal je per saldo niets voor die 5 kWh. De teruggeleverde stroom is even waardevol als de ingekochte stroom.</p>
 
   <div class="highlight-box">
-    <strong>Concreet voorbeeld:</strong> Je verbruikt 3.500 kWh/jaar en produceert 3.000 kWh. Onder saldering betaal je stroom over slechts 500 kWh. Je bespaart op 3.000 kWh × €0,34 = <strong>€1.020 per jaar</strong>.
+    <strong>Concreet voorbeeld:</strong> Je verbruikt 3.500 kWh/jaar en produceert 3.000 kWh. Onder saldering betaal je stroom over slechts 500 kWh. Je bespaart op 3.000 kWh × €0,26 = <strong>€780 per jaar</strong>.
   </div>
 
   <h2 id="wat-verandert">Wat verandert er in 2027?</h2>
-  <p>Vanaf 1 januari 2027 verdwijnt de salderingsregeling volledig. De teruggeleverde stroom wordt dan vergoed tegen het zogenoemde "teruglevertarief" — een tarief dat jouw energieleverancier bepaalt. Dit is significant lager dan het inkooprijs.</p>
+  <p>Vanaf 1 januari 2027 verdwijnt de salderingsregeling volledig. De teruggeleverde stroom wordt dan vergoed tegen het zogenoemde "teruglevertarief" — een tarief dat jouw energieleverancier bepaalt. Dit is significant lager dan de inkoopprijs.</p>
 
   <table class="comparison-table">
     <tr><th>Situatie</th><th>Vóór 2027</th><th>Na 2027</th></tr>
-    <tr><td>Eigen gebruik zonnestroom</td><td class="good">€0,34/kWh bespaard</td><td class="good">€0,34/kWh bespaard</td></tr>
-    <tr><td>Teruggeleverde stroom</td><td class="good">€0,34/kWh (gesaldeerd)</td><td class="bad">~€0,03–€0,09/kWh</td></tr>
+    <tr><td>Eigen gebruik zonnestroom</td><td class="good">€0,26/kWh bespaard</td><td class="good">€0,26/kWh bespaard</td></tr>
+    <tr><td>Teruggeleverde stroom</td><td class="good">€0,26/kWh (gesaldeerd)</td><td class="bad">~€0,05–€0,075/kWh (bruto; netto vaak lager)</td></tr>
     <tr><td>Waarde teruglevering</td><td class="good">Volledig stroomtarief</td><td class="bad">10–25% van stroomtarief</td></tr>
   </table>
 
   <h2 id="financieel-effect">Het financiële effect — eerlijk berekend</h2>
-  <p>We rekenen een concreet voorbeeld door voor iemand met 10 zonnepanelen (≈3.000 kWh/jaar productie) en een verbruik van 3.500 kWh/jaar:</p>
+  <p>We rekenen een concreet voorbeeld door voor iemand met 10 zonnepanelen (≈3.000 kWh/jaar productie) en een verbruik van 3.500 kWh/jaar, met een all-in stroomprijs van €0,26/kWh en een netto terugleververgoeding van ~€0,06/kWh na 2027. We houden hetzelfde eigenverbruiksprofiel aan in alle scenario's, zodat je vóór en na 2027 eerlijk kunt vergelijken:</p>
 
   <div class="scenario-cards">
     <div class="scenario-card voor">
       <h4>✅ Vóór 2027 (saldering actief)</h4>
-      <div class="big-num">€1.020</div>
-      <p>Besparing per jaar. Teruglevering van 0 kWh (alles gesaldeerd). Effectief betaal je alleen over 500 kWh.</p>
+      <div class="big-num">€780</div>
+      <p>Besparing per jaar. Saldering verrekent je volledige productie (3.000 kWh) tegen je verbruik — ongeacht hoeveel je fysiek direct zelf gebruikt of teruglevert. Effectief betaal je alleen over de resterende 500 kWh.</p>
     </div>
     <div class="scenario-card na">
-      <h4>⚠️ Na 2027 (geen saldering)</h4>
-      <div class="big-num">€748</div>
-      <p>Besparing per jaar. 2.000 kWh eigen gebruik (€680) + 1.000 kWh teruglevering @ €0,07 (€68). Verschil: €272/jaar minder.</p>
+      <h4>⚠️ Na 2027 — zonder extra sturing</h4>
+      <div class="big-num">€360</div>
+      <p>Besparing per jaar, bij het gemiddelde eigen verbruik van ~30%: 900 kWh direct zelf gebruikt (€234) + 2.100 kWh teruglevering @ €0,06 (€126). Verschil met vóór 2027: <strong>€420/jaar minder</strong>.</p>
+    </div>
+    <div class="scenario-card na">
+      <h4>🔋 Na 2027 — met batterij/sturing</h4>
+      <div class="big-num">€570</div>
+      <p>Besparing per jaar, bij ~65% eigen verbruik dankzij batterij of slimme sturing: 1.950 kWh direct zelf gebruikt (€507) + 1.050 kWh teruglevering @ €0,06 (€63). Verschil met vóór 2027: <strong>€210/jaar minder</strong>.</p>
     </div>
   </div>
+
+  <p>Het verschil tussen de twee "na 2027"-scenario's laat precies zien waarom eigen verbruik verhogen zo veel uitmaakt: dezelfde panelen, hetzelfde verbruik, maar het verschil tussen wel of niet slim sturen is hier €210 per jaar.</p>
+
+  <p style="font-size:0.8rem;color:var(--grijs)"><strong>Aannames in dit voorbeeld:</strong> 3.000 kWh zonnestroom per jaar, 3.500 kWh jaarverbruik, all-in stroomprijs €0,26/kWh, netto terugleveropbrengst €0,06/kWh. Het scenario "met batterij/sturing" gaat uit van 65% eigen verbruik door een combinatie van opslag en actieve sturing — dat vraagt wel om voldoende batterijcapaciteit en verschuifbaar verbruik. Werkelijke tarieven, terugleverkosten en eigen verbruik verschillen per contract en huishouden.</p>
 
   <p>Dit voorbeeld laat zien dat de impact sterk afhangt van hoeveel stroom je zelf verbruikt op het moment dat je panelen produceren. Hoe meer eigen gebruik, hoe minder de wijziging je raakt. Bereken jouw situatie: <a href="calculator-energiekosten.html" style="color:var(--groen);font-weight:600">energiekosten calculator →</a></p>
 
   <div class="warning-box">
-    <strong>Belangrijk:</strong> Het teruglevertarief varieert per leverancier en is momenteel niet wettelijk vastgelegd. Sommige leveranciers bieden €0,03/kWh, anderen €0,09. Vergelijk dit actief bij het afsluiten van een contract. Lees ook: <a href="terugleverkosten.html" style="color:#92400E;font-weight:600">wat zijn terugleverkosten en wie rekent ze?</a>
+    <strong>Belangrijk:</strong> Het teruglevertarief varieert per leverancier. Er geldt wél een wettelijk minimum: tot 1 januari 2030 moet de vergoeding minstens 50% van het kale leveringstarief zijn (exclusief energiebelasting en netkosten). In de praktijk betekent dat een bruto vergoeding van ruwweg €0,05–€0,075/kWh — maar terugleverkosten kunnen de netto-opbrengst flink verlagen (zie het Greenchoice-voorbeeld hierboven). Vergelijk dit actief bij het afsluiten van een contract. Lees ook: <a href="terugleverkosten.html" style="color:#92400E;font-weight:600">wat zijn terugleverkosten en wie rekent ze?</a>
   </div>
 
   <h2 id="hoeveel-terug">Hoeveel lever jij eigenlijk terug?</h2>
@@ -375,15 +384,15 @@
     <tr><td>Oude grote woning</td><td>3.520</td><td>1.380</td><td class="bad">−€290</td></tr>
     <tr><td>Oude grote vrijstaande woning</td><td>4.240</td><td>1.990</td><td class="bad">−€418</td></tr>
   </table>
-  <p style="font-size:0.8rem;color:var(--grijs)">Bron: Milieucentraal 2024. * Verschil huidige saldering (~€0,26/kWh) vs verwacht 2027-tarief (~€0,06/kWh). Exclusief zelf verbruikte zonnestroom.</p>
+  <p style="font-size:0.8rem;color:var(--grijs)">Bron: <a href="https://www.milieucentraal.nl/energie-besparen/zonnepanelen/zonnestroom-als-de-saldering-stopt-dit-moet-je-weten/" target="_blank" rel="noopener" style="color:var(--grijs);text-decoration:underline">Milieu Centraal</a>, gemiddeld eigen verbruik ~30%. * Verschil huidige saldering (~€0,26/kWh) vs verwacht 2027-tarief (~€0,06/kWh, netto). Exclusief zelf verbruikte zonnestroom.</p>
 
   <h2 id="leveranciers">Wat betalen leveranciers na 2027?</h2>
 
-  <p>De tarieven worden nu pas gepubliceerd. Greenchoice ging als eerste: <strong>€0,0025/kWh</strong> — extreem laag. Andere leveranciers zullen hogere tarieven hanteren om klanten te houden, maar de wettelijke minimumregel (50% kaal leveringstarief) zet de ondergrens laag.</p>
+  <p>De tarieven worden nu pas gepubliceerd. Greenchoice ging als eerste, met een bruto terugleververgoeding van €0,05434/kWh. Trek daar de terugleverkosten van €0,05184/kWh vanaf en er blijft netto <strong>€0,0025/kWh</strong> over — extreem laag. Dat cijfer dat overal rondgaat is dus de netto-uitkomst ná terugleverkosten, niet het teruglevertarief zelf. Andere leveranciers zullen hogere tarieven hanteren om klanten te houden, maar de wettelijke minimumregel (50% kaal leveringstarief) zet de ondergrens laag.</p>
 
   <p>Wil je het beste teruglevertarief? Dan zijn dit je opties:</p>
   <ul>
-    <li><strong>Dynamisch contract</strong> — je verkoopt teruggeleverde stroom tegen de actuele marktprijs. Op piekmomenten verdien je meer.</li>
+    <li><strong>Dynamisch contract</strong> — je verkoopt teruggeleverde stroom tegen de actuele marktprijs. Let op: juist op zonnige uren is de marktprijs vaak laag of zelfs negatief, omdat dan alle zonnepanelen in Nederland tegelijk produceren. De winst zit 'm vooral in slim verbruiken op goedkope momenten, niet automatisch in hoger terugleveren.</li>
     <li><strong>Vast teruglevertarief</strong> — sommige leveranciers bieden een vast tarief, vaak hoger dan het wettelijk minimum. Vergelijk goed.</li>
     <li><strong>Thuisbatterij</strong> — in plaats van terugleveren sla je op en gebruik je zelf. Dan maakt het teruglevertarief minder uit.</li>
   </ul>
@@ -424,7 +433,7 @@
 
   <h2 id="overweegt">Overweeg je nog zonnepanelen?</h2>
   <p>De vraag die veel mensen stellen: "Is het nog de moeite om panelen te nemen als de saldering verdwijnt?" Het eerlijke antwoord: <strong>ja, voor de meeste mensen nog steeds</strong> — maar het rekensommetje verandert wel.</p>
-  <p>Het eigen gebruik van zonnestroom blijft even waardevol. Je betaalt immers geen stroomtarief voor de kWh die je zelf verbruikt. Alleen de teruggeleverde energie wordt minder waard. De sleutel is dus: koop niet meer panelen dan je nodig hebt om je eigen verbruik te dekken.</p>
+  <p>Het eigen gebruik van zonnestroom blijft even waardevol. Je betaalt immers geen stroomtarief voor de kWh die je zelf verbruikt. Alleen de teruggeleverde energie wordt minder waard. Stem het aantal panelen daarom af op je jaarverbruik, dakoppervlak en toekomstplannen (EV, warmtepomp, elektrisch koken) — niet uitsluitend op je huidige eigen verbruik. Teruglevering blijft ook na 2027 iets waard, alleen minder dan nu.</p>
   <p>Gebruik onze <a href="calculator-zonnepanelen.html" style="color:var(--groen);font-weight:600">zonnepanelen calculator</a> en schakel de "Na 2027" knop in voor een realistisch beeld van jouw specifieke situatie.</p>
 
   <div class="highlight-box">
@@ -436,7 +445,7 @@
     <li><strong>Heb je panelen?</strong> Maximaliseer eigenverbruik, vergelijk teruglevertarieven, overweeg batterij</li>
     <li><strong>Overweeg je panelen?</strong> Bereken met "Na 2027" scenario — nog steeds rendabel als je zelf veel verbruikt</li>
     <li><strong>Ga je binnenkort overstappen?</strong> Let op het <a href="terugleverkosten.html" style="color:var(--groen);font-weight:600">teruglevertarief</a> van je nieuwe leverancier — niet alle leveranciers zijn gelijk</li>
-    <li><strong>Wil je automatiseren?</strong> P1 meter + Home Assistant is de slimste investering voor zonnepaneelhouders</li>
+    <li><strong>Wil je automatiseren?</strong> Een P1 meter + Home Assistant geeft je real-time inzicht en de mogelijkheid om verbruik automatisch te verschuiven naar je productie-uren</li>
   </ul>
 
 
@@ -466,15 +475,15 @@
     </details>
     <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
       <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Wat is de terugleververgoeding na 2027?</summary>
-      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">De wettelijke minimumvergoeding is 50% van het kale leveringstarief — vastgelegd in de Wet beëindiging salderingsregeling (geldig t/m 2030, toezicht door de ACM). In de praktijk bieden leveranciers indicatief €0,03 tot €0,09 per kWh. Dat is aanzienlijk minder dan het huidige stroomtarief van ~€0,27/kWh. Meer uitleg staat hierboven bij <a href="#leveranciers" style="color:var(--groen)">wat leveranciers betalen na 2027</a>.</p>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">De wettelijke minimumvergoeding is 50% van het kale leveringstarief — vastgelegd in de Wet beëindiging salderingsregeling (geldig t/m 2030, toezicht door de ACM). In de praktijk bieden leveranciers een bruto vergoeding van indicatief €0,05 tot €0,075 per kWh — netto vaak lager door terugleverkosten. Dat is aanzienlijk minder dan het huidige stroomtarief van ~€0,26/kWh. Meer uitleg staat hierboven bij <a href="#leveranciers" style="color:var(--groen)">wat leveranciers betalen na 2027</a>.</p>
     </details>
     <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
       <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Is een thuisbatterij de oplossing na 2027?</summary>
-      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Voor veel mensen wel. Een <a href="loont-plug-in-thuisbatterij-2026.html" style="color:var(--groen);font-weight:600">plug-and-play thuisbatterij</a> of de volledige <a href="thuisbatterij-top5-2026.html" style="color:var(--groen)">thuisbatterij</a> verhoogt je eigenverbruik van ~30% naar 60-70%. Daardoor lever je minder terug tegen laag tarief. Of een batterij voor jou loont, hangt af van hoeveel je terugelevert en of je terugleverkosten betaalt. Gebruik de <a href="calculator-thuisbatterij.html" style="color:var(--groen)">calculator</a>.</p>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Voor veel mensen wel. Een <a href="loont-plug-in-thuisbatterij-2026.html" style="color:var(--groen);font-weight:600">plug-and-play thuisbatterij</a> of de volledige <a href="thuisbatterij-top5-2026.html" style="color:var(--groen)">thuisbatterij</a> verhoogt je eigenverbruik van ~30% naar 60-70%. Daardoor lever je minder terug tegen laag tarief. Of een batterij voor jou loont, hangt af van hoeveel je terug levert en of je terugleverkosten betaalt. Gebruik de <a href="calculator-thuisbatterij.html" style="color:var(--groen)">calculator</a>.</p>
     </details>
     <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
       <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Loont het nog om zonnepanelen te nemen na 2027?</summary>
-      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Ja, voor de meeste mensen nog steeds. Stroom die je zelf verbruikt is even waardevol als altijd — je betaalt er geen inkooprijs voor. Alleen de teruggeleverde stroom wordt minder waard. De terugverdientijd stijgt van ~7-8 jaar naar ~10-12 jaar.</p>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Ja, voor de meeste mensen nog steeds. Stroom die je zelf verbruikt is even waardevol als altijd — je betaalt er geen inkoopprijs voor. Alleen de teruggeleverde stroom wordt minder waard. De terugverdientijd stijgt van ~7-8 jaar naar ~10-12 jaar.</p>
     </details>
     <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
       <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Wat zijn terugleverkosten en hoe voorkom ik ze?</summary>
@@ -482,7 +491,7 @@
     </details>
     <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
       <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Helpt een dynamisch energiecontract na 2027?</summary>
-      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Ja, kan slim zijn. Met een <a href="dynamisch-contract.html" style="color:var(--groen)">dynamisch contract</a> lever je terug op momenten dat de marktprijs hoog is (bijv. zonnige ochtenden met veel verbruik in de omgeving). Dat geeft soms een beter teruglevertarief dan een vast contract. Nadeel: meer risico en complexiteit.</p>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Kan helpen, maar is geen garantie op meer opbrengst. Met een <a href="dynamisch-contract.html" style="color:var(--groen)">dynamisch contract</a> volgt je terugleververgoeding de actuele marktprijs — en die is juist op zonnige uren vaak laag of negatief, omdat dan alle zonnepanelen in Nederland tegelijk produceren. De echte winst zit vooral in slim verbruiken op goedkope momenten, niet automatisch in beter terugleveren. Nadeel: meer risico en complexiteit dan een vast contract.</p>
     </details>
     <details style="border:1px solid var(--grijs-licht);border-radius:0 0 12px 12px;padding:16px 20px">
       <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Hoe maximaliseer ik mijn eigenverbruik vóór 2027?</summary>
@@ -529,7 +538,7 @@
 </div>
 <div style="background:#F4F7F2;padding:0 24px 40px">
   <div style="max-width:800px;margin:0 auto;background:#fff;border-radius:12px;padding:16px 20px;font-size:0.82rem;color:#6B7280;line-height:1.6">
-    <strong>Disclaimer:</strong> Tarieven, besparingen en productspecificaties in dit artikel zijn indicatief en gebaseerd op gemiddelde Nederlandse situaties (juni 2026). Jouw situatie kan afwijken. StekkerSlim.nl ontvangt mogelijk affiliate commissies bij aankoop via links, maar dit beïnvloedt onze adviezen nooit.
+    <strong>Disclaimer:</strong> Tarieven, besparingen en productspecificaties in dit artikel zijn indicatief en gebaseerd op gemiddelde Nederlandse situaties (augustus 2026). Jouw situatie kan afwijken. StekkerSlim.nl ontvangt mogelijk affiliate commissies bij aankoop via links, maar dit beïnvloedt onze adviezen nooit.
   </div>
 </div>
 
