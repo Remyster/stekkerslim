@@ -46,6 +46,7 @@ GA4: `G-RKF36BF7DB` — staat in alle HTML bestanden.
 | Vandebron | Daisycon 12134 | Dynamisch: `lt45.net/c/?si=12134&li=1535052&wi=419188&ws=&dl=energie%2Fenergiecontract%2Fdynamisch` · Variabel: `...variabel` · Vast: `...vast` |
 | Innova Energie | Daisycon 15501 | `fr135.net/c/?si=15501&li=1670745&wi=419188&ws=` |
 | Zendure NL | Daisycon 20779 | `glp8.net/c/?si=20779&li=1881195&wi=419188&ws=&dl=products%2Fzendure-solarflow-2400-ac-plus%3Fvariant%3D48055928717567` ⚠️ PENDING approval |
+| Indevolt | Awin 110350 | `awin1.com/cread.php?awinmid=110350&awinaffid=2816288&ued=https%3A%2F%2Fnl.indevolt.com%2Fproducts%2Fsolidflex-3000-ac-thuisbatterij` — kortingscode STEKKERSLIM5 (−5%) |
 
 ### Bekende product links
 | Product | Kanaal | Link | Prijs |
@@ -53,6 +54,7 @@ GA4: `G-RKF36BF7DB` — staat in alle HTML bestanden.
 | Marstek Venus E 3.0 | Bol.com (affiliate) | `partner.bol.com/click/...` (zie plug-in-batterij-laden.html) | €1.389 |
 | Marstek Venus E 3.0 | Marstek.nl (direct, geen affiliate) | `marstek.nl/product/marstek-venus-e-3-0-plug-charge-thuisbatterij-5-12-kwh-incl-p1-meter/` | €1.299 |
 | Zendure SolarFlow 2400 AC+ | Daisycon 20779 (pending) | `glp8.net/c/?si=20779&li=1881195&wi=419188&ws=&dl=products%2Fzendure-solarflow-2400-ac-plus%3Fvariant%3D48055928717567` | €1.089 |
+| Indevolt SolidFlex 3000 AC | Awin 110350 (affiliate) | zie tabel hierboven — code STEKKERSLIM5 voor 5% korting | €849 |
 
 ⚠️ **Marstek Venus E 3.0 is NIET meer leverbaar via Amazon** (ASIN B0FN7SDXMR). Gebruik Bol.com (€1.389, affiliate) + Marstek.nl direct (€1.299, geen affiliate). Dit is doorgevoerd in plug-in-batterij-laden.html, thuisbatterij-top5-2026.html en thuisbatterij-plug-and-play-2026.html.
 
@@ -67,7 +69,7 @@ GA4: `G-RKF36BF7DB` — staat in alle HTML bestanden.
 - Frank Energie (Daisycon 16978) — goedgekeurd juli 2026, al live via jf79.net
 
 ### Review partnerships
-- **Indevolt SolidFlex 3000 AC** — product + P1 meter ontvangen, eerste blog geschreven en naar Indevolt (Jasmine, partnership@indevolt.com) voor feitelijke check. Wacht op feedback. Affiliate-regeling nog te formaliseren. Contract getekend als particulier (geen BTW/KvK).
+- **Indevolt SolidFlex 3000 AC** — product + P1 meter ontvangen, review live op `indevolt-solidflex-3000-review.html`. Affiliate live (Awin 110350) met kortingscode STEKKERSLIM5 (−5%), toegevoegd aan calculator-thuisbatterij.html (12 augustus 2026). Contract getekend als particulier (geen BTW/KvK).
 - **Marstek Venus E Mini** — vroege partnershipgesprekken, contact Vivi. Nog geen content-commitment.
 
 ### Affiliate — AFGEWEZEN
@@ -305,7 +307,6 @@ Independer, Eneco, Milieucentraal
 - Zendure NL (Daisycon 20779): al gebruikt op site (glp8.net) maar nog pending approval — opvolgen
 - Pricewise (Daisycon 18646): goedgekeurd maar nog niet op site toegevoegd
 - Tado (Awin 86413): nog pending
-- Indevolt blog: wacht op feitelijke check van Indevolt (Jasmine) — daarna publiceren + affiliate formaliseren
 - DMARC/SPF fix nog te doen in Hostnet DNS (p=reject → p=none + SPF include:_spf.google.com)
 - smarthome-p1-meter.html Zigbee card: besloten puur informatief te houden, geen knop nodig
 - Sitemap resubmitten na recente pushes (Remy doet dit zelf via Search Console)

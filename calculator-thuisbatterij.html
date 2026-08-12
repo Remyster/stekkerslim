@@ -367,7 +367,7 @@
       <div class="result-card">
         <div class="result-label">Wat de batterij er bovenop doet</div>
         <div class="result-row">
-          <span class="result-row-label">Meer eigen gebruik (was teruglevering)</span>
+          <span class="result-row-label">Meer eigen gebruik door de batterij</span>
           <span class="result-row-value groen" id="res-extra-eigen">—</span>
         </div>
         <div class="result-row">
@@ -401,6 +401,23 @@
         <div class="result-row">
           <span class="result-row-label">Eigenverbruik met batterij</span>
           <span class="result-row-value groen" id="res-eigen-met">—</span>
+        </div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-label">Maandelijkse verdeling <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Zonproductie is niet gelijk verdeeld over het jaar. In de winter is er vaak te weinig zon om de batterij te vullen, in de zomer soms meer dan de batterij op één dag kan opslaan. Deze tabel laat per maand zien hoeveel de batterij daadwerkelijk opslaat.</span></span></div>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:0.8rem;margin-top:10px">
+            <thead>
+              <tr style="text-align:left;color:var(--grijs);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px">
+                <th style="padding:6px 4px">Maand</th>
+                <th style="padding:6px 4px">Zonproductie</th>
+                <th style="padding:6px 4px">Opgeslagen</th>
+                <th style="padding:6px 4px">Dekking</th>
+              </tr>
+            </thead>
+            <tbody id="maand-tabel-body"></tbody>
+          </table>
         </div>
       </div>
 
@@ -485,7 +502,7 @@
     <p>Overdag produceren je zonnepanelen stroom. Wat je niet direct verbruikt, gaat normaal het net op (teruglevering). Met een thuisbatterij sla je dat op en gebruik je het 's avonds wanneer de zon niet meer schijnt. Je inkoopt minder stroom van het net, levert minder terug, en betaalt minder terugleverkosten.</p>
 
     <h3>Welke plug-in batterijen zijn er in Nederland?</h3>
-    <p>Dit zijn 4 voorbeelden van populaire plug-in batterijen in Nederland (april 2026). Volledig vergeleken in onze <a href="thuisbatterij-top5-2026.html" style="color:var(--groen)">thuisbatterij top 5</a>.</p>
+    <p>Dit zijn 4 voorbeelden van populaire plug-in batterijen in Nederland (april 2026). Bekijk meer opties in onze <a href="thuisbatterij-top5-2026.html" style="color:var(--groen)">thuisbatterij top 5</a>.</p>
     <div class="merken-grid">
       <div class="merk-card">
         <h4>🏆 HomeWizard Plug-In Battery</h4>
@@ -503,9 +520,10 @@
         <div class="prijs">~€1.199 · 5,12 kWh</div>
       </div>
       <div class="merk-card">
-        <h4>💚 Indevolt SolidFlex 2000 ECO</h4>
-        <p>10 jaar garantie, 8.000 cycli. Plug-and-play, laadt ook van net.</p>
-        <div class="prijs">± €730–770 · 2,0 kWh</div>
+        <h4>💚 Indevolt SolidFlex 3000 AC</h4>
+        <p>AC-gekoppeld, sluit aan op bestaande zonnepanelen zonder herbekabelen. Uitbreidbaar tot bijna 20 kWh. <a href="indevolt-solidflex-3000-review.html" style="color:var(--groen)">Lees onze review →</a></p>
+        <div class="prijs">€849 · 1,8 kWh (uitbreidbaar)</div>
+        <a href="https://www.awin1.com/cread.php?awinmid=110350&awinaffid=2816288&ued=https%3A%2F%2Fnl.indevolt.com%2Fproducts%2Fsolidflex-3000-ac-thuisbatterij" target="_blank" rel="noopener sponsored" style="display:inline-block;margin-top:8px;font-size:0.78rem;font-weight:700;color:var(--navy);background:var(--accent);padding:6px 12px;border-radius:8px;text-decoration:none">Bestel met code STEKKERSLIM5 (−5%) →</a>
       </div>
     </div>
 
@@ -644,8 +662,10 @@
     // Verbruik wordt vlak per maand aangenomen (varieert veel minder hard dan zonproductie)
     const zonVerdeling = [0.03,0.05,0.09,0.11,0.13,0.13,0.13,0.11,0.08,0.05,0.02,0.02];
     const dagenPerMaand = [31,28,31,30,31,30,31,31,30,31,30,31];
+    const maandNamen = ['Jan','Feb','Mrt','Apr','Mei','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
     const verbruikPerMaand = verbruik / 12;
     let effectiefOpgeslagen = 0;
+    const maandData = [];
     for (let m = 0; m < 12; m++) {
       const zonMaand = zon * zonVerdeling[m];
       const terugZonderMaand = zonMaand * 0.70;
@@ -653,8 +673,30 @@
       // Batterij slaat op: min(teruglevering die maand, capaciteit × dagen), maar niet meer dan 's avonds nodig is
       const opslaanMaand = Math.min(terugZonderMaand, cap * dagenPerMaand[m]) * rend;
       const avondVerbruikMaand = Math.max(0, verbruikPerMaand - eigenZonderMaand);
-      effectiefOpgeslagen += Math.min(opslaanMaand, avondVerbruikMaand);
+      const opgeslagenMaand = Math.min(opslaanMaand, avondVerbruikMaand);
+      effectiefOpgeslagen += opgeslagenMaand;
+      maandData.push({
+        naam: maandNamen[m],
+        zon: zonMaand,
+        opgeslagen: opgeslagenMaand,
+        dekking: terugZonderMaand > 0 ? Math.min(1, opgeslagenMaand / terugZonderMaand) : 0
+      });
     }
+
+    const maandTabelBody = document.getElementById('maand-tabel-body');
+    maandTabelBody.innerHTML = maandData.map(function(md) {
+      return '<tr style="border-bottom:1px solid var(--grijs-licht)">' +
+        '<td style="padding:6px 4px;font-weight:600">' + md.naam + '</td>' +
+        '<td style="padding:6px 4px;color:var(--grijs)">' + fmtKwh(md.zon) + '</td>' +
+        '<td style="padding:6px 4px;color:var(--groen);font-weight:600">' + fmtKwh(md.opgeslagen) + '</td>' +
+        '<td style="padding:6px 4px">' +
+          '<div style="display:flex;align-items:center;gap:6px">' +
+            '<div style="flex:1;min-width:40px;height:6px;background:var(--grijs-licht);border-radius:4px;overflow:hidden"><div style="width:' + Math.round(md.dekking * 100) + '%;height:100%;background:var(--groen)"></div></div>' +
+            '<span style="font-size:0.72rem;color:var(--grijs);white-space:nowrap">' + Math.round(md.dekking * 100) + '%</span>' +
+          '</div>' +
+        '</td>' +
+      '</tr>';
+    }).join('');
     const eigenMet = eigenZonder + effectiefOpgeslagen;
     const terugMet = Math.max(0, zon - eigenMet / rend); // ruw
 
