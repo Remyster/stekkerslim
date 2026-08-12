@@ -375,8 +375,12 @@
           <span class="result-row-value groen" id="res-minder-kosten">—</span>
         </div>
         <div class="result-row">
-          <span class="result-row-label">Totale jaarlijkse besparing batterij <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Meerwaarde van opgeslagen stroom (inkooprijs − teruglevertarief) plus minder terugleverkosten. Gebaseerd op 30% eigenverbruik zonder batterij, ~60% met batterij.</span></span></span>
+          <span class="result-row-label">Totale jaarlijkse besparing batterij <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Meerwaarde van opgeslagen stroom (inkooprijs − teruglevertarief) plus minder terugleverkosten. Gebaseerd op 30% eigenverbruik zonder batterij; met batterij hangt dit percentage af van je batterijcapaciteit en verbruik.</span></span></span>
           <span class="result-row-value groen" id="res-totaal-besparing">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Batterij dekt van je teruglevering <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Percentage van je totale teruglevering dat de batterij opvangt. De rest lever je nog steeds terug (en betaal je eventueel terugleverkosten over).</span></span></span>
+          <span class="result-row-value" id="res-dekking">—</span>
         </div>
       </div>
 
@@ -451,7 +455,7 @@
           </div>
           <div style="display:flex;gap:12px;background:var(--licht);border-radius:10px;padding:12px 14px">
             <div style="width:24px;height:24px;min-width:24px;background:var(--groen);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.78rem;color:var(--navy)">2</div>
-            <div style="font-size:0.84rem"><strong style="color:var(--navy)">Jaarlijkse zonnepaneelopbrengst</strong><br><span style="color:#374151">Tel Teruglevering Normaal + Dal op → 924 + 349 = <strong>1.273 kWh</strong>.<br>Dit is wat je terugstuurt — je werkelijke opbrengst is hoger (deel gebruik je direct). Gebruik dit als minimumschatting als je je exacte paneelopbrengst niet weet.</span></div>
+            <div style="font-size:0.84rem"><strong style="color:var(--navy)">Jaarlijkse zonnepaneelopbrengst</strong><br><span style="color:#374151">Dit is je <strong>totale</strong> opbrengst, inclusief het deel dat je direct zelf verbruikt. Vind je dit terug in de app van je omvormer, op je meterkastdisplay, of via je installateur.</span><br><span style="color:#DC2626;font-size:0.78rem">Vul hier niet je teruglevering in — dat is alleen wat je terugstuurt aan het net, en levert een te lage schatting op.</span></div>
           </div>
         </div>
       </div>
@@ -636,19 +640,29 @@
     const eigenZonder = zon * 0.30;
     const terugZonder = zon * 0.70;
 
-    // Hoeveel kan batterij opslaan per dag (aanname: 1 cyclus per dag, 365 dagen)
-    // Overproductie overdag = teruglevering zonder batterij
-    // Batterij slaat op: min(teruglevering, capaciteit), 's avonds verbruikt
-    const opslaanPerJaar = Math.min(terugZonder, cap * 365) * rend;
-    // Maar je kunt ook niet meer opslaan dan je 's avonds nodig hebt
-    const avondVerbruik = Math.max(0, verbruik - eigenZonder); // verbruik dat niet door zon gedekt wordt
-    const effectiefOpgeslagen = Math.min(opslaanPerJaar, avondVerbruik);
+    // Seizoensverdeling zonproductie NL (bron: Milieu Centraal / PVGIS-gemiddelden)
+    // Verbruik wordt vlak per maand aangenomen (varieert veel minder hard dan zonproductie)
+    const zonVerdeling = [0.03,0.05,0.09,0.11,0.13,0.13,0.13,0.11,0.08,0.05,0.02,0.02];
+    const dagenPerMaand = [31,28,31,30,31,30,31,31,30,31,30,31];
+    const verbruikPerMaand = verbruik / 12;
+    let effectiefOpgeslagen = 0;
+    for (let m = 0; m < 12; m++) {
+      const zonMaand = zon * zonVerdeling[m];
+      const terugZonderMaand = zonMaand * 0.70;
+      const eigenZonderMaand = zonMaand * 0.30;
+      // Batterij slaat op: min(teruglevering die maand, capaciteit × dagen), maar niet meer dan 's avonds nodig is
+      const opslaanMaand = Math.min(terugZonderMaand, cap * dagenPerMaand[m]) * rend;
+      const avondVerbruikMaand = Math.max(0, verbruikPerMaand - eigenZonderMaand);
+      effectiefOpgeslagen += Math.min(opslaanMaand, avondVerbruikMaand);
+    }
     const eigenMet = eigenZonder + effectiefOpgeslagen;
     const terugMet = Math.max(0, zon - eigenMet / rend); // ruw
 
     // Besparing
     const extraEigenWaarde = effectiefOpgeslagen * (inkoop - teruglever);
-    const minderTerugleverKosten = terugleverKosten;
+    // Batterij vangt alleen het deel van je teruglevering op dat hij daadwerkelijk opslaat
+    const dekkingsPercentage = terugZonder > 0 ? Math.min(1, effectiefOpgeslagen / terugZonder) : 0;
+    const minderTerugleverKosten = terugleverKosten * dekkingsPercentage;
     const totaalBesparing = extraEigenWaarde + minderTerugleverKosten;
 
     const tv = totaalBesparing > 0 ? prijs / totaalBesparing : 999;
@@ -664,6 +678,7 @@
     document.getElementById('res-subtotaal-zonder').textContent = fmt(subtotaalZonder) + '/jaar';
     document.getElementById('res-extra-eigen').textContent = fmt(extraEigenWaarde) + '/jaar';
     document.getElementById('res-minder-kosten').textContent = fmt(minderTerugleverKosten) + '/jaar';
+    document.getElementById('res-dekking').textContent = Math.round(dekkingsPercentage * 100) + '%';
     document.getElementById('res-totaal-besparing').textContent = fmt(totaalBesparing) + '/jaar';
     document.getElementById('res-teruglever-kwh').textContent = fmtKwh(terugZonder) + ' (' + fmt(terugZonder * teruglever) + ')';
     document.getElementById('res-opgeslagen').textContent = fmtKwh(effectiefOpgeslagen) + '/jaar';
