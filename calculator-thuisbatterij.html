@@ -251,76 +251,18 @@
       <p class="subtitle" style="font-size:0.82rem;color:var(--grijs);margin-bottom:22px">Vul jouw verbruik, tarief en batterijkeuze in — uitkomst binnen 30 seconden.</p>
 
       <div class="form-group">
-        <label>Jouw leeftijd <span id="leeftijd-val">45 jaar</span></label>
-        <input type="range" id="leeftijd" min="20" max="80" value="45" step="1" oninput="calc()">
-        <div class="range-labels"><span>20 jaar</span><span>80 jaar</span></div>
-        <div id="leeftijd-info" style="font-size:0.78rem;color:var(--grijs);margin-top:6px;background:var(--licht);border-radius:8px;padding:8px 10px"></div>
-      </div>
-
-      <div class="section-title">Zonnepanelen</div>
-      <div class="form-group">
-        <label>Jaarlijkse zonnepaneelopbrengst <span id="zon-val">3.000 kWh</span></label>
+        <label><span>Jaarlijkse opbrengst zonnepanelen<span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Je totale opwek, inclusief wat je direct zelf gebruikt. Staat in de app van je omvormer of op je meterkastdisplay. Niet je teruglevering — dat is maar een deel.</span></span></span><span id="zon-val">3.000 kWh</span></label>
         <input type="range" id="zonopbrengst" min="500" max="10000" value="3000" step="100" oninput="calc()">
         <div class="range-labels"><span>500 kWh</span><span>10.000 kWh</span></div>
       </div>
       <div class="form-group">
-        <label>Jaarlijks stroomverbruik <span id="verbruik-val">3.500 kWh</span></label>
+        <label><span>Jaarlijks stroomverbruik<span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Staat op je jaarafrekening. Normaal- en daltarief bij elkaar opgeteld.</span></span></span><span id="verbruik-val">3.500 kWh</span></label>
         <input type="range" id="verbruik" min="1000" max="10000" value="3500" step="100" oninput="calc()">
         <div class="range-labels"><span>1.000 kWh</span><span>10.000 kWh</span></div>
       </div>
-
-      <div class="divider"></div>
-      <div class="section-title">Tarieven</div>
       <div class="form-group">
-        <label style="margin-bottom:6px;display:block">Contracttype (preset tarieven)</label>
-        <div style="display:flex;gap:8px;margin-bottom:6px">
-          <button onclick="setContract('vast')" id="preset-vast" style="flex:1;padding:8px;border:2px solid var(--grijs-licht);border-radius:8px;background:var(--wit);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--navy)">Vast</button>
-          <button onclick="setContract('variabel')" id="preset-variabel" style="flex:1;padding:8px;border:2px solid var(--grijs-licht);border-radius:8px;background:var(--wit);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--navy)">Variabel</button>
-          <button onclick="setContract('dynamisch')" id="preset-dynamisch" style="flex:1;padding:8px;border:2px solid var(--grijs-licht);border-radius:8px;background:var(--wit);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--navy)">Dynamisch</button>
-        </div>
-        <div style="font-size:0.75rem;color:var(--grijs)">Vult typische tarieven in. Pas daarna aan op jouw situatie.</div>
-      </div>
-      <div class="form-group">
-        <label>Stroomtarief inkoop <span id="inkoop-val">€0,26/kWh</span></label>
-        <input type="range" id="inkoop" min="0.08" max="0.60" value="0.26" step="0.01" oninput="syncInkoop('slider')">
-        <div class="range-labels"><span>€0,08</span><span>€0,60</span></div>
-        <div style="margin-top:8px;display:flex;align-items:center;gap:8px">
-          <span style="font-size:0.78rem;color:var(--grijs)">Of vul zelf in:</span>
-          <input type="number" id="inkoop-input" value="0.26" min="0.08" max="0.60" step="0.01" style="width:90px;padding:6px 10px;border:2px solid var(--grijs-licht);border-radius:8px;font-size:0.9rem;font-family:'DM Sans',sans-serif;color:var(--navy)" oninput="syncInkoop('text')">
-          <span style="font-size:0.78rem;color:var(--grijs)">€/kWh</span>
-        </div>
-          <button onclick="toggleGemB()" style="background:none;border:none;color:var(--groen);font-size:0.78rem;font-weight:600;cursor:pointer;padding:0;font-family:'DM Sans',sans-serif;">⚙️ Dal/normaal tarief? Bereken gemiddelde →</button>
-          <div id="gem-calc-b" style="display:none;background:var(--licht);border-radius:10px;padding:12px;margin-top:8px">
-            <div style="font-size:0.8rem;font-weight:600;margin-bottom:8px">Gewogen gemiddeld tarief berekenen</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
-              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Normaal (€/kWh)</div><input type="number" id="gb-n" value="0.151" step="0.001" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemB()"></div>
-              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Dal (€/kWh)</div><input type="number" id="gb-d" value="0.119" step="0.001" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemB()"></div>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
-              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Normaal kWh/jaar</div><input type="number" id="gb-nk" value="2100" step="100" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemB()"></div>
-              <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Dal kWh/jaar</div><input type="number" id="gb-dk" value="1400" step="100" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemB()"></div>
-            </div>
-            <div id="gem-res-b" style="background:var(--groen);color:var(--navy);border-radius:8px;padding:10px;text-align:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem">—</div>
-            <button onclick="gebruikGemB()" style="width:100%;margin-top:8px;background:var(--navy);color:var(--wit);border:none;border-radius:8px;padding:8px;font-size:0.82rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">Gebruik dit tarief →</button>
-          </div>
-      </div>
-      <div class="form-group">
-        <label>Teruglevertarief <span id="teruglever-val">€0,06/kWh</span></label>
-        <input type="range" id="teruglever" min="0.01" max="0.34" value="0.06" step="0.01" oninput="calc()">
-        <div class="range-labels"><span>€0,01</span><span>€0,34 (saldering)</span></div>
-      </div>
-
-      <div class="form-group">
-        <label>Jaarlijkse terugleverkosten contract (€)</label>
-        <input type="number" id="teruglever-kosten-input" value="0" min="0" max="2000" step="5" oninput="updateKosten()" style="width:100%;padding:12px 16px;border:2px solid var(--grijs-licht);border-radius:10px;font-size:1rem;font-family:'DM Sans',sans-serif;color:var(--navy)">
-        <div id="teruglever-kosten-info" style="font-size:0.78rem;color:var(--grijs);margin-top:8px;">Weet je het niet? Check je contract of bereken het. Vandebron: ~€75 bij 500 kWh · ~€165 bij 1.500 kWh · ~€405 bij 3.500 kWh. <a href="calculator-energiekosten.html" style="color:var(--groen)">Bereken jouw exacte kosten →</a></div>
-      </div>
-
-      <div class="divider"></div>
-      <div class="section-title">Thuisbatterij</div>
-      <div class="form-group">
-        <label>Batterijcapaciteit <span id="cap-val">10 kWh</span></label>
-        <input type="range" id="capaciteit" min="2" max="30" value="10" step="0.5" oninput="calc()">
+        <label><span>Batterijcapaciteit<span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Weet je het nog niet? Laat 'm op 5 kWh staan, dat is een gangbare plug-in maat.</span></span></span><span id="cap-val">5 kWh</span></label>
+        <input type="range" id="capaciteit" min="2" max="30" value="5" step="0.5" oninput="calc()">
         <div class="range-labels"><span>2 kWh</span><span>30 kWh</span></div>
       </div>
       <div class="form-group">
@@ -333,10 +275,76 @@
           <span style="font-size:0.78rem;color:var(--grijs)">€</span>
         </div>
       </div>
-      <div class="form-group">
-        <label>Rendement batterij (round-trip) <span id="rend-val">90%</span></label>
-        <input type="range" id="rendement" min="70" max="98" value="90" step="1" oninput="calc()">
-        <div class="range-labels"><span>70%</span><span>98%</span></div>
+
+      <div class="divider"></div>
+      <button type="button" onclick="toggleVerfijn()" id="verfijn-toggle" style="width:100%;text-align:left;background:var(--licht);border:none;border-radius:10px;padding:12px 14px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:700;color:var(--navy);display:flex;justify-content:space-between;align-items:center">
+        <span>⚙️ Verfijn je berekening <span style="font-weight:400;color:var(--grijs);font-size:0.78rem">(tarieven, leeftijd, rendement)</span></span>
+        <span id="verfijn-arrow" style="transition:transform .2s;display:inline-block">▾</span>
+      </button>
+
+      <div id="verfijn-sectie" style="display:none;margin-top:16px">
+        <div class="section-title">Tarieven</div>
+        <div class="form-group">
+          <label style="margin-bottom:6px;display:block">Contracttype (preset tarieven)</label>
+          <div style="display:flex;gap:8px;margin-bottom:6px">
+            <button onclick="setContract('vast')" id="preset-vast" style="flex:1;padding:8px;border:2px solid var(--grijs-licht);border-radius:8px;background:var(--wit);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--navy)">Vast</button>
+            <button onclick="setContract('variabel')" id="preset-variabel" style="flex:1;padding:8px;border:2px solid var(--grijs-licht);border-radius:8px;background:var(--wit);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--navy)">Variabel</button>
+            <button onclick="setContract('dynamisch')" id="preset-dynamisch" style="flex:1;padding:8px;border:2px solid var(--grijs-licht);border-radius:8px;background:var(--wit);font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--navy)">Dynamisch</button>
+          </div>
+          <div style="font-size:0.75rem;color:var(--grijs)">Vult typische tarieven in. Pas daarna aan op jouw situatie.</div>
+        </div>
+        <div class="form-group">
+          <label>Stroomtarief inkoop <span id="inkoop-val">€0,26/kWh</span></label>
+          <input type="range" id="inkoop" min="0.08" max="0.60" value="0.26" step="0.01" oninput="syncInkoop('slider')">
+          <div class="range-labels"><span>€0,08</span><span>€0,60</span></div>
+          <div style="margin-top:8px;display:flex;align-items:center;gap:8px">
+            <span style="font-size:0.78rem;color:var(--grijs)">Of vul zelf in:</span>
+            <input type="number" id="inkoop-input" value="0.26" min="0.08" max="0.60" step="0.01" style="width:90px;padding:6px 10px;border:2px solid var(--grijs-licht);border-radius:8px;font-size:0.9rem;font-family:'DM Sans',sans-serif;color:var(--navy)" oninput="syncInkoop('text')">
+            <span style="font-size:0.78rem;color:var(--grijs)">€/kWh</span>
+          </div>
+            <button onclick="toggleGemB()" style="background:none;border:none;color:var(--groen);font-size:0.78rem;font-weight:600;cursor:pointer;padding:0;font-family:'DM Sans',sans-serif;">⚙️ Dal/normaal tarief? Bereken gemiddelde →</button>
+            <div id="gem-calc-b" style="display:none;background:var(--wit);border:1px solid var(--grijs-licht);border-radius:10px;padding:12px;margin-top:8px">
+              <div style="font-size:0.8rem;font-weight:600;margin-bottom:8px">Gewogen gemiddeld tarief berekenen</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+                <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Normaal (€/kWh)</div><input type="number" id="gb-n" value="0.151" step="0.001" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemB()"></div>
+                <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Dal (€/kWh)</div><input type="number" id="gb-d" value="0.119" step="0.001" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemB()"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+                <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Normaal kWh/jaar</div><input type="number" id="gb-nk" value="2100" step="100" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemB()"></div>
+                <div><div style="font-size:0.75rem;color:var(--grijs);margin-bottom:3px">Dal kWh/jaar</div><input type="number" id="gb-dk" value="1400" step="100" style="width:100%;padding:6px 8px;border:1px solid var(--grijs-licht);border-radius:6px;font-size:0.85rem" oninput="berekenGemB()"></div>
+              </div>
+              <div id="gem-res-b" style="background:var(--groen);color:var(--navy);border-radius:8px;padding:10px;text-align:center;font-family:'Outfit',sans-serif;font-weight:800;font-size:1rem">—</div>
+              <button onclick="gebruikGemB()" style="width:100%;margin-top:8px;background:var(--navy);color:var(--wit);border:none;border-radius:8px;padding:8px;font-size:0.82rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">Gebruik dit tarief →</button>
+            </div>
+        </div>
+        <div class="form-group">
+          <label>Teruglevertarief <span id="teruglever-val">€0,06/kWh</span></label>
+          <input type="range" id="teruglever" min="0.01" max="0.34" value="0.06" step="0.01" oninput="calc()">
+          <div class="range-labels"><span>€0,01</span><span>€0,34 (saldering)</span></div>
+        </div>
+
+        <div class="form-group">
+          <label>Jaarlijkse terugleverkosten contract (€)</label>
+          <input type="number" id="teruglever-kosten-input" value="0" min="0" max="2000" step="5" oninput="updateKosten()" style="width:100%;padding:12px 16px;border:2px solid var(--grijs-licht);border-radius:10px;font-size:1rem;font-family:'DM Sans',sans-serif;color:var(--navy)">
+          <div id="teruglever-kosten-info" style="font-size:0.78rem;color:var(--grijs);margin-top:8px;">Weet je het niet? Check je contract of bereken het. Vandebron: ~€75 bij 500 kWh · ~€165 bij 1.500 kWh · ~€405 bij 3.500 kWh. <a href="calculator-energiekosten.html" style="color:var(--groen)">Bereken jouw exacte kosten →</a></div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="section-title">Batterij-instellingen</div>
+        <div class="form-group">
+          <label>Rendement batterij (round-trip) <span id="rend-val">90%</span></label>
+          <input type="range" id="rendement" min="70" max="98" value="90" step="1" oninput="calc()">
+          <div class="range-labels"><span>70%</span><span>98%</span></div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="section-title">Overig</div>
+        <div class="form-group">
+          <label>Jouw leeftijd <span id="leeftijd-val">45 jaar</span></label>
+          <input type="range" id="leeftijd" min="20" max="80" value="45" step="1" oninput="calc()">
+          <div class="range-labels"><span>20 jaar</span><span>80 jaar</span></div>
+          <div id="leeftijd-info" style="font-size:0.78rem;color:var(--grijs);margin-top:6px;background:var(--wit);border:1px solid var(--grijs-licht);border-radius:8px;padding:8px 10px"></div>
+        </div>
       </div>
     </div>
 
@@ -348,35 +356,24 @@
         <div id="res-tv-uitleg" style="margin-top:12px;font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.5"></div>
       </div>
 
-      <div class="result-card">
-        <div class="result-label">Jaarlijkse besparing zonnepanelen (zonder batterij)</div>
-        <div class="result-row">
-          <span class="result-row-label">Direct eigengebruik (~30% van opbrengst)</span>
-          <span class="result-row-value groen" id="res-direct-eigen">—</span>
-        </div>
-        <div class="result-row">
-          <span class="result-row-label">Teruglevering (70% × €0,06/kWh per 2027)</span>
-          <span class="result-row-value" id="res-terug-waarde">—</span>
-        </div>
-        <div class="result-row">
-          <span class="result-row-label">Subtotaal zonder batterij</span>
-          <span class="result-row-value" id="res-subtotaal-zonder">—</span>
-        </div>
+      <div class="verdict-box" id="verdict-box">
+        <div class="verdict-title" id="verdict-title">—</div>
+        <div class="verdict-text" id="verdict-text">—</div>
       </div>
 
       <div class="result-card">
-        <div class="result-label">Wat de batterij er bovenop doet</div>
+        <div class="result-label">Jouw besparing met batterij</div>
         <div class="result-row">
-          <span class="result-row-label">Meer eigen gebruik (voorheen teruglevering)</span>
+          <span class="result-row-label">Totale jaarlijkse besparing <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Meerwaarde van opgeslagen stroom (inkooprijs − teruglevertarief) plus minder terugleverkosten. Gebaseerd op 30% eigenverbruik zonder batterij; met batterij hangt dit percentage af van je batterijcapaciteit en verbruik.</span></span></span>
+          <span class="result-row-value groen" id="res-totaal-besparing">—</span>
+        </div>
+        <div class="result-row">
+          <span class="result-row-label">Waarvan: meer eigen gebruik (voorheen teruglevering)</span>
           <span class="result-row-value groen" id="res-extra-eigen">—</span>
         </div>
         <div class="result-row">
-          <span class="result-row-label">Minder terugleverkosten</span>
+          <span class="result-row-label">Waarvan: minder terugleverkosten</span>
           <span class="result-row-value groen" id="res-minder-kosten">—</span>
-        </div>
-        <div class="result-row">
-          <span class="result-row-label">Totale jaarlijkse besparing batterij <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Meerwaarde van opgeslagen stroom (inkooprijs − teruglevertarief) plus minder terugleverkosten. Gebaseerd op 30% eigenverbruik zonder batterij; met batterij hangt dit percentage af van je batterijcapaciteit en verbruik.</span></span></span>
-          <span class="result-row-value groen" id="res-totaal-besparing">—</span>
         </div>
         <div class="result-row">
           <span class="result-row-label">Batterij dekt van je teruglevering <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Percentage van je totale teruglevering dat de batterij opvangt. De rest lever je nog steeds terug (en betaal je eventueel terugleverkosten over).</span></span></span>
@@ -384,46 +381,64 @@
         </div>
       </div>
 
-      <div class="result-card">
-        <div class="result-label">Zonder vs. met batterij (per jaar)</div>
-        <div class="result-row">
-          <span class="result-row-label">Teruglevering zonder batterij</span>
-          <span class="result-row-value" id="res-teruglever-kwh">—</span>
-        </div>
-        <div class="result-row">
-          <span class="result-row-label">Opgeslagen in batterij <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Deze berekening houdt rekening met een realistische seizoensverdeling: in de winter is er vaak te weinig zon om de batterij te vullen, in de zomer soms meer dan er op één dag in past. Zie de maandtabel hieronder voor de details per maand.</span></span></span>
-          <span class="result-row-value groen" id="res-opgeslagen">—</span>
-        </div>
-        <div class="result-row">
-          <span class="result-row-label">Eigenverbruik zonder batterij</span>
-          <span class="result-row-value" id="res-eigen-zonder">—</span>
-        </div>
-        <div class="result-row">
-          <span class="result-row-label">Eigenverbruik met batterij</span>
-          <span class="result-row-value groen" id="res-eigen-met">—</span>
-        </div>
-      </div>
+      <button type="button" onclick="toggleVolledig()" id="volledig-toggle" style="width:100%;text-align:left;background:var(--wit);border:2px solid var(--grijs-licht);border-radius:14px;padding:14px 18px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:700;color:var(--navy);display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow)">
+        <span>📊 Toon volledige berekening</span>
+        <span id="volledig-arrow" style="transition:transform .2s;display:inline-block">▾</span>
+      </button>
 
-      <div class="result-card">
-        <div class="result-label">Maandelijkse verdeling <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Zonproductie is niet gelijk verdeeld over het jaar. In de winter is er vaak te weinig zon om de batterij te vullen, in de zomer soms meer dan de batterij op één dag kan opslaan. Deze tabel laat per maand zien hoeveel de batterij daadwerkelijk opslaat.</span></span></div>
-        <div style="overflow-x:auto">
-          <table style="width:100%;border-collapse:collapse;font-size:0.8rem;margin-top:10px">
-            <thead>
-              <tr style="text-align:left;color:var(--grijs);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px">
-                <th style="padding:6px 4px">Maand</th>
-                <th style="padding:6px 4px">Zonproductie</th>
-                <th style="padding:6px 4px">Opgeslagen</th>
-                <th style="padding:6px 4px">Dekking</th>
-              </tr>
-            </thead>
-            <tbody id="maand-tabel-body"></tbody>
-          </table>
+      <div id="volledig-sectie" style="display:none;flex-direction:column;gap:16px">
+        <div class="result-card">
+          <div class="result-label">Jaarlijkse besparing zonnepanelen (zonder batterij)</div>
+          <div class="result-row">
+            <span class="result-row-label">Direct eigengebruik (~30% van opbrengst)</span>
+            <span class="result-row-value groen" id="res-direct-eigen">—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-row-label">Teruglevering (70% × <span id="terug2027-tarief">€0,06</span>/kWh per 2027) <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Dit is een vaste inschatting van het teruglevertarief ná 1 januari 2027, gebaseerd op het wettelijk minimum (50% van het kale leveringstarief). Dit staat los van de instelbare "Teruglevertarief"-schuif bij Verfijn je berekening — die gebruik je voor je huidige, actuele tarief.</span></span></span>
+            <span class="result-row-value" id="res-terug-waarde">—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-row-label">Subtotaal zonder batterij</span>
+            <span class="result-row-value" id="res-subtotaal-zonder">—</span>
+          </div>
         </div>
-      </div>
 
-      <div class="verdict-box" id="verdict-box">
-        <div class="verdict-title" id="verdict-title">—</div>
-        <div class="verdict-text" id="verdict-text">—</div>
+        <div class="result-card">
+          <div class="result-label">Zonder vs. met batterij (per jaar)</div>
+          <div class="result-row">
+            <span class="result-row-label">Teruglevering zonder batterij</span>
+            <span class="result-row-value" id="res-teruglever-kwh">—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-row-label">Opgeslagen in batterij <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Deze berekening houdt rekening met een realistische seizoensverdeling: in de winter is er vaak te weinig zon om de batterij te vullen, in de zomer soms meer dan er op één dag in past. Zie de maandtabel hieronder voor de details per maand.</span></span></span>
+            <span class="result-row-value groen" id="res-opgeslagen">—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-row-label">Eigenverbruik zonder batterij</span>
+            <span class="result-row-value" id="res-eigen-zonder">—</span>
+          </div>
+          <div class="result-row">
+            <span class="result-row-label">Eigenverbruik met batterij</span>
+            <span class="result-row-value groen" id="res-eigen-met">—</span>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-label">Maandelijkse verdeling <span class="tooltip-wrap" tabindex="0"><span class="tip-icon">?</span><span class="tip-box">Zonproductie is niet gelijk verdeeld over het jaar. In de winter is er vaak te weinig zon om de batterij te vullen, in de zomer soms meer dan de batterij op één dag kan opslaan. Deze tabel laat per maand zien hoeveel de batterij daadwerkelijk opslaat.</span></span></div>
+          <div style="overflow-x:auto">
+            <table style="width:100%;border-collapse:collapse;font-size:0.8rem;margin-top:10px">
+              <thead>
+                <tr style="text-align:left;color:var(--grijs);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.5px">
+                  <th style="padding:6px 4px">Maand</th>
+                  <th style="padding:6px 4px">Zonproductie</th>
+                  <th style="padding:6px 4px">Opgeslagen</th>
+                  <th style="padding:6px 4px">Dekking</th>
+                </tr>
+              </thead>
+              <tbody id="maand-tabel-body"></tbody>
+            </table>
+          </div>
+        </div>
       </div>
 
       <div class="teruglever-warning" id="teruglever-warning" style="display:none">
@@ -606,6 +621,23 @@
 
 <script>
   let terugleverKosten = 0;
+  const TERUGLEVERTARIEF_2027 = 0.06; // wettelijk minimum-inschatting (50% van kaal leveringstarief), losstaand van de instelbare Teruglevertarief-schuif
+
+  function toggleVerfijn() {
+    const e = document.getElementById('verfijn-sectie');
+    const arrow = document.getElementById('verfijn-arrow');
+    const open = e.style.display === 'none' || e.style.display === '';
+    e.style.display = open ? 'block' : 'none';
+    arrow.style.transform = open ? 'rotate(180deg)' : 'none';
+  }
+
+  function toggleVolledig() {
+    const e = document.getElementById('volledig-sectie');
+    const arrow = document.getElementById('volledig-arrow');
+    const open = e.style.display === 'none' || e.style.display === '';
+    e.style.display = open ? 'flex' : 'none';
+    arrow.style.transform = open ? 'rotate(180deg)' : 'none';
+  }
 
   function updateKosten() {
     terugleverKosten = parseFloat(document.getElementById('teruglever-kosten-input').value) || 0;
@@ -711,8 +743,10 @@
 
     // Besparing direct eigengebruik (zonder batterij)
     const directEigenBesparing = eigenZonder * inkoop;
-    const terugWaarde = terugZonder * 0.06; // per 2027 tarief
+    const terugWaarde = terugZonder * TERUGLEVERTARIEF_2027;
     const subtotaalZonder = directEigenBesparing + terugWaarde;
+    const terug2027El = document.getElementById('terug2027-tarief');
+    if (terug2027El) terug2027El.textContent = '€' + TERUGLEVERTARIEF_2027.toFixed(2).replace('.', ',');
 
     // Results
     document.getElementById('res-direct-eigen').textContent = fmt(directEigenBesparing) + '/jaar';
