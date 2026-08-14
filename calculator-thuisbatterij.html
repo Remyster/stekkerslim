@@ -686,27 +686,32 @@
     document.getElementById('prijs-val').textContent = fmt(prijs);
     document.getElementById('rend-val').textContent = Math.round(rend * 100) + '%';
 
-    // Eigenverbruik zonder batterij: NL gemiddelde 30% van opbrengst
-    const eigenZonder = zon * 0.30;
-    const terugZonder = zon * 0.70;
-
     // Seizoensverdeling zonproductie NL (bron: Milieu Centraal / PVGIS-gemiddelden)
     // Verbruik wordt vlak per maand aangenomen (varieert veel minder hard dan zonproductie)
     const zonVerdeling = [0.03,0.05,0.09,0.11,0.13,0.13,0.13,0.11,0.08,0.05,0.02,0.02];
     const dagenPerMaand = [31,28,31,30,31,30,31,31,30,31,30,31];
     const maandNamen = ['Jan','Feb','Mrt','Apr','Mei','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
+    // Deel van het huishoudverbruik dat overdag valt — begrenst hoeveel zon je direct kunt gebruiken.
+    // Zonder deze grens zou een hoge opbrengst leiden tot minder batterijopslag, wat fysiek onmogelijk is.
+    const DAG_AANDEEL = 0.35;
     const verbruikPerMaand = verbruik / 12;
     let effectiefOpgeslagen = 0;
+    let eigenZonder = 0;
+    let terugZonder = 0;
     const maandData = [];
     for (let m = 0; m < 12; m++) {
       const zonMaand = zon * zonVerdeling[m];
-      const terugZonderMaand = zonMaand * 0.70;
-      const eigenZonderMaand = zonMaand * 0.30;
+      // Direct eigenverbruik kan nooit meer zijn dan wat je die maand overdag verbruikt
+      const dagRuimteMaand = verbruikPerMaand * DAG_AANDEEL;
+      const eigenZonderMaand = Math.min(zonMaand, dagRuimteMaand);
+      const terugZonderMaand = zonMaand - eigenZonderMaand;
       // Batterij slaat op: min(teruglevering die maand, capaciteit × dagen), maar niet meer dan 's avonds nodig is
       const opslaanMaand = Math.min(terugZonderMaand, cap * dagenPerMaand[m]) * rend;
       const avondVerbruikMaand = Math.max(0, verbruikPerMaand - eigenZonderMaand);
       const opgeslagenMaand = Math.min(opslaanMaand, avondVerbruikMaand);
       effectiefOpgeslagen += opgeslagenMaand;
+      eigenZonder += eigenZonderMaand;
+      terugZonder += terugZonderMaand;
       maandData.push({
         naam: maandNamen[m],
         zon: zonMaand,
