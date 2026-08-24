@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="nl">
 <head>
+  <!-- Google Analytics 4 — vervang G-RKF36BF7DB met jouw eigen Measurement ID via analytics.google.com -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKF36BF7DB"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -10,9 +11,9 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Terugverdientijd zonnepanelen berekenen voor 2026 en 2027? Inclusief salderingswijziging, rekenvoorbeelden per woningsituatie en onze gratis calculator.">
-  <link rel="canonical" href="https://stekkerslim.nl/terugverdientijd-zonnepanelen-2026.html">
-  <title>Terugverdientijd Zonnepanelen Berekenen 2026 — Hoelang Duurt Het? | StekkerSlim.nl</title>
+  <meta name="description" content="Wekken je zonnepanelen minder op dan verwacht? Ontdek 5 oorzaken en check productie via je omvormer-app en teruglevering via je P1-meter.">
+  <link rel="canonical" href="https://stekkerslim.nl/zonnepanelen-onderpresteren.html">
+  <title>Zonnepanelen onderpresteren? Zo vind je de oorzaak</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -29,35 +30,33 @@
     .page-hero{background:var(--navy);padding:56px 24px}
     .page-hero-inner{max-width:800px;margin:0 auto}
     .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
-    .article-tag{display:inline-block;background:rgba(0,209,122,0.2);color:var(--groen);padding:4px 12px;border-radius:99px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    .article-tag{display:inline-block;background:rgba(255,210,63,0.2);color:var(--accent);padding:4px 12px;border-radius:99px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
     .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--wit);margin-bottom:16px;line-height:1.15}
     .article-meta{color:rgba(255,255,255,0.4);font-size:0.82rem}
-    .urgency-banner{background:rgba(255,210,63,0.15);border:1px solid rgba(255,210,63,0.35);border-radius:12px;padding:16px 20px;margin-top:24px;color:var(--wit);font-size:0.88rem}
-    .urgency-banner strong{color:var(--accent)}
+    .urgency-banner{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:16px 20px;margin-top:24px;color:var(--wit);font-size:0.88rem}
+    .urgency-banner strong{color:#FCA5A5}
     .article-body{max-width:800px;margin:0 auto;padding:56px 24px}
     .article-body h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin:40px 0 12px}
     .article-body h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin:28px 0 8px}
     .article-body p{color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:16px}
     .article-body ul,.article-body ol{padding-left:24px;color:#374151;font-size:0.95rem;line-height:1.8;margin-bottom:16px}
     .article-body li{margin-bottom:6px}
-    .highlight-box{background:var(--licht);border-left:4px solid var(--groen);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem;color:#374151}
-    .warning-box{background:rgba(255,210,63,0.1);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem;color:#374151}
+    .highlight-box{background:var(--licht);border-left:4px solid var(--groen);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem}
+    .warning-box{background:rgba(255,210,63,0.1);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem}
     .comparison-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.88rem}
-    .comparison-table th{background:var(--navy);color:var(--wit);padding:10px 14px;text-align:left;font-family:'Outfit',sans-serif}
-    .comparison-table td{padding:10px 14px;border-bottom:1px solid var(--grijs-licht);color:#374151}
+    .comparison-table th{background:var(--navy);color:var(--wit);padding:10px 14px;text-align:left}
+    .comparison-table td{padding:10px 14px;border-bottom:1px solid var(--grijs-licht)}
     .comparison-table tr:last-child td{border-bottom:none}
-    .comparison-table tr:nth-child(even) td{background:var(--licht)}
-    .good{color:var(--groen);font-weight:700}.bad{color:#EF4444;font-weight:700}.mid{color:#F59E0B;font-weight:700}
-    .scenario-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    .good{color:var(--groen);font-weight:700}.bad{color:#EF4444;font-weight:700}
+    .scenario-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:24px 0}
     .scenario-card{border-radius:14px;padding:20px}
     .scenario-card.voor{background:rgba(0,209,122,0.08);border:1px solid rgba(0,209,122,0.25)}
     .scenario-card.na{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2)}
-    .scenario-card.mid{background:rgba(255,210,63,0.08);border:1px solid rgba(255,210,63,0.3)}
     .scenario-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
-    .scenario-card.voor h4{color:var(--groen)}.scenario-card.na h4{color:#EF4444}.scenario-card.mid h4{color:#B45309}
-    .scenario-card p{font-size:0.85rem;color:var(--grijs);margin:0;line-height:1.6}
-    .scenario-card .big-num{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.8rem;margin-bottom:4px}
-    .scenario-card.voor .big-num{color:var(--groen)}.scenario-card.na .big-num{color:#EF4444}.scenario-card.mid .big-num{color:#B45309}
+    .scenario-card.voor h4{color:var(--groen)}.scenario-card.na h4{color:#EF4444}
+    .scenario-card p{font-size:0.85rem;color:var(--grijs);margin:0}
+    .scenario-card .big-num{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;margin-bottom:4px}
+    .scenario-card.voor .big-num{color:var(--groen)}.scenario-card.na .big-num{color:#EF4444}
     .action-list{display:flex;flex-direction:column;gap:12px;margin:24px 0}
     .action-item{display:flex;gap:16px;align-items:flex-start;padding:16px;background:var(--licht);border-radius:12px}
     .action-num{width:32px;height:32px;min-width:32px;background:var(--groen);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:900;font-size:0.9rem}
@@ -65,13 +64,8 @@
     .action-item p{font-size:0.83rem;color:var(--grijs);margin:0}
     .toc{background:var(--licht);border-radius:14px;padding:24px;margin-bottom:40px}
     .toc h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
-    .toc ol{padding-left:20px;font-size:0.88rem;line-height:2.2}
+    .toc ol{padding-left:20px;font-size:0.88rem;line-height:2}
     .toc a{color:var(--navy);text-decoration:none}.toc a:hover{color:var(--groen)}
-    .calc-cta{background:var(--navy);border-radius:16px;padding:28px 32px;margin:32px 0;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .calc-cta-text h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.1rem;color:var(--wit);margin-bottom:6px}
-    .calc-cta-text p{font-size:0.85rem;color:rgba(255,255,255,0.6);margin:0}
-    .calc-cta a{background:var(--groen);color:var(--navy);padding:12px 22px;border-radius:10px;font-weight:700;text-decoration:none;white-space:nowrap;font-size:0.9rem;display:inline-block}
-    .calc-cta a:hover{background:#00B86A}
     .disclaimer-box{background:var(--licht);border-radius:12px;padding:16px 20px;font-size:0.82rem;color:var(--grijs);margin-top:40px;line-height:1.6}
     .related-articles{background:var(--licht);padding:48px 24px}
     .related-inner{max-width:800px;margin:0 auto}
@@ -83,7 +77,7 @@
     .related-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;line-height:1.3}
     .cta-section{background:var(--navy);padding:56px 24px;text-align:center}
     .cta-section h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:var(--wit);margin-bottom:12px}
-    .cta-section p{color:rgba(255,255,255,.6);margin-bottom:24px;font-size:0.95rem}
+    .cta-section p{color:rgba(255,255,255,.6);margin-bottom:24px}
     .btn-primary{background:var(--groen);color:var(--navy);padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;display:inline-block;transition:transform .2s}
     .btn-primary:hover{transform:translateY(-2px)}
     footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
@@ -94,8 +88,8 @@
     .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
     .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
     .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
+    @media(max-width:700px){.scenario-cards,.related-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
     .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:100%;padding-top:8px;left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}
-    @media(max-width:700px){.scenario-cards,.related-grid,.footer-top{grid-template-columns:1fr}.nav-links{display:none}.calc-cta{flex-direction:column;text-align:center}}
   
     /* === ZOEKBALK === */
     .nav-search-wrap{position:relative}
@@ -132,7 +126,7 @@
     .mobile-menu a{padding:12px 16px;color:var(--navy);text-decoration:none;font-weight:600;font-size:0.95rem;border-radius:10px;transition:background .2s}
     .mobile-menu a:hover{background:var(--licht)}
     .mobile-menu .mob-cta{background:var(--groen);color:var(--navy)!important;margin-top:8px;text-align:center}
-    @media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}  
+    @media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}
   .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:rgba(11,22,40,0.97);backdrop-filter:blur(8px);padding:12px 20px;z-index:150;transform:translateY(110%);transition:transform .35s ease;border-top:2px solid var(--groen)}
   .sticky-cta.show{transform:none}
   .sticky-cta-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
@@ -140,46 +134,78 @@
   .sticky-cta-txt small{display:block;color:rgba(255,255,255,0.4);font-weight:400;font-size:0.75rem}
   .sticky-cta a.scta-btn{background:var(--groen);color:var(--navy);padding:11px 22px;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.88rem;text-decoration:none;white-space:nowrap}
   .sticky-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;padding:4px}
-  @media(max-width:600px){.sticky-cta-txt small{display:none}}
-  </style>
+  @media(max-width:600px){.sticky-cta-txt small{display:none}}  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "Terugverdientijd zonnepanelen berekenen 2026 en 2027",
-    "description": "Terugverdientijd zonnepanelen berekenen voor 2026 en 2027? Inclusief salderingswijziging, rekenvoorbeelden per woningsituatie en onze gratis calculator.",
+    "headline": "Zonnepanelen onderpresteren: zo vind en los je het op",
+    "description": "Wekken je zonnepanelen minder op dan verwacht? Ontdek 5 oorzaken en check productie via je omvormer-app en teruglevering via je P1-meter.",
     "author": {"@type": "Person", "name": "Remy Egberts"},
     "publisher": {"@type": "Organization", "name": "StekkerSlim.nl", "url": "https://stekkerslim.nl"},
-    "datePublished": "2026-04-15",
-    "dateModified": "2026-04-15",
-    "url": "https://stekkerslim.nl/terugverdientijd-zonnepanelen-2026.html",
-    "mainEntityOfPage": "https://stekkerslim.nl/terugverdientijd-zonnepanelen-2026.html"
+    "datePublished": "2026-08-21",
+    "dateModified": "2026-08-24",
+    "url": "https://stekkerslim.nl/zonnepanelen-onderpresteren.html",
+    "mainEntityOfPage": "https://stekkerslim.nl/zonnepanelen-onderpresteren.html"
   }
   </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"StekkerSlim","item":"https://stekkerslim.nl"},
-      {"@type":"ListItem","position":2,"name":"Zonnepanelen","item":"https://stekkerslim.nl/saldering-2027.html"},
-      {"@type":"ListItem","position":3,"name":"Terugverdientijd zonnepanelen 2026","item":"https://stekkerslim.nl/terugverdientijd-zonnepanelen-2026.html"}
-    ]
+    "itemListElement": [{"@type":"ListItem","position":1,"name":"StekkerSlim","item":"https://stekkerslim.nl"},{"@type":"ListItem","position":2,"name":"Zonnepanelen onderpresteren","item":"https://stekkerslim.nl/zonnepanelen-onderpresteren.html"}]
   }
   </script>
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="StekkerSlim.nl" />
-  <meta property="og:title" content="Terugverdientijd Zonnepanelen 2026: Eerlijk Berekend | StekkerSlim.nl" />
-  <meta property="og:description" content="Hoelang duurt het voordat zonnepanelen zichzelf terugverdienen in 2026? Eerlijk en actueel." />
+  <meta property="og:title" content="Zonnepanelen onderpresteren? Zo vind je de oorzaak | StekkerSlim.nl" />
+  <meta property="og:description" content="Wekken je zonnepanelen minder op dan verwacht? Ontdek 5 oorzaken en check productie via je omvormer-app en teruglevering via je P1-meter." />
   <meta property="og:image" content="https://stekkerslim.nl/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:url" content="https://stekkerslim.nl/terugverdientijd-zonnepanelen-2026.html" />
+  <meta property="og:url" content="https://stekkerslim.nl/zonnepanelen-onderpresteren.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://stekkerslim.nl/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Hoe weet ik zeker of mijn zonnepanelen onderpresteren?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Vergelijk de productiegegevens uit je omvormer-app van deze maand met dezelfde maand in eerdere jaren, niet met losse dagen — het weer varieert daarvoor te veel. Zie je geen duidelijke afwijking, dan is een acuut probleem minder waarschijnlijk. Blijf wel controleren op foutmeldingen, nieuwe schaduw en wijzigingen aan je installatie."}
+      },
+      {
+        "@type": "Question",
+        "name": "Hoeveel opbrengst kan ik verliezen door vuil of stof op de panelen?",
+        "acceptedAnswer": {"@type": "Answer", "text": "De Consumentenbond noemt circa 2 tot 4% opbrengstverlies bij panelen die nooit schoongemaakt worden, maar dit is sterk situatieafhankelijk: regen spoelt het meeste vuil vanzelf weg, vooral bij een schuin dak. Bij hardnekkige aanslag zoals vogelpoep of bij vlak liggende panelen kan het effect groter zijn."}
+      },
+      {
+        "@type": "Question",
+        "name": "Waarom valt mijn omvormer soms uit bij hoge netspanning?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Een omvormer kan bij te hoge netspanning tijdelijk uitschakelen als beveiligingsmaatregel. Dat gebeurt vaker als het lokale stroomnet druk is, bijvoorbeeld op zonnige middagen. Het is niet automatisch bewijs van netcongestie — laat terugkerende meldingen beoordelen door je installateur."}
+      },
+      {
+        "@type": "Question",
+        "name": "Mag ik mijn omvormer zelf resetten bij een storing?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Raadpleeg eerst de handleiding van jouw omvormer, want dit verschilt per merk en model. Blijf altijd binnen wat de fabrikant toestaat: ga niet zelf aan de elektrische aansluiting sleutelen. Bij twijfel of een terugkerende storing neem je contact op met de installateur of fabrikant."}
+      },
+      {
+        "@type": "Question",
+        "name": "Wanneer is een installateur nodig?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Als reinigen en de schaduwcheck niets opleveren, je een foutcode ziet die aanhoudt, of de terugval breed en langdurig is zonder duidelijke oorzaak. Kosten voor een diagnose verschillen per regio, daktype en type storing — vraag altijd vooraf een gespecificeerde offerte."}
+      },
+      {
+        "@type": "Question",
+        "name": "Hoe zie ik of het probleem bij één paneel zit of bij de hele installatie?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Heb je paneelniveau-monitoring via optimizers of micro-omvormers, dan zie je verschillen per paneel in de app. Een terugkerend verschil bij één paneel kan wijzen op lokale schaduw, vervuiling of een technisch mankement. Een brede terugval over de hele installatie wijst eerder op iets dat de hele string of de omvormer raakt."}
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-
 <nav>
   <div class="nav-inner">
     <a href="/" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
@@ -242,313 +268,238 @@
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="/">Home</a> › <a href="blog.html">Blog</a> › Zonnepanelen</div>
-    <div class="article-tag">☀️ Zonnepanelen</div>
-    <h1>Terugverdientijd zonnepanelen berekenen 2026 — hoelang duurt het?</h1>
-    <div class="article-meta">Bijgewerkt: april 2026 · Leestijd: 8 minuten · Door Remy Egberts</div>
-    <div class="urgency-banner">
-      <strong>Let op:</strong> De salderingsregeling stopt op 31 december 2026. Dat verandert de terugverdientijd flink — maar het is eerlijker dan je misschien denkt. Dit artikel rekent het voor je door.
-    </div>
+    <div class="breadcrumb"><a href="/">Home</a> › <a href="blog.html">Blog</a></div>
+    <div class="article-tag">☀️ Zonnepanelen troubleshooting</div>
+    <h1>Zonnepanelen onderpresteren: zo vind en los je het op</h1>
+    <div class="article-meta">Gepubliceerd: 21 augustus 2026 · Leestijd: ~7 minuten</div>
   </div>
 </div>
 
 <div class="article-body">
 
+  <div class="highlight-box">
+    <p style="margin:0">Merk je dat je zonnepanelen onderpresteren of minder opleveren dan je verwacht had? Dat kan van alles zijn — van een vies paneel tot een omvormerstoring. In dit artikel loop je stap voor stap na wat er aan de hand is: je omvormer-app voor productie en foutmeldingen, je P1-meter aanvullend voor netafname en teruglevering.</p>
+  </div>
+
   <div class="toc">
     <h4>📋 Inhoud van dit artikel</h4>
     <ol>
-      <li><a href="#rekenmethode">Zo bereken je de terugverdientijd</a></li>
-      <li><a href="#kosten-2026">Wat kosten zonnepanelen in 2026?</a></li>
-      <li><a href="#scenario-2026">Scenario 2026: nog salderen</a></li>
-      <li><a href="#scenario-2027">Scenario 2027: zonder saldering</a></li>
-      <li><a href="#per-situatie">Per woningsituatie: wat mag je verwachten?</a></li>
-      <li><a href="#verkorten">Terugverdientijd verkorten: 3 concrete manieren</a></li>
-      <li><a href="#calculator">Gebruik de calculator voor jouw situatie</a></li>
+      <li><a href="#hoe-merk-je">Hoe merk je dat je zonnepanelen onderpresteren?</a></li>
+      <li><a href="#oorzaken">5 oorzaken van onderpresterende zonnepanelen</a></li>
+      <li><a href="#zelf-checken">Wat kun je zelf controleren?</a></li>
+      <li><a href="#wanneer-loont">Wanneer loont het om in te grijpen?</a></li>
+      <li><a href="#faq">Veelgestelde vragen</a></li>
     </ol>
   </div>
 
-  <p>De vraag die ik het meest krijg: "Remy, lonen zonnepanelen nog wel?" Mijn antwoord is altijd hetzelfde: dat hangt van jouw situatie af. Niet van een gemiddelde. Want iemand die overdag thuis is en een elektrische auto heeft, rekent heel anders dan een gezin van twee dat van 8 tot 6 weg is.</p>
+  <h2 id="hoe-merk-je">Hoe merk je dat je zonnepanelen onderpresteren?</h2>
+  <p>De meeste mensen krijgen een vaag onderbuikgevoel: "dit voelt minder dan vorig jaar." Om daar echt iets mee te doen, heb je een eerlijke vergelijking nodig — geen losse zonnige of bewolkte dag, maar een hele periode.</p>
 
-  <p>Dit artikel legt de rekenmethode uit, geeft concrete scenario's voor 2026 én 2027, en wijst je naar de calculator op deze site zodat je jouw eigen getal kunt uitrekenen.</p>
+  <h3>Vergelijk met eerdere periodes, niet met losse dagen</h3>
+  <p>Vergelijk de productiegegevens uit je omvormer-app van deze maand met dezelfde maand in eerdere jaren. Zie je geen duidelijke afwijking, dan is een acuut probleem minder waarschijnlijk. Zie je wél een opvallend verschil, houd dan rekening met veranderd weer, nieuwe schaduw (een dakkapel bij de buren, een boom die is gegroeid) en eventuele wijzigingen aan je installatie voordat je concludeert dat er iets stuk is.</p>
+  <p>Een geleidelijke daling over meerdere jaren kan passen bij normale veroudering van zonnepanelen. Zie je echter een plotselinge of duidelijke terugval, behandel die dan niet automatisch als normaal: controleer eerst schaduw, vervuiling, foutmeldingen en je meetgegevens.</p>
 
-  <h2 id="rekenmethode">Zo bereken je de terugverdientijd</h2>
+  <!-- FOTO: schermafbeelding van een omvormer-app of Home Assistant-dashboard met maandopbrengst grafisch weergegeven -->
 
-  <p>De basisformule is simpel:</p>
+  <h3>Productie versus teruglevering: ken het verschil</h3>
+  <p>Dit is de meest gemaakte denkfout. Gebruik bij voorkeur je <strong>omvormer-app of productiemeter</strong> voor de totale zonnestroomproductie. Je <a href="/smarthome-p1-meter.html">P1-meter</a> laat zien wat je op dat moment van het net afneemt of eraan teruglevert — en dat is niet hetzelfde als je totale opbrengst. Verbruik je veel stroom overdag terwijl de zon schijnt, dan lever je minder terug, terwijl je panelen prima presteren. Kijk dus altijd eerst in de app van je omvormer voordat je concludeert dat er iets mis is.</p>
 
-  <div class="highlight-box">
-    <strong>Terugverdientijd (jaren) = Totale investering ÷ Jaarlijkse besparing</strong><br><br>
-    Voorbeeld: investering €4.500, jaarlijkse besparing €600 → terugverdientijd = 7,5 jaar
-  </div>
+  <h2 id="oorzaken">De 5 meest voorkomende oorzaken van onderpresterende zonnepanelen</h2>
+  <p>Onderstaande lijst is geen rangorde van erg naar minder erg — het zijn simpelweg de vijf dingen die je als eerste checkt, van makkelijk naar technisch.</p>
 
-  <p>Het moeilijke zit niet in de formule — dat zit in wat je invult. De <strong>jaarlijkse besparing</strong> hangt af van:</p>
-  <ul>
-    <li>Hoeveel kWh je panelen produceren (afhankelijk van aantal panelen, dakligging, schaduw)</li>
-    <li>Hoeveel van die stroom je zelf direct gebruikt (je <strong>zelfverbruik</strong>)</li>
-    <li>Wat je betaalt per kWh (je stroomtarief)</li>
-    <li>Wat je krijgt of betaalt voor teruggeleverde stroom (teruglevertarief en terugleverkosten)</li>
-    <li>Of de salderingsregeling nog actief is</li>
-  </ul>
+  <h3>1. Vuil, bladeren en vogelpoep</h3>
+  <p>Vuil op je panelen kan de opbrengst verminderen, vooral als regen het niet goed wegspoelt of als je panelen relatief vlak liggen. De Consumentenbond noemt circa 2 tot 4% verlies bij panelen die nooit schoongemaakt worden — maar dit is sterk situatieafhankelijk. Bij hardnekkige vogelpoep of een dak dat weinig regen vangt, kan het effect groter zijn.</p>
 
-  <div class="highlight-box" style="background:#F0FDF4;border-left:4px solid var(--groen);margin:24px 0;">
-    <strong>💡 Wat is kWh/kWp — en waarom je het moet kennen</strong><br><br>
-    kWh/kWp is de <strong>prestatieverhouding</strong> van je installatie: hoeveel kWh je opwekt per geïnstalleerd kilowatt-piekvermogen.<br><br>
-    <strong>Hoe bereken je het?</strong><br>
-    Opbrengst (kWh) ÷ vermogen installatie (kWp) = kWh/kWp<br>
-    Voorbeeld: 10 panelen × 405 Wp = 4.050 Wp = 4,05 kWp. Opbrengst: 3.500 kWh. Dan: 3.500 ÷ 4,05 = <strong>864 kWh/kWp</strong>.<br><br>
-    <strong>Wat is normaal in Nederland?</strong><br>
-    <ul style="margin:8px 0 0 0;padding-left:20px">
-      <li>✅ 850–950 kWh/kWp → goed, zuiddak of lichte oost/west</li>
-      <li>⚠️ 700–850 kWh/kWp → matig, schaduw of oost/west dak</li>
-      <li>❌ onder 700 kWh/kWp → check installatierapport, mogelijk schaduw of technisch probleem</li>
-    </ul><br>
-    Staat je installatie al? Dan vind je de opbrengst in je omvormer-app. Vermogen staat op je installatierapport. Gebruik onze <a href="calculator-zonnepanelen.html" style="color:var(--groen)">zonnepanelen calculator</a> — die berekent je kWh/kWp automatisch.
-  </div>
+  <h3>2. Schaduw door nieuwe objecten of groeiende bomen</h3>
+  <p>Een boom die vijf jaar geleden nog klein was, kan nu een deel van je dak beschaduwen. Ook een nieuwe dakkapel of aanbouw bij de buren kan de situatie veranderen. Check dit specifiek: schaduw die er vorig jaar nog niet was, is een van de makkelijkst te missen oorzaken.</p>
 
-  <p>Dat laatste punt is precies waarom 2026 en 2027 twee verschillende berekeningen geven.</p>
+  <h3>3. Omvormerstoringen of netspanningsproblemen</h3>
+  <p>Bij te hoge netspanning kan een omvormer zich tijdelijk uitschakelen als beveiligingsmaatregel. Dit kan zich voordoen op momenten met veel lokale teruglevering, bijvoorbeeld op zonnige middagen. Dat is niet automatisch bewijs van <a href="/netcongestie-uitgelegd.html">netcongestie</a> op het hele net — maar wel iets om te laten beoordelen als het vaker gebeurt.</p>
 
-  <h2 id="kosten-2026">Wat kosten zonnepanelen in 2026?</h2>
+  <h3>4. Defecte optimizers of micro-omvormers</h3>
+  <p>Heeft jouw systeem optimizers of micro-omvormers per paneel? Dan kun je in de app vaak per paneel zien wat het produceert. Heb je een gewone string-omvormer zonder die techniek, dan zie je alleen het totaal. Dit is alleen relevant als je systeem die apparatuur daadwerkelijk heeft — check dit in je installatiedocumentatie als je het niet zeker weet.</p>
 
-  <p>Ik heb even de actuele prijzen gecheckt. In 2026 liggen de kosten voor een complete installatie van 10 panelen (inclusief omvormer en installatie, 0% btw) <strong>gemiddeld tussen €3.700 en €5.200</strong>. De grote bandbreedte komt door daktype, regio en merk panelen.</p>
-
-  <table class="comparison-table">
-    <tr><th>Systeem</th><th>Vermogen</th><th>Productie/jaar</th><th>Gemiddelde prijs 2026</th></tr>
-    <tr><td>6 panelen</td><td>~2.600 Wp</td><td>~2.200 kWh</td><td>€2.600 – €3.400</td></tr>
-    <tr><td>8 panelen</td><td>~3.500 Wp</td><td>~2.975 kWh</td><td>€3.200 – €4.100</td></tr>
-    <tr><td>10 panelen</td><td>~4.350 Wp</td><td>~3.700 kWh</td><td>€3.700 – €5.200</td></tr>
-    <tr><td>14 panelen</td><td>~6.100 Wp</td><td>~5.185 kWh</td><td>€4.300 – €5.750</td></tr>
-  </table>
-
-  <p>Rekent de installateur meer dan €5.500 voor 10 panelen? Vraag dan altijd een tweede offerte. Prijzen zijn in 2025–2026 flink gedaald en het aanbod is ruim.</p>
+  <h3>5. String- of bekabelingsproblemen</h3>
+  <p>Zit er een storing in de bekabeling of in een hele string panelen, dan zie je vaak een bredere terugval die niet verklaard wordt door vuil, schaduw of weer. Dit is meestal het laatste checkpunt — en meestal de reden om een installateur te bellen in plaats van het zelf op te lossen.</p>
 
   <div class="warning-box">
-    <strong>Vergeet de omvormervervanging niet:</strong> Een omvormer gaat gemiddeld 10–15 jaar mee. Reken op €600–€1.000 vervangingskosten halverwege de levensduur van je installatie. Neem dit altijd mee in je totaalberekening.
+    <strong>Let op:</strong> ga nooit zelf aan de elektrische aansluiting van je omvormer sleutelen. Raadpleeg bij een storing altijd eerst de handleiding van jouw specifieke omvormer, en neem bij twijfel contact op met de installateur of fabrikant.
   </div>
 
-  <h2 id="scenario-2026">Scenario 2026: nog één jaar salderen</h2>
-
-  <p>Deze berekening gaat uit van panelen die doen wat ze horen te doen. Blijft je werkelijke opbrengst structureel achter bij de verwachting, dan schuift je terugverdientijd op — check in dat geval eerst <a href="zonnepanelen-onderpresteren.html">waarom je zonnepanelen onderpresteren</a> voordat je met deze cijfers verder rekent.</p>
-
-  <p>Stel: je koopt in 2026 een installatie van 10 panelen voor €4.500. Je verbruikt 3.500 kWh per jaar en je panelen produceren 3.700 kWh. Je stroomtarief: €0,27/kWh. Terugleverkosten: €130/jaar. Zelfverbruik: 35% (1.295 kWh eigen gebruik, 2.405 kWh teruggeleverd aan net).</p>
-
-  <p>Onder saldering mag je de teruggeleverde stroom wegstrepen tegen je netafname. Je produceert meer dan je verbruikt, dus je netto netafname is 0 kWh — je betaalt alleen nog de vaste kosten en terugleverkosten.</p>
-
-  <div class="scenario-cards">
-    <div class="scenario-card voor">
-      <h4>☀️ Situatie 2026 (met saldering)</h4>
-      <div class="big-num">~€815</div>
-      <p>Besparing per jaar. Zonder panelen betaal je 3.500 kWh × €0,27 = €945. Met panelen betaal je alleen terugleverkosten €130 (netto stroomkosten = €0 dankzij saldering). Besparing: €945 − €130 = <strong>€815</strong>.</p>
-    </div>
-    <div class="scenario-card mid">
-      <h4>📊 Terugverdientijd 2026</h4>
-      <div class="big-num">~5,5 jaar</div>
-      <p>€4.500 ÷ €815 = 5,5 jaar. Na jaar 6 heb je je investering terug. Bij een levensduur van 25 jaar houd je daarna nog ~19 jaar besparing over.</p>
-    </div>
-  </div>
-
-  <h2 id="scenario-2027">Scenario 2027: zonder saldering</h2>
-
-  <p>Dezelfde installatie, maar na 1 januari 2027. De teruggeleverde stroom levert nu slechts ~€0,07/kWh op (wettelijk minimaal 50% van het kale leveringstarief — check dit zelf even want tarieven kunnen veranderen). Vanaf 2027 mogen leveranciers alleen nog de werkelijke kosten voor teruglevering doorberekenen en mag je netto geen negatieve vergoeding krijgen. De verwachting is dat terugleverkosten daardoor dalen ten opzichte van de huidige pieken — maar hoe groot dat effect is, verschilt per leverancier en contract.</p>
-
-  <div class="scenario-cards">
-    <div class="scenario-card voor">
-      <h4>✅ Hoog zelfverbruik (60%)</h4>
-      <div class="big-num">~€623</div>
-      <p>Zonder panelen: 3.500 kWh × €0,27 = €945/jaar. Met panelen: eigen gebruik 2.220 kWh, netafname nog 1.280 kWh × €0,27 = €346. Teruglevering 1.480 kWh × €0,07 = €104 opbrengst. Terugleverkosten €80. Nieuwe jaarkosten: €346 + €80 − €104 = €322. Besparing: €945 − €322 = <strong>€623</strong>.</p>
-    </div>
-    <div class="scenario-card na">
-      <h4>⚠️ Laag zelfverbruik (30%)</h4>
-      <div class="big-num">~€401</div>
-      <p>Zonder panelen: €945/jaar. Met panelen: eigen gebruik 1.110 kWh, netafname nog 2.390 kWh × €0,27 = €645. Teruglevering 2.590 kWh × €0,07 = €181 opbrengst. Terugleverkosten €80. Nieuwe jaarkosten: €645 + €80 − €181 = €544. Besparing: €945 − €544 = <strong>€401</strong>. Terugverdientijd loopt op naar 11+ jaar.</p>
-    </div>
-  </div>
-
-  <p>Dit is het kernpunt: <strong>na 2026 is zelfverbruik allesbepalend</strong>. Wie overdag thuis is, een elektrische auto heeft of een thuisbatterij gebruikt, zit relatief goed. Wie alles teruglevert, ziet de terugverdientijd flink oplopen.</p>
-
-  <h2 id="per-situatie">Per woningsituatie: wat mag je verwachten?</h2>
-
-  <p>Een gemiddeld getal zegt je weinig. Hier zijn de vier situaties die ik het vaakst tegenkom:</p>
-
-  <table class="comparison-table">
-    <tr><th>Situatie</th><th>Zelfverbruik</th><th>Besparing/jaar (na 2026)</th><th>Terugverdientijd</th></tr>
-    <tr>
-      <td>Thuis werkend gezin, EV, 10 panelen</td>
-      <td class="good">65–70%</td>
-      <td class="good">€700–€800</td>
-      <td class="good">6–7 jaar</td>
-    </tr>
-    <tr>
-      <td>Gezin, overdag weg, geen EV, 10 panelen</td>
-      <td class="mid">30–35%</td>
-      <td class="mid">€380–€450</td>
-      <td class="mid">10–12 jaar</td>
-    </tr>
-    <tr>
-      <td>Gezin + thuisbatterij (5 kWh), 10 panelen</td>
-      <td class="good">65%</td>
-      <td class="good">€650–€750</td>
-      <td class="mid">8–10 jaar*</td>
-    </tr>
-    <tr>
-      <td>Stel (weinig verbruik), 6 panelen</td>
-      <td class="mid">40%</td>
-      <td class="mid">€260–€320</td>
-      <td class="mid">9–11 jaar</td>
-    </tr>
-  </table>
-  <p style="font-size:0.8rem;color:var(--grijs);margin-top:-8px">* Inclusief de extra investering in de batterij (plug-in 2–3 kWh ~€970–€1.300, rond 5 kWh ~€1.800–€2.100). Check dit zelf even want prijzen kunnen veranderen.</p>
-
-  <p>Dat thuiswerkende gezin met een elektrische auto is de beste investeerder. Niet omdat ze een speciaal systeem hebben — gewoon omdat ze de stroom zelf gebruiken op het moment dat de panelen produceren.</p>
-
-  <h2 id="verkorten">Terugverdientijd verkorten: 3 concrete manieren</h2>
+  <h2 id="zelf-checken">Wat kun je zelf controleren?</h2>
+  <p>Loop dit stappenplan van makkelijk naar technisch. Gebruik je omvormer-app voor productie en foutmeldingen, en je P1-meter aanvullend voor netafname, teruglevering en verbruikspatronen.</p>
 
   <div class="action-list">
     <div class="action-item">
       <div class="action-num">1</div>
       <div>
-        <h4>Verschuif je verbruik naar de middag</h4>
-        <p>Stel je wasmachine, vaatwasser en droger in op een timer die ze start tussen 11:00 en 15:00. Elk apparaat dat je dan draait, verbruikt zonnestroom in plaats van netenergie. Goedkoop, geen investering nodig.</p>
+        <h4>Vergelijk de opbrengst</h4>
+        <p>Zet de productiegegevens uit je omvormer-app van deze maand naast dezelfde maand in eerdere jaren. Geen duidelijke afwijking? Dan is een acuut probleem minder waarschijnlijk — blijf wel opletten op foutmeldingen en nieuwe schaduw.</p>
       </div>
     </div>
     <div class="action-item">
       <div class="action-num">2</div>
       <div>
-        <h4>Kies een contract zonder terugleverkosten</h4>
-        <p>Terugleverkosten lopen uiteen van €0 tot €300+ per jaar afhankelijk van je leverancier. Vergelijk actief. Dit is pure winst — hetzelfde systeem, andere rekening. Gebruik onze <a href="https://www.awin1.com/cread.php?awinmid=68288&awinaffid=2816288&ued=https%3A%2F%2Fwww.energiekiezer.nl%2F" target="_blank" rel="noopener sponsored" style="color:var(--groen)">vergelijker via Energiekiezer</a>.</p>
+        <h4>Check op vuil en nieuwe schaduw</h4>
+        <p>Is er zichtbare vervuiling of schaduw die er vorig jaar nog niet was? Pak alleen een veilige, goed bereikbare oorzaak zelf aan en vergelijk de opbrengst daarna opnieuw over een vergelijkbare zonnige periode.</p>
       </div>
     </div>
     <div class="action-item">
       <div class="action-num">3</div>
       <div>
-        <h4>Overweeg een kleine plug-in batterij</h4>
-        <p>Een plug-in thuisbatterij van 2–3 kWh kost grofweg €970–€1.300 extra. Voor systemen rond 5 kWh ligt de prijs eerder rond €1.800–€2.100. Beide verhogen je zelfverbruik van ~35% naar ~65%. Vooral interessant als je overdag weg bent. De <a href="thuisbatterij-top5-2026.html" style="color:var(--groen)">top 5 thuisbatterijen voor 2026</a> op deze site vergelijkt de beste opties. Check altijd actuele prijzen want dit verandert snel.</p>
+        <h4>Check de app op foutcodes</h4>
+        <p>Zie je een foutcode of terugkerende storingsmelding? Noteer de exacte code, datum en omstandigheden. Raadpleeg eerst de handleiding van je omvormer of neem contact op met de installateur of fabrikant.</p>
+      </div>
+    </div>
+    <div class="action-item">
+      <div class="action-num">4</div>
+      <div>
+        <h4>Kijk of het bij één paneel zit</h4>
+        <p>Heb je paneelniveau-monitoring? Een terugkerend verschil bij één paneel kan wijzen op lokale schaduw, vervuiling of een technisch mankement. Blijft het verschil bestaan na controle, laat het dan beoordelen. Zie je een brede, aanhoudende terugval zonder duidelijke oorzaak? Vergelijk eerst met vergelijkbare weersomstandigheden. Blijft het verschil bestaan, laat dan een installateur beoordelen of een technische inspectie nodig is.</p>
       </div>
     </div>
   </div>
 
-  <div class="warning-box">
-    <strong>Niet meer panelen dan je nodig hebt:</strong> Na 2027 levert teruggeleverde stroom weinig op. Wie 6.000 kWh produceert maar slechts 3.500 kWh verbruikt, heeft een groot overschot dat nauwelijks wat oplevert. Stem het aantal panelen af op je eigen verbruik — niet op het dakoppervlak dat beschikbaar is.
+  <p>Wil je dit structureel bijhouden in plaats van incidenteel checken? Een <a href="/smarthome-p1-meter.html">P1-meter gekoppeld aan Home Assistant</a> geeft je dag- en maandtrends in één overzicht, zodat je afwijkingen sneller ziet.</p>
+
+  <div style="background:linear-gradient(135deg,#00D17A15,#0B162808);border:2px solid var(--groen);border-radius:14px;padding:20px 24px;margin:24px 0">
+    <p style="margin:0 0 6px 0;font-size:0.8rem;font-weight:700;color:var(--groen);text-transform:uppercase;letter-spacing:.05em">🔌 Nog geen P1-meter?</p>
+    <p style="margin:0 0 14px 0;font-size:0.95rem;color:var(--navy);font-weight:600">Bekijk de HomeWizard P1-meter voor real-time inzicht in je netafname en teruglevering — combineer dit met je omvormer-app voor je totale zonnestroomproductie</p>
+    <a href="https://partner.homewizard.com/c/?si=18407&li=1795784&wi=419188&ws=&dl=nl%2Fp1-meter%2F" target="_blank" rel="noopener sponsored" style="display:inline-block;background:var(--groen);color:var(--navy);padding:12px 24px;border-radius:10px;font-weight:700;font-size:0.9rem;text-decoration:none">Bekijk de HomeWizard P1-meter →</a>
+    <span style="display:block;margin-top:8px;font-size:0.75rem;color:var(--grijs)">We ontvangen mogelijk commissie — dat kost jou niets extra en verandert nooit ons advies.</span>
   </div>
 
-  <h2 id="calculator">Gebruik de calculator voor jouw situatie</h2>
+  <!-- FOTO: close-up van een vervuild zonnepaneel met bladeren of vogelpoep, ter illustratie van oorzaak 1 -->
 
-  <p>De scenarios hierboven zijn rekenvoorbeelden. Jouw situatie is anders — ander verbruik, ander dak, ander tarief. Gebruik de zonnepanelen calculator om in 2 minuten jouw persoonlijke terugverdientijd te berekenen, inclusief het "na 2026" scenario.</p>
+  <h2 id="wanneer-loont">Wanneer loont het om in te grijpen?</h2>
+  <p>Reinigen kun je vaak zelf, mits je paneel goed en veilig bereikbaar is — bijvoorbeeld vanaf de grond met een telescoopsteel. Liggen je panelen op een dak waar je niet zonder risico bij kunt, huur dan een glazenwasser in plaats van zelf te klimmen. De Consumentenbond noemt richtprijzen van ongeveer €5 tot €15 per paneel, of €50 tot €150 per gemiddelde beurt — reken dit lokaal na, want bereikbaarheid en daktype maken flink verschil.</p>
+  <p>Voor een technische diagnose door een installateur geldt: kosten verschillen per regio, daktype en type storing. Vraag altijd vooraf een gespecificeerde offerte in plaats van af te gaan op een schatting online.</p>
 
-  <div class="calc-cta">
-    <div class="calc-cta-text">
-      <h3>🧮 Bereken jouw terugverdientijd</h3>
-      <p>In 30 seconden klaar. Inclusief effect salderingswijziging 2027.</p>
-    </div>
-    <a href="calculator-zonnepanelen.html">Gebruik de calculator →</a>
+  <!-- FOTO: sfeershot van een zonnepaneleninstallatie op een Nederlands dak, ter illustratie bij de kostensectie -->
+
+  <p>Twijfel je of het probleem financieel de moeite waard is om aan te pakken? Herbereken je verwachte terugverdientijd nadat je het probleem hebt opgelost via de <a href="/terugverdientijd-zonnepanelen-2026.html">terugverdientijd-pagina</a>. En check bij het vergelijken van een nieuw energiecontract meteen of je leverancier <a href="/terugleverkosten.html">terugleverkosten</a> rekent — dat heeft directe invloed op wat teruglevering je nog oplevert.</p>
+
+  <h2 id="faq">Veelgestelde vragen over onderpresterende zonnepanelen</h2>
+
+  <div style="margin:24px 0;display:flex;flex-direction:column;gap:0">
+    <details style="border:1px solid var(--grijs-licht);border-radius:12px 12px 0 0;padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Hoe weet ik zeker of mijn zonnepanelen onderpresteren?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Vergelijk de productiegegevens uit je omvormer-app van deze maand met dezelfde maand in eerdere jaren, niet met losse dagen — het weer varieert daarvoor te veel. Zie je geen duidelijke afwijking, dan is een acuut probleem minder waarschijnlijk. Blijf wel controleren op foutmeldingen, nieuwe schaduw en wijzigingen aan je installatie.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Hoeveel opbrengst kan ik verliezen door vuil of stof op de panelen?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">De Consumentenbond noemt circa 2 tot 4% opbrengstverlies bij panelen die nooit schoongemaakt worden, maar dit is sterk situatieafhankelijk: regen spoelt het meeste vuil vanzelf weg, vooral bij een schuin dak. Bij hardnekkige aanslag zoals vogelpoep of bij vlak liggende panelen kan het effect groter zijn.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Waarom valt mijn omvormer soms uit bij hoge netspanning?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Een omvormer kan bij te hoge netspanning tijdelijk uitschakelen als beveiligingsmaatregel. Dat gebeurt vaker als het lokale stroomnet druk is, bijvoorbeeld op zonnige middagen. Het is niet automatisch bewijs van netcongestie — laat terugkerende meldingen beoordelen door je installateur.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Mag ik mijn omvormer zelf resetten bij een storing?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Raadpleeg eerst de handleiding van jouw omvormer, want dit verschilt per merk en model. Blijf altijd binnen wat de fabrikant toestaat: ga niet zelf aan de elektrische aansluiting sleutelen. Bij twijfel of een terugkerende storing neem je contact op met de installateur of fabrikant.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Wanneer is een installateur nodig?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Als reinigen en de schaduwcheck niets opleveren, je een foutcode ziet die aanhoudt, of de terugval breed en langdurig is zonder duidelijke oorzaak. Kosten voor een diagnose verschillen per regio, daktype en type storing — vraag altijd vooraf een gespecificeerde offerte.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);border-radius:0 0 12px 12px;padding:16px 20px">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Hoe zie ik of het probleem bij één paneel zit of bij de hele installatie?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Heb je paneelniveau-monitoring via optimizers of micro-omvormers, dan zie je verschillen per paneel in de app. Een terugkerend verschil bij één paneel kan wijzen op lokale schaduw, vervuiling of een technisch mankement. Een brede terugval over de hele installatie wijst eerder op iets dat de hele string of de omvormer raakt.</p>
+    </details>
   </div>
-
-  <p>En als je twijfelt of zonnepanelen überhaupt de moeite waard zijn voor jouw woning: lees dan ook het artikel over <a href="saldering-2027.html" style="color:var(--groen)">wat zonnestroom waard is na 2027</a>. Dat geeft een eerlijk beeld van wat het systeem nog oplevert in de jaren daarna.</p>
 
   <div class="disclaimer-box">
-    <strong>Disclaimer:</strong> Alle berekeningen in dit artikel zijn indicatief op basis van €0,27/kWh stroomprijs (januari 2026) en gemiddelde teruglevertarieven. Energieprijzen, terugleverkosten en regelgeving kunnen wijzigen. Check altijd je eigen contract en de actuele cijfers via je energieleverancier of <a href="https://www.milieucentraal.nl" target="_blank" rel="noopener" style="color:var(--groen)">milieucentraal.nl</a>.
-  </div>
-
-</div>
-
-<!-- Affiliate CTA blok -->
-<div style="background:#F4F7F2;padding:48px 24px">
-  <div style="max-width:800px;margin:0 auto">
-    <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#00D17A;margin-bottom:8px">Aanbevolen stappen</p>
-    <h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin-bottom:24px">Klaar om de stap te zetten?</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
-      <div style="background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 24px rgba(0,0,0,0.08)">
-        <div style="font-size:1.5rem;margin-bottom:10px">☀️</div>
-        <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px">Vattenfall zonnepanelen</h3>
-        <p style="font-size:0.85rem;color:#6B7280;line-height:1.6;margin-bottom:16px">Vattenfall installeert zonnepanelen met 10 jaar productgarantie. Vrijblijvend een offerte aanvragen duurt 2 minuten.</p>
-        <a href="https://lt45.net/c/?si=2036&li=119986&wi=419188&ws=&dl=zonnepanelen%2F" target="_blank" rel="noopener sponsored" style="display:block;background:#00D17A;color:#0B1628;padding:10px 18px;border-radius:9px;font-weight:700;font-size:0.88rem;text-decoration:none;text-align:center">Vraag offerte aan →</a>
-      </div>
-      <div style="background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 24px rgba(0,0,0,0.08)">
-        <div style="font-size:1.5rem;margin-bottom:10px">☀️</div>
-        <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px">Feenstra zonnepanelen</h3>
-        <p style="font-size:0.85rem;color:#6B7280;line-height:1.6;margin-bottom:16px">Feenstra installeert zonnepanelen door heel Nederland, inclusief installatie en 25 jaar garantie.</p>
-        <a href="https://www.feenstra.com/zonnepanelen/?utm_source=awin_2816288&utm_medium=affiliate&utm_campaign=algemeen&sv1=affiliate&sv_campaign_id=2816288&awc=25642_1779821720_23d349698e1a94a612dba391147c497b" target="_blank" rel="noopener sponsored" style="display:block;background:#00D17A;color:#0B1628;padding:10px 18px;border-radius:9px;font-weight:700;font-size:0.88rem;text-decoration:none;text-align:center">Vraag offerte aan →</a>
-      </div>
-      <div style="background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 24px rgba(0,0,0,0.08)">
-        <div style="font-size:1.5rem;margin-bottom:10px">⚡</div>
-        <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px">Energiecontract vergelijken</h3>
-        <p style="font-size:0.85rem;color:#6B7280;line-height:1.6;margin-bottom:16px">Terugleverkosten verschillen honderden euro's per jaar. Vergelijk welk contract het beste past bij zonnepanelen.</p>
-        <a href="https://www.awin1.com/cread.php?awinmid=68288&awinaffid=2816288&ued=https%3A%2F%2Fwww.energiekiezer.nl%2F" target="_blank" rel="noopener sponsored" style="display:block;background:#0B1628;color:#fff;padding:10px 18px;border-radius:9px;font-weight:700;font-size:0.88rem;text-decoration:none;text-align:center">Vergelijk contracten →</a>
-      </div>
-    </div>
-    <p style="font-size:0.75rem;color:#9CA3AF;margin-top:14px">* Wij ontvangen mogelijk een kleine commissie via deze links. Dit kost jou niets extra.</p>
+    <strong>Disclaimer:</strong> Deze informatie is bedoeld als algemene richtlijn. Prijzen, richtwaarden en technische details kunnen per situatie en per merk omvormer verschillen. Raadpleeg bij twijfel altijd de handleiding van je specifieke apparatuur of een erkend installateur.
   </div>
 </div>
 
 <div style="background:#F4F7F2;padding:40px 24px 0">
   <div style="max-width:800px;margin:0 auto">
-    <h3 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:16px;color:#0B1628">Meer lezen over zonnepanelen & terugverdientijd</h3>
+    <h3 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:16px;color:#0B1628">Meer lezen over zonnepanelen & opbrengst</h3>
     <div style="display:flex;flex-wrap:wrap;gap:10px;padding-bottom:40px">
-      <a href="zonnepanelen-onderpresteren.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">☀️ Zonnepanelen onderpresteren?</a>
-      <a href="saldering-2027.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">☀️ Saldering 2027 uitgelegd</a>
       <a href="calculator-zonnepanelen.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">☀️ Zonnepanelen calculator</a>
-      <a href="thuisbatterij-top5-2026.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">🔋 Beste thuisbatterijen 2026</a>
-      <a href="dynamisch-contract.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">⚡ Dynamisch contract</a>
+      <a href="terugverdientijd-zonnepanelen-2026.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">📈 Terugverdientijd zonnepanelen</a>
+      <a href="smarthome-p1-meter.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">🔌 P1-meter + Home Assistant</a>
+      <a href="terugleverkosten.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">📄 Terugleverkosten</a>
     </div>
   </div>
 </div>
 <div style="background:#F4F7F2;padding:0 24px 48px">
   <div style="max-width:800px;margin:0 auto">
-    <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#00D17A;margin-bottom:8px">Bereken jouw situatie</p>
-    <h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin-bottom:20px;color:#0B1628">Wat leveren jouw zonnepanelen op na 2027?</h2>
+    <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#00D17A;margin-bottom:8px">Zelf verder monitoren</p>
+    <h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin-bottom:20px;color:#0B1628">Houd je opbrengst structureel in de gaten</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
       <div style="background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 24px rgba(0,0,0,0.08)">
-        <div style="font-size:1.5rem;margin-bottom:10px">☀️</div>
-        <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px">Zonnepanelen calculator</h3>
-        <p style="font-size:0.85rem;color:#6B7280;line-height:1.6;margin-bottom:16px">Bereken je terugverdientijd en jaarlijkse opbrengst met actuele salderingsregels.</p>
-        <a href="calculator-zonnepanelen.html" style="display:block;background:#00D17A;color:#0B1628;padding:10px 18px;border-radius:9px;font-weight:700;font-size:0.88rem;text-decoration:none;text-align:center">Bereken jouw opbrengst →</a>
+        <div style="font-size:1.5rem;margin-bottom:10px">🔌</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px">P1-meter + Home Assistant</h3>
+        <p style="font-size:0.85rem;color:#6B7280;line-height:1.6;margin-bottom:16px">Zie dag- en maandtrends in één dashboard, zodat afwijkingen sneller opvallen.</p>
+        <a href="smarthome-p1-meter.html" style="display:block;background:#00D17A;color:#0B1628;padding:10px 18px;border-radius:9px;font-weight:700;font-size:0.88rem;text-decoration:none;text-align:center">Lees hoe dat werkt →</a>
       </div>
       <div style="background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 24px rgba(0,0,0,0.08)">
-        <div style="font-size:1.5rem;margin-bottom:10px">⚡</div>
-        <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px">Energiecontract vergelijken</h3>
-        <p style="font-size:0.85rem;color:#6B7280;line-height:1.6;margin-bottom:16px">Welk contract past het beste bij eigenverbruik maximaliseren? Vergelijk onafhankelijk.</p>
-        <a href="https://www.awin1.com/cread.php?awinmid=68288&awinaffid=2816288&ued=https%3A%2F%2Fwww.energiekiezer.nl%2F" target="_blank" rel="noopener sponsored" style="display:block;background:#0B1628;color:#fff;padding:10px 18px;border-radius:9px;font-weight:700;font-size:0.88rem;text-decoration:none;text-align:center">Vergelijk contracten →</a>
+        <div style="font-size:1.5rem;margin-bottom:10px">📈</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px">Terugverdientijd herberekenen</h3>
+        <p style="font-size:0.85rem;color:#6B7280;line-height:1.6;margin-bottom:16px">Klopt het rendement van je panelen nog, na oplossen van het probleem?</p>
+        <a href="terugverdientijd-zonnepanelen-2026.html" style="display:block;background:#0B1628;color:#fff;padding:10px 18px;border-radius:9px;font-weight:700;font-size:0.88rem;text-decoration:none;text-align:center">Bereken opnieuw →</a>
       </div>
     </div>
-    <p style="font-size:0.75rem;color:#9CA3AF;margin-top:14px">* Wij ontvangen mogelijk een kleine commissie via deze links. Dit kost jou niets extra.</p>
+    <p style="font-size:0.75rem;color:#9CA3AF;margin-top:14px">* Wij ontvangen mogelijk een kleine commissie via affiliate links. Dit kost jou niets extra.</p>
   </div>
 </div>
 <div style="background:#F4F7F2;padding:0 24px 40px">
   <div style="max-width:800px;margin:0 auto;background:#fff;border-radius:12px;padding:16px 20px;font-size:0.82rem;color:#6B7280;line-height:1.6">
-    <strong>Disclaimer:</strong> Tarieven, besparingen en productspecificaties in dit artikel zijn indicatief en gebaseerd op gemiddelde Nederlandse situaties (juni 2026). Jouw situatie kan afwijken. StekkerSlim.nl ontvangt mogelijk affiliate commissies bij aankoop via links, maar dit beïnvloedt onze adviezen nooit.
+    <strong>Disclaimer:</strong> Richtprijzen en technische details in dit artikel zijn indicatief en gebaseerd op algemene Nederlandse situaties (augustus 2026). Jouw situatie kan afwijken. StekkerSlim.nl ontvangt mogelijk affiliate commissies bij aankoop via links, maar dit beïnvloedt onze adviezen nooit.
   </div>
 </div>
 
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-brand">
-        <a href="/" class="logo" style="color:var(--wit)"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
-        <p>Eerlijke energietips voor Nederlandse gezinnen.</p>
-      </div>
+      <div class="footer-brand"><a href="/" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a><p>Eerlijke energietips voor Nederlandse gezinnen.</p></div>
       <div class="footer-col"><h4>Calculators</h4><ul>
+        <li><a href="calculator-energiekosten.html">Energiekosten</a></li>
         <li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li>
         <li><a href="calculator-thuisbatterij.html">Thuisbatterij</a></li>
-        <li><a href="calculator-laadpaal.html">Laadpaal thuis</a></li>
-        <li><a href="calculator-warmtepomp.html">Warmtepomp</a></li>
-      <li><a href="energiebespaar-calculator.html">Energiebespaar calculator</a></li></ul></div>
+        <li><a href="calculator-laadpaal.html">Laadpaal</a></li>
+        <li><a href="energiebespaar-calculator.html">Energiebespaar calculator</a></li></ul></div>
       <div class="footer-col"><h4>Artikelen</h4><ul>
-        <li><a href="saldering-2027.html">Saldering 2027</a></li>
         <li><a href="terugleverkosten.html">Terugleverkosten</a></li>
+        <li><a href="saldering-2027.html">Saldering 2027</a></li>
         <li><a href="dynamisch-contract.html">Dynamisch contract</a></li>
-        <li><a href="thuisbatterij-top5-2026.html">Thuisbatterij top 5</a></li>
+        <li><a href="beste-slimme-stekker-2026.html">Beste slimme stekker</a></li>
       </ul></div>
       <div class="footer-col"><h4>StekkerSlim</h4><ul>
         <li><a href="over-ons.html">Over ons</a></li>
         <li><a href="privacy.html">Privacy</a></li>
         <li><a href="vragen.html">Stel een vraag</a></li>
+        <li><a href="mailto:info@stekkerslim.nl">Contact</a></li>
       </ul></div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 StekkerSlim.nl</span>
-      <a href="privacy.html">Privacy & Disclaimer</a>
+      <span>© 2026 StekkerSlim.nl — Remy Egberts</span>
+      <a href="privacy.html" style="color:rgba(255,255,255,.4)">Privacy & Disclaimer</a>
     </div>
   </div>
 </footer>
 
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-inner">
+    <div class="sticky-cta-txt">Presteren je panelen nog zoals verwacht?<small>Bereken je actuele opbrengst en terugverdientijd</small></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="calculator-zonnepanelen.html" class="scta-btn">Naar de calculator →</a>
+      <button class="sticky-close" onclick="document.getElementById('stickyCta').classList.remove('show');window._sctaOff=1" aria-label="Sluiten">✕</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('stickyCta');
+  window.addEventListener('scroll',function(){
+    if(window._sctaOff)return;
+    var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    el.classList.toggle('show',pct>0.35&&pct<0.92);
+  },{passive:true});
+})();
+</script>
 <script>
 var _SP=[{"url": "calculator-zonnepanelen.html", "title": "Zonnepanelen calculator", "desc": "Bereken terugverdientijd en opbrengst zonnepanelen", "tags": "zonnepanelen berekenen terugverdientijd opbrengst panelen"}, {"url": "calculator-thuisbatterij.html", "title": "Thuisbatterij calculator", "desc": "Is een thuisbatterij rendabel voor jou?", "tags": "thuisbatterij batterij berekenen rendabel terugverdientijd"}, {"url": "calculator-energiekosten.html", "title": "Energiekosten calculator", "desc": "Bereken jouw jaarlijkse energierekening", "tags": "energiekosten rekening stroom gas berekenen"}, {"url": "calculator-laadpaal.html", "title": "Laadpaal calculator", "desc": "Wat kost thuis laden van je EV?", "tags": "laadpaal laden elektrisch rijden EV auto stroom"}, {"url": "calculator-warmtepomp.html", "title": "Warmtepomp calculator", "desc": "Gas vs warmtepomp vergelijken", "tags": "warmtepomp gas ketel besparen vergelijken"}, {"url": "energiebespaar-calculator.html", "title": "Energiebespaar calculator", "desc": "Wat kun je besparen met slimme apparaten?", "tags": "energiebespaar besparen slimme stekker thermostaat P1 meter Home Assistant"}, {"url": "thuisbatterij-top5-2026.html", "title": "Beste thuisbatterij 2026 — top 5", "desc": "HomeWizard, Zendure, Marstek vergeleken", "tags": "thuisbatterij plug-in HomeWizard Zendure Marstek Indevolt batterij vergelijken"}, {"url": "loont-plug-in-thuisbatterij-2026.html", "title": "Loont een plug-in thuisbatterij in 2026?", "desc": "Complete beslisgids: rekensom, modellen, wanneer niet kopen", "tags": "thuisbatterij plug-in loont rendabel plug-and-play beslisvolgorde saldering 2027"}, {"url": "wanneer-thuisbatterij-niet-slim.html", "title": "Wanneer is een thuisbatterij niet slim?", "desc": "Eerlijk advies over wanneer je geen batterij moet kopen", "tags": "thuisbatterij nadelen niet slim advies"}, {"url": "saldering-2027.html", "title": "Saldering stopt 2027", "desc": "Wat verandert er voor je zonnepanelen na 2027?", "tags": "saldering 2027 stoppen zonnepanelen terugleverkosten wijziging wet"}, {"url": "terugleverkosten.html", "title": "Terugleverkosten", "desc": "Wat zijn terugleverkosten en wie rekent ze?", "tags": "terugleverkosten saldering terugleveren zonnepanelen kosten leverancier"}, {"url": "zonnepanelen-onderpresteren.html", "title": "Zonnepanelen onderpresteren", "desc": "5 oorzaken van tegenvallende opbrengst + stappenplan", "tags": "zonnepanelen onderpresteren opbrengst minder tegenvallend omvormer storing schaduw vuil P1 meter"}, {"url": "terugverdientijd-zonnepanelen-2026.html", "title": "Terugverdientijd zonnepanelen 2026", "desc": "Wanneer verdienen panelen zichzelf terug?", "tags": "zonnepanelen terugverdientijd 2026 berekenen rendabel"}, {"url": "dynamisch-contract.html", "title": "Dynamisch energiecontract", "desc": "Voordelen en nadelen dynamisch contract", "tags": "dynamisch contract energie tarief variabel uurprijs Frank Tibber"}, {"url": "dynamisch-contract-zonnepanelen-thuisbatterij.html", "title": "Dynamisch contract + zonnepanelen + batterij", "desc": "Loont de combinatie?", "tags": "dynamisch contract zonnepanelen thuisbatterij combinatie"}, {"url": "energiecontract-vergelijken-2026.html", "title": "Energiecontract vergelijken 2026", "desc": "Beste energieleverancier vinden", "tags": "energiecontract vergelijken leverancier stroom gas 2026"}, {"url": "smarthome-p1-meter.html", "title": "P1 meter + Home Assistant", "desc": "P1 meter koppelen aan Home Assistant", "tags": "P1 meter Home Assistant slimme meter koppelen energie meten"}, {"url": "homeassistant-energie-besparen.html", "title": "Home Assistant energie besparen", "desc": "Automatiseer je energieverbruik", "tags": "Home Assistant energie besparen automatisering YAML integratie"}, {"url": "smarthome-producten.html", "title": "Smarthome producten", "desc": "Alle slimme energie-apparaten", "tags": "smarthome producten slimme stekker thermostaat P1 meter Zigbee WiFi Matter"}, {"url": "smarthome-uitleg.html", "title": "Smarthome uitleg", "desc": "Wat is een smarthome en hoe begin je?", "tags": "smarthome uitleg beginnen hub Zigbee WiFi Matter protocol"}, {"url": "slimme-stekkers.html", "title": "Slimme stekkers uitgelegd", "desc": "Hoe werken slimme stekkers?", "tags": "slimme stekker Zigbee WiFi Matter energiemeting schakelaar"}, {"url": "beste-slimme-stekker-2026.html", "title": "Beste slimme stekker 2026", "desc": "Top 5 slimme stekkers vergeleken", "tags": "slimme stekker 2026 beste vergelijken Sonoff Tapo HomeWizard Zigbee Matter"}, {"url": "smart-lampen.html", "title": "Slimme lampen", "desc": "Beste slimme lampen en bollen", "tags": "slimme lamp LED Zigbee WiFi Matter Philips Hue WiZ Tapo"}, {"url": "slimme-thermostaat-installeren.html", "title": "Slimme thermostaat installeren", "desc": "Tado, Nest en andere thermostaten", "tags": "thermostaat slimme thermostaat Tado Nest installeren OpenTherm radiatorknop TRV"}, {"url": "homewizard-energy-display-review.html", "title": "HomeWizard Energy Display review", "desc": "Eerlijk getest: unboxing en installatie", "tags": "HomeWizard Energy Display review test unboxing P1 meter display"}, {"url": "homewizard-energy-display-deel2.html", "title": "HomeWizard Energy Display eindoordeel", "desc": "Na 2 weken eerlijk eindoordeel", "tags": "HomeWizard Energy Display eindoordeel review Home Assistant koppeling"}, {"url": "plug-in-batterij-laden.html", "title": "Plug-in batterij slim laden", "desc": "Wanneer en hoe laad je een thuisbatterij?", "tags": "thuisbatterij laden zonnepanelen slim opladen strategie"}, {"url": "blog.html", "title": "Blog — alle artikelen", "desc": "Alle artikelen van StekkerSlim", "tags": "blog artikelen energie smarthome"}, {"url": "vragen.html", "title": "Stel een vraag", "desc": "Stuur je energievraag in", "tags": "vraag contact hulp advies"}, {"url": "over-ons.html", "title": "Over StekkerSlim", "desc": "Wie is StekkerSlim?", "tags": "over ons Remy StekkerSlim"}];
 var _icons={"calculator":"🧮","smarthome":"🏠","home":"🏠","blog":"📝","thuis":"🔋","slimme":"⚡","beste":"⚡","plug":"🔌","warm":"🌡️","dynamisch":"📈","energie":"💡","saldering":"☀️","terug":"☀️","zonn":"☀️","vragen":"❓","over":"👤","privacy":"🔒"};
@@ -610,25 +561,6 @@ document.addEventListener("click",function(e){var b=document.getElementById("nav
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
 function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
 document.addEventListener('click',function(e){const m=document.getElementById('mobileMenu');const h=document.getElementById('hamburger');if(m&&h&&m.classList.contains('open')&&!m.contains(e.target)&&!h.contains(e.target))m.classList.remove('open')})
-</script>
-<div class="sticky-cta" id="stickyCta">
-  <div class="sticky-cta-inner">
-    <div class="sticky-cta-txt">Bereken de terugverdientijd van jouw zonnepanelen<small>Gratis · inclusief saldering 2027</small></div>
-    <div style="display:flex;align-items:center;gap:10px">
-      <a href="calculator-zonnepanelen.html" class="scta-btn">Bereken jouw situatie →</a>
-      <button class="sticky-close" onclick="document.getElementById('stickyCta').classList.remove('show');window._sctaOff=1" aria-label="Sluiten">✕</button>
-    </div>
-  </div>
-</div>
-<script>
-(function(){
-  var el=document.getElementById('stickyCta');
-  window.addEventListener('scroll',function(){
-    if(window._sctaOff)return;
-    var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight);
-    el.classList.toggle('show',pct>0.35&&pct<0.92);
-  },{passive:true});
-})();
 </script>
 <script>(function(){
   var S=document.createElement('style');
