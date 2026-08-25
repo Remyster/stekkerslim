@@ -46,6 +46,10 @@ async function main() {
     (existing.data.files || []).map((f) => [f.name, f.id])
   );
 
+  const gelukt = [];
+  const handmatig = [];
+  const mislukt = [];
+
   for (const filename of localFiles) {
     const filePath = path.join(kennisbankDir, filename);
     const content = fs.readFileSync(filePath, 'utf8');
@@ -53,20 +57,58 @@ async function main() {
 
     const existingId = existingByName.get(filename);
 
-    if (existingId) {
-      await drive.files.update({ fileId: existingId, media });
-      console.log(`Bijgewerkt: ${filename} (${existingId})`);
-    } else {
-      const created = await drive.files.create({
-        requestBody: { name: filename, parents: [folderId] },
-        media,
-        fields: 'id',
-      });
-      console.log(`Nieuw aangemaakt: ${filename} (${created.data.id}) — vergeet niet dit bestand ook aan je Gem te koppelen.`);
+    try {
+      if (existingId) {
+        await drive.files.update({ fileId: existingId, media });
+        console.log(`Bijgewerkt: ${filename} (${existingId})`);
+        gelukt.push(filename);
+      } else {
+        const created = await drive.files.create({
+          requestBody: { name: filename, parents: [folderId] },
+          media,
+          fields: 'id',
+        });
+        console.log(`Nieuw aangemaakt: ${filename} (${created.data.id}) — vergeet niet dit bestand ook aan je Gem te koppelen.`);
+        gelukt.push(filename);
+      }
+    } catch (err) {
+      // Een service-account heeft zelf geen opslagquotum en kan daardoor geen
+      // nieuwe bestanden aanmaken in een gewone Drive-map. Bestaande bestanden
+      // bijwerken lukt wel. Doorgaan met de rest i.p.v. de hele run afbreken.
+      const quotaProbleem =
+        err?.errors?.some((e) => e.reason === 'storageQuotaExceeded') ||
+        /storage quota/i.test(err?.message || '');
+
+      if (quotaProbleem && !existingId) {
+        console.log(`OVERGESLAGEN: ${filename} — bestaat nog niet in Drive en kan niet worden aangemaakt.`);
+        handmatig.push(filename);
+      } else {
+        console.error(`FOUT bij ${filename}: ${err?.message || err}`);
+        mislukt.push(filename);
+      }
     }
   }
 
-  console.log(`Klaar. ${localFiles.length} bestand(en) gesynct.`);
+  console.log('');
+  console.log(`Klaar. ${gelukt.length} van ${localFiles.length} bestand(en) gesynct.`);
+
+  if (handmatig.length) {
+    console.log('');
+    console.log('ACTIE NODIG — maak deze bestanden eenmalig met de hand aan in de Drive-map');
+    console.log(`(https://drive.google.com/drive/folders/${folderId}), met exact deze naam.`);
+    console.log('Daarna werkt de sync er vanzelf overheen:');
+    handmatig.forEach((f) => console.log(`  - ${f}`));
+  }
+
+  if (mislukt.length) {
+    console.log('');
+    console.log('Mislukt om een andere reden:');
+    mislukt.forEach((f) => console.log(`  - ${f}`));
+  }
+
+  if (handmatig.length || mislukt.length) {
+    process.exit(1);
+  }
 }
 
 main().catch((err) => {
