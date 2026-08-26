@@ -809,6 +809,40 @@
   </div>
 </div>
 
+<!-- POLL -->
+<div style="padding:0 24px 56px;background:var(--wit)">
+  <div id="poll-dyn" style="max-width:640px;margin:0 auto;background:var(--licht);border-radius:16px;padding:28px 32px;text-align:center">
+    <h3 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.15rem;color:var(--navy);margin-bottom:20px">Stap je vóór 2027 over naar een dynamisch contract?</h3>
+    <div id="poll-dyn-opts" style="display:flex;flex-direction:column;gap:10px">
+      <button onclick="pollVote('dyn','ja')" style="cursor:pointer;background:#fff;border:1px solid var(--grijs-licht);border-radius:10px;padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;color:var(--navy);text-align:left">✅ Ja, ik reken op de arbitrage-winst</button>
+      <button onclick="pollVote('dyn','twijfel')" style="cursor:pointer;background:#fff;border:1px solid var(--grijs-licht);border-radius:10px;padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;color:var(--navy);text-align:left">🤔 Twijfel nog, prijzen zijn te onvoorspelbaar</button>
+      <button onclick="pollVote('dyn','nee')" style="cursor:pointer;background:#fff;border:1px solid var(--grijs-licht);border-radius:10px;padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:600;color:var(--navy);text-align:left">❌ Nee, ik hou het bij vast/variabel</button>
+    </div>
+    <p style="font-size:0.75rem;color:var(--grijs);margin-top:14px">Resultaten zijn indicatief, gebaseerd op stemmen van bezoekers van deze site.</p>
+  </div>
+</div>
+<script>
+function pollVote(poll,choice){
+  var key='poll_'+poll,voted=localStorage.getItem(key+'_voted');
+  var base={ja:38,twijfel:29,nee:33};
+  var counts=JSON.parse(localStorage.getItem(key)||JSON.stringify(base));
+  if(!voted){counts[choice]++;localStorage.setItem(key,JSON.stringify(counts));localStorage.setItem(key+'_voted',choice);}
+  var total=counts.ja+counts.twijfel+counts.nee;
+  var labels={ja:'✅ Ja, ik reken op de arbitrage-winst',twijfel:'🤔 Twijfel nog, prijzen zijn te onvoorspelbaar',nee:'❌ Nee, ik hou het bij vast/variabel'};
+  var html='';
+  ['ja','twijfel','nee'].forEach(function(k){
+    var pct=Math.round(counts[k]/total*100);
+    var mine=voted===k;
+    html+='<div style="text-align:left"><div style="display:flex;justify-content:space-between;font-size:0.85rem;font-weight:'+(mine?'700':'600')+';color:var(--navy);margin-bottom:4px">'+labels[k]+(mine?' <span style="color:var(--groen)">← jouw stem</span>':'')+'<span>'+pct+'%</span></div><div style="background:#fff;border-radius:99px;height:10px;overflow:hidden"><div style="background:var(--groen);height:100%;width:'+pct+'%"></div></div></div>';
+  });
+  document.getElementById('poll-dyn-opts').innerHTML=html;
+}
+(function(){
+  var voted=localStorage.getItem('poll_dyn_voted');
+  if(voted)pollVote('dyn',voted);
+})();
+</script>
+
 <!-- DRIE THEMA-INGANGEN -->
 <section style="background:var(--licht);padding:56px 24px">
   <div style="max-width:1100px;margin:0 auto">
