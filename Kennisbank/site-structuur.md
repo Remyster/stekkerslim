@@ -55,6 +55,7 @@ Alle pagina's zijn statische `.html` bestanden, direct onder de root. URL-patroo
 
 ## Reviews
 - `indevolt-solidflex-3000-review.html`
+- `indevolt-solidflex-3000-app-review.html`
 - `homewizard-energy-display-review.html`
 - `homewizard-energy-display-deel2.html`
 - `tapo-p115-p410m-review.html`
