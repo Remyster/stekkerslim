@@ -46,6 +46,7 @@ Alle pagina's zijn statische `.html` bestanden, direct onder de root. URL-patroo
 - `smarthome-p1-meter.html`
 - `homeassistant-energie-besparen.html`
 - `thuisbatterij-simuleren-home-assistant.html`
+- `sluipverbruik-meten-oplossen.html` — stappenplan sluipverbruik opsporen met P1-meter + energiemeter, toegevoegd 2 september 2026
 - `slimme-stekkers.html`
 - `beste-slimme-stekker-2026.html`
 - `kwartierprijzen-slimme-stekker.html`
