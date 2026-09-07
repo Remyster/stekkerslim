@@ -52,3 +52,14 @@ De audit keek tot nu toe alleen naar prijzen en links. Maar claims als "nog in b
 
 ### Nieuwe les: verifieer AI-prijsclaims zelf, ook als ze ✅ zeggen
 Nimble zette overal een ✅ omdat de gemeten prijs binnen de opgegeven range viel. Maar een range van €1.200–€1.400 waarvan de bovenkant nergens bestaat is technisch "een match" en toch misleidend voor de bezoeker. Ranges moeten de werkelijke spreiding tussen kanalen dekken, niet een marge waar we ons achter verschuilen. Fetch bij twijfel de winkelpagina zelf — `bol.com` en `zendure.nl` werken prima met WebFetch, `marstek.nl` en `iotdomotica.nl` geven 403.
+
+### Honeywell-thermostaat: geen prijsfout maar een productverwisseling (7 september 2026)
+Nimble zag een groot prijsverschil onder dezelfde productnaam: Amazon €115–125 vs Bol.com €170–180. Nagetrokken en het bleken **twee verschillende modellen**:
+- Bol.com `9200000065991759` = "Honeywell Lyric T6 Slimme Thermostaat Zwart — **Bedraad**" (± €170–180)
+- Amazon `B01M9ATDY7` (shortlink `amzn.to/4uAP26t`) = "Honeywell Home **T6R Draadloze** Smart Thermostaat" (± €115–125)
+
+Het prijsverschil is dus terecht: draadloos met aparte ketelontvanger is goedkoper dan bedraad. Het probleem zat in `smarthome-producten.html`: de productcard heet "Honeywell Home Lyric T6 **bedraad**" met USP "Bedraad — stabielste verbinding", maar had daaronder een Amazon-knop die naar het **draadloze** model wees. Een bezoeker las dat als "hetzelfde product, €55 goedkoper op Amazon". Knoplabel gewijzigd naar "Draadloze T6R op Amazon" plus een korte toelichting onder de card dat het twee modellen zijn.
+
+Op `slimme-thermostaat-installeren.html` stond de T6R al correct gelabeld als draadloos — daar was niets mis.
+
+**Les: een groot prijsverschil onder één productnaam is vaker een verwisselde variant dan een verkeerde prijs.** Check bij zo'n signaal eerst of beide links wel hetzelfde artikel zijn (resolve de Amazon-shortlink en vergelijk de ASIN/producttitel) voordat je aan een prijs gaat sleutelen. `curl -I` op `amzn.to` faalt op SSL; WebFetch geeft de redirect-URL wel netjes terug.

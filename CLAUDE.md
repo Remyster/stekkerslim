@@ -45,7 +45,7 @@ GA4: `G-RKF36BF7DB` — staat in alle HTML bestanden.
 | Feenstra | Awin 25642 (zonnestroomboiler) + tidd.ly shortlinks | Hybride warmtepomp: `tidd.ly/4nyh7bI` · Zonnepanelen: `tidd.ly/4nF1kYI` · Thuisbatterij: `tidd.ly/4tE0Q6i` · Zonnestroomboiler: `awin1.com/cread.php?awinmid=25642&awinaffid=2816288&campaign=Feenstra+NL` |
 | Vandebron | Daisycon 12134 | Dynamisch: `lt45.net/c/?si=12134&li=1535052&wi=419188&ws=&dl=energie%2Fenergiecontract%2Fdynamisch` · Variabel: `...variabel` · Vast: `...vast` |
 | Innova Energie | Daisycon 15501 | `fr135.net/c/?si=15501&li=1670745&wi=419188&ws=` |
-| Zendure NL | Daisycon 20779 | `glp8.net/c/?si=20779&li=1881195&wi=419188&ws=&dl=products%2Fzendure-solarflow-2400-ac-plus%3Fvariant%3D48055928717567` ⚠️ PENDING approval |
+| Zendure NL | Daisycon 20779 | `glp8.net/c/?si=20779&li=1881195&wi=419188&ws=&dl=products%2Fzendure-solarflow-2400-ac-plus%3Fvariant%3D48055928717567` ✅ goedgekeurd |
 | Indevolt | Awin 110350 | `awin1.com/cread.php?awinmid=110350&awinaffid=2816288&ued=https%3A%2F%2Fnl.indevolt.com%2Fproducts%2Fsolidflex-3000-ac-thuisbatterij` — kortingscode STEKKERSLIM5 (−5%) |
 
 ### Bekende product links
@@ -53,13 +53,12 @@ GA4: `G-RKF36BF7DB` — staat in alle HTML bestanden.
 |---------|--------|------|-------|
 | Marstek Venus E 3.0 | Bol.com (affiliate) | `partner.bol.com/click/...` (zie plug-in-batterij-laden.html) | €1.389 |
 | Marstek Venus E 3.0 | Marstek.nl (direct, geen affiliate) | `marstek.nl/product/marstek-venus-e-3-0-plug-charge-thuisbatterij-5-12-kwh-incl-p1-meter/` | €1.299 |
-| Zendure SolarFlow 2400 AC+ | Daisycon 20779 (pending) | `glp8.net/c/?si=20779&li=1881195&wi=419188&ws=&dl=products%2Fzendure-solarflow-2400-ac-plus%3Fvariant%3D48055928717567` | €1.089 |
+| Zendure SolarFlow 2400 AC+ | Daisycon 20779 (goedgekeurd) | `glp8.net/c/?si=20779&li=1881195&wi=419188&ws=&dl=products%2Fzendure-solarflow-2400-ac-plus%3Fvariant%3D48055928717567` | €849 actie (adviesprijs €1.089) |
 | Indevolt SolidFlex 3000 AC | Awin 110350 (affiliate) | zie tabel hierboven — code STEKKERSLIM5 voor 5% korting | €849 |
 
 ⚠️ **Marstek Venus E 3.0 is NIET meer leverbaar via Amazon** (ASIN B0FN7SDXMR). Gebruik Bol.com (€1.389, affiliate) + Marstek.nl direct (€1.299, geen affiliate). Dit is doorgevoerd in plug-in-batterij-laden.html, thuisbatterij-top5-2026.html en thuisbatterij-plug-and-play-2026.html.
 
 ### Affiliate — PENDING
-- Zendure NL (Daisycon 20779) — al op site (glp8.net link), urgent goedkeuring opvolgen
 - Vaillant (Daisycon 20260)
 - Essent Laadpassen (Daisycon 19834)
 - Tado (Awin 86413)
@@ -316,7 +315,6 @@ Externe AI-pipeline (Gemini → Perplexity → Grok → Nimble → Claude Code).
 
 ### Nog te doen
 - CVtotaal (Daisycon 14618): approved maar links nog aanvragen — toevoegen zodra links binnen zijn
-- Zendure NL (Daisycon 20779): al gebruikt op site (glp8.net) maar nog pending approval — opvolgen
 - Pricewise (Daisycon 18646): goedgekeurd maar nog niet op site toegevoegd
 - Tado (Awin 86413): nog pending
 - DMARC/SPF fix nog te doen in Hostnet DNS (p=reject → p=none + SPF include:_spf.google.com)
