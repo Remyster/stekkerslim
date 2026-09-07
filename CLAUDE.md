@@ -131,6 +131,18 @@ Independer, Eneco, Milieucentraal
 ## Wat er recent gedaan is
 *(meest recent bovenaan)*
 
+### 7 september 2026 — Site Guardian-pipeline ronde 1: prijs- en productstatusfixes
+
+Externe AI-pipeline (Gemini → Perplexity → Grok → Nimble → Claude Code). Alleen de Nimble-prijstabel was aangeleverd; stap 1–3 nog leeg.
+
+- **HomeWizard "slim laden" stond nog als beta** op 6 plekken in `plug-in-batterij-laden.html` en `calculator-thuisbatterij.html` ("april 2026, besloten beta voor een selecte groep"). HomeWizard lanceerde de functie op **2 juni 2026 gratis voor alle Plug-In Battery-eigenaren** (geen Energy+ nodig), met drie strategieën: "nul op de meter", "slim en buurtvriendelijk" en "slim met dynamisch tarief". Batterij herrekent elke 15 min op weersverwachting, verwachte opwek en stroomprijzen. HomeWizard noemt het nog early access. Vergelijkingstabel-badge Beta → ✅ Ja, waarschuwingsbox herschreven, USP's en conclusie bijgewerkt.
+- **`thuisbatterij-zonder-zonnepanelen-2026.html`**: instapprijs "minimaal €650 (Indevolt)" bestaat niet — goedkoopste is SolidFlex 2000 ECO ± €730–€770. Ook stond de Marstek (5,12 kWh) in een zin over "2–3 kWh" batterijen. Zin herschreven.
+- **Marstek Venus E 3.0 prijzen gelijkgetrokken** (5 bestanden): Bol-knoppen €1.200–€1.400 → €1.200–€1.300, algemene range €1.150–€1.400 → €1.150–€1.300. Geverifieerd: bol.com €1.250 (adviesprijs €1.300), Marstek.nl €1.199. De €1.400-bovengrens bestond nergens meer.
+- **Zendure €849–€1.089 bewust ongewijzigd**: €849 is een actieprijs op zendure.nl met doorgestreepte €1.089. De range klopt precies.
+- Datumlabels "mei/april 2026" → september 2026.
+- **`Kennisbank/qa-audit.md`** uitgebreid met twee lessen: (1) productstatus-claims ("beta", "binnenkort", "nog niet") verouderen even hard als prijzen en zijn schadelijker — grep daar elke ronde op; (2) een ✅ van een prijs-AI betekent alleen "valt binnen de range", niet "de range klopt".
+- Commits: `927795b`, `cfacc6d`.
+
 ### 5 augustus 2026 — Nieuwe pagina thuisbatterij simuleren in Home Assistant
 
 - **thuisbatterij-simuleren-home-assistant.html**: Nieuwe pagina live. Remy kwam de gratis, open-source HACS-integratie `battery_sim` tegen en wilde die direct delen — simuleert een thuisbatterij op je eigen P1-data in Home Assistant zonder fysieke batterij nodig te hebben. Bevat installatie-stappen, YAML-voorbeeld voor geavanceerde setup (efficiëntie-curves, tariefkoppeling, zonnepanelen), hardware-opties (HA Green aanbevolen, HA Yellow uit productie sinds okt 2025), FAQ-sectie (FAQPage schema) en Article/BreadcrumbList schema. "Mijn eigen resultaten"-sectie is nog een placeholder — Remy heeft `battery_sim` zelf nog niet getest, dat volgt later met eigen screenshots/cijfers.
