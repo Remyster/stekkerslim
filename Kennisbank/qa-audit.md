@@ -1,5 +1,5 @@
 # StekkerSlim.nl — QA-audit systeem
-*Laatst bijgewerkt: 7 september 2026*
+*Laatst bijgewerkt: 9 september 2026*
 
 ## Wat is dit?
 Sinds 3 augustus 2026 heeft StekkerSlim.nl een herbruikbaar controlesysteem dat checkt of de site nog technisch klopt: affiliate-links, interne links, sitemap.xml en lokale afbeeldingen. Bestaat uit twee losse delen.
@@ -14,6 +14,12 @@ Een bash-script in de repo dat, wanneer je het draait (`bash Scripts/qa-audit.sh
 Geeft een kort rapport: alleen problemen worden uitgeschreven, niet de volledige lijst van wat goed is (Remy leest door ADHD niet graag lange technische logs).
 
 **Belangrijke technische les verwerkt in het script:** Coolblue en Amazon blokkeren kale `curl`-requests met 403/500/503, ook als de link zelf prima werkt (bot-detectie op user-agent). Het script gebruikt daarom een echte browser user-agent + retryt 3x met een pauze voordat het iets als "kapot" bestempelt. Zonder die twee dingen krijg je structureel vals alarm — dit gebeurde op 3 augustus 2026 bij de eerste handmatige check en kostte tijd om te doorgronden.
+
+**Aanvulling 9 september 2026 — user-agent alleen is niet genoeg.** Bol.com blokkeert óók mét browser-user-agent: elke productpagina geeft 403, ongeacht retries. Daardoor rapporteerde de audit 12 van de 13 bol.com-links als kapot terwijl ze alle 12 prima werkten. Bij een affiliate-link is de eindpagina bovendien niet wat je wilt testen — de vraag is of de *tracking-hop* werkt. Het script valt nu bij 403/503/500/429 terug op alleen de eerste hop (`curl` zónder `-L`): geeft die een 301/302 met redirect-URL, dan is de link in orde en telt hij niet als fout, maar wordt hij wel apart geteld in een ℹ️-regel. Geverifieerd: `partner.bol.com` → 301 met `Referrer=ADVNLPP…&utm_source=1510756` intact, `amzn.to` → 301 met `tag=stekkerslim-21` intact.
+
+**Les: een 403/503 op de winkelpagina zegt niets over je affiliate-link.** Controleer de redirect, niet de bestemming. Zolang de tracking-parameters in de redirect-URL staan, werkt de commissie.
+
+**Sitemap-ruis weggefilterd (9 september 2026).** De "HTML-bestanden die niet in sitemap.xml staan"-check meldde elke ronde dezelfde 6 bestanden: `index.html` (staat terecht als `https://stekkerslim.nl/` in de sitemap) en de 5 redirect-stubs van de clustermerges van augustus (`thuisbatterij-plug-and-play-2026`, `thuisbatterij-kopen-juli-2026`, `saldering-2027-thuisbatterij-beslisvolgorde`, `terugleververgoeding-2027`, `zonnestroom-na-2027` — allemaal met een canonical naar een ánder bestand). Het script slaat `index` nu over en negeert elk bestand waarvan de canonical niet naar zichzelf wijst. Nieuwe, echt vergeten pagina's komen er dus nog steeds uit.
 
 Het script verandert zelf nooit iets aan de site — het rapporteert alleen.
 

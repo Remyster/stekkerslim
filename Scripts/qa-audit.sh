@@ -11,11 +11,17 @@
 #   bash Scripts/qa-audit.sh
 #
 # Belangrijk over false positives:
-# Coolblue en Amazon blokkeren curl-achtige user-agents (403/500/503), ook als
-# de link zelf prima werkt. Dit script gebruikt daarom een echte browser
+# Coolblue, Amazon en bol.com blokkeren curl-achtige user-agents (403/500/503),
+# ook als de link zelf prima werkt. Dit script gebruikt daarom een echte browser
 # user-agent EN retryt 3x met een paar seconden pauze voor het iets als
 # "kapot" bestempelt — puur curl-based checken zonder die twee dingen levert
 # structureel vals alarm op.
+#
+# Bol.com blokkeert ZELFS met een browser-user-agent (403 op elke productpagina,
+# geverifieerd 9 sep 2026). Voor affiliate-redirectors is de eindpagina ook niet
+# wat je wil testen: de vraag is of de tracking-hop werkt. Daarom valt het script
+# bij een 403 terug op de eerste hop (curl zonder -L). Geeft die een 301/302 met
+# een redirect-URL, dan is de affiliate-link in orde en telt hij niet als fout.
 #
 # Wat dit script NIET kan (blijft handmatig, 1x per maand kort checken):
 #   - Prijzen kloppen nog? (scrapen is te fragiel, sites wijzigen structuur
@@ -48,6 +54,7 @@ TOTAL_LINKS=$(wc -l < /tmp/qa_affiliate_links.txt)
 echo "$TOTAL_LINKS unieke affiliate-links gevonden, checken (met retries)..." | tee -a "$REPORT"
 
 FAILED_LINKS=""
+BOTBLOCKED=0
 while IFS= read -r url; do
   [ -z "$url" ] && continue
   ok=false
@@ -59,6 +66,22 @@ while IFS= read -r url; do
     fi
     sleep 3
   done
+
+  # Terugval bij een bot-block-status: check alleen de eerste hop. Een
+  # affiliate-redirector die netjes 301/302 naar de winkel geeft is in orde —
+  # de 403/503 komt dan van de bot-bescherming van de winkel zelf (bol.com geeft
+  # 403, Amazon 503), niet van een kapotte link.
+  if [ "$ok" = false ] && { [ "$code" = "403" ] || [ "$code" = "503" ] || [ "$code" = "500" ] || [ "$code" = "429" ]; }; then
+    hop=$(curl -s --ssl-no-revoke --max-time 15 -A "$UA" -o /dev/null \
+          -w "%{http_code} %{redirect_url}" "$url" 2>/dev/null)
+    hop_code=${hop%% *}
+    hop_url=${hop#* }
+    if { [ "$hop_code" = "301" ] || [ "$hop_code" = "302" ]; } && [ -n "$hop_url" ]; then
+      ok=true
+      BOTBLOCKED=$((BOTBLOCKED+1))
+    fi
+  fi
+
   if [ "$ok" = false ]; then
     FAILED_LINKS="${FAILED_LINKS}  [$code na 3 pogingen] $url\n"
     PROBLEMS=$((PROBLEMS+1))
@@ -70,6 +93,10 @@ if [ -n "$FAILED_LINKS" ]; then
   echo -e "$FAILED_LINKS" | tee -a "$REPORT"
 else
   echo "✅ Alle $TOTAL_LINKS affiliate-links bereikbaar." | tee -a "$REPORT"
+fi
+if [ "$BOTBLOCKED" -gt 0 ]; then
+  echo "ℹ️  $BOTBLOCKED link(s) werden geblokkeerd op de eindpagina (bol.com 403, Amazon 503)," | tee -a "$REPORT"
+  echo "    maar de affiliate-redirect zelf werkt — niet als fout geteld." | tee -a "$REPORT"
 fi
 
 # ── 2. Interne links (relatief, bv. href="pagina.html") ────────────────────
@@ -128,7 +155,20 @@ if [ -f sitemap.xml ]; then
   # Check ook: bestaat er een .html bestand dat NIET in de sitemap staat? (mogelijk vergeten toe te voegen)
   ls *.html | sed 's/\.html$//' > /tmp/qa_all_html.txt
   sed 's/\.html$//' /tmp/qa_sitemap.txt > /tmp/qa_sitemap_noext.txt
-  ORPHANS=$(comm -23 <(sort /tmp/qa_all_html.txt) <(sort /tmp/qa_sitemap_noext.txt))
+  # index.html hoort als "https://stekkerslim.nl/" in de sitemap, niet als
+  # index.html — en redirect-stubs van samengevoegde pagina's (canonical wijst
+  # naar een ánder bestand) horen er bewust niet in. Beide filteren we weg,
+  # anders is deze sectie elke ronde dezelfde ruis.
+  ORPHANS=""
+  while IFS= read -r page; do
+    [ -z "$page" ] && continue
+    [ "$page" = "index" ] && continue
+    canon=$(grep -oE '<link rel="canonical" href="https://stekkerslim\.nl/[^"]*"' "$page.html" 2>/dev/null \
+            | head -1 | sed -E 's#.*stekkerslim\.nl/##;s/"$//')
+    [ -n "$canon" ] && [ "$canon" != "$page.html" ] && continue
+    ORPHANS="${ORPHANS}${page}\n"
+  done < <(comm -23 <(sort /tmp/qa_all_html.txt) <(sort /tmp/qa_sitemap_noext.txt))
+  ORPHANS=$(echo -e "$ORPHANS" | sed '/^$/d')
   if [ -n "$ORPHANS" ]; then
     echo "ℹ️  HTML-bestanden die NIET in sitemap.xml staan (mogelijk bewust, even checken):" | tee -a "$REPORT"
     echo "$ORPHANS" | sed 's/^/  /' | tee -a "$REPORT"
