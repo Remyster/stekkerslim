@@ -32,6 +32,17 @@ Er staat een geplande cloud-agent (routine) die **elke 1e van de maand om 08:00 
 
 Terug te zien op: `https://claude.ai/code/routines/trig_01SQ7WwF1LtTiBa5gxaRod6p` (elke run staat in de geschiedenis).
 
+## 3. Indexerings-wachtrij (sinds 9 september 2026)
+Sectie 6 van het script levert elke ronde **12 URL's** om in Search Console aan te bieden, geroteerd op "langst geleden aangeboden eerst" en bijgehouden in `Scripts/indexering-log.txt`. Dit staat los van of er die ronde content is gewijzigd — daarvóór hing stap 4 aan "de gewijzigde pagina's", en een ronde zonder wijzigingen leverde dus nul aanvragen op terwijl de site grotendeels buiten de index staat.
+
+Na het indienen loggen met `bash Scripts/qa-audit.sh --ingediend pagina1 pagina2 ...`, anders komt dezelfde 12 volgende ronde terug. Het script print dat commando kant-en-klaar onderaan sectie 6.
+
+**Het dagquotum ligt rond de 10, niet 12.** Op 9 september kwam na de tiende aanvraag "Quotum overschreden — dien dit morgen opnieuw in". Wat niet gelukt is gewoon niet loggen; het schuift dan vanzelf door naar boven in de volgende ronde.
+
+**Google's eigen bevestiging zegt: "Als je een pagina meerdere keren indient, verandert de wachtrijpositie of prioriteit niet."** Blijven indienen is dus een bodem (zorgt dat elke pagina in de crawlwachtrij staat), geen hefboom. De structurele oorzaak van de lage indexering is autoriteit — 5 externe links in totaal.
+
+**Browsertruc voor deze stap:** na het typen van een URL in de inspectiebalk eerst `navigate` naar de nieuwe inspect-URL (dus een echte reload) voordat je de knop zoekt. Search Console laat oude inspectiepanelen in de DOM staan; zonder reload vindt `find` meerdere "Indexering aanvragen"-knoppen en klik je op een onzichtbare. Coördinaten-klikken is onbruikbaar: de viewport-schaal wisselt tussen screenshots.
+
 ## Wat dit systeem NIET checkt (blijft handmatig)
 - **Prijzen.** Scrapen is onbetrouwbaar: sites blokkeren bots, prijzen worden dynamisch geladen, en kortingscodes hebben voorwaarden die je niet uit de HTML kunt afleiden. Voorbeeld: op 3 augustus 2026 stond er op stekkerslim.nl €799 voor de Indevolt SolidFlex 3000 AC, terwijl de site inmiddels €849 vroeg — dat kwam pas aan het licht via een echte browsercheck, niet via een script. Er stond ook een "€50 korting"-badge op de Indevolt-pagina die verwarrend leek, maar die code geldt pas vanaf €1.000 bestelwaarde en telt dus niet mee bij een losse aankoop.
 - **CSS-leesbaarheid van nieuwe knoppen.** Op 3 augustus 2026 werd een CTA-knop toegevoegd aan `indevolt-solidflex-3000-review.html` met een nieuwe class `.btn-primary` zonder `!important`. Resultaat: onzichtbare tekst (groen op groen), want de pagina heeft een generieke regel `.article-body a{color:var(--groen)}` die specifieker is dan een losse class zonder `!important`. **Les: hergebruik bij een nieuwe knop altijd een bestaande, al werkende knop-class op diezelfde pagina (bv. `hub-btn`, `btn-koop`, `product-card a`) in plaats van een nieuwe class te verzinnen. Moet het toch een nieuwe class zijn, zet de tekstkleur dan met `!important` en check 'm zelf in de browser voor je pusht.**
