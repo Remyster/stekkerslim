@@ -17,3 +17,15 @@
 2026-09-02 smarthome-producten
 2026-09-02 thuisbatterij-top5-2026
 2026-09-02 thuisbatterij-zonder-zonnepanelen-2026
+2026-09-09 beste-slimme-stekker-2026
+2026-09-09 calculator-energiekosten
+2026-09-09 calculator-laadpaal
+2026-09-09 calculator-warmtepomp
+2026-09-09 energiecontract-vergelijken-2026
+2026-09-09 homewizard-energy-display-deel2
+2026-09-09 homewizard-energy-display-review
+2026-09-09 indevolt-solidflex-3000-app-review
+2026-09-09 kwartierprijzen-slimme-stekker
+2026-09-09 loont-plug-in-thuisbatterij-2026
+# 2026-09-09: homepage (index) is geindexeerd — overgeslagen, geen aanvraag nodig.
+# 2026-09-09: dynamisch-contract niet gelukt (quotum overschreden) — bovenaan volgende ronde.
