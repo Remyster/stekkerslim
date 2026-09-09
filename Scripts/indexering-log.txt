@@ -1,0 +1,19 @@
+# Log van pagina's die in Google Search Console zijn aangeboden voor indexering.
+# Formaat: YYYY-MM-DD paginanaam (zonder .html; homepage = index)
+# Bijwerken na het indienen:  bash Scripts/qa-audit.sh --ingediend pagina1 pagina2
+# De audit gebruikt dit om te roteren: langst geleden aangeboden staat bovenaan.
+2026-08-21 energiebespaar-calculator
+2026-08-21 thuisbatterij-simuleren-home-assistant
+2026-08-21 indevolt-solidflex-3000-review
+2026-08-21 saldering-2027
+2026-08-21 calculator-thuisbatterij
+2026-08-21 thuisbatterij-top5-2026
+2026-08-21 calculator-zonnepanelen
+2026-08-21 blog
+2026-09-02 calculator-thuisbatterij
+2026-09-02 dynamisch-contract-zonnepanelen-thuisbatterij
+2026-09-02 homeassistant-energie-besparen
+2026-09-02 plug-in-batterij-laden
+2026-09-02 smarthome-producten
+2026-09-02 thuisbatterij-top5-2026
+2026-09-02 thuisbatterij-zonder-zonnepanelen-2026

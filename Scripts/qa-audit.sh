@@ -41,6 +41,30 @@ TIMESTAMP=$(date +%Y-%m-%d_%H%M)
 REPORT="/tmp/stekkerslim-qa-${TIMESTAMP}.txt"
 PROBLEMS=0
 
+# Hoeveel URL's per ronde aanbieden in Search Console. De dagelimiet ligt rond
+# de 10-12; 12 is de bovenkant daarvan.
+BATCH=12
+INDEXLOG="Scripts/indexering-log.txt"
+QUEUE="/tmp/qa_indexering_wachtrij.txt"
+
+# ── Hulpmodus: markeer pagina's als aangeboden ──────────────────────────────
+# Na het indienen in Search Console:
+#   bash Scripts/qa-audit.sh --ingediend saldering-2027 blog ...
+# Zonder dit blijft dezelfde 12 elke ronde bovenaan de wachtrij staan.
+if [ "${1:-}" = "--ingediend" ]; then
+  shift
+  [ $# -eq 0 ] && { echo "Geef minstens één paginanaam op (zonder .html)."; exit 1; }
+  today=$(date +%Y-%m-%d)
+  touch "$INDEXLOG"
+  for page in "$@"; do
+    page=${page%.html}
+    echo "$today $page" >> "$INDEXLOG"
+    echo "  genoteerd: $page"
+  done
+  echo "$# pagina('s) gelogd in $INDEXLOG — commit dit bestand mee."
+  exit 0
+fi
+
 echo "StekkerSlim.nl QA-audit — $(date '+%d %B %Y %H:%M')" | tee "$REPORT"
 echo "==========================================" | tee -a "$REPORT"
 
@@ -194,6 +218,54 @@ if [ -n "$MISSING_IMG" ]; then
 else
   echo "✅ Alle $(wc -l < /tmp/qa_images.txt) lokale afbeeldingen bestaan." | tee -a "$REPORT"
 fi
+
+# ── 6. Indexerings-wachtrij (Search Console) ────────────────────────────────
+# De site is sinds juni 2026 grotendeels uit de Google-index gevallen (6 van de
+# 51 pagina's geïndexeerd bij de nulmeting van 21 aug 2026). Daarom biedt elke
+# ronde een vaste batch URL's opnieuw aan, niet alleen de gewijzigde pagina's —
+# anders levert een ronde zonder contentwijziging nul aanvragen op.
+#
+# Rotatie: pagina's die het langst niet zijn aangeboden staan bovenaan. Wat je
+# daadwerkelijk hebt ingediend log je met `--ingediend`, anders blijft dezelfde
+# 12 elke keer terugkomen.
+echo "" | tee -a "$REPORT"
+echo "## 6. Indexerings-wachtrij — dien deze $BATCH aan in Search Console" | tee -a "$REPORT"
+
+touch "$INDEXLOG"
+[ -f /tmp/qa_sitemap.txt ] || : > /tmp/qa_sitemap.txt
+: > /tmp/qa_index_candidates.txt
+while IFS= read -r entry; do
+  # Lege regel = de homepage-loc "https://stekkerslim.nl/"
+  page=${entry:-index.html}
+  page=${page%.html}
+  [ -f "$page.html" ] || continue
+  # noindex-pagina's hebben geen zin om aan te bieden
+  grep -qiE '<meta[^>]+noindex' "$page.html" && continue
+  last=$(grep -vE '^#' "$INDEXLOG" | grep -E "^[0-9-]+ ${page}$" | cut -d' ' -f1 | sort | tail -1)
+  echo "${last:-0000-00-00} $page" >> /tmp/qa_index_candidates.txt
+done < /tmp/qa_sitemap.txt
+
+sort /tmp/qa_index_candidates.txt | head -n "$BATCH" > "$QUEUE"
+NEVER=$(grep -c '^0000-00-00 ' "$QUEUE")
+TOTAL_CAND=$(wc -l < /tmp/qa_index_candidates.txt)
+
+while read -r last page; do
+  if [ "$last" = "0000-00-00" ]; then
+    when="nog nooit aangeboden"
+  else
+    when="laatst: $last"
+  fi
+  if [ "$page" = "index" ]; then
+    echo "  https://stekkerslim.nl/  ($when)" | tee -a "$REPORT"
+  else
+    echo "  https://stekkerslim.nl/$page.html  ($when)" | tee -a "$REPORT"
+  fi
+done < "$QUEUE"
+
+echo "" | tee -a "$REPORT"
+echo "  ($TOTAL_CAND indexeerbare pagina's in de sitemap, waarvan $NEVER in deze batch" | tee -a "$REPORT"
+echo "   nog nooit zijn aangeboden. Na het indienen loggen met:" | tee -a "$REPORT"
+echo "   bash Scripts/qa-audit.sh --ingediend $(cut -d' ' -f2 "$QUEUE" | tr '\n' ' ' | sed 's/ $//'))" | tee -a "$REPORT"
 
 # ── Samenvatting + handmatige checklist ──────────────────────────────────────
 echo "" | tee -a "$REPORT"
