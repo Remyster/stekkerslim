@@ -29,3 +29,4 @@
 2026-09-09 loont-plug-in-thuisbatterij-2026
 # 2026-09-09: homepage (index) is geindexeerd — overgeslagen, geen aanvraag nodig.
 # 2026-09-09: dynamisch-contract niet gelukt (quotum overschreden) — bovenaan volgende ronde.
+# 2026-09-09: zonnestroom-zelf-gebruiken-zonder-thuisbatterij (nieuwe pagina) niet gelukt (quotum overschreden) — bovenaan volgende ronde, na dynamisch-contract.
