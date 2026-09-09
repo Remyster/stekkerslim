@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Gepubliceerde blogs/artikelen
-*Laatst bijgewerkt: 2 september 2026 — data uit sitemap.xml (laatste check: 2 september 2026)*
+*Laatst bijgewerkt: 9 september 2026 — data uit sitemap.xml (laatste check: 9 september 2026)*
 
 Let op: dit zijn artikel/blog-pagina's, niet de calculators of vaste pagina's (over-ons, privacy, vragen) — die staan in `site-structuur.md`.
 
@@ -38,6 +38,7 @@ Let op: dit zijn artikel/blog-pagina's, niet de calculators of vaste pagina's (o
 | zonnepanelen-onderpresteren.html | Zonnepanelen onderpresteren — oorzaken & stappenplan | 2026-08-24 |
 | indevolt-solidflex-3000-app-review.html | Indevolt SolidFlex 3000 AC — de app getest (deel 2) | 2026-08-26 |
 | sluipverbruik-meten-oplossen.html | Sluipverbruik meten en oplossen — stappenplan | 2026-09-02 |
+| zonnestroom-zelf-gebruiken-zonder-thuisbatterij.html | Zonnestroom zelf gebruiken zonder thuisbatterij: 7 stappen | 2026-09-09 |
 
 ## Samengevoegd (cluster merge augustus 2026)
 Deze pagina’s bestaan nog wel als bestand, maar staan bewust **niet meer in `sitemap.xml`** en dragen een canonical naar de pillar-pagina. Niet opnieuw als los artikel behandelen of intern naar linken.

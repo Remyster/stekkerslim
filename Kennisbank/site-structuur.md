@@ -21,6 +21,7 @@ Alle pagina's zijn statische `.html` bestanden, direct onder de root. URL-patroo
 ## Zonnepanelen
 - `terugverdientijd-zonnepanelen-2026.html`
 - `zonnepanelen-onderpresteren.html` — oorzaken tegenvallende opbrengst + stappenplan, toegevoegd 24 augustus 2026
+- `zonnestroom-zelf-gebruiken-zonder-thuisbatterij.html` — 7 stappen om zonnestroom direct zelf te verbruiken zonder batterij, toegevoegd 9 september 2026
 
 ## Saldering & terugleveren (hoogste prioriteit H2 2026)
 - `saldering-2027.html`
