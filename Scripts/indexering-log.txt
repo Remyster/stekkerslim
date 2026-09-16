@@ -30,3 +30,14 @@
 # 2026-09-09: homepage (index) is geindexeerd — overgeslagen, geen aanvraag nodig.
 # 2026-09-09: dynamisch-contract niet gelukt (quotum overschreden) — bovenaan volgende ronde.
 # 2026-09-09: zonnestroom-zelf-gebruiken-zonder-thuisbatterij (nieuwe pagina) niet gelukt (quotum overschreden) — bovenaan volgende ronde, na dynamisch-contract.
+2026-09-16 dynamisch-contract
+2026-09-16 misleidende-thuisbatterij-verkoop-herkennen
+2026-09-16 netcongestie-uitgelegd
+2026-09-16 over-ons
+2026-09-16 privacy
+2026-09-16 slimme-stekkers
+2026-09-16 slimme-thermostaat-installeren
+2026-09-16 sluipverbruik-meten-oplossen
+2026-09-16 smart-lampen
+2026-09-16 smarthome-p1-meter
+2026-09-16 smarthome-uitleg
