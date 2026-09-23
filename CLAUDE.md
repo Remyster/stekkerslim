@@ -121,6 +121,8 @@ Independer, Eneco, Milieucentraal
 | Thuisbatterij kopen juli 2026 | `thuisbatterij-kopen-juli-2026.html` | Live — gepubliceerd juli 2026 |
 | Wasmachine dynamisch tarief | `wasmachine-dynamisch-tarief.html` | Live — gepubliceerd juli 2026, CTA-fix 16 juli |
 | Thuisbatterij kopen beslisvolgorde | `saldering-2027-thuisbatterij-beslisvolgorde.html` | Live — gepubliceerd 28 juli 2026, titel herzien 29 juli 2026 |
+| Zonnepanelen onderpresteren | `zonnepanelen-onderpresteren.html` | Live — gepubliceerd 24 augustus 2026 |
+| Zonnestroom zelf gebruiken zonder thuisbatterij | `zonnestroom-zelf-gebruiken-zonder-thuisbatterij.html` | Live — gepubliceerd 9 september 2026 |
 | Over ons | `over-ons.html` | Live |
 | Privacy | `privacy.html` | Live |
 | Vragen | `vragen.html` | Live |
