@@ -41,3 +41,14 @@
 2026-09-16 smart-lampen
 2026-09-16 smarthome-p1-meter
 2026-09-16 smarthome-uitleg
+2026-09-23 stroomprijs-record-juni-2026
+2026-09-23 tapo-p115-p410m-eindoordeel
+2026-09-23 tapo-p115-p410m-review
+2026-09-23 terugleverkosten
+2026-09-23 terugverdientijd-zonnepanelen-2026
+2026-09-23 thuisbatterij-energielabel-2026
+2026-09-23 vragen
+2026-09-23 wanneer-thuisbatterij-niet-slim
+2026-09-23 wasmachine-dynamisch-tarief
+2026-09-23 zonnepanelen-onderpresteren
+2026-09-23 zonnestroom-zelf-gebruiken-zonder-thuisbatterij
