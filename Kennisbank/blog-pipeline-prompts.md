@@ -31,8 +31,13 @@ Bij elke stap: open de site, begin een **nieuwe chat**, en houd diezelfde chat a
 ```
 ## VERPLICHT VOORAF — CONNECTOREN AANZETTEN
 
+LET OP BIJ HET PLAKKEN: typ eerst @Google Drive in het tekstvak — dat is een
+extensie die jij niet zelf vanuit tekst kunt aanzetten, dat moet degene die dit
+plakt er handmatig voor laten gaan — en plak deze hele prompt er in hetzelfde
+bericht direct achteraan.
+
 Voordat je iets anders doet:
-1. Zet je Google Drive-connector aan en lees de map "StekkerSlim Kennisbank".
+1. Lees via die Drive-koppeling de map "StekkerSlim Kennisbank".
 2. Loop daarna de live site https://stekkerslim.nl/ door: homepage, blogoverzicht,
    sitemap.xml, navigatie, footer, en de bereikbare artikelen en calculators.
 
@@ -57,44 +62,79 @@ of een te oppervlakkig antwoord op heeft.
 - Niet toegankelijk:
 - Beperking voor dit antwoord:
 
-## ONDERWERPGEBIED
-Zonnepanelen en zelfverbruik, saldering vanaf 2027, terugleverkosten en negatieve
-prijzen, thuisbatterijen (ook plug-in en zonder zonnepanelen), dynamische
-contracten, P1-meters en energiemonitoring, slimme stekkers, Home Assistant en
-ESPHome, warmtepompen, airco, boilers, laadpalen, en de praktische grenzen daarvan.
+## ONDERWERPGEBIED — IN DEZE VOLGORDE VAN BELANG
+1. Meten en uitlezen: P1-meters (HomeWizard, Slimme Meter, DSMR-versies), slimme
+   stekkers met verbruiksmeting, energiedashboards.
+2. Sturen en automatiseren: Home Assistant, ESPHome, Zigbee, automatiseringen die
+   apparaten op het goedkoopste of zonnigste moment laten draaien.
+3. Apparaten in huis die er echt toe doen: wasmachine, droger, boiler, warmtepomp,
+   airco, laadpaal — steeds vanuit "hoe meet en stuur ik dit zelf".
+4. Pas daarna de energiekant als context: zelfverbruik, saldering vanaf 2027,
+   terugleverkosten, negatieve prijzen, dynamische contracten, thuisbatterijen.
+   Dit mag de invalshoek van een artikel kleuren, maar is niet langer het onderwerp.
 
-Voor NIEUW TERREIN mag je ook net buiten dit rijtje kijken, zolang het past bij
-"een Nederlands huishouden dat slimmer met energie en apparaten wil omgaan".
+Voor NIEUW TERREIN mag je net buiten dit rijtje kijken, zolang het past bij
+"een Nederlands huishouden dat zijn eigen energie meet en stuurt".
 
-## BEKENDE PRESTATIEDATA — WEEG DIT MEE BIJ PRIORITERING (24 sept 2026)
-Dit is gemeten data uit Search Console en live zoekresultaten, geen aanname:
+## WAAR STEKKERSLIM OVER GAAT — LEES DIT VOOR ALLES
+
+Vastgesteld op 24 september 2026 na een analyse van 16 maanden Search Console.
+Dit stuurt elk idee dat je oplevert. Wijk je ervan af, dan moet je dat verantwoorden.
+
+StekkerSlim is **geen energievergelijker**. Het is de site die uitlegt hoe je je
+eigen energieverbruik meet en stuurt — met een P1-meter, Home Assistant en slimme
+apparaten — en die eerlijk zegt wanneer iets niet loont.
+
+### Gemeten data, geen aanname
+- `smarthome-p1-meter.html` (HomeWizard P1-meter + Home Assistant) staat op **#4**
+  voor "p1 meter home assistant koppelen" en levert 44 van de 130 klikken over
+  16 maanden. De concurrenten daar zijn kleine onafhankelijke smarthome-blogs
+  (Smarthomegids.nl, SlimHuys, HAProfs): een winbare klasse.
 - De pagina's over thuisbatterij vergelijken en dynamisch contract vergelijken
-  hebben in 16 maanden vrijwel 0 klikken. Voor die hoofdzoektermen staan Frank
-  Energie, Gaslicht.com, Consumentenbond, EasySwitch en Energienerds.nl niet
-  te verslaan met het huidige tempo.
-- `smarthome-p1-meter.html` (HomeWizard P1-meter + Home Assistant) staat op #4
-  voor "p1 meter home assistant koppelen", tussen kleine onafhankelijke
-  smarthome-blogs — een winbare concurrentieklasse, en verreweg de grootste
-  trafficbron van de site (44 van de 130 klikken/16mnd).
-Geef daarom ideeën binnen het Home Assistant/P1-meter/smarthome-techniek-cluster
-een streepje voor boven nieuwe thuisbatterij- of energiecontract-vergelijkingsideeën,
-tenzij het externe signaal voor zo'n idee ongewoon sterk is. Dit is de enige
-uitzondering op de regel hieronder dat je geen zoekdata hebt — deze cijfers zijn
-wel geverifieerd en mag je citeren.
+  halen in diezelfde 16 maanden vrijwel **0 klikken**. Niet door slechte titels of
+  meta — die zijn goed — maar omdat Frank Energie, Gaslicht.com, Consumentenbond,
+  EasySwitch en Energienerds.nl die zoektermen bezetten. Met 2 tot 3 uur per week
+  is dat niet te winnen.
 
-## WAT JE OPLEVERT: 5 IDEEEN, IN TWEE SOORTEN
+Dit is de enige uitzondering op de regel verderop dat je geen zoekdata hebt: deze
+cijfers zijn geverifieerd en mag je citeren. Verzin er zelf geen cijfers bij.
 
-Niet 10 ideeen meer. Vijf, maar beter onderbouwd:
+### Beslisregels, in deze volgorde — twijfel bij 1 of 2 betekent: niet voorstellen
+1. Kan een kleine onafhankelijke site hierop ranken? (Staan er alleen zware
+   vergelijkers in de top van Google, dan is het antwoord nee.)
+2. Kan Remy dit uit eigen ervaring schrijven — een eigen meting, een screenshot uit
+   zijn eigen Home Assistant, een fout die hij zelf maakte?
+3. Versterkt het het smarthome-cluster? Minstens twee bestaande smarthome-pagina's
+   in- en uitlinken.
+4. Pas daarna: past er een eerlijke affiliate-CTA in. Dit is stap 4, nooit stap 1.
 
-- **3 x AANSLUITEND** — past bij wat StekkerSlim al doet: vult een gat, beantwoordt
-  een vervolgvraag, versterkt een bestaand cluster. Deze moeten aantoonbaar
+### Wat je niet meer voorstelt
+- Nieuwe vergelijkingspagina's (thuisbatterijen, energiecontracten, leveranciers).
+- Uitbreiding van bestaande thuisbatterij- of contractpagina's. Feitelijke fouten en
+  prijzen daarin worden al door /qa-audit opgepakt, niet door deze pipeline.
+- Een onderwerp dat je kiest omdat er een hoge commissie op zit.
+
+Het grootste gat op de site is **eigen bewijs**: eigen meetdata, screenshots en
+resultaten. Dat is het enige wat de grote sites niet kunnen kopieren. Ideeen die
+daarom vragen zijn per definitie sterker dan ideeen die dat niet doen.
+
+## WAT JE OPLEVERT: 5 IDEEEN, IN DRIE SOORTEN
+
+- **3 x CLUSTER** — binnen het smarthome-cluster: meten, uitlezen, automatiseren,
+  koppelen, sturen. P1-meters, Home Assistant, ESPHome, Zigbee, slimme stekkers,
+  energiedashboards, apparaten die je in huis aanstuurt. Deze moeten aantoonbaar
   aansluiten op bestaande pagina's, met minstens twee interne links.
-- **2 x NIEUW TERREIN** — een onderwerp waar StekkerSlim vandaag NIETS over heeft.
-  Hier mag geen enkele bestaande pagina overlappen. Geen interne links nodig;
-  leg in plaats daarvan uit waarom dit bij StekkerSlim past en wat het opent
-  (welke vervolgartikelen erop kunnen volgen).
+- **1 x VERDIEPING** — geen nieuwe pagina, maar een bestaande pagina veel beter
+  maken. Noem de bestaande bestandsnaam, wat er nu ontbreekt, en wat erbij moet.
+  Bestaande winnaars dieper maken gaat voor nieuwe pagina's.
+- **1 x NIEUW TERREIN** — een onderwerp waar StekkerSlim vandaag NIETS over heeft,
+  maar dat wel binnen "je eigen energie meten en sturen" valt. Geen enkele bestaande
+  pagina mag overlappen. Leg uit wat het opent aan vervolgartikelen.
 
-Label elk idee expliciet met SOORT: AANSLUITEND of SOORT: NIEUW TERREIN.
+Label elk idee expliciet met SOORT: CLUSTER, SOORT: VERDIEPING of SOORT: NIEUW TERREIN.
+
+Heb je binnen een soort niets dat beslisregel 1 en 2 haalt, lever dan minder ideeen
+en schrijf erbij waarom. Vijf zwakke ideeen zijn slechter dan drie sterke.
 
 ## KIJK OOK BUITEN DE EIGEN SITE — VERPLICHT
 
@@ -102,10 +142,13 @@ De vorige runs keken alleen naar stekkerslim.nl en leverden daardoor vooral
 variaties op wat er al stond. Kijk daarom eerst naar waar Nederlanders het nu
 echt over hebben:
 
-- Fora en communities: Tweakers (energie/domotica), Gathering of Tweakers,
-  Reddit (r/thenetherlands, r/klussen, r/Netherlands energie-draadjes),
-  Facebook-groepen over zonnepanelen, thuisbatterijen en dynamische contracten,
-  het Home Assistant-forum en de Nederlandse HA-community.
+- Home Assistant en smarthome eerst, want daar zit het cluster: r/homeassistant,
+  community.home-assistant.io (ook de Nederlandstalige draadjes), het
+  domotica-subforum van Tweakers, Nederlandse HA- en Zigbee-groepen op Facebook,
+  en de issue-trackers en releasenotes van HomeWizard, ESPHome en Zigbee2MQTT.
+- Daarna de energiekant: Tweakers (energie), Gathering of Tweakers, Reddit
+  (r/thenetherlands, r/klussen, energie-draadjes in r/Netherlands),
+  Facebook-groepen over zonnepanelen, thuisbatterijen en dynamische contracten.
 - Nieuws en vakmedia: NOS, NU.nl, Tweakers, Solar Magazine, Installatie.nl,
   Energeia, en berichten van netbeheerders (Liander, Enexis, Stedin) en de ACM.
 - Video en short-form: YouTube- en TikTok-onderwerpen over energie besparen,
@@ -126,7 +169,7 @@ schrijf dan "geen extern signaal gevonden" — verzin er nooit een.
 
 ## FORMAT PER IDEE
 ID:
-SOORT: AANSLUITEND / NIEUW TERREIN
+SOORT: CLUSTER / VERDIEPING / NIEUW TERREIN
 SEO-titel:
 Primaire zoekvraag:
 Zoekintentie: informatie / vergelijking / aankoop / probleemoplossing
@@ -137,8 +180,21 @@ Bestaande StekkerSlim-content met overlap (bij NIEUW TERREIN: "geen"):
 Waarom dit geen duplicaat is:
 Unieke StekkerSlim-invalshoek:
 Interne links (bij NIEUW TERREIN: wat dit opent aan vervolgartikelen):
+
+BESLISREGELS — beantwoord alle vier, kort en concreet:
+1. Rankbaar voor een kleine site? ja / nee — wie staat er nu in de top 3 van Google
+   voor de primaire zoekvraag, en waarom is dat wel of niet te verslaan. Kon je niet
+   zoeken, schrijf dan "niet gecontroleerd" — niet "ja".
+2. Eigen bewijs van Remy: welke meting, screenshot, logregel of eigen fout maakt dit
+   artikel aantoonbaar beter dan hetzelfde stuk van iemand anders? Noem concreet wat
+   Remy moet doen (welk apparaat, welk dashboard, over welke periode). Is er geen
+   eigen bewijs mogelijk, schrijf dan "geen" — dat is een zwak idee.
+3. Clusterversterking: welke twee bestaande smarthome-pagina's linken hiernaartoe,
+   en waar linkt dit naartoe?
+4. Eerlijke affiliate-CTA mogelijk? geen / mogelijk / natuurlijk — korte reden.
+   Dit weegt het minst zwaar van de vier.
+
 Praktische waarde: laag / middel / hoog — korte reden
-Commerciele koppeling: geen / mogelijk / natuurlijk — korte reden
 Risico of aandachtspunt:
 VERPLICHTE DIEPTE-FACTCHECK IN STAP 2:
 Social hook:
@@ -183,9 +239,11 @@ contentgaten kijkt, kijk jij naar wat er lééft: waar wordt over geklaagd,
 gediscussieerd en gevraagd — op X, op fora, in reacties, in het nieuws — en welke
 daarvan logisch aansluiten op de clusters die StekkerSlim al heeft.
 
-Jij hebt toegang tot actuele berichten op X. Gebruik dat: zoek naar wat Nederlanders
-de afgelopen weken zeggen over energierekeningen, saldering, thuisbatterijen,
-dynamische contracten, terugleverkosten en slimme meters. Citeer wat je ziet,
+Jij hebt toegang tot actuele berichten op X. Gebruik dat: zoek eerst naar wat
+Nederlanders de afgelopen weken zeggen over Home Assistant, P1-meters, HomeWizard,
+Zigbee en slimme stekkers — waar lopen ze vast, wat werkt niet, wat vragen ze steeds
+opnieuw. Pas daarna naar energierekeningen, saldering, thuisbatterijen, dynamische
+contracten en terugleverkosten. Citeer wat je ziet,
 maar presenteer een los bericht nooit als feit — het is een signaal, niet een bron.
 
 ## BRONSTATUS — BEGIN JE ANTWOORD HIERMEE
@@ -198,41 +256,72 @@ maar presenteer een los bericht nooit als feit — het is een signaal, niet een 
 - Niet toegankelijk:
 - Beperking voor dit antwoord:
 
-## ONDERWERPGEBIED
-Dezelfde clusters als de site: zon, saldering, batterijen, dynamische contracten,
-P1 en monitoring, slimme stekkers, Home Assistant, grootverbruikers in huis.
+## ONDERWERPGEBIED — IN DEZE VOLGORDE VAN BELANG
+P1 en monitoring, Home Assistant en ESPHome, Zigbee, slimme stekkers, en de
+grootverbruikers in huis die je daarmee stuurt. Daarna pas, als context en niet als
+onderwerp: zon, saldering, batterijen, terugleverkosten, dynamische contracten.
 Voor NIEUW TERREIN mag je daarbuiten kijken, zolang het past bij een Nederlands
-huishouden dat slimmer met energie omgaat.
+huishouden dat zijn eigen energie meet en stuurt.
 
-## BEKENDE PRESTATIEDATA — WEEG DIT MEE BIJ PRIORITERING (24 sept 2026)
-Dit is gemeten data uit Search Console en live zoekresultaten, geen aanname:
+## WAAR STEKKERSLIM OVER GAAT — LEES DIT VOOR ALLES
+
+Vastgesteld op 24 september 2026 na een analyse van 16 maanden Search Console.
+Dit stuurt elk idee dat je oplevert. Wijk je ervan af, dan moet je dat verantwoorden.
+
+StekkerSlim is **geen energievergelijker**. Het is de site die uitlegt hoe je je
+eigen energieverbruik meet en stuurt — met een P1-meter, Home Assistant en slimme
+apparaten — en die eerlijk zegt wanneer iets niet loont.
+
+### Gemeten data, geen aanname
+- `smarthome-p1-meter.html` (HomeWizard P1-meter + Home Assistant) staat op **#4**
+  voor "p1 meter home assistant koppelen" en levert 44 van de 130 klikken over
+  16 maanden. De concurrenten daar zijn kleine onafhankelijke smarthome-blogs
+  (Smarthomegids.nl, SlimHuys, HAProfs): een winbare klasse.
 - De pagina's over thuisbatterij vergelijken en dynamisch contract vergelijken
-  hebben in 16 maanden vrijwel 0 klikken. Voor die hoofdzoektermen staan Frank
-  Energie, Gaslicht.com, Consumentenbond, EasySwitch en Energienerds.nl niet
-  te verslaan met het huidige tempo.
-- `smarthome-p1-meter.html` (HomeWizard P1-meter + Home Assistant) staat op #4
-  voor "p1 meter home assistant koppelen", tussen kleine onafhankelijke
-  smarthome-blogs — een winbare concurrentieklasse, en verreweg de grootste
-  trafficbron van de site (44 van de 130 klikken/16mnd).
-Geef daarom ideeën binnen het Home Assistant/P1-meter/smarthome-techniek-cluster
-een streepje voor boven nieuwe thuisbatterij- of energiecontract-vergelijkingsideeën,
-tenzij het externe signaal voor zo'n idee ongewoon sterk is. Dit is de enige
-uitzondering op de regel hieronder dat je geen zoekdata hebt — deze cijfers zijn
-wel geverifieerd en mag je citeren.
+  halen in diezelfde 16 maanden vrijwel **0 klikken**. Niet door slechte titels of
+  meta — die zijn goed — maar omdat Frank Energie, Gaslicht.com, Consumentenbond,
+  EasySwitch en Energienerds.nl die zoektermen bezetten. Met 2 tot 3 uur per week
+  is dat niet te winnen.
 
-## WAT JE OPLEVERT: 5 IDEEEN, IN TWEE SOORTEN
+Dit is de enige uitzondering op de regel verderop dat je geen zoekdata hebt: deze
+cijfers zijn geverifieerd en mag je citeren. Verzin er zelf geen cijfers bij.
 
-Niet 10 ideeen meer. Vijf, maar beter onderbouwd:
+### Beslisregels, in deze volgorde — twijfel bij 1 of 2 betekent: niet voorstellen
+1. Kan een kleine onafhankelijke site hierop ranken? (Staan er alleen zware
+   vergelijkers in de top van Google, dan is het antwoord nee.)
+2. Kan Remy dit uit eigen ervaring schrijven — een eigen meting, een screenshot uit
+   zijn eigen Home Assistant, een fout die hij zelf maakte?
+3. Versterkt het het smarthome-cluster? Minstens twee bestaande smarthome-pagina's
+   in- en uitlinken.
+4. Pas daarna: past er een eerlijke affiliate-CTA in. Dit is stap 4, nooit stap 1.
 
-- **3 x AANSLUITEND** — past bij wat StekkerSlim al doet: vult een gat, beantwoordt
-  een vervolgvraag, versterkt een bestaand cluster. Deze moeten aantoonbaar
+### Wat je niet meer voorstelt
+- Nieuwe vergelijkingspagina's (thuisbatterijen, energiecontracten, leveranciers).
+- Uitbreiding van bestaande thuisbatterij- of contractpagina's. Feitelijke fouten en
+  prijzen daarin worden al door /qa-audit opgepakt, niet door deze pipeline.
+- Een onderwerp dat je kiest omdat er een hoge commissie op zit.
+
+Het grootste gat op de site is **eigen bewijs**: eigen meetdata, screenshots en
+resultaten. Dat is het enige wat de grote sites niet kunnen kopieren. Ideeen die
+daarom vragen zijn per definitie sterker dan ideeen die dat niet doen.
+
+## WAT JE OPLEVERT: 5 IDEEEN, IN DRIE SOORTEN
+
+- **3 x CLUSTER** — binnen het smarthome-cluster: meten, uitlezen, automatiseren,
+  koppelen, sturen. P1-meters, Home Assistant, ESPHome, Zigbee, slimme stekkers,
+  energiedashboards, apparaten die je in huis aanstuurt. Deze moeten aantoonbaar
   aansluiten op bestaande pagina's, met minstens twee interne links.
-- **2 x NIEUW TERREIN** — een onderwerp waar StekkerSlim vandaag NIETS over heeft.
-  Hier mag geen enkele bestaande pagina overlappen. Geen interne links nodig;
-  leg in plaats daarvan uit waarom dit bij StekkerSlim past en wat het opent
-  (welke vervolgartikelen erop kunnen volgen).
+- **1 x VERDIEPING** — geen nieuwe pagina, maar een bestaande pagina veel beter
+  maken. Noem de bestaande bestandsnaam, wat er nu ontbreekt, en wat erbij moet.
+  Bestaande winnaars dieper maken gaat voor nieuwe pagina's.
+- **1 x NIEUW TERREIN** — een onderwerp waar StekkerSlim vandaag NIETS over heeft,
+  maar dat wel binnen "je eigen energie meten en sturen" valt. Geen enkele bestaande
+  pagina mag overlappen. Leg uit wat het opent aan vervolgartikelen.
 
-Label elk idee expliciet met SOORT: AANSLUITEND of SOORT: NIEUW TERREIN.
+Label elk idee expliciet met SOORT: CLUSTER, SOORT: VERDIEPING of SOORT: NIEUW TERREIN.
+
+Heb je binnen een soort niets dat beslisregel 1 en 2 haalt, lever dan minder ideeen
+en schrijf erbij waarom. Vijf zwakke ideeen zijn slechter dan drie sterke.
 
 ## KIJK OOK BUITEN DE EIGEN SITE — VERPLICHT
 
@@ -240,10 +329,13 @@ De vorige runs keken alleen naar stekkerslim.nl en leverden daardoor vooral
 variaties op wat er al stond. Kijk daarom eerst naar waar Nederlanders het nu
 echt over hebben:
 
-- Fora en communities: Tweakers (energie/domotica), Gathering of Tweakers,
-  Reddit (r/thenetherlands, r/klussen, r/Netherlands energie-draadjes),
-  Facebook-groepen over zonnepanelen, thuisbatterijen en dynamische contracten,
-  het Home Assistant-forum en de Nederlandse HA-community.
+- Home Assistant en smarthome eerst, want daar zit het cluster: r/homeassistant,
+  community.home-assistant.io (ook de Nederlandstalige draadjes), het
+  domotica-subforum van Tweakers, Nederlandse HA- en Zigbee-groepen op Facebook,
+  en de issue-trackers en releasenotes van HomeWizard, ESPHome en Zigbee2MQTT.
+- Daarna de energiekant: Tweakers (energie), Gathering of Tweakers, Reddit
+  (r/thenetherlands, r/klussen, energie-draadjes in r/Netherlands),
+  Facebook-groepen over zonnepanelen, thuisbatterijen en dynamische contracten.
 - Nieuws en vakmedia: NOS, NU.nl, Tweakers, Solar Magazine, Installatie.nl,
   Energeia, en berichten van netbeheerders (Liander, Enexis, Stedin) en de ACM.
 - Video en short-form: YouTube- en TikTok-onderwerpen over energie besparen,
@@ -264,7 +356,7 @@ schrijf dan "geen extern signaal gevonden" — verzin er nooit een.
 
 ## FORMAT PER IDEE
 ID:
-SOORT: AANSLUITEND / NIEUW TERREIN
+SOORT: CLUSTER / VERDIEPING / NIEUW TERREIN
 SEO-titel:
 Primaire zoekvraag:
 Zoekintentie: informatie / vergelijking / aankoop / probleemoplossing
@@ -275,8 +367,21 @@ Bestaande StekkerSlim-content met overlap (bij NIEUW TERREIN: "geen"):
 Waarom dit geen duplicaat is:
 Unieke StekkerSlim-invalshoek:
 Interne links (bij NIEUW TERREIN: wat dit opent aan vervolgartikelen):
+
+BESLISREGELS — beantwoord alle vier, kort en concreet:
+1. Rankbaar voor een kleine site? ja / nee — wie staat er nu in de top 3 van Google
+   voor de primaire zoekvraag, en waarom is dat wel of niet te verslaan. Kon je niet
+   zoeken, schrijf dan "niet gecontroleerd" — niet "ja".
+2. Eigen bewijs van Remy: welke meting, screenshot, logregel of eigen fout maakt dit
+   artikel aantoonbaar beter dan hetzelfde stuk van iemand anders? Noem concreet wat
+   Remy moet doen (welk apparaat, welk dashboard, over welke periode). Is er geen
+   eigen bewijs mogelijk, schrijf dan "geen" — dat is een zwak idee.
+3. Clusterversterking: welke twee bestaande smarthome-pagina's linken hiernaartoe,
+   en waar linkt dit naartoe?
+4. Eerlijke affiliate-CTA mogelijk? geen / mogelijk / natuurlijk — korte reden.
+   Dit weegt het minst zwaar van de vier.
+
 Praktische waarde: laag / middel / hoog — korte reden
-Commerciele koppeling: geen / mogelijk / natuurlijk — korte reden
 Risico of aandachtspunt:
 VERPLICHTE DIEPTE-FACTCHECK IN STAP 2:
 Social hook:
@@ -376,10 +481,25 @@ uitsluitend echte, permanente bron-URLs. Houd elke bronregel op één regel.
 1. Tel de invoer: 5 van Gemini, 5 van Grok, samen 10.
 2. Maak een compacte inventaris van bestaande StekkerSlim-content.
 3. Geef elk idee één status: DOORLATEN / AANPASSEN / PARKEREN / STOP.
-4. Beoordeel de twee soorten apart: een AANSLUITEND idee toets je vooral op
-   overlap en interne links; een NIEUW TERREIN idee toets je vooral op de vraag
-   of er echt publiek voor is en of het onderbouwd kan worden.
-5. Kies maximaal 3 onderwerpen en wijs er één aan als nummer 1.
+4. Beoordeel de drie soorten apart: een CLUSTER-idee toets je op overlap en interne
+   links; een VERDIEPING op de vraag of de genoemde bestaande pagina echt te kort
+   schiet op dat punt; een NIEUW TERREIN-idee op de vraag of er echt publiek voor is
+   en of het onderbouwd kan worden.
+5. Toets elk idee aan de twee harde beslisregels van StekkerSlim en zet het oordeel
+   erbij:
+   - Rankbaar voor een kleine site? Kijk zelf naar de top 3 van Google voor de
+     primaire zoekvraag. Staan daar alleen zware vergelijkers (Frank Energie,
+     Gaslicht.com, Consumentenbond, EasySwitch, Energienerds.nl, Independer,
+     Pricewise), dan is het oordeel STOP, hoe goed het idee verder ook is.
+   - Kan Remy eigen bewijs leveren — eigen meting, screenshot, eigen fout? Ontbreekt
+     dat, dan hoogstens AANPASSEN, nooit nummer 1.
+   Voorstellen die neerkomen op een nieuwe vergelijkingspagina of op het uitbreiden
+   van een bestaande thuisbatterij- of energiecontractpagina krijgen STOP: dat is
+   bewust beleid sinds 24 september 2026, geen smaakoordeel.
+6. Kies maximaal 3 onderwerpen en wijs er één aan als nummer 1. Het smarthome-cluster
+   (P1-meter, Home Assistant, ESPHome, Zigbee, slimme stekkers) heeft voorrang; wijs
+   je iets anders aan als nummer 1, leg dan in twee zinnen uit waarom dat hier
+   zwaarder weegt dan de gemeten prestatiedata.
 
 ## VERPLICHTE DIEPTE-FACTCHECK
 Markeer met "VERPLICHTE DIEPTE-FACTCHECK IN STAP 3" bij onderwerpen over
