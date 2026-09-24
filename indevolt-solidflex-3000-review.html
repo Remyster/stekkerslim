@@ -285,7 +285,17 @@ footer{background:var(--navy);padding:48px 24px 24px;color:rgba(255,255,255,0.5)
         </div>
       </li>
       <li><a href="blog.html">Blog</a></li>
-      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li class="nav-dropdown">
+        <a href="smarthome-producten.html">Smarthome</a>
+        <div class="nav-dropdown-menu">
+          <a href="smarthome-p1-meter.html">📡 P1 meter + Home Assistant</a>
+          <a href="homeassistant-energie-besparen.html">🏠 Home Assistant automatiseren</a>
+          <a href="sluipverbruik-meten-oplossen.html">🔍 Sluipverbruik opsporen</a>
+          <a href="beste-slimme-stekker-2026.html">🔌 Beste slimme stekkers</a>
+          <a href="slimme-thermostaat-installeren.html">🌡️ Slimme thermostaat</a>
+          <a href="smarthome-producten.html">🛒 Alle smarthome-producten</a>
+        </div>
+      </li>
       <li><a href="vragen.html">Stel een vraag</a></li>
       <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
     </ul>
@@ -321,6 +331,9 @@ footer{background:var(--navy);padding:48px 24px 24px;color:rgba(255,255,255,0.5)
   <a href="energiebespaar-calculator.html" onclick="closeMenu()">🔋 Energiebespaar calculator</a>
   <a href="blog.html" onclick="closeMenu()">📝 Blog & Artikelen</a>
   <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome</a>
+  <a href="smarthome-p1-meter.html" onclick="closeMenu()">📡 P1 meter + Home Assistant</a>
+  <a href="homeassistant-energie-besparen.html" onclick="closeMenu()">🏠 Home Assistant automatiseren</a>
+  <a href="sluipverbruik-meten-oplossen.html" onclick="closeMenu()">🔍 Sluipverbruik opsporen</a>
   <a href="slimme-stekkers.html" onclick="closeMenu()">🔌 Slimme stekkers</a>
   <a href="smart-lampen.html" onclick="closeMenu()">💡 Smart lampen</a>
   <a href="smarthome-uitleg.html" onclick="closeMenu()">📖 Uitleg protocollen</a>
@@ -604,5 +617,7 @@ function navSearchQuery(q){const c=document.getElementById('navSearchClear');con
 function navSearchKey(e){if(e.key==='Escape')navSearchClose()}
 </script>
 
+
+<script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block"});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display=""},200)});m.addEventListener("mouseenter",function(){clearTimeout(t)});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display=""},200)});dd.querySelector("a").addEventListener("click",function(e){if(window.matchMedia("(hover:none)").matches){e.preventDefault();m.style.display=m.style.display==="block"?"":"block"}})})})();</script>
 </body>
 </html>

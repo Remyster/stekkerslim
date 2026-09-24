@@ -130,6 +130,16 @@
   .sticky-cta a.scta-btn{background:var(--groen);color:var(--navy);padding:11px 22px;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.88rem;text-decoration:none;white-space:nowrap}
   .sticky-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;padding:4px}
   @media(max-width:600px){.sticky-cta-txt small{display:none}}
+    .faq-lijst{margin:24px 0;display:flex;flex-direction:column}
+    .faq-lijst details{border:1px solid var(--grijs-licht);padding:16px 20px}
+    .faq-lijst details:first-child{border-radius:12px 12px 0 0}
+    .faq-lijst details:last-child{border-radius:0 0 12px 12px}
+    .faq-lijst details+details{border-top:none}
+    .faq-lijst summary{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none}
+    .faq-lijst summary::-webkit-details-marker{display:none}
+    .faq-lijst summary::after{content:' +';color:var(--groen);font-weight:900}
+    .faq-lijst details[open] summary::after{content:' \2013';color:var(--groen)}
+    .faq-lijst p{margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7;margin-bottom:0}
   </style>
   <script type="application/ld+json">
   {
@@ -140,9 +150,47 @@
     "author": {"@type": "Person", "name": "Remy Egberts"},
     "publisher": {"@type": "Organization", "name": "StekkerSlim.nl", "url": "https://stekkerslim.nl"},
     "datePublished": "2026-01-01",
-    "dateModified": "2026-05-13",
+    "dateModified": "2026-09-24",
     "url": "https://stekkerslim.nl/smarthome-p1-meter.html",
     "mainEntityOfPage": "https://stekkerslim.nl/smarthome-p1-meter.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Werkt een P1 meter op elke Nederlandse slimme meter?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Ja, alle Nederlandse slimme meters hebben een P1-poort. Het verschil zit in de DSMR-versie. Bij DSMR 5.0 of hoger krijgt de dongle stroom uit de poort zelf en is het plug-and-play. Bij DSMR 4.2 en lager werkt het ook, maar moet je de dongle apart voeden via USB en heb je dus een stopcontact bij de meterkast nodig."}
+      },
+      {
+        "@type": "Question",
+        "name": "Heb ik een abonnement nodig om een P1 meter met Home Assistant te gebruiken?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Nee. De HomeWizard P1 meter heeft een lokale API en de officiele Home Assistant-integratie gebruikt die. Je data blijft in huis en je hebt geen abonnement nodig. Een abonnement zoals Energy+ is alleen bedoeld voor langere historie in de app van HomeWizard zelf, niet voor de koppeling met Home Assistant."}
+      },
+      {
+        "@type": "Question",
+        "name": "Waarom wijkt mijn P1 meter af van mijn omvormer?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Dat hoort zo. Een P1 meter meet wat er over je netaansluiting gaat: je afname en je teruglevering. De zonnestroom die je direct zelf verbruikt komt nooit langs de meter en zit dus niet in dat cijfer. Je omvormer toont daarom altijd een hogere productie. Wil je beide zien, voeg dan de integratie van je omvormer apart toe."}
+      },
+      {
+        "@type": "Question",
+        "name": "Kan ik een laadpaal of thuisbatterij tegelijk met mijn P1 meter aansluiten?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Niet direct, want je slimme meter heeft maar een P1-poort. Daarvoor gebruik je een P1-splitter. Een passieve splitter is goedkoop maar zwakt het signaal af en is alleen geschikt voor maximaal twee zuinige apparaten. Hangt er een laadpaal of thuisbatterij aan, kies dan een actieve splitter die het signaal versterkt en de uitgangen gescheiden houdt."}
+      },
+      {
+        "@type": "Question",
+        "name": "Mijn P1-sensor staat op unavailable, wat nu?",
+        "acceptedAnswer": {"@type": "Answer", "text": "In de meeste gevallen heeft je router de meter een nieuw IP-adres gegeven. Zet in je router een vast IP of een DHCP-reservering voor de P1 meter. Blijft het misgaan, check dan of het wifi-signaal in de meterkast sterk genoeg is: de P1 meter werkt alleen op 2,4 GHz en meterkasten zitten vaak achter een metalen deur."}
+      },
+      {
+        "@type": "Question",
+        "name": "Wat kost een P1 meter met Home Assistant en wanneer heb ik dat terug?",
+        "acceptedAnswer": {"@type": "Answer", "text": "De HomeWizard P1 meter kost ongeveer 25 euro. Heb je nog geen Home Assistant, reken dan op circa 70 euro extra voor een Raspberry Pi of mini-PC. Alleen al het live zien van je verbruik levert bij de meeste huishoudens 80 tot 140 euro per jaar op, waardoor je die investering doorgaans binnen een tot drie maanden terugverdient."}
+      }
+    ]
   }
   </script>
   <script type="application/ld+json">
@@ -180,7 +228,17 @@
         </div>
       </li>
       <li><a href="blog.html">Blog</a></li>
-      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li class="nav-dropdown">
+        <a href="smarthome-producten.html">Smarthome</a>
+        <div class="nav-dropdown-menu">
+          <a href="smarthome-p1-meter.html">📡 P1 meter + Home Assistant</a>
+          <a href="homeassistant-energie-besparen.html">🏠 Home Assistant automatiseren</a>
+          <a href="sluipverbruik-meten-oplossen.html">🔍 Sluipverbruik opsporen</a>
+          <a href="beste-slimme-stekker-2026.html">🔌 Beste slimme stekkers</a>
+          <a href="slimme-thermostaat-installeren.html">🌡️ Slimme thermostaat</a>
+          <a href="smarthome-producten.html">🛒 Alle smarthome-producten</a>
+        </div>
+      </li>
       <li><a href="vragen.html">Stel een vraag</a></li>
       <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
     </ul>
@@ -216,6 +274,9 @@
   <a href="energiebespaar-calculator.html" onclick="closeMenu()">🔋 Energiebespaar calculator</a>
   <a href="blog.html" onclick="closeMenu()">📝 Blog & Artikelen</a>
   <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome</a>
+  <a href="smarthome-p1-meter.html" onclick="closeMenu()">📡 P1 meter + Home Assistant</a>
+  <a href="homeassistant-energie-besparen.html" onclick="closeMenu()">🏠 Home Assistant automatiseren</a>
+  <a href="sluipverbruik-meten-oplossen.html" onclick="closeMenu()">🔍 Sluipverbruik opsporen</a>
   <a href="slimme-stekkers.html" onclick="closeMenu()">🔌 Slimme stekkers</a>
   <a href="smart-lampen.html" onclick="closeMenu()">💡 Smart lampen</a>
   <a href="smarthome-uitleg.html" onclick="closeMenu()">📖 Uitleg protocollen</a>
@@ -236,7 +297,7 @@
     <div class="breadcrumb"><a href="/">Home</a> › <a href="index.html#smarthome">Smarthome</a></div>
     <div class="article-tag">📡 Smarthome & DIY</div>
     <h1>HomeWizard P1 meter + Home Assistant 2026: in 5 stappen live</h1>
-    <div class="article-meta">Bijgewerkt: juni 2026 · Leestijd: 8 minuten · Moeilijkheid: beginner</div>
+    <div class="article-meta">Bijgewerkt: september 2026 · Leestijd: 12 minuten · Moeilijkheid: beginner</div>
   </div>
 </div>
 
@@ -245,11 +306,15 @@
     <h4>📋 Inhoud van dit artikel</h4>
     <ol>
       <li><a href="#wat-heb-je-nodig">Wat heb je nodig?</a></li>
+      <li><a href="#dsmr-versie">Welke DSMR-versie heb je?</a></li>
       <li><a href="#hardware-kiezen">Welke P1 meter kiezen?</a></li>
+      <li><a href="#splitter">Al iets anders op je P1-poort?</a></li>
       <li><a href="#installatie">Installatie stap voor stap</a></li>
+      <li><a href="#werkt-niet">Werkt het niet? Dit is het bijna altijd</a></li>
       <li><a href="#dashboard">Dashboard instellen</a></li>
       <li><a href="#automatisering">Automatiseer op goedkope uren</a></li>
       <li><a href="#besparing">Wat levert het op?</a></li>
+      <li><a href="#faq">Veelgestelde vragen</a></li>
     </ol>
   </div>
 
@@ -262,7 +327,7 @@
   <h2 id="wat-heb-je-nodig">Wat heb je nodig?</h2>
   <p>Drie dingen:</p>
   <ol>
-    <li><strong>Een slimme meter</strong> — de meeste Nederlandse huishoudens hebben er al een. Check de voorkant: staat er "DSMR 5.0" of nieuwer op? Dan ben je klaar.</li>
+    <li><strong>Een slimme meter</strong> — de meeste Nederlandse huishoudens hebben er al een. Check de voorkant: staat er "DSMR 5.0" of "SMR 5.0" op? Dan is het plug-and-play. Staat er een oudere versie, dan werkt het ook, maar heb je een losse voeding nodig (zie hieronder).</li>
     <li><strong>Een P1 meter</strong> (ook wel P1 dongle of P1 gateway) — dit is het apparaatje dat de data van je slimme meter leest en doorstuurt via wifi</li>
     <li><strong>Home Assistant</strong> — gratis open-source software, draait op een Raspberry Pi of mini-PC</li>
   </ol>
@@ -270,6 +335,50 @@
   <div class="warning-box">
     <strong>Heb je geen slimme meter?</strong> Vraag gratis een slimme meter aan bij je netbeheerder (Liander, Enexis, Stedin). Dit is wettelijk verplicht gratis. Duurt 1–4 weken.
   </div>
+
+  <h2 id="dsmr-versie">Welke DSMR-versie heb je, en waarom dat uitmaakt</h2>
+  <p>Dit is het stukje dat bijna overal wordt overgeslagen, en precies waar mensen op vastlopen. Alle Nederlandse slimme meters praten het DSMR-protocol, maar de versie bepaalt drie praktische dingen: of de P1-poort je dongle zélf van stroom voorziet, hoe vaak je nieuwe cijfers krijgt, en dus hoe "live" je dashboard aanvoelt.</p>
+
+  <div style="overflow-x:auto;margin:24px 0">
+    <table style="width:100%;border-collapse:collapse;font-size:0.88rem;min-width:520px">
+      <thead>
+        <tr style="background:var(--navy);color:#fff;text-align:left">
+          <th style="padding:10px 12px">DSMR-versie</th>
+          <th style="padding:10px 12px">Nieuwe data</th>
+          <th style="padding:10px 12px">Voeding via P1?</th>
+          <th style="padding:10px 12px">Wat betekent dat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--grijs-licht)">
+          <td style="padding:10px 12px"><strong>2.2 en 3.0</strong></td>
+          <td style="padding:10px 12px">elke 10 sec</td>
+          <td style="padding:10px 12px">Nee</td>
+          <td style="padding:10px 12px">Werkt, maar je hebt een USB-voeding en een stopcontact bij de meterkast nodig.</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--grijs-licht)">
+          <td style="padding:10px 12px"><strong>4.0 / 4.2</strong></td>
+          <td style="padding:10px 12px">elke 10 sec</td>
+          <td style="padding:10px 12px">Nee</td>
+          <td style="padding:10px 12px">Ook hier een losse USB-voeding. HomeWizard verkoopt daarvoor een aparte USB-C-adapterset.</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 12px"><strong>5.0 en hoger</strong></td>
+          <td style="padding:10px 12px">elke seconde</td>
+          <td style="padding:10px 12px">Ja</td>
+          <td style="padding:10px 12px">Echt plug-and-play: kabel erin en klaar, geen stopcontact nodig.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Dat verschil van 10 seconden naar 1 seconde klinkt klein, maar je merkt het meteen. Op een DSMR 5-meter zie je de waterkoker aanslaan terwijl je hem aanzet. Op een DSMR 4-meter loopt je dashboard een stap achter, en dat maakt automatiseringen die op een vermogensdrempel reageren minder scherp.</p>
+
+  <div class="highlight-box">
+    <strong>Hoe kom je erachter welke versie je hebt?</strong> De snelste manier: maak met je telefoon een foto van de voorkant van de meter, ingezoomd. Bij veel meters staat "SMR 5.0" of "DSMR" met een versienummer boven of naast het display. Staat er niets, zoek dan op merk plus typenummer (bijvoorbeeld "Landis+Gyr E350 DSMR"). Kom je er niet uit, mail dan je netbeheerder met die foto en het serienummer, en vraag expliciet naar de DSMR- of SMR-versie — niet naar "wat voor meter heb ik", want daar krijg je zelden een bruikbaar antwoord op.
+  </div>
+
+  <p>Nog iets om te weten: je gasstand komt niet op hetzelfde tempo binnen als je stroomstand. De gasmeter stuurt zijn stand draadloos door, bij nieuwere meters elke 5 minuten en bij sommige oudere maar één keer per uur. Zie je je gasverbruik in Home Assistant in blokjes verschijnen in plaats van vloeiend, dan is dat dus normaal en niet een fout in je setup.</p>
 
   <h2 id="hardware-kiezen">Welke P1 meter kiezen?</h2>
   <p>Er zijn meerdere P1 meters op de markt. Dit zijn de drie beste opties voor Home Assistant gebruikers:</p>
@@ -294,6 +403,19 @@
     </div>
   </div>
 
+  <h2 id="splitter">Al iets anders op je P1-poort? Dan heb je een splitter nodig</h2>
+  <p>Je slimme meter heeft één P1-poort, en steeds meer apparaten willen hem hebben: een laadpaal die wil load-balancen, een thuisbatterij die je verbruik moet zien, en je eigen P1 meter voor Home Assistant. Ze kunnen niet zomaar samen in één poort, en een tweede poort bijbouwen kan de netbeheerder niet voor je doen.</p>
+  <p>De oplossing is een P1-splitter, en daarin zit een keuze die uitmaakt:</p>
+  <ul>
+    <li><strong>Passief</strong> — een simpel kabelsplitsertje van een paar euro. Goedkoop, maar het zwakt het signaal af. Met twee zuinige apparaten gaat het meestal goed; daarboven krijg je datagaten of apparaten die elkaar wegdrukken.</li>
+    <li><strong>Actief</strong> — versterkt het signaal en houdt de uitgangen van elkaar gescheiden. Duurder, maar dit is wat je wil als er een laadpaal of batterij aan hangt.</li>
+  </ul>
+  <p>De actieve splitter van HomeWizard maakt van één P1-poort drie gescheiden poorten en kost €27,95. Die haalt zijn stroom net als de P1 meter uit de poort zelf als je een SMR 5-meter hebt; bij een oudere meter hang je er een USB-C-adapter aan.</p>
+  <div class="highlight-box">
+    <strong>Praktische tip:</strong> zit je nog in de planningsfase en weet je dat er later een laadpaal of thuisbatterij bij komt? Neem dan meteen de actieve splitter. Het scheelt je een tweede keer de meterkast in en het teleurstellende moment waarop je merkt dat de goedkope splitter je batterij niet betrouwbaar meekrijgt.
+    <a href="https://partner.homewizard.com/c/?si=18407&li=1795784&wi=419188&ws=&dl=nl%2Fshop%2Factive-p1-splitter%2F" target="_blank" rel="noopener sponsored" style="display:inline-block;margin-top:10px;background:var(--groen);color:var(--navy);padding:8px 16px;border-radius:8px;font-size:0.82rem;font-weight:700;text-decoration:none">Bekijk de actieve P1 splitter →</a>
+  </div>
+
   <h2 id="installatie">Installatie stap voor stap</h2>
   <p>We beschrijven de setup met de HomeWizard P1 meter — de makkelijkste route voor beginners.</p>
 
@@ -302,7 +424,7 @@
       <div class="step-num">1</div>
       <div class="step-content">
         <h4>P1 meter aansluiten</h4>
-        <p>Steek de P1 meter in de P1-poort van je slimme meter. Dit is de RJ11-aansluiting (telefoon-stekker formaat) aan de onderkant of zijkant. De meter begint direct met knipperen.</p>
+        <p>Steek de P1 meter in de P1-poort van je slimme meter. Dat is een RJ12-aansluiting met 6 pinnen: hij lijkt op een telefoonstekker en wordt daarom vaak RJ11 genoemd. Je vindt hem aan de onderkant of zijkant. De meter begint direct met knipperen.</p>
       </div>
     </div>
     <div class="step-item">
@@ -333,6 +455,31 @@
         <p>Ga naar <strong>Energie</strong> in het Home Assistant menu. Klik op "Stel energie dashboard in". Wijs de sensoren toe: stroomverbruik, teruglevering, gasverbruik. Na 24 uur heb je je eerste grafiek.</p>
       </div>
     </div>
+  </div>
+
+  <h2 id="werkt-niet">Werkt het niet? Dit is het bijna altijd</h2>
+  <p>In de praktijk gaat het bij dezelfde handvol dingen mis. Loop ze in deze volgorde af, want de bovenste zijn het vaakst de oorzaak.</p>
+
+  <h3>1. Geen enkel lampje, geen data</h3>
+  <p>Negen van de tien keer een voedingsprobleem op een oudere meter. Heb je DSMR 4.2 of lager, dan komt er simpelweg geen stroom uit de P1-poort en moet je de dongle apart voeden via USB. Kijk dus eerst welke DSMR-versie je hebt voordat je aan de kabel gaat twijfelen.</p>
+
+  <h3>2. Home Assistant vindt de integratie niet automatisch</h3>
+  <p>De automatische detectie werkt alleen als de P1 meter en je Home Assistant in hetzelfde netwerk zitten. Een apart gastnetwerk of een IoT-VLAN breekt dit. Voeg de integratie in dat geval handmatig toe en vul het IP-adres van de meter in. Dat IP vind je in de HomeWizard-app of in de DHCP-lijst van je router.</p>
+
+  <h3>3. Het werkte, en nu is de sensor "unavailable"</h3>
+  <p>Meestal heeft je router de meter een nieuw IP-adres gegeven. Zet in je router een vast IP (DHCP-reservering) voor de P1 meter. Dat is ook precies waarom die stap in de installatie hierboven staat: het kost één minuut en voorkomt dit halfjaarlijkse raadsel.</p>
+
+  <h3>4. Wifi valt weg in de meterkast</h3>
+  <p>Meterkasten zitten vaak achter een metalen deur, onder de trap of in de kelder, en dat zijn de slechtste plekken van het huis voor 2,4 GHz-wifi. De P1 meter werkt alleen op 2,4 GHz, niet op 5 GHz. Test met je telefoon hoe het signaal daar is. Is het zwak, dan is een repeater of accesspoint in de gang de echte oplossing, niet opnieuw koppelen.</p>
+
+  <h3>5. Stroom werkt, maar gas blijft leeg</h3>
+  <p>Geduld. De gasstand komt bij nieuwere meters elke 5 minuten door en bij sommige oudere maar één keer per uur. Blijft het na een paar uur nog leeg, dan heb je vermoedelijk een meter zonder gasaansluiting of een losse gasmeter die niet aan de slimme meter is gekoppeld.</p>
+
+  <h3>6. De cijfers kloppen niet met je omvormer</h3>
+  <p>Dit is geen storing, maar een misverstand dat veel voorkomt. Je P1 meter meet wat er over de netaansluiting gaat: wat je afneemt en wat je teruglevert. Hij meet niet wat je zonnepanelen totaal produceren, want de stroom die je zelf direct verbruikt komt nooit langs de meter. Je omvormer laat dus altijd een hoger productiecijfer zien, en dat hoort zo. Wil je beide naast elkaar in één dashboard, voeg dan de integratie van je omvormer apart toe.</p>
+
+  <div class="warning-box">
+    <strong>Eén ding niet doen:</strong> de P1-poort zelf opendraaien of aan de meter sleutelen. De P1-poort is er juist om veilig uit te lezen, en verzegelingen verbreken is niet toegestaan. Alles hierboven los je op aan de kant van de dongle, je netwerk of je software.
   </div>
 
   <h2 id="dashboard">Dashboard instellen</h2>
@@ -413,6 +560,34 @@ action:
     <strong>Extra relevant nu saldering stopt:</strong> Met een P1 meter in Home Assistant zie je per kwartier hoeveel je teruglevert. Na 1 jan 2027 is die teruglevering bijna niets meer waard (~€0,06/kWh). Je wilt dan zelfverbruik maximaliseren — door apparaten te verschuiven of een <a href="thuisbatterij-top5-2026.html">plug-in batterij</a> in te zetten. <a href="dynamisch-contract-zonnepanelen-thuisbatterij.html">Lees hoe batterij + dynamisch contract samenwerken →</a>
   </div>
 
+  <h2 id="faq">Veelgestelde vragen</h2>
+  <div class="faq-lijst">
+    <details>
+      <summary>Werkt een P1 meter op elke Nederlandse slimme meter?</summary>
+      <p>Ja, alle Nederlandse slimme meters hebben een P1-poort. Het verschil zit in de DSMR-versie. Bij DSMR 5.0 of hoger krijgt de dongle stroom uit de poort zelf en is het plug-and-play. Bij DSMR 4.2 en lager werkt het ook, maar moet je de dongle apart voeden via USB en heb je dus een stopcontact bij de meterkast nodig.</p>
+    </details>
+    <details>
+      <summary>Heb ik een abonnement nodig om een P1 meter met Home Assistant te gebruiken?</summary>
+      <p>Nee. De HomeWizard P1 meter heeft een lokale API en de officiële Home Assistant-integratie gebruikt die. Je data blijft in huis en je hebt geen abonnement nodig. Een abonnement zoals Energy+ is alleen bedoeld voor langere historie in de app van HomeWizard zelf, niet voor de koppeling met Home Assistant.</p>
+    </details>
+    <details>
+      <summary>Waarom wijkt mijn P1 meter af van mijn omvormer?</summary>
+      <p>Dat hoort zo. Een P1 meter meet wat er over je netaansluiting gaat: je afname en je teruglevering. De zonnestroom die je direct zelf verbruikt komt nooit langs de meter en zit dus niet in dat cijfer. Je omvormer toont daarom altijd een hogere productie. Wil je beide zien, voeg dan de integratie van je omvormer apart toe.</p>
+    </details>
+    <details>
+      <summary>Kan ik een laadpaal of thuisbatterij tegelijk met mijn P1 meter aansluiten?</summary>
+      <p>Niet direct, want je slimme meter heeft maar één P1-poort. Daarvoor gebruik je een <a href="#splitter">P1-splitter</a>. Een passieve splitter is goedkoop maar zwakt het signaal af en is alleen geschikt voor maximaal twee zuinige apparaten. Hangt er een laadpaal of thuisbatterij aan, kies dan een actieve splitter die het signaal versterkt en de uitgangen gescheiden houdt.</p>
+    </details>
+    <details>
+      <summary>Mijn P1-sensor staat op "unavailable", wat nu?</summary>
+      <p>In de meeste gevallen heeft je router de meter een nieuw IP-adres gegeven. Zet in je router een vast IP of een DHCP-reservering voor de P1 meter. Blijft het misgaan, check dan of het wifi-signaal in de meterkast sterk genoeg is: de P1 meter werkt alleen op 2,4 GHz en meterkasten zitten vaak achter een metalen deur.</p>
+    </details>
+    <details>
+      <summary>Wat kost een P1 meter met Home Assistant en wanneer heb ik dat terug?</summary>
+      <p>De HomeWizard P1 meter kost ongeveer €25. Heb je nog geen Home Assistant, reken dan op circa €70 extra voor een Raspberry Pi of mini-PC. Alleen al het live zien van je verbruik levert bij de meeste huishoudens €80 tot €140 per jaar op, waardoor je die investering doorgaans binnen één tot drie maanden terugverdient.</p>
+    </details>
+  </div>
+
   <div class="disclaimer-box">
     <strong>Disclaimer:</strong> Besparingen zijn indicatief. Werkelijke besparing hangt af van verbruikspatroon, energietarief en hoe actief je de automatiseringen inzet. Home Assistant is third-party software — StekkerSlim.nl biedt geen technische ondersteuning voor installatieproblemen. Zie de Home Assistant documentatie op home-assistant.io.
   </div>
@@ -456,7 +631,7 @@ action:
 </div>
 <div style="background:#F4F7F2;padding:0 24px 40px">
   <div style="max-width:800px;margin:0 auto;background:#fff;border-radius:12px;padding:16px 20px;font-size:0.82rem;color:#6B7280;line-height:1.6">
-    <strong>Disclaimer:</strong> Tarieven, besparingen en productspecificaties in dit artikel zijn indicatief en gebaseerd op gemiddelde Nederlandse situaties (juni 2026). Jouw situatie kan afwijken. StekkerSlim.nl ontvangt mogelijk affiliate commissies bij aankoop via links, maar dit beïnvloedt onze adviezen nooit.
+    <strong>Disclaimer:</strong> Tarieven, besparingen en productspecificaties in dit artikel zijn indicatief en gebaseerd op gemiddelde Nederlandse situaties (september 2026). Jouw situatie kan afwijken. StekkerSlim.nl ontvangt mogelijk affiliate commissies bij aankoop via links, maar dit beïnvloedt onze adviezen nooit.
   </div>
 </div>
 
@@ -480,7 +655,7 @@ function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('op
 function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
 document.addEventListener('click',function(e){const m=document.getElementById('mobileMenu');const h=document.getElementById('hamburger');if(m&&h&&m.classList.contains('open')&&!m.contains(e.target)&&!h.contains(e.target))m.classList.remove('open')})
 </script><script>
-var _SP=[{"url":"calculator-zonnepanelen.html","title":"Zonnepanelen calculator","desc":"Bereken terugverdientijd en opbrengst zonnepanelen","tags":"zonnepanelen berekenen terugverdientijd opbrengst panelen"},{"url":"calculator-thuisbatterij.html","title":"Thuisbatterij calculator","desc":"Is een thuisbatterij rendabel voor jou?","tags":"thuisbatterij batterij berekenen rendabel terugverdientijd"},{"url":"calculator-energiekosten.html","title":"Energiekosten calculator","desc":"Bereken jouw jaarlijkse energierekening","tags":"energiekosten rekening stroom gas berekenen"},{"url":"calculator-laadpaal.html","title":"Laadpaal calculator","desc":"Wat kost thuis laden van je EV?","tags":"laadpaal laden elektrisch rijden EV auto stroom"},{"url":"calculator-warmtepomp.html","title":"Warmtepomp calculator","desc":"Gas vs warmtepomp vergelijken","tags":"warmtepomp gas ketel besparen vergelijken"},{"url":"energiebespaar-calculator.html","title":"Energiebespaar calculator","desc":"Wat kun je besparen met slimme apparaten?","tags":"energiebespaar besparen slimme stekker thermostaat P1 meter Home Assistant"},{"url":"thuisbatterij-top5-2026.html","title":"Beste thuisbatterij 2026 — top 5","desc":"HomeWizard, Zendure, Marstek vergeleken","tags":"thuisbatterij plug-in HomeWizard Zendure Marstek batterij vergelijken"},{"url":"zonnepanelen-onderpresteren.html","title":"Zonnepanelen onderpresteren","desc":"5 oorzaken van tegenvallende opbrengst + stappenplan","tags":"zonnepanelen onderpresteren opbrengst minder tegenvallend omvormer storing schaduw vuil P1 meter"},{"url":"saldering-2027.html","title":"Saldering stopt 2027","desc":"Wat verandert er voor je zonnepanelen na 2027?","tags":"saldering 2027 stoppen zonnepanelen terugleverkosten"},{"url":"terugleverkosten.html","title":"Terugleverkosten","desc":"Wat zijn terugleverkosten?","tags":"terugleverkosten saldering terugleveren zonnepanelen kosten"},{"url":"dynamisch-contract.html","title":"Dynamisch energiecontract","desc":"Voordelen en nadelen dynamisch contract","tags":"dynamisch contract energie tarief variabel uurprijs"},{"url":"energiecontract-vergelijken-2026.html","title":"Energiecontract vergelijken 2026","desc":"Beste energieleverancier vinden","tags":"energiecontract vergelijken leverancier stroom gas"},{"url":"beste-slimme-stekker-2026.html","title":"Beste slimme stekker 2026","desc":"Top 5 slimme stekkers vergeleken","tags":"slimme stekker 2026 beste vergelijken Tapo HomeWizard Matter"},{"url":"smarthome-producten.html","title":"Smarthome producten","desc":"Alle slimme energie-apparaten","tags":"smarthome producten slimme stekker thermostaat P1 meter"},{"url":"homeassistant-energie-besparen.html","title":"Home Assistant energie besparen","desc":"Automatiseer je energieverbruik","tags":"Home Assistant energie besparen automatisering"},{"url":"smarthome-p1-meter.html","title":"P1 meter + Home Assistant","desc":"P1 meter koppelen aan Home Assistant","tags":"P1 meter Home Assistant slimme meter energie"},{"url":"plug-in-batterij-laden.html","title":"Plug-in batterij slim laden","desc":"Wanneer en hoe laad je een thuisbatterij?","tags":"thuisbatterij laden zonnepanelen slim opladen"},{"url":"blog.html","title":"Blog — alle artikelen","desc":"Alle artikelen van StekkerSlim","tags":"blog artikelen energie smarthome"},{"url":"vragen.html","title":"Stel een vraag","desc":"Stuur je energievraag in","tags":"vraag contact hulp advies"},{"url":"over-ons.html","title":"Over StekkerSlim","desc":"Wie is StekkerSlim?","tags":"over ons Remy StekkerSlim"}];
+var _SP=[{"url":"calculator-zonnepanelen.html","title":"Zonnepanelen calculator","desc":"Bereken terugverdientijd en opbrengst zonnepanelen","tags":"zonnepanelen berekenen terugverdientijd opbrengst panelen"},{"url":"calculator-thuisbatterij.html","title":"Thuisbatterij calculator","desc":"Is een thuisbatterij rendabel voor jou?","tags":"thuisbatterij batterij berekenen rendabel terugverdientijd"},{"url":"calculator-energiekosten.html","title":"Energiekosten calculator","desc":"Bereken jouw jaarlijkse energierekening","tags":"energiekosten rekening stroom gas berekenen"},{"url":"calculator-laadpaal.html","title":"Laadpaal calculator","desc":"Wat kost thuis laden van je EV?","tags":"laadpaal laden elektrisch rijden EV auto stroom"},{"url":"calculator-warmtepomp.html","title":"Warmtepomp calculator","desc":"Gas vs warmtepomp vergelijken","tags":"warmtepomp gas ketel besparen vergelijken"},{"url":"energiebespaar-calculator.html","title":"Energiebespaar calculator","desc":"Wat kun je besparen met slimme apparaten?","tags":"energiebespaar besparen slimme stekker thermostaat P1 meter Home Assistant"},{"url":"thuisbatterij-top5-2026.html","title":"Beste thuisbatterij 2026 — top 5","desc":"HomeWizard, Zendure, Marstek vergeleken","tags":"thuisbatterij plug-in HomeWizard Zendure Marstek batterij vergelijken"},{"url":"zonnepanelen-onderpresteren.html","title":"Zonnepanelen onderpresteren","desc":"5 oorzaken van tegenvallende opbrengst + stappenplan","tags":"zonnepanelen onderpresteren opbrengst minder tegenvallend omvormer storing schaduw vuil P1 meter"},{"url":"saldering-2027.html","title":"Saldering stopt 2027","desc":"Wat verandert er voor je zonnepanelen na 2027?","tags":"saldering 2027 stoppen zonnepanelen terugleverkosten"},{"url":"terugleverkosten.html","title":"Terugleverkosten","desc":"Wat zijn terugleverkosten?","tags":"terugleverkosten saldering terugleveren zonnepanelen kosten"},{"url":"dynamisch-contract.html","title":"Dynamisch energiecontract","desc":"Voordelen en nadelen dynamisch contract","tags":"dynamisch contract energie tarief variabel uurprijs"},{"url":"energiecontract-vergelijken-2026.html","title":"Energiecontract vergelijken 2026","desc":"Beste energieleverancier vinden","tags":"energiecontract vergelijken leverancier stroom gas"},{"url":"beste-slimme-stekker-2026.html","title":"Beste slimme stekker 2026","desc":"Top 5 slimme stekkers vergeleken","tags":"slimme stekker 2026 beste vergelijken Tapo HomeWizard Matter"},{"url":"smarthome-producten.html","title":"Smarthome producten","desc":"Alle slimme energie-apparaten","tags":"smarthome producten slimme stekker thermostaat P1 meter"},{"url":"homeassistant-energie-besparen.html","title":"Home Assistant energie besparen","desc":"Automatiseer je energieverbruik","tags":"Home Assistant energie besparen automatisering"},{"url":"smarthome-p1-meter.html","title":"P1 meter + Home Assistant","desc":"P1 meter koppelen aan Home Assistant","tags":"P1 meter Home Assistant slimme meter energie"},{"url":"plug-in-batterij-laden.html","title":"Plug-in batterij slim laden","desc":"Wanneer en hoe laad je een thuisbatterij?","tags":"thuisbatterij laden zonnepanelen slim opladen"},{"url":"blog.html","title":"Blog — alle artikelen","desc":"Alle artikelen van StekkerSlim","tags":"blog artikelen energie smarthome"},{"url":"vragen.html","title":"Stel een vraag","desc":"Stuur je energievraag in","tags":"vraag contact hulp advies"},{"url":"over-ons.html","title":"Over StekkerSlim","desc":"Wie is StekkerSlim?","tags":"over ons Remy StekkerSlim"}, {"url": "sluipverbruik-meten-oplossen.html", "title": "Sluipverbruik meten en oplossen", "desc": "Spoor verborgen stroomvreters op in huis", "tags": "sluipverbruik standby stroomvreters meten opsporen P1 meter energiemeter verbruik"}, {"url": "thuisbatterij-simuleren-home-assistant.html", "title": "Thuisbatterij simuleren in Home Assistant", "desc": "Test met battery_sim op je eigen P1-data", "tags": "Home Assistant thuisbatterij simuleren battery_sim HACS P1 data testen gratis"}, {"url": "tapo-p115-p410m-review.html", "title": "Tapo P115 vs P410M review", "desc": "Twee slimme stekkers van Tapo getest", "tags": "Tapo P115 P410M slimme stekker review test energiemeting"}, {"url": "tapo-p115-p410m-eindoordeel.html", "title": "Tapo P115 vs P410M eindoordeel", "desc": "Welke Tapo-stekker moet je kopen?", "tags": "Tapo P115 P410M eindoordeel vergelijking slimme stekker kopen"}];
 var _icons={"calculator":"🧮","smarthome":"🏠","home":"🏠","blog":"📝","thuis":"🔋","slimme":"⚡","beste":"⚡","plug":"🔌","warm":"🌡️","dynamisch":"📈","energie":"💡","saldering":"☀️","tapo":"⚡","over":"👤","vragen":"❓"};
 function _icon(u){for(var k in _icons){if(u.indexOf(k)>-1)return _icons[k];}return "📄";}
 function _hl(t,q){if(!q)return t;var r=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');return t.replace(r,'<mark>$1</mark>');}

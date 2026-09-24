@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Project Overzicht
-*Laatst bijgewerkt: 5 augustus 2026*
+*Laatst bijgewerkt: 24 september 2026*
 
 ## Wat is dit?
 Statische HTML/CSS website over energie besparen voor Nederlandse gezinnen. Geen framework, geen build-stap — losse `.html` bestanden via GitHub Pages op **stekkerslim.nl**.
@@ -15,6 +15,80 @@ Eigenaar: Remy Egberts | Email: info@stekkerslim.nl | GitHub: Remyster/stekkersl
 ```
 Fonts: `Outfit` (headings) + `DM Sans` (body) via Google Fonts.
 GA4: `G-RKF36BF7DB` — staat in alle HTML bestanden.
+
+---
+
+## Contentstrategie — smarthome-cluster prioriteit (24 sept 2026)
+
+Search Console-analyse (16 mnd) liet zien: de thuisbatterij/dynamisch-contract/
+energiecontract-vergelijker-pagina's — waar het meeste contentwerk in zit —
+trekken vrijwel geen organisch verkeer. Niet door slechte titels/meta, maar
+omdat de hoofdzoektermen ("thuisbatterij vergelijken", "dynamisch energiecontract
+vergelijken") gedomineerd worden door Frank Energie, Gaslicht.com, Consumentenbond,
+EasySwitch en Energienerds.nl. StekkerSlim staat daar niet in de top 9 — met
+2-3 uur/week onderhoud niet in te halen.
+
+Wat wél werkt: `smarthome-p1-meter.html` (HomeWizard P1-meter + Home Assistant)
+staat op **#4** voor "p1 meter home assistant koppelen", tussen kleine
+onafhankelijke smarthome-blogs — een heel andere, winbare concurrentieklasse.
+44 van de 130 klikken over 16 maanden komen van deze ene pagina.
+
+**Gevolg voor nieuwe content en ideation (blog-pipeline, social-scan):**
+prioriteer onderwerpen in het Home Assistant / P1-meter / smarthome-techniek-
+cluster boven nieuwe thuisbatterij- of dynamisch-contract-vergelijkingscontent.
+Bestaande thuisbatterij-pagina's laten staan (kosten geen extra tijd), maar er
+niet nieuw op inzetten. HomeWizard- en Coolblue-affiliate zijn al live (zie
+hieronder) — vooral relevant om in nieuwe smarthome-content te verwerken.
+Volledige analyse: `Remy-Vault/Projecten/StekkerSlim.md`, log 24-09-2026.
+
+### De richting in één regel
+**We zijn geen energievergelijker. We zijn de site die uitlegt hoe je je eigen
+energieverbruik meet en stuurt — met een P1-meter, Home Assistant en slimme
+apparaten — en die eerlijk zegt wanneer iets niet loont.**
+
+Dat is geen nieuwe missie maar een scherpere: het is waar de site al wint en waar
+Remy's eigen setup het echte materiaal levert. De affiliate-inkomsten blijven uit
+contract- en productpartners komen, maar het *verkeer* moet uit de smarthome-hoek
+komen. De CTA's gaan dus ín de smarthome-content, niet in vergelijkingspagina's
+die niet gevonden worden.
+
+### Beslisregels voor een nieuw idee
+Loop deze in volgorde af. Twijfel bij 1 of 2 betekent: niet doen.
+
+1. **Kan een kleine onafhankelijke site hier ranken?** Als de top 10 vol staat met
+   Frank Energie, Gaslicht.com, Consumentenbond, EasySwitch of Energienerds: nee.
+   Staan er blogs als Smarthomegids.nl, SlimHuys of HAProfs: ja, dat is onze klasse.
+2. **Kan Remy dit uit eigen ervaring schrijven?** Eigen metingen, screenshots, een
+   fout die hij zelf maakte. Zo niet, dan wordt het navertelde uitleg en daar
+   onderscheiden we ons niet mee.
+3. **Versterkt het het cluster?** Kan het minstens twee bestaande smarthome-pagina's
+   in- en uitlinken? Losse pagina's buiten het cluster helpen niemand.
+4. **Pas daarna:** kan er een affiliate-CTA in die eerlijk past bij de inhoud?
+   Dit is stap 4, niet stap 1. Een pagina die niet gevonden wordt, converteert nul.
+
+### Wat we bewust níet meer doen
+- Nieuwe vergelijkingspagina's voor thuisbatterijen, energiecontracten of leveranciers.
+- Bestaande thuisbatterij-pagina's verder uitbreiden of herschrijven, tenzij er een
+  feitelijke fout of verouderde prijs in staat (dat blijft `/qa-audit`-werk).
+- Content kiezen op affiliate-commissie in plaats van op vindbaarheid.
+
+### Wat we in plaats daarvan doen
+- **Bestaande winnaars dieper maken.** Rankt een pagina, dan is hij de investering
+  waard. `smarthome-p1-meter.html` is op 24 sept van 1392 naar 2908 woorden gegaan
+  precies om deze reden. Dit gaat vóór nieuwe pagina's schrijven.
+- **Eigen bewijs toevoegen.** De smarthome-pagina's zijn nu sterk op uitleg en zwak
+  op eigen meetdata. Screenshots en cijfers uit Remy's eigen Home Assistant zijn het
+  belangrijkste dat ontbreekt, en het enige wat de grote sites niet kunnen kopiëren.
+- **Het cluster uitbreiden langs praktische problemen**, niet langs zoekwoorden:
+  waar lopen mensen vast met een P1-meter, ESPHome, Zigbee, een warmtepomp of een
+  laadpaal in Home Assistant.
+
+### Wanneer herzien we dit?
+Opnieuw tegen de data houden bij de volgende Search Console-analyse, en in elk geval
+als een van deze dingen gebeurt: het smarthome-cluster groeit niet in klikken over
+~3 maanden (dan is de aanname fout), of een thuisbatterij-pagina begint alsnog
+spontaan te ranken (dan was de concurrentie-inschatting te pessimistisch). De
+nulmeting is: 130 klikken over 16 maanden, waarvan 44 van `smarthome-p1-meter.html`.
 
 ---
 
@@ -123,6 +197,10 @@ Independer, Eneco, Milieucentraal
 | Thuisbatterij kopen beslisvolgorde | `saldering-2027-thuisbatterij-beslisvolgorde.html` | Live — gepubliceerd 28 juli 2026, titel herzien 29 juli 2026 |
 | Zonnepanelen onderpresteren | `zonnepanelen-onderpresteren.html` | Live — gepubliceerd 24 augustus 2026 |
 | Zonnestroom zelf gebruiken zonder thuisbatterij | `zonnestroom-zelf-gebruiken-zonder-thuisbatterij.html` | Live — gepubliceerd 9 september 2026 |
+| Indevolt SolidFlex 3000 AC review deel 1 | `indevolt-solidflex-3000-review.html` | Live — reviewsamenwerking, affiliate Awin 110350 |
+| Indevolt SolidFlex 3000 AC app-review deel 2 | `indevolt-solidflex-3000-app-review.html` | Live — gepubliceerd 26 augustus 2026 |
+| Sluipverbruik meten en oplossen | `sluipverbruik-meten-oplossen.html` | Live — gepubliceerd 2 september 2026 |
+| Misleidende thuisbatterij-verkoop herkennen | `misleidende-thuisbatterij-verkoop-herkennen.html` | Live — gepubliceerd 23 september 2026, bewust zonder affiliate-link |
 | Over ons | `over-ons.html` | Live |
 | Privacy | `privacy.html` | Live |
 | Vragen | `vragen.html` | Live |
@@ -131,6 +209,21 @@ Independer, Eneco, Milieucentraal
 
 ## Wat er recent gedaan is
 *(meest recent bovenaan)*
+
+### 24 september 2026 — Site herbouwd rond het smarthome-cluster
+
+De contentstrategie hierboven was gedocumenteerd maar nog nergens in de site zelf doorgevoerd. Dat is nu gedaan. Kern van het probleem: de winnende pagina (`smarthome-p1-meter.html`, #4 in Google, 44 van de 130 klikken) was met 1392 woorden een van de dunste artikelen, kreeg weinig interne links, en stond nergens als hoofdingang — terwijl de niet-rankende thuisbatterij/saldering-pagina's alle prominente posities hadden.
+
+- **Smarthome-dropdown in de nav, sitebreed (45 pagina's).** De losse link `Smarthome` → dropdown met P1 meter + Home Assistant, Home Assistant automatiseren, Sluipverbruik opsporen, Beste slimme stekkers, Slimme thermostaat, Alle smarthome-producten. Mobiel menu idem. Gevolg: `smarthome-p1-meter.html` ging van 28 naar 46 inkomende links, `homeassistant-energie-besparen.html` van 17 naar 46, `sluipverbruik-meten-oplossen.html` van 5 naar 46.
+- **Latente nav-bug gevonden en gefixt.** Een dropdown heeft markup + CSS + JS nodig. Op 7 pagina's ontbrak de `.nav-dropdown`-CSS en op 6 de hover-JS, omdat die pagina's nooit een dropdown hadden gehad (hun `Calculators` was een gewone link). Zonder die fix waren de submenu-links daar als losse zichtbare links in de navbalk gevallen. Beide toegevoegd; alle 74 inline JS-blokken en 22 JSON-LD-blokken daarna gevalideerd (`node --check` / `json.loads`), 0 fouten. Visueel gecontroleerd in Chrome op index.html en blog.html.
+- **`smarthome-p1-meter.html` uitgebreid: 1392 → 2908 woorden.** Nieuw: DSMR-versietabel (2.2/3.0 en 4.x leveren geen voeding via de P1-poort en hebben dus een losse USB-voeding nodig, 5.0+ wel; data elke 10 sec vs elke seconde), sectie over P1-splitters (passief vs actief, HomeWizard actieve splitter €27,95 voor 3 poorten), troubleshooting in 6 stappen (geen data, integratie niet gevonden, unavailable-sensor, wifi in de meterkast, gas blijft leeg, afwijking t.o.v. omvormer), en een FAQ met 6 vragen + `FAQPage`-schema. Alle technische claims geverifieerd via HomeWizard, Zuidwijk en de DSMR-specificatie — niet uit het hoofd.
+- **Feitelijke correctie:** de P1-poort werd "RJ11" genoemd; het is een RJ12-aansluiting met 6 pinnen (lijkt op een telefoonstekker, vandaar de verwarring).
+- **Homepage geherprioriteerd.** Hero-CTA nu P1 meter + Home Assistant (calculator naar secundair), thema-ingangen omgedraaid (P1+HA eerst met groene rand, thuisbatterij naar derde), "Populaire artikelen" bevatte drie pagina's die vrijwel niemand leest → nu P1-meter (featured) + sluipverbruik + saldering. Title/description/OG herschreven naar de smarthome-hoek. **Ook een echt gat gedicht:** `energiebespaar-calculator.html` stond sinds 4 augustus nergens in het calculator-raster op de homepage — nu de uitgelichte eerste kaart.
+- **blog.html:** de twee smarthome-secties naar boven (stonden 4e en 5e), filterbalk met Smarthome vooraan, "Start hier"-tegels leiden nu met de P1-meter-gids.
+- **Interne links in de cluster gedicht:** `smarthome-uitleg.html` en `smart-lampen.html` hadden geen "Meer lezen"-blok en linkten niet naar P1-meter/Home Assistant — toegevoegd in het bestaande pill-patroon. `thuisbatterij-simuleren-home-assistant.html` linkte 3× naar thuisbatterij-pagina's en 1× naar de cluster — omgedraaid. `_SP`-zoekarray: 4 ontbrekende smarthome-pagina's toegevoegd op 42 pagina's (alle arrays daarna gevalideerd als JSON).
+- **Verouderde tekst gefixt:** "nog ~5 maanden tot saldering stopt" → "~3 maanden" op 3 pagina's. Let op: deze tekst wordt client-side door het TreeWalker-countdown-script overschreven, dus het was geen zichtbare bug — alleen de ruwe HTML was verouderd.
+- **sitemap.xml:** lastmod alleen gebumpt voor de 9 pagina's met écht zichtbare inhoudswijziging, niet voor de 37 met alleen nav/`_SP`-wijzigingen — conform de les uit het lastmod-incident van 8 augustus. Sitemap blijft geldig XML, 46 URL's, 15 verschillende lastmod-datums.
+- **Los hiervan gevonden en gefixt:** `thuisbatterij-energielabel-2026.html` miste een `</div>` — `article-body` (max-width 800px) werd nooit gesloten, waardoor de hele onderkant van de pagina inclusief de footer in die 800px-container geperst werd. Dit stond al vóór deze sessie in de repo. Alle 51 pagina's zijn nu div-gebalanceerd.
 
 ### 7 september 2026 — Site Guardian-pipeline ronde 1: prijs- en productstatusfixes
 
@@ -315,13 +408,19 @@ Externe AI-pipeline (Gemini → Perplexity → Grok → Nimble → Claude Code).
 ### URGENT — volgende sessie fixen
 *(geen open urgent items)*
 
+### Nog te doen — smarthome-cluster (prioriteit sinds 24 sept 2026)
+- **Indexering aanvragen (géén sitemap-resubmit)** voor `smarthome-p1-meter.html` als eerste, daarna eventueel `index.html` en `blog.html`. Er zijn geen URL's bijgekomen — nog steeds 46 — dus resubmitten heeft geen functie; zie de checklist "Bestaande pagina bijgewerkt" in `Kennisbank/seo-richtlijnen.md`. De overige 6 gewijzigde pagina's kregen alleen een paar links erbij; die zijn het dagquotum niet waard
+- **Volgende content hoort in dit cluster.** Kandidaten die logisch volgen uit de uitgebreide P1-pagina: eigen meetdata/screenshots uit Remy's setup toevoegen (de pagina is nu sterk op uitleg, zwak op eigen bewijs), en de placeholder "Mijn eigen resultaten" in `thuisbatterij-simuleren-home-assistant.html` eindelijk vullen — dat is nog steeds een leeg blok op een cluster-pagina
+- **`dateModified` in de Article-schema's loopt op 16 pagina's uit de pas met `sitemap.xml`** (bijv. `terugleverkosten.html`: schema 2026-03-01, sitemap 2026-08-08). Dit is oude drift van eerdere sessies, niet van 24 sept — de 9 pagina's van die ronde zijn wél in sync. **Niet blind gelijktrekken:** bij `plug-in-batterij-laden.html` is het schema juist nieuwer dan de sitemap (08-12 vs 08-08), dus per pagina bekijken welke van de twee de echte datum is. Kandidaat voor een aparte opruimronde, niet voor een bulk-actie
+- **`_SP`-zoekarray mist nog 9 pagina's** (indevolt ×2, misleidende, netcongestie, stroomprijs-record, wasmachine, zonnepanelen-onderpresteren, zonnestroom-zelf-gebruiken, thuisbatterij-energielabel/-zonder-zonnepanelen). Hoort bij de geplande `search-index.js`-refactor, niet nog een keer 42 bestanden patchen
+
 ### Nog te doen
 - CVtotaal (Daisycon 14618): approved maar links nog aanvragen — toevoegen zodra links binnen zijn
 - Pricewise (Daisycon 18646): goedgekeurd maar nog niet op site toegevoegd
 - Tado (Awin 86413): nog pending
 - DMARC/SPF fix nog te doen in Hostnet DNS (p=reject → p=none + SPF include:_spf.google.com)
 - smarthome-p1-meter.html Zigbee card: besloten puur informatief te houden, geen knop nodig
-- Sitemap resubmitten na recente pushes (Remy doet dit zelf via Search Console)
+- Sitemap resubmitten: alleen nodig als er URL's zijn bijgekomen of verwijderd, niet na elke push met tekstwijzigingen (Remy doet dit zelf via Search Console)
 
 ### Gedaan (24 juli 2026)
 - ✅ Redesign: index.html, energiecontract-vergelijken-2026.html, thuisbatterij-top5-2026.html

@@ -66,6 +66,22 @@ ESPHome, warmtepompen, airco, boilers, laadpalen, en de praktische grenzen daarv
 Voor NIEUW TERREIN mag je ook net buiten dit rijtje kijken, zolang het past bij
 "een Nederlands huishouden dat slimmer met energie en apparaten wil omgaan".
 
+## BEKENDE PRESTATIEDATA — WEEG DIT MEE BIJ PRIORITERING (24 sept 2026)
+Dit is gemeten data uit Search Console en live zoekresultaten, geen aanname:
+- De pagina's over thuisbatterij vergelijken en dynamisch contract vergelijken
+  hebben in 16 maanden vrijwel 0 klikken. Voor die hoofdzoektermen staan Frank
+  Energie, Gaslicht.com, Consumentenbond, EasySwitch en Energienerds.nl niet
+  te verslaan met het huidige tempo.
+- `smarthome-p1-meter.html` (HomeWizard P1-meter + Home Assistant) staat op #4
+  voor "p1 meter home assistant koppelen", tussen kleine onafhankelijke
+  smarthome-blogs — een winbare concurrentieklasse, en verreweg de grootste
+  trafficbron van de site (44 van de 130 klikken/16mnd).
+Geef daarom ideeën binnen het Home Assistant/P1-meter/smarthome-techniek-cluster
+een streepje voor boven nieuwe thuisbatterij- of energiecontract-vergelijkingsideeën,
+tenzij het externe signaal voor zo'n idee ongewoon sterk is. Dit is de enige
+uitzondering op de regel hieronder dat je geen zoekdata hebt — deze cijfers zijn
+wel geverifieerd en mag je citeren.
+
 ## WAT JE OPLEVERT: 5 IDEEEN, IN TWEE SOORTEN
 
 Niet 10 ideeen meer. Vijf, maar beter onderbouwd:
@@ -187,6 +203,22 @@ Dezelfde clusters als de site: zon, saldering, batterijen, dynamische contracten
 P1 en monitoring, slimme stekkers, Home Assistant, grootverbruikers in huis.
 Voor NIEUW TERREIN mag je daarbuiten kijken, zolang het past bij een Nederlands
 huishouden dat slimmer met energie omgaat.
+
+## BEKENDE PRESTATIEDATA — WEEG DIT MEE BIJ PRIORITERING (24 sept 2026)
+Dit is gemeten data uit Search Console en live zoekresultaten, geen aanname:
+- De pagina's over thuisbatterij vergelijken en dynamisch contract vergelijken
+  hebben in 16 maanden vrijwel 0 klikken. Voor die hoofdzoektermen staan Frank
+  Energie, Gaslicht.com, Consumentenbond, EasySwitch en Energienerds.nl niet
+  te verslaan met het huidige tempo.
+- `smarthome-p1-meter.html` (HomeWizard P1-meter + Home Assistant) staat op #4
+  voor "p1 meter home assistant koppelen", tussen kleine onafhankelijke
+  smarthome-blogs — een winbare concurrentieklasse, en verreweg de grootste
+  trafficbron van de site (44 van de 130 klikken/16mnd).
+Geef daarom ideeën binnen het Home Assistant/P1-meter/smarthome-techniek-cluster
+een streepje voor boven nieuwe thuisbatterij- of energiecontract-vergelijkingsideeën,
+tenzij het externe signaal voor zo'n idee ongewoon sterk is. Dit is de enige
+uitzondering op de regel hieronder dat je geen zoekdata hebt — deze cijfers zijn
+wel geverifieerd en mag je citeren.
 
 ## WAT JE OPLEVERT: 5 IDEEEN, IN TWEE SOORTEN
 

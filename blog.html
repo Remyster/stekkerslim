@@ -108,6 +108,14 @@
     .filter-btn.active{background:var(--groen);border-color:var(--groen);color:var(--navy)}
     .card-thumb{font-size:1.3rem;width:42px;height:42px;background:rgba(0,209,122,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
     .section[style*="none"]{display:none!important}
+  
+    .nav-dropdown{position:relative}
+    .nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}
+    .nav-dropdown>a::after{content:'▾';font-size:.75rem}
+    .nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;padding-top:12px;z-index:200;border:1px solid var(--grijs-licht)}
+    .nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}
+    .nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}
+    .nav-dropdown-menu.open{display:block}
   </style>
 </head>
 <body>
@@ -118,7 +126,17 @@
     <ul class="nav-links">
       <li><a href="index.html#calculators">Calculators</a></li>
       <li><a href="blog.html">Blog</a></li>
-      <li><a href="smarthome-producten.html">Smarthome</a></li>
+      <li class="nav-dropdown">
+        <a href="smarthome-producten.html">Smarthome</a>
+        <div class="nav-dropdown-menu">
+          <a href="smarthome-p1-meter.html">📡 P1 meter + Home Assistant</a>
+          <a href="homeassistant-energie-besparen.html">🏠 Home Assistant automatiseren</a>
+          <a href="sluipverbruik-meten-oplossen.html">🔍 Sluipverbruik opsporen</a>
+          <a href="beste-slimme-stekker-2026.html">🔌 Beste slimme stekkers</a>
+          <a href="slimme-thermostaat-installeren.html">🌡️ Slimme thermostaat</a>
+          <a href="smarthome-producten.html">🛒 Alle smarthome-producten</a>
+        </div>
+      </li>
       <li><a href="vragen.html">Stel een vraag</a></li>
       <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
     </ul>
@@ -154,6 +172,9 @@
   <a href="energiebespaar-calculator.html" onclick="closeMenu()">🔋 Energiebespaar calculator</a>
   <a href="blog.html" onclick="closeMenu()">📝 Blog & Artikelen</a>
   <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome</a>
+  <a href="smarthome-p1-meter.html" onclick="closeMenu()">📡 P1 meter + Home Assistant</a>
+  <a href="homeassistant-energie-besparen.html" onclick="closeMenu()">🏠 Home Assistant automatiseren</a>
+  <a href="sluipverbruik-meten-oplossen.html" onclick="closeMenu()">🔍 Sluipverbruik opsporen</a>
   <a href="slimme-stekkers.html" onclick="closeMenu()">🔌 Slimme stekkers</a>
   <a href="smart-lampen.html" onclick="closeMenu()">💡 Smart lampen</a>
   <a href="smarthome-uitleg.html" onclick="closeMenu()">📖 Uitleg protocollen</a>
@@ -163,7 +184,7 @@
 </div>
 
 <div class="urgency-banner">
-  ⚠️ Salderingsregeling stopt op 1 januari 2027 — nog ~5 maanden om te beslissen
+  ⚠️ Salderingsregeling stopt op 1 januari 2027 — nog ~3 maanden om te beslissen
 </div>
 
 <div class="page-hero">
@@ -175,30 +196,30 @@
 
   <div class="filter-bar" id="filterBar">
     <button class="filter-btn active" onclick="filterCat('all',this)">Alle artikelen</button>
+    <button class="filter-btn" onclick="filterCat('smarthome',this)">🏠 Smarthome</button>
     <button class="filter-btn" onclick="filterCat('zon',this)">☀️ Zonnepanelen</button>
     <button class="filter-btn" onclick="filterCat('batterij',this)">🔋 Thuisbatterij</button>
     <button class="filter-btn" onclick="filterCat('contract',this)">⚡ Contracten</button>
-    <button class="filter-btn" onclick="filterCat('smarthome',this)">🏠 Smarthome</button>
     <button class="filter-btn" onclick="filterCat('review',this)">🔬 Reviews</button>
     <button class="filter-btn" onclick="filterCat('uitleg',this)">📖 Uitleg</button>
   </div>
 
   <!-- START HIER -->
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 32px" class="start-hier-grid">
+    <a href="smarthome-p1-meter.html" style="background:var(--wit);border:2px solid var(--groen);border-radius:12px;padding:16px 18px;text-decoration:none;display:block">
+      <p style="font-size:0.72rem;font-weight:700;color:var(--groen);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Verbruik meten?</p>
+      <p style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.92rem;color:var(--navy);line-height:1.35;margin-bottom:6px">P1 meter koppelen aan Home Assistant — in 5 stappen</p>
+      <span style="font-size:0.82rem;color:var(--groen);font-weight:600">Lees dit eerst →</span>
+    </a>
     <a href="saldering-2027.html" style="background:var(--wit);border:2px solid var(--groen);border-radius:12px;padding:16px 18px;text-decoration:none;display:block">
       <p style="font-size:0.72rem;font-weight:700;color:var(--groen);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Zonnepanelen?</p>
       <p style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.92rem;color:var(--navy);line-height:1.35;margin-bottom:6px">Saldering stopt 1 jan 2027 — wat moet jij weten?</p>
-      <span style="font-size:0.82rem;color:var(--groen);font-weight:600">Lees dit eerst →</span>
+      <span style="font-size:0.82rem;color:var(--groen);font-weight:600">Bekijk de gevolgen →</span>
     </a>
     <a href="dynamisch-contract.html" style="background:var(--wit);border:2px solid var(--groen);border-radius:12px;padding:16px 18px;text-decoration:none;display:block">
       <p style="font-size:0.72rem;font-weight:700;color:var(--groen);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Energiecontract?</p>
       <p style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.92rem;color:var(--navy);line-height:1.35;margin-bottom:6px">Dynamisch contract: voor wie loont het écht?</p>
       <span style="font-size:0.82rem;color:var(--groen);font-weight:600">Bekijk eerlijke rekensom →</span>
-    </a>
-    <a href="smarthome-producten.html" style="background:var(--wit);border:2px solid var(--groen);border-radius:12px;padding:16px 18px;text-decoration:none;display:block">
-      <p style="font-size:0.72rem;font-weight:700;color:var(--groen);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Smarthome?</p>
-      <p style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.92rem;color:var(--navy);line-height:1.35;margin-bottom:6px">Slimme stekker, P1 meter of thuisbatterij — wat eerste?</p>
-      <span style="font-size:0.82rem;color:var(--groen);font-weight:600">Zie keuzehulp →</span>
     </a>
   </div>
   <style>@media(max-width:680px){.start-hier-grid{grid-template-columns:1fr!important}}</style>
@@ -209,6 +230,75 @@
     <h2><a href="indevolt-solidflex-3000-app-review.html">Indevolt SolidFlex 3000 AC: de app grondig getest (deel 2)</a></h2>
     <p>De app uitgelegd, wat "Last" en "Opwek" echt betekenen, de AI-modus getest, communicatiestabiliteit en koppeling met Home Assistant. Inclusief wat we nog niet zeker weten. Deel 2 van 3.</p>
     <a href="indevolt-solidflex-3000-app-review.html" class="btn-primary">Lees deel 2 →</a>
+  </div>
+
+    <!-- SMARTHOME OVERZICHTEN (hub-/vergelijkingspagina's per categorie, geen losse artikelen) -->
+  <div class="section" data-cat="smarthome">
+    <div class="section-title">🏠 Smarthome-overzichten</div>
+    <div class="blog-grid">
+      <a href="smarthome-producten.html" class="blog-card">
+        <div class="tag">Overzicht</div>
+        <h3>Smarthome producten voor energiebesparing — per categorie</h3>
+        <p>De beste keuze per productcategorie: stekkers, lampen, meters en meer.</p>
+      </a>
+      <a href="slimme-stekkers.html" class="blog-card">
+        <div class="tag">Overzicht</div>
+        <h3>Slimme stekkers per merk vergelijken</h3>
+        <p>Tapo, HomeWizard, EVE Matter of budget — overzicht met prijzen en koop-links.</p>
+      </a>
+      <a href="smart-lampen.html" class="blog-card">
+        <div class="tag">Overzicht</div>
+        <h3>Smart lampen vergelijken — E27 &amp; GU10</h3>
+        <p>WiZ, Tapo, Philips Hue en budget-opties naast elkaar.</p>
+      </a>
+      <a href="smarthome-uitleg.html" class="blog-card">
+        <div class="tag">Overzicht</div>
+        <h3>WiFi, Zigbee of Matter — protocollen uitgelegd</h3>
+        <p>Welk platform past bij jouw smarthome-opzet?</p>
+      </a>
+    </div>
+  </div>
+
+    <!-- SMARTHOME & DIY -->
+  <div class="section" data-cat="smarthome">
+    <div class="section-title">🏠 Smarthome &amp; DIY</div>
+    <div class="blog-grid">
+      <a href="sluipverbruik-meten-oplossen.html" class="blog-card">
+        <div class="tag">Smarthome</div>
+        <h3>Sluipverbruik meten en oplossen: het praktische stappenplan</h3>
+        <p>In 5 stappen sluipverbruik opsporen met een P1-meter en energiemeter, veilig en betrouwbaar.</p>
+      </a>
+      <a href="thuisbatterij-simuleren-home-assistant.html" class="blog-card">
+        <div class="tag">Smarthome</div>
+        <h3>Thuisbatterij simuleren in Home Assistant: gratis met je eigen data</h3>
+        <p>Test met battery_sim of een batterij loont, op basis van jouw eigen P1-data.</p>
+      </a>
+      <a href="beste-slimme-stekker-2026.html" class="blog-card">
+        <div class="tag">Smarthome</div>
+        <h3>Beste slimme stekkers 2026 — welke moet je écht hebben?</h3>
+        <p>WiFi vs Zigbee, 10A vs 16A, HomeWizard vs Tapo. Eerlijk vergeleken.</p>
+      </a>
+      <a href="kwartierprijzen-slimme-stekker.html" class="blog-card">
+        <div class="tag">Smarthome</div>
+        <h3>Kwartierprijzen + slimme stekker: automatisch besparen op dynamisch contract</h3>
+        <p>96 tarieven per dag — laat apparaten automatisch draaien op de goedkoopste kwartieren.</p>
+      </a>
+      <a href="smarthome-p1-meter.html" class="blog-card">
+        <div class="tag">Smarthome</div>
+        <h3>P1 meter koppelen aan Home Assistant — stap voor stap</h3>
+        <p>Zo doe je dat, inclusief automatiseringen.</p>
+      </a>
+      <a href="homeassistant-energie-besparen.html" class="blog-card">
+        <div class="tag">Smarthome</div>
+        <h3>Home Assistant energie besparen: peakshaving, boiler &amp; slimme automatiseringen</h3>
+        <p>Praktische automatiseringen die écht geld opleveren.</p>
+      </a>
+      <a href="slimme-thermostaat-installeren.html" class="blog-card">
+        <div class="tag">Smarthome</div>
+        <h3>Slimme thermostaat installeren — van Honeywell tot Tado</h3>
+        <p>Wat werkt écht voor gezinnen.</p>
+      </a>
+    </div>
   </div>
 
   <!-- ZONNEPANELEN & SALDERING -->
@@ -238,7 +328,7 @@
     </div>
   </div>
 
-  <!-- THUISBATTERIJ -->
+    <!-- THUISBATTERIJ -->
   <div class="section" data-cat="batterij">
     <div class="section-title">🔋 Thuisbatterij</div>
     <div class="blog-grid">
@@ -290,7 +380,7 @@
     </div>
   </div>
 
-  <!-- ENERGIECONTRACTEN -->
+    <!-- ENERGIECONTRACTEN -->
   <div class="section" data-cat="contract">
     <div class="section-title">⚡ Energiecontracten</div>
     <div class="blog-grid">
@@ -327,76 +417,7 @@
     </div>
   </div>
 
-  <!-- SMARTHOME OVERZICHTEN (hub-/vergelijkingspagina's per categorie, geen losse artikelen) -->
-  <div class="section" data-cat="smarthome">
-    <div class="section-title">🏠 Smarthome-overzichten</div>
-    <div class="blog-grid">
-      <a href="smarthome-producten.html" class="blog-card">
-        <div class="tag">Overzicht</div>
-        <h3>Smarthome producten voor energiebesparing — per categorie</h3>
-        <p>De beste keuze per productcategorie: stekkers, lampen, meters en meer.</p>
-      </a>
-      <a href="slimme-stekkers.html" class="blog-card">
-        <div class="tag">Overzicht</div>
-        <h3>Slimme stekkers per merk vergelijken</h3>
-        <p>Tapo, HomeWizard, EVE Matter of budget — overzicht met prijzen en koop-links.</p>
-      </a>
-      <a href="smart-lampen.html" class="blog-card">
-        <div class="tag">Overzicht</div>
-        <h3>Smart lampen vergelijken — E27 &amp; GU10</h3>
-        <p>WiZ, Tapo, Philips Hue en budget-opties naast elkaar.</p>
-      </a>
-      <a href="smarthome-uitleg.html" class="blog-card">
-        <div class="tag">Overzicht</div>
-        <h3>WiFi, Zigbee of Matter — protocollen uitgelegd</h3>
-        <p>Welk platform past bij jouw smarthome-opzet?</p>
-      </a>
-    </div>
-  </div>
-
-  <!-- SMARTHOME & DIY -->
-  <div class="section" data-cat="smarthome">
-    <div class="section-title">🏠 Smarthome &amp; DIY</div>
-    <div class="blog-grid">
-      <a href="sluipverbruik-meten-oplossen.html" class="blog-card">
-        <div class="tag">Smarthome</div>
-        <h3>Sluipverbruik meten en oplossen: het praktische stappenplan</h3>
-        <p>In 5 stappen sluipverbruik opsporen met een P1-meter en energiemeter, veilig en betrouwbaar.</p>
-      </a>
-      <a href="thuisbatterij-simuleren-home-assistant.html" class="blog-card">
-        <div class="tag">Smarthome</div>
-        <h3>Thuisbatterij simuleren in Home Assistant: gratis met je eigen data</h3>
-        <p>Test met battery_sim of een batterij loont, op basis van jouw eigen P1-data.</p>
-      </a>
-      <a href="beste-slimme-stekker-2026.html" class="blog-card">
-        <div class="tag">Smarthome</div>
-        <h3>Beste slimme stekkers 2026 — welke moet je écht hebben?</h3>
-        <p>WiFi vs Zigbee, 10A vs 16A, HomeWizard vs Tapo. Eerlijk vergeleken.</p>
-      </a>
-      <a href="kwartierprijzen-slimme-stekker.html" class="blog-card">
-        <div class="tag">Smarthome</div>
-        <h3>Kwartierprijzen + slimme stekker: automatisch besparen op dynamisch contract</h3>
-        <p>96 tarieven per dag — laat apparaten automatisch draaien op de goedkoopste kwartieren.</p>
-      </a>
-      <a href="smarthome-p1-meter.html" class="blog-card">
-        <div class="tag">Smarthome</div>
-        <h3>P1 meter koppelen aan Home Assistant — stap voor stap</h3>
-        <p>Zo doe je dat, inclusief automatiseringen.</p>
-      </a>
-      <a href="homeassistant-energie-besparen.html" class="blog-card">
-        <div class="tag">Smarthome</div>
-        <h3>Home Assistant energie besparen: peakshaving, boiler &amp; slimme automatiseringen</h3>
-        <p>Praktische automatiseringen die écht geld opleveren.</p>
-      </a>
-      <a href="slimme-thermostaat-installeren.html" class="blog-card">
-        <div class="tag">Smarthome</div>
-        <h3>Slimme thermostaat installeren — van Honeywell tot Tado</h3>
-        <p>Wat werkt écht voor gezinnen.</p>
-      </a>
-    </div>
-  </div>
-
-  <!-- GETEST & REVIEWS -->
+    <!-- GETEST & REVIEWS -->
   <div class="section" data-cat="review">
     <div class="section-title">🔬 Getest &amp; Reviews</div>
     <div class="blog-grid">
@@ -433,7 +454,7 @@
     </div>
   </div>
 
-  <!-- OVERIG -->
+    <!-- OVERIG -->
   <div class="section" data-cat="uitleg">
     <div class="section-title">📖 Uitleg &amp; Achtergrond</div>
     <div class="blog-grid">
@@ -556,5 +577,7 @@ function filterCat(cat,btn){
   var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vi');io.unobserve(x.target);}});},{threshold:.1});
   document.querySelectorAll('.highlight-box,.warning-box,.info-box,.cta-box,.product-card,.calc-card,.prod-card,.toc,.stap,.article-cta,.bottom-cta,.affiliate-section,.pill-links,.disclaimer-box').forEach(function(el){el.classList.add('rv');io.observe(el);});
 })();</script>
+
+<script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block"});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display=""},200)});m.addEventListener("mouseenter",function(){clearTimeout(t)});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display=""},200)});dd.querySelector("a").addEventListener("click",function(e){if(window.matchMedia("(hover:none)").matches){e.preventDefault();m.style.display=m.style.display==="block"?"":"block"}})})})();</script>
 </body>
 </html>
