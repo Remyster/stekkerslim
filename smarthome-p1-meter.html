@@ -150,7 +150,7 @@
     "author": {"@type": "Person", "name": "Remy Egberts"},
     "publisher": {"@type": "Organization", "name": "StekkerSlim.nl", "url": "https://stekkerslim.nl"},
     "datePublished": "2026-01-01",
-    "dateModified": "2026-09-24",
+    "dateModified": "2026-09-30",
     "url": "https://stekkerslim.nl/smarthome-p1-meter.html",
     "mainEntityOfPage": "https://stekkerslim.nl/smarthome-p1-meter.html"
   }
@@ -163,7 +163,7 @@
       {
         "@type": "Question",
         "name": "Werkt een P1 meter op elke Nederlandse slimme meter?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Ja, alle Nederlandse slimme meters hebben een P1-poort. Het verschil zit in de DSMR-versie. Bij DSMR 5.0 of hoger krijgt de dongle stroom uit de poort zelf en is het plug-and-play. Bij DSMR 4.2 en lager werkt het ook, maar moet je de dongle apart voeden via USB en heb je dus een stopcontact bij de meterkast nodig."}
+        "acceptedAnswer": {"@type": "Answer", "text": "Ja, alle Nederlandse slimme meters hebben een P1-poort. Het verschil zit in de DSMR-versie. Bij DSMR 5.0 of hoger krijgt de dongle 250mA stroom uit de poort zelf en is het plug-and-play. Bij DSMR 4.0/4.2 levert de poort ook stroom, maar beperkt tot 100mA, vaak te weinig voor een wifi-dongle. Bij DSMR 2.2/3.0 levert de poort helemaal geen stroom. In beide laatste gevallen moet je de dongle apart voeden via USB en heb je dus een stopcontact bij de meterkast nodig."}
       },
       {
         "@type": "Question",
@@ -359,13 +359,13 @@
         <tr style="border-bottom:1px solid var(--grijs-licht)">
           <td style="padding:10px 12px"><strong>4.0 / 4.2</strong></td>
           <td style="padding:10px 12px">elke 10 sec</td>
-          <td style="padding:10px 12px">Nee</td>
-          <td style="padding:10px 12px">Ook hier een losse USB-voeding. HomeWizard verkoopt daarvoor een aparte USB-C-adapterset.</td>
+          <td style="padding:10px 12px">Beperkt (max 100mA)</td>
+          <td style="padding:10px 12px">De poort levert wel stroom, maar 100mA is voor veel wifi-dongles te weinig. In de praktijk vaak alsnog een losse USB-voeding nodig. HomeWizard verkoopt daarvoor een aparte USB-C-adapterset.</td>
         </tr>
         <tr>
           <td style="padding:10px 12px"><strong>5.0 en hoger</strong></td>
           <td style="padding:10px 12px">elke seconde</td>
-          <td style="padding:10px 12px">Ja</td>
+          <td style="padding:10px 12px">Ja (250mA)</td>
           <td style="padding:10px 12px">Echt plug-and-play: kabel erin en klaar, geen stopcontact nodig.</td>
         </tr>
       </tbody>
@@ -461,7 +461,7 @@
   <p>In de praktijk gaat het bij dezelfde handvol dingen mis. Loop ze in deze volgorde af, want de bovenste zijn het vaakst de oorzaak.</p>
 
   <h3>1. Geen enkel lampje, geen data</h3>
-  <p>Negen van de tien keer een voedingsprobleem op een oudere meter. Heb je DSMR 4.2 of lager, dan komt er simpelweg geen stroom uit de P1-poort en moet je de dongle apart voeden via USB. Kijk dus eerst welke DSMR-versie je hebt voordat je aan de kabel gaat twijfelen.</p>
+  <p>Negen van de tien keer een voedingsprobleem op een oudere meter. Heb je DSMR 2.2 of 3.0, dan levert de P1-poort helemaal geen stroom. Heb je DSMR 4.0 of 4.2, dan levert de poort wel stroom, maar met een limiet van 100mA — te weinig voor veel wifi-dongles. In beide gevallen moet je de dongle dan apart voeden via USB. Kijk dus eerst welke DSMR-versie je hebt voordat je aan de kabel gaat twijfelen.</p>
 
   <h3>2. Home Assistant vindt de integratie niet automatisch</h3>
   <p>De automatische detectie werkt alleen als de P1 meter en je Home Assistant in hetzelfde netwerk zitten. Een apart gastnetwerk of een IoT-VLAN breekt dit. Voeg de integratie in dat geval handmatig toe en vul het IP-adres van de meter in. Dat IP vind je in de HomeWizard-app of in de DHCP-lijst van je router.</p>
@@ -564,7 +564,7 @@ action:
   <div class="faq-lijst">
     <details>
       <summary>Werkt een P1 meter op elke Nederlandse slimme meter?</summary>
-      <p>Ja, alle Nederlandse slimme meters hebben een P1-poort. Het verschil zit in de DSMR-versie. Bij DSMR 5.0 of hoger krijgt de dongle stroom uit de poort zelf en is het plug-and-play. Bij DSMR 4.2 en lager werkt het ook, maar moet je de dongle apart voeden via USB en heb je dus een stopcontact bij de meterkast nodig.</p>
+      <p>Ja, alle Nederlandse slimme meters hebben een P1-poort. Het verschil zit in de DSMR-versie. Bij DSMR 5.0 of hoger krijgt de dongle 250mA stroom uit de poort zelf en is het plug-and-play. Bij DSMR 4.0/4.2 levert de poort ook stroom, maar beperkt tot 100mA, vaak te weinig voor een wifi-dongle. Bij DSMR 2.2/3.0 levert de poort helemaal geen stroom. In beide laatste gevallen moet je de dongle apart voeden via USB en heb je dus een stopcontact bij de meterkast nodig.</p>
     </details>
     <details>
       <summary>Heb ik een abonnement nodig om een P1 meter met Home Assistant te gebruiken?</summary>
