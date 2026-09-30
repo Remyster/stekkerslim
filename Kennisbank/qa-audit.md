@@ -80,3 +80,57 @@ Het prijsverschil is dus terecht: draadloos met aparte ketelontvanger is goedkop
 Op `slimme-thermostaat-installeren.html` stond de T6R al correct gelabeld als draadloos — daar was niets mis.
 
 **Les: een groot prijsverschil onder één productnaam is vaker een verwisselde variant dan een verkeerde prijs.** Check bij zo'n signaal eerst of beide links wel hetzelfde artikel zijn (resolve de Amazon-shortlink en vergelijk de ASIN/producttitel) voordat je aan een prijs gaat sleutelen. `curl -I` op `amzn.to` faalt op SSL; WebFetch geeft de redirect-URL wel netjes terug.
+
+## Ronde 30 september 2026
+
+Script schoon: 60 affiliate-links bereikbaar, interne links, sitemap en afbeeldingen in orde.
+Alles hieronder kwam uit de handmatige browserronde.
+
+**Gefixt:**
+
+1. **Indevolt SolidFlex 3000 AC stond overal als vaste €849.** Op nl.indevolt.com is €849
+   de *actieprijs* met een doorgestreepte adviesprijs van €1.099. Naar €849–€1.099 op vier
+   productcards, in de vergelijkingstabel en in de €/kWh-chart (~€474 → ~€474–€613). In de
+   review stond letterlijk "Indevolt hanteert een adviesprijs van €849" — dat was dus
+   feitelijk onjuist en is herschreven.
+2. **Philips Hue GU10 Starter Pack stond op €178**, het vergelijkbare pakket bij Coolblue
+   (3 lampen + Bridge + dimmer) kost nu €155. Naar €155–€205, de spreiding over de drie
+   starterpakketten die Coolblue voert.
+3. **WiZ GU10 6-pack stond op €63, kost nu €84.** Naar €75–€90, ook in de twee lopende
+   zinnen die "6 spots voor €63" als argument gebruikten.
+4. **Marstek €1.150–€1.400 in `dynamisch-contract-zonnepanelen-thuisbatterij.html`** —
+   restant van de ronde van 7 september, toen 5 van de 6 bestanden zijn gelijkgetrokken.
+   Nu ook naar €1.150–€1.300.
+
+**Geverifieerd correct, niet aangepast:** HomeWizard P1 €24,95, P1-splitter €27,95 (op
+voorraad), Zendure €849–€1.089 (actie €849, doorgestreept €1.089 — range klopt precies),
+Indevolt SolidFlex 2000 ECO €769 (binnen ± €730–€770), Marstek Bol.com €1.209 en
+Marstek.nl €1.199 (beide binnen de bestaande ranges).
+
+### Les: de actieprijs-val is terugkerend, niet incidenteel
+Dit is de tweede ronde op rij waarin een leverancier een actieprijs voert die wij als vaste
+prijs of zelfs als "adviesprijs" hadden overgenomen (7 september Zendure, nu Indevolt).
+Het patroon is steeds hetzelfde: shop toont `€X` groot met `€Y` doorgestreept ernaast, wij
+noteren `€X`, de actie loopt af en de pagina staat te laag. **Kijk bij elke prijscheck of er
+een doorgestreepte prijs naast staat en neem dan altijd beide grenzen op.** Een te lage
+prijs is voor de bezoeker vervelender dan een te hoge: die klikt door en voelt zich
+misleid bij de checkout.
+
+### Les: de niet-batterijpagina's vallen buiten de standaard-spotcheck
+`smart-lampen.html` bleek 25–33% afwijkende Coolblue-prijzen te hebben. Die pagina zat nooit
+in de "belangrijkste producten"-selectie, omdat die selectie zich op thuisbatterijen en
+HomeWizard richtte. Nu het smarthome-cluster de contentprioriteit is, horen `smart-lampen`,
+`slimme-stekkers` en `beste-slimme-stekker-2026` standaard in de prijsronde. Coolblue-prijzen
+schuiven harder dan fabrikantenprijzen, dus daar zijn ranges nog belangrijker.
+
+### Les: het ds1.nl-deeplink-formaat werkt niet
+De AliExpress-knoppen in `beste-slimme-stekker-2026.html` en `slimme-stekkers.html` gebruiken
+`ds1.nl/c/?...&ws=<zoek-URL>`. De affiliate-tracking werkt (je landt met `af=419188` op
+AliExpress), maar de zoekopdracht gaat verloren: je komt op de **homepage**, niet op de
+zoekresultaten voor slimme stekkers. Daisycon geeft de `ws=`-waarde door als `cv=` maar past
+hem niet toe. Niet kapot, wel een slechte landing. Uitzoeken of Daisycon voor deze adverteerder
+een `dl=`-deeplinkparameter ondersteunt (zoals bij Zendure en Vandebron) en die dan gebruiken.
+
+**Indexering:** 11 van de 12 aangeboden (dagelimiet bij de 12e), de homepage stond al groen
+en is overgeslagen. `thuisbatterij-simuleren-home-assistant.html` schuift door.
+Commits: `42756db`, `4b314e4`.
