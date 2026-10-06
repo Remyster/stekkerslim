@@ -115,7 +115,8 @@ nulmeting is: 130 klikken over 16 maanden, waarvan 44 van `smarthome-p1-meter.ht
 | Amazon | Associates | `amazon.nl/dp/[ASIN]?tag=stekkerslim-21` — gebruik volledige link, niet amzn.to shortlinks |
 | Bol.com | 1510756 | `partner.bol.com/click/...` |
 | AliExpress | Daisycon 7630 | `ds1.nl/c/?si=7630&li=1354896&wi=419188` |
-| CVtotaal | Daisycon 14618 | ✅ APPROVED — links nog aanvragen |
+| Coen⁺ (voorheen CVtotaal) | Daisycon 14618 | `rkn3.net/c/?si=14618&li=1629338&wi=419188&ws=&dl=` — cv-ketels, warmtepompen, radiatoren, airco. 4–5% commissie, attributie 100 dagen |
+| Essent Laadpassen | Daisycon 19834 | `glp8.net/c/?si=19834&li=1847638&wi=419188&ws=` — €20 per lead, attributie 14 dagen. Geen deeplink mogelijk, alleen vaste tekstlinks/banners |
 | Feenstra | Awin 25642 (zonnestroomboiler) + tidd.ly shortlinks | Hybride warmtepomp: `tidd.ly/4nyh7bI` · Zonnepanelen: `tidd.ly/4nF1kYI` · Thuisbatterij: `tidd.ly/4tE0Q6i` · Zonnestroomboiler: `awin1.com/cread.php?awinmid=25642&awinaffid=2816288&campaign=Feenstra+NL` |
 | Vandebron | Daisycon 12134 | Dynamisch: `lt45.net/c/?si=12134&li=1535052&wi=419188&ws=&dl=energie%2Fenergiecontract%2Fdynamisch` · Variabel: `...variabel` · Vast: `...vast` |
 | Innova Energie | Daisycon 15501 | `fr135.net/c/?si=15501&li=1670745&wi=419188&ws=` |
@@ -133,13 +134,20 @@ nulmeting is: 130 klikken over 16 maanden, waarvan 44 van `smarthome-p1-meter.ht
 ⚠️ **Marstek Venus E 3.0 is NIET meer leverbaar via Amazon** (ASIN B0FN7SDXMR). Gebruik Bol.com (€1.389, affiliate) + Marstek.nl direct (€1.299, geen affiliate). Dit is doorgevoerd in plug-in-batterij-laden.html, thuisbatterij-top5-2026.html en thuisbatterij-plug-and-play-2026.html.
 
 ### Affiliate — PENDING
-- Vaillant (Daisycon 20260)
-- Essent Laadpassen (Daisycon 19834)
-- Tado (Awin 86413)
+- Pricewise Energie (Daisycon 18646) — **aangevraagd 6 okt 2026**, wacht op beoordeling door de adverteerder (duurt een paar dagen). De eerdere notitie "goedgekeurd juli 2026" klopte niet: de media Stekkerslim was nooit aangemeld bij deze campagne
+- Tado (Awin 86413) — status onbekend, Awin niet gecontroleerd sinds juli 2026
+
+### Affiliate — VERVALLEN
+- Vaillant (Daisycon 20260) — campagne bestaat niet meer, Daisycon geeft "Program not found" (gecontroleerd 6 okt 2026)
 
 ### Affiliate — GOEDGEKEURD (nieuw juli 2026)
-- Pricewise (Daisycon 18646) — goedgekeurd juli 2026, nog toe te voegen aan pagina's
 - Frank Energie (Daisycon 16978) — goedgekeurd juli 2026, al live via jf79.net
+
+⚠️ **Les (6 okt 2026):** de statussen in dit bestand liepen fors uit de pas met de
+werkelijkheid in Daisycon. CVtotaal was hernoemd naar Coen⁺ en niet aangemeld,
+Pricewise stond als "goedgekeurd" maar was nooit aangemeld, Essent Laadpassen stond als
+"pending" maar kon gewoon direct aangemeld worden, en Vaillant bestond niet meer.
+Controleer affiliate-status in Daisycon zelf voordat je hem hier overneemt.
 
 ### Review partnerships
 - **Indevolt SolidFlex 3000 AC** — product + P1 meter ontvangen, review live op `indevolt-solidflex-3000-review.html`. Affiliate live (Awin 110350) met kortingscode STEKKERSLIM5 (−5%), toegevoegd aan calculator-thuisbatterij.html (12 augustus 2026). Contract getekend als particulier (geen BTW/KvK).
@@ -417,9 +425,10 @@ Externe AI-pipeline (Gemini → Perplexity → Grok → Nimble → Claude Code).
 - **`_SP`-zoekarray mist nog 9 pagina's** (indevolt ×2, misleidende, netcongestie, stroomprijs-record, wasmachine, zonnepanelen-onderpresteren, zonnestroom-zelf-gebruiken, thuisbatterij-energielabel/-zonder-zonnepanelen). Hoort bij de geplande `search-index.js`-refactor, niet nog een keer 42 bestanden patchen
 
 ### Nog te doen
-- CVtotaal (Daisycon 14618): approved maar links nog aanvragen — toevoegen zodra links binnen zijn
-- Pricewise (Daisycon 18646): goedgekeurd maar nog niet op site toegevoegd
-- Tado (Awin 86413): nog pending
+- **Essent Laadpassen (19834): geplaatst op 6 okt 2026** in `calculator-laadpaal.html`, in een tip-box onder de bestaande alinea over snellaadtarieven
+- **Coen⁺ (Daisycon 14618): link binnen, bewust nergens geplaatst.** `calculator-warmtepomp.html` heeft al twee offerte-CTA's voor warmtepompen (Feenstra + Vattenfall); een derde installateur helpt de lezer niet en verwatert de keuze. Pas plaatsen als er een pagina komt waar cv-ketels of airco inhoudelijk centraal staan
+- Pricewise Energie (Daisycon 18646): aangevraagd 6 okt 2026, wacht op beoordeling — daarna link ophalen
+- Tado (Awin 86413): status nog te controleren. **Awin is voor Claude niet toegankelijk** (vraagt wachtwoord), dus dit moet Remy zelf doen
 - DMARC/SPF fix nog te doen in Hostnet DNS (p=reject → p=none + SPF include:_spf.google.com)
 - smarthome-p1-meter.html Zigbee card: besloten puur informatief te houden, geen knop nodig
 - Sitemap resubmitten: alleen nodig als er URL's zijn bijgekomen of verwijderd, niet na elke push met tekstwijzigingen (Remy doet dit zelf via Search Console)
