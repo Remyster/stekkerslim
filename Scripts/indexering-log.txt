@@ -63,3 +63,4 @@
 2026-09-30 calculator-zonnepanelen
 2026-09-30 energiebespaar-calculator
 2026-09-30 saldering-2027
+2026-10-06 thuisbatterij-simuleren-home-assistant
