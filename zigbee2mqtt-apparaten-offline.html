@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <!-- Google Analytics 4 — vervang G-RKF36BF7DB met jouw eigen Measurement ID via analytics.google.com -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKF36BF7DB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RKF36BF7DB');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Zigbee2MQTT apparaten offline in Home Assistant? Controleer eerst de MQTT-verbinding voordat je iets opnieuw koppelt. Zo vind je de echte oorzaak.">
+  <link rel="canonical" href="https://stekkerslim.nl/zigbee2mqtt-apparaten-offline.html">
+  <title>Zigbee2MQTT apparaten offline? Controleer eerst MQTT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--groen:#00D17A;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+    .page-hero{background:var(--navy);padding:56px 24px}
+    .page-hero-inner{max-width:800px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .article-tag{display:inline-block;background:rgba(255,210,63,0.2);color:var(--accent);padding:4px 12px;border-radius:99px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--wit);margin-bottom:16px;line-height:1.15}
+    .article-meta{color:rgba(255,255,255,0.4);font-size:0.82rem}
+    .urgency-banner{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:16px 20px;margin-top:24px;color:var(--wit);font-size:0.88rem}
+    .urgency-banner strong{color:#FCA5A5}
+    .article-body{max-width:800px;margin:0 auto;padding:56px 24px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin:40px 0 12px}
+    .article-body h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin:28px 0 8px}
+    .article-body p{color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:16px}
+    .article-body ul,.article-body ol{padding-left:24px;color:#374151;font-size:0.95rem;line-height:1.8;margin-bottom:16px}
+    .article-body li{margin-bottom:6px}
+    .highlight-box{background:var(--licht);border-left:4px solid var(--groen);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem}
+    .warning-box{background:rgba(255,210,63,0.1);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem}
+    .comparison-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.88rem}
+    .comparison-table th{background:var(--navy);color:var(--wit);padding:10px 14px;text-align:left}
+    .comparison-table td{padding:10px 14px;border-bottom:1px solid var(--grijs-licht)}
+    .comparison-table tr:last-child td{border-bottom:none}
+    .good{color:var(--groen);font-weight:700}.bad{color:#EF4444;font-weight:700}
+    .scenario-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:24px 0}
+    .scenario-card{border-radius:14px;padding:20px}
+    .scenario-card.voor{background:rgba(0,209,122,0.08);border:1px solid rgba(0,209,122,0.25)}
+    .scenario-card.na{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2)}
+    .scenario-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
+    .scenario-card.voor h4{color:var(--groen)}.scenario-card.na h4{color:#EF4444}
+    .scenario-card p{font-size:0.85rem;color:var(--grijs);margin:0}
+    .scenario-card .big-num{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;margin-bottom:4px}
+    .scenario-card.voor .big-num{color:var(--groen)}.scenario-card.na .big-num{color:#EF4444}
+    .action-list{display:flex;flex-direction:column;gap:12px;margin:24px 0}
+    .action-item{display:flex;gap:16px;align-items:flex-start;padding:16px;background:var(--licht);border-radius:12px}
+    .action-num{width:32px;height:32px;min-width:32px;background:var(--groen);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:900;font-size:0.9rem}
+    .action-item h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:4px}
+    .action-item p{font-size:0.83rem;color:var(--grijs);margin:0}
+    .toc{background:var(--licht);border-radius:14px;padding:24px;margin-bottom:40px}
+    .toc h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
+    .toc ol{padding-left:20px;font-size:0.88rem;line-height:2}
+    .toc a{color:var(--navy);text-decoration:none}.toc a:hover{color:var(--groen)}
+    .disclaimer-box{background:var(--licht);border-radius:12px;padding:16px 20px;font-size:0.82rem;color:var(--grijs);margin-top:40px;line-height:1.6}
+    .related-articles{background:var(--licht);padding:48px 24px}
+    .related-inner{max-width:800px;margin:0 auto}
+    .related-inner h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:20px}
+    .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .related-card{background:var(--wit);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:box-shadow .2s;display:block}
+    .related-card:hover{box-shadow:var(--shadow)}
+    .related-card .tag{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--groen);margin-bottom:6px}
+    .related-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;line-height:1.3}
+    .cta-section{background:var(--navy);padding:56px 24px;text-align:center}
+    .cta-section h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:var(--wit);margin-bottom:12px}
+    .cta-section p{color:rgba(255,255,255,.6);margin-bottom:24px}
+    .btn-primary{background:var(--groen);color:var(--navy);padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;display:inline-block;transition:transform .2s}
+    .btn-primary:hover{transform:translateY(-2px)}
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
+    @media(max-width:700px){.scenario-cards,.related-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:100%;padding-top:8px;left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}
+  
+    /* === ZOEKBALK === */
+    .nav-search-wrap{position:relative}
+    .nav-search-btn{background:none;border:none;cursor:pointer;padding:8px;color:var(--grijs);display:flex;align-items:center;transition:color .2s;border-radius:8px}
+    .nav-search-btn:hover,.nav-search-btn.open{color:var(--groen)}
+    .nav-search-btn svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .nav-search-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.25);z-index:199;backdrop-filter:blur(2px)}
+    .nav-search-overlay.open{display:block}
+    .nav-search-box{display:none;position:fixed;top:68px;left:50%;transform:translateX(-50%);width:min(600px,92vw);background:#fff;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.18);z-index:200;overflow:hidden}
+    .nav-search-box.open{display:block}
+    .nav-search-inner{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--grijs-licht)}
+    .nav-search-inner svg{width:20px;height:20px;stroke:var(--grijs);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    .nav-search-input{flex:1;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--navy);background:transparent}
+    .nav-search-input::placeholder{color:#aaa}
+    .nav-search-clear{background:none;border:none;cursor:pointer;color:var(--grijs);font-size:1.1rem;padding:0 4px;display:none}
+    .nav-search-clear.show{display:block}
+    .nav-search-results{max-height:400px;overflow-y:auto}
+    .nav-search-result{display:flex;align-items:flex-start;gap:12px;padding:12px 18px;text-decoration:none;color:var(--navy);transition:background .15s;border-bottom:1px solid rgba(0,0,0,0.04)}
+    .nav-search-result:last-child{border-bottom:none}
+    .nav-search-result:hover{background:var(--licht)}
+    .nsr-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
+    .nsr-content{}
+    .nsr-title{font-weight:600;font-size:0.88rem;color:var(--navy);margin-bottom:2px}
+    .nsr-title mark{background:rgba(0,209,122,0.2);color:var(--navy);border-radius:3px;padding:0 2px}
+    .nsr-desc{font-size:0.78rem;color:var(--grijs);line-height:1.4}
+    .nav-search-hint{padding:14px 18px;text-align:center;color:#aaa;font-size:0.82rem}
+    .nav-search-footer{padding:10px 18px;border-top:1px solid var(--grijs-licht);text-align:right;font-size:0.72rem;color:#bbb}
+    @media(max-width:600px){.nav-search-box{top:58px}}
+
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+    .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--wit);z-index:99;padding:16px;box-shadow:0 8px 32px rgba(0,0,0,.1);flex-direction:column;gap:4px}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{padding:12px 16px;color:var(--navy);text-decoration:none;font-weight:600;font-size:0.95rem;border-radius:10px;transition:background .2s}
+    .mobile-menu a:hover{background:var(--licht)}
+    .mobile-menu .mob-cta{background:var(--groen);color:var(--navy)!important;margin-top:8px;text-align:center}
+    @media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}
+  .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:rgba(11,22,40,0.97);backdrop-filter:blur(8px);padding:12px 20px;z-index:150;transform:translateY(110%);transition:transform .35s ease;border-top:2px solid var(--groen)}
+  .sticky-cta.show{transform:none}
+  .sticky-cta-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .sticky-cta-txt{color:rgba(255,255,255,0.85);font-size:0.85rem;font-weight:600}
+  .sticky-cta-txt small{display:block;color:rgba(255,255,255,0.4);font-weight:400;font-size:0.75rem}
+  .sticky-cta a.scta-btn{background:var(--groen);color:var(--navy);padding:11px 22px;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.88rem;text-decoration:none;white-space:nowrap}
+  .sticky-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;padding:4px}
+  @media(max-width:600px){.sticky-cta-txt small{display:none}}  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Zigbee2MQTT apparaten offline? Controleer eerst MQTT",
+    "description": "Meerdere Zigbee2MQTT apparaten tegelijk offline in Home Assistant? Zo controleer je per laag waar de keten breekt, voordat je herstart of opnieuw koppelt.",
+    "author": {
+      "@type": "Person",
+      "name": "Remy Egberts"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "StekkerSlim.nl",
+      "url": "https://stekkerslim.nl"
+    },
+    "datePublished": "2026-10-08",
+    "dateModified": "2026-10-08",
+    "url": "https://stekkerslim.nl/zigbee2mqtt-apparaten-offline.html",
+    "mainEntityOfPage": "https://stekkerslim.nl/zigbee2mqtt-apparaten-offline.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "StekkerSlim",
+        "item": "https://stekkerslim.nl"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Smarthome",
+        "item": "https://stekkerslim.nl/smarthome-producten.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Zigbee2MQTT apparaten offline",
+        "item": "https://stekkerslim.nl/zigbee2mqtt-apparaten-offline.html"
+      }
+    ]
+  }
+  </script>
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="StekkerSlim.nl" />
+  <meta property="og:title" content="Zigbee2MQTT apparaten offline? Controleer eerst MQTT" />
+  <meta property="og:description" content="Zigbee2MQTT apparaten offline in Home Assistant? Controleer eerst de MQTT-verbinding voordat je iets opnieuw koppelt. Zo vind je de echte oorzaak." />
+  <meta property="og:image" content="https://stekkerslim.nl/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://stekkerslim.nl/zigbee2mqtt-apparaten-offline.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://stekkerslim.nl/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Moet ik mijn Zigbee-apparaten opnieuw koppelen als ze offline staan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Niet als eerste stap. Controleer eerst of de hele keten werkt: Zigbee2MQTT, de MQTT-broker en de verbinding met Home Assistant. Meldt één apparaat zich daarna nog steeds niet, kijk dan eerst naar modelspecifieke opties zoals herconfigureren of het apparaat wakker maken. Pas daarna is opnieuw koppelen te overwegen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Waarom staat Zigbee2MQTT op online terwijl mijn sensoren niet updaten?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Zigbee2MQTT bewaart zijn bridge-status als retained bericht op de broker. Dat bericht krijg je direct te zien zodra je meeluistert, ook als Zigbee2MQTT intussen geen nieuwe berichten meer publiceert. Luister daarom naar het topic van een apparaat dat vaak meldt en kijk of er nieuwe berichten bijkomen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wat is het verschil tussen availability en verse data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Availability is een statuscheck met een ingestelde timeout. Verse data betekent dat er recent een nieuw bericht is aangekomen. Een sensor waarvan de waarde niet verandert, is ook geen bewijs dat hij is uitgevallen, want veel apparaten melden alleen bij een verandering of na een ingesteld interval."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Waarom gaan batterijapparaten niet snel offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Availability staat in Zigbee2MQTT standaard uit. Staat het aan, dan gelden volgens de documentatie (gecontroleerd op 8 oktober 2026) standaard 10 minuten voor actieve apparaten op netstroom en 25 uur voor passieve batterijapparaten. Passieve apparaten kunnen niet worden gepingd. Controleer de waarden in je eigen installatie."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hoeveel apparaten moeten tegelijk offline zijn voordat ik aan de keten denk?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Daar is geen vaste grens voor. Meerdere apparaten tegelijk is een aanwijzing voor een gedeelde oorzaak, geen bewijs. Zelf grijp ik in bij vijf of meer apparaten tegelijk, maar dat is een keuze voor mijn eigen netwerk van 32 apparaten."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Mag ik Zigbee2MQTT automatisch laten herstarten bij uitval?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Liever niet blind. Een herstartlus kan de oorzaak verbergen en je krijgt geen idee meer wat er mis ging. Begin met een melding en bewaar de logs. Kies je toch voor een automatische herstart, beperk die dan tot weinig pogingen, bijvoorbeeld één per halfuur zoals ik doe, en test hem voordat je erop vertrouwt."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="index.html#calculators">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
+          <a href="energiebespaar-calculator.html">🔋 Energiebespaar calculator</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li class="nav-dropdown">
+        <a href="smarthome-producten.html">Smarthome</a>
+        <div class="nav-dropdown-menu">
+          <a href="smarthome-p1-meter.html">📡 P1 meter + Home Assistant</a>
+          <a href="homeassistant-energie-besparen.html">🏠 Home Assistant automatiseren</a>
+          <a href="sluipverbruik-meten-oplossen.html">🔍 Sluipverbruik opsporen</a>
+          <a href="beste-slimme-stekker-2026.html">🔌 Beste slimme stekkers</a>
+          <a href="slimme-thermostaat-installeren.html">🌡️ Slimme thermostaat</a>
+          <a href="smarthome-producten.html">🛒 Alle smarthome-producten</a>
+        </div>
+      </li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+    <div class="nav-search-wrap" id="navSearchWrap">
+      <button class="nav-search-btn" id="navSearchBtn" onclick="navSearchToggle()" aria-label="Zoeken op StekkerSlim">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+    <div class="nav-search-overlay" id="navSearchOverlay" onclick="navSearchClose()"></div>
+    <div class="nav-search-box" id="navSearchBox">
+      <div class="nav-search-inner">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="nav-search-input" id="navSearchInput" type="text" placeholder="Zoek op stekkerslim.nl… (bijv. saldering, Zigbee, batterij)" oninput="navSearchQuery(this.value)" onkeydown="navSearchKey(event)" autocomplete="off" spellcheck="false">
+        <button class="nav-search-clear" id="navSearchClear" onclick="navSearchReset()" aria-label="Wissen">✕</button>
+      </div>
+      <div class="nav-search-results" id="navSearchResults">
+        <div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>
+      </div>
+      <div class="nav-search-footer">StekkerSlim.nl — eerlijk energieadvies</div>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="calculator-zonnepanelen.html" onclick="closeMenu()">☀️ Zonnepanelen</a>
+  <a href="calculator-thuisbatterij.html" onclick="closeMenu()">🔋 Thuisbatterij</a>
+  <a href="calculator-laadpaal.html" onclick="closeMenu()">🔌 Laadpaal</a>
+  <a href="calculator-energiekosten.html" onclick="closeMenu()">💡 Energiekosten</a>
+  <a href="calculator-warmtepomp.html" onclick="closeMenu()">🌡️ Warmtepomp</a>
+  <a href="energiebespaar-calculator.html" onclick="closeMenu()">🔋 Energiebespaar calculator</a>
+  <a href="blog.html" onclick="closeMenu()">📝 Blog & Artikelen</a>
+  <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome</a>
+  <a href="smarthome-p1-meter.html" onclick="closeMenu()">📡 P1 meter + Home Assistant</a>
+  <a href="homeassistant-energie-besparen.html" onclick="closeMenu()">🏠 Home Assistant automatiseren</a>
+  <a href="sluipverbruik-meten-oplossen.html" onclick="closeMenu()">🔍 Sluipverbruik opsporen</a>
+  <a href="slimme-stekkers.html" onclick="closeMenu()">🔌 Slimme stekkers</a>
+  <a href="smart-lampen.html" onclick="closeMenu()">💡 Smart lampen</a>
+  <a href="smarthome-uitleg.html" onclick="closeMenu()">📖 Uitleg protocollen</a>
+  <a href="vragen.html" onclick="closeMenu()">❓ Stel een vraag</a>
+  <a href="over-ons.html" onclick="closeMenu()">👋 Over ons</a>
+  <a href="index.html#vergelijken" class="mob-cta" onclick="closeMenu()">⚡ Vergelijk contracten</a>
+</div>
+
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="/">Home</a> › <a href="smarthome-producten.html">Smarthome</a></div>
+    <div class="article-tag">🔧 Storingsgids Home Assistant</div>
+    <h1>Zigbee2MQTT apparaten offline? Controleer eerst MQTT</h1>
+    <div class="article-meta">Gepubliceerd: 8 oktober 2026 · Leestijd: 8 minuten</div>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div style="background:var(--licht);border-radius:14px;padding:24px 28px;margin-bottom:32px;border-left:4px solid var(--groen)">
+    <p style="font-size:1.02rem;line-height:1.8;margin-bottom:12px">Je Zigbee2MQTT apparaten staan ineens offline in Home Assistant, en niet één maar een hele reeks tegelijk. Opnieuw koppelen voelt logisch, maar is zelden de eerste stap. Bij massale uitval kan de oorzaak in een gedeelde laag zitten, en dat hoeft het Zigbee-netwerk zelf niet te zijn.</p>
+    <p style="font-size:0.92rem;color:var(--grijs);margin-bottom:10px"><strong>Voor wie is dit?</strong> Voor iedereen met Zigbee2MQTT en een MQTT-broker bij wie meerdere apparaten tegelijk wegvallen. Meldt zich maar één apparaat niet, kijk dan naar de batterij of het bereik. Dit artikel helpt je dan niet verder.</p>
+  </div>
+
+  <div class="toc">
+    <h4>📋 Inhoud van dit artikel</h4>
+    <ol>
+      <li><a href="#keten">Zigbee2MQTT apparaten offline: waarom Zigbee niet altijd de boosdoener is</a></li>
+      <li><a href="#diagnose">Zigbee2MQTT apparaten offline: diagnose in 4 stappen</a></li>
+      <li><a href="#eigen-storing">Praktijkvoorbeeld: een valse Zigbee-storing bij mij thuis</a></li>
+      <li><a href="#herstellen">Veilig herstellen zonder te herkoppelen</a></li>
+      <li><a href="#preventie">Preventie: zorg dat je het merkt</a></li>
+      <li><a href="#faq">Veelgestelde vragen</a></li>
+    </ol>
+  </div>
+
+  <h2 id="keten">Zigbee2MQTT apparaten offline: waarom Zigbee niet altijd de boosdoener is</h2>
+  <p>Tussen je sensor en je dashboard zit een keten. Het apparaat praat met de <strong>coordinator</strong>, de Zigbee-adapter van je server (meestal een USB-stick, soms een netwerkadapter). Zigbee2MQTT vertaalt dat naar MQTT-berichten. Een <strong>MQTT-broker</strong>, meestal Mosquitto, bezorgt ze. De MQTT-integratie van Home Assistant maakt er entiteiten van.</p>
+
+  <div role="img" aria-label="Keten van Zigbee-apparaat via coordinator, Zigbee2MQTT en MQTT-broker naar Home Assistant" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:24px 0"><div style="background:var(--licht);border:1px solid var(--grijs-licht);border-radius:10px;padding:10px 12px;font-size:0.82rem;font-weight:600;text-align:center;flex:1 1 120px">Zigbee-apparaat</div><span style="color:var(--grijs);font-weight:700">→</span><div style="background:var(--licht);border:1px solid var(--grijs-licht);border-radius:10px;padding:10px 12px;font-size:0.82rem;font-weight:600;text-align:center;flex:1 1 120px">Zigbee-coordinator</div><span style="color:var(--grijs);font-weight:700">→</span><div style="background:var(--licht);border:1px solid var(--grijs-licht);border-radius:10px;padding:10px 12px;font-size:0.82rem;font-weight:600;text-align:center;flex:1 1 120px">Zigbee2MQTT</div><span style="color:var(--grijs);font-weight:700">→</span><div style="background:var(--licht);border:1px solid var(--grijs-licht);border-radius:10px;padding:10px 12px;font-size:0.82rem;font-weight:600;text-align:center;flex:1 1 120px">MQTT-broker</div><span style="color:var(--grijs);font-weight:700">→</span><div style="background:var(--licht);border:1px solid var(--grijs-licht);border-radius:10px;padding:10px 12px;font-size:0.82rem;font-weight:600;text-align:center;flex:1 1 120px">MQTT-integratie in Home Assistant</div></div>
+
+  <p>Valt een van die schakels uit, dan ziet het er in Home Assistant hetzelfde uit: entiteiten die niet beschikbaar zijn. Daardoor kan een broker die niet bereikbaar is aanvoelen als een kapot Zigbee-netwerk.</p>
+  <p>Eén apparaat dat wegvalt wijst eerder op dat apparaat zelf. Veel apparaten tegelijk wijzen op een gedeelde laag. Het bewijst niet welke: een vastgelopen Zigbee2MQTT of een losse USB-stick geeft hetzelfde beeld als een broker die niet bereikbaar is.</p>
+
+  <div class="highlight-box">
+    <strong>Let op:</strong> dit artikel gaat uit van Zigbee2MQTT met een MQTT-broker. Gebruik je ZHA, de ingebouwde Zigbee-integratie van Home Assistant, dan geldt dit verhaal niet een op een.
+  </div>
+
+  <h2 id="diagnose">Zigbee2MQTT apparaten offline: diagnose in 4 stappen</h2>
+  <p>Kopieer eerst de recente log van Zigbee2MQTT naar een tekstbestand. Dat kost een minuut en je hoeft later niet te raden wat er gebeurde. Noteer ook de tijd waarop het misging.</p>
+
+  <h3>Stap 1: één apparaat of het hele netwerk?</h3>
+  <p>Open de apparatenlijst in de Zigbee2MQTT-interface. Zit er één apparaat tussen dat zich al dagen niet meldt? Kijk dan naar de batterij, de afstand en of er een router in de buurt is. Een router is een Zigbee-apparaat op netstroom dat het signaal doorgeeft. Dan is dit artikel niet je pad.</p>
+  <p>Staan er meerdere apparaten tegelijk op offline of niet beschikbaar, ga dan door. Hoeveel is veel? Daar bestaat geen vaste grens voor. Bij mij is vijf tegelijk de drempel, maar dat is een keuze voor mijn eigen netwerk van 32 apparaten.</p>
+  <!-- FOTO: screenshot van de Zigbee2MQTT-apparatenlijst met meerdere apparaten tegelijk offline of lang geleden voor het laatst gezien | bron: Remy (screenshot uit de eigen Zigbee2MQTT-interface) -->
+
+  <h3>Stap 2: draait Zigbee2MQTT en is de broker bereikbaar?</h3>
+  <p>Kijk of de add-on of container van Zigbee2MQTT draait en of de interface reageert. Luister daarna zelf mee op de broker. In Home Assistant ga je naar Instellingen, Apparaten en diensten, open je de MQTT-integratie (of Mosquitto broker) en kies je Configureren. Daar vind je het veld om naar een topic te luisteren, in het Engels "Listen to a topic". Vul <code>zigbee2mqtt/bridge/state</code> in.</p>
+  <div class="warning-box">
+    <strong>Valkuil:</strong> die bridge-status staat als bewaard (retained) bericht op de broker. Je ziet hem dus meteen zodra je gaat luisteren, ook als Zigbee2MQTT intussen vastzit. "Online" is daarom geen bewijs dat er nu nieuwe apparaatberichten aankomen.
+  </div>
+  <!-- FOTO: screenshot van de MQTT-berichtenweergave met het topic zigbee2mqtt/bridge/state en de payload | bron: Remy (screenshot) -->
+
+  <h3>Stap 3: wat zeggen de logs?</h3>
+  <p>De documentatie van Zigbee2MQTT noemt <code>Not connected to MQTT server!</code> als teken dat Zigbee2MQTT de MQTT-server niet kan bereiken. Dat zegt wat er stuk is, niet waarom. Meldingen over de adapter of de seriële poort wijzen juist naar de coordinator en dus naar een andere laag.</p>
+  <p>Mijn eigen storingen begonnen met <code>MQTT error: read ECONNRESET</code> en later <code>Not connected to MQTT server!</code>. Zo&#39;n regel zegt nog niets over de oorzaak. Bewaar hem met de tijd erbij.</p>
+  <!-- FOTO: geanonimiseerde logregels met de MQTT-foutmelding en tijdstempel | bron: Remy (uit eigen Zigbee2MQTT-log, zonder IP-adressen of tokens) -->
+
+  <h3>Stap 4: komt er nieuwe data binnen?</h3>
+  <p>Hier gaat het vaak mis, omdat drie dingen op elkaar lijken maar niet hetzelfde zijn:</p>
+  <ul>
+    <li><strong>Een bewaard bericht</strong> is de laatste status die de broker onthoudt en aan nieuwe luisteraars geeft.</li>
+    <li><strong>Availability</strong> is een statuscheck met een ingestelde timeout.</li>
+    <li><strong>Verse data</strong> is een bericht dat recent is aangekomen.</li>
+  </ul>
+  <div class="highlight-box">
+    <strong>Vuistregel:</strong> een bewaard bericht vertelt wat er was. Alleen een nieuw bericht vertelt wat er nu is.
+  </div>
+  <p>Luister naar het topic van een apparaat dat vaak meldt, zoals een slimme stekker met vermogensmeting (<code>zigbee2mqtt/naam-van-je-apparaat</code>), en kijk of er na het starten nog nieuwe berichten bijkomen. Eén bericht direct bij het starten kan het bewaarde bericht zijn. Geen nieuw bericht in een paar seconden bewijst ook niets: sensoren melden vaak alleen bij een verandering of na een ingesteld interval.</p>
+  <p>Gebruik ook de tijdstempel in Home Assistant niet als enige test. Bij MQTT-entiteiten schrijft Home Assistant meestal alleen een nieuwe status als de waarde verandert. Een sensor die niets meer meldt ziet er dan hetzelfde uit als een sensor waarvan de waarde gewoon gelijk blijft.</p>
+  <p>Over availability: dat staat in Zigbee2MQTT standaard uit. Zet je het aan, dan krijgen actieve apparaten volgens de documentatie (gecontroleerd op 8 oktober 2026) standaard 10 minuten om zich te melden, daarna volgt een ping. Mislukt die, dan staat het apparaat offline. Passieve batterijapparaten kun je niet pingen, die krijgen standaard 25 uur. Ik heb die timeout bij mij op 240 minuten gezet. Ga niet te ver naar beneden, want sommige batterijapparaten melden zich zelden. Controleer de waarden in je eigen installatie.</p>
+
+  <p>Samengevat in een tabel:</p>
+  <table class="comparison-table"><tr><th>Wat je ziet</th><th>Waar het waarschijnlijk zit</th><th>Eerste stap</th></tr><tr><td>Eén apparaat offline</td><td>Het apparaat zelf: batterij, afstand of een router die ontbreekt</td><td>Dat apparaat nalopen. Dit artikel is dan niet het juiste pad.</td></tr><tr><td>Meerdere apparaten offline, Zigbee2MQTT start niet of geeft adapterfouten</td><td>Zigbee2MQTT of de coordinator</td><td>De startfouten in de log lezen en de seriële poort en de adapter controleren.</td></tr><tr><td>Log meldt <code>Not connected to MQTT server!</code></td><td>De verbinding tussen Zigbee2MQTT en de broker</td><td>Broker en netwerk controleren. Nog niets opnieuw koppelen.</td></tr><tr><td>Berichten komen wel binnen op de broker, maar Home Assistant toont ze niet</td><td>De kant van Home Assistant: discovery, MQTT-integratie of availability</td><td>De MQTT-integratie en de Home Assistant-log nalopen.</td></tr><tr><td>Alles werkt weer, één apparaat blijft stil</td><td>Het apparaat of zijn rapportage-instellingen</td><td>Modelspecifiek herconfigureren of wakker maken. Pas daarna opnieuw koppelen.</td></tr></table>
+
+  <h2 id="eigen-storing">Praktijkvoorbeeld: een valse Zigbee-storing bij mij thuis</h2>
+  <p>Op 14 september 2026 viel om 06:53 alles weg wat bij mij via MQTT praat. Zigbee2MQTT meldde <code>MQTT error: read ECONNRESET</code> en kwam twee uur lang niet terug. In de interface leek het alsof heel Zigbee kapot was. Ook het board van mijn CV, dat via MQTT werkt, was onbereikbaar.</p>
+  <p>Mijn eerste gedachte was een signaalprobleem. De netwerkkaart liet iets anders zien: van de 32 apparaten hadden er 29 een LQI (signaalkwaliteit) tussen 100 en 255. Dat wees niet op een zwak Zigbee-netwerk, al is LQI maar een grove indicator. Wat de ECONNRESET veroorzaakte, weet ik niet.</p>
+  <p>Mijn automatische herstart deed niets, omdat hij wachtte op de status <code>off</code>. De entiteit ging naar <code>unavailable</code>. Controleer dus waar je automatiseringen precies op triggeren.</p>
+  <div class="warning-box">
+    <strong>Het gevaarlijke deel:</strong> mijn veiligheidsstop voor de verwarming stuurde zijn commando ook via MQTT. Dat commando kwam nooit aan, zonder foutmelding, en het CV-board viel terug op zijn storingsstand (<code>heatOnSensorFail</code>) en bleef daardoor blind doorstoken. Sindsdien loopt die noodstop via een route buiten MQTT om. Die extra route is een aanvulling en geen vervanging van de beveiligingen van de ketel zelf. Laat een veiligheidsfunctie nooit afhangen van dezelfde keten die kan uitvallen.
+  </div>
+  <p>Op 25 september gebeurde het opnieuw. Zigbee2MQTT praatte prima met de apparaten, maar kon niets publiceren (<code>Not connected to MQTT server!</code>). In Home Assistant stond de verbindingssensor van de bridge gewoon op <code>on</code>. Die sensor draait op een bewaard MQTT-bericht, dus hij gaf een misleidend beeld. Mijn twee vangnetten keken naar precies die sensor en gingen daarom niet af.</p>
+  <p>Dit keer lag het aan mijzelf. Ik had een herstelstap toegevoegd die de MQTT-integratie herlaadt. Daardoor raakte Zigbee2MQTT zijn verbinding kwijt en kwam er zelf niet meer uit. Die stap heb ik verwijderd. Dit is wat er in mijn installatie gebeurde (toen Home Assistant 2026.9.3). Het bewijst niet dat herladen in elke installatie hetzelfde probleem geeft.</p>
+  <!-- FOTO: screenshot van de bridge-verbindingssensor op "on" naast de Zigbee2MQTT-logregel "Not connected to MQTT server!" van hetzelfde moment | bron: Remy (uit eigen geschiedenis of logboek, forceer geen nieuwe storing) -->
+
+  <h2 id="herstellen">Veilig herstellen zonder te herkoppelen</h2>
+  <p>Herstart niet standaard achter elkaar de broker, Zigbee2MQTT en Home Assistant. Dat verdoezelt de oorzaak. Doe dit in plaats daarvan:</p>
+  <div class="action-list">
+    <div class="action-item"><div class="action-num">1</div><div><h4>Bewaar eerst bewijs</h4><p>Kopieer de logs, noteer het tijdstip en de versies van Home Assistant, Zigbee2MQTT en de broker.</p></div></div>
+    <div class="action-item"><div class="action-num">2</div><div><h4>Herstel alleen de laag waarvoor je aanwijzingen hebt</h4><p>Meldt de log een verbindingsfout, kijk dan naar de broker en het netwerk. Meldt hij een adapterfout, kijk dan naar de coordinator.</p></div></div>
+    <div class="action-item"><div class="action-num">3</div><div><h4>Controleer na elke wijziging of er verse data terugkomt</h4><p>Gebruik de test uit stap 4. Komt er verse data terug, dan is het gelukt. Komt die niet, ga dan pas naar de volgende laag.</p></div></div>
+  </div>
+  <p>Blijft daarna één apparaat stil, dan komt opnieuw koppelen pas in beeld. Kijk eerst of het model herconfigureren ondersteunt. De documentatie meldt dat niet elk apparaat dat kan en dat een batterijapparaat soms eerst wakker moet worden gemaakt.</p>
+  <div class="warning-box">
+    <strong>Hangt je verwarming of andere kritieke sturing aan MQTT?</strong> Onderbreek de broker of Zigbee2MQTT dan niet zomaar voor een test, en forceer geen storing voor een screenshot. Zorg eerst voor een terugvaloptie die niet via MQTT loopt.
+  </div>
+
+  <h2 id="preventie">Preventie: zorg dat je het merkt</h2>
+  <p>Je kunt niet voorkomen dat er ooit iets uitvalt. Je kunt wel zorgen dat je het snel weet in plaats van na twee dagen:</p>
+  <ol>
+    <li><strong>Zet availability bewust aan</strong> met timeouts die bij je apparaten passen, en noteer wat je hebt ingesteld.</li>
+    <li><strong>Laat een melding afgaan bij meerdere onbereikbare apparaten tegelijk</strong>, en trigger op <code>unavailable</code>, niet alleen op <code>off</code>. Vertrouw niet op de bridge-sensor alleen.</li>
+    <li><strong>Noteer je versies</strong> van Home Assistant, Zigbee2MQTT, de broker en de coordinatorfirmware, zodat je bij een storing kunt vergelijken wat er veranderd is.</li>
+  </ol>
+  <p>Zelf laat ik bij vijf of meer apparaten tegelijk de add-on herstarten, hooguit eens per halfuur. Dat is mijn eigen keuze en geen advies voor iedereen. Begin zelf met alleen een melding.</p>
+  <p>Wil je zien hoe je Home Assistant slim inzet voor je energierekening? Lees dan mijn uitleg over <a href="homeassistant-energie-besparen.html" style="color:var(--groen);font-weight:600">energie-automatiseringen in Home Assistant</a>. Haal je je P1-gegevens via MQTT binnen, dan valt die data ook weg bij een MQTT-storing. De officiële HomeWizard-integratie in Home Assistant leest de meter lokaal uit via de eigen API van het apparaat, dus die loopt niet via Zigbee2MQTT. Hoe je dat opzet staat bij <a href="smarthome-p1-meter.html" style="color:var(--groen);font-weight:600">P1-meter koppelen aan Home Assistant</a>. Meer over Zigbee, WiFi en Matter vind je in de <a href="smarthome-uitleg.html" style="color:var(--groen);font-weight:600">uitleg over smarthome-protocollen</a>.</p>
+
+  <div style="background:linear-gradient(135deg,#00D17A15,#0B162808);border:2px solid var(--groen);border-radius:14px;padding:20px 24px;margin:32px 0">
+    <p style="margin:0 0 6px 0;font-size:0.8rem;font-weight:700;color:var(--groen);text-transform:uppercase;letter-spacing:.05em">💡 Volgende stap</p>
+    <p style="margin:0 0 14px 0;font-size:0.95rem;color:var(--navy);font-weight:600">Wil je Home Assistant gebruiken om energie te besparen, zonder dat het je verwarming raakt? Begin klein en bouw rustig uit.</p>
+    <a href="homeassistant-energie-besparen.html" style="display:inline-block;background:var(--groen);color:var(--navy);padding:12px 24px;border-radius:10px;font-weight:700;text-decoration:none;font-size:0.95rem">Naar de energie-automatiseringen →</a>
+  </div>
+
+  <h2 id="faq">Veelgestelde vragen over Zigbee2MQTT storingen</h2>
+  <div style="margin:24px 0;display:flex;flex-direction:column;gap:0">
+    <details style="border:1px solid var(--grijs-licht);border-radius:12px 12px 0 0;padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Moet ik mijn Zigbee-apparaten opnieuw koppelen als ze offline staan?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Niet als eerste stap. Controleer eerst of de hele keten werkt: Zigbee2MQTT, de MQTT-broker en de verbinding met Home Assistant. Meldt één apparaat zich daarna nog steeds niet, kijk dan eerst naar modelspecifieke opties zoals herconfigureren of het apparaat wakker maken. Pas daarna is opnieuw koppelen te overwegen.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);border-radius:0;padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Waarom staat Zigbee2MQTT op online terwijl mijn sensoren niet updaten?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Zigbee2MQTT bewaart zijn bridge-status als retained bericht op de broker. Dat bericht krijg je direct te zien zodra je meeluistert, ook als Zigbee2MQTT intussen geen nieuwe berichten meer publiceert. Luister daarom naar het topic van een apparaat dat vaak meldt en kijk of er nieuwe berichten bijkomen.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);border-radius:0;padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Wat is het verschil tussen availability en verse data?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Availability is een statuscheck met een ingestelde timeout. Verse data betekent dat er recent een nieuw bericht is aangekomen. Een sensor waarvan de waarde niet verandert, is ook geen bewijs dat hij is uitgevallen, want veel apparaten melden alleen bij een verandering of na een ingesteld interval.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);border-radius:0;padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Waarom gaan batterijapparaten niet snel offline?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Availability staat in Zigbee2MQTT standaard uit. Staat het aan, dan gelden volgens de documentatie (gecontroleerd op 8 oktober 2026) standaard 10 minuten voor actieve apparaten op netstroom en 25 uur voor passieve batterijapparaten. Passieve apparaten kunnen niet worden gepingd. Controleer de waarden in je eigen installatie.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);border-radius:0;padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Hoeveel apparaten moeten tegelijk offline zijn voordat ik aan de keten denk?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Daar is geen vaste grens voor. Meerdere apparaten tegelijk is een aanwijzing voor een gedeelde oorzaak, geen bewijs. Zelf grijp ik in bij vijf of meer apparaten tegelijk, maar dat is een keuze voor mijn eigen netwerk van 32 apparaten.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);border-radius:0 0 12px 12px;padding:16px 20px">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Mag ik Zigbee2MQTT automatisch laten herstarten bij uitval?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Liever niet blind. Een herstartlus kan de oorzaak verbergen en je krijgt geen idee meer wat er mis ging. Begin met een melding en bewaar de logs. Kies je toch voor een automatische herstart, beperk die dan tot weinig pogingen, bijvoorbeeld één per halfuur zoals ik doe, en test hem voordat je erop vertrouwt.</p>
+    </details>
+  </div>
+
+  <p style="font-size:0.8rem;color:var(--grijs)"><strong>Bronnen (gecontroleerd op 8 oktober 2026):</strong>
+    <a href="https://www.zigbee2mqtt.io/guide/configuration/device-availability.html" target="_blank" rel="noopener" style="color:var(--grijs);text-decoration:underline">Device Availability, Zigbee2MQTT</a> ·
+    <a href="https://www.zigbee2mqtt.io/guide/usage/mqtt_topics_and_messages.html" target="_blank" rel="noopener" style="color:var(--grijs);text-decoration:underline">MQTT Topics and Messages, Zigbee2MQTT</a> ·
+    <a href="https://www.zigbee2mqtt.io/guide/faq/" target="_blank" rel="noopener" style="color:var(--grijs);text-decoration:underline">FAQ, Zigbee2MQTT</a> ·
+    <a href="https://www.zigbee2mqtt.io/guide/installation/20_zigbee2mqtt-fails-to-start_crashes-runtime.html" target="_blank" rel="noopener" style="color:var(--grijs);text-decoration:underline">Zigbee2MQTT fails to start/crashes runtime</a> ·
+    <a href="https://www.home-assistant.io/integrations/mqtt/" target="_blank" rel="noopener" style="color:var(--grijs);text-decoration:underline">MQTT, Home Assistant</a> ·
+    <a href="https://www.home-assistant.io/docs/configuration/state_object/" target="_blank" rel="noopener" style="color:var(--grijs);text-decoration:underline">State and state object, Home Assistant</a> ·
+    <a href="https://www.home-assistant.io/integrations/homewizard/" target="_blank" rel="noopener" style="color:var(--grijs);text-decoration:underline">HomeWizard, Home Assistant</a></p>
+
+  <div class="disclaimer-box">
+    <strong>Disclaimer:</strong> dit artikel beschrijft mijn eigen installatie en de officiële documentatie van Zigbee2MQTT en Home Assistant. Instellingen, standaardwaarden en versies kunnen wijzigen, dus controleer ze in je eigen installatie. Gaat het om verwarming of andere veiligheidsfuncties, test dan eerst met een terugvaloptie.
+  </div>
+</div>
+
+<div style="background:#F4F7F2;padding:40px 24px 0">
+  <div style="max-width:800px;margin:0 auto">
+    <h3 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:16px;color:#0B1628">Meer lezen over Home Assistant en smarthome</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;padding-bottom:40px">
+      <a href="homeassistant-energie-besparen.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">🏠 Home Assistant energie besparen</a>
+      <a href="smarthome-p1-meter.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">📡 P1 meter + Home Assistant</a>
+      <a href="smarthome-uitleg.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">📖 Uitleg protocollen</a>
+      <a href="slimme-stekkers.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">🔌 Slimme stekkers</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="/" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a><p>Eerlijke energietips voor Nederlandse gezinnen.</p></div>
+      <div class="footer-col"><h4>Calculators</h4><ul><li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li><li><a href="calculator-energiekosten.html">Energiekosten</a></li><li><a href="calculator-laadpaal.html">Laadpaal thuis</a></li><li><a href="calculator-warmtepomp.html">Warmtepomp</a></li><li><a href="energiebespaar-calculator.html">Energiebespaar calculator</a></li></ul></div>
+      <div class="footer-col"><h4>Artikelen</h4><ul><li><a href="dynamisch-contract.html">Dynamisch contract</a></li><li><a href="saldering-2027.html">Saldering 2027</a></li></ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul><li><a href="over-ons.html">Over ons</a></li><li><a href="privacy.html">Privacy</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl</span><a href="privacy.html">Privacy & Disclaimer</a></div>
+  </div>
+</footer>
+<script>
+var _SP=[{"url": "calculator-zonnepanelen.html", "title": "Zonnepanelen calculator", "desc": "Bereken terugverdientijd en opbrengst zonnepanelen", "tags": "zonnepanelen berekenen terugverdientijd opbrengst panelen"}, {"url": "calculator-thuisbatterij.html", "title": "Thuisbatterij calculator", "desc": "Is een thuisbatterij rendabel voor jou?", "tags": "thuisbatterij batterij berekenen rendabel terugverdientijd"}, {"url": "calculator-energiekosten.html", "title": "Energiekosten calculator", "desc": "Bereken jouw jaarlijkse energierekening", "tags": "energiekosten rekening stroom gas berekenen"}, {"url": "calculator-laadpaal.html", "title": "Laadpaal calculator", "desc": "Wat kost thuis laden van je EV?", "tags": "laadpaal laden elektrisch rijden EV auto stroom"}, {"url": "calculator-warmtepomp.html", "title": "Warmtepomp calculator", "desc": "Gas vs warmtepomp vergelijken", "tags": "warmtepomp gas ketel besparen vergelijken"}, {"url": "energiebespaar-calculator.html", "title": "Energiebespaar calculator", "desc": "Wat kun je besparen met slimme apparaten?", "tags": "energiebespaar besparen slimme stekker thermostaat P1 meter Home Assistant"}, {"url": "thuisbatterij-top5-2026.html", "title": "Beste thuisbatterij 2026 — top 5", "desc": "HomeWizard, Zendure, Marstek vergeleken", "tags": "thuisbatterij plug-in HomeWizard Zendure Marstek Indevolt batterij vergelijken"}, {"url": "loont-plug-in-thuisbatterij-2026.html", "title": "Loont een plug-in thuisbatterij in 2026?", "desc": "Complete beslisgids: rekensom, modellen, wanneer niet kopen", "tags": "thuisbatterij plug-in loont rendabel plug-and-play beslisvolgorde saldering 2027"}, {"url": "wanneer-thuisbatterij-niet-slim.html", "title": "Wanneer is een thuisbatterij niet slim?", "desc": "Eerlijk advies over wanneer je geen batterij moet kopen", "tags": "thuisbatterij nadelen niet slim advies"}, {"url": "saldering-2027.html", "title": "Saldering stopt 2027", "desc": "Wat verandert er voor je zonnepanelen na 2027?", "tags": "saldering 2027 stoppen zonnepanelen terugleverkosten wijziging wet"}, {"url": "terugleverkosten.html", "title": "Terugleverkosten", "desc": "Wat zijn terugleverkosten en wie rekent ze?", "tags": "terugleverkosten saldering terugleveren zonnepanelen kosten leverancier"}, {"url": "terugverdientijd-zonnepanelen-2026.html", "title": "Terugverdientijd zonnepanelen 2026", "desc": "Wanneer verdienen panelen zichzelf terug?", "tags": "zonnepanelen terugverdientijd 2026 berekenen rendabel"}, {"url": "dynamisch-contract.html", "title": "Dynamisch energiecontract", "desc": "Voordelen en nadelen dynamisch contract", "tags": "dynamisch contract energie tarief variabel uurprijs Frank Tibber"}, {"url": "dynamisch-contract-zonnepanelen-thuisbatterij.html", "title": "Dynamisch contract + zonnepanelen + batterij", "desc": "Loont de combinatie?", "tags": "dynamisch contract zonnepanelen thuisbatterij combinatie"}, {"url": "energiecontract-vergelijken-2026.html", "title": "Energiecontract vergelijken 2026", "desc": "Beste energieleverancier vinden", "tags": "energiecontract vergelijken leverancier stroom gas 2026"}, {"url": "smarthome-p1-meter.html", "title": "P1 meter + Home Assistant", "desc": "P1 meter koppelen aan Home Assistant", "tags": "P1 meter Home Assistant slimme meter koppelen energie meten"}, {"url": "homeassistant-energie-besparen.html", "title": "Home Assistant energie besparen", "desc": "Automatiseer je energieverbruik", "tags": "Home Assistant energie besparen automatisering YAML integratie"}, {"url": "smarthome-producten.html", "title": "Smarthome producten", "desc": "Alle slimme energie-apparaten", "tags": "smarthome producten slimme stekker thermostaat P1 meter Zigbee WiFi Matter"}, {"url": "smarthome-uitleg.html", "title": "Smarthome uitleg", "desc": "Wat is een smarthome en hoe begin je?", "tags": "smarthome uitleg beginnen hub Zigbee WiFi Matter protocol"}, {"url": "slimme-stekkers.html", "title": "Slimme stekkers uitgelegd", "desc": "Hoe werken slimme stekkers?", "tags": "slimme stekker Zigbee WiFi Matter energiemeting schakelaar"}, {"url": "beste-slimme-stekker-2026.html", "title": "Beste slimme stekker 2026", "desc": "Top 5 slimme stekkers vergeleken", "tags": "slimme stekker 2026 beste vergelijken Sonoff Tapo HomeWizard Zigbee Matter"}, {"url": "smart-lampen.html", "title": "Slimme lampen", "desc": "Beste slimme lampen en bollen", "tags": "slimme lamp LED Zigbee WiFi Matter Philips Hue WiZ Tapo"}, {"url": "slimme-thermostaat-installeren.html", "title": "Slimme thermostaat installeren", "desc": "Tado, Nest en andere thermostaten", "tags": "thermostaat slimme thermostaat Tado Nest installeren OpenTherm radiatorknop TRV"}, {"url": "homewizard-energy-display-review.html", "title": "HomeWizard Energy Display review", "desc": "Eerlijk getest: unboxing en installatie", "tags": "HomeWizard Energy Display review test unboxing P1 meter display"}, {"url": "homewizard-energy-display-deel2.html", "title": "HomeWizard Energy Display eindoordeel", "desc": "Na 2 weken eerlijk eindoordeel", "tags": "HomeWizard Energy Display eindoordeel review Home Assistant koppeling"}, {"url": "plug-in-batterij-laden.html", "title": "Plug-in batterij slim laden", "desc": "Wanneer en hoe laad je een thuisbatterij?", "tags": "thuisbatterij laden zonnepanelen slim opladen strategie"}, {"url": "blog.html", "title": "Blog — alle artikelen", "desc": "Alle artikelen van StekkerSlim", "tags": "blog artikelen energie smarthome"}, {"url": "vragen.html", "title": "Stel een vraag", "desc": "Stuur je energievraag in", "tags": "vraag contact hulp advies"}, {"url": "over-ons.html", "title": "Over StekkerSlim", "desc": "Wie is StekkerSlim?", "tags": "over ons Remy StekkerSlim"}, {"url": "sluipverbruik-meten-oplossen.html", "title": "Sluipverbruik meten en oplossen", "desc": "Spoor verborgen stroomvreters op in huis", "tags": "sluipverbruik standby stroomvreters meten opsporen P1 meter energiemeter verbruik"}, {"url": "thuisbatterij-simuleren-home-assistant.html", "title": "Thuisbatterij simuleren in Home Assistant", "desc": "Test met battery_sim op je eigen P1-data", "tags": "Home Assistant thuisbatterij simuleren battery_sim HACS P1 data testen gratis"}, {"url": "tapo-p115-p410m-review.html", "title": "Tapo P115 vs P410M review", "desc": "Twee slimme stekkers van Tapo getest", "tags": "Tapo P115 P410M slimme stekker review test energiemeting"}, {"url": "tapo-p115-p410m-eindoordeel.html", "title": "Tapo P115 vs P410M eindoordeel", "desc": "Welke Tapo-stekker moet je kopen?", "tags": "Tapo P115 P410M eindoordeel vergelijking slimme stekker kopen"}, {"url": "zonnepanelen-onderpresteren.html", "title": "Zonnepanelen onderpresteren", "desc": "5 oorzaken van tegenvallende opbrengst + stappenplan", "tags": "zonnepanelen onderpresteren opbrengst minder tegenvallend omvormer storing schaduw vuil P1 meter"}, {"url": "zigbee2mqtt-apparaten-offline.html", "title": "Zigbee2MQTT apparaten offline", "desc": "Zigbee2MQTT offline? Controleer eerst MQTT", "tags": "Zigbee2MQTT offline MQTT broker Home Assistant storing apparaten unavailable"}];
+var _icons={"calculator":"🧮","smarthome":"🏠","home":"🏠","blog":"📝","thuis":"🔋","slimme":"⚡","beste":"⚡","plug":"🔌","warm":"🌡️","dynamisch":"📈","energie":"💡","saldering":"☀️","terug":"☀️","zonn":"☀️","vragen":"❓","over":"👤","privacy":"🔒"};
+function _icon(u){for(var k in _icons){if(u.indexOf(k)>-1)return _icons[k];}return "📄";}
+function _hl(t,q){if(!q)return t;var r=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');return t.replace(r,'<mark>$1</mark>');}
+function navSearchToggle(){
+  var box=document.getElementById('navSearchBox');
+  var ov=document.getElementById('navSearchOverlay');
+  var btn=document.getElementById('navSearchBtn');
+  var open=!box.classList.contains('open');
+  box.classList.toggle('open',open);
+  ov.classList.toggle('open',open);
+  btn.classList.toggle('open',open);
+  if(open)setTimeout(function(){document.getElementById('navSearchInput').focus();},50);
+}
+function navSearchClose(){
+  document.getElementById('navSearchBox').classList.remove('open');
+  document.getElementById('navSearchOverlay').classList.remove('open');
+  document.getElementById('navSearchBtn').classList.remove('open');
+  navSearchReset();
+}
+function navSearchReset(){
+  var inp=document.getElementById('navSearchInput');
+  inp.value='';
+  document.getElementById('navSearchClear').classList.remove('show');
+  document.getElementById('navSearchResults').innerHTML='<div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>';
+}
+function navSearchQuery(q){
+  var clear=document.getElementById('navSearchClear');
+  var res=document.getElementById('navSearchResults');
+  clear.classList.toggle('show',q.length>0);
+  if(q.length<2){res.innerHTML='<div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>';return;}
+  var words=q.toLowerCase().split(/\s+/).filter(Boolean);
+  var hits=_SP.map(function(p){
+    var haystack=(p.title+' '+p.desc+' '+p.tags).toLowerCase();
+    var score=words.reduce(function(s,w){
+      if(p.title.toLowerCase().indexOf(w)>-1)return s+3;
+      if(p.desc.toLowerCase().indexOf(w)>-1)return s+2;
+      if(p.tags.toLowerCase().indexOf(w)>-1)return s+1;
+      return s;
+    },0);
+    return {p:p,score:score};
+  }).filter(function(x){return x.score>0;}).sort(function(a,b){return b.score-a.score;}).slice(0,8);
+  if(!hits.length){res.innerHTML='<div class="nav-search-hint">Geen resultaten voor <em>'+q.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];})+'</em> — probeer een ander woord</div>';return;}
+  res.innerHTML=hits.map(function(x){
+    var p=x.p;
+    return '<a href="'+p.url+'" class="nav-search-result" onclick="navSearchClose()"><span class="nsr-icon">'+_icon(p.url)+'</span><span class="nsr-content"><div class="nsr-title">'+_hl(p.title,q)+'</div><div class="nsr-desc">'+p.desc+'</div></span></a>';
+  }).join('');
+}
+function navSearchKey(e){
+  if(e.key==='Escape')navSearchClose();
+  if(e.key==='Enter'){var first=document.querySelector('.nav-search-result');if(first){window.location=first.href;navSearchClose();}}
+}
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();navSearchToggle();}});
+document.addEventListener("click",function(e){var b=document.getElementById("navSearchBox");var w=document.getElementById("navSearchWrap");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
+</script>
+<script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block";});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});m.addEventListener("mouseenter",function(){clearTimeout(t);});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});});})();</script>
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+document.addEventListener('click',function(e){const m=document.getElementById('mobileMenu');const h=document.getElementById('hamburger');if(m&&h&&m.classList.contains('open')&&!m.contains(e.target)&&!h.contains(e.target))m.classList.remove('open')})
+</script>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-inner">
+    <div class="sticky-cta-txt">Meer uit Home Assistant halen?<small>Lees hoe je energie-automatiseringen veilig opzet</small></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="homeassistant-energie-besparen.html" class="scta-btn">Naar de automatiseringen →</a>
+      <button class="sticky-close" onclick="document.getElementById('stickyCta').classList.remove('show');window._sctaOff=1" aria-label="Sluiten">✕</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('stickyCta');
+  window.addEventListener('scroll',function(){
+    if(window._sctaOff)return;
+    var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    el.classList.toggle('show',pct>0.35&&pct<0.92);
+  },{passive:true});
+})();
+</script>
+<script>(function(){var m=Math.round((new Date('2027-01-01')-new Date())/2.628e9);if(m<1)return;var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null,false);var n;while(n=w.nextNode()){if(/~\d+\s*maanden/.test(n.nodeValue))n.nodeValue=n.nodeValue.replace(/~\d+\s*maanden/g,'~'+m+' maanden');}})();</script>
+<script>(function(){
+  var S=document.createElement('style');
+  S.textContent='.rv{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}.rv.vi{opacity:1;transform:none}'+
+    '.product-card,.calc-card,.prod-card,.spec-card{transition:transform .2s ease,box-shadow .2s ease}'+
+    '.product-card:hover,.calc-card:hover,.prod-card:hover,.spec-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.11)}';
+  document.head.appendChild(S);
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vi');io.unobserve(x.target);}});},{threshold:.1});
+  document.querySelectorAll('.highlight-box,.warning-box,.info-box,.cta-box,.product-card,.calc-card,.prod-card,.toc,.stap,.article-cta,.bottom-cta,.affiliate-section,.pill-links,.disclaimer-box').forEach(function(el){el.classList.add('rv');io.observe(el);});
+})();</script>
+</body>
+</html>

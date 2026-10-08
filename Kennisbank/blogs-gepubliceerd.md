@@ -1,5 +1,5 @@
 # StekkerSlim.nl — Gepubliceerde blogs/artikelen
-*Laatst bijgewerkt: 24 september 2026 — data uit sitemap.xml (laatste check: 24 september 2026)*
+*Laatst bijgewerkt: 8 oktober 2026 — data uit sitemap.xml (laatste check: 24 september 2026)*
 
 Let op: dit zijn artikel/blog-pagina's, niet de calculators of vaste pagina's (over-ons, privacy, vragen) — die staan in `site-structuur.md`.
 
@@ -39,6 +39,25 @@ Let op: dit zijn artikel/blog-pagina's, niet de calculators of vaste pagina's (o
 | sluipverbruik-meten-oplossen.html | Sluipverbruik meten en oplossen — stappenplan | 2026-09-02 |
 | zonnestroom-zelf-gebruiken-zonder-thuisbatterij.html | Zonnestroom zelf gebruiken zonder thuisbatterij: 7 stappen | 2026-09-09 |
 | misleidende-thuisbatterij-verkoop-herkennen.html | Misleidende thuisbatterij-verkoop herkennen | 2026-09-16 |
+| zigbee2mqtt-apparaten-offline.html | Zigbee2MQTT apparaten offline — storingsgids | 2026-10-08 ⚠ |
+
+⚠ Dit bestand staat op 8 oktober 2026 nog **niet** in de repo en nog niet in
+`sitemap.xml` of `blog.html`. De pagina is door de publicatiecheck gekomen, maar
+uploaden doet Remy zelf zodra de vier screenshots erin staan. Haal dit vinkje weg
+zodra de URL live is.
+
+## Detailrecords per blog
+
+### Zigbee2MQTT apparaten offline? Controleer eerst MQTT
+- **Slug:** zigbee2mqtt-apparaten-offline.html
+- **URL:** https://stekkerslim.nl/zigbee2mqtt-apparaten-offline.html
+- **Gepubliceerd:** 8 oktober 2026 (bestand gereed; upload door Remy nog openstaand)
+- **Primair zoekwoord:** zigbee2mqtt apparaten offline
+- **Onderwerp:** Storingsgids die uitlegt waarom je bij massale uitval van Zigbee-apparaten eerst de MQTT-keten controleert in plaats van apparaten opnieuw te koppelen.
+- **Interne links uit:** homeassistant-energie-besparen.html · smarthome-p1-meter.html · smarthome-uitleg.html · slimme-stekkers.html · smarthome-producten.html (breadcrumb)
+- **Gewenste links in:** smarthome-p1-meter.html, homeassistant-energie-besparen.html, thuisbatterij-simuleren-home-assistant.html — alle drie zitten in het smarthome-cluster en behandelen Home Assistant-koppelingen die via MQTT kunnen lopen.
+- **Affiliate partners:** geen. Bewuste keuze: dit is een storingsgids, er is geen product dat het probleem oplost. De CTA verwijst intern naar de Home Assistant-pagina.
+- **Laatste feitcheck:** 8 oktober 2026 (Zigbee2MQTT-documentatie over availability en MQTT-topics, Home Assistant-documentatie over MQTT en state objects)
 
 ## Samengevoegd (cluster merge augustus 2026)
 Deze pagina’s bestaan nog wel als bestand, maar staan bewust **niet meer in `sitemap.xml`** en dragen een canonical naar de pillar-pagina. Niet opnieuw als los artikel behandelen of intern naar linken.

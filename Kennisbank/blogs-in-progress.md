@@ -1,16 +1,20 @@
 # StekkerSlim.nl — Blogs in progress / pipeline
-*Laatst bijgewerkt: 26 augustus 2026*
+*Laatst bijgewerkt: 8 oktober 2026*
 
-## De 11-stappen blogpipeline
-1. Grok — trendonderzoek
-2. Gemini — SEO-structuur
-3. Perplexity — factcheck
-4. Claude — outline
-5-7. (tussenstappen, zie StekkerPen v2 voor volledige flow)
-8. Claude — volledige HTML
-9. Alle AI's — review
-10. Claude — verwerkt revisies
-11. Alle AI's — finale check
+## De 9-stappen blogpipeline
+*(Gecorrigeerd op 8 oktober 2026: hier stond 11 stappen, de pipeline heeft er 9.
+Namen overgenomen uit `blog-pipeline-prompts.md`, niet uit het hoofd.)*
+
+1a. Gemini — content gap scout
+1b. Grok — signaal- en clusterscout
+2. Perplexity — selectie, research en factcheck
+3. Gemini — SEO- en cannibalisatiebriefing
+4. Claude (Bouwer) — definitieve blogoutline
+5. Alle AI's — outline-review
+6. Claude (StekkerPen) — de blog als volledige pagina
+7. Alle AI's — review van de pagina
+8. Claude (StekkerPen) — finale pagina (reviews verwerkt)
+9. StekkerSlim Bouwen — publicatiecheck + kennisbank
 
 Regel: elke AI werkt met actuele info uit deze kennisbank (zie `INDEX.md`), nooit uit verouderde eigen kennis over prijzen, affiliate-status of regelgeving.
 
