@@ -6,6 +6,20 @@ Doorloop de StekkerSlim blog-pipeline zoals beschreven in `Kennisbank/blog-pipel
 
 Lees eerst `Kennisbank/blog-pipeline-prompts.md` — daar staan alle 9 stappen met exacte prompt-tekst en de vaste URL per AI.
 
+## Stap 6, 8 en 9 draaien hier, niet in een browser (8 oktober 2026)
+
+Dit commando stuurt alleen nog de **externe** AI's aan: stap 1 t/m 5 en de vier reviewers van stap 7. Drie stappen zijn eruit gehaald en hebben hun eigen commando, omdat ze op echte bestanden werken in plaats van op geplakte tekst:
+
+| Stap | Commando | Wat het doet |
+|---|---|---|
+| 6 | `/blog-schrijf` | schrijft `<slug>.html` in de repo, draait `Scripts/check-pagina.js`, maakt de reviewversie |
+| 8 | `/blog-finale` | verwerkt de vier reviews met `Edit` in datzelfde bestand |
+| 9 | `/blog-publiceer` | sitemap, blog.html, interne links, Kennisbank, en pas na akkoord een push |
+
+**Stap 7 krijgt de reviewversie, niet de hele pagina.** `/blog-schrijf` zet naast de `.html` een `<slug>.review.txt` neer: dezelfde pagina zonder CSS, nav, footer en scripts, ruim de helft kleiner. Dat sjabloon is al door het script nagemeten, dus er valt voor een reviewer niets aan te beoordelen. Plak dus de `.review.txt` in de vier reviewers, nooit de `.html`.
+
+Kom je bij stap 6, 8 of 9: stop met browseren en verwijs Remy naar het bijbehorende commando. Probeer die stappen niet alsnog via een Claude-project in de browser te doen.
+
 ## Kernregels
 
 - **Blijf in dezelfde chat/tab per AI gedurende de hele pipeline-run.** Niet elke stap een nieuwe chat openen — Gemini, Grok, Perplexity en Claude houden elk hun eigen doorlopende gesprek vast voor deze run, en je moet er later (volgende sessie) op terug kunnen komen. Noteer de chat-URL van elke geopende AI-tab in `Kennisbank/blog-pipeline-log.md` zodra je 'm opent, zodat een volgende sessie 'm kan hervatten.
