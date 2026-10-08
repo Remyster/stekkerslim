@@ -382,7 +382,7 @@
   <h3>Stap 3: wat zeggen de logs?</h3>
   <p>De documentatie van Zigbee2MQTT noemt <code>Not connected to MQTT server!</code> als teken dat Zigbee2MQTT de MQTT-server niet kan bereiken. Dat zegt wat er stuk is, niet waarom. Meldingen over de adapter of de seriële poort wijzen juist naar de coordinator en dus naar een andere laag.</p>
   <p>Mijn eigen storingen begonnen met <code>MQTT error: read ECONNRESET</code> en later <code>Not connected to MQTT server!</code>. Zo&#39;n regel zegt nog niets over de oorzaak. Bewaar hem met de tijd erbij.</p>
-  <!-- FOTO: geanonimiseerde logregels met de MQTT-foutmelding en tijdstempel | bron: Remy (uit eigen Zigbee2MQTT-log, zonder IP-adressen of tokens) -->
+  <img src="/z2m-log-mqtt-fout.webp" alt="Logregels met tijdstempel: MQTT error read ECONNRESET en Not connected to MQTT server, gereconstrueerd uit het eigen logboek" style="width:100%;max-width:700px;height:auto;border-radius:12px;margin:16px auto;display:block;" loading="lazy">
 
   <h3>Stap 4: komt er nieuwe data binnen?</h3>
   <p>Hier gaat het vaak mis, omdat drie dingen op elkaar lijken maar niet hetzelfde zijn:</p>
@@ -410,7 +410,7 @@
   </div>
   <p>Op 25 september gebeurde het opnieuw. Zigbee2MQTT praatte prima met de apparaten, maar kon niets publiceren (<code>Not connected to MQTT server!</code>). In Home Assistant stond de verbindingssensor van de bridge gewoon op <code>on</code>. Die sensor draait op een bewaard MQTT-bericht, dus hij gaf een misleidend beeld. Mijn twee vangnetten keken naar precies die sensor en gingen daarom niet af.</p>
   <p>Dit keer lag het aan mijzelf. Ik had een herstelstap toegevoegd die de MQTT-integratie herlaadt. Daardoor raakte Zigbee2MQTT zijn verbinding kwijt en kwam er zelf niet meer uit. Die stap heb ik verwijderd. Dit is wat er in mijn installatie gebeurde (toen Home Assistant 2026.9.3). Het bewijst niet dat herladen in elke installatie hetzelfde probleem geeft.</p>
-  <!-- FOTO: screenshot van de bridge-verbindingssensor op "on" naast de Zigbee2MQTT-logregel "Not connected to MQTT server!" van hetzelfde moment | bron: Remy (uit eigen geschiedenis of logboek, forceer geen nieuwe storing) -->
+  <img src="/z2m-sensor-on.webp" alt="De entiteit binary_sensor.zigbee2mqtt_bridge_connection_state staat op 'on', terwijl Zigbee2MQTT op datzelfde moment geen verbinding met de broker had" style="width:100%;max-width:700px;height:auto;border-radius:12px;margin:16px auto;display:block;" loading="lazy">
 
   <h2 id="herstellen">Veilig herstellen zonder te herkoppelen</h2>
   <p>Herstart niet standaard achter elkaar de broker, Zigbee2MQTT en Home Assistant. Dat verdoezelt de oorzaak. Doe dit in plaats daarvan:</p>
