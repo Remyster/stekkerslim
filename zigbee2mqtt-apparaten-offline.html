@@ -370,14 +370,14 @@
   <h3>Stap 1: één apparaat of het hele netwerk?</h3>
   <p>Open de apparatenlijst in de Zigbee2MQTT-interface. Zit er één apparaat tussen dat zich al dagen niet meldt? Kijk dan naar de batterij, de afstand en of er een router in de buurt is. Een router is een Zigbee-apparaat op netstroom dat het signaal doorgeeft. Dan is dit artikel niet je pad.</p>
   <p>Staan er meerdere apparaten tegelijk op offline of niet beschikbaar, ga dan door. Hoeveel is veel? Daar bestaat geen vaste grens voor. Bij mij is vijf tegelijk de drempel, maar dat is een keuze voor mijn eigen netwerk van 32 apparaten.</p>
-  <!-- FOTO: screenshot van de Zigbee2MQTT-apparatenlijst met meerdere apparaten tegelijk offline of lang geleden voor het laatst gezien | bron: Remy (screenshot uit de eigen Zigbee2MQTT-interface) -->
+  <img src="/z2m-apparaten-offline.webp" alt="Zigbee2MQTT-apparatenlijst met de kolom Laatst gezien, een aantal apparaten meldde zich recent" style="width:100%;max-width:700px;height:auto;border-radius:12px;margin:16px auto;display:block;" loading="lazy">
 
   <h3>Stap 2: draait Zigbee2MQTT en is de broker bereikbaar?</h3>
   <p>Kijk of de add-on of container van Zigbee2MQTT draait en of de interface reageert. Luister daarna zelf mee op de broker. In Home Assistant ga je naar Instellingen, Apparaten en diensten, open je de MQTT-integratie (of Mosquitto broker) en kies je Configureren. Daar vind je het veld om naar een topic te luisteren, in het Engels "Listen to a topic". Vul <code>zigbee2mqtt/bridge/state</code> in.</p>
   <div class="warning-box">
     <strong>Valkuil:</strong> die bridge-status staat als bewaard (retained) bericht op de broker. Je ziet hem dus meteen zodra je gaat luisteren, ook als Zigbee2MQTT intussen vastzit. "Online" is daarom geen bewijs dat er nu nieuwe apparaatberichten aankomen.
   </div>
-  <!-- FOTO: screenshot van de MQTT-berichtenweergave met het topic zigbee2mqtt/bridge/state en de payload | bron: Remy (screenshot) -->
+  <img src="/z2m-bridge-state.webp" alt="MQTT-luisterveld in Home Assistant op het topic zigbee2mqtt/bridge/state met het ontvangen bericht state: online" style="width:100%;max-width:700px;height:auto;border-radius:12px;margin:16px auto;display:block;" loading="lazy">
 
   <h3>Stap 3: wat zeggen de logs?</h3>
   <p>De documentatie van Zigbee2MQTT noemt <code>Not connected to MQTT server!</code> als teken dat Zigbee2MQTT de MQTT-server niet kan bereiken. Dat zegt wat er stuk is, niet waarom. Meldingen over de adapter of de seriële poort wijzen juist naar de coordinator en dus naar een andere laag.</p>
