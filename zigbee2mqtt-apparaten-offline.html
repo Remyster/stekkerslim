@@ -134,7 +134,15 @@
   .sticky-cta-txt small{display:block;color:rgba(255,255,255,0.4);font-weight:400;font-size:0.75rem}
   .sticky-cta a.scta-btn{background:var(--groen);color:var(--navy);padding:11px 22px;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.88rem;text-decoration:none;white-space:nowrap}
   .sticky-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;padding:4px}
-  @media(max-width:600px){.sticky-cta-txt small{display:none}}  </style>
+  @media(max-width:600px){.sticky-cta-txt small{display:none}}
+  .zoom-img{transition:opacity .15s}
+  .zoom-img:hover{opacity:0.9}
+  .lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(11,22,40,0.92);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;padding:24px}
+  .lightbox-overlay.active{display:flex}
+  .lightbox-overlay img{max-width:95vw;max-height:92vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+  .lightbox-close{position:absolute;top:18px;right:24px;color:#fff;font-size:2rem;line-height:1;cursor:pointer;opacity:0.8}
+  .lightbox-close:hover{opacity:1}
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -370,19 +378,19 @@
   <h3>Stap 1: één apparaat of het hele netwerk?</h3>
   <p>Open de apparatenlijst in de Zigbee2MQTT-interface. Zit er één apparaat tussen dat zich al dagen niet meldt? Kijk dan naar de batterij, de afstand en of er een router in de buurt is. Een router is een Zigbee-apparaat op netstroom dat het signaal doorgeeft. Dan is dit artikel niet je pad.</p>
   <p>Staan er meerdere apparaten tegelijk op offline of niet beschikbaar, ga dan door. Hoeveel is veel? Daar bestaat geen vaste grens voor. Bij mij is vijf tegelijk de drempel, maar dat is een keuze voor mijn eigen netwerk van 32 apparaten.</p>
-  <img src="/z2m-apparaten-offline.webp" alt="Zigbee2MQTT-apparatenlijst met de kolom Laatst gezien, een aantal apparaten meldde zich recent" style="width:100%;max-width:700px;height:auto;border-radius:12px;margin:16px auto;display:block;" loading="lazy">
+  <img src="/z2m-apparaten-offline.webp" alt="Zigbee2MQTT-apparatenlijst met de kolom Laatst gezien, een aantal apparaten meldde zich recent" style="width:100%;max-width:700px;height:auto;border-radius:12px;margin:16px auto;display:block;cursor:zoom-in;" loading="lazy" class="zoom-img">
 
   <h3>Stap 2: draait Zigbee2MQTT en is de broker bereikbaar?</h3>
   <p>Kijk of de add-on of container van Zigbee2MQTT draait en of de interface reageert. Luister daarna zelf mee op de broker. In Home Assistant ga je naar Instellingen, Apparaten en diensten, open je de MQTT-integratie (of Mosquitto broker) en kies je Configureren. Daar vind je het veld om naar een topic te luisteren, in het Engels "Listen to a topic". Vul <code>zigbee2mqtt/bridge/state</code> in.</p>
   <div class="warning-box">
     <strong>Valkuil:</strong> die bridge-status staat als bewaard (retained) bericht op de broker. Je ziet hem dus meteen zodra je gaat luisteren, ook als Zigbee2MQTT intussen vastzit. "Online" is daarom geen bewijs dat er nu nieuwe apparaatberichten aankomen.
   </div>
-  <img src="/z2m-bridge-state.webp" alt="MQTT-luisterveld in Home Assistant op het topic zigbee2mqtt/bridge/state met het ontvangen bericht state: online" style="width:100%;max-width:700px;height:auto;border-radius:12px;margin:16px auto;display:block;" loading="lazy">
+  <img src="/z2m-bridge-state.webp" alt="MQTT-luisterveld in Home Assistant op het topic zigbee2mqtt/bridge/state met het ontvangen bericht state: online" style="width:100%;max-width:700px;height:auto;border-radius:12px;margin:16px auto;display:block;cursor:zoom-in;" loading="lazy" class="zoom-img">
 
   <h3>Stap 3: wat zeggen de logs?</h3>
   <p>De documentatie van Zigbee2MQTT noemt <code>Not connected to MQTT server!</code> als teken dat Zigbee2MQTT de MQTT-server niet kan bereiken. Dat zegt wat er stuk is, niet waarom. Meldingen over de adapter of de seriële poort wijzen juist naar de coordinator en dus naar een andere laag.</p>
   <p>Mijn eigen storingen begonnen met <code>MQTT error: read ECONNRESET</code> en later <code>Not connected to MQTT server!</code>. Zo&#39;n regel zegt nog niets over de oorzaak. Bewaar hem met de tijd erbij.</p>
-  <img src="/z2m-log-mqtt-fout.webp" alt="Logregels met tijdstempel: MQTT error read ECONNRESET en Not connected to MQTT server, gereconstrueerd uit het eigen logboek" style="width:100%;max-width:700px;height:auto;border-radius:12px;margin:16px auto;display:block;" loading="lazy">
+  <img src="/z2m-log-mqtt-fout.webp" alt="Logregels met tijdstempel: MQTT error read ECONNRESET en Not connected to MQTT server, gereconstrueerd uit het eigen logboek" style="width:100%;max-width:700px;height:auto;border-radius:12px;margin:16px auto;display:block;cursor:zoom-in;" loading="lazy" class="zoom-img">
 
   <h3>Stap 4: komt er nieuwe data binnen?</h3>
   <p>Hier gaat het vaak mis, omdat drie dingen op elkaar lijken maar niet hetzelfde zijn:</p>
@@ -410,7 +418,7 @@
   </div>
   <p>Op 25 september gebeurde het opnieuw. Zigbee2MQTT praatte prima met de apparaten, maar kon niets publiceren (<code>Not connected to MQTT server!</code>). In Home Assistant stond de verbindingssensor van de bridge gewoon op <code>on</code>. Die sensor draait op een bewaard MQTT-bericht, dus hij gaf een misleidend beeld. Mijn twee vangnetten keken naar precies die sensor en gingen daarom niet af.</p>
   <p>Dit keer lag het aan mijzelf. Ik had een herstelstap toegevoegd die de MQTT-integratie herlaadt. Daardoor raakte Zigbee2MQTT zijn verbinding kwijt en kwam er zelf niet meer uit. Die stap heb ik verwijderd. Dit is wat er in mijn installatie gebeurde (toen Home Assistant 2026.9.3). Het bewijst niet dat herladen in elke installatie hetzelfde probleem geeft.</p>
-  <img src="/z2m-sensor-on.webp" alt="De entiteit binary_sensor.zigbee2mqtt_bridge_connection_state staat op 'on', terwijl Zigbee2MQTT op datzelfde moment geen verbinding met de broker had" style="width:100%;max-width:700px;height:auto;border-radius:12px;margin:16px auto;display:block;" loading="lazy">
+  <img src="/z2m-sensor-on.webp" alt="De entiteit binary_sensor.zigbee2mqtt_bridge_connection_state staat op 'on', terwijl Zigbee2MQTT op datzelfde moment geen verbinding met de broker had" style="width:100%;max-width:700px;height:auto;border-radius:12px;margin:16px auto;display:block;cursor:zoom-in;" loading="lazy" class="zoom-img">
 
   <h2 id="herstellen">Veilig herstellen zonder te herkoppelen</h2>
   <p>Herstart niet standaard achter elkaar de broker, Zigbee2MQTT en Home Assistant. Dat verdoezelt de oorzaak. Doe dit in plaats daarvan:</p>
@@ -597,5 +605,23 @@ document.addEventListener('click',function(e){const m=document.getElementById('m
   var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vi');io.unobserve(x.target);}});},{threshold:.1});
   document.querySelectorAll('.highlight-box,.warning-box,.info-box,.cta-box,.product-card,.calc-card,.prod-card,.toc,.stap,.article-cta,.bottom-cta,.affiliate-section,.pill-links,.disclaimer-box').forEach(function(el){el.classList.add('rv');io.observe(el);});
 })();</script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var overlay=document.createElement('div');
+  overlay.className='lightbox-overlay';
+  overlay.innerHTML='<span class="lightbox-close">&times;</span><img src="" alt="">';
+  document.body.appendChild(overlay);
+  var overlayImg=overlay.querySelector('img');
+  document.querySelectorAll('.zoom-img').forEach(function(img){
+    img.addEventListener('click',function(){
+      overlayImg.src=img.src;
+      overlayImg.alt=img.alt;
+      overlay.classList.add('active');
+    });
+  });
+  overlay.addEventListener('click',function(){overlay.classList.remove('active')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')overlay.classList.remove('active')});
+});
+</script>
 </body>
 </html>
