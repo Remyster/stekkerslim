@@ -126,10 +126,10 @@ nulmeting is: 130 klikken over 16 maanden, waarvan 44 van `smarthome-p1-meter.ht
 ### Bekende product links
 | Product | Kanaal | Link | Prijs |
 |---------|--------|------|-------|
-| Marstek Venus E 3.0 | Bol.com (affiliate) | `partner.bol.com/click/...` (zie plug-in-batterij-laden.html) | €1.389 |
-| Marstek Venus E 3.0 | Marstek.nl (direct, geen affiliate) | `marstek.nl/product/marstek-venus-e-3-0-plug-charge-thuisbatterij-5-12-kwh-incl-p1-meter/` | €1.299 |
+| Marstek Venus E 3.0 | Bol.com (affiliate) | `partner.bol.com/click/...` (zie plug-in-batterij-laden.html) | €1.250 (gecheckt 14-10-2026, binnen site-range €1.200–€1.300) |
+| Marstek Venus E 3.0 | Marstek.nl (direct, geen affiliate) | `marstek.nl/product/marstek-venus-e-3-0-plug-charge-thuisbatterij-5-12-kwh-incl-p1-meter/` | €1.199 (gecheckt 14-10-2026, binnen site-range €1.150–€1.300) |
 | Zendure SolarFlow 2400 AC+ | Daisycon 20779 (goedgekeurd) | `glp8.net/c/?si=20779&li=1881195&wi=419188&ws=&dl=products%2Fzendure-solarflow-2400-ac-plus%3Fvariant%3D48055928717567` | €849 actie (adviesprijs €1.089) |
-| Indevolt SolidFlex 3000 AC | Awin 110350 (affiliate) | zie tabel hierboven — code STEKKERSLIM5 voor 5% korting | €849 |
+| Indevolt SolidFlex 3000 AC | Awin 110350 (affiliate) | zie tabel hierboven — code STEKKERSLIM5 voor 5% korting | €789 actie (adviesprijs €1.099, was €849 — QA-audit 14-10-2026 range verbreed naar €789–€1.099) |
 
 ⚠️ **Marstek Venus E 3.0 is NIET meer leverbaar via Amazon** (ASIN B0FN7SDXMR). Gebruik Bol.com (€1.389, affiliate) + Marstek.nl direct (€1.299, geen affiliate). Dit is doorgevoerd in plug-in-batterij-laden.html, thuisbatterij-top5-2026.html en thuisbatterij-plug-and-play-2026.html.
 
@@ -217,6 +217,9 @@ Independer, Eneco, Milieucentraal
 
 ## Wat er recent gedaan is
 *(meest recent bovenaan)*
+
+### 14 oktober 2026 — QA-audit: Indevolt-prijs gezakt, range verbreed
+Geautomatiseerd script: geen problemen (61 affiliate-links, interne links, sitemap, afbeeldingen allemaal ok). Browser-check tidd.ly/ds1.nl-links (Feenstra ×2, Philips Hue, AliExpress): allemaal werkend. Prijzen gecheckt: HomeWizard P1 Meter €24,95 ✅, HomeWizard Plug-In Battery €1.195 ✅, SlimmeLezer Mini €22,25 ✅, Marstek Bol.com €1.250 en Marstek.nl €1.199 (beide binnen bestaande site-ranges) ✅. **Indevolt SolidFlex 3000 AC actieprijs gezakt van €849 naar €789** (adviesprijs €1.099 ongewijzigd) — range verbreed naar €789–€1.099 op 5 plekken: calculator-thuisbatterij.html, plug-in-batterij-laden.html, thuisbatterij-top5-2026.html (×2), indevolt-solidflex-3000-review.html (×2, incl. lopende tekst). Gepusht naar GitHub. Daarna 12 pagina's aangeboden voor indexering in Search Console (zie hieronder).
 
 ### 24 september 2026 — Site herbouwd rond het smarthome-cluster
 
