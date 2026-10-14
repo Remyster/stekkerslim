@@ -17,7 +17,11 @@
 6. Toevoegen aan sitemap.xml
 7. Interne links vanuit minimaal 3 bestaande pagina's
 8. Kaart toevoegen aan blog.html
-9. Sitemap resubmitten in Search Console
+9. Sitemap resubmitten in Search Console — **gebruik de volledige URL**
+   (`https://stekkerslim.nl/sitemap.xml`), niet het relatieve pad (`sitemap.xml`).
+   Dat laatste geeft "Ongeldig sitemapadres", ook na meerdere pogingen met een
+   schone pagina-herlaad (ontdekt 8 okt 2026 bij het publiceren van
+   zigbee2mqtt-apparaten-offline.html).
 10. Indexering aanvragen in Search Console
 
 ## Bestaande pagina bijgewerkt — kortere checklist (24 september 2026)

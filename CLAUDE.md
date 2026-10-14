@@ -411,7 +411,13 @@ Externe AI-pipeline (Gemini → Perplexity → Grok → Nimble → Claude Code).
 ---
 
 ## Open punten
-*(Bijgewerkt: 29 juli 2026)*
+*(Bijgewerkt: 11 oktober 2026)*
+
+### 11 oktober 2026 — SlimmeLezer Mini binnen, eerste vergelijking live
+- **SlimmeLezer Mini (Zuidwijk) binnengekomen.** `smarthome-p1-meter.html` uitgebreid: hardware-kaart vervangen door specifiek product (€22,25, ESPHome voorgeflashed) + nieuwe vergelijkingsbox HomeWizard vs SlimmeLezer Mini (app/account vs geen app, schermpje vs geen schermpje, ecosysteem vs puur Home Assistant). Disclosure toegevoegd: gratis ontvangen, geen affiliate-link, geen betaalde samenwerking. Geen eigen testresultaten gefabriceerd — dat volgt pas als Remy er echt mee gedraaid heeft.
+- **Bedankmail naar Marcel Zuidwijk verstuurd** (bestaande Gmail-thread "P1-meter/Home Assistant-gids", vanaf remyegberts@gmail.com — dat is hoe het hele thread al liep). Marcel linkt bewust niet naar externe sites omdat daar ook zijn concurrentie op staat — dus geen backlink te verwachten, puur reviewmateriaal.
+- **sitemap.xml**: lastmod smarthome-p1-meter.html → 2026-10-11 (echte inhoudswijziging, geen nav-only).
+- **Nog open:** zelf testen (stabiliteit ESPHome-koppeling, HA-herkenning) en met eigen meetdata/screenshots aanvullen zodra er genoeg draaiuren zijn.
 
 ### URGENT — volgende sessie fixen
 *(geen open urgent items)*
