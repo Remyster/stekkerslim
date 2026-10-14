@@ -150,7 +150,7 @@
     "author": {"@type": "Person", "name": "Remy Egberts"},
     "publisher": {"@type": "Organization", "name": "StekkerSlim.nl", "url": "https://stekkerslim.nl"},
     "datePublished": "2026-01-01",
-    "dateModified": "2026-09-30",
+    "dateModified": "2026-10-14",
     "url": "https://stekkerslim.nl/smarthome-p1-meter.html",
     "mainEntityOfPage": "https://stekkerslim.nl/smarthome-p1-meter.html"
   }
@@ -297,7 +297,7 @@
     <div class="breadcrumb"><a href="/">Home</a> › <a href="index.html#smarthome">Smarthome</a></div>
     <div class="article-tag">📡 Smarthome & DIY</div>
     <h1>HomeWizard P1 meter + Home Assistant 2026: in 5 stappen live</h1>
-    <div class="article-meta">Bijgewerkt: september 2026 · Leestijd: 12 minuten · Moeilijkheid: beginner</div>
+    <div class="article-meta">Bijgewerkt: oktober 2026 · Leestijd: 12 minuten · Moeilijkheid: beginner</div>
   </div>
 </div>
 
@@ -432,6 +432,8 @@
       <div class="step-content">
         <h4>P1 meter aansluiten</h4>
         <p>Steek de P1 meter in de P1-poort van je slimme meter. Dat is een RJ12-aansluiting met 6 pinnen: hij lijkt op een telefoonstekker en wordt daarom vaak RJ11 genoemd. Je vindt hem aan de onderkant of zijkant. De meter begint direct met knipperen.</p>
+        <img src="/p1-meter-model-rj12.png" alt="Achterkant van de HomeWizard P1 Meter met model HWE-P1-RJ12 zichtbaar op het typeplaatje" style="width:100%;max-width:420px;height:auto;border-radius:12px;margin:16px auto;display:block;" loading="lazy">
+        <p style="font-size:0.85rem;color:var(--grijs);margin-top:-8px">Mijn eigen HomeWizard P1 Meter: op het typeplaatje staat gewoon <strong>HWE-P1-RJ12</strong>, geen RJ11 — precies de verwarring die hierboven staat.</p>
       </div>
     </div>
     <div class="step-item">
@@ -453,6 +455,8 @@
       <div class="step-content">
         <h4>Sensoren worden aangemaakt</h4>
         <p>Home Assistant maakt automatisch sensoren aan voor: actueel verbruik (W), actuele teruglevering (W), dagverbruik (kWh), dagteruglevering (kWh), gasverbruik (m³). Alle data wordt lokaal opgeslagen.</p>
+        <img src="/p1-meter-entiteiten.png" alt="Home Assistant apparaatpagina van de HomeWizard P1 Meter met sensoren voor energie import, energie export, tarief en vermogen" style="width:100%;max-width:560px;height:auto;border-radius:12px;margin:16px auto;display:block;" loading="lazy">
+        <p style="font-size:0.85rem;color:var(--grijs);margin-top:-8px">De apparaatpagina van mijn eigen P1 meter. Let op de eenheden: kWh voor de meterstanden (Energie import/export), W voor Vermogen — Vermogen staat hier op -1,679 W, dus op dat moment leverde ik terug aan het net.</p>
       </div>
     </div>
     <div class="step-item">
@@ -490,7 +494,12 @@
   </div>
 
   <h2 id="dashboard">Dashboard instellen</h2>
-  <p>Het standaard energiedashboard van Home Assistant is al heel goed. Maar je kunt het verder uitbreiden met een custom Lovelace dashboard. Hier een yaml-snippet voor een minimaal energiekaartje:</p>
+  <p>Het standaard energiedashboard van Home Assistant is al heel goed. Ga naar <strong>Instellingen → Dashboards → Energie</strong> en voeg bij "Elektriciteitsnet" je P1-sensoren toe: één voor geïmporteerde energie, één voor geëxporteerde energie, beide in kWh. Kosten en vergoeding bijhouden kun je op "niet bijhouden" laten staan als je dat niet per kWh wil tonen.</p>
+  <img src="/p1-meter-netwerkconfiguratie.png" alt="Home Assistant configuratiescherm 'Netwerkverbinding configureren' met Energie import en Energie export gekoppeld aan de P1 Meter" style="width:100%;max-width:560px;height:auto;border-radius:12px;margin:16px auto;display:block;" loading="lazy">
+  <p style="font-size:0.85rem;color:var(--grijs);margin-top:-8px">Zo ziet die configuratiestap er in de praktijk uit: Energie import en Energie export van de P1 Meter gekoppeld aan "Elektriciteitsnet".</p>
+  <img src="/p1-meter-energiedashboard.png" alt="Home Assistant energiedashboard met maandelijkse staafgrafiek van geïmporteerde en geëxporteerde elektriciteit in kWh" style="width:100%;max-width:700px;height:auto;border-radius:12px;margin:16px auto;display:block;" loading="lazy">
+  <p style="font-size:0.85rem;color:var(--grijs);margin-top:-8px">Mijn eigen energiedashboard: 772,43 kWh geïmporteerd tegenover 540,09 kWh geëxporteerd, netto 232,34 kWh van het net verbruikt over deze periode.</p>
+  <p>Je kunt het dashboard verder uitbreiden met een custom Lovelace dashboard. Hier een yaml-snippet voor een minimaal energiekaartje:</p>
 
   <pre><code>type: energy-date-selection
 ---
