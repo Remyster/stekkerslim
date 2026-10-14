@@ -64,3 +64,15 @@
 2026-09-30 energiebespaar-calculator
 2026-09-30 saldering-2027
 2026-10-06 thuisbatterij-simuleren-home-assistant
+2026-10-14 index
+2026-10-14 zigbee2mqtt-apparaten-offline
+2026-10-14 homeassistant-energie-besparen
+2026-10-14 smarthome-producten
+2026-10-14 thuisbatterij-zonder-zonnepanelen-2026
+2026-10-14 beste-slimme-stekker-2026
+2026-10-14 calculator-energiekosten
+2026-10-14 calculator-laadpaal
+2026-10-14 calculator-warmtepomp
+2026-10-14 energiecontract-vergelijken-2026
+2026-10-14 homewizard-energy-display-deel2
+2026-10-14 homewizard-energy-display-review
