@@ -1,0 +1,92 @@
+# Social scan — bronnen, contentmapping en log
+
+Gebruikt door `/social-scan`. Doel: relevante vragen/threads vinden op Reddit en Tweakers, er een menselijk concept-antwoord bij schrijven (nooit affiliate-links, alleen gewone paginalinks), en pas na Remy's expliciete akkoord per item plaatsen.
+
+## Contentmapping (onderwerp → eigen pagina, geen affiliate-links)
+| Onderwerp | Pagina |
+|-----------|--------|
+| Thuisbatterij algemeen / kopen | `https://stekkerslim.nl/thuisbatterij-top5-2026.html` |
+| Thuisbatterij beslisvolgorde / wanneer wel-niet | `https://stekkerslim.nl/saldering-2027-thuisbatterij-beslisvolgorde.html` |
+| Thuisbatterij zonder zonnepanelen | `https://stekkerslim.nl/thuisbatterij-zonder-zonnepanelen-2026.html` |
+| Zonnepanelen / saldering 2027 | `https://stekkerslim.nl/saldering-2027.html` |
+| Zonnestroom zelf gebruiken zonder batterij | `https://stekkerslim.nl/zonnestroom-zelf-gebruiken-zonder-thuisbatterij.html` |
+| Dynamisch energiecontract | `https://stekkerslim.nl/dynamisch-contract.html` |
+| Energiecontract vergelijken | `https://stekkerslim.nl/energiecontract-vergelijken-2026.html` |
+| Energie besparen algemeen | `https://stekkerslim.nl/energiebespaar-calculator.html` |
+| P1-meter / smarthome inzicht in verbruik | `https://stekkerslim.nl/smarthome-p1-meter.html` |
+| Wasmachine/apparaten op dynamisch tarief | `https://stekkerslim.nl/wasmachine-dynamisch-tarief.html` |
+| Thuisbatterij simuleren zonder aankoop | `https://stekkerslim.nl/thuisbatterij-simuleren-home-assistant.html` |
+| Netcongestie | `https://stekkerslim.nl/netcongestie-uitgelegd.html` |
+
+Uitbreiden zodra een nieuw onderwerp vaak terugkomt.
+
+## Prioriteit (24 sept 2026)
+Search Console-data laat zien dat `smarthome-p1-meter.html` verreweg de
+grootste trafficbron van de site is en dat StekkerSlim daar concurreert met
+kleine onafhankelijke smarthome-blogs — winbaar, anders dan de thuisbatterij/
+dynamisch-contract-hoek waar Frank Energie/Gaslicht.com/Consumentenbond domineren.
+Alle onderstaande bronnen (Reddit, Facebook, Driving-Fun) zitten tot nu toe
+uitsluitend in die laatste, oncompetitieve hoek. **Home Assistant-community
+ontbreekt volledig als bron** — dat moet erbij: r/homeassistant (Engelstalig
+maar internationaal, ook Nederlandse posters) en de Nederlandse categorie op
+community.home-assistant.io.
+
+**Tweakers — hele forum gesloten voor links (24 sept 2026, bevestigd door Remy).**
+Geldt dus niet alleen voor "Duurzame energie en installaties" (huisregel 6,
+incident 15 sept) maar sitebreed, inclusief het domoticasubforum — links worden
+weggehaald. **Geen Tweakers-subforum meer gebruiken als plek om te posten.**
+Puur meelezen voor onderwerp-signalen (voor de blog-pipeline) blijft wel zinvol,
+alleen niet als plek om zelf te reageren.
+
+## Bronnen
+- **Reddit**: `r/thuisbatterij` bestaat en is relevant, maar klein en vaak al goed beantwoord door ervaren leden (technische merkvergelijkingen zoals Marstek/Growatt/Sigenergy). Site-brede zoek (`reddit.com/search`) op Nederlandse termen levert veel Engelstalige ruis op (bijv. "saldering" matcht "soldering"). Beter: `r/thuisbatterij/new` direct browsen, en zoeken op bredere subs zoals r/Nederland/r/thenetherlands voor contract-gerelateerde vragen (let op: sommige posts staan "vergrendeld", geen reacties meer mogelijk).
+- **Tweakers — GESTOPT als bron, sitebreed (16 sept, bevestigd 24 sept 2026)**: begon bij GoT-forum "Duurzame energie en installaties" (`gathering.tweakers.net/forum/list_topics/71`, huisregel 6, incident 15 sept), maar geldt sitebreed inclusief andere subfora zoals domotica — links worden weggehaald. Puur inhoudelijk helpen zonder link levert voor dit doel te weinig op. **Niet meer posten/beantwoorden op Tweakers, geen enkel subforum**, tenzij Remy expliciet vraagt dit te heropenen.
+- **Driving-Fun Forum** (`forum.driving-fun.com`, "De kroeg" → "Off topic" → "Het grote zonnepanelen bespaar/opbrengst topic", t=36339, inmiddels 224 pagina's/5588+ berichten) — **account aangemaakt en ingelogd sinds 21 sept 2026** (gebruikersnaam "stekkerslim"). Groot Nederlands autoforum, zeer actief, dagelijks nieuwe reacties. Publiek blijkt bij eerste bezoek vooral ervaren/technisch (batterijsturing, dynamisch handelen op kwartierbasis) — leden delen onderling directe links zonder zichtbare moderatie, dus links plaatsen lijkt toegestaan, maar nog niet expliciet getest. Nog niet geverifieerd of het een goede bron is voor beginnersvragen; komende rondes de laatste pagina van het topic blijven checken.
+- **Circuits Online** (`circuitsonline.net`) — **afgewezen (15 sept 2026)**. Geen aparte energie/duurzaamheid-sectie, puur elektronica-hobbyforum (Digitaal, High Voltage, Algemene elektronica, Voertuigelektronica, HF, etc.). Het gevonden "Thuisbatterij zonnepanelen"-topic ging over zelfbouw-accu's, Victron-componenten, brandverzekering — te technisch/DIY, publiek sluit niet aan bij StekkerSlim's doelgroep. Geen account voor nodig.
+- **Facebook-groepen**: 6 groepen aangeleverd door Remy (15 sept 2026), verkend op 15 sept 2026. Remy is al lid van alle 6 (ingelogd als "Egberts Re"). Groepen met "Openstaande vragen"-tab: daar eerst kijken, is efficiënter dan door de hele feed scrollen.
+  1. https://www.facebook.com/groups/thuisbatterijendynamischhandelen/ — "Thuisbatterij & Dynamisch handelen" (openbaar, 22K leden) — vooral prijs-/flexposts, geen "Openstaande vragen"-tab
+  2. https://www.facebook.com/groups/660649908348223/ — "Gas en stroom besparen forum" (privé, 49K leden) — goede match gevonden
+  3. https://www.facebook.com/groups/550933513413032/ — "Zonnepanelen Vragen en Opbrengst forum" (openbaar, 12K leden) — vooral opbrengst-flexposts
+  4. https://www.facebook.com/groups/1463894423872949/ — "Alles over zonnepanelen, advies en bijhouden opbrengst" (openbaar, 22K leden) — heeft "Openstaande vragen"-tab, enige open vraag was CV/gas-technisch, niet passend
+  5. https://www.facebook.com/groups/zonnepanelenforum/ — "Zonnepanelen forum" (privé, 42K leden) — heeft "Openstaande vragen"-tab (leeg op dit moment), feed vooral BE-technische installatievragen
+  6. https://www.facebook.com/groups/666746877754896/ — "Energie, Warmtepomp, Airco en isolatie bespaar forum" (openbaar, 47K leden) — goede match gevonden
+
+## Log (behandelde threads)
+- **2026-09-15** — Tweakers, "Duurzame energie en installaties" — [Hoe werken energiecontracten?](https://gathering.tweakers.net/forum/list_messages/2345120) — status: geplaatst, maar **link door moderator "teacher" verwijderd/vervangen** (spottende placeholder-URL) — bevestigt het huisregel-6-risico. Geen verdere actie nodig, maar **voortaan op Tweakers geen stekkerslim.nl-links meer plaatsen**, puur inhoudelijk helpen.
+- **2026-09-15** — Reddit r/thuisbatterij — "Sigenergy koppelen met enphase" — overgeslagen (te installatie-technisch, geen passende pagina, risico op onjuist technisch advies)
+- **2026-09-15** — Reddit r/Nederland — "Energiecontract bij verhuizen naar gasloze woning" — overgeslagen (topic vergrendeld, geen reacties meer mogelijk)
+- **2026-09-15** — Reddit r/thuisbatterij — "Marstek venus e3 of Growatt Aura 5000" — overgeslagen (al uitgebreid en goed beantwoord door community, weinig toe te voegen)
+- **2026-09-15** — Facebook, "Gas en stroom besparen forum" — vraag over zoveel mogelijk zelf gebruiken van zonnepanelen na verhuizing — status: **geplaatst** (akkoord Remy) — pagina: `energiebespaar-calculator.html`
+- **2026-09-15** — Facebook, "Energie, Warmtepomp, Airco en isolatie bespaar forum" — Kim de Wit, contractkeuze bij hybride warmtepomp + 4 nieuwe zonnepanelen — status: **geplaatst** (akkoord Remy) — pagina: `dynamisch-contract.html`
+- **2026-09-16** — Reddit r/thuisbatterij — "Thuisbatterij van 800W naar 3500W voor een warmtepomp" — overgeslagen (te technisch, vermogensband/Wieland-aansluiting, geen passende pagina)
+- **2026-09-16** — Reddit r/thuisbatterij — "Thuisbatterij verliest 20% van elke kWh. Normaal?" en "Overzicht RTE per vermogensband" — overgeslagen (te technisch/al druk becommentarieerd)
+- **2026-09-16** — Tweakers, "Duurzame energie en installaties" — "Complexe situatie, is aanschaf warmtepomp de moeite waard." — overgeslagen (CV-ketel/warmtepomp installatietechniek, geen contentmatch)
+- **2026-09-16** — Tweakers, "Duurzame energie en installaties" — [Batterij of niet en van wie en hoeveel](https://gathering.tweakers.net/forum/list_messages/2345158) — overgeslagen op Remy's verzoek: Tweakers is gestopt als bron (zie hierboven), geen concept-antwoord meer opgesteld/geplaatst
+- **2026-09-16** — Facebook, "Thuisbatterij & Dynamisch handelen" — Bert de Vries, zoekt energieleverancier bij dynamisch contract + AlphaESS-batterij 18,6 kWh — status: **geplaatst** (akkoord Remy) — pagina: `dynamisch-contract.html`
+- **2026-09-21** — Facebook, "Gas en stroom besparen forum" — [PurpleLynx2432, verhuizing + nieuwe zonnepanelen/warmtepomp, vast vs. dynamisch contract](https://www.facebook.com/groups/660649908348223/posts/1714624876284049/) — status: **geplaatst** (akkoord Remy) — pagina: `dynamisch-contract.html`. Claim (saldering maakt dynamisch-teruglevermoment minder relevant tot 2027) geverifieerd via Perplexity vóór plaatsing.
+- **2026-09-21** — Facebook, "Alles over zonnepanelen, advies en bijhouden opbrengst" — Hans Knook, retourwater CV verwarmen met zonnestroom — overgeslagen (gastechnisch, geen contentmatch, al 44 reacties)
+- **2026-09-21** — Facebook, "Zonnepanelen forum" — Bob de Bouwer, zoekt monteur voor omvormer/batterijen/EMS/laadpaal — overgeslagen (geen inhoudelijke vraag, dienstverlening gezocht)
+- **2026-09-21** — Facebook, "Thuisbatterij & Dynamisch handelen" — Mario van Michelen, prijsvergelijking Zendure NL vs. Duitsland/idealo — overgeslagen (pure prijsdiscussie, al 20 reacties, geen contentmatch)
+- **2026-09-21** — Facebook, "Zonnepanelen Vragen en Opbrengst forum" en "Energie, Warmtepomp, Airco en isolatie bespaar forum" — gescand, alleen opbrengst-flexposts en een isolatietechnische vraag (35 reacties) — geen match
+- **2026-09-21** — Reddit — niet gescand, browserextensie blokkeerde reddit.com deze sessie ("not allowed due to safety restrictions")
+- **2026-09-21** — Driving-Fun Forum — eerste bezoek na account-aanmaak door Remy, ingelogd als "stekkerslim". "Het grote zonnepanelen bespaar/opbrengst topic" (t=36339, 224 pagina's) laatste pagina bekeken: zeer actieve expert-discussie over batterijsturing/dynamisch handelen, geen onbeantwoorde vraag deze ronde, publiek te ervaren voor een instap-antwoord. Wel bruikbare bron voor volgende ronden — vaker laatste pagina checken op nieuwe, minder ervaren vragenstellers.
+- **2026-09-23** — Reddit — niet gescand, browserextensie blokkeerde reddit.com weer ("not allowed due to safety restrictions", zelfde als 21 sept).
+- **2026-09-23** — Facebook, "Thuisbatterij & Dynamisch handelen" — [Daniëla Dekker-Prins, dynamisch contract bij ANWB + AlphaESS 15 kWh, vraagt hoe automatisch in te kopen bij lage prijzen/verkopen bij hoge prijzen, installateur adviseerde overstap naar Frank Energie/NextEnergy](https://www.facebook.com/groups/thuisbatterijendynamischhandelen/permalink/2157751301837339/) — status: **geplaatst** (akkoord Remy) — pagina: `dynamisch-contract.html`. Claim (Frank Energie officiële AlphaESS-koppeling, ANWB geen publieke batterij-API) geverifieerd via Perplexity vóór plaatsing.
+- **2026-09-23** — Facebook, "Gas en stroom besparen forum" — enige openstaande vraag was de al eerder behandelde PurpleLynx2432-vraag (21 sept) — geen nieuwe match.
+- **2026-09-23** — Facebook, "Energie, Warmtepomp, Airco en isolatie bespaar forum" — Robbert-jan Schop, spouwmuur vs. vloerisolatie — overgeslagen (37 reacties, geen contentmatch, isolatietechnisch).
+- **2026-09-23** — Facebook, "Zonnepanelen Vragen en Opbrengst forum" — alleen opbrengst-flexpost (Erik ter Veer) — geen match.
+- **2026-09-23** — Facebook, "Alles over zonnepanelen, advies en bijhouden opbrengst" — nog steeds de Hans Knook CV-retourwater-vraag (al op 21 sept overgeslagen) — geen nieuwe match.
+- **2026-09-23** — Facebook, "Zonnepanelen forum" — Bjorn Schilf zoekt tweedehands panelen — geen inhoudelijke vraag, overgeslagen.
+- **2026-09-23** — Driving-Fun Forum — zoekfunctie gebruikt i.p.v. geraden permalink (t=36339 gaf 404, thread-ID's verschuiven blijkbaar); topic blijft zeer technisch (RTE-percentages, cyclikosten, dynamische arbitrage) — geen instapvraag deze ronde.
+- **2026-09-28** — Reddit — niet gescand, browserextensie blokkeerde reddit.com opnieuw ("not allowed due to safety restrictions", nu 3x op rij: 21/23/28 sept).
+- **2026-09-28** — Home Assistant Community (community.home-assistant.io) — **nieuw verkend**, op basis van de 24-sept-prioriteit ("HA-community ontbreekt als bron"). Blijkt geen Nederlandse categorie te hebben (volledig Engelstalig/internationaal). Energy- en Configuration-categorieën gedomineerd door zeer technische internationale omvormer/Modbus/dynamic-tariff-vragen (Fronius, GoodWe, SolarEdge, Predbat) — sluit niet aan bij StekkerSlim's Nederlandstalige beginnersdoelgroep. Twee P1/DSMR-threads gecheckt: "'P1 Monitor' or 'DSMR Slimme Meter' integration" (oud, okt 2022, al volledig beantwoord met DIY ESPHome-config) en "Fluvius Sagemcom XT211 RJ45 P1 pinout for Marstek CT003" (Belgisch, hardware-pinout, te technisch). **Voorlopige conclusie: geen bruikbare bron voor dit doel** — internationaal/Engelstalig karakter past niet bij een Nederlandstalige site met alleen Nederlandse content om naar te linken. Niet meer structureel meenemen tenzij Remy anders beslist.
+- **2026-09-28** — Facebook, alle 6 groepen gescand — geen nieuwe match. "Gas en stroom besparen forum" en "Alles over zonnepanelen": dezelfde al-behandelde vragen (PurpleLynx2432, Hans Knook). "Energie, Warmtepomp, Airco": tochtvraag warmtepomp-blaasmond, al beantwoord door ander lid. "Thuisbatterij & Dynamisch handelen": promotiepost "Hoe groot moet een thuisbatterij zijn?" met link naar batterijkostencheck.nl (13 reacties, geen persoonlijke vraag, af-strategie qua content). "Zonnepanelen Vragen en Opbrengst forum": Belgische (Herentals) installateur-aanbeveling, andere markt/regelgeving, al vol bedrijfs-zelfpromotie. "Zonnepanelen forum": zakelijke samenwerkingsoproep paneelreiniging, geen inhoudelijke vraag.
+- **2026-09-28** — Driving-Fun Forum — laatste pagina's (224-225) van het zonnepanelen-topic bekeken: expertdiscussie over RTE, accutaks-nieuws (dubbele energiebelasting thuisbatterij/bidirectioneel laden), geen instapvraag deze ronde.
+- **2026-09-30** — Reddit — bewust overgeslagen (structureel kapot bevestigd 21/23/28 sept, staande instructie niet meer proberen).
+- **2026-09-30** — Facebook, "Gas en stroom besparen forum" — Openstaande vragen-tab: alleen de al-behandelde PurpleLynx2432-vraag — geen nieuwe match.
+- **2026-09-30** — Facebook, "Zonnepanelen Vragen en Opbrengst forum" — alleen een promotiepost (drone thermische inspecties, Guy Liebert) — geen inhoudelijke vraag, overgeslagen.
+- **2026-09-30** — Facebook, "Alles over zonnepanelen, advies en bijhouden opbrengst" — nog steeds de Hans Knook CV-retourwater-vraag (al eerder overgeslagen) — geen nieuwe match.
+- **2026-09-30** — Facebook, "Zonnepanelen forum" — Emma Herman, zakelijke samenwerkingsoproep voor paneelreiniging — geen inhoudelijke vraag, overgeslagen.
+- **2026-09-30** — Facebook, "Energie, Warmtepomp, Airco en isolatie bespaar forum" — Ronny Bockstaele, blaasmond-tochtvraag bij warmtepomp — overgeslagen (geen contentmatch, al beantwoord door anderen).
+- **2026-09-30** — Facebook, "Thuisbatterij & Dynamisch handelen" — Wim Warmenhoven, 3000 kWh/jaar, vraagt aantal zonnepanelen + batterijgrootte — overgeslagen (al 31 reacties, een lid noemt het "vreemde vraag van een energieadviseur", te verzadigd/ongemakkelijk kader om nog waarde toe te voegen).
+- **2026-09-30** — Driving-Fun Forum — zoekfunctie gebruikt, meest recente berichten (27-29 sept) in het zonnepanelen-topic bekeken: alleen ervaren-ledenbanter over airco-stroomverbruik/RTE/saldering-standpunten, geen instapvraag.
