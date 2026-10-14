@@ -5,6 +5,10 @@ on:
     branches: [main]
     paths:
       - 'Kennisbank/**'
+      # Ook draaien als de sync zelf verandert — anders moet je een
+      # inhoudelijke Kennisbank-wijziging verzinnen om een fix te testen.
+      - 'Scripts/sync-drive.js'
+      - '.github/workflows/sync-drive.yml'
   workflow_dispatch: {}
 
 jobs:
@@ -12,12 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Installeer dependencies
         run: npm install googleapis@144

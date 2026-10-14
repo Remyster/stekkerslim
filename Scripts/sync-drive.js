@@ -39,12 +39,38 @@ async function main() {
 
   const existing = await drive.files.list({
     q: `'${folderId}' in parents and trashed = false`,
-    fields: 'files(id, name)',
+    fields: 'files(id, name, mimeType)',
     pageSize: 100,
   });
-  const existingByName = new Map(
-    (existing.data.files || []).map((f) => [f.name, f.id])
-  );
+
+  // Drive staat meerdere bestanden met dezelfde naam in één map toe. Dat is een
+  // keer gebeurd met qa-audit.md: naast het markdown-bestand stond er een
+  // geconverteerd Google Doc met exact dezelfde naam. Blind "de laatste" pakken
+  // betekent dan dat de sync stilletjes het verkeerde bestand bijwerkt. Kies
+  // daarom expliciet het echte markdown-bestand en meld het duplicaat.
+  const byName = new Map();
+  for (const f of existing.data.files || []) {
+    const lijst = byName.get(f.name) || [];
+    lijst.push(f);
+    byName.set(f.name, lijst);
+  }
+
+  const duplicaten = [];
+  const existingByName = new Map();
+  for (const [naam, lijst] of byName) {
+    if (lijst.length === 1) {
+      existingByName.set(naam, lijst[0].id);
+      continue;
+    }
+    const markdown = lijst.find((f) => f.mimeType === 'text/markdown');
+    const gekozen = markdown || lijst[0];
+    existingByName.set(naam, gekozen.id);
+    duplicaten.push(
+      `${naam} — ${lijst.length}x aanwezig (${lijst
+        .map((f) => `${f.mimeType} ${f.id}`)
+        .join(', ')}); bijgewerkt is ${gekozen.id}`
+    );
+  }
 
   const gelukt = [];
   const handmatig = [];
@@ -91,6 +117,12 @@ async function main() {
 
   console.log('');
   console.log(`Klaar. ${gelukt.length} van ${localFiles.length} bestand(en) gesynct.`);
+
+  if (duplicaten.length) {
+    console.log('');
+    console.log('LET OP — dubbele bestandsnamen in de Drive-map. Ruim de overbodige op:');
+    duplicaten.forEach((d) => console.log(`  - ${d}`));
+  }
 
   if (handmatig.length) {
     console.log('');
