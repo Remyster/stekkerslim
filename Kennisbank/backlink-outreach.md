@@ -52,3 +52,43 @@ andere DSMR/P1-hardwareverkopers.
   naar meer kandidaten.
 - Zie ook `Kennisbank/social-scan-bronnen.md` — Reddit is als bron gestopt (browser-
   issue, structureel, niet incidenteel), dit is het alternatief daarvoor.
+
+## Kandidaten ronde 2 (23 okt 2026) — webonderzoek, nog niets verstuurd
+Gevonden via zoeken; contactgegevens en partnerprogramma's zijn NIET geverifieerd
+(geen e-mailadressen verzonnen — eerst op de eigen site zoeken). Al eerder benaderd
+en dus overgeslagen: Zendure, Sessy, Hombli, Quatt, Anker SOLIX, Sonoff, Zonneplan,
+EcoFlow, Marstek, thuisbatterij.nl, Vattenfall, Athom Technology, Shelly, SMLIGHT,
+Tibber, everHome, Zuidwijk, HAProfs, Smarthomegids, SlimHuys, homeassistanttips.nl.
+
+| Prio | Bedrijf | Soort | Waarom | Kanttekening |
+|------|---------|-------|--------|--------------|
+| 1 | Homey Energy Dongle (Athom B.V., Eindhoven — niet Athom Technology) | P1-dongle, €39, verkocht via Coolblue/MediaMarkt | Past in P1-cluster, derde P1-lezer naast HomeWizard en SlimmeLezer | Homey-ecosysteem, minder open dan ESPHome; Coolblue-affiliate bestaat al |
+| 1 | Smartstuff (Ultra X2 / Ultra Mini dongle) | P1-dongle, ESPHome/HA/Homey | Zelfde vergelijking als SlimmeLezer | Details alleen uit een communitypagina, eerst productsite checken |
+| 2 | plan-d-io P1-dongle | Open-source P1-hardware | Past bij "zelf meten en sturen" | Wie verkoopt in NL is onduidelijk |
+| 2 | SmartHomeShop (P1MeterKit) | P1-kit voor ESPHome | Cluster-fit | Winkel/herkomst niet gecheckt |
+| 2 | Plugwise (Smile P1) | NL-bedrijf, officiële HA-integratie | Lokaal, NL-markt | Nog geen reviewplan |
+| 3 | Jackery SolarVault 3 (NL-launch maart 2026, via groothandels) | Plug-in/AC-batterij, buitenlands, verkoopt in NL | Groeit hard volgens Solar Magazine | Richt zich op installateurs; hun affiliate (elders) verbiedt vergelijkbare producten promoten — botst met onze onafhankelijkheid |
+| 3 | Sigenergy (Sigenmate) | Batterij, buitenlands, op Bright Energy Party | NL-aanwezigheid | Vooral installateursmarkt |
+| 3 | Bluetti | Batterij, via NL-webshops | Verkoopt in NL | Geen NL-partnerprogramma gevonden |
+| 3 | ThuisbatterijNederland.nl (Nieuw-Vennep) | Merkonafhankelijke installateur | Mogelijke linkruil/doorverwijzing voor installatievragen | Thuisbatterij-hoek, buiten de cluster-prioriteit |
+| 4 | Smappee (BE) | P1-module | Verkoopt in NL | Cloud-API nodig in HA, botst met "lokaal"-lijn |
+| 4 | Solar Magazine (industry register) | Vakmedia | Mogelijk vermelding | Voorwaarden/kosten onbekend |
+
+Geen nieuwe Daisycon/Awin-campagnes gevonden voor Jackery, Bluetti, Growatt, Sigenergy of
+Anker in NL (zoekresultaten dun) — direct in Daisycon zoeken voordat je dit aanneemt.
+
+### Verstuurd 23 okt 2026 (info@stekkerslim.nl) — reviewsamples, ronde 2
+| Bedrijf | Adres | Taal | Vraag | Status |
+|---------|-------|------|-------|--------|
+| Homey (Athom B.V.) | info@homey.app (algemeen adres, geen press-adres gevonden) | NL | Energy Dongle als reviewsample + vraag naar partnerprogramma voor contentmakers | Verstuurd, geen reactie |
+| Smartstuff | info@smart-stuff.nl | NL | P1-dongle als reviewsample, model naar hun keuze | Verstuurd, geen reactie |
+| Jackery | marketing.eu@jackery.com | EN | SolarVault 3 als reviewsample, model naar hun keuze | Verstuurd, geen reactie |
+Zelfde opzet als eerdere rondes: gratis ontvangen vermelden, geen concept vooraf, bereik eerlijk bescheiden genoemd. Niet verstuurd: plan-d-io, SmartHomeShop, Plugwise, Sigenergy, Bluetti, ThuisbatterijNederland.nl.
+
+### Verstuurd 23 okt 2026 (info@stekkerslim.nl) — aanvulling, 3 extra
+| Bedrijf | Adres | Taal | Vraag | Status |
+|---------|-------|------|-------|--------|
+| Innr (NL, Zigbee-stekkers/lampen) | service@innr.com (enige gevonden adres) | NL | Slimme stekker (bij voorkeur met verbruiksmeting) als reviewsample + partnerprogramma | Verstuurd, geen reactie |
+| ThuisbatterijNederland.nl | info@thuisbatterijnederland.nl | NL | Wederzijdse verwijzing zonder betaling of aanbevelingsplicht (wij linken bij installatievragen, zij naar P1/HA-uitleg) | Verstuurd, geen reactie |
+| Victron Energy Benelux | salesbenelux@victronenergy.com | NL | Praktijkverslag Victron + Home Assistant, klein meet-/communicatieproduct in bruikleen, of doorverwijzing | Verstuurd, geen reactie |
+Niet gemaild: Plugwise (alleen contactformulier), SmartHomeShop (alleen supportportaal), plan-d-io (Belgisch hobbyproject, geen product), Sigenergy en Bluetti (geen NL-contactadres gevonden). Gelogd als open: Plugwise- en SmartHomeShop-formulier eventueel handmatig invullen.
