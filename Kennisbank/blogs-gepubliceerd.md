@@ -37,6 +37,8 @@ Let op: dit zijn artikel/blog-pagina's, niet de calculators of vaste pagina's (o
 | zonnepanelen-onderpresteren.html | Zonnepanelen onderpresteren — oorzaken & stappenplan | 2026-08-25 |
 | indevolt-solidflex-3000-app-review.html | Indevolt SolidFlex 3000 AC — de app getest (deel 2) | 2026-08-26 |
 | sluipverbruik-meten-oplossen.html | Sluipverbruik meten en oplossen — stappenplan | 2026-09-02 |
+| athom-esphome-stekker-review.html | Athom ESPHome-stekker in Home Assistant: eerste verslag | 2026-10-23 |
+| slimmelezer-mini-review.html | SlimmeLezer Mini: P1-lezer voor Home Assistant, eerste verslag | 2026-10-23 |
 | zonnestroom-zelf-gebruiken-zonder-thuisbatterij.html | Zonnestroom zelf gebruiken zonder thuisbatterij: 7 stappen | 2026-09-09 |
 | misleidende-thuisbatterij-verkoop-herkennen.html | Misleidende thuisbatterij-verkoop herkennen | 2026-09-16 |
 | zigbee2mqtt-apparaten-offline.html | Zigbee2MQTT apparaten offline — storingsgids | 2026-10-08 ⚠ |
