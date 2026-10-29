@@ -87,3 +87,14 @@
 2026-10-23 slimme-stekkers
 2026-10-23 slimme-thermostaat-installeren
 2026-10-23 sluipverbruik-meten-oplossen
+2026-10-29 athom-esphome-stekker-review
+2026-10-29 slimmelezer-mini-review
+2026-10-29 smarthome-uitleg
+2026-10-29 stroomprijs-record-juni-2026
+2026-10-29 tapo-p115-p410m-eindoordeel
+2026-10-29 tapo-p115-p410m-review
+2026-10-29 terugleverkosten
+2026-10-29 terugverdientijd-zonnepanelen-2026
+2026-10-29 thuisbatterij-energielabel-2026
+2026-10-29 vragen
+2026-10-29 wanneer-thuisbatterij-niet-slim
