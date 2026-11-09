@@ -98,3 +98,13 @@
 2026-10-29 thuisbatterij-energielabel-2026
 2026-10-29 vragen
 2026-10-29 wanneer-thuisbatterij-niet-slim
+2026-11-09 wasmachine-dynamisch-tarief
+2026-11-09 zonnepanelen-onderpresteren
+2026-11-09 zonnestroom-zelf-gebruiken-zonder-thuisbatterij
+2026-11-09 blog
+2026-11-09 calculator-thuisbatterij
+2026-11-09 calculator-zonnepanelen
+2026-11-09 dynamisch-contract-zonnepanelen-thuisbatterij
+2026-11-09 energiebespaar-calculator
+2026-11-09 indevolt-solidflex-3000-review
+2026-11-09 saldering-2027
