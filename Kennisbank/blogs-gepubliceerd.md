@@ -42,6 +42,7 @@ Let op: dit zijn artikel/blog-pagina's, niet de calculators of vaste pagina's (o
 | zonnestroom-zelf-gebruiken-zonder-thuisbatterij.html | Zonnestroom zelf gebruiken zonder thuisbatterij: 7 stappen | 2026-09-09 |
 | misleidende-thuisbatterij-verkoop-herkennen.html | Misleidende thuisbatterij-verkoop herkennen | 2026-09-16 |
 | zigbee2mqtt-apparaten-offline.html | Zigbee2MQTT apparaten offline — storingsgids | 2026-10-08 ⚠ |
+| zonnestroom-automatiseren-home-assistant.html | Zonnestroom automatiseren met Home Assistant: zo werkt het | 2026-11-13 |
 
 ⚠ Dit bestand staat op 8 oktober 2026 nog **niet** in de repo en nog niet in
 `sitemap.xml` of `blog.html`. De pagina is door de publicatiecheck gekomen, maar

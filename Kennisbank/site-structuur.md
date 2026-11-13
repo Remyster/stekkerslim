@@ -57,6 +57,7 @@ trafficbron van de site. Nieuwe content en interne links horen hier eerst te lan
 - `sluipverbruik-meten-oplossen.html` — stappenplan sluipverbruik opsporen met P1-meter + energiemeter, toegevoegd 2 september 2026
 - `athom-esphome-stekker-review.html` — eerste verslag Athom PG01V3 ESPHome-stekker (gratis sample, geen affiliate), 23 oktober 2026
 - `slimmelezer-mini-review.html` — eerste verslag SlimmeLezer Mini van Zuidwijk (gratis sample, geen affiliate), 23 oktober 2026
+- `zonnestroom-automatiseren-home-assistant.html` — Home Assistant-automatisering op teruglevering (melding eerst, dan schakelen), met eigen terugblik op hoe vaak de trigger afging, 13 november 2026
 - `slimme-stekkers.html`
 - `beste-slimme-stekker-2026.html`
 - `kwartierprijzen-slimme-stekker.html`

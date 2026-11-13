@@ -1,0 +1,742 @@
+﻿<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <!-- Google Analytics 4 — vervang G-RKF36BF7DB met jouw eigen Measurement ID via analytics.google.com -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RKF36BF7DB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RKF36BF7DB');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Start een slimme stekker automatisch bij zonnestroom-overschot via Home Assistant en je P1-meter. Triggers, voorwaarden en een YAML-voorbeeld.">
+  <link rel="canonical" href="https://stekkerslim.nl/zonnestroom-automatiseren-home-assistant.html">
+  <title>Zonnestroom automatiseren met Home Assistant: zo werkt het</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--groen:#00D17A;--navy:#0B1628;--licht:#F4F7F2;--wit:#ffffff;--grijs:#6B7280;--grijs-licht:#E8EDF2;--accent:#FFD23F;--radius:14px;--shadow:0 4px 24px rgba(0,0,0,0.08)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:var(--wit);color:var(--navy);line-height:1.6}
+    nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--grijs-licht);padding:0 24px}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.4rem;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:8px}
+    .logo span{color:var(--groen)}.logo-icon{width:32px;height:32px;background:var(--groen);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+    .nav-links{display:flex;gap:32px;list-style:none}.nav-links a{text-decoration:none;color:var(--navy);font-size:0.9rem;font-weight:500}.nav-links a:hover{color:var(--groen)}
+    .nav-cta{background:var(--groen);color:var(--wit)!important;padding:8px 18px;border-radius:8px;font-weight:600!important}
+    .page-hero{background:var(--navy);padding:56px 24px}
+    .page-hero-inner{max-width:800px;margin:0 auto}
+    .breadcrumb{color:rgba(255,255,255,0.4);font-size:0.82rem;margin-bottom:16px}.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}.breadcrumb a:hover{color:var(--groen)}
+    .article-tag{display:inline-block;background:rgba(255,210,63,0.2);color:var(--accent);padding:4px 12px;border-radius:99px;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+    .page-hero h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--wit);margin-bottom:16px;line-height:1.15}
+    .article-meta{color:rgba(255,255,255,0.4);font-size:0.82rem}
+    .urgency-banner{background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:16px 20px;margin-top:24px;color:var(--wit);font-size:0.88rem}
+    .urgency-banner strong{color:#FCA5A5}
+    .article-body{max-width:800px;margin:0 auto;padding:56px 24px}
+    .article-body h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin:40px 0 12px}
+    .article-body h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;margin:28px 0 8px}
+    .article-body p{color:#374151;font-size:0.95rem;line-height:1.75;margin-bottom:16px}
+    .article-body ul,.article-body ol{padding-left:24px;color:#374151;font-size:0.95rem;line-height:1.8;margin-bottom:16px}
+    .article-body li{margin-bottom:6px}
+    .highlight-box{background:var(--licht);border-left:4px solid var(--groen);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem}
+    .warning-box{background:rgba(255,210,63,0.1);border-left:4px solid var(--accent);border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;font-size:0.92rem}
+    .comparison-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:0.88rem}
+    .comparison-table th{background:var(--navy);color:var(--wit);padding:10px 14px;text-align:left}
+    .comparison-table td{padding:10px 14px;border-bottom:1px solid var(--grijs-licht)}
+    .comparison-table tr:last-child td{border-bottom:none}
+    .good{color:var(--groen);font-weight:700}.bad{color:#EF4444;font-weight:700}
+    .scenario-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:24px 0}
+    .scenario-card{border-radius:14px;padding:20px}
+    .scenario-card.voor{background:rgba(0,209,122,0.08);border:1px solid rgba(0,209,122,0.25)}
+    .scenario-card.na{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2)}
+    .scenario-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
+    .scenario-card.voor h4{color:var(--groen)}.scenario-card.na h4{color:#EF4444}
+    .scenario-card p{font-size:0.85rem;color:var(--grijs);margin:0}
+    .scenario-card .big-num{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.6rem;margin-bottom:4px}
+    .scenario-card.voor .big-num{color:var(--groen)}.scenario-card.na .big-num{color:#EF4444}
+    .action-list{display:flex;flex-direction:column;gap:12px;margin:24px 0}
+    .action-item{display:flex;gap:16px;align-items:flex-start;padding:16px;background:var(--licht);border-radius:12px}
+    .action-num{width:32px;height:32px;min-width:32px;background:var(--groen);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-weight:900;font-size:0.9rem}
+    .action-item h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:4px}
+    .action-item p{font-size:0.83rem;color:var(--grijs);margin:0}
+    .toc{background:var(--licht);border-radius:14px;padding:24px;margin-bottom:40px}
+    .toc h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:12px}
+    .toc ol{padding-left:20px;font-size:0.88rem;line-height:2}
+    .toc a{color:var(--navy);text-decoration:none}.toc a:hover{color:var(--groen)}
+    .disclaimer-box{background:var(--licht);border-radius:12px;padding:16px 20px;font-size:0.82rem;color:var(--grijs);margin-top:40px;line-height:1.6}
+    .related-articles{background:var(--licht);padding:48px 24px}
+    .related-inner{max-width:800px;margin:0 auto}
+    .related-inner h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:20px}
+    .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .related-card{background:var(--wit);border-radius:14px;padding:20px;text-decoration:none;color:inherit;transition:box-shadow .2s;display:block}
+    .related-card:hover{box-shadow:var(--shadow)}
+    .related-card .tag{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--groen);margin-bottom:6px}
+    .related-card h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;line-height:1.3}
+    .cta-section{background:var(--navy);padding:56px 24px;text-align:center}
+    .cta-section h2{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.6rem;color:var(--wit);margin-bottom:12px}
+    .cta-section p{color:rgba(255,255,255,.6);margin-bottom:24px}
+    .btn-primary{background:var(--groen);color:var(--navy);padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;display:inline-block;transition:transform .2s}
+    .btn-primary:hover{transform:translateY(-2px)}
+    footer{background:var(--navy);padding:40px 24px 24px;color:rgba(255,255,255,.5)}
+    .footer-inner{max-width:1100px;margin:0 auto}
+    .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer-brand p{font-size:.85rem;margin-top:12px;line-height:1.7;max-width:260px}
+    .footer-col h4{font-family:'Outfit',sans-serif;color:var(--wit);font-size:.9rem;font-weight:700;margin-bottom:14px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+    .footer-col a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem}.footer-col a:hover{color:var(--groen)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:.8rem}
+    @media(max-width:700px){.scenario-cards,.related-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+    .nav-dropdown{position:relative}.nav-dropdown>a{cursor:pointer;display:flex;align-items:center;gap:4px}.nav-dropdown>a::after{content:'\25be';font-size:.75rem}.nav-dropdown-menu{display:none;position:absolute;top:100%;padding-top:8px;left:0;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);min-width:200px;padding:8px;z-index:200;border:1px solid var(--grijs-licht)}.nav-dropdown-menu a{display:block;padding:8px 14px;border-radius:8px;font-size:.88rem;color:var(--navy);text-decoration:none;font-weight:500;white-space:nowrap}.nav-dropdown-menu a:hover{background:var(--licht);color:var(--groen)}
+  
+    /* === ZOEKBALK === */
+    .nav-search-wrap{position:relative}
+    .nav-search-btn{background:none;border:none;cursor:pointer;padding:8px;color:var(--grijs);display:flex;align-items:center;transition:color .2s;border-radius:8px}
+    .nav-search-btn:hover,.nav-search-btn.open{color:var(--groen)}
+    .nav-search-btn svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .nav-search-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.25);z-index:199;backdrop-filter:blur(2px)}
+    .nav-search-overlay.open{display:block}
+    .nav-search-box{display:none;position:fixed;top:68px;left:50%;transform:translateX(-50%);width:min(600px,92vw);background:#fff;border-radius:16px;box-shadow:0 16px 48px rgba(0,0,0,0.18);z-index:200;overflow:hidden}
+    .nav-search-box.open{display:block}
+    .nav-search-inner{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--grijs-licht)}
+    .nav-search-inner svg{width:20px;height:20px;stroke:var(--grijs);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    .nav-search-input{flex:1;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--navy);background:transparent}
+    .nav-search-input::placeholder{color:#aaa}
+    .nav-search-clear{background:none;border:none;cursor:pointer;color:var(--grijs);font-size:1.1rem;padding:0 4px;display:none}
+    .nav-search-clear.show{display:block}
+    .nav-search-results{max-height:400px;overflow-y:auto}
+    .nav-search-result{display:flex;align-items:flex-start;gap:12px;padding:12px 18px;text-decoration:none;color:var(--navy);transition:background .15s;border-bottom:1px solid rgba(0,0,0,0.04)}
+    .nav-search-result:last-child{border-bottom:none}
+    .nav-search-result:hover{background:var(--licht)}
+    .nsr-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px}
+    .nsr-content{}
+    .nsr-title{font-weight:600;font-size:0.88rem;color:var(--navy);margin-bottom:2px}
+    .nsr-title mark{background:rgba(0,209,122,0.2);color:var(--navy);border-radius:3px;padding:0 2px}
+    .nsr-desc{font-size:0.78rem;color:var(--grijs);line-height:1.4}
+    .nav-search-hint{padding:14px 18px;text-align:center;color:#aaa;font-size:0.82rem}
+    .nav-search-footer{padding:10px 18px;border-top:1px solid var(--grijs-licht);text-align:right;font-size:0.72rem;color:#bbb}
+    @media(max-width:600px){.nav-search-box{top:58px}}
+
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+    .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--wit);z-index:99;padding:16px;box-shadow:0 8px 32px rgba(0,0,0,.1);flex-direction:column;gap:4px}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{padding:12px 16px;color:var(--navy);text-decoration:none;font-weight:600;font-size:0.95rem;border-radius:10px;transition:background .2s}
+    .mobile-menu a:hover{background:var(--licht)}
+    .mobile-menu .mob-cta{background:var(--groen);color:var(--navy)!important;margin-top:8px;text-align:center}
+    @media(max-width:900px){.nav-links{display:none}.hamburger{display:flex}}
+  .sticky-cta{position:fixed;bottom:0;left:0;right:0;background:rgba(11,22,40,0.97);backdrop-filter:blur(8px);padding:12px 20px;z-index:150;transform:translateY(110%);transition:transform .35s ease;border-top:2px solid var(--groen)}
+  .sticky-cta.show{transform:none}
+  .sticky-cta-inner{max-width:800px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .sticky-cta-txt{color:rgba(255,255,255,0.85);font-size:0.85rem;font-weight:600}
+  .sticky-cta-txt small{display:block;color:rgba(255,255,255,0.4);font-weight:400;font-size:0.75rem}
+  .sticky-cta a.scta-btn{background:var(--groen);color:var(--navy);padding:11px 22px;border-radius:9px;font-family:'Outfit',sans-serif;font-weight:800;font-size:0.88rem;text-decoration:none;white-space:nowrap}
+  .sticky-close{background:none;border:none;color:rgba(255,255,255,0.4);font-size:1.1rem;cursor:pointer;padding:4px}
+  @media(max-width:600px){.sticky-cta-txt small{display:none}}  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Zonnestroom automatiseren met Home Assistant: zo werkt het",
+  "description": "Start een slimme stekker automatisch bij zonnestroom-overschot via Home Assistant en je P1-meter. Triggers, voorwaarden en een YAML-voorbeeld.",
+  "image": "https://stekkerslim.nl/og-image.png",
+  "author": {
+    "@type": "Person",
+    "name": "Remy Egberts"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "StekkerSlim.nl",
+    "url": "https://stekkerslim.nl"
+  },
+  "datePublished": "2026-11-13",
+  "dateModified": "2026-11-13",
+  "url": "https://stekkerslim.nl/zonnestroom-automatiseren-home-assistant.html",
+  "mainEntityOfPage": "https://stekkerslim.nl/zonnestroom-automatiseren-home-assistant.html"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://stekkerslim.nl/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://stekkerslim.nl/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Zonnestroom automatiseren met Home Assistant",
+      "item": "https://stekkerslim.nl/zonnestroom-automatiseren-home-assistant.html"
+    }
+  ]
+}
+  </script>
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="StekkerSlim.nl" />
+  <meta property="og:title" content="Zonnestroom automatiseren met Home Assistant: zo werkt het" />
+  <meta property="og:description" content="Start een slimme stekker automatisch bij zonnestroom-overschot via Home Assistant en je P1-meter. Triggers, voorwaarden en een YAML-voorbeeld." />
+  <meta property="og:image" content="https://stekkerslim.nl/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://stekkerslim.nl/zonnestroom-automatiseren-home-assistant.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Zonnestroom automatiseren met Home Assistant: zo werkt het" />
+  <meta name="twitter:description" content="Start een slimme stekker automatisch bij zonnestroom-overschot via Home Assistant en je P1-meter. Triggers, voorwaarden en een YAML-voorbeeld." />
+  <meta name="twitter:image" content="https://stekkerslim.nl/og-image.png" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Kan ik elke wasmachine automatisch laten starten met een slimme stekker?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nee. Sommige wasmachines starten na een stroomonderbreking niet vanzelf en vragen om een handmatige start, andere houden hun gekozen programma vast en starten zodra er stroom is. Lees de handleiding en test het eerst onder toezicht. Start jouw machine niet vanzelf, gebruik dan alleen de melding of de ingebouwde starttimer van de machine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat is de beste trigger-waarde voor mijn zonne-overschot in Home Assistant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Daar bestaat geen universeel getal voor. Meet eerst het piekvermogen en het standby-vermogen van je apparaat met een energiemetende stekker en kies dan een startdrempel: hoger als de hele cyclus op zonnestroom moet draaien, lager als een deel van de cyclus op netstroom mag. Let ook op het teken van je P1-sensor: bij teruglevering is dat vaak een negatief getal, dus de trigger kijkt naar een waarde onder nul."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Waarom start mijn apparaat niet, ook al lever ik terug?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Meestal is het een van deze dingen. De teruglevering is korter dan de minimale duur in je trigger. De drempel ligt hoger dan je overschot. Je P1-sensor heeft een ander teken dan je dacht. Een voorwaarde klopt niet: het tijdvenster, de klaar-schakelaar of een stekker die al aan staat. Je zette het apparaat pas klaar toen je al teruglevert, en de trigger gaat alleen af bij het kruisen van de drempel. Het apparaat start niet na stroomherstel. Of een thuisbatterij vangt het overschot op, zodat de P1-meter bijna niets ziet. Begin met de melding en kijk bij welke voorwaarde de automatisering afhaakt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe voorkom ik dat mijn automatisering continu in- en uitschakelt bij bewolking?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gebruik een minimale duur in de trigger, schakel de stekker nooit uit op grond van een lagere teruglevering en laat de stopregel alleen kijken naar het vermogen van het apparaat zelf. Dat vermogen moet langer onder het standby-niveau blijven dan de langste pauze in het programma, want sommige machines gebruiken tijdens het spoelen of weken even bijna niets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Werkt dit ook als ik een thuisbatterij heb?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Meestal niet goed. Een batterij die het overschot opvangt, zorgt ervoor dat de P1-meter weinig of geen teruglevering ziet, en dan gaat deze trigger zelden af. Kijk dan liever naar de laadstatus of de eigen app van je batterij en de instellingen daarvan."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a>
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="index.html#calculators">Calculators</a>
+        <div class="nav-dropdown-menu">
+          <a href="calculator-zonnepanelen.html">☀️ Zonnepanelen</a>
+          <a href="calculator-thuisbatterij.html">🔋 Thuisbatterij</a>
+          <a href="calculator-laadpaal.html">🔌 Laadpaal</a>
+          <a href="calculator-energiekosten.html">💡 Energiekosten</a>
+          <a href="calculator-warmtepomp.html">🌡️ Warmtepomp</a>
+          <a href="energiebespaar-calculator.html">🔋 Energiebespaar calculator</a>
+        </div>
+      </li>
+      <li><a href="blog.html">Blog</a></li>
+      <li class="nav-dropdown">
+        <a href="smarthome-producten.html">Smarthome</a>
+        <div class="nav-dropdown-menu">
+          <a href="smarthome-p1-meter.html">📡 P1 meter + Home Assistant</a>
+          <a href="homeassistant-energie-besparen.html">🏠 Home Assistant automatiseren</a>
+          <a href="sluipverbruik-meten-oplossen.html">🔍 Sluipverbruik opsporen</a>
+          <a href="beste-slimme-stekker-2026.html">🔌 Beste slimme stekkers</a>
+          <a href="slimme-thermostaat-installeren.html">🌡️ Slimme thermostaat</a>
+          <a href="smarthome-producten.html">🛒 Alle smarthome-producten</a>
+        </div>
+      </li>
+      <li><a href="vragen.html">Stel een vraag</a></li>
+      <li><a href="index.html#vergelijken" class="nav-cta">Vergelijk contracten</a></li>
+    </ul>
+    <div class="nav-search-wrap" id="navSearchWrap">
+      <button class="nav-search-btn" id="navSearchBtn" onclick="navSearchToggle()" aria-label="Zoeken op StekkerSlim">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+    <div class="nav-search-overlay" id="navSearchOverlay" onclick="navSearchClose()"></div>
+    <div class="nav-search-box" id="navSearchBox">
+      <div class="nav-search-inner">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="nav-search-input" id="navSearchInput" type="text" placeholder="Zoek op stekkerslim.nl… (bijv. saldering, Zigbee, batterij)" oninput="navSearchQuery(this.value)" onkeydown="navSearchKey(event)" autocomplete="off" spellcheck="false">
+        <button class="nav-search-clear" id="navSearchClear" onclick="navSearchReset()" aria-label="Wissen">✕</button>
+      </div>
+      <div class="nav-search-results" id="navSearchResults">
+        <div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>
+      </div>
+      <div class="nav-search-footer">StekkerSlim.nl — eerlijk energieadvies</div>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="calculator-zonnepanelen.html" onclick="closeMenu()">☀️ Zonnepanelen</a>
+  <a href="calculator-thuisbatterij.html" onclick="closeMenu()">🔋 Thuisbatterij</a>
+  <a href="calculator-laadpaal.html" onclick="closeMenu()">🔌 Laadpaal</a>
+  <a href="calculator-energiekosten.html" onclick="closeMenu()">💡 Energiekosten</a>
+  <a href="calculator-warmtepomp.html" onclick="closeMenu()">🌡️ Warmtepomp</a>
+  <a href="energiebespaar-calculator.html" onclick="closeMenu()">🔋 Energiebespaar calculator</a>
+  <a href="blog.html" onclick="closeMenu()">📝 Blog & Artikelen</a>
+  <a href="smarthome-producten.html" onclick="closeMenu()">🏠 Smarthome</a>
+  <a href="smarthome-p1-meter.html" onclick="closeMenu()">📡 P1 meter + Home Assistant</a>
+  <a href="homeassistant-energie-besparen.html" onclick="closeMenu()">🏠 Home Assistant automatiseren</a>
+  <a href="sluipverbruik-meten-oplossen.html" onclick="closeMenu()">🔍 Sluipverbruik opsporen</a>
+  <a href="slimme-stekkers.html" onclick="closeMenu()">🔌 Slimme stekkers</a>
+  <a href="smart-lampen.html" onclick="closeMenu()">💡 Smart lampen</a>
+  <a href="smarthome-uitleg.html" onclick="closeMenu()">📖 Uitleg protocollen</a>
+  <a href="vragen.html" onclick="closeMenu()">❓ Stel een vraag</a>
+  <a href="over-ons.html" onclick="closeMenu()">👋 Over ons</a>
+  <a href="index.html#vergelijken" class="mob-cta" onclick="closeMenu()">⚡ Vergelijk contracten</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="/">Home</a> › <a href="blog.html">Blog</a></div>
+    <div class="article-tag">🏠 Home Assistant &amp; zonnestroom</div>
+    <h1>Zonnestroom automatiseren met Home Assistant: apparaten starten bij overschot</h1>
+    <div class="article-meta">Gepubliceerd: 13 november 2026 · Leestijd: ~9 minuten</div>
+  </div>
+</div>
+
+<div class="article-body">
+  <p><strong>Het is dinsdagmiddag, de zon schijnt en je P1-meter laat zien dat je al een kwartier teruglevert.</strong> De wasmachine staat gevuld klaar, maar jij zit op kantoor. Vanaf 1 januari 2027 stopt de salderingsregeling en is stroom die je zelf gebruikt meer waard dan stroom die je teruglevert. Met Home Assistant kun je die machine laten starten op het moment dat er echt zonnestroom-overschot is.</p>
+
+  <p>Dit artikel is de uitvoering. De strategie erachter staat in <a href="zonnestroom-zelf-gebruiken-zonder-thuisbatterij.html">zonnestroom zelf gebruiken zonder thuisbatterij</a>. Ik ga ervan uit dat je P1-meter al in Home Assistant hangt. Zo niet: lees eerst <a href="smarthome-p1-meter.html">HomeWizard P1 meter koppelen in Home Assistant</a>. Hier bouwen we één automatisering, stap voor stap, en kijken we eerlijk naar wanneer je dit beter niet doet.</p>
+
+  <div class="toc">
+    <h4>📋 Inhoud van dit artikel</h4>
+    <ol>
+      <li><a href="#waarom">Waarom sturen op actuele teruglevering</a></li>
+      <li><a href="#nodig">Wat je nodig hebt (en wanneer dit niet werkt)</a></li>
+      <li><a href="#apparaten">Welke apparaten mag je extern schakelen</a></li>
+      <li><a href="#stappenplan">Stappenplan: zonnestroom automatiseren in Home Assistant</a></li>
+      <li><a href="#yaml">De complete Home Assistant-YAML om te kopiëren</a></li>
+      <li><a href="#resultaat">Hoe vaak was de trigger bij mij afgegaan?</a></li>
+      <li><a href="#niets">Wanneer dit niets oplevert</a></li>
+      <li><a href="#faq">Veelgestelde vragen</a></li>
+    </ol>
+  </div>
+
+  <h2 id="waarom">Waarom sturen op actuele teruglevering</h2>
+
+  <p>Een timer weet niet of de zon schijnt. Een wasmachine die elke dag om 13:00 start, draait op een bewolkte dag gewoon op netstroom. Je P1-meter weet het wel: die laat in real time zien of je stroom afneemt of teruglevert. Dat is het signaal waar je op wilt sturen.</p>
+
+  <p>Tot en met 31 december 2026 geldt nog de salderingsregeling. Daarna krijg je een terugleververgoeding van je leverancier, en die verschilt per contract, soms met terugleverkosten erbovenop. Meer uitleg: <a href="saldering-2027.html">saldering stopt per 1 januari 2027</a>. Elke kWh die je direct zelf gebruikt, hoef je niet te verkopen en niet in te kopen.</p>
+
+  <h2 id="nodig">Wat je nodig hebt (en wanneer dit niet werkt)</h2>
+
+  <ul>
+    <li>Een P1-meter die in Home Assistant staat, bijvoorbeeld de HomeWizard P1-meter.</li>
+    <li>Een slimme stekker met energiemeting en een vermogenssensor in Home Assistant, zie <a href="beste-slimme-stekker-2026.html">energiemetende slimme stekkers</a>. Zelf gebruik ik Tapo-stekkers (<a href="tapo-p115-p410m-eindoordeel.html">Tapo P115 en P410M na twee weken</a>). Wil je geen account en geen cloud, kijk dan naar de <a href="athom-esphome-stekker-review.html">Athom ESPHome-stekker in Home Assistant</a>, die lokaal met Home Assistant praat.</li>
+    <li>Een apparaat dat extern schakelen toestaat. Dat is de volgende sectie.</li>
+    <li>De Home Assistant-app op je telefoon, voor de melding.</li>
+  </ul>
+
+  <h3>Het teken van je P1-sensor</h3>
+
+  <p>Veel P1-integraties geven één vermogenssensor: een plusje betekent dat je afneemt, een minnetje dat je teruglevert. In mijn eigen Home Assistant (de HomeWizard-integratie, sensor <code style="background:var(--licht);padding:1px 6px;border-radius:4px;font-size:.88em">sensor.p1_meter_vermogen</code>) staat die sensor tijdens teruglevering op een negatief getal. Een trigger die zoekt naar "boven 800" gaat dan nooit af; hij moet kijken naar een waarde onder nul. Sommige installaties hebben daarnaast een aparte terugleversensor met een positief getal. Kijk daarom in Home Assistant naar de waarde van jouw sensor terwijl je echt teruglevert, voordat je een drempel kiest.</p>
+
+  <!-- FOTO: Sensorenkaart van de HomeWizard P1 Meter in Home Assistant, met de sensor "Vermogen" op een negatief getal tijdens teruglevering | bron: bestaand bestand p1-meter-entiteiten.png (screenshot van Remy) -->
+
+  <h3>Heb je een thuisbatterij?</h3>
+
+  <div class="warning-box">
+    <strong>Dan werkt deze trigger waarschijnlijk slecht.</strong> Een batterij die het overschot opvangt, zorgt ervoor dat de P1-meter weinig of niets teruglevert. Bij mij is dat zo: mijn <a href="indevolt-solidflex-3000-review.html">Indevolt-batterij</a> staat ingesteld op nul teruglevering. Op een bewolkte dag in september 2026 telde ik in totaal 11 minuten teruglevering, bijna allemaal korter dan een minuut. Dat is één dag, geen regel. Een trigger van tien minuten gaat dan nooit af. Kijk in dat geval naar de laadstatus van je batterij, niet alleen naar de P1-meter.
+  </div>
+
+  <h2 id="apparaten">Welke apparaten mag je extern schakelen</h2>
+
+  <p>Eerst de veiligheid, daarna de techniek. Loop dit af voordat je iets automatiseert:</p>
+
+  <ol>
+    <li><strong>Staat in de handleiding dat extern schakelen of een stroomonderbreking geen kwaad kan?</strong> Nee, of niet te vinden: stop hier en gebruik de ingebouwde starttimer van het apparaat.</li>
+    <li><strong>Past het piekvermogen binnen de specificatie van de stekker?</strong> Kijk op het typeplaatje van het apparaat en in de specificaties van de stekker, niet in je hoofd. Past het niet: stop.</li>
+    <li><strong>Start het apparaat na stroomherstel vanzelf, of wil het opnieuw een handmatige start?</strong> Het laatste: gebruik alleen een melding.</li>
+    <li><strong>Staan er op dezelfde groep in je meterkast nog andere grote verbruikers?</strong> Dan kun je een groep overbelasten als ze tegelijk draaien. Twijfel je, laat het dan checken door een erkend installateur. Sluit grote verbruikers bij voorkeur rechtstreeks aan op een wandcontactdoos, niet op een stekkerdoos of verlengsnoer.</li>
+    <li><strong>Is het een boiler, warmtepomp, laadpaal of vaste installatie?</strong> Dan geen stekker. Lees daarvoor stap 6 van <a href="zonnestroom-zelf-gebruiken-zonder-thuisbatterij.html">zonnestroom zelf gebruiken zonder thuisbatterij</a> en overleg met je installateur.</li>
+    <li>Pas als je hier overal door bent: begin met een melding, niet met schakelen.</li>
+  </ol>
+
+  <!-- FOTO: Typeplaatje van het apparaat dat je gaat automatiseren, met het maximale vermogen in watt goed leesbaar | bron: foto van Remy -->
+
+
+  <table class="comparison-table">
+    <thead><tr><th>Apparaat</th><th>Via een stekker?</th><th>Opmerking</th></tr></thead>
+    <tbody>
+      <tr><td>Wasmachine, vaatwasser</td><td>Misschien</td><td>Alleen als het apparaat na stroomherstel veilig en voorspelbaar reageert</td></tr>
+      <tr><td>Lamp of oplader</td><td>Ja, om te testen</td><td>Een onschuldig testobject voor je automatisering</td></tr>
+      <tr><td>Koelkast, vriezer</td><td>Nee</td><td>Moet continu aan blijven</td></tr>
+      <tr><td>Boiler, warmtepomp, laadpaal</td><td>Nee</td><td>Vraagt een aparte beoordeling door een installateur</td></tr>
+    </tbody>
+  </table>
+
+  <p>Een wasmachine is een lastig eerste testobject, juist omdat zo veel afhangt van het model. Wil je het veilig houden, begin dan met iets onschuldigs en stap daarna over op de machine. Meer over wasmachines en prijs-gestuurd starten: <a href="wasmachine-dynamisch-tarief.html">wasmachine veilig automatisch laten starten</a>.</p>
+
+  <h2 id="stappenplan">Stappenplan: zonnestroom automatiseren in Home Assistant</h2>
+
+  <h3>Stap 1: eerst een week alleen een melding</h3>
+
+  <div class="highlight-box">
+    <strong>Harde voorwaarde:</strong> draai minimaal 7 dagen alleen de melding. Schakel pas over naar automatisch starten als de melding stabiel afgaat, op de momenten dat je ook echt teruglevert, en je ziet dat er geen programma's door worden afgekapt.
+  </div>
+
+  <p>Een melding kost je niets en laat precies zien wat je trigger doet. Dat idee, een melding in plaats van automatisch schakelen, staat ook in <a href="homeassistant-energie-besparen.html">energie besparen met Home Assistant</a>. Hier bouwen we daar de volgende stap op.</p>
+
+  <h3>Stap 2: de trigger</h3>
+
+  <p>De trigger kijkt naar de P1-vermogenssensor: onder een negatief getal, gedurende een minimale duur. Tien minuten is een voorbeeld; kijk in je eigen grafiek hoe lang een wolkenpartij bij jou duurt en stel de duur daarop af.</p>
+
+  <p>Twee getallen mag je niet door elkaar halen:</p>
+
+  <ul>
+    <li><strong>Het piekvermogen van je apparaat.</strong> Dat bepaalt of de stekker het aankan. Dit lees je op het typeplaatje en in de specificaties van de stekker.</li>
+    <li><strong>Je startdrempel.</strong> Dat is hoeveel overschot je wilt zien voordat je start. Dat is een keuze, geen natuurwet.</li>
+  </ul>
+
+  <p>Wil je dat de hele cyclus op zonnestroom draait, dan leg je de drempel rond het piekvermogen plus een marge. Veel machines halen dat piekvermogen maar kort, vooral tijdens het opwarmen van het water (kijk in de vermogensgrafiek van je eigen stekker). Dan wacht je lang op een start. Leg je de drempel lager, dan start de machine eerder, maar gebruikt hij mogelijk ook netstroom. Je kiest dus bewust tussen meer zekerheid en meer starts.</p>
+
+  <p><strong>Zo bepaal je je eigen drempel:</strong></p>
+
+  <ol>
+    <li>Meet met de stekker één volledige cyclus en noteer het hoogste vermogen en het vermogen in de standbyfase.</li>
+    <li>Kies je startdrempel tussen de twee uitersten hierboven. De marge kies je na een paar dagen observatie, er is geen getal dat voor elk huis klopt.</li>
+    <li>Begin met een minimale duur van 10 minuten en pas die aan op je eigen grafiek.</li>
+    <li>Draai een week alleen de melding en kijk of de drempel te vaak of te zelden afgaat.</li>
+  </ol>
+
+  <table class="comparison-table">
+    <thead><tr><th>Jouw keuze</th><th>Hoge drempel</th><th>Lage drempel</th></tr></thead>
+    <tbody>
+      <tr><td>Wanneer start het apparaat</td><td>Pas bij veel overschot, dus later of soms niet</td><td>Eerder, al bij weinig overschot</td></tr>
+      <tr><td>Waarop draait de cyclus</td><td>Grotendeels op zonnestroom</td><td>Deels op netstroom</td></tr>
+      <tr><td>Risico</td><td>Op bewolkte dagen gebeurt er niets</td><td>Meer stroom van het net als de zon wegvalt</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Om te onthouden:</strong> een hoge drempel is zeker van zonnestroom maar soms zonder start, een lage drempel is bijna altijd een start maar soms met netstroom.</p>
+
+  <!-- FOTO: Vermogensgrafiek van de slimme stekker tijdens één volledig wasprogramma, zodat de pieken en de pauzes zichtbaar zijn | bron: screenshot van Remy -->
+
+  <h3>Stap 3: voorwaarden</h3>
+
+  <p>De voorwaarden voorkomen dat de automatisering op het verkeerde moment start:</p>
+
+  <ul>
+    <li><strong>Een tijdvenster.</strong> Alleen overdag, waar jouw panelen werkelijk leveren.</li>
+    <li><strong>Een klaar-schakelaar.</strong> Maak een schakelaar-helper in Home Assistant (type <code style="background:var(--licht);padding:1px 6px;border-radius:4px;font-size:.88em">input_boolean</code>) die jij aanzet als het apparaat klaarstaat. De automatisering zet hem na de start zelf weer uit, zodat hij niet nog een keer kan starten.</li>
+    <li><strong>De stekker staat uit.</strong> Staat hij al aan, dan is er niets om te starten.</li>
+  </ul>
+
+  <p>Hoe je het apparaat klaarzet, hangt van je machine af. Sommige houden hun gekozen programma vast en starten zodra er stroom is, andere vragen na een stroomonderbreking om een handmatige start. Dat heb je bij punt 3 van de lijst hierboven uitgezocht. Test het één keer onder toezicht, overdag, en met een kleine lading.</p>
+
+  <!-- FOTO: Het aanmaken van de schakelaar-helper (input_boolean) in Home Assistant, zodat beginners zien waar die staat | bron: screenshot van Remy -->
+
+  <p><strong>Let op de timing.</strong> Een trigger op een drempel gaat af op het moment dat de waarde de drempel kruist, niet zolang hij eronder blijft. Zet je de klaar-schakelaar pas aan als je al een tijd teruglevert, dan start er niets tot de volgende keer dat je onder de drempel zakt. Zet het apparaat dus klaar voordat de zon doorkomt.</p>
+
+  <h3>Stap 4: actie en stopregel</h3>
+
+  <p>De actie is simpel: de stekker aanzetten en de klaar-schakelaar uitzetten. De stopregel is het lastigste deel.</p>
+
+  <p>Zodra het apparaat draait, daalt je teruglevering, doordat het apparaat stroom verbruikt. Je startvoorwaarde verdwijnt dus vanzelf. Zet de stekker daarom <strong>nooit uit omdat de teruglevering te laag wordt</strong>: dan knip je het programma midden in een wasbeurt af zodra er een wolk voorbijkomt. De stekker blijft aan tot het apparaat zelf klaar is.</p>
+
+  <p>"Klaar" lees je af aan het vermogen van het apparaat: het komt onder het standby-niveau en blijft daar. Kies de duur van die regel ruim, langer dan de langste pauze in je programma (je ziet die pauzes in de grafiek van je stekker). Is de duur te kort, dan denkt de automatisering te vroeg dat het apparaat klaar is en schakelt hij de stekker midden in het programma uit. Met een ruime duur schakelt Home Assistant de stekker pas uit nadat het apparaat zelf is gestopt.</p>
+
+  <p>Ook deze trigger gaat af bij het kruisen van de drempel. Start het apparaat niet nadat de stekker aanging, dan blijft het vermogen laag en komt er geen melding. Controleer de eerste keren daarom zelf of het apparaat echt is gestart.</p>
+
+  <!-- FOTO: De automatisering met de trigger in de visuele editor van Home Assistant, naast de YAML-weergave | bron: screenshot van Remy -->
+
+  <h2 id="yaml">De complete Home Assistant-YAML om te kopiëren</h2>
+
+  <p>Drie automatiseringen: de melding, het starten en het afronden. Alle waarden in HOOFDLETTERS zijn plaatshouders voor jouw eigen entiteiten en getallen. De code werkt pas als je ze allemaal hebt ingevuld. Kopieer dit nooit blind, want elke installatie heeft andere entiteitsnamen. De code gebruikt de schrijfwijze met <code style="background:var(--licht);padding:1px 6px;border-radius:4px;font-size:.88em">triggers:</code> en <code style="background:var(--licht);padding:1px 6px;border-radius:4px;font-size:.88em">actions:</code> uit de huidige Home Assistant-documentatie (sinds versie 2024.10). Oudere voorbeelden met <code style="background:var(--licht);padding:1px 6px;border-radius:4px;font-size:.88em">platform:</code> en <code style="background:var(--licht);padding:1px 6px;border-radius:4px;font-size:.88em">service:</code> werken nog steeds.</p>
+
+  <div class="warning-box">
+    <strong>Status van deze code:</strong> dit zijn voorbeelden om op voort te bouwen. Home Assistant (versie 2026.11.1) heeft de structuur van alle drie de blokken gevalideerd, maar ik heb ze nog niet laten draaien. Die controle zegt ook niets over of jouw entiteiten bestaan. Laat Home Assistant de configuratie bij jou controleren voordat je opslaat, en draai eerst een week alleen blok 1.
+  </div>
+
+  <pre style="background:#0B1628;color:#E8EDF2;border-radius:12px;padding:16px 18px;overflow-x:auto;font-size:0.82rem;line-height:1.6;margin:16px 0"><code># 1. Melding: je levert terug (draai eerst een week alleen dit)
+alias: Zonne-overschot melding
+mode: single
+triggers:
+  - trigger: numeric_state
+    entity_id: sensor.JOUW_P1_VERMOGEN        # wordt negatief bij teruglevering
+    below: -JOUW_DREMPEL_IN_WATT              # een negatief getal
+    for: "00:10:00"                           # voorbeeld, pas aan op je eigen grafiek
+conditions:
+  - condition: time
+    after: "10:00:00"                         # voorbeeld, kijk wanneer jouw panelen leveren
+    before: "16:00:00"
+actions:
+  - action: notify.mobile_app_JOUW_TELEFOON
+    data:
+      message: "Je levert al een tijdje terug. Goed moment om te starten."</code></pre>
+  <pre style="background:#0B1628;color:#E8EDF2;border-radius:12px;padding:16px 18px;overflow-x:auto;font-size:0.82rem;line-height:1.6;margin:16px 0"><code># 2. Start: schakel de stekker in (pas na een week meldingen)
+alias: Zonne-overschot start apparaat
+mode: single
+triggers:
+  - trigger: numeric_state
+    entity_id: sensor.JOUW_P1_VERMOGEN
+    below: -JOUW_DREMPEL_IN_WATT
+    for: "00:10:00"
+conditions:
+  - condition: time
+    after: "10:00:00"
+    before: "16:00:00"
+  - condition: state
+    entity_id: input_boolean.JOUW_APPARAAT_KLAAR   # jij zet hem aan als het apparaat klaarstaat
+    state: "on"
+  - condition: state
+    entity_id: switch.JOUW_STEKKER
+    state: "off"
+actions:
+  - action: switch.turn_on
+    target:
+      entity_id: switch.JOUW_STEKKER
+  - action: input_boolean.turn_off               # voorkomt een tweede start
+    target:
+      entity_id: input_boolean.JOUW_APPARAAT_KLAAR</code></pre>
+  <pre style="background:#0B1628;color:#E8EDF2;border-radius:12px;padding:16px 18px;overflow-x:auto;font-size:0.82rem;line-height:1.6;margin:16px 0"><code># 3. Afronden: stekker vrijgeven als het apparaat zelf klaar is
+alias: Apparaat klaar, stekker vrijgeven
+mode: single
+triggers:
+  - trigger: numeric_state
+    entity_id: sensor.JOUW_STEKKER_VERMOGEN
+    below: JOUW_STANDBY_IN_WATT
+    for: "00:JOUW_MINUTEN:00"                 # langer dan de langste pauze in je programma
+conditions:
+  - condition: state
+    entity_id: switch.JOUW_STEKKER
+    state: "on"
+actions:
+  - action: notify.mobile_app_JOUW_TELEFOON
+    data:
+      message: "Het apparaat verbruikt weer bijna niets en is klaar."
+  - action: switch.turn_off
+    target:
+      entity_id: switch.JOUW_STEKKER</code></pre>
+
+  <h2 id="resultaat">Hoe vaak was de trigger bij mij afgegaan?</h2>
+
+  <p>Ik heb teruggekeken in mijn eigen Home Assistant: hoe vaak was zo'n trigger afgegaan als hij er al had gestaan? Dit zijn de ruwe P1-gegevens van 3 tot en met 13 november 2026, elf dagen. "Strikt" betekent dat elke meting onder de grens bleef. "Met dips" laat korte onderbrekingen van maximaal 2 minuten toe.</p>
+
+  <table class="comparison-table">
+    <thead><tr><th>Minstens 10 minuten aaneengesloten onder</th><th>Strikt</th><th>Met dips</th></tr></thead>
+    <tbody>
+      <tr><td>-300 W</td><td>3 keer</td><td>6 keer</td></tr>
+      <tr><td>-500 W</td><td>2 keer</td><td>4 keer</td></tr>
+      <tr><td>-800 W</td><td>1 keer</td><td>2 keer</td></tr>
+    </tbody>
+  </table>
+
+  <p>In elf dagen dus een paar momenten, en bij een hogere drempel bijna geen. De teruglevering viel vooral tussen 12:00 en 16:00. Mijn Indevolt-batterij stond op 5 van die 11 dagen op of boven 90 procent, steeds tussen 13:00 en 17:00. Dat past bij een batterij die het overschot eerst opvangt: pas daarna bereikt het overschot het net en de P1-meter. Het is een terugblik en geen test van de automatisering, en het zegt niets over hoeveel kWh er verschuift.</p>
+
+  <p><strong>Doe dit ook voor jezelf, voordat je een drempel kiest:</strong> tel in je eigen historie hoe vaak je onder jouw drempel kwam en hoe lang dat duurde. Een drempel die in tien dagen één keer afgaat, is voor jou geen automatisering maar een uitzondering.</p>
+
+  <h2 id="niets">Wanneer dit niets oplevert</h2>
+
+  <ul>
+    <li><strong>Je levert weinig terug.</strong> Is je overschot klein, dan is er weinig te verschuiven. Valt je opbrengst tegen, kijk dan eerst bij <a href="zonnepanelen-onderpresteren.html">zonnepanelen onderpresteren: zo vind en los je het op</a>.</li>
+    <li><strong>Je hebt geen verschuifbaar apparaat</strong> dat extern geschakeld mag worden.</li>
+    <li><strong>Je bent overdag al thuis</strong> en gebruikt je zonnestroom al direct.</li>
+    <li><strong>Je batterij vangt het overschot op</strong>, zie hierboven.</li>
+  </ul>
+
+  <p>Wat dan wel? Stuur je op de stroomprijs in plaats van op je eigen teruglevering, bijvoorbeeld bij een dynamisch contract, kijk dan naar <a href="kwartierprijzen-slimme-stekker.html">automatiseren op kwartierprijzen</a>. Prijs en zon zijn twee losse signalen, geen vaste combinatie.</p>
+
+  <h2 id="faq">Veelgestelde vragen</h2>
+
+  <div style="margin:16px 0">
+    <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Kan ik elke wasmachine automatisch laten starten met een slimme stekker?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Nee. Sommige wasmachines starten na een stroomonderbreking niet vanzelf en vragen om een handmatige start, andere houden hun gekozen programma vast en starten zodra er stroom is. Lees de handleiding en test het eerst onder toezicht. Start jouw machine niet vanzelf, gebruik dan alleen de melding of de ingebouwde starttimer van de machine.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Wat is de beste trigger-waarde voor mijn zonne-overschot in Home Assistant?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Daar bestaat geen universeel getal voor. Meet eerst het piekvermogen en het standby-vermogen van je apparaat met een energiemetende stekker en kies dan een startdrempel: hoger als de hele cyclus op zonnestroom moet draaien, lager als een deel van de cyclus op netstroom mag. Let ook op het teken van je P1-sensor: bij teruglevering is dat vaak een negatief getal, dus de trigger kijkt naar een waarde onder nul.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Waarom start mijn apparaat niet, ook al lever ik terug?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Meestal is het een van deze dingen. De teruglevering is korter dan de minimale duur in je trigger. De drempel ligt hoger dan je overschot. Je P1-sensor heeft een ander teken dan je dacht. Een voorwaarde klopt niet: het tijdvenster, de klaar-schakelaar of een stekker die al aan staat. Je zette het apparaat pas klaar toen je al teruglevert, en de trigger gaat alleen af bij het kruisen van de drempel. Het apparaat start niet na stroomherstel. Of een thuisbatterij vangt het overschot op, zodat de P1-meter bijna niets ziet. Begin met de melding en kijk bij welke voorwaarde de automatisering afhaakt.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-bottom:none">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Hoe voorkom ik dat mijn automatisering continu in- en uitschakelt bij bewolking?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Gebruik een minimale duur in de trigger, schakel de stekker nooit uit op grond van een lagere teruglevering en laat de stopregel alleen kijken naar het vermogen van het apparaat zelf. Dat vermogen moet langer onder het standby-niveau blijven dan de langste pauze in het programma, want sommige machines gebruiken tijdens het spoelen of weken even bijna niets.</p>
+    </details>
+    <details style="border:1px solid var(--grijs-licht);padding:16px 20px;border-radius:0 0 12px 12px">
+      <summary style="font-family:'Outfit',sans-serif;font-weight:700;font-size:0.95rem;cursor:pointer;list-style:none">Werkt dit ook als ik een thuisbatterij heb?</summary>
+      <p style="margin-top:12px;font-size:0.88rem;color:#374151;line-height:1.7">Meestal niet goed. Een batterij die het overschot opvangt, zorgt ervoor dat de P1-meter weinig of geen teruglevering ziet, en dan gaat deze trigger zelden af. Kijk dan liever naar de laadstatus of de eigen app van je batterij en de instellingen daarvan.</p>
+    </details>
+  </div>
+
+  <div class="disclaimer-box">
+    <strong>Disclaimer:</strong> Dit artikel is een algemene richtlijn. Of een apparaat veilig extern geschakeld kan worden, hangt af van het apparaat, de stekker en je aansluiting. Twijfel je, vraag het dan aan de fabrikant of een erkend installateur. Regels en tarieven kunnen veranderen. Dit artikel bevat geen affiliate-links.
+  </div>
+</div>
+
+<div style="background:#F4F7F2;padding:40px 24px 0">
+  <div style="max-width:800px;margin:0 auto">
+    <h3 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:16px;color:#0B1628">Meer lezen over Home Assistant &amp; zonnestroom</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;padding-bottom:40px">
+      <a href="smarthome-p1-meter.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">🔌 P1-meter + Home Assistant</a>
+      <a href="homeassistant-energie-besparen.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">🏠 Home Assistant energie besparen</a>
+      <a href="zonnestroom-zelf-gebruiken-zonder-thuisbatterij.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">☀️ Zonnestroom zelf gebruiken</a>
+      <a href="kwartierprijzen-slimme-stekker.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">⏱️ Kwartierprijzen</a>
+      <a href="wasmachine-dynamisch-tarief.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">🧺 Wasmachine op dynamisch tarief</a>
+      <a href="saldering-2027.html" style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #E8EDF2;border-radius:99px;padding:8px 16px;text-decoration:none;color:#0B1628;font-size:0.88rem;font-weight:600">📄 Saldering 2027</a>
+    </div>
+  </div>
+</div>
+<div style="background:#F4F7F2;padding:0 24px 48px">
+  <div style="max-width:800px;margin:0 auto">
+    <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#00D17A;margin-bottom:8px">Volgende stap</p>
+    <h2 style="font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem;margin-bottom:20px;color:#0B1628">Meet eerst, automatiseer daarna</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+      <div style="background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 24px rgba(0,0,0,0.08)">
+        <div style="font-size:1.5rem;margin-bottom:10px">🔌</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px">P1-meter + Home Assistant</h3>
+        <p style="font-size:0.85rem;color:#6B7280;line-height:1.6;margin-bottom:16px">Zie precies wanneer je teruglevert, als basis voor elke trigger in dit artikel.</p>
+        <a href="smarthome-p1-meter.html" style="display:block;background:#00D17A;color:#0B1628;padding:10px 18px;border-radius:9px;font-weight:700;font-size:0.88rem;text-decoration:none;text-align:center">Lees hoe dat werkt →</a>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 24px rgba(0,0,0,0.08)">
+        <div style="font-size:1.5rem;margin-bottom:10px">🏠</div>
+        <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;margin-bottom:8px">Meer automatiseringen</h3>
+        <p style="font-size:0.85rem;color:#6B7280;line-height:1.6;margin-bottom:16px">Boiler, wasmachine en kwartierprijzen in Home Assistant.</p>
+        <a href="homeassistant-energie-besparen.html" style="display:block;background:#0B1628;color:#fff;padding:10px 18px;border-radius:9px;font-weight:700;font-size:0.88rem;text-decoration:none;text-align:center">Naar de Home Assistant-gids →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><a href="/" class="logo" style="color:var(--wit);"><div class="logo-icon">⚡</div>Stekker<span>Slim</span></a><p>Eerlijke energietips voor Nederlandse gezinnen.</p></div>
+      <div class="footer-col"><h4>Calculators</h4><ul><li><a href="calculator-zonnepanelen.html">Zonnepanelen</a></li><li><a href="calculator-energiekosten.html">Energiekosten</a></li><li><a href="calculator-laadpaal.html">Laadpaal thuis</a></li><li><a href="calculator-warmtepomp.html">Warmtepomp</a></li><li><a href="energiebespaar-calculator.html">Energiebespaar calculator</a></li></ul></div>
+      <div class="footer-col"><h4>Artikelen</h4><ul><li><a href="dynamisch-contract.html">Dynamisch contract</a></li><li><a href="saldering-2027.html">Saldering 2027</a></li></ul></div>
+      <div class="footer-col"><h4>StekkerSlim</h4><ul><li><a href="over-ons.html">Over ons</a></li><li><a href="privacy.html">Privacy</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 StekkerSlim.nl</span><a href="privacy.html">Privacy & Disclaimer</a></div>
+  </div>
+</footer>
+<script>
+var _SP=[{"url": "calculator-zonnepanelen.html", "title": "Zonnepanelen calculator", "desc": "Bereken terugverdientijd en opbrengst zonnepanelen", "tags": "zonnepanelen berekenen terugverdientijd opbrengst panelen"}, {"url": "calculator-thuisbatterij.html", "title": "Thuisbatterij calculator", "desc": "Is een thuisbatterij rendabel voor jou?", "tags": "thuisbatterij batterij berekenen rendabel terugverdientijd"}, {"url": "calculator-energiekosten.html", "title": "Energiekosten calculator", "desc": "Bereken jouw jaarlijkse energierekening", "tags": "energiekosten rekening stroom gas berekenen"}, {"url": "calculator-laadpaal.html", "title": "Laadpaal calculator", "desc": "Wat kost thuis laden van je EV?", "tags": "laadpaal laden elektrisch rijden EV auto stroom"}, {"url": "calculator-warmtepomp.html", "title": "Warmtepomp calculator", "desc": "Gas vs warmtepomp vergelijken", "tags": "warmtepomp gas ketel besparen vergelijken"}, {"url": "energiebespaar-calculator.html", "title": "Energiebespaar calculator", "desc": "Wat kun je besparen met slimme apparaten?", "tags": "energiebespaar besparen slimme stekker thermostaat P1 meter Home Assistant"}, {"url": "thuisbatterij-top5-2026.html", "title": "Beste thuisbatterij 2026 — top 5", "desc": "HomeWizard, Zendure, Marstek vergeleken", "tags": "thuisbatterij plug-in HomeWizard Zendure Marstek Indevolt batterij vergelijken"}, {"url": "loont-plug-in-thuisbatterij-2026.html", "title": "Loont een plug-in thuisbatterij in 2026?", "desc": "Complete beslisgids: rekensom, modellen, wanneer niet kopen", "tags": "thuisbatterij plug-in loont rendabel plug-and-play beslisvolgorde saldering 2027"}, {"url": "wanneer-thuisbatterij-niet-slim.html", "title": "Wanneer is een thuisbatterij niet slim?", "desc": "Eerlijk advies over wanneer je geen batterij moet kopen", "tags": "thuisbatterij nadelen niet slim advies"}, {"url": "saldering-2027.html", "title": "Saldering stopt 2027", "desc": "Wat verandert er voor je zonnepanelen na 2027?", "tags": "saldering 2027 stoppen zonnepanelen terugleverkosten wijziging wet"}, {"url": "terugleverkosten.html", "title": "Terugleverkosten", "desc": "Wat zijn terugleverkosten en wie rekent ze?", "tags": "terugleverkosten saldering terugleveren zonnepanelen kosten leverancier"}, {"url": "terugverdientijd-zonnepanelen-2026.html", "title": "Terugverdientijd zonnepanelen 2026", "desc": "Wanneer verdienen panelen zichzelf terug?", "tags": "zonnepanelen terugverdientijd 2026 berekenen rendabel"}, {"url": "dynamisch-contract.html", "title": "Dynamisch energiecontract", "desc": "Voordelen en nadelen dynamisch contract", "tags": "dynamisch contract energie tarief variabel uurprijs Frank Tibber"}, {"url": "dynamisch-contract-zonnepanelen-thuisbatterij.html", "title": "Dynamisch contract + zonnepanelen + batterij", "desc": "Loont de combinatie?", "tags": "dynamisch contract zonnepanelen thuisbatterij combinatie"}, {"url": "energiecontract-vergelijken-2026.html", "title": "Energiecontract vergelijken 2026", "desc": "Beste energieleverancier vinden", "tags": "energiecontract vergelijken leverancier stroom gas 2026"}, {"url": "smarthome-p1-meter.html", "title": "P1 meter + Home Assistant", "desc": "P1 meter koppelen aan Home Assistant", "tags": "P1 meter Home Assistant slimme meter koppelen energie meten"}, {"url": "homeassistant-energie-besparen.html", "title": "Home Assistant energie besparen", "desc": "Automatiseer je energieverbruik", "tags": "Home Assistant energie besparen automatisering YAML integratie"}, {"url": "smarthome-producten.html", "title": "Smarthome producten", "desc": "Alle slimme energie-apparaten", "tags": "smarthome producten slimme stekker thermostaat P1 meter Zigbee WiFi Matter"}, {"url": "smarthome-uitleg.html", "title": "Smarthome uitleg", "desc": "Wat is een smarthome en hoe begin je?", "tags": "smarthome uitleg beginnen hub Zigbee WiFi Matter protocol"}, {"url": "slimme-stekkers.html", "title": "Slimme stekkers uitgelegd", "desc": "Hoe werken slimme stekkers?", "tags": "slimme stekker Zigbee WiFi Matter energiemeting schakelaar"}, {"url": "beste-slimme-stekker-2026.html", "title": "Beste slimme stekker 2026", "desc": "Top 5 slimme stekkers vergeleken", "tags": "slimme stekker 2026 beste vergelijken Sonoff Tapo HomeWizard Zigbee Matter"}, {"url": "smart-lampen.html", "title": "Slimme lampen", "desc": "Beste slimme lampen en bollen", "tags": "slimme lamp LED Zigbee WiFi Matter Philips Hue WiZ Tapo"}, {"url": "slimme-thermostaat-installeren.html", "title": "Slimme thermostaat installeren", "desc": "Tado, Nest en andere thermostaten", "tags": "thermostaat slimme thermostaat Tado Nest installeren OpenTherm radiatorknop TRV"}, {"url": "homewizard-energy-display-review.html", "title": "HomeWizard Energy Display review", "desc": "Eerlijk getest: unboxing en installatie", "tags": "HomeWizard Energy Display review test unboxing P1 meter display"}, {"url": "homewizard-energy-display-deel2.html", "title": "HomeWizard Energy Display eindoordeel", "desc": "Na 2 weken eerlijk eindoordeel", "tags": "HomeWizard Energy Display eindoordeel review Home Assistant koppeling"}, {"url": "plug-in-batterij-laden.html", "title": "Plug-in batterij slim laden", "desc": "Wanneer en hoe laad je een thuisbatterij?", "tags": "thuisbatterij laden zonnepanelen slim opladen strategie"}, {"url": "blog.html", "title": "Blog — alle artikelen", "desc": "Alle artikelen van StekkerSlim", "tags": "blog artikelen energie smarthome"}, {"url": "vragen.html", "title": "Stel een vraag", "desc": "Stuur je energievraag in", "tags": "vraag contact hulp advies"}, {"url": "over-ons.html", "title": "Over StekkerSlim", "desc": "Wie is StekkerSlim?", "tags": "over ons Remy StekkerSlim"}, {"url": "sluipverbruik-meten-oplossen.html", "title": "Sluipverbruik meten en oplossen", "desc": "Spoor verborgen stroomvreters op in huis", "tags": "sluipverbruik standby stroomvreters meten opsporen P1 meter energiemeter verbruik"}, {"url": "thuisbatterij-simuleren-home-assistant.html", "title": "Thuisbatterij simuleren in Home Assistant", "desc": "Test met battery_sim op je eigen P1-data", "tags": "Home Assistant thuisbatterij simuleren battery_sim HACS P1 data testen gratis"}, {"url": "tapo-p115-p410m-review.html", "title": "Tapo P115 vs P410M review", "desc": "Twee slimme stekkers van Tapo getest", "tags": "Tapo P115 P410M slimme stekker review test energiemeting"}, {"url": "tapo-p115-p410m-eindoordeel.html", "title": "Tapo P115 vs P410M eindoordeel", "desc": "Welke Tapo-stekker moet je kopen?", "tags": "Tapo P115 P410M eindoordeel vergelijking slimme stekker kopen"}, {"url": "zigbee2mqtt-apparaten-offline.html", "title": "Zigbee2MQTT apparaten offline", "desc": "Zigbee2MQTT offline? Controleer eerst MQTT", "tags": "Zigbee2MQTT offline MQTT broker Home Assistant storing apparaten unavailable"}, {"url": "zonnestroom-automatiseren-home-assistant.html", "title": "Zonnestroom automatiseren met Home Assistant", "desc": "Start een apparaat automatisch bij zonne-overschot met je P1-meter", "tags": "zonnestroom automatiseren Home Assistant teruglevering overschot P1 wasmachine slimme stekker YAML trigger"}];
+var _icons={"calculator":"🧮","smarthome":"🏠","home":"🏠","blog":"📝","thuis":"🔋","slimme":"⚡","beste":"⚡","plug":"🔌","warm":"🌡️","dynamisch":"📈","energie":"💡","saldering":"☀️","terug":"☀️","zonn":"☀️","vragen":"❓","over":"👤","privacy":"🔒"};
+function _icon(u){for(var k in _icons){if(u.indexOf(k)>-1)return _icons[k];}return "📄";}
+function _hl(t,q){if(!q)return t;var r=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');return t.replace(r,'<mark>$1</mark>');}
+function navSearchToggle(){
+  var box=document.getElementById('navSearchBox');
+  var ov=document.getElementById('navSearchOverlay');
+  var btn=document.getElementById('navSearchBtn');
+  var open=!box.classList.contains('open');
+  box.classList.toggle('open',open);
+  ov.classList.toggle('open',open);
+  btn.classList.toggle('open',open);
+  if(open)setTimeout(function(){document.getElementById('navSearchInput').focus();},50);
+}
+function navSearchClose(){
+  document.getElementById('navSearchBox').classList.remove('open');
+  document.getElementById('navSearchOverlay').classList.remove('open');
+  document.getElementById('navSearchBtn').classList.remove('open');
+  navSearchReset();
+}
+function navSearchReset(){
+  var inp=document.getElementById('navSearchInput');
+  inp.value='';
+  document.getElementById('navSearchClear').classList.remove('show');
+  document.getElementById('navSearchResults').innerHTML='<div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>';
+}
+function navSearchQuery(q){
+  var clear=document.getElementById('navSearchClear');
+  var res=document.getElementById('navSearchResults');
+  clear.classList.toggle('show',q.length>0);
+  if(q.length<2){res.innerHTML='<div class="nav-search-hint">Typ een onderwerp — bijv. <em>saldering</em>, <em>Zigbee</em>, <em>thuisbatterij</em></div>';return;}
+  var words=q.toLowerCase().split(/\s+/).filter(Boolean);
+  var hits=_SP.map(function(p){
+    var haystack=(p.title+' '+p.desc+' '+p.tags).toLowerCase();
+    var score=words.reduce(function(s,w){
+      if(p.title.toLowerCase().indexOf(w)>-1)return s+3;
+      if(p.desc.toLowerCase().indexOf(w)>-1)return s+2;
+      if(p.tags.toLowerCase().indexOf(w)>-1)return s+1;
+      return s;
+    },0);
+    return {p:p,score:score};
+  }).filter(function(x){return x.score>0;}).sort(function(a,b){return b.score-a.score;}).slice(0,8);
+  if(!hits.length){res.innerHTML='<div class="nav-search-hint">Geen resultaten voor <em>'+q+'</em> — probeer een ander woord</div>';return;}
+  res.innerHTML=hits.map(function(x){
+    var p=x.p;
+    return '<a href="'+p.url+'" class="nav-search-result" onclick="navSearchClose()"><span class="nsr-icon">'+_icon(p.url)+'</span><span class="nsr-content"><div class="nsr-title">'+_hl(p.title,q)+'</div><div class="nsr-desc">'+p.desc+'</div></span></a>';
+  }).join('');
+}
+function navSearchKey(e){
+  if(e.key==='Escape')navSearchClose();
+  if(e.key==='Enter'){var first=document.querySelector('.nav-search-result');if(first){window.location=first.href;navSearchClose();}}
+}
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();navSearchToggle();}});
+document.addEventListener("click",function(e){var b=document.getElementById("navSearchBox");var w=document.getElementById("navSearchWrap");if(b&&b.classList.contains("open")&&!b.contains(e.target)&&!w.contains(e.target)){navSearchClose();}});
+</script>
+<script>(function(){document.querySelectorAll(".nav-dropdown").forEach(function(dd){var t,m=dd.querySelector(".nav-dropdown-menu");if(!m)return;dd.addEventListener("mouseenter",function(){clearTimeout(t);m.style.display="block";});dd.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});m.addEventListener("mouseenter",function(){clearTimeout(t);});m.addEventListener("mouseleave",function(){t=setTimeout(function(){m.style.display="";},200);});});})();</script>
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+document.addEventListener('click',function(e){const m=document.getElementById('mobileMenu');const h=document.getElementById('hamburger');if(m&&h&&m.classList.contains('open')&&!m.contains(e.target)&&!h.contains(e.target))m.classList.remove('open')})
+</script>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-inner">
+    <div class="sticky-cta-txt">Nog geen P1-meter in Home Assistant?<small>Zo koppel je hem in vijf stappen</small></div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="smarthome-p1-meter.html" class="scta-btn">Naar de P1-gids →</a>
+      <button class="sticky-close" onclick="document.getElementById('stickyCta').classList.remove('show');window._sctaOff=1" aria-label="Sluiten">✕</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('stickyCta');
+  window.addEventListener('scroll',function(){
+    if(window._sctaOff)return;
+    var pct=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+    el.classList.toggle('show',pct>0.35&&pct<0.92);
+  },{passive:true});
+})();
+</script>
+<script>(function(){var m=Math.round((new Date('2027-01-01')-new Date())/2.628e9);if(m<1)return;var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null,false);var n;while(n=w.nextNode()){if(/~\d+\s*maanden/.test(n.nodeValue))n.nodeValue=n.nodeValue.replace(/~\d+\s*maanden/g,'~'+m+' maanden');}})();</script>
+<script>(function(){
+  var S=document.createElement('style');
+  S.textContent='.rv{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}.rv.vi{opacity:1;transform:none}'+
+    '.product-card,.calc-card,.prod-card,.spec-card{transition:transform .2s ease,box-shadow .2s ease}'+
+    '.product-card:hover,.calc-card:hover,.prod-card:hover,.spec-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.11)}';
+  document.head.appendChild(S);
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vi');io.unobserve(x.target);}});},{threshold:.1});
+  document.querySelectorAll('.highlight-box,.warning-box,.info-box,.cta-box,.product-card,.calc-card,.prod-card,.toc,.stap,.article-cta,.bottom-cta,.affiliate-section,.pill-links,.disclaimer-box').forEach(function(el){el.classList.add('rv');io.observe(el);});
+})();</script>
+</body>
+</html>

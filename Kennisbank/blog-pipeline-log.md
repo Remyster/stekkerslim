@@ -129,3 +129,13 @@ Remy genereerde 3 afbeeldingen met Gemini/Nano Banana (fictieve offerte met rode
 - 3 foto's (WebP) staan in de pagina, .png-originelen ook in de repo-root.
 
 **Nog niet gedaan**: geen commit/push. Wacht op expliciet akkoord van Remy (harde regel: nooit publiceren zonder zijn goedkeuring).
+
+## Run 13 nov 2026: Zonnestroom automatiseren met Home Assistant
+Gekozen uit stap 2 (rang 1). Stap 3 zei nieuwe blog, stap 2 verdieping: nieuwe pagina gekozen. Stap 5-reviews op de outline en stap 7-reviews op de pagina (Grok, Perplexity, Gemini, DeepSeek) verwerkt in 22 Edits. Geverifieerd bij Home Assistant-docs (triggers/actions sinds 2024.10, numeric_state vuurt bij kruisen van de drempel) en Rijksoverheid (saldering stopt 1 januari 2027). Remy's eigen HA-data (3 t/m 13 nov) als terugblik opgenomen, geen testperiode. Praktijkresultaat bewust niet gevuld; wasmachine niet getest (geen stekker erop).
+
+### Stap 9 — ingehaakt (13 nov 2026)
+- `sitemap.xml`: regel toegevoegd (lastmod 2026-11-13, priority 0.85).
+- `blog.html`: kaart bovenaan de sectie Smarthome en DIY.
+- Interne links vanuit `zonnestroom-zelf-gebruiken-zonder-thuisbatterij.html` (stap 5), `homeassistant-energie-besparen.html` (na de wasmachine-kaarten), `smarthome-p1-meter.html` (na de automatiseringskaarten) en `wasmachine-dynamisch-tarief.html` (Home Assistant-sectie).
+- Kennisbank: `blogs-gepubliceerd.md`, `site-structuur.md`.
+- Nog niet gecommit, wacht op akkoord van Remy.
