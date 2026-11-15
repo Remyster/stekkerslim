@@ -108,3 +108,14 @@
 2026-11-09 energiebespaar-calculator
 2026-11-09 indevolt-solidflex-3000-review
 2026-11-09 saldering-2027
+2026-11-15 zonnestroom-automatiseren-home-assistant
+2026-11-15 plug-in-batterij-laden
+2026-11-15 smart-lampen
+2026-11-15 smarthome-p1-meter
+2026-11-15 thuisbatterij-top5-2026
+2026-11-15 thuisbatterij-simuleren-home-assistant
+2026-11-15 beste-slimme-stekker-2026
+2026-11-15 calculator-energiekosten
+2026-11-15 calculator-laadpaal
+2026-11-15 calculator-warmtepomp
+2026-11-15 energiecontract-vergelijken-2026
